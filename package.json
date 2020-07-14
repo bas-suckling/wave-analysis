@@ -1,0 +1,14 @@
+{
+  "name": "wave-analysis",
+  "version": "1.0.0",
+  "description": "",
+  "main": "functions.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Bas.suckling",
+  "license": "ISC",
+  "dependencies": {
+    "@sports-alliance/sports-lib": "^4.2.18"
+  }
+}
