@@ -3,6 +3,7 @@ const TrackPoint = require('./TrackPoint');
 const parseTrack = track =>  {
 
   track = track[0].trkseg[0].trkpt;
+  
   return track.map(t => {
     var elevation = t.ele[0],
         lat = t['$'].lat,
