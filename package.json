@@ -9,7 +9,6 @@
   "author": "Bas.suckling",
   "license": "ISC",
   "dependencies": {
-    "parse-gpx": "^1.2.0",
     "xml2js": "^0.4.23"
   }
 }

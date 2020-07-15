@@ -32,8 +32,13 @@ function createJSONFile(path, content) {
     }); 
 }
 
+
 createTrackPoints(file)
+    .then(res => console.log(res))
     .then(res => createJSONFile(jsonFileName, res))
 
+// createTrackPoints(file)
+//     .then(res => createJSONFile(jsonFileName, res))
 
+    
 
