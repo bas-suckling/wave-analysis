@@ -1,9 +1,9 @@
-let file = './data/Surf_2020-07-07.gpx'
-let jsonFileName = './data/Surf_2020-07-07.json'
-
 const xml2js = require('xml2js');
 const fs = require('fs');
 const parseTrack = require('./src/parseTrack');
+
+let gpxFileName = './data/Surf_2020-07-07.gpx'
+let jsonFileName = './data/Surf_2020-07-07.json'
 
 function createTrackPoints(filename) {
     return new Promise((res, rej) => {
@@ -33,11 +33,11 @@ function createJSONFile(path, content) {
 }
 
 
-createTrackPoints(file)
-    .then(res => console.log(res))
+createTrackPoints(gpxFileName)
+    .then(data => console.log(data[0]))
 
-createTrackPoints(file)
-    .then(res => createJSONFile(jsonFileName, res))
+createTrackPoints(gpxFileName)
+    .then(data => createJSONFile(jsonFileName, JSON.stringify(data)))
 
     
 
