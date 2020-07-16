@@ -29,7 +29,7 @@ function getSpeedArray(data) {
             "lon": data[i + 1].longitude,
             "time": (convertUnixTime(data[i + 1].timestamp))
         }))
-        speedArray.push(speed)
+        speedArray.push({"time": convertUnixTime(data[i].timestamp), "speed": speed*3.6})
     }
     return speedArray
 }
