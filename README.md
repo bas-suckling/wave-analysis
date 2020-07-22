@@ -12,3 +12,8 @@ Session Data:
 Specific Wave Data:
 - Distance surfed
 - Max speed
+
+### Data Presentation
+
+Graphs / charts could be made using chartist.js
+https://gionkunz.github.io/chartist-js/
