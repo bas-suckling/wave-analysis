@@ -23,13 +23,13 @@ function getSpeedArray(data) {
         let speed = (geolib.getSpeed({
             "lat": data[i].latitude,
             "lon": data[i].longitude,
-            "time": (convertUnixTime(data[i].timestamp))
+            "time": (convertUnixTime(parseTime(data[i].timestamp)))
         }, {
             "lat": data[i + 1].latitude,
             "lon": data[i + 1].longitude,
-            "time": (convertUnixTime(data[i + 1].timestamp))
+            "time": (convertUnixTime(parseTime(data[i + 1].timestamp)))
         }))
-        speedArray.push({"time": convertUnixTime(data[i].timestamp), "speed": speed*3.6})
+        speedArray.push({"time": parseTime(data[i].timestamp), "speed": speed*3.6})
     }
     return speedArray
 }
@@ -37,9 +37,12 @@ function getSpeedArray(data) {
 
 //converts gpx timestamp to unix time (2020-07-07T03:42:40Z to )
 function convertUnixTime(gpxTimeStamp) {
-    let timeStamp = gpxTimeStamp.replace(/\T/g,' ').replace(/\Z/g,'');
-    let unixtTimeStamp = moment(timeStamp).unix()
+    let unixtTimeStamp = moment(gpxTimeStamp).unix()
     return unixtTimeStamp*1000 //miliseconds to seconds
+}
+
+function parseTime(gpxTimeStamp) {
+    return gpxTimeStamp.replace(/\T/g,' ').replace(/\Z/g,'');
 }
 
 module.exports = {

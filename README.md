@@ -8,6 +8,8 @@ Session Data:
  - Distance Paddled
  - Fastest Speed
  - Total time surfing
+ - Average paddle speed
+ - Average surf speed
 
 Specific Wave Data:
 - Distance surfed
