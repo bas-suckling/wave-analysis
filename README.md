@@ -27,9 +27,7 @@ Specific Wave Data:
 | 4.1–8 | Moderate speed/very high–intensity paddling |
 | 8.1+ | Surfing |
 
-
-### References
-
+###### Thresholds based on:
 http://fpt.co.nz/wp-content/uploads/2018/06/Physiological_Demands_of_Competitive_Surfing.20.pdf
 
 
