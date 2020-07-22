@@ -35,12 +35,13 @@ function getSpeedArray(data) {
 }
 
 
-//converts gpx timestamp to unix time (2020-07-07T03:42:40Z to )
+//converts timestamp to unix time (2020-07-07 03:42:40 to 1594093360 )
 function convertUnixTime(gpxTimeStamp) {
     let unixtTimeStamp = moment(gpxTimeStamp).unix()
     return unixtTimeStamp*1000 //miliseconds to seconds
 }
 
+//removes T and Z characters from gpxtimestamp(2020-07-07T03:42:40Z to 2020-07-07 03:42:40 )
 function parseTime(gpxTimeStamp) {
     return gpxTimeStamp.replace(/\T/g,' ').replace(/\Z/g,'');
 }

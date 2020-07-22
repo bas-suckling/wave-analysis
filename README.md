@@ -17,5 +17,11 @@ Specific Wave Data:
 
 ### Data Presentation
 
-Graphs / charts could be made using chartist.js
+Graphs / charts could be made using chartist.js: 
+
 https://gionkunz.github.io/chartist-js/
+
+
+### References
+
+http://fpt.co.nz/wp-content/uploads/2018/06/Physiological_Demands_of_Competitive_Surfing.20.pdf
