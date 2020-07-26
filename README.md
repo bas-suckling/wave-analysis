@@ -18,7 +18,6 @@ Specific Wave Data:
 ### Analysis Methods
 
 - Convert gpx (xml) to json format for trackpoints
--
 
 ### Thresholds for Activities based on Speed
 | Speed (km/h) | Activity |

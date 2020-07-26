@@ -1,6 +1,7 @@
 const geolib = require('geolib');
 const moment = require('moment');
-const { unix } = require('moment');
+// const { unix } = require('moment');
+
 
 function getTotalDistance(data) {
     let totalDistance = 0
@@ -34,6 +35,22 @@ function getSpeedArray(data) {
     return speedArray
 }
 
+function getDistanceArray(data){
+    let distanceArray = []
+    let cumulativeDistance = 0
+    for (let i = 0; i < data.length - 1 ; i++) {
+        let distanceIncrement = (geolib.getSpeed({
+            "lat": data[i].latitude,
+            "lon": data[i].longitude,
+        }, {
+            "lat": data[i + 1].latitude,
+            "lon": data[i + 1].longitude,
+        }))
+        cumulativeDistance += distanceIncrement
+        distanceArray.push({"time": parseTime(data[i].timestamp), "distance": distanceIncrement, "cumulative distance": cumulativeDistance})
+    }
+    return distanceArray 
+}
 
 //converts timestamp to unix time (2020-07-07 03:42:40 to 1594093360 )
 function convertUnixTime(gpxTimeStamp) {
@@ -48,5 +65,6 @@ function parseTime(gpxTimeStamp) {
 
 module.exports = {
     getTotalDistance,
+    getDistanceArray,
     getSpeedArray
 }
