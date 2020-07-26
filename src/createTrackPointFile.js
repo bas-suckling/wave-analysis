@@ -25,13 +25,14 @@ function createTrackPoints(filename) {
 function createJSONFile(path, content) {
     fs.writeFile(path, content, (err) => {
         if (err) throw err;
-        console.log("The file was succesfully saved");
+        console.log(` ${path} file was succesfully saved`);
     }); 
 }
 
 module.exports = {
     createJSONFile,
     createTrackPoints
+
 }
 
     
