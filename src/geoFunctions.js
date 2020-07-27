@@ -30,7 +30,7 @@ function getDistanceArray(data){
             "lon": data[i + 1].longitude,
         }))
         cumulativeDistance += distanceIncrement
-        distanceArray.push({"time": parseTime(data[i].timestamp), "increment distance": distanceIncrement, "cumulative distance": cumulativeDistance})
+        distanceArray.push({"time": parseTime(data[i].timestamp), "unixTime": convertUnixTime(parseTime(data[i].timestamp)), "increment distance": distanceIncrement, "cumulative distance": cumulativeDistance})
     }
     return distanceArray 
 }
@@ -47,7 +47,7 @@ function getSpeedArray(data) {
             "lon": data[i + 1].longitude,
             "time": (convertUnixTime(parseTime(data[i + 1].timestamp)))
         }))
-        speedArray.push({"time": parseTime(data[i].timestamp), "speed": speed*3.6})
+        speedArray.push({"time": parseTime(data[i].timestamp), "unixTime": convertUnixTime(parseTime(data[i].timestamp)), "speed": speed*3.6})
     }
     return speedArray
 }
