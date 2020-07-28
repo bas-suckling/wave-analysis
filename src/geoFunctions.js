@@ -40,9 +40,12 @@ function getDataArray(data) {
             "lon": data[i + 1].longitude,
             "time": (convertUnixTime(parseTime(data[i + 1].timestamp)))
         }))
-
+        let isWave = false
+        if (speed > 8) {
+            isWave = true
+        }
         cumulativeDistance += distanceIncrement
-        dataArray.push({"originalTime" : data[i].timestamp, "parseTime": parseTime(data[i].timestamp), "unixTime": convertUnixTime(parseTime(data[i].timestamp)), "incrementalDistance": distanceIncrement, "cumulativeDistance": cumulativeDistance, "speed": speed*3.6})
+        dataArray.push({"originalTime" : data[i].timestamp, "parseTime": parseTime(data[i].timestamp), "unixTime": convertUnixTime(parseTime(data[i].timestamp)), "incrementalDistance": distanceIncrement, "cumulativeDistance": cumulativeDistance, "speed": speed*3.6, "isWave": isWave })
     }
     return dataArray 
 
