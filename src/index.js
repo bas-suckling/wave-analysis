@@ -1,5 +1,5 @@
-const {createJSONFile, createTrackPoints} = require('./src/createTrackPointFile')
-const {getDistanceArray, getSpeedArray, getDataArray} = require('./src/geoFunctions')
+const {createJSONFile, createTrackPoints} = require('./createTrackPointFile')
+const {getDistanceArray, getSpeedArray, getDataArray} = require('./geoFunctions')
 
 let gpxRawFile = './data/2020-05-25/Surf_2020-05-25.gpx'
 let jsonRawFile = './data/2020-05-25/Surf_2020-05-25_RAW.json'
