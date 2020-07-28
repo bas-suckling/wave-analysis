@@ -1,6 +1,6 @@
 # Wave Analysis
 
-### First crack at analysing garmin GPS (.gpx) data for surf sessions.
+### First crack at analysing GPS (.gpx) data for surf sessions.
 
 Session Data:
  - Number of waves
@@ -17,7 +17,10 @@ Specific Wave Data:
 
 ### Analysis Methods
 
-- Convert gpx (xml) to json format for trackpoints
+- Convert gpx (xml) to RAW json format 
+- Convert RAW json format to processed json using [geolib](https://www.npmjs.com/package/geolib) functions
+
+Need to figure out data smoothening method such as [Kalman Filter](https://en.wikipedia.org/wiki/Kalman_filter)
 
 ### Thresholds for Activities based on Speed
 | Speed (km/h) | Activity |
