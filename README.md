@@ -1,6 +1,13 @@
-# Wave Analysis
+# Wave Analysis - Analysing GPS (.gpx) data for surf sessions.
 
-## First crack at analysing GPS (.gpx) data for surf sessions.
+### Usage
+Clone repo to your local machine
+
+At the command line type: `npm install` 
+
+To create data files, add a gpx file to the data directory and update the directory refs in index.js 
+
+At the command line type: `node index.js`
 
 ### Data to output
 Session Data:
@@ -20,6 +27,7 @@ Specific Wave Data:
 
 - Convert gpx (xml) to RAW json format 
 - Convert RAW json format to processed json using [geolib](https://www.npmjs.com/package/geolib) functions
+- Import JSON to excel and play with the data, design algorithms based on this. 
 
 Need to figure out data smoothening method such as [Kalman Filter](https://en.wikipedia.org/wiki/Kalman_filter)
 
