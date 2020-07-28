@@ -18,10 +18,11 @@ function getTotalDistance(data) {
     return totalDistance
 }
 
-function getDistanceArray(data){
-    let distanceArray = []
-    let cumulativeDistance = 0
+function getDataArray(data) {
+    let dataArray = []
+    let cumulativeDistance = 0 
     for (let i = 0; i < data.length - 1 ; i++) {
+
         let distanceIncrement = (geolib.getDistance({
             "lat": data[i].latitude,
             "lon": data[i].longitude,
@@ -29,15 +30,7 @@ function getDistanceArray(data){
             "lat": data[i + 1].latitude,
             "lon": data[i + 1].longitude,
         }))
-        cumulativeDistance += distanceIncrement
-        distanceArray.push({"time": parseTime(data[i].timestamp), "unixTime": convertUnixTime(parseTime(data[i].timestamp)), "increment distance": distanceIncrement, "cumulative distance": cumulativeDistance})
-    }
-    return distanceArray 
-}
 
-function getSpeedArray(data) {
-    let speedArray = []
-    for (let i = 0; i < data.length - 1 ; i++) {
         let speed = (geolib.getSpeed({
             "lat": data[i].latitude,
             "lon": data[i].longitude,
@@ -47,10 +40,47 @@ function getSpeedArray(data) {
             "lon": data[i + 1].longitude,
             "time": (convertUnixTime(parseTime(data[i + 1].timestamp)))
         }))
-        speedArray.push({"time": parseTime(data[i].timestamp), "unixTime": convertUnixTime(parseTime(data[i].timestamp)), "speed": speed*3.6})
+
+        cumulativeDistance += distanceIncrement
+        dataArray.push({"originalTime" : data[i].timestamp, "parseTime": parseTime(data[i].timestamp), "unixTime": convertUnixTime(parseTime(data[i].timestamp)), "incrementalDistance": distanceIncrement, "cumulativeDistance": cumulativeDistance, "speed": speed*3.6})
     }
-    return speedArray
+    return dataArray 
+
 }
+
+// function getDistanceArray(data){
+//     let distanceArray = []
+//     let cumulativeDistance = 0
+//     for (let i = 0; i < data.length - 1 ; i++) {
+//         let distanceIncrement = (geolib.getDistance({
+//             "lat": data[i].latitude,
+//             "lon": data[i].longitude,
+//         }, {
+//             "lat": data[i + 1].latitude,
+//             "lon": data[i + 1].longitude,
+//         }))
+//         cumulativeDistance += distanceIncrement
+//         distanceArray.push({"time": parseTime(data[i].timestamp), "unixTime": convertUnixTime(parseTime(data[i].timestamp)), "increment distance": distanceIncrement, "cumulative distance": cumulativeDistance})
+//     }
+//     return distanceArray 
+// }
+
+// function getSpeedArray(data) {
+//     let speedArray = []
+//     for (let i = 0; i < data.length - 1 ; i++) {
+//         let speed = (geolib.getSpeed({
+//             "lat": data[i].latitude,
+//             "lon": data[i].longitude,
+//             "time": (convertUnixTime(parseTime(data[i].timestamp)))
+//         }, {
+//             "lat": data[i + 1].latitude,
+//             "lon": data[i + 1].longitude,
+//             "time": (convertUnixTime(parseTime(data[i + 1].timestamp)))
+//         }))
+//         speedArray.push({"time": parseTime(data[i].timestamp), "unixTime": convertUnixTime(parseTime(data[i].timestamp)), "speed": speed*3.6})
+//     }
+//     return speedArray
+// }
 
 
 //converts timestamp to unix time (2020-07-07 03:42:40 to 1594093360 )
@@ -66,6 +96,7 @@ function parseTime(gpxTimeStamp) {
 
 module.exports = {
     getTotalDistance,
-    getDistanceArray,
-    getSpeedArray
+    // getDistanceArray,
+    // getSpeedArray,
+    getDataArray
 }
