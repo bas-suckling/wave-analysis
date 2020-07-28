@@ -23,7 +23,7 @@ function getDataArray(data) {
     let cumulativeDistance = 0 
     for (let i = 0; i < data.length - 1 ; i++) {
 
-        let distanceIncrement = (geolib.getDistance({
+        let distanceIncrement = (geolib.getPreciseDistance({
             "lat": data[i].latitude,
             "lon": data[i].longitude,
         }, {
