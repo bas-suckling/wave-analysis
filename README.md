@@ -1,7 +1,8 @@
 # Wave Analysis
 
-### First crack at analysing GPS (.gpx) data for surf sessions.
+## First crack at analysing GPS (.gpx) data for surf sessions.
 
+### Data to output
 Session Data:
  - Number of waves
  - Distance surfed
@@ -35,6 +36,4 @@ http://fpt.co.nz/wp-content/uploads/2018/06/Physiological_Demands_of_Competitive
 
 ### Data Presentation
 
-Graphs / charts could be made using chartist.js: 
-
-https://gionkunz.github.io/chartist-js/
+Graphs / charts could be made using [chartist.js](https://www.npmjs.com/package/react-chartist)
