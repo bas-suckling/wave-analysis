@@ -1,8 +1,12 @@
 import React from 'react'
+import WaveGraph from './WaveGraph'
 
 const App = () => {
   return (
-    <h1>React development has begun!</h1>
+    <>
+      <h1>Wave Analysis</h1>
+      <WaveGraph/>
+    </>
   )
 }
 
