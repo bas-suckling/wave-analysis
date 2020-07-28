@@ -120,11 +120,80 @@ var App = function App() {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_chartist__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-chartist */ "./node_modules/react-chartist/dist/index.js");
+/* harmony import */ var react_chartist__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_chartist__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _data_2020_05_25_Surf_2020_05_25_PROC_json__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../data/2020-05-25/Surf_2020-05-25_PROC.json */ "./data/2020-05-25/Surf_2020-05-25_PROC.json");
+var _data_2020_05_25_Surf_2020_05_25_PROC_json__WEBPACK_IMPORTED_MODULE_2___namespace = /*#__PURE__*/__webpack_require__.t(/*! ../../data/2020-05-25/Surf_2020-05-25_PROC.json */ "./data/2020-05-25/Surf_2020-05-25_PROC.json", 1);
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
 
-var WaveGraph = function WaveGraph() {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Wave Graph");
-};
+
+
+
+var WaveGraph = /*#__PURE__*/function (_React$Component) {
+  _inherits(WaveGraph, _React$Component);
+
+  var _super = _createSuper(WaveGraph);
+
+  function WaveGraph() {
+    _classCallCheck(this, WaveGraph);
+
+    return _super.apply(this, arguments);
+  }
+
+  _createClass(WaveGraph, [{
+    key: "render",
+    value: function render() {
+      var speedData = [];
+      var timeData = [];
+      _data_2020_05_25_Surf_2020_05_25_PROC_json__WEBPACK_IMPORTED_MODULE_2__.forEach(function (element) {
+        speedData.push(element.speed.toString());
+        timeData.push(element.parseTime);
+      });
+      var data = {
+        lables: timeData,
+        series: [speedData]
+      };
+      var options = {
+        high: 30,
+        low: 0,
+        axisX: {
+          labelInterpolationFnc: function labelInterpolationFnc(value, index) {
+            return index % 100 === 0 ? value : null;
+          }
+        }
+      };
+      var type = 'Line';
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_chartist__WEBPACK_IMPORTED_MODULE_1___default.a, {
+        data: data,
+        options: options,
+        type: type
+      }));
+    }
+  }]);
+
+  return WaveGraph;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
 /* harmony default export */ __webpack_exports__["default"] = (WaveGraph);
 
@@ -150,6 +219,4539 @@ __webpack_require__.r(__webpack_exports__);
 document.addEventListener('DOMContentLoaded', function () {
   react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_App__WEBPACK_IMPORTED_MODULE_2__["default"], null), document.getElementById('app'));
 });
+
+/***/ }),
+
+/***/ "./data/2020-05-25/Surf_2020-05-25_PROC.json":
+/*!***************************************************!*\
+  !*** ./data/2020-05-25/Surf_2020-05-25_PROC.json ***!
+  \***************************************************/
+/*! exports provided: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158, 159, 160, 161, 162, 163, 164, 165, 166, 167, 168, 169, 170, 171, 172, 173, 174, 175, 176, 177, 178, 179, 180, 181, 182, 183, 184, 185, 186, 187, 188, 189, 190, 191, 192, 193, 194, 195, 196, 197, 198, 199, 200, 201, 202, 203, 204, 205, 206, 207, 208, 209, 210, 211, 212, 213, 214, 215, 216, 217, 218, 219, 220, 221, 222, 223, 224, 225, 226, 227, 228, 229, 230, 231, 232, 233, 234, 235, 236, 237, 238, 239, 240, 241, 242, 243, 244, 245, 246, 247, 248, 249, 250, 251, 252, 253, 254, 255, 256, 257, 258, 259, 260, 261, 262, 263, 264, 265, 266, 267, 268, 269, 270, 271, 272, 273, 274, 275, 276, 277, 278, 279, 280, 281, 282, 283, 284, 285, 286, 287, 288, 289, 290, 291, 292, 293, 294, 295, 296, 297, 298, 299, 300, 301, 302, 303, 304, 305, 306, 307, 308, 309, 310, 311, 312, 313, 314, 315, 316, 317, 318, 319, 320, 321, 322, 323, 324, 325, 326, 327, 328, 329, 330, 331, 332, 333, 334, 335, 336, 337, 338, 339, 340, 341, 342, 343, 344, 345, 346, 347, 348, 349, 350, 351, 352, 353, 354, 355, 356, 357, 358, 359, 360, 361, 362, 363, 364, 365, 366, 367, 368, 369, 370, 371, 372, 373, 374, 375, 376, 377, 378, 379, 380, 381, 382, 383, 384, 385, 386, 387, 388, 389, 390, 391, 392, 393, 394, 395, 396, 397, 398, 399, 400, 401, 402, 403, 404, 405, 406, 407, 408, 409, 410, 411, 412, 413, 414, 415, 416, 417, 418, 419, 420, 421, 422, 423, 424, 425, 426, 427, 428, 429, 430, 431, 432, 433, 434, 435, 436, 437, 438, 439, 440, 441, 442, 443, 444, 445, 446, 447, 448, 449, 450, 451, 452, 453, 454, 455, 456, 457, 458, 459, 460, 461, 462, 463, 464, 465, 466, 467, 468, 469, 470, 471, 472, 473, 474, 475, 476, 477, 478, 479, 480, 481, 482, 483, 484, 485, 486, 487, 488, 489, 490, 491, 492, 493, 494, 495, 496, 497, 498, 499, 500, 501, 502, 503, 504, 505, 506, 507, 508, 509, 510, 511, 512, 513, 514, 515, 516, 517, 518, 519, 520, 521, 522, 523, 524, 525, 526, 527, 528, 529, 530, 531, 532, 533, 534, 535, 536, 537, 538, 539, 540, 541, 542, 543, 544, 545, 546, 547, 548, 549, 550, 551, 552, 553, 554, 555, 556, 557, 558, 559, 560, 561, 562, 563, 564, 565, 566, 567, 568, 569, 570, 571, 572, 573, 574, 575, 576, 577, 578, 579, 580, 581, 582, 583, 584, 585, 586, 587, 588, 589, 590, 591, 592, 593, 594, 595, 596, 597, 598, 599, 600, 601, 602, 603, 604, 605, 606, 607, 608, 609, 610, 611, 612, 613, 614, 615, 616, 617, 618, 619, 620, 621, 622, 623, 624, 625, 626, 627, 628, 629, 630, 631, 632, 633, 634, 635, 636, 637, 638, 639, 640, 641, 642, 643, 644, 645, 646, 647, 648, 649, 650, 651, 652, 653, 654, 655, 656, 657, 658, 659, 660, 661, 662, 663, 664, 665, 666, 667, 668, 669, 670, 671, 672, 673, 674, 675, 676, 677, 678, 679, 680, 681, 682, 683, 684, 685, 686, 687, 688, 689, 690, 691, 692, 693, 694, 695, 696, 697, 698, 699, 700, 701, 702, 703, 704, 705, 706, 707, 708, 709, 710, 711, 712, 713, 714, 715, 716, 717, 718, 719, 720, 721, 722, 723, 724, 725, 726, 727, 728, 729, 730, 731, 732, 733, 734, 735, 736, 737, 738, 739, 740, 741, 742, 743, 744, 745, 746, 747, 748, 749, 750, 751, 752, 753, 754, 755, 756, 757, 758, 759, 760, 761, 762, 763, 764, 765, 766, 767, 768, 769, 770, 771, 772, 773, 774, 775, 776, 777, 778, 779, 780, 781, 782, 783, 784, 785, 786, 787, 788, 789, 790, 791, 792, 793, 794, 795, 796, 797, 798, 799, 800, 801, 802, 803, 804, 805, 806, 807, 808, 809, 810, 811, 812, 813, 814, 815, 816, 817, 818, 819, 820, 821, 822, 823, 824, 825, 826, 827, 828, 829, 830, 831, 832, 833, 834, 835, 836, 837, 838, 839, 840, 841, 842, 843, 844, 845, 846, 847, 848, 849, 850, 851, 852, 853, 854, 855, 856, 857, 858, 859, 860, 861, 862, 863, 864, 865, 866, 867, 868, 869, 870, 871, 872, 873, 874, 875, 876, 877, 878, 879, 880, 881, 882, 883, 884, 885, 886, 887, 888, 889, 890, 891, 892, 893, 894, 895, 896, 897, 898, 899, 900, 901, 902, 903, 904, 905, 906, 907, 908, 909, 910, 911, 912, 913, 914, 915, 916, 917, 918, 919, 920, 921, 922, 923, 924, 925, 926, 927, 928, 929, 930, 931, 932, 933, 934, 935, 936, 937, 938, 939, 940, 941, 942, 943, 944, 945, 946, 947, 948, 949, 950, 951, 952, 953, 954, 955, 956, 957, 958, 959, 960, 961, 962, 963, 964, 965, 966, 967, 968, 969, 970, 971, 972, 973, 974, 975, 976, 977, 978, 979, 980, 981, 982, 983, 984, 985, 986, 987, 988, 989, 990, 991, 992, 993, 994, 995, 996, 997, 998, 999, 1000, 1001, 1002, 1003, 1004, 1005, 1006, 1007, 1008, 1009, 1010, 1011, 1012, 1013, 1014, 1015, 1016, 1017, 1018, 1019, 1020, 1021, 1022, 1023, 1024, 1025, 1026, 1027, 1028, 1029, 1030, 1031, 1032, 1033, 1034, 1035, 1036, 1037, 1038, 1039, 1040, 1041, 1042, 1043, 1044, 1045, 1046, 1047, 1048, 1049, 1050, 1051, 1052, 1053, 1054, 1055, 1056, 1057, 1058, 1059, 1060, 1061, 1062, 1063, 1064, 1065, 1066, 1067, 1068, 1069, 1070, 1071, 1072, 1073, 1074, 1075, 1076, 1077, 1078, 1079, 1080, 1081, 1082, 1083, 1084, 1085, 1086, 1087, 1088, 1089, 1090, 1091, 1092, 1093, 1094, 1095, 1096, 1097, 1098, 1099, 1100, 1101, 1102, 1103, 1104, 1105, 1106, 1107, 1108, 1109, default */
+/***/ (function(module) {
+
+module.exports = JSON.parse("[{\"originalTime\":\"2020-05-25T03:30:01Z\",\"parseTime\":\"2020-05-25 03:30:01\",\"unixTime\":1590334201000,\"incrementalDistance\":2,\"cumulativeDistance\":2,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:30:03Z\",\"parseTime\":\"2020-05-25 03:30:03\",\"unixTime\":1590334203000,\"incrementalDistance\":8,\"cumulativeDistance\":10,\"speed\":2.8800000000000003,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:30:13Z\",\"parseTime\":\"2020-05-25 03:30:13\",\"unixTime\":1590334213000,\"incrementalDistance\":0,\"cumulativeDistance\":10,\"speed\":0,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:30:16Z\",\"parseTime\":\"2020-05-25 03:30:16\",\"unixTime\":1590334216000,\"incrementalDistance\":9,\"cumulativeDistance\":19,\"speed\":4.05,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:30:24Z\",\"parseTime\":\"2020-05-25 03:30:24\",\"unixTime\":1590334224000,\"incrementalDistance\":2,\"cumulativeDistance\":21,\"speed\":0.3428571428571429,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:30:45Z\",\"parseTime\":\"2020-05-25 03:30:45\",\"unixTime\":1590334245000,\"incrementalDistance\":9,\"cumulativeDistance\":30,\"speed\":1.5428571428571427,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:31:06Z\",\"parseTime\":\"2020-05-25 03:31:06\",\"unixTime\":1590334266000,\"incrementalDistance\":1,\"cumulativeDistance\":31,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:31:07Z\",\"parseTime\":\"2020-05-25 03:31:07\",\"unixTime\":1590334267000,\"incrementalDistance\":1,\"cumulativeDistance\":32,\"speed\":1.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:31:10Z\",\"parseTime\":\"2020-05-25 03:31:10\",\"unixTime\":1590334270000,\"incrementalDistance\":2,\"cumulativeDistance\":34,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:31:12Z\",\"parseTime\":\"2020-05-25 03:31:12\",\"unixTime\":1590334272000,\"incrementalDistance\":3,\"cumulativeDistance\":37,\"speed\":5.4,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:31:14Z\",\"parseTime\":\"2020-05-25 03:31:14\",\"unixTime\":1590334274000,\"incrementalDistance\":3,\"cumulativeDistance\":40,\"speed\":5.4,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:31:16Z\",\"parseTime\":\"2020-05-25 03:31:16\",\"unixTime\":1590334276000,\"incrementalDistance\":1,\"cumulativeDistance\":41,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:31:17Z\",\"parseTime\":\"2020-05-25 03:31:17\",\"unixTime\":1590334277000,\"incrementalDistance\":45,\"cumulativeDistance\":86,\"speed\":5.0625,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:31:49Z\",\"parseTime\":\"2020-05-25 03:31:49\",\"unixTime\":1590334309000,\"incrementalDistance\":29,\"cumulativeDistance\":115,\"speed\":3.728571428571428,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:32:17Z\",\"parseTime\":\"2020-05-25 03:32:17\",\"unixTime\":1590334337000,\"incrementalDistance\":5,\"cumulativeDistance\":120,\"speed\":3,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:32:23Z\",\"parseTime\":\"2020-05-25 03:32:23\",\"unixTime\":1590334343000,\"incrementalDistance\":1,\"cumulativeDistance\":121,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:32:24Z\",\"parseTime\":\"2020-05-25 03:32:24\",\"unixTime\":1590334344000,\"incrementalDistance\":1,\"cumulativeDistance\":122,\"speed\":1.8,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:32:26Z\",\"parseTime\":\"2020-05-25 03:32:26\",\"unixTime\":1590334346000,\"incrementalDistance\":1,\"cumulativeDistance\":123,\"speed\":0.9,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:32:30Z\",\"parseTime\":\"2020-05-25 03:32:30\",\"unixTime\":1590334350000,\"incrementalDistance\":5,\"cumulativeDistance\":128,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:32:35Z\",\"parseTime\":\"2020-05-25 03:32:35\",\"unixTime\":1590334355000,\"incrementalDistance\":18,\"cumulativeDistance\":146,\"speed\":16.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:32:39Z\",\"parseTime\":\"2020-05-25 03:32:39\",\"unixTime\":1590334359000,\"incrementalDistance\":25,\"cumulativeDistance\":171,\"speed\":22.5,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:32:43Z\",\"parseTime\":\"2020-05-25 03:32:43\",\"unixTime\":1590334363000,\"incrementalDistance\":6,\"cumulativeDistance\":177,\"speed\":21.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:32:44Z\",\"parseTime\":\"2020-05-25 03:32:44\",\"unixTime\":1590334364000,\"incrementalDistance\":6,\"cumulativeDistance\":183,\"speed\":21.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:32:45Z\",\"parseTime\":\"2020-05-25 03:32:45\",\"unixTime\":1590334365000,\"incrementalDistance\":3,\"cumulativeDistance\":186,\"speed\":1.08,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:32:55Z\",\"parseTime\":\"2020-05-25 03:32:55\",\"unixTime\":1590334375000,\"incrementalDistance\":5,\"cumulativeDistance\":191,\"speed\":6,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:32:58Z\",\"parseTime\":\"2020-05-25 03:32:58\",\"unixTime\":1590334378000,\"incrementalDistance\":11,\"cumulativeDistance\":202,\"speed\":7.920000000000001,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:33:03Z\",\"parseTime\":\"2020-05-25 03:33:03\",\"unixTime\":1590334383000,\"incrementalDistance\":22,\"cumulativeDistance\":224,\"speed\":7.920000000000001,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:33:13Z\",\"parseTime\":\"2020-05-25 03:33:13\",\"unixTime\":1590334393000,\"incrementalDistance\":34,\"cumulativeDistance\":258,\"speed\":5.321739130434783,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:33:36Z\",\"parseTime\":\"2020-05-25 03:33:36\",\"unixTime\":1590334416000,\"incrementalDistance\":22,\"cumulativeDistance\":280,\"speed\":6.092307692307692,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:33:49Z\",\"parseTime\":\"2020-05-25 03:33:49\",\"unixTime\":1590334429000,\"incrementalDistance\":1,\"cumulativeDistance\":281,\"speed\":0.5142857142857143,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:33:56Z\",\"parseTime\":\"2020-05-25 03:33:56\",\"unixTime\":1590334436000,\"incrementalDistance\":13,\"cumulativeDistance\":294,\"speed\":4.680000000000001,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:34:06Z\",\"parseTime\":\"2020-05-25 03:34:06\",\"unixTime\":1590334446000,\"incrementalDistance\":4,\"cumulativeDistance\":298,\"speed\":1.4400000000000002,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:34:16Z\",\"parseTime\":\"2020-05-25 03:34:16\",\"unixTime\":1590334456000,\"incrementalDistance\":1,\"cumulativeDistance\":299,\"speed\":1.8,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:34:18Z\",\"parseTime\":\"2020-05-25 03:34:18\",\"unixTime\":1590334458000,\"incrementalDistance\":9,\"cumulativeDistance\":308,\"speed\":1.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:34:45Z\",\"parseTime\":\"2020-05-25 03:34:45\",\"unixTime\":1590334485000,\"incrementalDistance\":4,\"cumulativeDistance\":312,\"speed\":7.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:34:47Z\",\"parseTime\":\"2020-05-25 03:34:47\",\"unixTime\":1590334487000,\"incrementalDistance\":14,\"cumulativeDistance\":326,\"speed\":6.3,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:34:55Z\",\"parseTime\":\"2020-05-25 03:34:55\",\"unixTime\":1590334495000,\"incrementalDistance\":4,\"cumulativeDistance\":330,\"speed\":7.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:34:57Z\",\"parseTime\":\"2020-05-25 03:34:57\",\"unixTime\":1590334497000,\"incrementalDistance\":24,\"cumulativeDistance\":354,\"speed\":17.28,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:35:02Z\",\"parseTime\":\"2020-05-25 03:35:02\",\"unixTime\":1590334502000,\"incrementalDistance\":11,\"cumulativeDistance\":365,\"speed\":2.64,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:35:17Z\",\"parseTime\":\"2020-05-25 03:35:17\",\"unixTime\":1590334517000,\"incrementalDistance\":35,\"cumulativeDistance\":400,\"speed\":6.631578947368421,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:35:36Z\",\"parseTime\":\"2020-05-25 03:35:36\",\"unixTime\":1590334536000,\"incrementalDistance\":4,\"cumulativeDistance\":404,\"speed\":1.8,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:35:44Z\",\"parseTime\":\"2020-05-25 03:35:44\",\"unixTime\":1590334544000,\"incrementalDistance\":9,\"cumulativeDistance\":413,\"speed\":1.08,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:36:14Z\",\"parseTime\":\"2020-05-25 03:36:14\",\"unixTime\":1590334574000,\"incrementalDistance\":16,\"cumulativeDistance\":429,\"speed\":7.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:36:22Z\",\"parseTime\":\"2020-05-25 03:36:22\",\"unixTime\":1590334582000,\"incrementalDistance\":14,\"cumulativeDistance\":443,\"speed\":5.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:36:31Z\",\"parseTime\":\"2020-05-25 03:36:31\",\"unixTime\":1590334591000,\"incrementalDistance\":8,\"cumulativeDistance\":451,\"speed\":4.8,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:36:37Z\",\"parseTime\":\"2020-05-25 03:36:37\",\"unixTime\":1590334597000,\"incrementalDistance\":1,\"cumulativeDistance\":452,\"speed\":1.8,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:36:39Z\",\"parseTime\":\"2020-05-25 03:36:39\",\"unixTime\":1590334599000,\"incrementalDistance\":4,\"cumulativeDistance\":456,\"speed\":2.0571428571428574,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:36:46Z\",\"parseTime\":\"2020-05-25 03:36:46\",\"unixTime\":1590334606000,\"incrementalDistance\":6,\"cumulativeDistance\":462,\"speed\":1.08,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:37:06Z\",\"parseTime\":\"2020-05-25 03:37:06\",\"unixTime\":1590334626000,\"incrementalDistance\":5,\"cumulativeDistance\":467,\"speed\":2.25,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:37:14Z\",\"parseTime\":\"2020-05-25 03:37:14\",\"unixTime\":1590334634000,\"incrementalDistance\":2,\"cumulativeDistance\":469,\"speed\":7.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:37:15Z\",\"parseTime\":\"2020-05-25 03:37:15\",\"unixTime\":1590334635000,\"incrementalDistance\":17,\"cumulativeDistance\":486,\"speed\":15.3,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:37:19Z\",\"parseTime\":\"2020-05-25 03:37:19\",\"unixTime\":1590334639000,\"incrementalDistance\":18,\"cumulativeDistance\":504,\"speed\":21.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:37:22Z\",\"parseTime\":\"2020-05-25 03:37:22\",\"unixTime\":1590334642000,\"incrementalDistance\":5,\"cumulativeDistance\":509,\"speed\":18,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:37:23Z\",\"parseTime\":\"2020-05-25 03:37:23\",\"unixTime\":1590334643000,\"incrementalDistance\":6,\"cumulativeDistance\":515,\"speed\":21.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:37:24Z\",\"parseTime\":\"2020-05-25 03:37:24\",\"unixTime\":1590334644000,\"incrementalDistance\":5,\"cumulativeDistance\":520,\"speed\":18,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:37:25Z\",\"parseTime\":\"2020-05-25 03:37:25\",\"unixTime\":1590334645000,\"incrementalDistance\":18,\"cumulativeDistance\":538,\"speed\":21.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:37:28Z\",\"parseTime\":\"2020-05-25 03:37:28\",\"unixTime\":1590334648000,\"incrementalDistance\":14,\"cumulativeDistance\":552,\"speed\":16.8,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:37:31Z\",\"parseTime\":\"2020-05-25 03:37:31\",\"unixTime\":1590334651000,\"incrementalDistance\":9,\"cumulativeDistance\":561,\"speed\":8.1,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:37:35Z\",\"parseTime\":\"2020-05-25 03:37:35\",\"unixTime\":1590334655000,\"incrementalDistance\":1,\"cumulativeDistance\":562,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:37:36Z\",\"parseTime\":\"2020-05-25 03:37:36\",\"unixTime\":1590334656000,\"incrementalDistance\":1,\"cumulativeDistance\":563,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:37:37Z\",\"parseTime\":\"2020-05-25 03:37:37\",\"unixTime\":1590334657000,\"incrementalDistance\":0,\"cumulativeDistance\":563,\"speed\":0,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:37:38Z\",\"parseTime\":\"2020-05-25 03:37:38\",\"unixTime\":1590334658000,\"incrementalDistance\":7,\"cumulativeDistance\":570,\"speed\":8.4,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:37:41Z\",\"parseTime\":\"2020-05-25 03:37:41\",\"unixTime\":1590334661000,\"incrementalDistance\":12,\"cumulativeDistance\":582,\"speed\":10.8,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:37:45Z\",\"parseTime\":\"2020-05-25 03:37:45\",\"unixTime\":1590334665000,\"incrementalDistance\":6,\"cumulativeDistance\":588,\"speed\":10.8,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:37:47Z\",\"parseTime\":\"2020-05-25 03:37:47\",\"unixTime\":1590334667000,\"incrementalDistance\":8,\"cumulativeDistance\":596,\"speed\":9.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:37:50Z\",\"parseTime\":\"2020-05-25 03:37:50\",\"unixTime\":1590334670000,\"incrementalDistance\":3,\"cumulativeDistance\":599,\"speed\":10.8,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:37:51Z\",\"parseTime\":\"2020-05-25 03:37:51\",\"unixTime\":1590334671000,\"incrementalDistance\":3,\"cumulativeDistance\":602,\"speed\":10.8,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:37:52Z\",\"parseTime\":\"2020-05-25 03:37:52\",\"unixTime\":1590334672000,\"incrementalDistance\":5,\"cumulativeDistance\":607,\"speed\":9,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:37:54Z\",\"parseTime\":\"2020-05-25 03:37:54\",\"unixTime\":1590334674000,\"incrementalDistance\":4,\"cumulativeDistance\":611,\"speed\":7.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:37:56Z\",\"parseTime\":\"2020-05-25 03:37:56\",\"unixTime\":1590334676000,\"incrementalDistance\":3,\"cumulativeDistance\":614,\"speed\":2.7,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:38:00Z\",\"parseTime\":\"2020-05-25 03:38:00\",\"unixTime\":1590334680000,\"incrementalDistance\":2,\"cumulativeDistance\":616,\"speed\":7.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:38:01Z\",\"parseTime\":\"2020-05-25 03:38:01\",\"unixTime\":1590334681000,\"incrementalDistance\":6,\"cumulativeDistance\":622,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:38:07Z\",\"parseTime\":\"2020-05-25 03:38:07\",\"unixTime\":1590334687000,\"incrementalDistance\":14,\"cumulativeDistance\":636,\"speed\":8.4,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:38:13Z\",\"parseTime\":\"2020-05-25 03:38:13\",\"unixTime\":1590334693000,\"incrementalDistance\":6,\"cumulativeDistance\":642,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:38:19Z\",\"parseTime\":\"2020-05-25 03:38:19\",\"unixTime\":1590334699000,\"incrementalDistance\":1,\"cumulativeDistance\":643,\"speed\":0.9,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:38:23Z\",\"parseTime\":\"2020-05-25 03:38:23\",\"unixTime\":1590334703000,\"incrementalDistance\":23,\"cumulativeDistance\":666,\"speed\":4.6000000000000005,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:38:41Z\",\"parseTime\":\"2020-05-25 03:38:41\",\"unixTime\":1590334721000,\"incrementalDistance\":3,\"cumulativeDistance\":669,\"speed\":5.4,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:38:43Z\",\"parseTime\":\"2020-05-25 03:38:43\",\"unixTime\":1590334723000,\"incrementalDistance\":1,\"cumulativeDistance\":670,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:38:44Z\",\"parseTime\":\"2020-05-25 03:38:44\",\"unixTime\":1590334724000,\"incrementalDistance\":11,\"cumulativeDistance\":681,\"speed\":1.9800000000000002,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:39:04Z\",\"parseTime\":\"2020-05-25 03:39:04\",\"unixTime\":1590334744000,\"incrementalDistance\":1,\"cumulativeDistance\":682,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:39:05Z\",\"parseTime\":\"2020-05-25 03:39:05\",\"unixTime\":1590334745000,\"incrementalDistance\":10,\"cumulativeDistance\":692,\"speed\":5.142857142857143,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:39:12Z\",\"parseTime\":\"2020-05-25 03:39:12\",\"unixTime\":1590334752000,\"incrementalDistance\":7,\"cumulativeDistance\":699,\"speed\":5.04,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:39:17Z\",\"parseTime\":\"2020-05-25 03:39:17\",\"unixTime\":1590334757000,\"incrementalDistance\":3,\"cumulativeDistance\":702,\"speed\":0.675,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:39:33Z\",\"parseTime\":\"2020-05-25 03:39:33\",\"unixTime\":1590334773000,\"incrementalDistance\":6,\"cumulativeDistance\":708,\"speed\":1.08,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:39:53Z\",\"parseTime\":\"2020-05-25 03:39:53\",\"unixTime\":1590334793000,\"incrementalDistance\":11,\"cumulativeDistance\":719,\"speed\":3.9600000000000004,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:40:03Z\",\"parseTime\":\"2020-05-25 03:40:03\",\"unixTime\":1590334803000,\"incrementalDistance\":21,\"cumulativeDistance\":740,\"speed\":12.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:40:09Z\",\"parseTime\":\"2020-05-25 03:40:09\",\"unixTime\":1590334809000,\"incrementalDistance\":11,\"cumulativeDistance\":751,\"speed\":19.8,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:40:11Z\",\"parseTime\":\"2020-05-25 03:40:11\",\"unixTime\":1590334811000,\"incrementalDistance\":12,\"cumulativeDistance\":763,\"speed\":21.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:40:13Z\",\"parseTime\":\"2020-05-25 03:40:13\",\"unixTime\":1590334813000,\"incrementalDistance\":34,\"cumulativeDistance\":797,\"speed\":12.24,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:40:23Z\",\"parseTime\":\"2020-05-25 03:40:23\",\"unixTime\":1590334823000,\"incrementalDistance\":4,\"cumulativeDistance\":801,\"speed\":7.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:40:25Z\",\"parseTime\":\"2020-05-25 03:40:25\",\"unixTime\":1590334825000,\"incrementalDistance\":7,\"cumulativeDistance\":808,\"speed\":8.4,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:40:28Z\",\"parseTime\":\"2020-05-25 03:40:28\",\"unixTime\":1590334828000,\"incrementalDistance\":1,\"cumulativeDistance\":809,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:40:29Z\",\"parseTime\":\"2020-05-25 03:40:29\",\"unixTime\":1590334829000,\"incrementalDistance\":0,\"cumulativeDistance\":809,\"speed\":0,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:40:30Z\",\"parseTime\":\"2020-05-25 03:40:30\",\"unixTime\":1590334830000,\"incrementalDistance\":1,\"cumulativeDistance\":810,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:40:31Z\",\"parseTime\":\"2020-05-25 03:40:31\",\"unixTime\":1590334831000,\"incrementalDistance\":4,\"cumulativeDistance\":814,\"speed\":4.8,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:40:34Z\",\"parseTime\":\"2020-05-25 03:40:34\",\"unixTime\":1590334834000,\"incrementalDistance\":7,\"cumulativeDistance\":821,\"speed\":12.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:40:36Z\",\"parseTime\":\"2020-05-25 03:40:36\",\"unixTime\":1590334836000,\"incrementalDistance\":2,\"cumulativeDistance\":823,\"speed\":7.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:40:37Z\",\"parseTime\":\"2020-05-25 03:40:37\",\"unixTime\":1590334837000,\"incrementalDistance\":2,\"cumulativeDistance\":825,\"speed\":7.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:40:38Z\",\"parseTime\":\"2020-05-25 03:40:38\",\"unixTime\":1590334838000,\"incrementalDistance\":1,\"cumulativeDistance\":826,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:40:39Z\",\"parseTime\":\"2020-05-25 03:40:39\",\"unixTime\":1590334839000,\"incrementalDistance\":9,\"cumulativeDistance\":835,\"speed\":5.4,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:40:45Z\",\"parseTime\":\"2020-05-25 03:40:45\",\"unixTime\":1590334845000,\"incrementalDistance\":2,\"cumulativeDistance\":837,\"speed\":7.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:40:46Z\",\"parseTime\":\"2020-05-25 03:40:46\",\"unixTime\":1590334846000,\"incrementalDistance\":0,\"cumulativeDistance\":837,\"speed\":0,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:40:48Z\",\"parseTime\":\"2020-05-25 03:40:48\",\"unixTime\":1590334848000,\"incrementalDistance\":2,\"cumulativeDistance\":839,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:40:50Z\",\"parseTime\":\"2020-05-25 03:40:50\",\"unixTime\":1590334850000,\"incrementalDistance\":1,\"cumulativeDistance\":840,\"speed\":1.8,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:40:52Z\",\"parseTime\":\"2020-05-25 03:40:52\",\"unixTime\":1590334852000,\"incrementalDistance\":2,\"cumulativeDistance\":842,\"speed\":1.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:40:58Z\",\"parseTime\":\"2020-05-25 03:40:58\",\"unixTime\":1590334858000,\"incrementalDistance\":12,\"cumulativeDistance\":854,\"speed\":3.9272727272727277,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:41:09Z\",\"parseTime\":\"2020-05-25 03:41:09\",\"unixTime\":1590334869000,\"incrementalDistance\":5,\"cumulativeDistance\":859,\"speed\":6,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:41:12Z\",\"parseTime\":\"2020-05-25 03:41:12\",\"unixTime\":1590334872000,\"incrementalDistance\":10,\"cumulativeDistance\":869,\"speed\":4.5,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:41:20Z\",\"parseTime\":\"2020-05-25 03:41:20\",\"unixTime\":1590334880000,\"incrementalDistance\":4,\"cumulativeDistance\":873,\"speed\":7.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:41:22Z\",\"parseTime\":\"2020-05-25 03:41:22\",\"unixTime\":1590334882000,\"incrementalDistance\":4,\"cumulativeDistance\":877,\"speed\":2.8800000000000003,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:41:27Z\",\"parseTime\":\"2020-05-25 03:41:27\",\"unixTime\":1590334887000,\"incrementalDistance\":2,\"cumulativeDistance\":879,\"speed\":7.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:41:28Z\",\"parseTime\":\"2020-05-25 03:41:28\",\"unixTime\":1590334888000,\"incrementalDistance\":1,\"cumulativeDistance\":880,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:41:29Z\",\"parseTime\":\"2020-05-25 03:41:29\",\"unixTime\":1590334889000,\"incrementalDistance\":8,\"cumulativeDistance\":888,\"speed\":2.6181818181818177,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:41:40Z\",\"parseTime\":\"2020-05-25 03:41:40\",\"unixTime\":1590334900000,\"incrementalDistance\":1,\"cumulativeDistance\":889,\"speed\":0.2571428571428572,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:41:54Z\",\"parseTime\":\"2020-05-25 03:41:54\",\"unixTime\":1590334914000,\"incrementalDistance\":15,\"cumulativeDistance\":904,\"speed\":4.90909090909091,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:42:05Z\",\"parseTime\":\"2020-05-25 03:42:05\",\"unixTime\":1590334925000,\"incrementalDistance\":4,\"cumulativeDistance\":908,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:42:09Z\",\"parseTime\":\"2020-05-25 03:42:09\",\"unixTime\":1590334929000,\"incrementalDistance\":12,\"cumulativeDistance\":920,\"speed\":4.8,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:42:18Z\",\"parseTime\":\"2020-05-25 03:42:18\",\"unixTime\":1590334938000,\"incrementalDistance\":5,\"cumulativeDistance\":925,\"speed\":6,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:42:21Z\",\"parseTime\":\"2020-05-25 03:42:21\",\"unixTime\":1590334941000,\"incrementalDistance\":37,\"cumulativeDistance\":962,\"speed\":9.514285714285714,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:42:35Z\",\"parseTime\":\"2020-05-25 03:42:35\",\"unixTime\":1590334955000,\"incrementalDistance\":8,\"cumulativeDistance\":970,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:42:43Z\",\"parseTime\":\"2020-05-25 03:42:43\",\"unixTime\":1590334963000,\"incrementalDistance\":28,\"cumulativeDistance\":998,\"speed\":4.3826086956521735,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:43:06Z\",\"parseTime\":\"2020-05-25 03:43:06\",\"unixTime\":1590334986000,\"incrementalDistance\":4,\"cumulativeDistance\":1002,\"speed\":0.4645161290322581,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:43:37Z\",\"parseTime\":\"2020-05-25 03:43:37\",\"unixTime\":1590335017000,\"incrementalDistance\":2,\"cumulativeDistance\":1004,\"speed\":2.4,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:43:40Z\",\"parseTime\":\"2020-05-25 03:43:40\",\"unixTime\":1590335020000,\"incrementalDistance\":1,\"cumulativeDistance\":1005,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:43:41Z\",\"parseTime\":\"2020-05-25 03:43:41\",\"unixTime\":1590335021000,\"incrementalDistance\":4,\"cumulativeDistance\":1009,\"speed\":7.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:43:43Z\",\"parseTime\":\"2020-05-25 03:43:43\",\"unixTime\":1590335023000,\"incrementalDistance\":26,\"cumulativeDistance\":1035,\"speed\":8.50909090909091,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:43:54Z\",\"parseTime\":\"2020-05-25 03:43:54\",\"unixTime\":1590335034000,\"incrementalDistance\":7,\"cumulativeDistance\":1042,\"speed\":6.3,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:43:58Z\",\"parseTime\":\"2020-05-25 03:43:58\",\"unixTime\":1590335038000,\"incrementalDistance\":14,\"cumulativeDistance\":1056,\"speed\":10.08,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:44:03Z\",\"parseTime\":\"2020-05-25 03:44:03\",\"unixTime\":1590335043000,\"incrementalDistance\":4,\"cumulativeDistance\":1060,\"speed\":7.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:44:05Z\",\"parseTime\":\"2020-05-25 03:44:05\",\"unixTime\":1590335045000,\"incrementalDistance\":3,\"cumulativeDistance\":1063,\"speed\":5.4,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:44:07Z\",\"parseTime\":\"2020-05-25 03:44:07\",\"unixTime\":1590335047000,\"incrementalDistance\":2,\"cumulativeDistance\":1065,\"speed\":7.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:44:08Z\",\"parseTime\":\"2020-05-25 03:44:08\",\"unixTime\":1590335048000,\"incrementalDistance\":2,\"cumulativeDistance\":1067,\"speed\":7.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:44:09Z\",\"parseTime\":\"2020-05-25 03:44:09\",\"unixTime\":1590335049000,\"incrementalDistance\":11,\"cumulativeDistance\":1078,\"speed\":9.9,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:44:13Z\",\"parseTime\":\"2020-05-25 03:44:13\",\"unixTime\":1590335053000,\"incrementalDistance\":4,\"cumulativeDistance\":1082,\"speed\":7.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:44:15Z\",\"parseTime\":\"2020-05-25 03:44:15\",\"unixTime\":1590335055000,\"incrementalDistance\":3,\"cumulativeDistance\":1085,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:44:18Z\",\"parseTime\":\"2020-05-25 03:44:18\",\"unixTime\":1590335058000,\"incrementalDistance\":1,\"cumulativeDistance\":1086,\"speed\":1.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:44:21Z\",\"parseTime\":\"2020-05-25 03:44:21\",\"unixTime\":1590335061000,\"incrementalDistance\":12,\"cumulativeDistance\":1098,\"speed\":3.0857142857142854,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:44:35Z\",\"parseTime\":\"2020-05-25 03:44:35\",\"unixTime\":1590335075000,\"incrementalDistance\":2,\"cumulativeDistance\":1100,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:44:37Z\",\"parseTime\":\"2020-05-25 03:44:37\",\"unixTime\":1590335077000,\"incrementalDistance\":6,\"cumulativeDistance\":1106,\"speed\":3.0857142857142854,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:44:44Z\",\"parseTime\":\"2020-05-25 03:44:44\",\"unixTime\":1590335084000,\"incrementalDistance\":5,\"cumulativeDistance\":1111,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:44:49Z\",\"parseTime\":\"2020-05-25 03:44:49\",\"unixTime\":1590335089000,\"incrementalDistance\":7,\"cumulativeDistance\":1118,\"speed\":2.290909090909091,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:45:00Z\",\"parseTime\":\"2020-05-25 03:45:00\",\"unixTime\":1590335100000,\"incrementalDistance\":2,\"cumulativeDistance\":1120,\"speed\":1.0285714285714287,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:45:07Z\",\"parseTime\":\"2020-05-25 03:45:07\",\"unixTime\":1590335107000,\"incrementalDistance\":3,\"cumulativeDistance\":1123,\"speed\":2.7,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:45:11Z\",\"parseTime\":\"2020-05-25 03:45:11\",\"unixTime\":1590335111000,\"incrementalDistance\":1,\"cumulativeDistance\":1124,\"speed\":0.3272727272727272,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:45:22Z\",\"parseTime\":\"2020-05-25 03:45:22\",\"unixTime\":1590335122000,\"incrementalDistance\":1,\"cumulativeDistance\":1125,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:45:23Z\",\"parseTime\":\"2020-05-25 03:45:23\",\"unixTime\":1590335123000,\"incrementalDistance\":7,\"cumulativeDistance\":1132,\"speed\":2.8,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:45:32Z\",\"parseTime\":\"2020-05-25 03:45:32\",\"unixTime\":1590335132000,\"incrementalDistance\":28,\"cumulativeDistance\":1160,\"speed\":14.4,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:45:39Z\",\"parseTime\":\"2020-05-25 03:45:39\",\"unixTime\":1590335139000,\"incrementalDistance\":10,\"cumulativeDistance\":1170,\"speed\":18,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:45:41Z\",\"parseTime\":\"2020-05-25 03:45:41\",\"unixTime\":1590335141000,\"incrementalDistance\":7,\"cumulativeDistance\":1177,\"speed\":12.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:45:43Z\",\"parseTime\":\"2020-05-25 03:45:43\",\"unixTime\":1590335143000,\"incrementalDistance\":4,\"cumulativeDistance\":1181,\"speed\":4.8,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:45:46Z\",\"parseTime\":\"2020-05-25 03:45:46\",\"unixTime\":1590335146000,\"incrementalDistance\":6,\"cumulativeDistance\":1187,\"speed\":10.8,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:45:48Z\",\"parseTime\":\"2020-05-25 03:45:48\",\"unixTime\":1590335148000,\"incrementalDistance\":3,\"cumulativeDistance\":1190,\"speed\":10.8,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:45:49Z\",\"parseTime\":\"2020-05-25 03:45:49\",\"unixTime\":1590335149000,\"incrementalDistance\":7,\"cumulativeDistance\":1197,\"speed\":8.4,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:45:52Z\",\"parseTime\":\"2020-05-25 03:45:52\",\"unixTime\":1590335152000,\"incrementalDistance\":2,\"cumulativeDistance\":1199,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:45:54Z\",\"parseTime\":\"2020-05-25 03:45:54\",\"unixTime\":1590335154000,\"incrementalDistance\":2,\"cumulativeDistance\":1201,\"speed\":7.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:45:55Z\",\"parseTime\":\"2020-05-25 03:45:55\",\"unixTime\":1590335155000,\"incrementalDistance\":4,\"cumulativeDistance\":1205,\"speed\":4.8,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:45:58Z\",\"parseTime\":\"2020-05-25 03:45:58\",\"unixTime\":1590335158000,\"incrementalDistance\":4,\"cumulativeDistance\":1209,\"speed\":4.8,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:46:01Z\",\"parseTime\":\"2020-05-25 03:46:01\",\"unixTime\":1590335161000,\"incrementalDistance\":1,\"cumulativeDistance\":1210,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:46:02Z\",\"parseTime\":\"2020-05-25 03:46:02\",\"unixTime\":1590335162000,\"incrementalDistance\":1,\"cumulativeDistance\":1211,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:46:03Z\",\"parseTime\":\"2020-05-25 03:46:03\",\"unixTime\":1590335163000,\"incrementalDistance\":4,\"cumulativeDistance\":1215,\"speed\":1.8,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:46:11Z\",\"parseTime\":\"2020-05-25 03:46:11\",\"unixTime\":1590335171000,\"incrementalDistance\":1,\"cumulativeDistance\":1216,\"speed\":1.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:46:14Z\",\"parseTime\":\"2020-05-25 03:46:14\",\"unixTime\":1590335174000,\"incrementalDistance\":1,\"cumulativeDistance\":1217,\"speed\":1.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:46:17Z\",\"parseTime\":\"2020-05-25 03:46:17\",\"unixTime\":1590335177000,\"incrementalDistance\":0,\"cumulativeDistance\":1217,\"speed\":0,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:46:18Z\",\"parseTime\":\"2020-05-25 03:46:18\",\"unixTime\":1590335178000,\"incrementalDistance\":0,\"cumulativeDistance\":1217,\"speed\":0,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:46:19Z\",\"parseTime\":\"2020-05-25 03:46:19\",\"unixTime\":1590335179000,\"incrementalDistance\":2,\"cumulativeDistance\":1219,\"speed\":2.4,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:46:22Z\",\"parseTime\":\"2020-05-25 03:46:22\",\"unixTime\":1590335182000,\"incrementalDistance\":1,\"cumulativeDistance\":1220,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:46:23Z\",\"parseTime\":\"2020-05-25 03:46:23\",\"unixTime\":1590335183000,\"incrementalDistance\":1,\"cumulativeDistance\":1221,\"speed\":0.9,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:46:27Z\",\"parseTime\":\"2020-05-25 03:46:27\",\"unixTime\":1590335187000,\"incrementalDistance\":4,\"cumulativeDistance\":1225,\"speed\":2.0571428571428574,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:46:34Z\",\"parseTime\":\"2020-05-25 03:46:34\",\"unixTime\":1590335194000,\"incrementalDistance\":3,\"cumulativeDistance\":1228,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:46:37Z\",\"parseTime\":\"2020-05-25 03:46:37\",\"unixTime\":1590335197000,\"incrementalDistance\":2,\"cumulativeDistance\":1230,\"speed\":1.4400000000000002,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:46:42Z\",\"parseTime\":\"2020-05-25 03:46:42\",\"unixTime\":1590335202000,\"incrementalDistance\":1,\"cumulativeDistance\":1231,\"speed\":0.9,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:46:46Z\",\"parseTime\":\"2020-05-25 03:46:46\",\"unixTime\":1590335206000,\"incrementalDistance\":0,\"cumulativeDistance\":1231,\"speed\":0,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:46:49Z\",\"parseTime\":\"2020-05-25 03:46:49\",\"unixTime\":1590335209000,\"incrementalDistance\":3,\"cumulativeDistance\":1234,\"speed\":10.8,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:46:50Z\",\"parseTime\":\"2020-05-25 03:46:50\",\"unixTime\":1590335210000,\"incrementalDistance\":7,\"cumulativeDistance\":1241,\"speed\":8.4,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:46:53Z\",\"parseTime\":\"2020-05-25 03:46:53\",\"unixTime\":1590335213000,\"incrementalDistance\":18,\"cumulativeDistance\":1259,\"speed\":12.96,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:46:58Z\",\"parseTime\":\"2020-05-25 03:46:58\",\"unixTime\":1590335218000,\"incrementalDistance\":5,\"cumulativeDistance\":1264,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:47:03Z\",\"parseTime\":\"2020-05-25 03:47:03\",\"unixTime\":1590335223000,\"incrementalDistance\":2,\"cumulativeDistance\":1266,\"speed\":7.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:47:04Z\",\"parseTime\":\"2020-05-25 03:47:04\",\"unixTime\":1590335224000,\"incrementalDistance\":2,\"cumulativeDistance\":1268,\"speed\":7.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:47:05Z\",\"parseTime\":\"2020-05-25 03:47:05\",\"unixTime\":1590335225000,\"incrementalDistance\":8,\"cumulativeDistance\":1276,\"speed\":14.4,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:47:07Z\",\"parseTime\":\"2020-05-25 03:47:07\",\"unixTime\":1590335227000,\"incrementalDistance\":2,\"cumulativeDistance\":1278,\"speed\":7.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:47:08Z\",\"parseTime\":\"2020-05-25 03:47:08\",\"unixTime\":1590335228000,\"incrementalDistance\":2,\"cumulativeDistance\":1280,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:47:10Z\",\"parseTime\":\"2020-05-25 03:47:10\",\"unixTime\":1590335230000,\"incrementalDistance\":1,\"cumulativeDistance\":1281,\"speed\":1.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:47:13Z\",\"parseTime\":\"2020-05-25 03:47:13\",\"unixTime\":1590335233000,\"incrementalDistance\":0,\"cumulativeDistance\":1281,\"speed\":0,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:47:14Z\",\"parseTime\":\"2020-05-25 03:47:14\",\"unixTime\":1590335234000,\"incrementalDistance\":3,\"cumulativeDistance\":1284,\"speed\":0.9818181818181819,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:47:25Z\",\"parseTime\":\"2020-05-25 03:47:25\",\"unixTime\":1590335245000,\"incrementalDistance\":6,\"cumulativeDistance\":1290,\"speed\":7.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:47:28Z\",\"parseTime\":\"2020-05-25 03:47:28\",\"unixTime\":1590335248000,\"incrementalDistance\":18,\"cumulativeDistance\":1308,\"speed\":16.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:47:32Z\",\"parseTime\":\"2020-05-25 03:47:32\",\"unixTime\":1590335252000,\"incrementalDistance\":26,\"cumulativeDistance\":1334,\"speed\":18.720000000000002,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:47:37Z\",\"parseTime\":\"2020-05-25 03:47:37\",\"unixTime\":1590335257000,\"incrementalDistance\":11,\"cumulativeDistance\":1345,\"speed\":13.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:47:40Z\",\"parseTime\":\"2020-05-25 03:47:40\",\"unixTime\":1590335260000,\"incrementalDistance\":6,\"cumulativeDistance\":1351,\"speed\":10.8,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:47:42Z\",\"parseTime\":\"2020-05-25 03:47:42\",\"unixTime\":1590335262000,\"incrementalDistance\":2,\"cumulativeDistance\":1353,\"speed\":7.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:47:43Z\",\"parseTime\":\"2020-05-25 03:47:43\",\"unixTime\":1590335263000,\"incrementalDistance\":8,\"cumulativeDistance\":1361,\"speed\":7.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:47:47Z\",\"parseTime\":\"2020-05-25 03:47:47\",\"unixTime\":1590335267000,\"incrementalDistance\":28,\"cumulativeDistance\":1389,\"speed\":9.163636363636364,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:47:58Z\",\"parseTime\":\"2020-05-25 03:47:58\",\"unixTime\":1590335278000,\"incrementalDistance\":21,\"cumulativeDistance\":1410,\"speed\":10.8,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:48:05Z\",\"parseTime\":\"2020-05-25 03:48:05\",\"unixTime\":1590335285000,\"incrementalDistance\":3,\"cumulativeDistance\":1413,\"speed\":10.8,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:48:06Z\",\"parseTime\":\"2020-05-25 03:48:06\",\"unixTime\":1590335286000,\"incrementalDistance\":9,\"cumulativeDistance\":1422,\"speed\":8.1,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:48:10Z\",\"parseTime\":\"2020-05-25 03:48:10\",\"unixTime\":1590335290000,\"incrementalDistance\":1,\"cumulativeDistance\":1423,\"speed\":1.8,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:48:12Z\",\"parseTime\":\"2020-05-25 03:48:12\",\"unixTime\":1590335292000,\"incrementalDistance\":3,\"cumulativeDistance\":1426,\"speed\":5.4,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:48:14Z\",\"parseTime\":\"2020-05-25 03:48:14\",\"unixTime\":1590335294000,\"incrementalDistance\":1,\"cumulativeDistance\":1427,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:48:15Z\",\"parseTime\":\"2020-05-25 03:48:15\",\"unixTime\":1590335295000,\"incrementalDistance\":5,\"cumulativeDistance\":1432,\"speed\":6,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:48:18Z\",\"parseTime\":\"2020-05-25 03:48:18\",\"unixTime\":1590335298000,\"incrementalDistance\":2,\"cumulativeDistance\":1434,\"speed\":1.8,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:48:22Z\",\"parseTime\":\"2020-05-25 03:48:22\",\"unixTime\":1590335302000,\"incrementalDistance\":6,\"cumulativeDistance\":1440,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:48:28Z\",\"parseTime\":\"2020-05-25 03:48:28\",\"unixTime\":1590335308000,\"incrementalDistance\":0,\"cumulativeDistance\":1440,\"speed\":0,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:48:37Z\",\"parseTime\":\"2020-05-25 03:48:37\",\"unixTime\":1590335317000,\"incrementalDistance\":0,\"cumulativeDistance\":1440,\"speed\":0,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:48:45Z\",\"parseTime\":\"2020-05-25 03:48:45\",\"unixTime\":1590335325000,\"incrementalDistance\":0,\"cumulativeDistance\":1440,\"speed\":0,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:48:50Z\",\"parseTime\":\"2020-05-25 03:48:50\",\"unixTime\":1590335330000,\"incrementalDistance\":0,\"cumulativeDistance\":1440,\"speed\":0,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:48:54Z\",\"parseTime\":\"2020-05-25 03:48:54\",\"unixTime\":1590335334000,\"incrementalDistance\":23,\"cumulativeDistance\":1463,\"speed\":82.8,\"isWave\":true},{\"originalTime\":\"2020-05-25T03:48:55Z\",\"parseTime\":\"2020-05-25 03:48:55\",\"unixTime\":1590335335000,\"incrementalDistance\":9,\"cumulativeDistance\":1472,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:49:04Z\",\"parseTime\":\"2020-05-25 03:49:04\",\"unixTime\":1590335344000,\"incrementalDistance\":16,\"cumulativeDistance\":1488,\"speed\":5.236363636363635,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:49:15Z\",\"parseTime\":\"2020-05-25 03:49:15\",\"unixTime\":1590335355000,\"incrementalDistance\":4,\"cumulativeDistance\":1492,\"speed\":4.8,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:49:18Z\",\"parseTime\":\"2020-05-25 03:49:18\",\"unixTime\":1590335358000,\"incrementalDistance\":9,\"cumulativeDistance\":1501,\"speed\":4.05,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:49:26Z\",\"parseTime\":\"2020-05-25 03:49:26\",\"unixTime\":1590335366000,\"incrementalDistance\":11,\"cumulativeDistance\":1512,\"speed\":7.920000000000001,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:49:31Z\",\"parseTime\":\"2020-05-25 03:49:31\",\"unixTime\":1590335371000,\"incrementalDistance\":11,\"cumulativeDistance\":1523,\"speed\":7.920000000000001,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:49:36Z\",\"parseTime\":\"2020-05-25 03:49:36\",\"unixTime\":1590335376000,\"incrementalDistance\":6,\"cumulativeDistance\":1529,\"speed\":3.0857142857142854,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:49:43Z\",\"parseTime\":\"2020-05-25 03:49:43\",\"unixTime\":1590335383000,\"incrementalDistance\":5,\"cumulativeDistance\":1534,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:49:48Z\",\"parseTime\":\"2020-05-25 03:49:48\",\"unixTime\":1590335388000,\"incrementalDistance\":35,\"cumulativeDistance\":1569,\"speed\":15.75,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:49:56Z\",\"parseTime\":\"2020-05-25 03:49:56\",\"unixTime\":1590335396000,\"incrementalDistance\":13,\"cumulativeDistance\":1582,\"speed\":23.400000000000002,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:49:58Z\",\"parseTime\":\"2020-05-25 03:49:58\",\"unixTime\":1590335398000,\"incrementalDistance\":27,\"cumulativeDistance\":1609,\"speed\":24.3,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:50:02Z\",\"parseTime\":\"2020-05-25 03:50:02\",\"unixTime\":1590335402000,\"incrementalDistance\":44,\"cumulativeDistance\":1653,\"speed\":15.840000000000002,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:50:12Z\",\"parseTime\":\"2020-05-25 03:50:12\",\"unixTime\":1590335412000,\"incrementalDistance\":7,\"cumulativeDistance\":1660,\"speed\":8.4,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:50:15Z\",\"parseTime\":\"2020-05-25 03:50:15\",\"unixTime\":1590335415000,\"incrementalDistance\":3,\"cumulativeDistance\":1663,\"speed\":10.8,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:50:16Z\",\"parseTime\":\"2020-05-25 03:50:16\",\"unixTime\":1590335416000,\"incrementalDistance\":7,\"cumulativeDistance\":1670,\"speed\":12.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:50:18Z\",\"parseTime\":\"2020-05-25 03:50:18\",\"unixTime\":1590335418000,\"incrementalDistance\":2,\"cumulativeDistance\":1672,\"speed\":7.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:50:19Z\",\"parseTime\":\"2020-05-25 03:50:19\",\"unixTime\":1590335419000,\"incrementalDistance\":3,\"cumulativeDistance\":1675,\"speed\":10.8,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:50:20Z\",\"parseTime\":\"2020-05-25 03:50:20\",\"unixTime\":1590335420000,\"incrementalDistance\":5,\"cumulativeDistance\":1680,\"speed\":9,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:50:22Z\",\"parseTime\":\"2020-05-25 03:50:22\",\"unixTime\":1590335422000,\"incrementalDistance\":1,\"cumulativeDistance\":1681,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:50:23Z\",\"parseTime\":\"2020-05-25 03:50:23\",\"unixTime\":1590335423000,\"incrementalDistance\":1,\"cumulativeDistance\":1682,\"speed\":1.8,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:50:25Z\",\"parseTime\":\"2020-05-25 03:50:25\",\"unixTime\":1590335425000,\"incrementalDistance\":23,\"cumulativeDistance\":1705,\"speed\":7.527272727272727,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:50:36Z\",\"parseTime\":\"2020-05-25 03:50:36\",\"unixTime\":1590335436000,\"incrementalDistance\":15,\"cumulativeDistance\":1720,\"speed\":6.75,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:50:44Z\",\"parseTime\":\"2020-05-25 03:50:44\",\"unixTime\":1590335444000,\"incrementalDistance\":3,\"cumulativeDistance\":1723,\"speed\":10.8,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:50:45Z\",\"parseTime\":\"2020-05-25 03:50:45\",\"unixTime\":1590335445000,\"incrementalDistance\":1,\"cumulativeDistance\":1724,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:50:46Z\",\"parseTime\":\"2020-05-25 03:50:46\",\"unixTime\":1590335446000,\"incrementalDistance\":2,\"cumulativeDistance\":1726,\"speed\":0.7200000000000001,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:50:56Z\",\"parseTime\":\"2020-05-25 03:50:56\",\"unixTime\":1590335456000,\"incrementalDistance\":3,\"cumulativeDistance\":1729,\"speed\":5.4,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:50:58Z\",\"parseTime\":\"2020-05-25 03:50:58\",\"unixTime\":1590335458000,\"incrementalDistance\":1,\"cumulativeDistance\":1730,\"speed\":0.9,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:51:02Z\",\"parseTime\":\"2020-05-25 03:51:02\",\"unixTime\":1590335462000,\"incrementalDistance\":3,\"cumulativeDistance\":1733,\"speed\":2.7,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:51:06Z\",\"parseTime\":\"2020-05-25 03:51:06\",\"unixTime\":1590335466000,\"incrementalDistance\":2,\"cumulativeDistance\":1735,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:51:08Z\",\"parseTime\":\"2020-05-25 03:51:08\",\"unixTime\":1590335468000,\"incrementalDistance\":3,\"cumulativeDistance\":1738,\"speed\":5.4,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:51:10Z\",\"parseTime\":\"2020-05-25 03:51:10\",\"unixTime\":1590335470000,\"incrementalDistance\":1,\"cumulativeDistance\":1739,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:51:11Z\",\"parseTime\":\"2020-05-25 03:51:11\",\"unixTime\":1590335471000,\"incrementalDistance\":1,\"cumulativeDistance\":1740,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:51:12Z\",\"parseTime\":\"2020-05-25 03:51:12\",\"unixTime\":1590335472000,\"incrementalDistance\":2,\"cumulativeDistance\":1742,\"speed\":7.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:51:13Z\",\"parseTime\":\"2020-05-25 03:51:13\",\"unixTime\":1590335473000,\"incrementalDistance\":32,\"cumulativeDistance\":1774,\"speed\":4.8,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:51:37Z\",\"parseTime\":\"2020-05-25 03:51:37\",\"unixTime\":1590335497000,\"incrementalDistance\":6,\"cumulativeDistance\":1780,\"speed\":3.0857142857142854,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:51:44Z\",\"parseTime\":\"2020-05-25 03:51:44\",\"unixTime\":1590335504000,\"incrementalDistance\":5,\"cumulativeDistance\":1785,\"speed\":3,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:51:50Z\",\"parseTime\":\"2020-05-25 03:51:50\",\"unixTime\":1590335510000,\"incrementalDistance\":20,\"cumulativeDistance\":1805,\"speed\":4.8,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:52:05Z\",\"parseTime\":\"2020-05-25 03:52:05\",\"unixTime\":1590335525000,\"incrementalDistance\":9,\"cumulativeDistance\":1814,\"speed\":2.16,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:52:20Z\",\"parseTime\":\"2020-05-25 03:52:20\",\"unixTime\":1590335540000,\"incrementalDistance\":9,\"cumulativeDistance\":1823,\"speed\":1.0451612903225806,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:52:51Z\",\"parseTime\":\"2020-05-25 03:52:51\",\"unixTime\":1590335571000,\"incrementalDistance\":0,\"cumulativeDistance\":1823,\"speed\":0,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:52:52Z\",\"parseTime\":\"2020-05-25 03:52:52\",\"unixTime\":1590335572000,\"incrementalDistance\":0,\"cumulativeDistance\":1823,\"speed\":0,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:52:53Z\",\"parseTime\":\"2020-05-25 03:52:53\",\"unixTime\":1590335573000,\"incrementalDistance\":0,\"cumulativeDistance\":1823,\"speed\":0,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:52:54Z\",\"parseTime\":\"2020-05-25 03:52:54\",\"unixTime\":1590335574000,\"incrementalDistance\":1,\"cumulativeDistance\":1824,\"speed\":1.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:52:57Z\",\"parseTime\":\"2020-05-25 03:52:57\",\"unixTime\":1590335577000,\"incrementalDistance\":0,\"cumulativeDistance\":1824,\"speed\":0,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:52:58Z\",\"parseTime\":\"2020-05-25 03:52:58\",\"unixTime\":1590335578000,\"incrementalDistance\":2,\"cumulativeDistance\":1826,\"speed\":2.4,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:53:01Z\",\"parseTime\":\"2020-05-25 03:53:01\",\"unixTime\":1590335581000,\"incrementalDistance\":1,\"cumulativeDistance\":1827,\"speed\":1.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:53:04Z\",\"parseTime\":\"2020-05-25 03:53:04\",\"unixTime\":1590335584000,\"incrementalDistance\":0,\"cumulativeDistance\":1827,\"speed\":0,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:53:06Z\",\"parseTime\":\"2020-05-25 03:53:06\",\"unixTime\":1590335586000,\"incrementalDistance\":2,\"cumulativeDistance\":1829,\"speed\":0.5142857142857143,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:53:20Z\",\"parseTime\":\"2020-05-25 03:53:20\",\"unixTime\":1590335600000,\"incrementalDistance\":7,\"cumulativeDistance\":1836,\"speed\":1.575,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:53:36Z\",\"parseTime\":\"2020-05-25 03:53:36\",\"unixTime\":1590335616000,\"incrementalDistance\":1,\"cumulativeDistance\":1837,\"speed\":0.4,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:53:45Z\",\"parseTime\":\"2020-05-25 03:53:45\",\"unixTime\":1590335625000,\"incrementalDistance\":5,\"cumulativeDistance\":1842,\"speed\":2.25,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:53:53Z\",\"parseTime\":\"2020-05-25 03:53:53\",\"unixTime\":1590335633000,\"incrementalDistance\":20,\"cumulativeDistance\":1862,\"speed\":12,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:53:59Z\",\"parseTime\":\"2020-05-25 03:53:59\",\"unixTime\":1590335639000,\"incrementalDistance\":6,\"cumulativeDistance\":1868,\"speed\":21.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:54:00Z\",\"parseTime\":\"2020-05-25 03:54:00\",\"unixTime\":1590335640000,\"incrementalDistance\":11,\"cumulativeDistance\":1879,\"speed\":19.8,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:54:02Z\",\"parseTime\":\"2020-05-25 03:54:02\",\"unixTime\":1590335642000,\"incrementalDistance\":11,\"cumulativeDistance\":1890,\"speed\":19.8,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:54:04Z\",\"parseTime\":\"2020-05-25 03:54:04\",\"unixTime\":1590335644000,\"incrementalDistance\":19,\"cumulativeDistance\":1909,\"speed\":22.8,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:54:07Z\",\"parseTime\":\"2020-05-25 03:54:07\",\"unixTime\":1590335647000,\"incrementalDistance\":11,\"cumulativeDistance\":1920,\"speed\":19.8,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:54:09Z\",\"parseTime\":\"2020-05-25 03:54:09\",\"unixTime\":1590335649000,\"incrementalDistance\":5,\"cumulativeDistance\":1925,\"speed\":18,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:54:10Z\",\"parseTime\":\"2020-05-25 03:54:10\",\"unixTime\":1590335650000,\"incrementalDistance\":4,\"cumulativeDistance\":1929,\"speed\":14.4,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:54:11Z\",\"parseTime\":\"2020-05-25 03:54:11\",\"unixTime\":1590335651000,\"incrementalDistance\":1,\"cumulativeDistance\":1930,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:54:12Z\",\"parseTime\":\"2020-05-25 03:54:12\",\"unixTime\":1590335652000,\"incrementalDistance\":1,\"cumulativeDistance\":1931,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:54:13Z\",\"parseTime\":\"2020-05-25 03:54:13\",\"unixTime\":1590335653000,\"incrementalDistance\":5,\"cumulativeDistance\":1936,\"speed\":6,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:54:16Z\",\"parseTime\":\"2020-05-25 03:54:16\",\"unixTime\":1590335656000,\"incrementalDistance\":3,\"cumulativeDistance\":1939,\"speed\":10.8,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:54:17Z\",\"parseTime\":\"2020-05-25 03:54:17\",\"unixTime\":1590335657000,\"incrementalDistance\":5,\"cumulativeDistance\":1944,\"speed\":9,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:54:19Z\",\"parseTime\":\"2020-05-25 03:54:19\",\"unixTime\":1590335659000,\"incrementalDistance\":4,\"cumulativeDistance\":1948,\"speed\":14.4,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:54:20Z\",\"parseTime\":\"2020-05-25 03:54:20\",\"unixTime\":1590335660000,\"incrementalDistance\":3,\"cumulativeDistance\":1951,\"speed\":10.8,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:54:21Z\",\"parseTime\":\"2020-05-25 03:54:21\",\"unixTime\":1590335661000,\"incrementalDistance\":3,\"cumulativeDistance\":1954,\"speed\":10.8,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:54:22Z\",\"parseTime\":\"2020-05-25 03:54:22\",\"unixTime\":1590335662000,\"incrementalDistance\":2,\"cumulativeDistance\":1956,\"speed\":7.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:54:23Z\",\"parseTime\":\"2020-05-25 03:54:23\",\"unixTime\":1590335663000,\"incrementalDistance\":0,\"cumulativeDistance\":1956,\"speed\":0,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:54:24Z\",\"parseTime\":\"2020-05-25 03:54:24\",\"unixTime\":1590335664000,\"incrementalDistance\":2,\"cumulativeDistance\":1958,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:54:26Z\",\"parseTime\":\"2020-05-25 03:54:26\",\"unixTime\":1590335666000,\"incrementalDistance\":8,\"cumulativeDistance\":1966,\"speed\":7.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:54:30Z\",\"parseTime\":\"2020-05-25 03:54:30\",\"unixTime\":1590335670000,\"incrementalDistance\":2,\"cumulativeDistance\":1968,\"speed\":7.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:54:31Z\",\"parseTime\":\"2020-05-25 03:54:31\",\"unixTime\":1590335671000,\"incrementalDistance\":3,\"cumulativeDistance\":1971,\"speed\":5.4,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:54:33Z\",\"parseTime\":\"2020-05-25 03:54:33\",\"unixTime\":1590335673000,\"incrementalDistance\":1,\"cumulativeDistance\":1972,\"speed\":1.8,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:54:35Z\",\"parseTime\":\"2020-05-25 03:54:35\",\"unixTime\":1590335675000,\"incrementalDistance\":2,\"cumulativeDistance\":1974,\"speed\":7.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:54:36Z\",\"parseTime\":\"2020-05-25 03:54:36\",\"unixTime\":1590335676000,\"incrementalDistance\":6,\"cumulativeDistance\":1980,\"speed\":5.4,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:54:40Z\",\"parseTime\":\"2020-05-25 03:54:40\",\"unixTime\":1590335680000,\"incrementalDistance\":3,\"cumulativeDistance\":1983,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:54:43Z\",\"parseTime\":\"2020-05-25 03:54:43\",\"unixTime\":1590335683000,\"incrementalDistance\":0,\"cumulativeDistance\":1983,\"speed\":0,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:54:44Z\",\"parseTime\":\"2020-05-25 03:54:44\",\"unixTime\":1590335684000,\"incrementalDistance\":1,\"cumulativeDistance\":1984,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:54:45Z\",\"parseTime\":\"2020-05-25 03:54:45\",\"unixTime\":1590335685000,\"incrementalDistance\":6,\"cumulativeDistance\":1990,\"speed\":3.0857142857142854,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:54:52Z\",\"parseTime\":\"2020-05-25 03:54:52\",\"unixTime\":1590335692000,\"incrementalDistance\":8,\"cumulativeDistance\":1998,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:55:00Z\",\"parseTime\":\"2020-05-25 03:55:00\",\"unixTime\":1590335700000,\"incrementalDistance\":2,\"cumulativeDistance\":2000,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:55:02Z\",\"parseTime\":\"2020-05-25 03:55:02\",\"unixTime\":1590335702000,\"incrementalDistance\":38,\"cumulativeDistance\":2038,\"speed\":6.514285714285714,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:55:23Z\",\"parseTime\":\"2020-05-25 03:55:23\",\"unixTime\":1590335723000,\"incrementalDistance\":13,\"cumulativeDistance\":2051,\"speed\":6.685714285714286,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:55:30Z\",\"parseTime\":\"2020-05-25 03:55:30\",\"unixTime\":1590335730000,\"incrementalDistance\":8,\"cumulativeDistance\":2059,\"speed\":4.8,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:55:36Z\",\"parseTime\":\"2020-05-25 03:55:36\",\"unixTime\":1590335736000,\"incrementalDistance\":5,\"cumulativeDistance\":2064,\"speed\":1.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:55:51Z\",\"parseTime\":\"2020-05-25 03:55:51\",\"unixTime\":1590335751000,\"incrementalDistance\":3,\"cumulativeDistance\":2067,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:55:54Z\",\"parseTime\":\"2020-05-25 03:55:54\",\"unixTime\":1590335754000,\"incrementalDistance\":0,\"cumulativeDistance\":2067,\"speed\":0,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:56:00Z\",\"parseTime\":\"2020-05-25 03:56:00\",\"unixTime\":1590335760000,\"incrementalDistance\":1,\"cumulativeDistance\":2068,\"speed\":0.36000000000000004,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:56:10Z\",\"parseTime\":\"2020-05-25 03:56:10\",\"unixTime\":1590335770000,\"incrementalDistance\":1,\"cumulativeDistance\":2069,\"speed\":0.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:56:16Z\",\"parseTime\":\"2020-05-25 03:56:16\",\"unixTime\":1590335776000,\"incrementalDistance\":2,\"cumulativeDistance\":2071,\"speed\":1.4400000000000002,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:56:21Z\",\"parseTime\":\"2020-05-25 03:56:21\",\"unixTime\":1590335781000,\"incrementalDistance\":1,\"cumulativeDistance\":2072,\"speed\":0.21176470588235294,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:56:38Z\",\"parseTime\":\"2020-05-25 03:56:38\",\"unixTime\":1590335798000,\"incrementalDistance\":1,\"cumulativeDistance\":2073,\"speed\":1.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:56:41Z\",\"parseTime\":\"2020-05-25 03:56:41\",\"unixTime\":1590335801000,\"incrementalDistance\":6,\"cumulativeDistance\":2079,\"speed\":1.8,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:56:53Z\",\"parseTime\":\"2020-05-25 03:56:53\",\"unixTime\":1590335813000,\"incrementalDistance\":2,\"cumulativeDistance\":2081,\"speed\":7.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:56:54Z\",\"parseTime\":\"2020-05-25 03:56:54\",\"unixTime\":1590335814000,\"incrementalDistance\":8,\"cumulativeDistance\":2089,\"speed\":9.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:56:57Z\",\"parseTime\":\"2020-05-25 03:56:57\",\"unixTime\":1590335817000,\"incrementalDistance\":5,\"cumulativeDistance\":2094,\"speed\":18,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:56:58Z\",\"parseTime\":\"2020-05-25 03:56:58\",\"unixTime\":1590335818000,\"incrementalDistance\":11,\"cumulativeDistance\":2105,\"speed\":19.8,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:57:00Z\",\"parseTime\":\"2020-05-25 03:57:00\",\"unixTime\":1590335820000,\"incrementalDistance\":20,\"cumulativeDistance\":2125,\"speed\":24,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:57:03Z\",\"parseTime\":\"2020-05-25 03:57:03\",\"unixTime\":1590335823000,\"incrementalDistance\":13,\"cumulativeDistance\":2138,\"speed\":23.400000000000002,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:57:05Z\",\"parseTime\":\"2020-05-25 03:57:05\",\"unixTime\":1590335825000,\"incrementalDistance\":7,\"cumulativeDistance\":2145,\"speed\":12.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:57:07Z\",\"parseTime\":\"2020-05-25 03:57:07\",\"unixTime\":1590335827000,\"incrementalDistance\":1,\"cumulativeDistance\":2146,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:57:08Z\",\"parseTime\":\"2020-05-25 03:57:08\",\"unixTime\":1590335828000,\"incrementalDistance\":2,\"cumulativeDistance\":2148,\"speed\":7.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:57:09Z\",\"parseTime\":\"2020-05-25 03:57:09\",\"unixTime\":1590335829000,\"incrementalDistance\":7,\"cumulativeDistance\":2155,\"speed\":8.4,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:57:12Z\",\"parseTime\":\"2020-05-25 03:57:12\",\"unixTime\":1590335832000,\"incrementalDistance\":6,\"cumulativeDistance\":2161,\"speed\":10.8,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:57:14Z\",\"parseTime\":\"2020-05-25 03:57:14\",\"unixTime\":1590335834000,\"incrementalDistance\":6,\"cumulativeDistance\":2167,\"speed\":5.4,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:57:18Z\",\"parseTime\":\"2020-05-25 03:57:18\",\"unixTime\":1590335838000,\"incrementalDistance\":6,\"cumulativeDistance\":2173,\"speed\":7.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:57:21Z\",\"parseTime\":\"2020-05-25 03:57:21\",\"unixTime\":1590335841000,\"incrementalDistance\":3,\"cumulativeDistance\":2176,\"speed\":10.8,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:57:22Z\",\"parseTime\":\"2020-05-25 03:57:22\",\"unixTime\":1590335842000,\"incrementalDistance\":4,\"cumulativeDistance\":2180,\"speed\":7.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:57:24Z\",\"parseTime\":\"2020-05-25 03:57:24\",\"unixTime\":1590335844000,\"incrementalDistance\":8,\"cumulativeDistance\":2188,\"speed\":9.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:57:27Z\",\"parseTime\":\"2020-05-25 03:57:27\",\"unixTime\":1590335847000,\"incrementalDistance\":6,\"cumulativeDistance\":2194,\"speed\":10.8,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:57:29Z\",\"parseTime\":\"2020-05-25 03:57:29\",\"unixTime\":1590335849000,\"incrementalDistance\":2,\"cumulativeDistance\":2196,\"speed\":7.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:57:30Z\",\"parseTime\":\"2020-05-25 03:57:30\",\"unixTime\":1590335850000,\"incrementalDistance\":3,\"cumulativeDistance\":2199,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:57:33Z\",\"parseTime\":\"2020-05-25 03:57:33\",\"unixTime\":1590335853000,\"incrementalDistance\":2,\"cumulativeDistance\":2201,\"speed\":7.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:57:34Z\",\"parseTime\":\"2020-05-25 03:57:34\",\"unixTime\":1590335854000,\"incrementalDistance\":1,\"cumulativeDistance\":2202,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:57:35Z\",\"parseTime\":\"2020-05-25 03:57:35\",\"unixTime\":1590335855000,\"incrementalDistance\":3,\"cumulativeDistance\":2205,\"speed\":5.4,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:57:37Z\",\"parseTime\":\"2020-05-25 03:57:37\",\"unixTime\":1590335857000,\"incrementalDistance\":1,\"cumulativeDistance\":2206,\"speed\":0.45,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:57:45Z\",\"parseTime\":\"2020-05-25 03:57:45\",\"unixTime\":1590335865000,\"incrementalDistance\":4,\"cumulativeDistance\":2210,\"speed\":2.8800000000000003,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:57:50Z\",\"parseTime\":\"2020-05-25 03:57:50\",\"unixTime\":1590335870000,\"incrementalDistance\":4,\"cumulativeDistance\":2214,\"speed\":1.3090909090909089,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:58:01Z\",\"parseTime\":\"2020-05-25 03:58:01\",\"unixTime\":1590335881000,\"incrementalDistance\":11,\"cumulativeDistance\":2225,\"speed\":5.6571428571428575,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:58:08Z\",\"parseTime\":\"2020-05-25 03:58:08\",\"unixTime\":1590335888000,\"incrementalDistance\":7,\"cumulativeDistance\":2232,\"speed\":1.575,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:58:24Z\",\"parseTime\":\"2020-05-25 03:58:24\",\"unixTime\":1590335904000,\"incrementalDistance\":9,\"cumulativeDistance\":2241,\"speed\":3.24,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:58:34Z\",\"parseTime\":\"2020-05-25 03:58:34\",\"unixTime\":1590335914000,\"incrementalDistance\":7,\"cumulativeDistance\":2248,\"speed\":1.4823529411764707,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:58:51Z\",\"parseTime\":\"2020-05-25 03:58:51\",\"unixTime\":1590335931000,\"incrementalDistance\":6,\"cumulativeDistance\":2254,\"speed\":1.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:59:09Z\",\"parseTime\":\"2020-05-25 03:59:09\",\"unixTime\":1590335949000,\"incrementalDistance\":6,\"cumulativeDistance\":2260,\"speed\":6.3,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:59:13Z\",\"parseTime\":\"2020-05-25 03:59:13\",\"unixTime\":1590335953000,\"incrementalDistance\":10,\"cumulativeDistance\":2270,\"speed\":5.142857142857143,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:59:20Z\",\"parseTime\":\"2020-05-25 03:59:20\",\"unixTime\":1590335960000,\"incrementalDistance\":3,\"cumulativeDistance\":2273,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:59:23Z\",\"parseTime\":\"2020-05-25 03:59:23\",\"unixTime\":1590335963000,\"incrementalDistance\":4,\"cumulativeDistance\":2277,\"speed\":2.8800000000000003,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:59:28Z\",\"parseTime\":\"2020-05-25 03:59:28\",\"unixTime\":1590335968000,\"incrementalDistance\":1,\"cumulativeDistance\":2278,\"speed\":0.7200000000000001,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:59:33Z\",\"parseTime\":\"2020-05-25 03:59:33\",\"unixTime\":1590335973000,\"incrementalDistance\":2,\"cumulativeDistance\":2280,\"speed\":2.4,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:59:36Z\",\"parseTime\":\"2020-05-25 03:59:36\",\"unixTime\":1590335976000,\"incrementalDistance\":2,\"cumulativeDistance\":2282,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:59:38Z\",\"parseTime\":\"2020-05-25 03:59:38\",\"unixTime\":1590335978000,\"incrementalDistance\":2,\"cumulativeDistance\":2284,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:59:40Z\",\"parseTime\":\"2020-05-25 03:59:40\",\"unixTime\":1590335980000,\"incrementalDistance\":0,\"cumulativeDistance\":2284,\"speed\":0,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:59:43Z\",\"parseTime\":\"2020-05-25 03:59:43\",\"unixTime\":1590335983000,\"incrementalDistance\":4,\"cumulativeDistance\":2288,\"speed\":4.8,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:59:46Z\",\"parseTime\":\"2020-05-25 03:59:46\",\"unixTime\":1590335986000,\"incrementalDistance\":5,\"cumulativeDistance\":2293,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:59:51Z\",\"parseTime\":\"2020-05-25 03:59:51\",\"unixTime\":1590335991000,\"incrementalDistance\":1,\"cumulativeDistance\":2294,\"speed\":1.8,\"isWave\":false},{\"originalTime\":\"2020-05-25T03:59:53Z\",\"parseTime\":\"2020-05-25 03:59:53\",\"unixTime\":1590335993000,\"incrementalDistance\":8,\"cumulativeDistance\":2302,\"speed\":1.1520000000000001,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:00:18Z\",\"parseTime\":\"2020-05-25 04:00:18\",\"unixTime\":1590336018000,\"incrementalDistance\":5,\"cumulativeDistance\":2307,\"speed\":2.5714285714285716,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:00:25Z\",\"parseTime\":\"2020-05-25 04:00:25\",\"unixTime\":1590336025000,\"incrementalDistance\":5,\"cumulativeDistance\":2312,\"speed\":2.5714285714285716,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:00:32Z\",\"parseTime\":\"2020-05-25 04:00:32\",\"unixTime\":1590336032000,\"incrementalDistance\":8,\"cumulativeDistance\":2320,\"speed\":4.8,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:00:38Z\",\"parseTime\":\"2020-05-25 04:00:38\",\"unixTime\":1590336038000,\"incrementalDistance\":8,\"cumulativeDistance\":2328,\"speed\":4.8,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:00:44Z\",\"parseTime\":\"2020-05-25 04:00:44\",\"unixTime\":1590336044000,\"incrementalDistance\":1,\"cumulativeDistance\":2329,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:00:45Z\",\"parseTime\":\"2020-05-25 04:00:45\",\"unixTime\":1590336045000,\"incrementalDistance\":3,\"cumulativeDistance\":2332,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:00:48Z\",\"parseTime\":\"2020-05-25 04:00:48\",\"unixTime\":1590336048000,\"incrementalDistance\":1,\"cumulativeDistance\":2333,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:00:49Z\",\"parseTime\":\"2020-05-25 04:00:49\",\"unixTime\":1590336049000,\"incrementalDistance\":1,\"cumulativeDistance\":2334,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:00:50Z\",\"parseTime\":\"2020-05-25 04:00:50\",\"unixTime\":1590336050000,\"incrementalDistance\":7,\"cumulativeDistance\":2341,\"speed\":3.15,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:00:58Z\",\"parseTime\":\"2020-05-25 04:00:58\",\"unixTime\":1590336058000,\"incrementalDistance\":1,\"cumulativeDistance\":2342,\"speed\":1.8,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:01:00Z\",\"parseTime\":\"2020-05-25 04:01:00\",\"unixTime\":1590336060000,\"incrementalDistance\":4,\"cumulativeDistance\":2346,\"speed\":2.8800000000000003,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:01:05Z\",\"parseTime\":\"2020-05-25 04:01:05\",\"unixTime\":1590336065000,\"incrementalDistance\":11,\"cumulativeDistance\":2357,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:01:16Z\",\"parseTime\":\"2020-05-25 04:01:16\",\"unixTime\":1590336076000,\"incrementalDistance\":3,\"cumulativeDistance\":2360,\"speed\":2.7,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:01:20Z\",\"parseTime\":\"2020-05-25 04:01:20\",\"unixTime\":1590336080000,\"incrementalDistance\":2,\"cumulativeDistance\":2362,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:01:22Z\",\"parseTime\":\"2020-05-25 04:01:22\",\"unixTime\":1590336082000,\"incrementalDistance\":4,\"cumulativeDistance\":2366,\"speed\":2.8800000000000003,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:01:27Z\",\"parseTime\":\"2020-05-25 04:01:27\",\"unixTime\":1590336087000,\"incrementalDistance\":1,\"cumulativeDistance\":2367,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:01:28Z\",\"parseTime\":\"2020-05-25 04:01:28\",\"unixTime\":1590336088000,\"incrementalDistance\":1,\"cumulativeDistance\":2368,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:01:29Z\",\"parseTime\":\"2020-05-25 04:01:29\",\"unixTime\":1590336089000,\"incrementalDistance\":2,\"cumulativeDistance\":2370,\"speed\":2.4,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:01:32Z\",\"parseTime\":\"2020-05-25 04:01:32\",\"unixTime\":1590336092000,\"incrementalDistance\":8,\"cumulativeDistance\":2378,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:01:40Z\",\"parseTime\":\"2020-05-25 04:01:40\",\"unixTime\":1590336100000,\"incrementalDistance\":6,\"cumulativeDistance\":2384,\"speed\":1.9636363636363638,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:01:51Z\",\"parseTime\":\"2020-05-25 04:01:51\",\"unixTime\":1590336111000,\"incrementalDistance\":3,\"cumulativeDistance\":2387,\"speed\":1.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:02:00Z\",\"parseTime\":\"2020-05-25 04:02:00\",\"unixTime\":1590336120000,\"incrementalDistance\":9,\"cumulativeDistance\":2396,\"speed\":2.16,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:02:15Z\",\"parseTime\":\"2020-05-25 04:02:15\",\"unixTime\":1590336135000,\"incrementalDistance\":5,\"cumulativeDistance\":2401,\"speed\":9,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:02:17Z\",\"parseTime\":\"2020-05-25 04:02:17\",\"unixTime\":1590336137000,\"incrementalDistance\":4,\"cumulativeDistance\":2405,\"speed\":2.8800000000000003,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:02:22Z\",\"parseTime\":\"2020-05-25 04:02:22\",\"unixTime\":1590336142000,\"incrementalDistance\":5,\"cumulativeDistance\":2410,\"speed\":2.5714285714285716,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:02:29Z\",\"parseTime\":\"2020-05-25 04:02:29\",\"unixTime\":1590336149000,\"incrementalDistance\":7,\"cumulativeDistance\":2417,\"speed\":1.575,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:02:45Z\",\"parseTime\":\"2020-05-25 04:02:45\",\"unixTime\":1590336165000,\"incrementalDistance\":2,\"cumulativeDistance\":2419,\"speed\":7.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:02:46Z\",\"parseTime\":\"2020-05-25 04:02:46\",\"unixTime\":1590336166000,\"incrementalDistance\":35,\"cumulativeDistance\":2454,\"speed\":10.500000000000002,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:02:58Z\",\"parseTime\":\"2020-05-25 04:02:58\",\"unixTime\":1590336178000,\"incrementalDistance\":2,\"cumulativeDistance\":2456,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:03:00Z\",\"parseTime\":\"2020-05-25 04:03:00\",\"unixTime\":1590336180000,\"incrementalDistance\":1,\"cumulativeDistance\":2457,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:03:01Z\",\"parseTime\":\"2020-05-25 04:03:01\",\"unixTime\":1590336181000,\"incrementalDistance\":5,\"cumulativeDistance\":2462,\"speed\":18,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:03:02Z\",\"parseTime\":\"2020-05-25 04:03:02\",\"unixTime\":1590336182000,\"incrementalDistance\":6,\"cumulativeDistance\":2468,\"speed\":10.8,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:03:04Z\",\"parseTime\":\"2020-05-25 04:03:04\",\"unixTime\":1590336184000,\"incrementalDistance\":1,\"cumulativeDistance\":2469,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:03:05Z\",\"parseTime\":\"2020-05-25 04:03:05\",\"unixTime\":1590336185000,\"incrementalDistance\":1,\"cumulativeDistance\":2470,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:03:06Z\",\"parseTime\":\"2020-05-25 04:03:06\",\"unixTime\":1590336186000,\"incrementalDistance\":2,\"cumulativeDistance\":2472,\"speed\":2.4,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:03:09Z\",\"parseTime\":\"2020-05-25 04:03:09\",\"unixTime\":1590336189000,\"incrementalDistance\":0,\"cumulativeDistance\":2472,\"speed\":0,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:03:10Z\",\"parseTime\":\"2020-05-25 04:03:10\",\"unixTime\":1590336190000,\"incrementalDistance\":2,\"cumulativeDistance\":2474,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:03:12Z\",\"parseTime\":\"2020-05-25 04:03:12\",\"unixTime\":1590336192000,\"incrementalDistance\":1,\"cumulativeDistance\":2475,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:03:13Z\",\"parseTime\":\"2020-05-25 04:03:13\",\"unixTime\":1590336193000,\"incrementalDistance\":8,\"cumulativeDistance\":2483,\"speed\":4.8,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:03:19Z\",\"parseTime\":\"2020-05-25 04:03:19\",\"unixTime\":1590336199000,\"incrementalDistance\":1,\"cumulativeDistance\":2484,\"speed\":1.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:03:22Z\",\"parseTime\":\"2020-05-25 04:03:22\",\"unixTime\":1590336202000,\"incrementalDistance\":1,\"cumulativeDistance\":2485,\"speed\":1.8,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:03:24Z\",\"parseTime\":\"2020-05-25 04:03:24\",\"unixTime\":1590336204000,\"incrementalDistance\":1,\"cumulativeDistance\":2486,\"speed\":1.8,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:03:26Z\",\"parseTime\":\"2020-05-25 04:03:26\",\"unixTime\":1590336206000,\"incrementalDistance\":4,\"cumulativeDistance\":2490,\"speed\":2.8800000000000003,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:03:31Z\",\"parseTime\":\"2020-05-25 04:03:31\",\"unixTime\":1590336211000,\"incrementalDistance\":3,\"cumulativeDistance\":2493,\"speed\":1.5428571428571427,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:03:38Z\",\"parseTime\":\"2020-05-25 04:03:38\",\"unixTime\":1590336218000,\"incrementalDistance\":4,\"cumulativeDistance\":2497,\"speed\":4.8,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:03:41Z\",\"parseTime\":\"2020-05-25 04:03:41\",\"unixTime\":1590336221000,\"incrementalDistance\":3,\"cumulativeDistance\":2500,\"speed\":5.4,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:03:43Z\",\"parseTime\":\"2020-05-25 04:03:43\",\"unixTime\":1590336223000,\"incrementalDistance\":0,\"cumulativeDistance\":2500,\"speed\":0,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:03:44Z\",\"parseTime\":\"2020-05-25 04:03:44\",\"unixTime\":1590336224000,\"incrementalDistance\":3,\"cumulativeDistance\":2503,\"speed\":0.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:04:02Z\",\"parseTime\":\"2020-05-25 04:04:02\",\"unixTime\":1590336242000,\"incrementalDistance\":7,\"cumulativeDistance\":2510,\"speed\":2.8,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:04:11Z\",\"parseTime\":\"2020-05-25 04:04:11\",\"unixTime\":1590336251000,\"incrementalDistance\":7,\"cumulativeDistance\":2517,\"speed\":0.7,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:04:47Z\",\"parseTime\":\"2020-05-25 04:04:47\",\"unixTime\":1590336287000,\"incrementalDistance\":5,\"cumulativeDistance\":2522,\"speed\":2.5714285714285716,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:04:54Z\",\"parseTime\":\"2020-05-25 04:04:54\",\"unixTime\":1590336294000,\"incrementalDistance\":2,\"cumulativeDistance\":2524,\"speed\":1.4400000000000002,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:04:59Z\",\"parseTime\":\"2020-05-25 04:04:59\",\"unixTime\":1590336299000,\"incrementalDistance\":5,\"cumulativeDistance\":2529,\"speed\":3,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:05:05Z\",\"parseTime\":\"2020-05-25 04:05:05\",\"unixTime\":1590336305000,\"incrementalDistance\":6,\"cumulativeDistance\":2535,\"speed\":4.32,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:05:10Z\",\"parseTime\":\"2020-05-25 04:05:10\",\"unixTime\":1590336310000,\"incrementalDistance\":15,\"cumulativeDistance\":2550,\"speed\":13.5,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:05:14Z\",\"parseTime\":\"2020-05-25 04:05:14\",\"unixTime\":1590336314000,\"incrementalDistance\":4,\"cumulativeDistance\":2554,\"speed\":14.4,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:05:15Z\",\"parseTime\":\"2020-05-25 04:05:15\",\"unixTime\":1590336315000,\"incrementalDistance\":3,\"cumulativeDistance\":2557,\"speed\":10.8,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:05:16Z\",\"parseTime\":\"2020-05-25 04:05:16\",\"unixTime\":1590336316000,\"incrementalDistance\":2,\"cumulativeDistance\":2559,\"speed\":7.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:05:17Z\",\"parseTime\":\"2020-05-25 04:05:17\",\"unixTime\":1590336317000,\"incrementalDistance\":1,\"cumulativeDistance\":2560,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:05:18Z\",\"parseTime\":\"2020-05-25 04:05:18\",\"unixTime\":1590336318000,\"incrementalDistance\":1,\"cumulativeDistance\":2561,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:05:19Z\",\"parseTime\":\"2020-05-25 04:05:19\",\"unixTime\":1590336319000,\"incrementalDistance\":0,\"cumulativeDistance\":2561,\"speed\":0,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:05:20Z\",\"parseTime\":\"2020-05-25 04:05:20\",\"unixTime\":1590336320000,\"incrementalDistance\":1,\"cumulativeDistance\":2562,\"speed\":1.8,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:05:22Z\",\"parseTime\":\"2020-05-25 04:05:22\",\"unixTime\":1590336322000,\"incrementalDistance\":1,\"cumulativeDistance\":2563,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:05:23Z\",\"parseTime\":\"2020-05-25 04:05:23\",\"unixTime\":1590336323000,\"incrementalDistance\":0,\"cumulativeDistance\":2563,\"speed\":0,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:05:24Z\",\"parseTime\":\"2020-05-25 04:05:24\",\"unixTime\":1590336324000,\"incrementalDistance\":6,\"cumulativeDistance\":2569,\"speed\":10.8,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:05:26Z\",\"parseTime\":\"2020-05-25 04:05:26\",\"unixTime\":1590336326000,\"incrementalDistance\":6,\"cumulativeDistance\":2575,\"speed\":10.8,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:05:28Z\",\"parseTime\":\"2020-05-25 04:05:28\",\"unixTime\":1590336328000,\"incrementalDistance\":4,\"cumulativeDistance\":2579,\"speed\":7.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:05:30Z\",\"parseTime\":\"2020-05-25 04:05:30\",\"unixTime\":1590336330000,\"incrementalDistance\":4,\"cumulativeDistance\":2583,\"speed\":7.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:05:32Z\",\"parseTime\":\"2020-05-25 04:05:32\",\"unixTime\":1590336332000,\"incrementalDistance\":1,\"cumulativeDistance\":2584,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:05:33Z\",\"parseTime\":\"2020-05-25 04:05:33\",\"unixTime\":1590336333000,\"incrementalDistance\":8,\"cumulativeDistance\":2592,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:05:41Z\",\"parseTime\":\"2020-05-25 04:05:41\",\"unixTime\":1590336341000,\"incrementalDistance\":4,\"cumulativeDistance\":2596,\"speed\":2.8800000000000003,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:05:46Z\",\"parseTime\":\"2020-05-25 04:05:46\",\"unixTime\":1590336346000,\"incrementalDistance\":0,\"cumulativeDistance\":2596,\"speed\":0,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:05:47Z\",\"parseTime\":\"2020-05-25 04:05:47\",\"unixTime\":1590336347000,\"incrementalDistance\":3,\"cumulativeDistance\":2599,\"speed\":2.16,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:05:52Z\",\"parseTime\":\"2020-05-25 04:05:52\",\"unixTime\":1590336352000,\"incrementalDistance\":2,\"cumulativeDistance\":2601,\"speed\":7.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:05:53Z\",\"parseTime\":\"2020-05-25 04:05:53\",\"unixTime\":1590336353000,\"incrementalDistance\":8,\"cumulativeDistance\":2609,\"speed\":7.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:05:57Z\",\"parseTime\":\"2020-05-25 04:05:57\",\"unixTime\":1590336357000,\"incrementalDistance\":12,\"cumulativeDistance\":2621,\"speed\":14.4,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:06:00Z\",\"parseTime\":\"2020-05-25 04:06:00\",\"unixTime\":1590336360000,\"incrementalDistance\":11,\"cumulativeDistance\":2632,\"speed\":39.6,\"isWave\":true},{\"originalTime\":\"2020-05-25T04:06:01Z\",\"parseTime\":\"2020-05-25 04:06:01\",\"unixTime\":1590336361000,\"incrementalDistance\":2,\"cumulativeDistance\":2634,\"speed\":7.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:06:02Z\",\"parseTime\":\"2020-05-25 04:06:02\",\"unixTime\":1590336362000,\"incrementalDistance\":3,\"cumulativeDistance\":2637,\"speed\":10.8,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:06:03Z\",\"parseTime\":\"2020-05-25 04:06:03\",\"unixTime\":1590336363000,\"incrementalDistance\":5,\"cumulativeDistance\":2642,\"speed\":18,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:06:04Z\",\"parseTime\":\"2020-05-25 04:06:04\",\"unixTime\":1590336364000,\"incrementalDistance\":5,\"cumulativeDistance\":2647,\"speed\":18,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:06:05Z\",\"parseTime\":\"2020-05-25 04:06:05\",\"unixTime\":1590336365000,\"incrementalDistance\":5,\"cumulativeDistance\":2652,\"speed\":18,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:06:06Z\",\"parseTime\":\"2020-05-25 04:06:06\",\"unixTime\":1590336366000,\"incrementalDistance\":5,\"cumulativeDistance\":2657,\"speed\":18,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:06:07Z\",\"parseTime\":\"2020-05-25 04:06:07\",\"unixTime\":1590336367000,\"incrementalDistance\":16,\"cumulativeDistance\":2673,\"speed\":19.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:06:10Z\",\"parseTime\":\"2020-05-25 04:06:10\",\"unixTime\":1590336370000,\"incrementalDistance\":5,\"cumulativeDistance\":2678,\"speed\":18,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:06:11Z\",\"parseTime\":\"2020-05-25 04:06:11\",\"unixTime\":1590336371000,\"incrementalDistance\":4,\"cumulativeDistance\":2682,\"speed\":14.4,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:06:12Z\",\"parseTime\":\"2020-05-25 04:06:12\",\"unixTime\":1590336372000,\"incrementalDistance\":12,\"cumulativeDistance\":2694,\"speed\":10.8,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:06:16Z\",\"parseTime\":\"2020-05-25 04:06:16\",\"unixTime\":1590336376000,\"incrementalDistance\":13,\"cumulativeDistance\":2707,\"speed\":9.360000000000001,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:06:21Z\",\"parseTime\":\"2020-05-25 04:06:21\",\"unixTime\":1590336381000,\"incrementalDistance\":2,\"cumulativeDistance\":2709,\"speed\":7.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:06:22Z\",\"parseTime\":\"2020-05-25 04:06:22\",\"unixTime\":1590336382000,\"incrementalDistance\":8,\"cumulativeDistance\":2717,\"speed\":7.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:06:26Z\",\"parseTime\":\"2020-05-25 04:06:26\",\"unixTime\":1590336386000,\"incrementalDistance\":2,\"cumulativeDistance\":2719,\"speed\":7.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:06:27Z\",\"parseTime\":\"2020-05-25 04:06:27\",\"unixTime\":1590336387000,\"incrementalDistance\":13,\"cumulativeDistance\":2732,\"speed\":2.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:06:45Z\",\"parseTime\":\"2020-05-25 04:06:45\",\"unixTime\":1590336405000,\"incrementalDistance\":4,\"cumulativeDistance\":2736,\"speed\":2.8800000000000003,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:06:50Z\",\"parseTime\":\"2020-05-25 04:06:50\",\"unixTime\":1590336410000,\"incrementalDistance\":15,\"cumulativeDistance\":2751,\"speed\":2,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:07:17Z\",\"parseTime\":\"2020-05-25 04:07:17\",\"unixTime\":1590336437000,\"incrementalDistance\":2,\"cumulativeDistance\":2753,\"speed\":2.4,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:07:20Z\",\"parseTime\":\"2020-05-25 04:07:20\",\"unixTime\":1590336440000,\"incrementalDistance\":1,\"cumulativeDistance\":2754,\"speed\":1.8,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:07:22Z\",\"parseTime\":\"2020-05-25 04:07:22\",\"unixTime\":1590336442000,\"incrementalDistance\":2,\"cumulativeDistance\":2756,\"speed\":2.4,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:07:25Z\",\"parseTime\":\"2020-05-25 04:07:25\",\"unixTime\":1590336445000,\"incrementalDistance\":4,\"cumulativeDistance\":2760,\"speed\":4.8,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:07:28Z\",\"parseTime\":\"2020-05-25 04:07:28\",\"unixTime\":1590336448000,\"incrementalDistance\":3,\"cumulativeDistance\":2763,\"speed\":10.8,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:07:29Z\",\"parseTime\":\"2020-05-25 04:07:29\",\"unixTime\":1590336449000,\"incrementalDistance\":15,\"cumulativeDistance\":2778,\"speed\":18,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:07:32Z\",\"parseTime\":\"2020-05-25 04:07:32\",\"unixTime\":1590336452000,\"incrementalDistance\":42,\"cumulativeDistance\":2820,\"speed\":25.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:07:38Z\",\"parseTime\":\"2020-05-25 04:07:38\",\"unixTime\":1590336458000,\"incrementalDistance\":34,\"cumulativeDistance\":2854,\"speed\":8.742857142857142,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:07:52Z\",\"parseTime\":\"2020-05-25 04:07:52\",\"unixTime\":1590336472000,\"incrementalDistance\":8,\"cumulativeDistance\":2862,\"speed\":4.8,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:07:58Z\",\"parseTime\":\"2020-05-25 04:07:58\",\"unixTime\":1590336478000,\"incrementalDistance\":17,\"cumulativeDistance\":2879,\"speed\":5.5636363636363635,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:08:09Z\",\"parseTime\":\"2020-05-25 04:08:09\",\"unixTime\":1590336489000,\"incrementalDistance\":10,\"cumulativeDistance\":2889,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:08:19Z\",\"parseTime\":\"2020-05-25 04:08:19\",\"unixTime\":1590336499000,\"incrementalDistance\":36,\"cumulativeDistance\":2925,\"speed\":4.628571428571428,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:08:47Z\",\"parseTime\":\"2020-05-25 04:08:47\",\"unixTime\":1590336527000,\"incrementalDistance\":10,\"cumulativeDistance\":2935,\"speed\":3.2727272727272725,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:08:58Z\",\"parseTime\":\"2020-05-25 04:08:58\",\"unixTime\":1590336538000,\"incrementalDistance\":3,\"cumulativeDistance\":2938,\"speed\":1.8,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:09:04Z\",\"parseTime\":\"2020-05-25 04:09:04\",\"unixTime\":1590336544000,\"incrementalDistance\":1,\"cumulativeDistance\":2939,\"speed\":0.9,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:09:08Z\",\"parseTime\":\"2020-05-25 04:09:08\",\"unixTime\":1590336548000,\"incrementalDistance\":1,\"cumulativeDistance\":2940,\"speed\":1.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:09:11Z\",\"parseTime\":\"2020-05-25 04:09:11\",\"unixTime\":1590336551000,\"incrementalDistance\":10,\"cumulativeDistance\":2950,\"speed\":2.25,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:09:27Z\",\"parseTime\":\"2020-05-25 04:09:27\",\"unixTime\":1590336567000,\"incrementalDistance\":7,\"cumulativeDistance\":2957,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:09:34Z\",\"parseTime\":\"2020-05-25 04:09:34\",\"unixTime\":1590336574000,\"incrementalDistance\":2,\"cumulativeDistance\":2959,\"speed\":0.3,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:09:58Z\",\"parseTime\":\"2020-05-25 04:09:58\",\"unixTime\":1590336598000,\"incrementalDistance\":3,\"cumulativeDistance\":2962,\"speed\":0.49090909090909096,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:10:20Z\",\"parseTime\":\"2020-05-25 04:10:20\",\"unixTime\":1590336620000,\"incrementalDistance\":13,\"cumulativeDistance\":2975,\"speed\":5.8500000000000005,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:10:28Z\",\"parseTime\":\"2020-05-25 04:10:28\",\"unixTime\":1590336628000,\"incrementalDistance\":5,\"cumulativeDistance\":2980,\"speed\":2.25,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:10:36Z\",\"parseTime\":\"2020-05-25 04:10:36\",\"unixTime\":1590336636000,\"incrementalDistance\":0,\"cumulativeDistance\":2980,\"speed\":0,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:10:37Z\",\"parseTime\":\"2020-05-25 04:10:37\",\"unixTime\":1590336637000,\"incrementalDistance\":3,\"cumulativeDistance\":2983,\"speed\":5.4,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:10:39Z\",\"parseTime\":\"2020-05-25 04:10:39\",\"unixTime\":1590336639000,\"incrementalDistance\":2,\"cumulativeDistance\":2985,\"speed\":7.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:10:40Z\",\"parseTime\":\"2020-05-25 04:10:40\",\"unixTime\":1590336640000,\"incrementalDistance\":13,\"cumulativeDistance\":2998,\"speed\":6.685714285714286,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:10:47Z\",\"parseTime\":\"2020-05-25 04:10:47\",\"unixTime\":1590336647000,\"incrementalDistance\":28,\"cumulativeDistance\":3026,\"speed\":20.16,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:10:52Z\",\"parseTime\":\"2020-05-25 04:10:52\",\"unixTime\":1590336652000,\"incrementalDistance\":10,\"cumulativeDistance\":3036,\"speed\":18,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:10:54Z\",\"parseTime\":\"2020-05-25 04:10:54\",\"unixTime\":1590336654000,\"incrementalDistance\":26,\"cumulativeDistance\":3062,\"speed\":18.720000000000002,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:10:59Z\",\"parseTime\":\"2020-05-25 04:10:59\",\"unixTime\":1590336659000,\"incrementalDistance\":5,\"cumulativeDistance\":3067,\"speed\":18,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:11:00Z\",\"parseTime\":\"2020-05-25 04:11:00\",\"unixTime\":1590336660000,\"incrementalDistance\":5,\"cumulativeDistance\":3072,\"speed\":18,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:11:01Z\",\"parseTime\":\"2020-05-25 04:11:01\",\"unixTime\":1590336661000,\"incrementalDistance\":10,\"cumulativeDistance\":3082,\"speed\":18,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:11:03Z\",\"parseTime\":\"2020-05-25 04:11:03\",\"unixTime\":1590336663000,\"incrementalDistance\":12,\"cumulativeDistance\":3094,\"speed\":43.2,\"isWave\":true},{\"originalTime\":\"2020-05-25T04:11:04Z\",\"parseTime\":\"2020-05-25 04:11:04\",\"unixTime\":1590336664000,\"incrementalDistance\":10,\"cumulativeDistance\":3104,\"speed\":7.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:11:09Z\",\"parseTime\":\"2020-05-25 04:11:09\",\"unixTime\":1590336669000,\"incrementalDistance\":10,\"cumulativeDistance\":3114,\"speed\":36,\"isWave\":true},{\"originalTime\":\"2020-05-25T04:11:10Z\",\"parseTime\":\"2020-05-25 04:11:10\",\"unixTime\":1590336670000,\"incrementalDistance\":1,\"cumulativeDistance\":3115,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:11:11Z\",\"parseTime\":\"2020-05-25 04:11:11\",\"unixTime\":1590336671000,\"incrementalDistance\":2,\"cumulativeDistance\":3117,\"speed\":7.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:11:12Z\",\"parseTime\":\"2020-05-25 04:11:12\",\"unixTime\":1590336672000,\"incrementalDistance\":12,\"cumulativeDistance\":3129,\"speed\":8.64,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:11:17Z\",\"parseTime\":\"2020-05-25 04:11:17\",\"unixTime\":1590336677000,\"incrementalDistance\":7,\"cumulativeDistance\":3136,\"speed\":8.4,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:11:20Z\",\"parseTime\":\"2020-05-25 04:11:20\",\"unixTime\":1590336680000,\"incrementalDistance\":1,\"cumulativeDistance\":3137,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:11:21Z\",\"parseTime\":\"2020-05-25 04:11:21\",\"unixTime\":1590336681000,\"incrementalDistance\":2,\"cumulativeDistance\":3139,\"speed\":7.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:11:22Z\",\"parseTime\":\"2020-05-25 04:11:22\",\"unixTime\":1590336682000,\"incrementalDistance\":1,\"cumulativeDistance\":3140,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:11:23Z\",\"parseTime\":\"2020-05-25 04:11:23\",\"unixTime\":1590336683000,\"incrementalDistance\":6,\"cumulativeDistance\":3146,\"speed\":7.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:11:26Z\",\"parseTime\":\"2020-05-25 04:11:26\",\"unixTime\":1590336686000,\"incrementalDistance\":7,\"cumulativeDistance\":3153,\"speed\":8.4,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:11:29Z\",\"parseTime\":\"2020-05-25 04:11:29\",\"unixTime\":1590336689000,\"incrementalDistance\":3,\"cumulativeDistance\":3156,\"speed\":5.4,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:11:31Z\",\"parseTime\":\"2020-05-25 04:11:31\",\"unixTime\":1590336691000,\"incrementalDistance\":2,\"cumulativeDistance\":3158,\"speed\":7.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:11:32Z\",\"parseTime\":\"2020-05-25 04:11:32\",\"unixTime\":1590336692000,\"incrementalDistance\":2,\"cumulativeDistance\":3160,\"speed\":7.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:11:33Z\",\"parseTime\":\"2020-05-25 04:11:33\",\"unixTime\":1590336693000,\"incrementalDistance\":25,\"cumulativeDistance\":3185,\"speed\":5.294117647058823,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:11:50Z\",\"parseTime\":\"2020-05-25 04:11:50\",\"unixTime\":1590336710000,\"incrementalDistance\":4,\"cumulativeDistance\":3189,\"speed\":1.0285714285714287,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:12:04Z\",\"parseTime\":\"2020-05-25 04:12:04\",\"unixTime\":1590336724000,\"incrementalDistance\":4,\"cumulativeDistance\":3193,\"speed\":4.8,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:12:07Z\",\"parseTime\":\"2020-05-25 04:12:07\",\"unixTime\":1590336727000,\"incrementalDistance\":4,\"cumulativeDistance\":3197,\"speed\":14.4,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:12:08Z\",\"parseTime\":\"2020-05-25 04:12:08\",\"unixTime\":1590336728000,\"incrementalDistance\":6,\"cumulativeDistance\":3203,\"speed\":2.7,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:12:16Z\",\"parseTime\":\"2020-05-25 04:12:16\",\"unixTime\":1590336736000,\"incrementalDistance\":3,\"cumulativeDistance\":3206,\"speed\":1.35,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:12:24Z\",\"parseTime\":\"2020-05-25 04:12:24\",\"unixTime\":1590336744000,\"incrementalDistance\":2,\"cumulativeDistance\":3208,\"speed\":0.8,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:12:33Z\",\"parseTime\":\"2020-05-25 04:12:33\",\"unixTime\":1590336753000,\"incrementalDistance\":1,\"cumulativeDistance\":3209,\"speed\":0.45,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:12:41Z\",\"parseTime\":\"2020-05-25 04:12:41\",\"unixTime\":1590336761000,\"incrementalDistance\":1,\"cumulativeDistance\":3210,\"speed\":0.9,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:12:45Z\",\"parseTime\":\"2020-05-25 04:12:45\",\"unixTime\":1590336765000,\"incrementalDistance\":1,\"cumulativeDistance\":3211,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:12:46Z\",\"parseTime\":\"2020-05-25 04:12:46\",\"unixTime\":1590336766000,\"incrementalDistance\":6,\"cumulativeDistance\":3217,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:12:52Z\",\"parseTime\":\"2020-05-25 04:12:52\",\"unixTime\":1590336772000,\"incrementalDistance\":12,\"cumulativeDistance\":3229,\"speed\":7.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:12:58Z\",\"parseTime\":\"2020-05-25 04:12:58\",\"unixTime\":1590336778000,\"incrementalDistance\":16,\"cumulativeDistance\":3245,\"speed\":14.4,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:13:02Z\",\"parseTime\":\"2020-05-25 04:13:02\",\"unixTime\":1590336782000,\"incrementalDistance\":16,\"cumulativeDistance\":3261,\"speed\":19.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:13:05Z\",\"parseTime\":\"2020-05-25 04:13:05\",\"unixTime\":1590336785000,\"incrementalDistance\":16,\"cumulativeDistance\":3277,\"speed\":11.520000000000001,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:13:10Z\",\"parseTime\":\"2020-05-25 04:13:10\",\"unixTime\":1590336790000,\"incrementalDistance\":4,\"cumulativeDistance\":3281,\"speed\":14.4,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:13:11Z\",\"parseTime\":\"2020-05-25 04:13:11\",\"unixTime\":1590336791000,\"incrementalDistance\":2,\"cumulativeDistance\":3283,\"speed\":7.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:13:12Z\",\"parseTime\":\"2020-05-25 04:13:12\",\"unixTime\":1590336792000,\"incrementalDistance\":2,\"cumulativeDistance\":3285,\"speed\":7.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:13:13Z\",\"parseTime\":\"2020-05-25 04:13:13\",\"unixTime\":1590336793000,\"incrementalDistance\":2,\"cumulativeDistance\":3287,\"speed\":7.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:13:14Z\",\"parseTime\":\"2020-05-25 04:13:14\",\"unixTime\":1590336794000,\"incrementalDistance\":3,\"cumulativeDistance\":3290,\"speed\":10.8,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:13:15Z\",\"parseTime\":\"2020-05-25 04:13:15\",\"unixTime\":1590336795000,\"incrementalDistance\":2,\"cumulativeDistance\":3292,\"speed\":7.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:13:16Z\",\"parseTime\":\"2020-05-25 04:13:16\",\"unixTime\":1590336796000,\"incrementalDistance\":5,\"cumulativeDistance\":3297,\"speed\":9,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:13:18Z\",\"parseTime\":\"2020-05-25 04:13:18\",\"unixTime\":1590336798000,\"incrementalDistance\":3,\"cumulativeDistance\":3300,\"speed\":10.8,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:13:19Z\",\"parseTime\":\"2020-05-25 04:13:19\",\"unixTime\":1590336799000,\"incrementalDistance\":9,\"cumulativeDistance\":3309,\"speed\":6.48,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:13:24Z\",\"parseTime\":\"2020-05-25 04:13:24\",\"unixTime\":1590336804000,\"incrementalDistance\":6,\"cumulativeDistance\":3315,\"speed\":7.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:13:27Z\",\"parseTime\":\"2020-05-25 04:13:27\",\"unixTime\":1590336807000,\"incrementalDistance\":1,\"cumulativeDistance\":3316,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:13:28Z\",\"parseTime\":\"2020-05-25 04:13:28\",\"unixTime\":1590336808000,\"incrementalDistance\":4,\"cumulativeDistance\":3320,\"speed\":2.8800000000000003,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:13:33Z\",\"parseTime\":\"2020-05-25 04:13:33\",\"unixTime\":1590336813000,\"incrementalDistance\":1,\"cumulativeDistance\":3321,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:13:34Z\",\"parseTime\":\"2020-05-25 04:13:34\",\"unixTime\":1590336814000,\"incrementalDistance\":4,\"cumulativeDistance\":3325,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:13:38Z\",\"parseTime\":\"2020-05-25 04:13:38\",\"unixTime\":1590336818000,\"incrementalDistance\":2,\"cumulativeDistance\":3327,\"speed\":7.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:13:39Z\",\"parseTime\":\"2020-05-25 04:13:39\",\"unixTime\":1590336819000,\"incrementalDistance\":2,\"cumulativeDistance\":3329,\"speed\":7.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:13:40Z\",\"parseTime\":\"2020-05-25 04:13:40\",\"unixTime\":1590336820000,\"incrementalDistance\":7,\"cumulativeDistance\":3336,\"speed\":8.4,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:13:43Z\",\"parseTime\":\"2020-05-25 04:13:43\",\"unixTime\":1590336823000,\"incrementalDistance\":4,\"cumulativeDistance\":3340,\"speed\":7.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:13:45Z\",\"parseTime\":\"2020-05-25 04:13:45\",\"unixTime\":1590336825000,\"incrementalDistance\":2,\"cumulativeDistance\":3342,\"speed\":7.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:13:46Z\",\"parseTime\":\"2020-05-25 04:13:46\",\"unixTime\":1590336826000,\"incrementalDistance\":2,\"cumulativeDistance\":3344,\"speed\":7.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:13:47Z\",\"parseTime\":\"2020-05-25 04:13:47\",\"unixTime\":1590336827000,\"incrementalDistance\":7,\"cumulativeDistance\":3351,\"speed\":6.3,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:13:51Z\",\"parseTime\":\"2020-05-25 04:13:51\",\"unixTime\":1590336831000,\"incrementalDistance\":0,\"cumulativeDistance\":3351,\"speed\":0,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:13:53Z\",\"parseTime\":\"2020-05-25 04:13:53\",\"unixTime\":1590336833000,\"incrementalDistance\":8,\"cumulativeDistance\":3359,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:14:01Z\",\"parseTime\":\"2020-05-25 04:14:01\",\"unixTime\":1590336841000,\"incrementalDistance\":4,\"cumulativeDistance\":3363,\"speed\":2.8800000000000003,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:14:06Z\",\"parseTime\":\"2020-05-25 04:14:06\",\"unixTime\":1590336846000,\"incrementalDistance\":1,\"cumulativeDistance\":3364,\"speed\":0.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:14:12Z\",\"parseTime\":\"2020-05-25 04:14:12\",\"unixTime\":1590336852000,\"incrementalDistance\":1,\"cumulativeDistance\":3365,\"speed\":0.7200000000000001,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:14:17Z\",\"parseTime\":\"2020-05-25 04:14:17\",\"unixTime\":1590336857000,\"incrementalDistance\":1,\"cumulativeDistance\":3366,\"speed\":1.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:14:20Z\",\"parseTime\":\"2020-05-25 04:14:20\",\"unixTime\":1590336860000,\"incrementalDistance\":1,\"cumulativeDistance\":3367,\"speed\":1.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:14:23Z\",\"parseTime\":\"2020-05-25 04:14:23\",\"unixTime\":1590336863000,\"incrementalDistance\":1,\"cumulativeDistance\":3368,\"speed\":1.8,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:14:25Z\",\"parseTime\":\"2020-05-25 04:14:25\",\"unixTime\":1590336865000,\"incrementalDistance\":1,\"cumulativeDistance\":3369,\"speed\":1.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:14:28Z\",\"parseTime\":\"2020-05-25 04:14:28\",\"unixTime\":1590336868000,\"incrementalDistance\":0,\"cumulativeDistance\":3369,\"speed\":0,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:14:30Z\",\"parseTime\":\"2020-05-25 04:14:30\",\"unixTime\":1590336870000,\"incrementalDistance\":0,\"cumulativeDistance\":3369,\"speed\":0,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:14:31Z\",\"parseTime\":\"2020-05-25 04:14:31\",\"unixTime\":1590336871000,\"incrementalDistance\":0,\"cumulativeDistance\":3369,\"speed\":0,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:14:32Z\",\"parseTime\":\"2020-05-25 04:14:32\",\"unixTime\":1590336872000,\"incrementalDistance\":0,\"cumulativeDistance\":3369,\"speed\":0,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:14:33Z\",\"parseTime\":\"2020-05-25 04:14:33\",\"unixTime\":1590336873000,\"incrementalDistance\":2,\"cumulativeDistance\":3371,\"speed\":0.6545454545454544,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:14:44Z\",\"parseTime\":\"2020-05-25 04:14:44\",\"unixTime\":1590336884000,\"incrementalDistance\":4,\"cumulativeDistance\":3375,\"speed\":2.8800000000000003,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:14:49Z\",\"parseTime\":\"2020-05-25 04:14:49\",\"unixTime\":1590336889000,\"incrementalDistance\":21,\"cumulativeDistance\":3396,\"speed\":6.872727272727273,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:15:00Z\",\"parseTime\":\"2020-05-25 04:15:00\",\"unixTime\":1590336900000,\"incrementalDistance\":2,\"cumulativeDistance\":3398,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:15:02Z\",\"parseTime\":\"2020-05-25 04:15:02\",\"unixTime\":1590336902000,\"incrementalDistance\":4,\"cumulativeDistance\":3402,\"speed\":1.8,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:15:10Z\",\"parseTime\":\"2020-05-25 04:15:10\",\"unixTime\":1590336910000,\"incrementalDistance\":15,\"cumulativeDistance\":3417,\"speed\":13.5,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:15:14Z\",\"parseTime\":\"2020-05-25 04:15:14\",\"unixTime\":1590336914000,\"incrementalDistance\":5,\"cumulativeDistance\":3422,\"speed\":18,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:15:15Z\",\"parseTime\":\"2020-05-25 04:15:15\",\"unixTime\":1590336915000,\"incrementalDistance\":6,\"cumulativeDistance\":3428,\"speed\":21.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:15:16Z\",\"parseTime\":\"2020-05-25 04:15:16\",\"unixTime\":1590336916000,\"incrementalDistance\":6,\"cumulativeDistance\":3434,\"speed\":21.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:15:17Z\",\"parseTime\":\"2020-05-25 04:15:17\",\"unixTime\":1590336917000,\"incrementalDistance\":27,\"cumulativeDistance\":3461,\"speed\":24.3,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:15:21Z\",\"parseTime\":\"2020-05-25 04:15:21\",\"unixTime\":1590336921000,\"incrementalDistance\":6,\"cumulativeDistance\":3467,\"speed\":21.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:15:22Z\",\"parseTime\":\"2020-05-25 04:15:22\",\"unixTime\":1590336922000,\"incrementalDistance\":5,\"cumulativeDistance\":3472,\"speed\":18,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:15:23Z\",\"parseTime\":\"2020-05-25 04:15:23\",\"unixTime\":1590336923000,\"incrementalDistance\":3,\"cumulativeDistance\":3475,\"speed\":10.8,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:15:24Z\",\"parseTime\":\"2020-05-25 04:15:24\",\"unixTime\":1590336924000,\"incrementalDistance\":3,\"cumulativeDistance\":3478,\"speed\":10.8,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:15:25Z\",\"parseTime\":\"2020-05-25 04:15:25\",\"unixTime\":1590336925000,\"incrementalDistance\":2,\"cumulativeDistance\":3480,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:15:27Z\",\"parseTime\":\"2020-05-25 04:15:27\",\"unixTime\":1590336927000,\"incrementalDistance\":2,\"cumulativeDistance\":3482,\"speed\":7.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:15:28Z\",\"parseTime\":\"2020-05-25 04:15:28\",\"unixTime\":1590336928000,\"incrementalDistance\":7,\"cumulativeDistance\":3489,\"speed\":8.4,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:15:31Z\",\"parseTime\":\"2020-05-25 04:15:31\",\"unixTime\":1590336931000,\"incrementalDistance\":6,\"cumulativeDistance\":3495,\"speed\":5.4,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:15:35Z\",\"parseTime\":\"2020-05-25 04:15:35\",\"unixTime\":1590336935000,\"incrementalDistance\":11,\"cumulativeDistance\":3506,\"speed\":13.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:15:38Z\",\"parseTime\":\"2020-05-25 04:15:38\",\"unixTime\":1590336938000,\"incrementalDistance\":7,\"cumulativeDistance\":3513,\"speed\":8.4,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:15:41Z\",\"parseTime\":\"2020-05-25 04:15:41\",\"unixTime\":1590336941000,\"incrementalDistance\":4,\"cumulativeDistance\":3517,\"speed\":4.8,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:15:44Z\",\"parseTime\":\"2020-05-25 04:15:44\",\"unixTime\":1590336944000,\"incrementalDistance\":1,\"cumulativeDistance\":3518,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:15:45Z\",\"parseTime\":\"2020-05-25 04:15:45\",\"unixTime\":1590336945000,\"incrementalDistance\":2,\"cumulativeDistance\":3520,\"speed\":7.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:15:46Z\",\"parseTime\":\"2020-05-25 04:15:46\",\"unixTime\":1590336946000,\"incrementalDistance\":2,\"cumulativeDistance\":3522,\"speed\":7.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:15:47Z\",\"parseTime\":\"2020-05-25 04:15:47\",\"unixTime\":1590336947000,\"incrementalDistance\":9,\"cumulativeDistance\":3531,\"speed\":5.4,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:15:53Z\",\"parseTime\":\"2020-05-25 04:15:53\",\"unixTime\":1590336953000,\"incrementalDistance\":1,\"cumulativeDistance\":3532,\"speed\":1.8,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:15:55Z\",\"parseTime\":\"2020-05-25 04:15:55\",\"unixTime\":1590336955000,\"incrementalDistance\":7,\"cumulativeDistance\":3539,\"speed\":4.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:16:01Z\",\"parseTime\":\"2020-05-25 04:16:01\",\"unixTime\":1590336961000,\"incrementalDistance\":1,\"cumulativeDistance\":3540,\"speed\":1.8,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:16:03Z\",\"parseTime\":\"2020-05-25 04:16:03\",\"unixTime\":1590336963000,\"incrementalDistance\":21,\"cumulativeDistance\":3561,\"speed\":4.7250000000000005,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:16:19Z\",\"parseTime\":\"2020-05-25 04:16:19\",\"unixTime\":1590336979000,\"incrementalDistance\":1,\"cumulativeDistance\":3562,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:16:20Z\",\"parseTime\":\"2020-05-25 04:16:20\",\"unixTime\":1590336980000,\"incrementalDistance\":2,\"cumulativeDistance\":3564,\"speed\":1.8,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:16:24Z\",\"parseTime\":\"2020-05-25 04:16:24\",\"unixTime\":1590336984000,\"incrementalDistance\":7,\"cumulativeDistance\":3571,\"speed\":4.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:16:30Z\",\"parseTime\":\"2020-05-25 04:16:30\",\"unixTime\":1590336990000,\"incrementalDistance\":7,\"cumulativeDistance\":3578,\"speed\":1.8,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:16:44Z\",\"parseTime\":\"2020-05-25 04:16:44\",\"unixTime\":1590337004000,\"incrementalDistance\":1,\"cumulativeDistance\":3579,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:16:45Z\",\"parseTime\":\"2020-05-25 04:16:45\",\"unixTime\":1590337005000,\"incrementalDistance\":2,\"cumulativeDistance\":3581,\"speed\":1.0285714285714287,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:16:52Z\",\"parseTime\":\"2020-05-25 04:16:52\",\"unixTime\":1590337012000,\"incrementalDistance\":1,\"cumulativeDistance\":3582,\"speed\":0.45,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:17:00Z\",\"parseTime\":\"2020-05-25 04:17:00\",\"unixTime\":1590337020000,\"incrementalDistance\":2,\"cumulativeDistance\":3584,\"speed\":0.6545454545454544,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:17:11Z\",\"parseTime\":\"2020-05-25 04:17:11\",\"unixTime\":1590337031000,\"incrementalDistance\":2,\"cumulativeDistance\":3586,\"speed\":1.4400000000000002,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:17:16Z\",\"parseTime\":\"2020-05-25 04:17:16\",\"unixTime\":1590337036000,\"incrementalDistance\":3,\"cumulativeDistance\":3589,\"speed\":10.8,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:17:17Z\",\"parseTime\":\"2020-05-25 04:17:17\",\"unixTime\":1590337037000,\"incrementalDistance\":12,\"cumulativeDistance\":3601,\"speed\":14.4,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:17:20Z\",\"parseTime\":\"2020-05-25 04:17:20\",\"unixTime\":1590337040000,\"incrementalDistance\":6,\"cumulativeDistance\":3607,\"speed\":21.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:17:21Z\",\"parseTime\":\"2020-05-25 04:17:21\",\"unixTime\":1590337041000,\"incrementalDistance\":6,\"cumulativeDistance\":3613,\"speed\":21.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:17:22Z\",\"parseTime\":\"2020-05-25 04:17:22\",\"unixTime\":1590337042000,\"incrementalDistance\":5,\"cumulativeDistance\":3618,\"speed\":18,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:17:23Z\",\"parseTime\":\"2020-05-25 04:17:23\",\"unixTime\":1590337043000,\"incrementalDistance\":8,\"cumulativeDistance\":3626,\"speed\":14.4,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:17:25Z\",\"parseTime\":\"2020-05-25 04:17:25\",\"unixTime\":1590337045000,\"incrementalDistance\":3,\"cumulativeDistance\":3629,\"speed\":10.8,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:17:26Z\",\"parseTime\":\"2020-05-25 04:17:26\",\"unixTime\":1590337046000,\"incrementalDistance\":1,\"cumulativeDistance\":3630,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:17:27Z\",\"parseTime\":\"2020-05-25 04:17:27\",\"unixTime\":1590337047000,\"incrementalDistance\":1,\"cumulativeDistance\":3631,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:17:28Z\",\"parseTime\":\"2020-05-25 04:17:28\",\"unixTime\":1590337048000,\"incrementalDistance\":2,\"cumulativeDistance\":3633,\"speed\":7.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:17:29Z\",\"parseTime\":\"2020-05-25 04:17:29\",\"unixTime\":1590337049000,\"incrementalDistance\":12,\"cumulativeDistance\":3645,\"speed\":10.8,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:17:33Z\",\"parseTime\":\"2020-05-25 04:17:33\",\"unixTime\":1590337053000,\"incrementalDistance\":2,\"cumulativeDistance\":3647,\"speed\":7.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:17:34Z\",\"parseTime\":\"2020-05-25 04:17:34\",\"unixTime\":1590337054000,\"incrementalDistance\":1,\"cumulativeDistance\":3648,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:17:35Z\",\"parseTime\":\"2020-05-25 04:17:35\",\"unixTime\":1590337055000,\"incrementalDistance\":0,\"cumulativeDistance\":3648,\"speed\":0,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:17:36Z\",\"parseTime\":\"2020-05-25 04:17:36\",\"unixTime\":1590337056000,\"incrementalDistance\":5,\"cumulativeDistance\":3653,\"speed\":3,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:17:42Z\",\"parseTime\":\"2020-05-25 04:17:42\",\"unixTime\":1590337062000,\"incrementalDistance\":6,\"cumulativeDistance\":3659,\"speed\":10.8,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:17:44Z\",\"parseTime\":\"2020-05-25 04:17:44\",\"unixTime\":1590337064000,\"incrementalDistance\":7,\"cumulativeDistance\":3666,\"speed\":6.3,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:17:48Z\",\"parseTime\":\"2020-05-25 04:17:48\",\"unixTime\":1590337068000,\"incrementalDistance\":2,\"cumulativeDistance\":3668,\"speed\":7.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:17:49Z\",\"parseTime\":\"2020-05-25 04:17:49\",\"unixTime\":1590337069000,\"incrementalDistance\":16,\"cumulativeDistance\":3684,\"speed\":5.760000000000001,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:17:59Z\",\"parseTime\":\"2020-05-25 04:17:59\",\"unixTime\":1590337079000,\"incrementalDistance\":1,\"cumulativeDistance\":3685,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:18:00Z\",\"parseTime\":\"2020-05-25 04:18:00\",\"unixTime\":1590337080000,\"incrementalDistance\":4,\"cumulativeDistance\":3689,\"speed\":2.8800000000000003,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:18:05Z\",\"parseTime\":\"2020-05-25 04:18:05\",\"unixTime\":1590337085000,\"incrementalDistance\":4,\"cumulativeDistance\":3693,\"speed\":4.8,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:18:08Z\",\"parseTime\":\"2020-05-25 04:18:08\",\"unixTime\":1590337088000,\"incrementalDistance\":2,\"cumulativeDistance\":3695,\"speed\":1.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:18:14Z\",\"parseTime\":\"2020-05-25 04:18:14\",\"unixTime\":1590337094000,\"incrementalDistance\":1,\"cumulativeDistance\":3696,\"speed\":0.5142857142857143,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:18:21Z\",\"parseTime\":\"2020-05-25 04:18:21\",\"unixTime\":1590337101000,\"incrementalDistance\":2,\"cumulativeDistance\":3698,\"speed\":2.4,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:18:24Z\",\"parseTime\":\"2020-05-25 04:18:24\",\"unixTime\":1590337104000,\"incrementalDistance\":3,\"cumulativeDistance\":3701,\"speed\":0.9818181818181819,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:18:35Z\",\"parseTime\":\"2020-05-25 04:18:35\",\"unixTime\":1590337115000,\"incrementalDistance\":1,\"cumulativeDistance\":3702,\"speed\":0.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:18:41Z\",\"parseTime\":\"2020-05-25 04:18:41\",\"unixTime\":1590337121000,\"incrementalDistance\":7,\"cumulativeDistance\":3709,\"speed\":1.26,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:19:01Z\",\"parseTime\":\"2020-05-25 04:19:01\",\"unixTime\":1590337141000,\"incrementalDistance\":3,\"cumulativeDistance\":3712,\"speed\":1.5428571428571427,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:19:08Z\",\"parseTime\":\"2020-05-25 04:19:08\",\"unixTime\":1590337148000,\"incrementalDistance\":4,\"cumulativeDistance\":3716,\"speed\":2.4,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:19:14Z\",\"parseTime\":\"2020-05-25 04:19:14\",\"unixTime\":1590337154000,\"incrementalDistance\":7,\"cumulativeDistance\":3723,\"speed\":1.9384615384615385,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:19:27Z\",\"parseTime\":\"2020-05-25 04:19:27\",\"unixTime\":1590337167000,\"incrementalDistance\":3,\"cumulativeDistance\":3726,\"speed\":1.8,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:19:33Z\",\"parseTime\":\"2020-05-25 04:19:33\",\"unixTime\":1590337173000,\"incrementalDistance\":2,\"cumulativeDistance\":3728,\"speed\":1.8,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:19:37Z\",\"parseTime\":\"2020-05-25 04:19:37\",\"unixTime\":1590337177000,\"incrementalDistance\":2,\"cumulativeDistance\":3730,\"speed\":2.4,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:19:40Z\",\"parseTime\":\"2020-05-25 04:19:40\",\"unixTime\":1590337180000,\"incrementalDistance\":12,\"cumulativeDistance\":3742,\"speed\":5.4,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:19:48Z\",\"parseTime\":\"2020-05-25 04:19:48\",\"unixTime\":1590337188000,\"incrementalDistance\":2,\"cumulativeDistance\":3744,\"speed\":7.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:19:49Z\",\"parseTime\":\"2020-05-25 04:19:49\",\"unixTime\":1590337189000,\"incrementalDistance\":2,\"cumulativeDistance\":3746,\"speed\":7.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:19:50Z\",\"parseTime\":\"2020-05-25 04:19:50\",\"unixTime\":1590337190000,\"incrementalDistance\":2,\"cumulativeDistance\":3748,\"speed\":7.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:19:51Z\",\"parseTime\":\"2020-05-25 04:19:51\",\"unixTime\":1590337191000,\"incrementalDistance\":3,\"cumulativeDistance\":3751,\"speed\":2.16,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:19:56Z\",\"parseTime\":\"2020-05-25 04:19:56\",\"unixTime\":1590337196000,\"incrementalDistance\":12,\"cumulativeDistance\":3763,\"speed\":6.171428571428571,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:20:03Z\",\"parseTime\":\"2020-05-25 04:20:03\",\"unixTime\":1590337203000,\"incrementalDistance\":1,\"cumulativeDistance\":3764,\"speed\":1.8,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:20:05Z\",\"parseTime\":\"2020-05-25 04:20:05\",\"unixTime\":1590337205000,\"incrementalDistance\":6,\"cumulativeDistance\":3770,\"speed\":2.4,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:20:14Z\",\"parseTime\":\"2020-05-25 04:20:14\",\"unixTime\":1590337214000,\"incrementalDistance\":1,\"cumulativeDistance\":3771,\"speed\":0.45,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:20:22Z\",\"parseTime\":\"2020-05-25 04:20:22\",\"unixTime\":1590337222000,\"incrementalDistance\":0,\"cumulativeDistance\":3771,\"speed\":1.8,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:20:24Z\",\"parseTime\":\"2020-05-25 04:20:24\",\"unixTime\":1590337224000,\"incrementalDistance\":3,\"cumulativeDistance\":3774,\"speed\":0.9818181818181819,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:20:35Z\",\"parseTime\":\"2020-05-25 04:20:35\",\"unixTime\":1590337235000,\"incrementalDistance\":2,\"cumulativeDistance\":3776,\"speed\":0.4235294117647059,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:20:52Z\",\"parseTime\":\"2020-05-25 04:20:52\",\"unixTime\":1590337252000,\"incrementalDistance\":2,\"cumulativeDistance\":3778,\"speed\":0.5538461538461539,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:21:05Z\",\"parseTime\":\"2020-05-25 04:21:05\",\"unixTime\":1590337265000,\"incrementalDistance\":3,\"cumulativeDistance\":3781,\"speed\":10.8,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:21:06Z\",\"parseTime\":\"2020-05-25 04:21:06\",\"unixTime\":1590337266000,\"incrementalDistance\":11,\"cumulativeDistance\":3792,\"speed\":4.3999999999999995,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:21:15Z\",\"parseTime\":\"2020-05-25 04:21:15\",\"unixTime\":1590337275000,\"incrementalDistance\":3,\"cumulativeDistance\":3795,\"speed\":5.4,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:21:17Z\",\"parseTime\":\"2020-05-25 04:21:17\",\"unixTime\":1590337277000,\"incrementalDistance\":3,\"cumulativeDistance\":3798,\"speed\":10.8,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:21:18Z\",\"parseTime\":\"2020-05-25 04:21:18\",\"unixTime\":1590337278000,\"incrementalDistance\":3,\"cumulativeDistance\":3801,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:21:21Z\",\"parseTime\":\"2020-05-25 04:21:21\",\"unixTime\":1590337281000,\"incrementalDistance\":4,\"cumulativeDistance\":3805,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:21:25Z\",\"parseTime\":\"2020-05-25 04:21:25\",\"unixTime\":1590337285000,\"incrementalDistance\":2,\"cumulativeDistance\":3807,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:21:27Z\",\"parseTime\":\"2020-05-25 04:21:27\",\"unixTime\":1590337287000,\"incrementalDistance\":4,\"cumulativeDistance\":3811,\"speed\":2.8800000000000003,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:21:32Z\",\"parseTime\":\"2020-05-25 04:21:32\",\"unixTime\":1590337292000,\"incrementalDistance\":1,\"cumulativeDistance\":3812,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:21:33Z\",\"parseTime\":\"2020-05-25 04:21:33\",\"unixTime\":1590337293000,\"incrementalDistance\":1,\"cumulativeDistance\":3813,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:21:34Z\",\"parseTime\":\"2020-05-25 04:21:34\",\"unixTime\":1590337294000,\"incrementalDistance\":1,\"cumulativeDistance\":3814,\"speed\":1.8,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:21:36Z\",\"parseTime\":\"2020-05-25 04:21:36\",\"unixTime\":1590337296000,\"incrementalDistance\":0,\"cumulativeDistance\":3814,\"speed\":0,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:21:42Z\",\"parseTime\":\"2020-05-25 04:21:42\",\"unixTime\":1590337302000,\"incrementalDistance\":0,\"cumulativeDistance\":3814,\"speed\":0,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:21:44Z\",\"parseTime\":\"2020-05-25 04:21:44\",\"unixTime\":1590337304000,\"incrementalDistance\":0,\"cumulativeDistance\":3814,\"speed\":0,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:21:45Z\",\"parseTime\":\"2020-05-25 04:21:45\",\"unixTime\":1590337305000,\"incrementalDistance\":0,\"cumulativeDistance\":3814,\"speed\":0,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:21:46Z\",\"parseTime\":\"2020-05-25 04:21:46\",\"unixTime\":1590337306000,\"incrementalDistance\":0,\"cumulativeDistance\":3814,\"speed\":0,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:21:48Z\",\"parseTime\":\"2020-05-25 04:21:48\",\"unixTime\":1590337308000,\"incrementalDistance\":0,\"cumulativeDistance\":3814,\"speed\":0,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:21:49Z\",\"parseTime\":\"2020-05-25 04:21:49\",\"unixTime\":1590337309000,\"incrementalDistance\":0,\"cumulativeDistance\":3814,\"speed\":0,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:21:50Z\",\"parseTime\":\"2020-05-25 04:21:50\",\"unixTime\":1590337310000,\"incrementalDistance\":1,\"cumulativeDistance\":3815,\"speed\":1.8,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:21:52Z\",\"parseTime\":\"2020-05-25 04:21:52\",\"unixTime\":1590337312000,\"incrementalDistance\":0,\"cumulativeDistance\":3815,\"speed\":0,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:21:53Z\",\"parseTime\":\"2020-05-25 04:21:53\",\"unixTime\":1590337313000,\"incrementalDistance\":0,\"cumulativeDistance\":3815,\"speed\":0,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:21:54Z\",\"parseTime\":\"2020-05-25 04:21:54\",\"unixTime\":1590337314000,\"incrementalDistance\":2,\"cumulativeDistance\":3817,\"speed\":1.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:22:00Z\",\"parseTime\":\"2020-05-25 04:22:00\",\"unixTime\":1590337320000,\"incrementalDistance\":0,\"cumulativeDistance\":3817,\"speed\":0,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:22:01Z\",\"parseTime\":\"2020-05-25 04:22:01\",\"unixTime\":1590337321000,\"incrementalDistance\":2,\"cumulativeDistance\":3819,\"speed\":0.7200000000000001,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:22:11Z\",\"parseTime\":\"2020-05-25 04:22:11\",\"unixTime\":1590337331000,\"incrementalDistance\":1,\"cumulativeDistance\":3820,\"speed\":0.3272727272727272,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:22:22Z\",\"parseTime\":\"2020-05-25 04:22:22\",\"unixTime\":1590337342000,\"incrementalDistance\":7,\"cumulativeDistance\":3827,\"speed\":1.4823529411764707,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:22:39Z\",\"parseTime\":\"2020-05-25 04:22:39\",\"unixTime\":1590337359000,\"incrementalDistance\":11,\"cumulativeDistance\":3838,\"speed\":7.920000000000001,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:22:44Z\",\"parseTime\":\"2020-05-25 04:22:44\",\"unixTime\":1590337364000,\"incrementalDistance\":2,\"cumulativeDistance\":3840,\"speed\":7.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:22:45Z\",\"parseTime\":\"2020-05-25 04:22:45\",\"unixTime\":1590337365000,\"incrementalDistance\":2,\"cumulativeDistance\":3842,\"speed\":7.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:22:46Z\",\"parseTime\":\"2020-05-25 04:22:46\",\"unixTime\":1590337366000,\"incrementalDistance\":18,\"cumulativeDistance\":3860,\"speed\":12.96,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:22:51Z\",\"parseTime\":\"2020-05-25 04:22:51\",\"unixTime\":1590337371000,\"incrementalDistance\":11,\"cumulativeDistance\":3871,\"speed\":19.8,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:22:53Z\",\"parseTime\":\"2020-05-25 04:22:53\",\"unixTime\":1590337373000,\"incrementalDistance\":6,\"cumulativeDistance\":3877,\"speed\":21.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:22:54Z\",\"parseTime\":\"2020-05-25 04:22:54\",\"unixTime\":1590337374000,\"incrementalDistance\":7,\"cumulativeDistance\":3884,\"speed\":25.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:22:55Z\",\"parseTime\":\"2020-05-25 04:22:55\",\"unixTime\":1590337375000,\"incrementalDistance\":12,\"cumulativeDistance\":3896,\"speed\":21.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:22:57Z\",\"parseTime\":\"2020-05-25 04:22:57\",\"unixTime\":1590337377000,\"incrementalDistance\":5,\"cumulativeDistance\":3901,\"speed\":18,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:22:58Z\",\"parseTime\":\"2020-05-25 04:22:58\",\"unixTime\":1590337378000,\"incrementalDistance\":5,\"cumulativeDistance\":3906,\"speed\":18,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:22:59Z\",\"parseTime\":\"2020-05-25 04:22:59\",\"unixTime\":1590337379000,\"incrementalDistance\":5,\"cumulativeDistance\":3911,\"speed\":18,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:23:00Z\",\"parseTime\":\"2020-05-25 04:23:00\",\"unixTime\":1590337380000,\"incrementalDistance\":3,\"cumulativeDistance\":3914,\"speed\":2.16,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:23:05Z\",\"parseTime\":\"2020-05-25 04:23:05\",\"unixTime\":1590337385000,\"incrementalDistance\":1,\"cumulativeDistance\":3915,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:23:06Z\",\"parseTime\":\"2020-05-25 04:23:06\",\"unixTime\":1590337386000,\"incrementalDistance\":2,\"cumulativeDistance\":3917,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:23:08Z\",\"parseTime\":\"2020-05-25 04:23:08\",\"unixTime\":1590337388000,\"incrementalDistance\":2,\"cumulativeDistance\":3919,\"speed\":7.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:23:09Z\",\"parseTime\":\"2020-05-25 04:23:09\",\"unixTime\":1590337389000,\"incrementalDistance\":6,\"cumulativeDistance\":3925,\"speed\":7.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:23:12Z\",\"parseTime\":\"2020-05-25 04:23:12\",\"unixTime\":1590337392000,\"incrementalDistance\":2,\"cumulativeDistance\":3927,\"speed\":7.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:23:13Z\",\"parseTime\":\"2020-05-25 04:23:13\",\"unixTime\":1590337393000,\"incrementalDistance\":1,\"cumulativeDistance\":3928,\"speed\":1.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:23:16Z\",\"parseTime\":\"2020-05-25 04:23:16\",\"unixTime\":1590337396000,\"incrementalDistance\":3,\"cumulativeDistance\":3931,\"speed\":10.8,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:23:17Z\",\"parseTime\":\"2020-05-25 04:23:17\",\"unixTime\":1590337397000,\"incrementalDistance\":9,\"cumulativeDistance\":3940,\"speed\":6.48,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:23:22Z\",\"parseTime\":\"2020-05-25 04:23:22\",\"unixTime\":1590337402000,\"incrementalDistance\":5,\"cumulativeDistance\":3945,\"speed\":4.5,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:23:26Z\",\"parseTime\":\"2020-05-25 04:23:26\",\"unixTime\":1590337406000,\"incrementalDistance\":1,\"cumulativeDistance\":3946,\"speed\":1.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:23:29Z\",\"parseTime\":\"2020-05-25 04:23:29\",\"unixTime\":1590337409000,\"incrementalDistance\":2,\"cumulativeDistance\":3948,\"speed\":1.4400000000000002,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:23:34Z\",\"parseTime\":\"2020-05-25 04:23:34\",\"unixTime\":1590337414000,\"incrementalDistance\":2,\"cumulativeDistance\":3950,\"speed\":7.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:23:35Z\",\"parseTime\":\"2020-05-25 04:23:35\",\"unixTime\":1590337415000,\"incrementalDistance\":1,\"cumulativeDistance\":3951,\"speed\":1.8,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:23:37Z\",\"parseTime\":\"2020-05-25 04:23:37\",\"unixTime\":1590337417000,\"incrementalDistance\":5,\"cumulativeDistance\":3956,\"speed\":6,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:23:40Z\",\"parseTime\":\"2020-05-25 04:23:40\",\"unixTime\":1590337420000,\"incrementalDistance\":2,\"cumulativeDistance\":3958,\"speed\":7.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:23:41Z\",\"parseTime\":\"2020-05-25 04:23:41\",\"unixTime\":1590337421000,\"incrementalDistance\":1,\"cumulativeDistance\":3959,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:23:42Z\",\"parseTime\":\"2020-05-25 04:23:42\",\"unixTime\":1590337422000,\"incrementalDistance\":1,\"cumulativeDistance\":3960,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:23:43Z\",\"parseTime\":\"2020-05-25 04:23:43\",\"unixTime\":1590337423000,\"incrementalDistance\":13,\"cumulativeDistance\":3973,\"speed\":11.700000000000001,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:23:47Z\",\"parseTime\":\"2020-05-25 04:23:47\",\"unixTime\":1590337427000,\"incrementalDistance\":2,\"cumulativeDistance\":3975,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:23:49Z\",\"parseTime\":\"2020-05-25 04:23:49\",\"unixTime\":1590337429000,\"incrementalDistance\":6,\"cumulativeDistance\":3981,\"speed\":5.4,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:23:53Z\",\"parseTime\":\"2020-05-25 04:23:53\",\"unixTime\":1590337433000,\"incrementalDistance\":5,\"cumulativeDistance\":3986,\"speed\":6,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:23:56Z\",\"parseTime\":\"2020-05-25 04:23:56\",\"unixTime\":1590337436000,\"incrementalDistance\":3,\"cumulativeDistance\":3989,\"speed\":1.35,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:24:04Z\",\"parseTime\":\"2020-05-25 04:24:04\",\"unixTime\":1590337444000,\"incrementalDistance\":11,\"cumulativeDistance\":4000,\"speed\":6.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:24:10Z\",\"parseTime\":\"2020-05-25 04:24:10\",\"unixTime\":1590337450000,\"incrementalDistance\":6,\"cumulativeDistance\":4006,\"speed\":5.4,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:24:14Z\",\"parseTime\":\"2020-05-25 04:24:14\",\"unixTime\":1590337454000,\"incrementalDistance\":7,\"cumulativeDistance\":4013,\"speed\":3.15,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:24:22Z\",\"parseTime\":\"2020-05-25 04:24:22\",\"unixTime\":1590337462000,\"incrementalDistance\":3,\"cumulativeDistance\":4016,\"speed\":2.7,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:24:26Z\",\"parseTime\":\"2020-05-25 04:24:26\",\"unixTime\":1590337466000,\"incrementalDistance\":17,\"cumulativeDistance\":4033,\"speed\":6.12,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:24:36Z\",\"parseTime\":\"2020-05-25 04:24:36\",\"unixTime\":1590337476000,\"incrementalDistance\":16,\"cumulativeDistance\":4049,\"speed\":4.114285714285715,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:24:50Z\",\"parseTime\":\"2020-05-25 04:24:50\",\"unixTime\":1590337490000,\"incrementalDistance\":12,\"cumulativeDistance\":4061,\"speed\":5.4,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:24:58Z\",\"parseTime\":\"2020-05-25 04:24:58\",\"unixTime\":1590337498000,\"incrementalDistance\":5,\"cumulativeDistance\":4066,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:25:03Z\",\"parseTime\":\"2020-05-25 04:25:03\",\"unixTime\":1590337503000,\"incrementalDistance\":18,\"cumulativeDistance\":4084,\"speed\":3.4105263157894736,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:25:22Z\",\"parseTime\":\"2020-05-25 04:25:22\",\"unixTime\":1590337522000,\"incrementalDistance\":3,\"cumulativeDistance\":4087,\"speed\":2.7,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:25:26Z\",\"parseTime\":\"2020-05-25 04:25:26\",\"unixTime\":1590337526000,\"incrementalDistance\":2,\"cumulativeDistance\":4089,\"speed\":1.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:25:32Z\",\"parseTime\":\"2020-05-25 04:25:32\",\"unixTime\":1590337532000,\"incrementalDistance\":2,\"cumulativeDistance\":4091,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:25:34Z\",\"parseTime\":\"2020-05-25 04:25:34\",\"unixTime\":1590337534000,\"incrementalDistance\":4,\"cumulativeDistance\":4095,\"speed\":2.8800000000000003,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:25:39Z\",\"parseTime\":\"2020-05-25 04:25:39\",\"unixTime\":1590337539000,\"incrementalDistance\":2,\"cumulativeDistance\":4097,\"speed\":1.4400000000000002,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:25:44Z\",\"parseTime\":\"2020-05-25 04:25:44\",\"unixTime\":1590337544000,\"incrementalDistance\":3,\"cumulativeDistance\":4100,\"speed\":1.8,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:25:50Z\",\"parseTime\":\"2020-05-25 04:25:50\",\"unixTime\":1590337550000,\"incrementalDistance\":4,\"cumulativeDistance\":4104,\"speed\":1.1076923076923078,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:26:03Z\",\"parseTime\":\"2020-05-25 04:26:03\",\"unixTime\":1590337563000,\"incrementalDistance\":0,\"cumulativeDistance\":4104,\"speed\":0,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:26:08Z\",\"parseTime\":\"2020-05-25 04:26:08\",\"unixTime\":1590337568000,\"incrementalDistance\":4,\"cumulativeDistance\":4108,\"speed\":1.4400000000000002,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:26:18Z\",\"parseTime\":\"2020-05-25 04:26:18\",\"unixTime\":1590337578000,\"incrementalDistance\":3,\"cumulativeDistance\":4111,\"speed\":2.7,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:26:22Z\",\"parseTime\":\"2020-05-25 04:26:22\",\"unixTime\":1590337582000,\"incrementalDistance\":1,\"cumulativeDistance\":4112,\"speed\":0.9,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:26:26Z\",\"parseTime\":\"2020-05-25 04:26:26\",\"unixTime\":1590337586000,\"incrementalDistance\":2,\"cumulativeDistance\":4114,\"speed\":2.4,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:26:29Z\",\"parseTime\":\"2020-05-25 04:26:29\",\"unixTime\":1590337589000,\"incrementalDistance\":1,\"cumulativeDistance\":4115,\"speed\":1.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:26:32Z\",\"parseTime\":\"2020-05-25 04:26:32\",\"unixTime\":1590337592000,\"incrementalDistance\":2,\"cumulativeDistance\":4117,\"speed\":1.8,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:26:36Z\",\"parseTime\":\"2020-05-25 04:26:36\",\"unixTime\":1590337596000,\"incrementalDistance\":0,\"cumulativeDistance\":4117,\"speed\":0,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:26:37Z\",\"parseTime\":\"2020-05-25 04:26:37\",\"unixTime\":1590337597000,\"incrementalDistance\":1,\"cumulativeDistance\":4118,\"speed\":0.7200000000000001,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:26:42Z\",\"parseTime\":\"2020-05-25 04:26:42\",\"unixTime\":1590337602000,\"incrementalDistance\":1,\"cumulativeDistance\":4119,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:26:43Z\",\"parseTime\":\"2020-05-25 04:26:43\",\"unixTime\":1590337603000,\"incrementalDistance\":1,\"cumulativeDistance\":4120,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:26:44Z\",\"parseTime\":\"2020-05-25 04:26:44\",\"unixTime\":1590337604000,\"incrementalDistance\":2,\"cumulativeDistance\":4122,\"speed\":0.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:26:56Z\",\"parseTime\":\"2020-05-25 04:26:56\",\"unixTime\":1590337616000,\"incrementalDistance\":0,\"cumulativeDistance\":4122,\"speed\":0,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:26:57Z\",\"parseTime\":\"2020-05-25 04:26:57\",\"unixTime\":1590337617000,\"incrementalDistance\":0,\"cumulativeDistance\":4122,\"speed\":0,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:27:00Z\",\"parseTime\":\"2020-05-25 04:27:00\",\"unixTime\":1590337620000,\"incrementalDistance\":2,\"cumulativeDistance\":4124,\"speed\":0.5142857142857143,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:27:14Z\",\"parseTime\":\"2020-05-25 04:27:14\",\"unixTime\":1590337634000,\"incrementalDistance\":6,\"cumulativeDistance\":4130,\"speed\":0.9391304347826087,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:27:37Z\",\"parseTime\":\"2020-05-25 04:27:37\",\"unixTime\":1590337657000,\"incrementalDistance\":5,\"cumulativeDistance\":4135,\"speed\":2.25,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:27:45Z\",\"parseTime\":\"2020-05-25 04:27:45\",\"unixTime\":1590337665000,\"incrementalDistance\":8,\"cumulativeDistance\":4143,\"speed\":5.760000000000001,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:27:50Z\",\"parseTime\":\"2020-05-25 04:27:50\",\"unixTime\":1590337670000,\"incrementalDistance\":0,\"cumulativeDistance\":4143,\"speed\":0,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:27:51Z\",\"parseTime\":\"2020-05-25 04:27:51\",\"unixTime\":1590337671000,\"incrementalDistance\":1,\"cumulativeDistance\":4144,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:27:52Z\",\"parseTime\":\"2020-05-25 04:27:52\",\"unixTime\":1590337672000,\"incrementalDistance\":1,\"cumulativeDistance\":4145,\"speed\":1.8,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:27:54Z\",\"parseTime\":\"2020-05-25 04:27:54\",\"unixTime\":1590337674000,\"incrementalDistance\":1,\"cumulativeDistance\":4146,\"speed\":0.9,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:27:58Z\",\"parseTime\":\"2020-05-25 04:27:58\",\"unixTime\":1590337678000,\"incrementalDistance\":4,\"cumulativeDistance\":4150,\"speed\":7.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:28:00Z\",\"parseTime\":\"2020-05-25 04:28:00\",\"unixTime\":1590337680000,\"incrementalDistance\":2,\"cumulativeDistance\":4152,\"speed\":7.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:28:01Z\",\"parseTime\":\"2020-05-25 04:28:01\",\"unixTime\":1590337681000,\"incrementalDistance\":2,\"cumulativeDistance\":4154,\"speed\":7.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:28:02Z\",\"parseTime\":\"2020-05-25 04:28:02\",\"unixTime\":1590337682000,\"incrementalDistance\":16,\"cumulativeDistance\":4170,\"speed\":14.4,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:28:06Z\",\"parseTime\":\"2020-05-25 04:28:06\",\"unixTime\":1590337686000,\"incrementalDistance\":5,\"cumulativeDistance\":4175,\"speed\":18,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:28:07Z\",\"parseTime\":\"2020-05-25 04:28:07\",\"unixTime\":1590337687000,\"incrementalDistance\":6,\"cumulativeDistance\":4181,\"speed\":21.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:28:08Z\",\"parseTime\":\"2020-05-25 04:28:08\",\"unixTime\":1590337688000,\"incrementalDistance\":11,\"cumulativeDistance\":4192,\"speed\":19.8,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:28:10Z\",\"parseTime\":\"2020-05-25 04:28:10\",\"unixTime\":1590337690000,\"incrementalDistance\":13,\"cumulativeDistance\":4205,\"speed\":15.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:28:13Z\",\"parseTime\":\"2020-05-25 04:28:13\",\"unixTime\":1590337693000,\"incrementalDistance\":2,\"cumulativeDistance\":4207,\"speed\":1.4400000000000002,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:28:18Z\",\"parseTime\":\"2020-05-25 04:28:18\",\"unixTime\":1590337698000,\"incrementalDistance\":3,\"cumulativeDistance\":4210,\"speed\":10.8,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:28:19Z\",\"parseTime\":\"2020-05-25 04:28:19\",\"unixTime\":1590337699000,\"incrementalDistance\":4,\"cumulativeDistance\":4214,\"speed\":7.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:28:21Z\",\"parseTime\":\"2020-05-25 04:28:21\",\"unixTime\":1590337701000,\"incrementalDistance\":7,\"cumulativeDistance\":4221,\"speed\":8.4,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:28:24Z\",\"parseTime\":\"2020-05-25 04:28:24\",\"unixTime\":1590337704000,\"incrementalDistance\":2,\"cumulativeDistance\":4223,\"speed\":7.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:28:25Z\",\"parseTime\":\"2020-05-25 04:28:25\",\"unixTime\":1590337705000,\"incrementalDistance\":2,\"cumulativeDistance\":4225,\"speed\":7.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:28:26Z\",\"parseTime\":\"2020-05-25 04:28:26\",\"unixTime\":1590337706000,\"incrementalDistance\":12,\"cumulativeDistance\":4237,\"speed\":10.8,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:28:30Z\",\"parseTime\":\"2020-05-25 04:28:30\",\"unixTime\":1590337710000,\"incrementalDistance\":16,\"cumulativeDistance\":4253,\"speed\":9.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:28:36Z\",\"parseTime\":\"2020-05-25 04:28:36\",\"unixTime\":1590337716000,\"incrementalDistance\":0,\"cumulativeDistance\":4253,\"speed\":0,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:28:38Z\",\"parseTime\":\"2020-05-25 04:28:38\",\"unixTime\":1590337718000,\"incrementalDistance\":4,\"cumulativeDistance\":4257,\"speed\":4.8,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:28:41Z\",\"parseTime\":\"2020-05-25 04:28:41\",\"unixTime\":1590337721000,\"incrementalDistance\":14,\"cumulativeDistance\":4271,\"speed\":3.3600000000000003,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:28:56Z\",\"parseTime\":\"2020-05-25 04:28:56\",\"unixTime\":1590337736000,\"incrementalDistance\":2,\"cumulativeDistance\":4273,\"speed\":0.45,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:29:12Z\",\"parseTime\":\"2020-05-25 04:29:12\",\"unixTime\":1590337752000,\"incrementalDistance\":2,\"cumulativeDistance\":4275,\"speed\":1.0285714285714287,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:29:19Z\",\"parseTime\":\"2020-05-25 04:29:19\",\"unixTime\":1590337759000,\"incrementalDistance\":3,\"cumulativeDistance\":4278,\"speed\":1.35,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:29:27Z\",\"parseTime\":\"2020-05-25 04:29:27\",\"unixTime\":1590337767000,\"incrementalDistance\":3,\"cumulativeDistance\":4281,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:29:30Z\",\"parseTime\":\"2020-05-25 04:29:30\",\"unixTime\":1590337770000,\"incrementalDistance\":7,\"cumulativeDistance\":4288,\"speed\":5.04,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:29:35Z\",\"parseTime\":\"2020-05-25 04:29:35\",\"unixTime\":1590337775000,\"incrementalDistance\":3,\"cumulativeDistance\":4291,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:29:38Z\",\"parseTime\":\"2020-05-25 04:29:38\",\"unixTime\":1590337778000,\"incrementalDistance\":3,\"cumulativeDistance\":4294,\"speed\":1.35,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:29:46Z\",\"parseTime\":\"2020-05-25 04:29:46\",\"unixTime\":1590337786000,\"incrementalDistance\":2,\"cumulativeDistance\":4296,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:29:48Z\",\"parseTime\":\"2020-05-25 04:29:48\",\"unixTime\":1590337788000,\"incrementalDistance\":3,\"cumulativeDistance\":4299,\"speed\":2.16,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:29:53Z\",\"parseTime\":\"2020-05-25 04:29:53\",\"unixTime\":1590337793000,\"incrementalDistance\":3,\"cumulativeDistance\":4302,\"speed\":0.34838709677419355,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:30:24Z\",\"parseTime\":\"2020-05-25 04:30:24\",\"unixTime\":1590337824000,\"incrementalDistance\":3,\"cumulativeDistance\":4305,\"speed\":1.35,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:30:32Z\",\"parseTime\":\"2020-05-25 04:30:32\",\"unixTime\":1590337832000,\"incrementalDistance\":2,\"cumulativeDistance\":4307,\"speed\":2.4,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:30:35Z\",\"parseTime\":\"2020-05-25 04:30:35\",\"unixTime\":1590337835000,\"incrementalDistance\":4,\"cumulativeDistance\":4311,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:30:39Z\",\"parseTime\":\"2020-05-25 04:30:39\",\"unixTime\":1590337839000,\"incrementalDistance\":1,\"cumulativeDistance\":4312,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:30:40Z\",\"parseTime\":\"2020-05-25 04:30:40\",\"unixTime\":1590337840000,\"incrementalDistance\":1,\"cumulativeDistance\":4313,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:30:41Z\",\"parseTime\":\"2020-05-25 04:30:41\",\"unixTime\":1590337841000,\"incrementalDistance\":5,\"cumulativeDistance\":4318,\"speed\":6,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:30:44Z\",\"parseTime\":\"2020-05-25 04:30:44\",\"unixTime\":1590337844000,\"incrementalDistance\":16,\"cumulativeDistance\":4334,\"speed\":7.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:30:52Z\",\"parseTime\":\"2020-05-25 04:30:52\",\"unixTime\":1590337852000,\"incrementalDistance\":2,\"cumulativeDistance\":4336,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:30:54Z\",\"parseTime\":\"2020-05-25 04:30:54\",\"unixTime\":1590337854000,\"incrementalDistance\":1,\"cumulativeDistance\":4337,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:30:55Z\",\"parseTime\":\"2020-05-25 04:30:55\",\"unixTime\":1590337855000,\"incrementalDistance\":3,\"cumulativeDistance\":4340,\"speed\":5.4,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:30:57Z\",\"parseTime\":\"2020-05-25 04:30:57\",\"unixTime\":1590337857000,\"incrementalDistance\":6,\"cumulativeDistance\":4346,\"speed\":4.32,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:31:02Z\",\"parseTime\":\"2020-05-25 04:31:02\",\"unixTime\":1590337862000,\"incrementalDistance\":2,\"cumulativeDistance\":4348,\"speed\":2.4,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:31:05Z\",\"parseTime\":\"2020-05-25 04:31:05\",\"unixTime\":1590337865000,\"incrementalDistance\":12,\"cumulativeDistance\":4360,\"speed\":7.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:31:11Z\",\"parseTime\":\"2020-05-25 04:31:11\",\"unixTime\":1590337871000,\"incrementalDistance\":6,\"cumulativeDistance\":4366,\"speed\":5.4,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:31:15Z\",\"parseTime\":\"2020-05-25 04:31:15\",\"unixTime\":1590337875000,\"incrementalDistance\":2,\"cumulativeDistance\":4368,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:31:17Z\",\"parseTime\":\"2020-05-25 04:31:17\",\"unixTime\":1590337877000,\"incrementalDistance\":2,\"cumulativeDistance\":4370,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:31:19Z\",\"parseTime\":\"2020-05-25 04:31:19\",\"unixTime\":1590337879000,\"incrementalDistance\":1,\"cumulativeDistance\":4371,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:31:20Z\",\"parseTime\":\"2020-05-25 04:31:20\",\"unixTime\":1590337880000,\"incrementalDistance\":5,\"cumulativeDistance\":4376,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:31:25Z\",\"parseTime\":\"2020-05-25 04:31:25\",\"unixTime\":1590337885000,\"incrementalDistance\":10,\"cumulativeDistance\":4386,\"speed\":3,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:31:37Z\",\"parseTime\":\"2020-05-25 04:31:37\",\"unixTime\":1590337897000,\"incrementalDistance\":5,\"cumulativeDistance\":4391,\"speed\":0.6923076923076924,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:32:03Z\",\"parseTime\":\"2020-05-25 04:32:03\",\"unixTime\":1590337923000,\"incrementalDistance\":2,\"cumulativeDistance\":4393,\"speed\":2.4,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:32:06Z\",\"parseTime\":\"2020-05-25 04:32:06\",\"unixTime\":1590337926000,\"incrementalDistance\":7,\"cumulativeDistance\":4400,\"speed\":6.3,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:32:10Z\",\"parseTime\":\"2020-05-25 04:32:10\",\"unixTime\":1590337930000,\"incrementalDistance\":10,\"cumulativeDistance\":4410,\"speed\":5.142857142857143,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:32:17Z\",\"parseTime\":\"2020-05-25 04:32:17\",\"unixTime\":1590337937000,\"incrementalDistance\":8,\"cumulativeDistance\":4418,\"speed\":9.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:32:20Z\",\"parseTime\":\"2020-05-25 04:32:20\",\"unixTime\":1590337940000,\"incrementalDistance\":40,\"cumulativeDistance\":4458,\"speed\":18,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:32:28Z\",\"parseTime\":\"2020-05-25 04:32:28\",\"unixTime\":1590337948000,\"incrementalDistance\":6,\"cumulativeDistance\":4464,\"speed\":21.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:32:29Z\",\"parseTime\":\"2020-05-25 04:32:29\",\"unixTime\":1590337949000,\"incrementalDistance\":13,\"cumulativeDistance\":4477,\"speed\":23.400000000000002,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:32:31Z\",\"parseTime\":\"2020-05-25 04:32:31\",\"unixTime\":1590337951000,\"incrementalDistance\":7,\"cumulativeDistance\":4484,\"speed\":25.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:32:32Z\",\"parseTime\":\"2020-05-25 04:32:32\",\"unixTime\":1590337952000,\"incrementalDistance\":12,\"cumulativeDistance\":4496,\"speed\":21.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:32:34Z\",\"parseTime\":\"2020-05-25 04:32:34\",\"unixTime\":1590337954000,\"incrementalDistance\":8,\"cumulativeDistance\":4504,\"speed\":14.4,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:32:36Z\",\"parseTime\":\"2020-05-25 04:32:36\",\"unixTime\":1590337956000,\"incrementalDistance\":3,\"cumulativeDistance\":4507,\"speed\":5.4,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:32:38Z\",\"parseTime\":\"2020-05-25 04:32:38\",\"unixTime\":1590337958000,\"incrementalDistance\":2,\"cumulativeDistance\":4509,\"speed\":7.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:32:39Z\",\"parseTime\":\"2020-05-25 04:32:39\",\"unixTime\":1590337959000,\"incrementalDistance\":2,\"cumulativeDistance\":4511,\"speed\":7.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:32:40Z\",\"parseTime\":\"2020-05-25 04:32:40\",\"unixTime\":1590337960000,\"incrementalDistance\":14,\"cumulativeDistance\":4525,\"speed\":12.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:32:44Z\",\"parseTime\":\"2020-05-25 04:32:44\",\"unixTime\":1590337964000,\"incrementalDistance\":4,\"cumulativeDistance\":4529,\"speed\":7.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:32:46Z\",\"parseTime\":\"2020-05-25 04:32:46\",\"unixTime\":1590337966000,\"incrementalDistance\":2,\"cumulativeDistance\":4531,\"speed\":7.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:32:47Z\",\"parseTime\":\"2020-05-25 04:32:47\",\"unixTime\":1590337967000,\"incrementalDistance\":2,\"cumulativeDistance\":4533,\"speed\":7.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:32:48Z\",\"parseTime\":\"2020-05-25 04:32:48\",\"unixTime\":1590337968000,\"incrementalDistance\":13,\"cumulativeDistance\":4546,\"speed\":7.8,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:32:54Z\",\"parseTime\":\"2020-05-25 04:32:54\",\"unixTime\":1590337974000,\"incrementalDistance\":5,\"cumulativeDistance\":4551,\"speed\":9,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:32:56Z\",\"parseTime\":\"2020-05-25 04:32:56\",\"unixTime\":1590337976000,\"incrementalDistance\":10,\"cumulativeDistance\":4561,\"speed\":6,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:33:02Z\",\"parseTime\":\"2020-05-25 04:33:02\",\"unixTime\":1590337982000,\"incrementalDistance\":3,\"cumulativeDistance\":4564,\"speed\":5.4,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:33:04Z\",\"parseTime\":\"2020-05-25 04:33:04\",\"unixTime\":1590337984000,\"incrementalDistance\":1,\"cumulativeDistance\":4565,\"speed\":1.8,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:33:06Z\",\"parseTime\":\"2020-05-25 04:33:06\",\"unixTime\":1590337986000,\"incrementalDistance\":7,\"cumulativeDistance\":4572,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:33:13Z\",\"parseTime\":\"2020-05-25 04:33:13\",\"unixTime\":1590337993000,\"incrementalDistance\":23,\"cumulativeDistance\":4595,\"speed\":6.369230769230769,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:33:26Z\",\"parseTime\":\"2020-05-25 04:33:26\",\"unixTime\":1590338006000,\"incrementalDistance\":4,\"cumulativeDistance\":4599,\"speed\":7.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:33:28Z\",\"parseTime\":\"2020-05-25 04:33:28\",\"unixTime\":1590338008000,\"incrementalDistance\":3,\"cumulativeDistance\":4602,\"speed\":2.7,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:33:32Z\",\"parseTime\":\"2020-05-25 04:33:32\",\"unixTime\":1590338012000,\"incrementalDistance\":2,\"cumulativeDistance\":4604,\"speed\":7.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:33:33Z\",\"parseTime\":\"2020-05-25 04:33:33\",\"unixTime\":1590338013000,\"incrementalDistance\":1,\"cumulativeDistance\":4605,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:33:34Z\",\"parseTime\":\"2020-05-25 04:33:34\",\"unixTime\":1590338014000,\"incrementalDistance\":7,\"cumulativeDistance\":4612,\"speed\":2.7,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:33:42Z\",\"parseTime\":\"2020-05-25 04:33:42\",\"unixTime\":1590338022000,\"incrementalDistance\":4,\"cumulativeDistance\":4616,\"speed\":1.3090909090909089,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:33:53Z\",\"parseTime\":\"2020-05-25 04:33:53\",\"unixTime\":1590338033000,\"incrementalDistance\":0,\"cumulativeDistance\":4616,\"speed\":0,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:33:56Z\",\"parseTime\":\"2020-05-25 04:33:56\",\"unixTime\":1590338036000,\"incrementalDistance\":1,\"cumulativeDistance\":4617,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:33:57Z\",\"parseTime\":\"2020-05-25 04:33:57\",\"unixTime\":1590338037000,\"incrementalDistance\":0,\"cumulativeDistance\":4617,\"speed\":0,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:33:58Z\",\"parseTime\":\"2020-05-25 04:33:58\",\"unixTime\":1590338038000,\"incrementalDistance\":1,\"cumulativeDistance\":4618,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:33:59Z\",\"parseTime\":\"2020-05-25 04:33:59\",\"unixTime\":1590338039000,\"incrementalDistance\":2,\"cumulativeDistance\":4620,\"speed\":1.4400000000000002,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:34:04Z\",\"parseTime\":\"2020-05-25 04:34:04\",\"unixTime\":1590338044000,\"incrementalDistance\":1,\"cumulativeDistance\":4621,\"speed\":1.8,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:34:06Z\",\"parseTime\":\"2020-05-25 04:34:06\",\"unixTime\":1590338046000,\"incrementalDistance\":3,\"cumulativeDistance\":4624,\"speed\":1.35,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:34:14Z\",\"parseTime\":\"2020-05-25 04:34:14\",\"unixTime\":1590338054000,\"incrementalDistance\":1,\"cumulativeDistance\":4625,\"speed\":0.45,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:34:22Z\",\"parseTime\":\"2020-05-25 04:34:22\",\"unixTime\":1590338062000,\"incrementalDistance\":1,\"cumulativeDistance\":4626,\"speed\":0.7200000000000001,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:34:27Z\",\"parseTime\":\"2020-05-25 04:34:27\",\"unixTime\":1590338067000,\"incrementalDistance\":1,\"cumulativeDistance\":4627,\"speed\":0.9,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:34:31Z\",\"parseTime\":\"2020-05-25 04:34:31\",\"unixTime\":1590338071000,\"incrementalDistance\":3,\"cumulativeDistance\":4630,\"speed\":1.35,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:34:39Z\",\"parseTime\":\"2020-05-25 04:34:39\",\"unixTime\":1590338079000,\"incrementalDistance\":7,\"cumulativeDistance\":4637,\"speed\":2.52,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:34:49Z\",\"parseTime\":\"2020-05-25 04:34:49\",\"unixTime\":1590338089000,\"incrementalDistance\":23,\"cumulativeDistance\":4660,\"speed\":5.914285714285715,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:35:03Z\",\"parseTime\":\"2020-05-25 04:35:03\",\"unixTime\":1590338103000,\"incrementalDistance\":5,\"cumulativeDistance\":4665,\"speed\":18,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:35:04Z\",\"parseTime\":\"2020-05-25 04:35:04\",\"unixTime\":1590338104000,\"incrementalDistance\":6,\"cumulativeDistance\":4671,\"speed\":21.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:35:05Z\",\"parseTime\":\"2020-05-25 04:35:05\",\"unixTime\":1590338105000,\"incrementalDistance\":14,\"cumulativeDistance\":4685,\"speed\":50.4,\"isWave\":true},{\"originalTime\":\"2020-05-25T04:35:06Z\",\"parseTime\":\"2020-05-25 04:35:06\",\"unixTime\":1590338106000,\"incrementalDistance\":0,\"cumulativeDistance\":4685,\"speed\":0,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:35:07Z\",\"parseTime\":\"2020-05-25 04:35:07\",\"unixTime\":1590338107000,\"incrementalDistance\":54,\"cumulativeDistance\":4739,\"speed\":24.3,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:35:15Z\",\"parseTime\":\"2020-05-25 04:35:15\",\"unixTime\":1590338115000,\"incrementalDistance\":7,\"cumulativeDistance\":4746,\"speed\":25.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:35:16Z\",\"parseTime\":\"2020-05-25 04:35:16\",\"unixTime\":1590338116000,\"incrementalDistance\":7,\"cumulativeDistance\":4753,\"speed\":25.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:35:17Z\",\"parseTime\":\"2020-05-25 04:35:17\",\"unixTime\":1590338117000,\"incrementalDistance\":3,\"cumulativeDistance\":4756,\"speed\":10.8,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:35:18Z\",\"parseTime\":\"2020-05-25 04:35:18\",\"unixTime\":1590338118000,\"incrementalDistance\":7,\"cumulativeDistance\":4763,\"speed\":6.3,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:35:22Z\",\"parseTime\":\"2020-05-25 04:35:22\",\"unixTime\":1590338122000,\"incrementalDistance\":2,\"cumulativeDistance\":4765,\"speed\":7.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:35:23Z\",\"parseTime\":\"2020-05-25 04:35:23\",\"unixTime\":1590338123000,\"incrementalDistance\":9,\"cumulativeDistance\":4774,\"speed\":16.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:35:25Z\",\"parseTime\":\"2020-05-25 04:35:25\",\"unixTime\":1590338125000,\"incrementalDistance\":6,\"cumulativeDistance\":4780,\"speed\":21.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:35:26Z\",\"parseTime\":\"2020-05-25 04:35:26\",\"unixTime\":1590338126000,\"incrementalDistance\":4,\"cumulativeDistance\":4784,\"speed\":14.4,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:35:27Z\",\"parseTime\":\"2020-05-25 04:35:27\",\"unixTime\":1590338127000,\"incrementalDistance\":4,\"cumulativeDistance\":4788,\"speed\":7.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:35:29Z\",\"parseTime\":\"2020-05-25 04:35:29\",\"unixTime\":1590338129000,\"incrementalDistance\":4,\"cumulativeDistance\":4792,\"speed\":14.4,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:35:30Z\",\"parseTime\":\"2020-05-25 04:35:30\",\"unixTime\":1590338130000,\"incrementalDistance\":16,\"cumulativeDistance\":4808,\"speed\":14.4,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:35:34Z\",\"parseTime\":\"2020-05-25 04:35:34\",\"unixTime\":1590338134000,\"incrementalDistance\":3,\"cumulativeDistance\":4811,\"speed\":10.8,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:35:35Z\",\"parseTime\":\"2020-05-25 04:35:35\",\"unixTime\":1590338135000,\"incrementalDistance\":13,\"cumulativeDistance\":4824,\"speed\":9.360000000000001,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:35:40Z\",\"parseTime\":\"2020-05-25 04:35:40\",\"unixTime\":1590338140000,\"incrementalDistance\":3,\"cumulativeDistance\":4827,\"speed\":10.8,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:35:41Z\",\"parseTime\":\"2020-05-25 04:35:41\",\"unixTime\":1590338141000,\"incrementalDistance\":2,\"cumulativeDistance\":4829,\"speed\":7.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:35:42Z\",\"parseTime\":\"2020-05-25 04:35:42\",\"unixTime\":1590338142000,\"incrementalDistance\":1,\"cumulativeDistance\":4830,\"speed\":1.8,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:35:44Z\",\"parseTime\":\"2020-05-25 04:35:44\",\"unixTime\":1590338144000,\"incrementalDistance\":4,\"cumulativeDistance\":4834,\"speed\":4.8,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:35:47Z\",\"parseTime\":\"2020-05-25 04:35:47\",\"unixTime\":1590338147000,\"incrementalDistance\":1,\"cumulativeDistance\":4835,\"speed\":1.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:35:50Z\",\"parseTime\":\"2020-05-25 04:35:50\",\"unixTime\":1590338150000,\"incrementalDistance\":0,\"cumulativeDistance\":4835,\"speed\":0,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:35:51Z\",\"parseTime\":\"2020-05-25 04:35:51\",\"unixTime\":1590338151000,\"incrementalDistance\":6,\"cumulativeDistance\":4841,\"speed\":2.7,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:35:59Z\",\"parseTime\":\"2020-05-25 04:35:59\",\"unixTime\":1590338159000,\"incrementalDistance\":32,\"cumulativeDistance\":4873,\"speed\":8.861538461538462,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:36:12Z\",\"parseTime\":\"2020-05-25 04:36:12\",\"unixTime\":1590338172000,\"incrementalDistance\":10,\"cumulativeDistance\":4883,\"speed\":6,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:36:18Z\",\"parseTime\":\"2020-05-25 04:36:18\",\"unixTime\":1590338178000,\"incrementalDistance\":7,\"cumulativeDistance\":4890,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:36:25Z\",\"parseTime\":\"2020-05-25 04:36:25\",\"unixTime\":1590338185000,\"incrementalDistance\":8,\"cumulativeDistance\":4898,\"speed\":4.114285714285715,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:36:32Z\",\"parseTime\":\"2020-05-25 04:36:32\",\"unixTime\":1590338192000,\"incrementalDistance\":3,\"cumulativeDistance\":4901,\"speed\":1.8,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:36:38Z\",\"parseTime\":\"2020-05-25 04:36:38\",\"unixTime\":1590338198000,\"incrementalDistance\":7,\"cumulativeDistance\":4908,\"speed\":2.52,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:36:48Z\",\"parseTime\":\"2020-05-25 04:36:48\",\"unixTime\":1590338208000,\"incrementalDistance\":16,\"cumulativeDistance\":4924,\"speed\":5.760000000000001,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:36:58Z\",\"parseTime\":\"2020-05-25 04:36:58\",\"unixTime\":1590338218000,\"incrementalDistance\":6,\"cumulativeDistance\":4930,\"speed\":1.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:37:16Z\",\"parseTime\":\"2020-05-25 04:37:16\",\"unixTime\":1590338236000,\"incrementalDistance\":13,\"cumulativeDistance\":4943,\"speed\":3.9,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:37:28Z\",\"parseTime\":\"2020-05-25 04:37:28\",\"unixTime\":1590338248000,\"incrementalDistance\":7,\"cumulativeDistance\":4950,\"speed\":1.6800000000000002,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:37:43Z\",\"parseTime\":\"2020-05-25 04:37:43\",\"unixTime\":1590338263000,\"incrementalDistance\":6,\"cumulativeDistance\":4956,\"speed\":1.0285714285714287,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:38:04Z\",\"parseTime\":\"2020-05-25 04:38:04\",\"unixTime\":1590338284000,\"incrementalDistance\":27,\"cumulativeDistance\":4983,\"speed\":6.942857142857143,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:38:18Z\",\"parseTime\":\"2020-05-25 04:38:18\",\"unixTime\":1590338298000,\"incrementalDistance\":5,\"cumulativeDistance\":4988,\"speed\":9,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:38:20Z\",\"parseTime\":\"2020-05-25 04:38:20\",\"unixTime\":1590338300000,\"incrementalDistance\":3,\"cumulativeDistance\":4991,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:38:23Z\",\"parseTime\":\"2020-05-25 04:38:23\",\"unixTime\":1590338303000,\"incrementalDistance\":2,\"cumulativeDistance\":4993,\"speed\":2.4,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:38:26Z\",\"parseTime\":\"2020-05-25 04:38:26\",\"unixTime\":1590338306000,\"incrementalDistance\":1,\"cumulativeDistance\":4994,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:38:27Z\",\"parseTime\":\"2020-05-25 04:38:27\",\"unixTime\":1590338307000,\"incrementalDistance\":10,\"cumulativeDistance\":5004,\"speed\":4.5,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:38:35Z\",\"parseTime\":\"2020-05-25 04:38:35\",\"unixTime\":1590338315000,\"incrementalDistance\":1,\"cumulativeDistance\":5005,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:38:36Z\",\"parseTime\":\"2020-05-25 04:38:36\",\"unixTime\":1590338316000,\"incrementalDistance\":1,\"cumulativeDistance\":5006,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:38:37Z\",\"parseTime\":\"2020-05-25 04:38:37\",\"unixTime\":1590338317000,\"incrementalDistance\":1,\"cumulativeDistance\":5007,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:38:38Z\",\"parseTime\":\"2020-05-25 04:38:38\",\"unixTime\":1590338318000,\"incrementalDistance\":4,\"cumulativeDistance\":5011,\"speed\":4.8,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:38:41Z\",\"parseTime\":\"2020-05-25 04:38:41\",\"unixTime\":1590338321000,\"incrementalDistance\":0,\"cumulativeDistance\":5011,\"speed\":0,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:38:42Z\",\"parseTime\":\"2020-05-25 04:38:42\",\"unixTime\":1590338322000,\"incrementalDistance\":4,\"cumulativeDistance\":5015,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:38:46Z\",\"parseTime\":\"2020-05-25 04:38:46\",\"unixTime\":1590338326000,\"incrementalDistance\":3,\"cumulativeDistance\":5018,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:38:49Z\",\"parseTime\":\"2020-05-25 04:38:49\",\"unixTime\":1590338329000,\"incrementalDistance\":2,\"cumulativeDistance\":5020,\"speed\":2.4,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:38:52Z\",\"parseTime\":\"2020-05-25 04:38:52\",\"unixTime\":1590338332000,\"incrementalDistance\":1,\"cumulativeDistance\":5021,\"speed\":0.3272727272727272,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:39:03Z\",\"parseTime\":\"2020-05-25 04:39:03\",\"unixTime\":1590338343000,\"incrementalDistance\":1,\"cumulativeDistance\":5022,\"speed\":0.7200000000000001,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:39:08Z\",\"parseTime\":\"2020-05-25 04:39:08\",\"unixTime\":1590338348000,\"incrementalDistance\":3,\"cumulativeDistance\":5025,\"speed\":1.5428571428571427,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:39:15Z\",\"parseTime\":\"2020-05-25 04:39:15\",\"unixTime\":1590338355000,\"incrementalDistance\":3,\"cumulativeDistance\":5028,\"speed\":1.8,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:39:21Z\",\"parseTime\":\"2020-05-25 04:39:21\",\"unixTime\":1590338361000,\"incrementalDistance\":1,\"cumulativeDistance\":5029,\"speed\":1.8,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:39:23Z\",\"parseTime\":\"2020-05-25 04:39:23\",\"unixTime\":1590338363000,\"incrementalDistance\":0,\"cumulativeDistance\":5029,\"speed\":0,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:39:24Z\",\"parseTime\":\"2020-05-25 04:39:24\",\"unixTime\":1590338364000,\"incrementalDistance\":1,\"cumulativeDistance\":5030,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:39:25Z\",\"parseTime\":\"2020-05-25 04:39:25\",\"unixTime\":1590338365000,\"incrementalDistance\":0,\"cumulativeDistance\":5030,\"speed\":0,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:39:26Z\",\"parseTime\":\"2020-05-25 04:39:26\",\"unixTime\":1590338366000,\"incrementalDistance\":1,\"cumulativeDistance\":5031,\"speed\":1.8,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:39:28Z\",\"parseTime\":\"2020-05-25 04:39:28\",\"unixTime\":1590338368000,\"incrementalDistance\":1,\"cumulativeDistance\":5032,\"speed\":1.8,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:39:30Z\",\"parseTime\":\"2020-05-25 04:39:30\",\"unixTime\":1590338370000,\"incrementalDistance\":1,\"cumulativeDistance\":5033,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:39:31Z\",\"parseTime\":\"2020-05-25 04:39:31\",\"unixTime\":1590338371000,\"incrementalDistance\":1,\"cumulativeDistance\":5034,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:39:32Z\",\"parseTime\":\"2020-05-25 04:39:32\",\"unixTime\":1590338372000,\"incrementalDistance\":7,\"cumulativeDistance\":5041,\"speed\":2.290909090909091,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:39:43Z\",\"parseTime\":\"2020-05-25 04:39:43\",\"unixTime\":1590338383000,\"incrementalDistance\":12,\"cumulativeDistance\":5053,\"speed\":4.8,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:39:52Z\",\"parseTime\":\"2020-05-25 04:39:52\",\"unixTime\":1590338392000,\"incrementalDistance\":10,\"cumulativeDistance\":5063,\"speed\":1.6363636363636362,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:40:14Z\",\"parseTime\":\"2020-05-25 04:40:14\",\"unixTime\":1590338414000,\"incrementalDistance\":3,\"cumulativeDistance\":5066,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:40:17Z\",\"parseTime\":\"2020-05-25 04:40:17\",\"unixTime\":1590338417000,\"incrementalDistance\":5,\"cumulativeDistance\":5071,\"speed\":4.5,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:40:21Z\",\"parseTime\":\"2020-05-25 04:40:21\",\"unixTime\":1590338421000,\"incrementalDistance\":1,\"cumulativeDistance\":5072,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:40:22Z\",\"parseTime\":\"2020-05-25 04:40:22\",\"unixTime\":1590338422000,\"incrementalDistance\":5,\"cumulativeDistance\":5077,\"speed\":2.7,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:40:30Z\",\"parseTime\":\"2020-05-25 04:40:30\",\"unixTime\":1590338430000,\"incrementalDistance\":10,\"cumulativeDistance\":5087,\"speed\":1.3333333333333333,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:40:57Z\",\"parseTime\":\"2020-05-25 04:40:57\",\"unixTime\":1590338457000,\"incrementalDistance\":1,\"cumulativeDistance\":5088,\"speed\":0.7200000000000001,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:41:02Z\",\"parseTime\":\"2020-05-25 04:41:02\",\"unixTime\":1590338462000,\"incrementalDistance\":7,\"cumulativeDistance\":5095,\"speed\":0.9333333333333333,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:41:29Z\",\"parseTime\":\"2020-05-25 04:41:29\",\"unixTime\":1590338489000,\"incrementalDistance\":1,\"cumulativeDistance\":5096,\"speed\":0.45,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:41:37Z\",\"parseTime\":\"2020-05-25 04:41:37\",\"unixTime\":1590338497000,\"incrementalDistance\":4,\"cumulativeDistance\":5100,\"speed\":0.96,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:41:52Z\",\"parseTime\":\"2020-05-25 04:41:52\",\"unixTime\":1590338512000,\"incrementalDistance\":3,\"cumulativeDistance\":5103,\"speed\":0.9818181818181819,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:42:03Z\",\"parseTime\":\"2020-05-25 04:42:03\",\"unixTime\":1590338523000,\"incrementalDistance\":3,\"cumulativeDistance\":5106,\"speed\":1.08,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:42:13Z\",\"parseTime\":\"2020-05-25 04:42:13\",\"unixTime\":1590338533000,\"incrementalDistance\":2,\"cumulativeDistance\":5108,\"speed\":7.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:42:14Z\",\"parseTime\":\"2020-05-25 04:42:14\",\"unixTime\":1590338534000,\"incrementalDistance\":11,\"cumulativeDistance\":5119,\"speed\":13.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:42:17Z\",\"parseTime\":\"2020-05-25 04:42:17\",\"unixTime\":1590338537000,\"incrementalDistance\":12,\"cumulativeDistance\":5131,\"speed\":21.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:42:19Z\",\"parseTime\":\"2020-05-25 04:42:19\",\"unixTime\":1590338539000,\"incrementalDistance\":6,\"cumulativeDistance\":5137,\"speed\":21.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:42:20Z\",\"parseTime\":\"2020-05-25 04:42:20\",\"unixTime\":1590338540000,\"incrementalDistance\":6,\"cumulativeDistance\":5143,\"speed\":21.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:42:21Z\",\"parseTime\":\"2020-05-25 04:42:21\",\"unixTime\":1590338541000,\"incrementalDistance\":12,\"cumulativeDistance\":5155,\"speed\":21.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:42:23Z\",\"parseTime\":\"2020-05-25 04:42:23\",\"unixTime\":1590338543000,\"incrementalDistance\":16,\"cumulativeDistance\":5171,\"speed\":19.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:42:26Z\",\"parseTime\":\"2020-05-25 04:42:26\",\"unixTime\":1590338546000,\"incrementalDistance\":2,\"cumulativeDistance\":5173,\"speed\":7.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:42:27Z\",\"parseTime\":\"2020-05-25 04:42:27\",\"unixTime\":1590338547000,\"incrementalDistance\":1,\"cumulativeDistance\":5174,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:42:28Z\",\"parseTime\":\"2020-05-25 04:42:28\",\"unixTime\":1590338548000,\"incrementalDistance\":0,\"cumulativeDistance\":5174,\"speed\":0,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:42:29Z\",\"parseTime\":\"2020-05-25 04:42:29\",\"unixTime\":1590338549000,\"incrementalDistance\":2,\"cumulativeDistance\":5176,\"speed\":2.4,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:42:32Z\",\"parseTime\":\"2020-05-25 04:42:32\",\"unixTime\":1590338552000,\"incrementalDistance\":2,\"cumulativeDistance\":5178,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:42:34Z\",\"parseTime\":\"2020-05-25 04:42:34\",\"unixTime\":1590338554000,\"incrementalDistance\":6,\"cumulativeDistance\":5184,\"speed\":4.32,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:42:39Z\",\"parseTime\":\"2020-05-25 04:42:39\",\"unixTime\":1590338559000,\"incrementalDistance\":2,\"cumulativeDistance\":5186,\"speed\":7.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:42:40Z\",\"parseTime\":\"2020-05-25 04:42:40\",\"unixTime\":1590338560000,\"incrementalDistance\":4,\"cumulativeDistance\":5190,\"speed\":7.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:42:42Z\",\"parseTime\":\"2020-05-25 04:42:42\",\"unixTime\":1590338562000,\"incrementalDistance\":2,\"cumulativeDistance\":5192,\"speed\":7.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:42:43Z\",\"parseTime\":\"2020-05-25 04:42:43\",\"unixTime\":1590338563000,\"incrementalDistance\":3,\"cumulativeDistance\":5195,\"speed\":5.4,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:42:45Z\",\"parseTime\":\"2020-05-25 04:42:45\",\"unixTime\":1590338565000,\"incrementalDistance\":1,\"cumulativeDistance\":5196,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:42:46Z\",\"parseTime\":\"2020-05-25 04:42:46\",\"unixTime\":1590338566000,\"incrementalDistance\":2,\"cumulativeDistance\":5198,\"speed\":7.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:42:47Z\",\"parseTime\":\"2020-05-25 04:42:47\",\"unixTime\":1590338567000,\"incrementalDistance\":2,\"cumulativeDistance\":5200,\"speed\":7.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:42:48Z\",\"parseTime\":\"2020-05-25 04:42:48\",\"unixTime\":1590338568000,\"incrementalDistance\":5,\"cumulativeDistance\":5205,\"speed\":6,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:42:51Z\",\"parseTime\":\"2020-05-25 04:42:51\",\"unixTime\":1590338571000,\"incrementalDistance\":2,\"cumulativeDistance\":5207,\"speed\":7.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:42:52Z\",\"parseTime\":\"2020-05-25 04:42:52\",\"unixTime\":1590338572000,\"incrementalDistance\":2,\"cumulativeDistance\":5209,\"speed\":7.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:42:53Z\",\"parseTime\":\"2020-05-25 04:42:53\",\"unixTime\":1590338573000,\"incrementalDistance\":2,\"cumulativeDistance\":5211,\"speed\":7.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:42:54Z\",\"parseTime\":\"2020-05-25 04:42:54\",\"unixTime\":1590338574000,\"incrementalDistance\":2,\"cumulativeDistance\":5213,\"speed\":7.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:42:55Z\",\"parseTime\":\"2020-05-25 04:42:55\",\"unixTime\":1590338575000,\"incrementalDistance\":2,\"cumulativeDistance\":5215,\"speed\":7.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:42:56Z\",\"parseTime\":\"2020-05-25 04:42:56\",\"unixTime\":1590338576000,\"incrementalDistance\":1,\"cumulativeDistance\":5216,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:42:57Z\",\"parseTime\":\"2020-05-25 04:42:57\",\"unixTime\":1590338577000,\"incrementalDistance\":3,\"cumulativeDistance\":5219,\"speed\":5.4,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:42:59Z\",\"parseTime\":\"2020-05-25 04:42:59\",\"unixTime\":1590338579000,\"incrementalDistance\":6,\"cumulativeDistance\":5225,\"speed\":7.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:43:02Z\",\"parseTime\":\"2020-05-25 04:43:02\",\"unixTime\":1590338582000,\"incrementalDistance\":2,\"cumulativeDistance\":5227,\"speed\":7.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:43:03Z\",\"parseTime\":\"2020-05-25 04:43:03\",\"unixTime\":1590338583000,\"incrementalDistance\":10,\"cumulativeDistance\":5237,\"speed\":4.5,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:43:11Z\",\"parseTime\":\"2020-05-25 04:43:11\",\"unixTime\":1590338591000,\"incrementalDistance\":6,\"cumulativeDistance\":5243,\"speed\":2.4,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:43:20Z\",\"parseTime\":\"2020-05-25 04:43:20\",\"unixTime\":1590338600000,\"incrementalDistance\":12,\"cumulativeDistance\":5255,\"speed\":5.4,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:43:28Z\",\"parseTime\":\"2020-05-25 04:43:28\",\"unixTime\":1590338608000,\"incrementalDistance\":4,\"cumulativeDistance\":5259,\"speed\":0.5333333333333333,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:43:55Z\",\"parseTime\":\"2020-05-25 04:43:55\",\"unixTime\":1590338635000,\"incrementalDistance\":0,\"cumulativeDistance\":5259,\"speed\":0,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:43:56Z\",\"parseTime\":\"2020-05-25 04:43:56\",\"unixTime\":1590338636000,\"incrementalDistance\":0,\"cumulativeDistance\":5259,\"speed\":0,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:43:58Z\",\"parseTime\":\"2020-05-25 04:43:58\",\"unixTime\":1590338638000,\"incrementalDistance\":3,\"cumulativeDistance\":5262,\"speed\":0.49090909090909096,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:44:20Z\",\"parseTime\":\"2020-05-25 04:44:20\",\"unixTime\":1590338660000,\"incrementalDistance\":2,\"cumulativeDistance\":5264,\"speed\":0.9,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:44:28Z\",\"parseTime\":\"2020-05-25 04:44:28\",\"unixTime\":1590338668000,\"incrementalDistance\":2,\"cumulativeDistance\":5266,\"speed\":1.4400000000000002,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:44:33Z\",\"parseTime\":\"2020-05-25 04:44:33\",\"unixTime\":1590338673000,\"incrementalDistance\":3,\"cumulativeDistance\":5269,\"speed\":1.35,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:44:41Z\",\"parseTime\":\"2020-05-25 04:44:41\",\"unixTime\":1590338681000,\"incrementalDistance\":1,\"cumulativeDistance\":5270,\"speed\":0.4,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:44:50Z\",\"parseTime\":\"2020-05-25 04:44:50\",\"unixTime\":1590338690000,\"incrementalDistance\":1,\"cumulativeDistance\":5271,\"speed\":0.4,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:44:59Z\",\"parseTime\":\"2020-05-25 04:44:59\",\"unixTime\":1590338699000,\"incrementalDistance\":0,\"cumulativeDistance\":5271,\"speed\":0,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:45:01Z\",\"parseTime\":\"2020-05-25 04:45:01\",\"unixTime\":1590338701000,\"incrementalDistance\":0,\"cumulativeDistance\":5271,\"speed\":0,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:45:06Z\",\"parseTime\":\"2020-05-25 04:45:06\",\"unixTime\":1590338706000,\"incrementalDistance\":1,\"cumulativeDistance\":5272,\"speed\":1.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:45:09Z\",\"parseTime\":\"2020-05-25 04:45:09\",\"unixTime\":1590338709000,\"incrementalDistance\":2,\"cumulativeDistance\":5274,\"speed\":0.6545454545454544,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:45:20Z\",\"parseTime\":\"2020-05-25 04:45:20\",\"unixTime\":1590338720000,\"incrementalDistance\":4,\"cumulativeDistance\":5278,\"speed\":2.4,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:45:26Z\",\"parseTime\":\"2020-05-25 04:45:26\",\"unixTime\":1590338726000,\"incrementalDistance\":4,\"cumulativeDistance\":5282,\"speed\":1.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:45:35Z\",\"parseTime\":\"2020-05-25 04:45:35\",\"unixTime\":1590338735000,\"incrementalDistance\":3,\"cumulativeDistance\":5285,\"speed\":2.16,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:45:40Z\",\"parseTime\":\"2020-05-25 04:45:40\",\"unixTime\":1590338740000,\"incrementalDistance\":3,\"cumulativeDistance\":5288,\"speed\":0.8307692307692307,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:45:53Z\",\"parseTime\":\"2020-05-25 04:45:53\",\"unixTime\":1590338753000,\"incrementalDistance\":9,\"cumulativeDistance\":5297,\"speed\":0.7200000000000001,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:46:38Z\",\"parseTime\":\"2020-05-25 04:46:38\",\"unixTime\":1590338798000,\"incrementalDistance\":11,\"cumulativeDistance\":5308,\"speed\":6.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:46:44Z\",\"parseTime\":\"2020-05-25 04:46:44\",\"unixTime\":1590338804000,\"incrementalDistance\":6,\"cumulativeDistance\":5314,\"speed\":7.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:46:47Z\",\"parseTime\":\"2020-05-25 04:46:47\",\"unixTime\":1590338807000,\"incrementalDistance\":4,\"cumulativeDistance\":5318,\"speed\":4.8,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:46:50Z\",\"parseTime\":\"2020-05-25 04:46:50\",\"unixTime\":1590338810000,\"incrementalDistance\":2,\"cumulativeDistance\":5320,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:46:52Z\",\"parseTime\":\"2020-05-25 04:46:52\",\"unixTime\":1590338812000,\"incrementalDistance\":1,\"cumulativeDistance\":5321,\"speed\":1.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:46:55Z\",\"parseTime\":\"2020-05-25 04:46:55\",\"unixTime\":1590338815000,\"incrementalDistance\":6,\"cumulativeDistance\":5327,\"speed\":1.8,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:47:07Z\",\"parseTime\":\"2020-05-25 04:47:07\",\"unixTime\":1590338827000,\"incrementalDistance\":2,\"cumulativeDistance\":5329,\"speed\":7.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:47:08Z\",\"parseTime\":\"2020-05-25 04:47:08\",\"unixTime\":1590338828000,\"incrementalDistance\":1,\"cumulativeDistance\":5330,\"speed\":1.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:47:11Z\",\"parseTime\":\"2020-05-25 04:47:11\",\"unixTime\":1590338831000,\"incrementalDistance\":4,\"cumulativeDistance\":5334,\"speed\":7.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:47:13Z\",\"parseTime\":\"2020-05-25 04:47:13\",\"unixTime\":1590338833000,\"incrementalDistance\":13,\"cumulativeDistance\":5347,\"speed\":7.8,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:47:19Z\",\"parseTime\":\"2020-05-25 04:47:19\",\"unixTime\":1590338839000,\"incrementalDistance\":14,\"cumulativeDistance\":5361,\"speed\":7.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:47:26Z\",\"parseTime\":\"2020-05-25 04:47:26\",\"unixTime\":1590338846000,\"incrementalDistance\":9,\"cumulativeDistance\":5370,\"speed\":4.05,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:47:34Z\",\"parseTime\":\"2020-05-25 04:47:34\",\"unixTime\":1590338854000,\"incrementalDistance\":2,\"cumulativeDistance\":5372,\"speed\":2.4,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:47:37Z\",\"parseTime\":\"2020-05-25 04:47:37\",\"unixTime\":1590338857000,\"incrementalDistance\":0,\"cumulativeDistance\":5372,\"speed\":0,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:47:39Z\",\"parseTime\":\"2020-05-25 04:47:39\",\"unixTime\":1590338859000,\"incrementalDistance\":0,\"cumulativeDistance\":5372,\"speed\":0,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:47:43Z\",\"parseTime\":\"2020-05-25 04:47:43\",\"unixTime\":1590338863000,\"incrementalDistance\":0,\"cumulativeDistance\":5372,\"speed\":0,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:47:44Z\",\"parseTime\":\"2020-05-25 04:47:44\",\"unixTime\":1590338864000,\"incrementalDistance\":0,\"cumulativeDistance\":5372,\"speed\":0,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:47:45Z\",\"parseTime\":\"2020-05-25 04:47:45\",\"unixTime\":1590338865000,\"incrementalDistance\":1,\"cumulativeDistance\":5373,\"speed\":1.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:47:48Z\",\"parseTime\":\"2020-05-25 04:47:48\",\"unixTime\":1590338868000,\"incrementalDistance\":2,\"cumulativeDistance\":5375,\"speed\":1.8,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:47:52Z\",\"parseTime\":\"2020-05-25 04:47:52\",\"unixTime\":1590338872000,\"incrementalDistance\":1,\"cumulativeDistance\":5376,\"speed\":1.8,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:47:54Z\",\"parseTime\":\"2020-05-25 04:47:54\",\"unixTime\":1590338874000,\"incrementalDistance\":3,\"cumulativeDistance\":5379,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:47:57Z\",\"parseTime\":\"2020-05-25 04:47:57\",\"unixTime\":1590338877000,\"incrementalDistance\":2,\"cumulativeDistance\":5381,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:47:59Z\",\"parseTime\":\"2020-05-25 04:47:59\",\"unixTime\":1590338879000,\"incrementalDistance\":1,\"cumulativeDistance\":5382,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:48:00Z\",\"parseTime\":\"2020-05-25 04:48:00\",\"unixTime\":1590338880000,\"incrementalDistance\":12,\"cumulativeDistance\":5394,\"speed\":4.8,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:48:09Z\",\"parseTime\":\"2020-05-25 04:48:09\",\"unixTime\":1590338889000,\"incrementalDistance\":2,\"cumulativeDistance\":5396,\"speed\":0.9,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:48:17Z\",\"parseTime\":\"2020-05-25 04:48:17\",\"unixTime\":1590338897000,\"incrementalDistance\":3,\"cumulativeDistance\":5399,\"speed\":1.8,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:48:23Z\",\"parseTime\":\"2020-05-25 04:48:23\",\"unixTime\":1590338903000,\"incrementalDistance\":4,\"cumulativeDistance\":5403,\"speed\":7.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:48:25Z\",\"parseTime\":\"2020-05-25 04:48:25\",\"unixTime\":1590338905000,\"incrementalDistance\":4,\"cumulativeDistance\":5407,\"speed\":14.4,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:48:26Z\",\"parseTime\":\"2020-05-25 04:48:26\",\"unixTime\":1590338906000,\"incrementalDistance\":5,\"cumulativeDistance\":5412,\"speed\":18,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:48:27Z\",\"parseTime\":\"2020-05-25 04:48:27\",\"unixTime\":1590338907000,\"incrementalDistance\":5,\"cumulativeDistance\":5417,\"speed\":18,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:48:28Z\",\"parseTime\":\"2020-05-25 04:48:28\",\"unixTime\":1590338908000,\"incrementalDistance\":6,\"cumulativeDistance\":5423,\"speed\":21.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:48:29Z\",\"parseTime\":\"2020-05-25 04:48:29\",\"unixTime\":1590338909000,\"incrementalDistance\":6,\"cumulativeDistance\":5429,\"speed\":21.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:48:30Z\",\"parseTime\":\"2020-05-25 04:48:30\",\"unixTime\":1590338910000,\"incrementalDistance\":6,\"cumulativeDistance\":5435,\"speed\":21.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:48:31Z\",\"parseTime\":\"2020-05-25 04:48:31\",\"unixTime\":1590338911000,\"incrementalDistance\":12,\"cumulativeDistance\":5447,\"speed\":21.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:48:33Z\",\"parseTime\":\"2020-05-25 04:48:33\",\"unixTime\":1590338913000,\"incrementalDistance\":19,\"cumulativeDistance\":5466,\"speed\":17.1,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:48:37Z\",\"parseTime\":\"2020-05-25 04:48:37\",\"unixTime\":1590338917000,\"incrementalDistance\":6,\"cumulativeDistance\":5472,\"speed\":7.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:48:40Z\",\"parseTime\":\"2020-05-25 04:48:40\",\"unixTime\":1590338920000,\"incrementalDistance\":1,\"cumulativeDistance\":5473,\"speed\":1.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:48:43Z\",\"parseTime\":\"2020-05-25 04:48:43\",\"unixTime\":1590338923000,\"incrementalDistance\":4,\"cumulativeDistance\":5477,\"speed\":7.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:48:45Z\",\"parseTime\":\"2020-05-25 04:48:45\",\"unixTime\":1590338925000,\"incrementalDistance\":12,\"cumulativeDistance\":5489,\"speed\":10.8,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:48:49Z\",\"parseTime\":\"2020-05-25 04:48:49\",\"unixTime\":1590338929000,\"incrementalDistance\":30,\"cumulativeDistance\":5519,\"speed\":4.695652173913044,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:49:12Z\",\"parseTime\":\"2020-05-25 04:49:12\",\"unixTime\":1590338952000,\"incrementalDistance\":8,\"cumulativeDistance\":5527,\"speed\":4.8,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:49:18Z\",\"parseTime\":\"2020-05-25 04:49:18\",\"unixTime\":1590338958000,\"incrementalDistance\":3,\"cumulativeDistance\":5530,\"speed\":2.7,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:49:22Z\",\"parseTime\":\"2020-05-25 04:49:22\",\"unixTime\":1590338962000,\"incrementalDistance\":15,\"cumulativeDistance\":5545,\"speed\":7.714285714285714,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:49:29Z\",\"parseTime\":\"2020-05-25 04:49:29\",\"unixTime\":1590338969000,\"incrementalDistance\":8,\"cumulativeDistance\":5553,\"speed\":5.760000000000001,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:49:34Z\",\"parseTime\":\"2020-05-25 04:49:34\",\"unixTime\":1590338974000,\"incrementalDistance\":7,\"cumulativeDistance\":5560,\"speed\":4.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:49:40Z\",\"parseTime\":\"2020-05-25 04:49:40\",\"unixTime\":1590338980000,\"incrementalDistance\":7,\"cumulativeDistance\":5567,\"speed\":2.52,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:49:50Z\",\"parseTime\":\"2020-05-25 04:49:50\",\"unixTime\":1590338990000,\"incrementalDistance\":7,\"cumulativeDistance\":5574,\"speed\":2.8,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:49:59Z\",\"parseTime\":\"2020-05-25 04:49:59\",\"unixTime\":1590338999000,\"incrementalDistance\":3,\"cumulativeDistance\":5577,\"speed\":1.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:50:08Z\",\"parseTime\":\"2020-05-25 04:50:08\",\"unixTime\":1590339008000,\"incrementalDistance\":7,\"cumulativeDistance\":5584,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:50:15Z\",\"parseTime\":\"2020-05-25 04:50:15\",\"unixTime\":1590339015000,\"incrementalDistance\":3,\"cumulativeDistance\":5587,\"speed\":2.16,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:50:20Z\",\"parseTime\":\"2020-05-25 04:50:20\",\"unixTime\":1590339020000,\"incrementalDistance\":6,\"cumulativeDistance\":5593,\"speed\":0.8640000000000001,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:50:45Z\",\"parseTime\":\"2020-05-25 04:50:45\",\"unixTime\":1590339045000,\"incrementalDistance\":3,\"cumulativeDistance\":5596,\"speed\":1.08,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:50:55Z\",\"parseTime\":\"2020-05-25 04:50:55\",\"unixTime\":1590339055000,\"incrementalDistance\":0,\"cumulativeDistance\":5596,\"speed\":0,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:50:58Z\",\"parseTime\":\"2020-05-25 04:50:58\",\"unixTime\":1590339058000,\"incrementalDistance\":1,\"cumulativeDistance\":5597,\"speed\":0.4,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:51:07Z\",\"parseTime\":\"2020-05-25 04:51:07\",\"unixTime\":1590339067000,\"incrementalDistance\":2,\"cumulativeDistance\":5599,\"speed\":1.8,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:51:11Z\",\"parseTime\":\"2020-05-25 04:51:11\",\"unixTime\":1590339071000,\"incrementalDistance\":5,\"cumulativeDistance\":5604,\"speed\":0.6206896551724137,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:51:40Z\",\"parseTime\":\"2020-05-25 04:51:40\",\"unixTime\":1590339100000,\"incrementalDistance\":1,\"cumulativeDistance\":5605,\"speed\":1.8,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:51:42Z\",\"parseTime\":\"2020-05-25 04:51:42\",\"unixTime\":1590339102000,\"incrementalDistance\":1,\"cumulativeDistance\":5606,\"speed\":0.14400000000000002,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:52:07Z\",\"parseTime\":\"2020-05-25 04:52:07\",\"unixTime\":1590339127000,\"incrementalDistance\":22,\"cumulativeDistance\":5628,\"speed\":8.799999999999999,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:52:16Z\",\"parseTime\":\"2020-05-25 04:52:16\",\"unixTime\":1590339136000,\"incrementalDistance\":4,\"cumulativeDistance\":5632,\"speed\":14.4,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:52:17Z\",\"parseTime\":\"2020-05-25 04:52:17\",\"unixTime\":1590339137000,\"incrementalDistance\":6,\"cumulativeDistance\":5638,\"speed\":21.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:52:18Z\",\"parseTime\":\"2020-05-25 04:52:18\",\"unixTime\":1590339138000,\"incrementalDistance\":5,\"cumulativeDistance\":5643,\"speed\":18,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:52:19Z\",\"parseTime\":\"2020-05-25 04:52:19\",\"unixTime\":1590339139000,\"incrementalDistance\":7,\"cumulativeDistance\":5650,\"speed\":12.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:52:21Z\",\"parseTime\":\"2020-05-25 04:52:21\",\"unixTime\":1590339141000,\"incrementalDistance\":3,\"cumulativeDistance\":5653,\"speed\":10.8,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:52:22Z\",\"parseTime\":\"2020-05-25 04:52:22\",\"unixTime\":1590339142000,\"incrementalDistance\":2,\"cumulativeDistance\":5655,\"speed\":7.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:52:23Z\",\"parseTime\":\"2020-05-25 04:52:23\",\"unixTime\":1590339143000,\"incrementalDistance\":1,\"cumulativeDistance\":5656,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:52:24Z\",\"parseTime\":\"2020-05-25 04:52:24\",\"unixTime\":1590339144000,\"incrementalDistance\":1,\"cumulativeDistance\":5657,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:52:25Z\",\"parseTime\":\"2020-05-25 04:52:25\",\"unixTime\":1590339145000,\"incrementalDistance\":0,\"cumulativeDistance\":5657,\"speed\":0,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:52:26Z\",\"parseTime\":\"2020-05-25 04:52:26\",\"unixTime\":1590339146000,\"incrementalDistance\":2,\"cumulativeDistance\":5659,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:52:28Z\",\"parseTime\":\"2020-05-25 04:52:28\",\"unixTime\":1590339148000,\"incrementalDistance\":1,\"cumulativeDistance\":5660,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:52:29Z\",\"parseTime\":\"2020-05-25 04:52:29\",\"unixTime\":1590339149000,\"incrementalDistance\":2,\"cumulativeDistance\":5662,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:52:31Z\",\"parseTime\":\"2020-05-25 04:52:31\",\"unixTime\":1590339151000,\"incrementalDistance\":1,\"cumulativeDistance\":5663,\"speed\":1.8,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:52:33Z\",\"parseTime\":\"2020-05-25 04:52:33\",\"unixTime\":1590339153000,\"incrementalDistance\":4,\"cumulativeDistance\":5667,\"speed\":2.0571428571428574,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:52:40Z\",\"parseTime\":\"2020-05-25 04:52:40\",\"unixTime\":1590339160000,\"incrementalDistance\":1,\"cumulativeDistance\":5668,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:52:41Z\",\"parseTime\":\"2020-05-25 04:52:41\",\"unixTime\":1590339161000,\"incrementalDistance\":1,\"cumulativeDistance\":5669,\"speed\":1.8,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:52:43Z\",\"parseTime\":\"2020-05-25 04:52:43\",\"unixTime\":1590339163000,\"incrementalDistance\":1,\"cumulativeDistance\":5670,\"speed\":1.8,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:52:45Z\",\"parseTime\":\"2020-05-25 04:52:45\",\"unixTime\":1590339165000,\"incrementalDistance\":0,\"cumulativeDistance\":5670,\"speed\":0,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:52:46Z\",\"parseTime\":\"2020-05-25 04:52:46\",\"unixTime\":1590339166000,\"incrementalDistance\":0,\"cumulativeDistance\":5670,\"speed\":0,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:52:47Z\",\"parseTime\":\"2020-05-25 04:52:47\",\"unixTime\":1590339167000,\"incrementalDistance\":1,\"cumulativeDistance\":5671,\"speed\":1.8,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:52:49Z\",\"parseTime\":\"2020-05-25 04:52:49\",\"unixTime\":1590339169000,\"incrementalDistance\":1,\"cumulativeDistance\":5672,\"speed\":0.45,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:52:57Z\",\"parseTime\":\"2020-05-25 04:52:57\",\"unixTime\":1590339177000,\"incrementalDistance\":3,\"cumulativeDistance\":5675,\"speed\":2.16,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:53:02Z\",\"parseTime\":\"2020-05-25 04:53:02\",\"unixTime\":1590339182000,\"incrementalDistance\":4,\"cumulativeDistance\":5679,\"speed\":2.4,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:53:08Z\",\"parseTime\":\"2020-05-25 04:53:08\",\"unixTime\":1590339188000,\"incrementalDistance\":11,\"cumulativeDistance\":5690,\"speed\":6.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:53:14Z\",\"parseTime\":\"2020-05-25 04:53:14\",\"unixTime\":1590339194000,\"incrementalDistance\":1,\"cumulativeDistance\":5691,\"speed\":0.7200000000000001,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:53:19Z\",\"parseTime\":\"2020-05-25 04:53:19\",\"unixTime\":1590339199000,\"incrementalDistance\":5,\"cumulativeDistance\":5696,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:53:24Z\",\"parseTime\":\"2020-05-25 04:53:24\",\"unixTime\":1590339204000,\"incrementalDistance\":8,\"cumulativeDistance\":5704,\"speed\":4.8,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:53:30Z\",\"parseTime\":\"2020-05-25 04:53:30\",\"unixTime\":1590339210000,\"incrementalDistance\":3,\"cumulativeDistance\":5707,\"speed\":5.4,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:53:32Z\",\"parseTime\":\"2020-05-25 04:53:32\",\"unixTime\":1590339212000,\"incrementalDistance\":4,\"cumulativeDistance\":5711,\"speed\":0.7578947368421053,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:53:51Z\",\"parseTime\":\"2020-05-25 04:53:51\",\"unixTime\":1590339231000,\"incrementalDistance\":2,\"cumulativeDistance\":5713,\"speed\":0.37894736842105264,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:54:10Z\",\"parseTime\":\"2020-05-25 04:54:10\",\"unixTime\":1590339250000,\"incrementalDistance\":1,\"cumulativeDistance\":5714,\"speed\":0.7200000000000001,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:54:15Z\",\"parseTime\":\"2020-05-25 04:54:15\",\"unixTime\":1590339255000,\"incrementalDistance\":2,\"cumulativeDistance\":5716,\"speed\":1.8,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:54:19Z\",\"parseTime\":\"2020-05-25 04:54:19\",\"unixTime\":1590339259000,\"incrementalDistance\":0,\"cumulativeDistance\":5716,\"speed\":0,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:54:23Z\",\"parseTime\":\"2020-05-25 04:54:23\",\"unixTime\":1590339263000,\"incrementalDistance\":1,\"cumulativeDistance\":5717,\"speed\":1.8,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:54:25Z\",\"parseTime\":\"2020-05-25 04:54:25\",\"unixTime\":1590339265000,\"incrementalDistance\":0,\"cumulativeDistance\":5717,\"speed\":0,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:54:26Z\",\"parseTime\":\"2020-05-25 04:54:26\",\"unixTime\":1590339266000,\"incrementalDistance\":1,\"cumulativeDistance\":5718,\"speed\":0.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:54:32Z\",\"parseTime\":\"2020-05-25 04:54:32\",\"unixTime\":1590339272000,\"incrementalDistance\":5,\"cumulativeDistance\":5723,\"speed\":0.375,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:55:20Z\",\"parseTime\":\"2020-05-25 04:55:20\",\"unixTime\":1590339320000,\"incrementalDistance\":12,\"cumulativeDistance\":5735,\"speed\":0.6260869565217392,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:56:29Z\",\"parseTime\":\"2020-05-25 04:56:29\",\"unixTime\":1590339389000,\"incrementalDistance\":5,\"cumulativeDistance\":5740,\"speed\":2.5714285714285716,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:56:36Z\",\"parseTime\":\"2020-05-25 04:56:36\",\"unixTime\":1590339396000,\"incrementalDistance\":10,\"cumulativeDistance\":5750,\"speed\":7.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:56:41Z\",\"parseTime\":\"2020-05-25 04:56:41\",\"unixTime\":1590339401000,\"incrementalDistance\":3,\"cumulativeDistance\":5753,\"speed\":10.8,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:56:42Z\",\"parseTime\":\"2020-05-25 04:56:42\",\"unixTime\":1590339402000,\"incrementalDistance\":7,\"cumulativeDistance\":5760,\"speed\":12.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:56:44Z\",\"parseTime\":\"2020-05-25 04:56:44\",\"unixTime\":1590339404000,\"incrementalDistance\":11,\"cumulativeDistance\":5771,\"speed\":19.8,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:56:46Z\",\"parseTime\":\"2020-05-25 04:56:46\",\"unixTime\":1590339406000,\"incrementalDistance\":11,\"cumulativeDistance\":5782,\"speed\":19.8,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:56:48Z\",\"parseTime\":\"2020-05-25 04:56:48\",\"unixTime\":1590339408000,\"incrementalDistance\":9,\"cumulativeDistance\":5791,\"speed\":16.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:56:50Z\",\"parseTime\":\"2020-05-25 04:56:50\",\"unixTime\":1590339410000,\"incrementalDistance\":14,\"cumulativeDistance\":5805,\"speed\":16.8,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:56:53Z\",\"parseTime\":\"2020-05-25 04:56:53\",\"unixTime\":1590339413000,\"incrementalDistance\":4,\"cumulativeDistance\":5809,\"speed\":4.8,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:56:56Z\",\"parseTime\":\"2020-05-25 04:56:56\",\"unixTime\":1590339416000,\"incrementalDistance\":9,\"cumulativeDistance\":5818,\"speed\":6.48,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:57:01Z\",\"parseTime\":\"2020-05-25 04:57:01\",\"unixTime\":1590339421000,\"incrementalDistance\":5,\"cumulativeDistance\":5823,\"speed\":9,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:57:03Z\",\"parseTime\":\"2020-05-25 04:57:03\",\"unixTime\":1590339423000,\"incrementalDistance\":6,\"cumulativeDistance\":5829,\"speed\":10.8,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:57:05Z\",\"parseTime\":\"2020-05-25 04:57:05\",\"unixTime\":1590339425000,\"incrementalDistance\":16,\"cumulativeDistance\":5845,\"speed\":11.520000000000001,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:57:10Z\",\"parseTime\":\"2020-05-25 04:57:10\",\"unixTime\":1590339430000,\"incrementalDistance\":6,\"cumulativeDistance\":5851,\"speed\":7.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:57:13Z\",\"parseTime\":\"2020-05-25 04:57:13\",\"unixTime\":1590339433000,\"incrementalDistance\":3,\"cumulativeDistance\":5854,\"speed\":5.4,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:57:15Z\",\"parseTime\":\"2020-05-25 04:57:15\",\"unixTime\":1590339435000,\"incrementalDistance\":9,\"cumulativeDistance\":5863,\"speed\":4.05,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:57:23Z\",\"parseTime\":\"2020-05-25 04:57:23\",\"unixTime\":1590339443000,\"incrementalDistance\":6,\"cumulativeDistance\":5869,\"speed\":5.4,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:57:27Z\",\"parseTime\":\"2020-05-25 04:57:27\",\"unixTime\":1590339447000,\"incrementalDistance\":4,\"cumulativeDistance\":5873,\"speed\":1.8,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:57:35Z\",\"parseTime\":\"2020-05-25 04:57:35\",\"unixTime\":1590339455000,\"incrementalDistance\":6,\"cumulativeDistance\":5879,\"speed\":10.8,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:57:37Z\",\"parseTime\":\"2020-05-25 04:57:37\",\"unixTime\":1590339457000,\"incrementalDistance\":1,\"cumulativeDistance\":5880,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:57:38Z\",\"parseTime\":\"2020-05-25 04:57:38\",\"unixTime\":1590339458000,\"incrementalDistance\":1,\"cumulativeDistance\":5881,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:57:39Z\",\"parseTime\":\"2020-05-25 04:57:39\",\"unixTime\":1590339459000,\"incrementalDistance\":1,\"cumulativeDistance\":5882,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:57:40Z\",\"parseTime\":\"2020-05-25 04:57:40\",\"unixTime\":1590339460000,\"incrementalDistance\":0,\"cumulativeDistance\":5882,\"speed\":0,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:57:47Z\",\"parseTime\":\"2020-05-25 04:57:47\",\"unixTime\":1590339467000,\"incrementalDistance\":0,\"cumulativeDistance\":5882,\"speed\":0,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:57:48Z\",\"parseTime\":\"2020-05-25 04:57:48\",\"unixTime\":1590339468000,\"incrementalDistance\":0,\"cumulativeDistance\":5882,\"speed\":0,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:57:49Z\",\"parseTime\":\"2020-05-25 04:57:49\",\"unixTime\":1590339469000,\"incrementalDistance\":0,\"cumulativeDistance\":5882,\"speed\":0,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:57:51Z\",\"parseTime\":\"2020-05-25 04:57:51\",\"unixTime\":1590339471000,\"incrementalDistance\":22,\"cumulativeDistance\":5904,\"speed\":7.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:58:02Z\",\"parseTime\":\"2020-05-25 04:58:02\",\"unixTime\":1590339482000,\"incrementalDistance\":16,\"cumulativeDistance\":5920,\"speed\":11.520000000000001,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:58:07Z\",\"parseTime\":\"2020-05-25 04:58:07\",\"unixTime\":1590339487000,\"incrementalDistance\":3,\"cumulativeDistance\":5923,\"speed\":1.08,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:58:17Z\",\"parseTime\":\"2020-05-25 04:58:17\",\"unixTime\":1590339497000,\"incrementalDistance\":10,\"cumulativeDistance\":5933,\"speed\":3,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:58:29Z\",\"parseTime\":\"2020-05-25 04:58:29\",\"unixTime\":1590339509000,\"incrementalDistance\":7,\"cumulativeDistance\":5940,\"speed\":4.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:58:35Z\",\"parseTime\":\"2020-05-25 04:58:35\",\"unixTime\":1590339515000,\"incrementalDistance\":3,\"cumulativeDistance\":5943,\"speed\":5.4,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:58:37Z\",\"parseTime\":\"2020-05-25 04:58:37\",\"unixTime\":1590339517000,\"incrementalDistance\":13,\"cumulativeDistance\":5956,\"speed\":1.4625000000000001,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:59:09Z\",\"parseTime\":\"2020-05-25 04:59:09\",\"unixTime\":1590339549000,\"incrementalDistance\":3,\"cumulativeDistance\":5959,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:59:12Z\",\"parseTime\":\"2020-05-25 04:59:12\",\"unixTime\":1590339552000,\"incrementalDistance\":19,\"cumulativeDistance\":5978,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:59:31Z\",\"parseTime\":\"2020-05-25 04:59:31\",\"unixTime\":1590339571000,\"incrementalDistance\":6,\"cumulativeDistance\":5984,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:59:37Z\",\"parseTime\":\"2020-05-25 04:59:37\",\"unixTime\":1590339577000,\"incrementalDistance\":3,\"cumulativeDistance\":5987,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:59:40Z\",\"parseTime\":\"2020-05-25 04:59:40\",\"unixTime\":1590339580000,\"incrementalDistance\":2,\"cumulativeDistance\":5989,\"speed\":2.4,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:59:43Z\",\"parseTime\":\"2020-05-25 04:59:43\",\"unixTime\":1590339583000,\"incrementalDistance\":1,\"cumulativeDistance\":5990,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:59:44Z\",\"parseTime\":\"2020-05-25 04:59:44\",\"unixTime\":1590339584000,\"incrementalDistance\":1,\"cumulativeDistance\":5991,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:59:45Z\",\"parseTime\":\"2020-05-25 04:59:45\",\"unixTime\":1590339585000,\"incrementalDistance\":0,\"cumulativeDistance\":5991,\"speed\":0,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:59:46Z\",\"parseTime\":\"2020-05-25 04:59:46\",\"unixTime\":1590339586000,\"incrementalDistance\":1,\"cumulativeDistance\":5992,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:59:47Z\",\"parseTime\":\"2020-05-25 04:59:47\",\"unixTime\":1590339587000,\"incrementalDistance\":2,\"cumulativeDistance\":5994,\"speed\":2.4,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:59:50Z\",\"parseTime\":\"2020-05-25 04:59:50\",\"unixTime\":1590339590000,\"incrementalDistance\":2,\"cumulativeDistance\":5996,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T04:59:52Z\",\"parseTime\":\"2020-05-25 04:59:52\",\"unixTime\":1590339592000,\"incrementalDistance\":12,\"cumulativeDistance\":6008,\"speed\":5.4,\"isWave\":false},{\"originalTime\":\"2020-05-25T05:00:00Z\",\"parseTime\":\"2020-05-25 05:00:00\",\"unixTime\":1590339600000,\"incrementalDistance\":1,\"cumulativeDistance\":6009,\"speed\":0.5142857142857143,\"isWave\":false},{\"originalTime\":\"2020-05-25T05:00:07Z\",\"parseTime\":\"2020-05-25 05:00:07\",\"unixTime\":1590339607000,\"incrementalDistance\":2,\"cumulativeDistance\":6011,\"speed\":0.48,\"isWave\":false},{\"originalTime\":\"2020-05-25T05:00:22Z\",\"parseTime\":\"2020-05-25 05:00:22\",\"unixTime\":1590339622000,\"incrementalDistance\":3,\"cumulativeDistance\":6014,\"speed\":2.16,\"isWave\":false},{\"originalTime\":\"2020-05-25T05:00:27Z\",\"parseTime\":\"2020-05-25 05:00:27\",\"unixTime\":1590339627000,\"incrementalDistance\":3,\"cumulativeDistance\":6017,\"speed\":1.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T05:00:36Z\",\"parseTime\":\"2020-05-25 05:00:36\",\"unixTime\":1590339636000,\"incrementalDistance\":2,\"cumulativeDistance\":6019,\"speed\":0.5142857142857143,\"isWave\":false},{\"originalTime\":\"2020-05-25T05:00:50Z\",\"parseTime\":\"2020-05-25 05:00:50\",\"unixTime\":1590339650000,\"incrementalDistance\":3,\"cumulativeDistance\":6022,\"speed\":1.8,\"isWave\":false},{\"originalTime\":\"2020-05-25T05:00:56Z\",\"parseTime\":\"2020-05-25 05:00:56\",\"unixTime\":1590339656000,\"incrementalDistance\":2,\"cumulativeDistance\":6024,\"speed\":1.0285714285714287,\"isWave\":false},{\"originalTime\":\"2020-05-25T05:01:03Z\",\"parseTime\":\"2020-05-25 05:01:03\",\"unixTime\":1590339663000,\"incrementalDistance\":11,\"cumulativeDistance\":6035,\"speed\":0.7764705882352941,\"isWave\":false},{\"originalTime\":\"2020-05-25T05:01:54Z\",\"parseTime\":\"2020-05-25 05:01:54\",\"unixTime\":1590339714000,\"incrementalDistance\":3,\"cumulativeDistance\":6038,\"speed\":2.16,\"isWave\":false},{\"originalTime\":\"2020-05-25T05:01:59Z\",\"parseTime\":\"2020-05-25 05:01:59\",\"unixTime\":1590339719000,\"incrementalDistance\":1,\"cumulativeDistance\":6039,\"speed\":0.9,\"isWave\":false},{\"originalTime\":\"2020-05-25T05:02:03Z\",\"parseTime\":\"2020-05-25 05:02:03\",\"unixTime\":1590339723000,\"incrementalDistance\":3,\"cumulativeDistance\":6042,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T05:02:06Z\",\"parseTime\":\"2020-05-25 05:02:06\",\"unixTime\":1590339726000,\"incrementalDistance\":5,\"cumulativeDistance\":6047,\"speed\":1.8,\"isWave\":false},{\"originalTime\":\"2020-05-25T05:02:16Z\",\"parseTime\":\"2020-05-25 05:02:16\",\"unixTime\":1590339736000,\"incrementalDistance\":4,\"cumulativeDistance\":6051,\"speed\":1.4400000000000002,\"isWave\":false},{\"originalTime\":\"2020-05-25T05:02:26Z\",\"parseTime\":\"2020-05-25 05:02:26\",\"unixTime\":1590339746000,\"incrementalDistance\":13,\"cumulativeDistance\":6064,\"speed\":9.360000000000001,\"isWave\":false},{\"originalTime\":\"2020-05-25T05:02:31Z\",\"parseTime\":\"2020-05-25 05:02:31\",\"unixTime\":1590339751000,\"incrementalDistance\":32,\"cumulativeDistance\":6096,\"speed\":18.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T05:02:37Z\",\"parseTime\":\"2020-05-25 05:02:37\",\"unixTime\":1590339757000,\"incrementalDistance\":5,\"cumulativeDistance\":6101,\"speed\":18,\"isWave\":false},{\"originalTime\":\"2020-05-25T05:02:38Z\",\"parseTime\":\"2020-05-25 05:02:38\",\"unixTime\":1590339758000,\"incrementalDistance\":5,\"cumulativeDistance\":6106,\"speed\":18,\"isWave\":false},{\"originalTime\":\"2020-05-25T05:02:39Z\",\"parseTime\":\"2020-05-25 05:02:39\",\"unixTime\":1590339759000,\"incrementalDistance\":6,\"cumulativeDistance\":6112,\"speed\":21.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T05:02:40Z\",\"parseTime\":\"2020-05-25 05:02:40\",\"unixTime\":1590339760000,\"incrementalDistance\":6,\"cumulativeDistance\":6118,\"speed\":21.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T05:02:41Z\",\"parseTime\":\"2020-05-25 05:02:41\",\"unixTime\":1590339761000,\"incrementalDistance\":6,\"cumulativeDistance\":6124,\"speed\":21.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T05:02:42Z\",\"parseTime\":\"2020-05-25 05:02:42\",\"unixTime\":1590339762000,\"incrementalDistance\":5,\"cumulativeDistance\":6129,\"speed\":18,\"isWave\":false},{\"originalTime\":\"2020-05-25T05:02:43Z\",\"parseTime\":\"2020-05-25 05:02:43\",\"unixTime\":1590339763000,\"incrementalDistance\":21,\"cumulativeDistance\":6150,\"speed\":18.900000000000002,\"isWave\":false},{\"originalTime\":\"2020-05-25T05:02:47Z\",\"parseTime\":\"2020-05-25 05:02:47\",\"unixTime\":1590339767000,\"incrementalDistance\":9,\"cumulativeDistance\":6159,\"speed\":16.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T05:02:49Z\",\"parseTime\":\"2020-05-25 05:02:49\",\"unixTime\":1590339769000,\"incrementalDistance\":13,\"cumulativeDistance\":6172,\"speed\":15.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T05:02:52Z\",\"parseTime\":\"2020-05-25 05:02:52\",\"unixTime\":1590339772000,\"incrementalDistance\":8,\"cumulativeDistance\":6180,\"speed\":14.4,\"isWave\":false},{\"originalTime\":\"2020-05-25T05:02:54Z\",\"parseTime\":\"2020-05-25 05:02:54\",\"unixTime\":1590339774000,\"incrementalDistance\":11,\"cumulativeDistance\":6191,\"speed\":13.2,\"isWave\":false},{\"originalTime\":\"2020-05-25T05:02:57Z\",\"parseTime\":\"2020-05-25 05:02:57\",\"unixTime\":1590339777000,\"incrementalDistance\":3,\"cumulativeDistance\":6194,\"speed\":10.8,\"isWave\":false},{\"originalTime\":\"2020-05-25T05:02:58Z\",\"parseTime\":\"2020-05-25 05:02:58\",\"unixTime\":1590339778000,\"incrementalDistance\":15,\"cumulativeDistance\":6209,\"speed\":13.5,\"isWave\":false},{\"originalTime\":\"2020-05-25T05:03:02Z\",\"parseTime\":\"2020-05-25 05:03:02\",\"unixTime\":1590339782000,\"incrementalDistance\":11,\"cumulativeDistance\":6220,\"speed\":6.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T05:03:08Z\",\"parseTime\":\"2020-05-25 05:03:08\",\"unixTime\":1590339788000,\"incrementalDistance\":1,\"cumulativeDistance\":6221,\"speed\":1.8,\"isWave\":false},{\"originalTime\":\"2020-05-25T05:03:10Z\",\"parseTime\":\"2020-05-25 05:03:10\",\"unixTime\":1590339790000,\"incrementalDistance\":3,\"cumulativeDistance\":6224,\"speed\":2.16,\"isWave\":false},{\"originalTime\":\"2020-05-25T05:03:15Z\",\"parseTime\":\"2020-05-25 05:03:15\",\"unixTime\":1590339795000,\"incrementalDistance\":1,\"cumulativeDistance\":6225,\"speed\":3.6,\"isWave\":false},{\"originalTime\":\"2020-05-25T05:03:16Z\",\"parseTime\":\"2020-05-25 05:03:16\",\"unixTime\":1590339796000,\"incrementalDistance\":2,\"cumulativeDistance\":6227,\"speed\":2.4,\"isWave\":false}]");
+
+/***/ }),
+
+/***/ "./node_modules/chartist/dist/chartist.js":
+/*!************************************************!*\
+  !*** ./node_modules/chartist/dist/chartist.js ***!
+  \************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+/* WEBPACK VAR INJECTION */(function(global) {var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;(function (root, factory) {
+  if (true) {
+    // AMD. Register as an anonymous module unless amdModuleId is set
+    !(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = (function () {
+      return (root['Chartist'] = factory());
+    }).apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
+				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+  } else {}
+}(this, function () {
+
+/* Chartist.js 0.11.4
+ * Copyright © 2019 Gion Kunz
+ * Free to use under either the WTFPL license or the MIT license.
+ * https://raw.githubusercontent.com/gionkunz/chartist-js/master/LICENSE-WTFPL
+ * https://raw.githubusercontent.com/gionkunz/chartist-js/master/LICENSE-MIT
+ */
+/**
+ * The core module of Chartist that is mainly providing static functions and higher level functions for chart modules.
+ *
+ * @module Chartist.Core
+ */
+var Chartist = {
+  version: '0.11.4'
+};
+
+(function (globalRoot, Chartist) {
+  'use strict';
+
+  var window = globalRoot.window;
+  var document = globalRoot.document;
+
+  /**
+   * This object contains all namespaces used within Chartist.
+   *
+   * @memberof Chartist.Core
+   * @type {{svg: string, xmlns: string, xhtml: string, xlink: string, ct: string}}
+   */
+  Chartist.namespaces = {
+    svg: 'http://www.w3.org/2000/svg',
+    xmlns: 'http://www.w3.org/2000/xmlns/',
+    xhtml: 'http://www.w3.org/1999/xhtml',
+    xlink: 'http://www.w3.org/1999/xlink',
+    ct: 'http://gionkunz.github.com/chartist-js/ct'
+  };
+
+  /**
+   * Helps to simplify functional style code
+   *
+   * @memberof Chartist.Core
+   * @param {*} n This exact value will be returned by the noop function
+   * @return {*} The same value that was provided to the n parameter
+   */
+  Chartist.noop = function (n) {
+    return n;
+  };
+
+  /**
+   * Generates a-z from a number 0 to 26
+   *
+   * @memberof Chartist.Core
+   * @param {Number} n A number from 0 to 26 that will result in a letter a-z
+   * @return {String} A character from a-z based on the input number n
+   */
+  Chartist.alphaNumerate = function (n) {
+    // Limit to a-z
+    return String.fromCharCode(97 + n % 26);
+  };
+
+  /**
+   * Simple recursive object extend
+   *
+   * @memberof Chartist.Core
+   * @param {Object} target Target object where the source will be merged into
+   * @param {Object...} sources This object (objects) will be merged into target and then target is returned
+   * @return {Object} An object that has the same reference as target but is extended and merged with the properties of source
+   */
+  Chartist.extend = function (target) {
+    var i, source, sourceProp;
+    target = target || {};
+
+    for (i = 1; i < arguments.length; i++) {
+      source = arguments[i];
+      for (var prop in source) {
+        sourceProp = source[prop];
+        if (typeof sourceProp === 'object' && sourceProp !== null && !(sourceProp instanceof Array)) {
+          target[prop] = Chartist.extend(target[prop], sourceProp);
+        } else {
+          target[prop] = sourceProp;
+        }
+      }
+    }
+
+    return target;
+  };
+
+  /**
+   * Replaces all occurrences of subStr in str with newSubStr and returns a new string.
+   *
+   * @memberof Chartist.Core
+   * @param {String} str
+   * @param {String} subStr
+   * @param {String} newSubStr
+   * @return {String}
+   */
+  Chartist.replaceAll = function(str, subStr, newSubStr) {
+    return str.replace(new RegExp(subStr, 'g'), newSubStr);
+  };
+
+  /**
+   * Converts a number to a string with a unit. If a string is passed then this will be returned unmodified.
+   *
+   * @memberof Chartist.Core
+   * @param {Number} value
+   * @param {String} unit
+   * @return {String} Returns the passed number value with unit.
+   */
+  Chartist.ensureUnit = function(value, unit) {
+    if(typeof value === 'number') {
+      value = value + unit;
+    }
+
+    return value;
+  };
+
+  /**
+   * Converts a number or string to a quantity object.
+   *
+   * @memberof Chartist.Core
+   * @param {String|Number} input
+   * @return {Object} Returns an object containing the value as number and the unit as string.
+   */
+  Chartist.quantity = function(input) {
+    if (typeof input === 'string') {
+      var match = (/^(\d+)\s*(.*)$/g).exec(input);
+      return {
+        value : +match[1],
+        unit: match[2] || undefined
+      };
+    }
+    return { value: input };
+  };
+
+  /**
+   * This is a wrapper around document.querySelector that will return the query if it's already of type Node
+   *
+   * @memberof Chartist.Core
+   * @param {String|Node} query The query to use for selecting a Node or a DOM node that will be returned directly
+   * @return {Node}
+   */
+  Chartist.querySelector = function(query) {
+    return query instanceof Node ? query : document.querySelector(query);
+  };
+
+  /**
+   * Functional style helper to produce array with given length initialized with undefined values
+   *
+   * @memberof Chartist.Core
+   * @param length
+   * @return {Array}
+   */
+  Chartist.times = function(length) {
+    return Array.apply(null, new Array(length));
+  };
+
+  /**
+   * Sum helper to be used in reduce functions
+   *
+   * @memberof Chartist.Core
+   * @param previous
+   * @param current
+   * @return {*}
+   */
+  Chartist.sum = function(previous, current) {
+    return previous + (current ? current : 0);
+  };
+
+  /**
+   * Multiply helper to be used in `Array.map` for multiplying each value of an array with a factor.
+   *
+   * @memberof Chartist.Core
+   * @param {Number} factor
+   * @returns {Function} Function that can be used in `Array.map` to multiply each value in an array
+   */
+  Chartist.mapMultiply = function(factor) {
+    return function(num) {
+      return num * factor;
+    };
+  };
+
+  /**
+   * Add helper to be used in `Array.map` for adding a addend to each value of an array.
+   *
+   * @memberof Chartist.Core
+   * @param {Number} addend
+   * @returns {Function} Function that can be used in `Array.map` to add a addend to each value in an array
+   */
+  Chartist.mapAdd = function(addend) {
+    return function(num) {
+      return num + addend;
+    };
+  };
+
+  /**
+   * Map for multi dimensional arrays where their nested arrays will be mapped in serial. The output array will have the length of the largest nested array. The callback function is called with variable arguments where each argument is the nested array value (or undefined if there are no more values).
+   *
+   * @memberof Chartist.Core
+   * @param arr
+   * @param cb
+   * @return {Array}
+   */
+  Chartist.serialMap = function(arr, cb) {
+    var result = [],
+        length = Math.max.apply(null, arr.map(function(e) {
+          return e.length;
+        }));
+
+    Chartist.times(length).forEach(function(e, index) {
+      var args = arr.map(function(e) {
+        return e[index];
+      });
+
+      result[index] = cb.apply(null, args);
+    });
+
+    return result;
+  };
+
+  /**
+   * This helper function can be used to round values with certain precision level after decimal. This is used to prevent rounding errors near float point precision limit.
+   *
+   * @memberof Chartist.Core
+   * @param {Number} value The value that should be rounded with precision
+   * @param {Number} [digits] The number of digits after decimal used to do the rounding
+   * @returns {number} Rounded value
+   */
+  Chartist.roundWithPrecision = function(value, digits) {
+    var precision = Math.pow(10, digits || Chartist.precision);
+    return Math.round(value * precision) / precision;
+  };
+
+  /**
+   * Precision level used internally in Chartist for rounding. If you require more decimal places you can increase this number.
+   *
+   * @memberof Chartist.Core
+   * @type {number}
+   */
+  Chartist.precision = 8;
+
+  /**
+   * A map with characters to escape for strings to be safely used as attribute values.
+   *
+   * @memberof Chartist.Core
+   * @type {Object}
+   */
+  Chartist.escapingMap = {
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    '"': '&quot;',
+    '\'': '&#039;'
+  };
+
+  /**
+   * This function serializes arbitrary data to a string. In case of data that can't be easily converted to a string, this function will create a wrapper object and serialize the data using JSON.stringify. The outcoming string will always be escaped using Chartist.escapingMap.
+   * If called with null or undefined the function will return immediately with null or undefined.
+   *
+   * @memberof Chartist.Core
+   * @param {Number|String|Object} data
+   * @return {String}
+   */
+  Chartist.serialize = function(data) {
+    if(data === null || data === undefined) {
+      return data;
+    } else if(typeof data === 'number') {
+      data = ''+data;
+    } else if(typeof data === 'object') {
+      data = JSON.stringify({data: data});
+    }
+
+    return Object.keys(Chartist.escapingMap).reduce(function(result, key) {
+      return Chartist.replaceAll(result, key, Chartist.escapingMap[key]);
+    }, data);
+  };
+
+  /**
+   * This function de-serializes a string previously serialized with Chartist.serialize. The string will always be unescaped using Chartist.escapingMap before it's returned. Based on the input value the return type can be Number, String or Object. JSON.parse is used with try / catch to see if the unescaped string can be parsed into an Object and this Object will be returned on success.
+   *
+   * @memberof Chartist.Core
+   * @param {String} data
+   * @return {String|Number|Object}
+   */
+  Chartist.deserialize = function(data) {
+    if(typeof data !== 'string') {
+      return data;
+    }
+
+    data = Object.keys(Chartist.escapingMap).reduce(function(result, key) {
+      return Chartist.replaceAll(result, Chartist.escapingMap[key], key);
+    }, data);
+
+    try {
+      data = JSON.parse(data);
+      data = data.data !== undefined ? data.data : data;
+    } catch(e) {}
+
+    return data;
+  };
+
+  /**
+   * Create or reinitialize the SVG element for the chart
+   *
+   * @memberof Chartist.Core
+   * @param {Node} container The containing DOM Node object that will be used to plant the SVG element
+   * @param {String} width Set the width of the SVG element. Default is 100%
+   * @param {String} height Set the height of the SVG element. Default is 100%
+   * @param {String} className Specify a class to be added to the SVG element
+   * @return {Object} The created/reinitialized SVG element
+   */
+  Chartist.createSvg = function (container, width, height, className) {
+    var svg;
+
+    width = width || '100%';
+    height = height || '100%';
+
+    // Check if there is a previous SVG element in the container that contains the Chartist XML namespace and remove it
+    // Since the DOM API does not support namespaces we need to manually search the returned list http://www.w3.org/TR/selectors-api/
+    Array.prototype.slice.call(container.querySelectorAll('svg')).filter(function filterChartistSvgObjects(svg) {
+      return svg.getAttributeNS(Chartist.namespaces.xmlns, 'ct');
+    }).forEach(function removePreviousElement(svg) {
+      container.removeChild(svg);
+    });
+
+    // Create svg object with width and height or use 100% as default
+    svg = new Chartist.Svg('svg').attr({
+      width: width,
+      height: height
+    }).addClass(className);
+
+    svg._node.style.width = width;
+    svg._node.style.height = height;
+
+    // Add the DOM node to our container
+    container.appendChild(svg._node);
+
+    return svg;
+  };
+
+  /**
+   * Ensures that the data object passed as second argument to the charts is present and correctly initialized.
+   *
+   * @param  {Object} data The data object that is passed as second argument to the charts
+   * @return {Object} The normalized data object
+   */
+  Chartist.normalizeData = function(data, reverse, multi) {
+    var labelCount;
+    var output = {
+      raw: data,
+      normalized: {}
+    };
+
+    // Check if we should generate some labels based on existing series data
+    output.normalized.series = Chartist.getDataArray({
+      series: data.series || []
+    }, reverse, multi);
+
+    // If all elements of the normalized data array are arrays we're dealing with
+    // multi series data and we need to find the largest series if they are un-even
+    if (output.normalized.series.every(function(value) {
+        return value instanceof Array;
+      })) {
+      // Getting the series with the the most elements
+      labelCount = Math.max.apply(null, output.normalized.series.map(function(series) {
+        return series.length;
+      }));
+    } else {
+      // We're dealing with Pie data so we just take the normalized array length
+      labelCount = output.normalized.series.length;
+    }
+
+    output.normalized.labels = (data.labels || []).slice();
+    // Padding the labels to labelCount with empty strings
+    Array.prototype.push.apply(
+      output.normalized.labels,
+      Chartist.times(Math.max(0, labelCount - output.normalized.labels.length)).map(function() {
+        return '';
+      })
+    );
+
+    if(reverse) {
+      Chartist.reverseData(output.normalized);
+    }
+
+    return output;
+  };
+
+  /**
+   * This function safely checks if an objects has an owned property.
+   *
+   * @param {Object} object The object where to check for a property
+   * @param {string} property The property name
+   * @returns {boolean} Returns true if the object owns the specified property
+   */
+  Chartist.safeHasProperty = function(object, property) {
+    return object !== null &&
+      typeof object === 'object' &&
+      object.hasOwnProperty(property);
+  };
+
+  /**
+   * Checks if a value is considered a hole in the data series.
+   *
+   * @param {*} value
+   * @returns {boolean} True if the value is considered a data hole
+   */
+  Chartist.isDataHoleValue = function(value) {
+    return value === null ||
+      value === undefined ||
+      (typeof value === 'number' && isNaN(value));
+  };
+
+  /**
+   * Reverses the series, labels and series data arrays.
+   *
+   * @memberof Chartist.Core
+   * @param data
+   */
+  Chartist.reverseData = function(data) {
+    data.labels.reverse();
+    data.series.reverse();
+    for (var i = 0; i < data.series.length; i++) {
+      if(typeof(data.series[i]) === 'object' && data.series[i].data !== undefined) {
+        data.series[i].data.reverse();
+      } else if(data.series[i] instanceof Array) {
+        data.series[i].reverse();
+      }
+    }
+  };
+
+  /**
+   * Convert data series into plain array
+   *
+   * @memberof Chartist.Core
+   * @param {Object} data The series object that contains the data to be visualized in the chart
+   * @param {Boolean} [reverse] If true the whole data is reversed by the getDataArray call. This will modify the data object passed as first parameter. The labels as well as the series order is reversed. The whole series data arrays are reversed too.
+   * @param {Boolean} [multi] Create a multi dimensional array from a series data array where a value object with `x` and `y` values will be created.
+   * @return {Array} A plain array that contains the data to be visualized in the chart
+   */
+  Chartist.getDataArray = function(data, reverse, multi) {
+    // Recursively walks through nested arrays and convert string values to numbers and objects with value properties
+    // to values. Check the tests in data core -> data normalization for a detailed specification of expected values
+    function recursiveConvert(value) {
+      if(Chartist.safeHasProperty(value, 'value')) {
+        // We are dealing with value object notation so we need to recurse on value property
+        return recursiveConvert(value.value);
+      } else if(Chartist.safeHasProperty(value, 'data')) {
+        // We are dealing with series object notation so we need to recurse on data property
+        return recursiveConvert(value.data);
+      } else if(value instanceof Array) {
+        // Data is of type array so we need to recurse on the series
+        return value.map(recursiveConvert);
+      } else if(Chartist.isDataHoleValue(value)) {
+        // We're dealing with a hole in the data and therefore need to return undefined
+        // We're also returning undefined for multi value output
+        return undefined;
+      } else {
+        // We need to prepare multi value output (x and y data)
+        if(multi) {
+          var multiValue = {};
+
+          // Single series value arrays are assumed to specify the Y-Axis value
+          // For example: [1, 2] => [{x: undefined, y: 1}, {x: undefined, y: 2}]
+          // If multi is a string then it's assumed that it specified which dimension should be filled as default
+          if(typeof multi === 'string') {
+            multiValue[multi] = Chartist.getNumberOrUndefined(value);
+          } else {
+            multiValue.y = Chartist.getNumberOrUndefined(value);
+          }
+
+          multiValue.x = value.hasOwnProperty('x') ? Chartist.getNumberOrUndefined(value.x) : multiValue.x;
+          multiValue.y = value.hasOwnProperty('y') ? Chartist.getNumberOrUndefined(value.y) : multiValue.y;
+
+          return multiValue;
+
+        } else {
+          // We can return simple data
+          return Chartist.getNumberOrUndefined(value);
+        }
+      }
+    }
+
+    return data.series.map(recursiveConvert);
+  };
+
+  /**
+   * Converts a number into a padding object.
+   *
+   * @memberof Chartist.Core
+   * @param {Object|Number} padding
+   * @param {Number} [fallback] This value is used to fill missing values if a incomplete padding object was passed
+   * @returns {Object} Returns a padding object containing top, right, bottom, left properties filled with the padding number passed in as argument. If the argument is something else than a number (presumably already a correct padding object) then this argument is directly returned.
+   */
+  Chartist.normalizePadding = function(padding, fallback) {
+    fallback = fallback || 0;
+
+    return typeof padding === 'number' ? {
+      top: padding,
+      right: padding,
+      bottom: padding,
+      left: padding
+    } : {
+      top: typeof padding.top === 'number' ? padding.top : fallback,
+      right: typeof padding.right === 'number' ? padding.right : fallback,
+      bottom: typeof padding.bottom === 'number' ? padding.bottom : fallback,
+      left: typeof padding.left === 'number' ? padding.left : fallback
+    };
+  };
+
+  Chartist.getMetaData = function(series, index) {
+    var value = series.data ? series.data[index] : series[index];
+    return value ? value.meta : undefined;
+  };
+
+  /**
+   * Calculate the order of magnitude for the chart scale
+   *
+   * @memberof Chartist.Core
+   * @param {Number} value The value Range of the chart
+   * @return {Number} The order of magnitude
+   */
+  Chartist.orderOfMagnitude = function (value) {
+    return Math.floor(Math.log(Math.abs(value)) / Math.LN10);
+  };
+
+  /**
+   * Project a data length into screen coordinates (pixels)
+   *
+   * @memberof Chartist.Core
+   * @param {Object} axisLength The svg element for the chart
+   * @param {Number} length Single data value from a series array
+   * @param {Object} bounds All the values to set the bounds of the chart
+   * @return {Number} The projected data length in pixels
+   */
+  Chartist.projectLength = function (axisLength, length, bounds) {
+    return length / bounds.range * axisLength;
+  };
+
+  /**
+   * Get the height of the area in the chart for the data series
+   *
+   * @memberof Chartist.Core
+   * @param {Object} svg The svg element for the chart
+   * @param {Object} options The Object that contains all the optional values for the chart
+   * @return {Number} The height of the area in the chart for the data series
+   */
+  Chartist.getAvailableHeight = function (svg, options) {
+    return Math.max((Chartist.quantity(options.height).value || svg.height()) - (options.chartPadding.top +  options.chartPadding.bottom) - options.axisX.offset, 0);
+  };
+
+  /**
+   * Get highest and lowest value of data array. This Array contains the data that will be visualized in the chart.
+   *
+   * @memberof Chartist.Core
+   * @param {Array} data The array that contains the data to be visualized in the chart
+   * @param {Object} options The Object that contains the chart options
+   * @param {String} dimension Axis dimension 'x' or 'y' used to access the correct value and high / low configuration
+   * @return {Object} An object that contains the highest and lowest value that will be visualized on the chart.
+   */
+  Chartist.getHighLow = function (data, options, dimension) {
+    // TODO: Remove workaround for deprecated global high / low config. Axis high / low configuration is preferred
+    options = Chartist.extend({}, options, dimension ? options['axis' + dimension.toUpperCase()] : {});
+
+    var highLow = {
+        high: options.high === undefined ? -Number.MAX_VALUE : +options.high,
+        low: options.low === undefined ? Number.MAX_VALUE : +options.low
+      };
+    var findHigh = options.high === undefined;
+    var findLow = options.low === undefined;
+
+    // Function to recursively walk through arrays and find highest and lowest number
+    function recursiveHighLow(data) {
+      if(data === undefined) {
+        return undefined;
+      } else if(data instanceof Array) {
+        for (var i = 0; i < data.length; i++) {
+          recursiveHighLow(data[i]);
+        }
+      } else {
+        var value = dimension ? +data[dimension] : +data;
+
+        if (findHigh && value > highLow.high) {
+          highLow.high = value;
+        }
+
+        if (findLow && value < highLow.low) {
+          highLow.low = value;
+        }
+      }
+    }
+
+    // Start to find highest and lowest number recursively
+    if(findHigh || findLow) {
+      recursiveHighLow(data);
+    }
+
+    // Overrides of high / low based on reference value, it will make sure that the invisible reference value is
+    // used to generate the chart. This is useful when the chart always needs to contain the position of the
+    // invisible reference value in the view i.e. for bipolar scales.
+    if (options.referenceValue || options.referenceValue === 0) {
+      highLow.high = Math.max(options.referenceValue, highLow.high);
+      highLow.low = Math.min(options.referenceValue, highLow.low);
+    }
+
+    // If high and low are the same because of misconfiguration or flat data (only the same value) we need
+    // to set the high or low to 0 depending on the polarity
+    if (highLow.high <= highLow.low) {
+      // If both values are 0 we set high to 1
+      if (highLow.low === 0) {
+        highLow.high = 1;
+      } else if (highLow.low < 0) {
+        // If we have the same negative value for the bounds we set bounds.high to 0
+        highLow.high = 0;
+      } else if (highLow.high > 0) {
+        // If we have the same positive value for the bounds we set bounds.low to 0
+        highLow.low = 0;
+      } else {
+        // If data array was empty, values are Number.MAX_VALUE and -Number.MAX_VALUE. Set bounds to prevent errors
+        highLow.high = 1;
+        highLow.low = 0;
+      }
+    }
+
+    return highLow;
+  };
+
+  /**
+   * Checks if a value can be safely coerced to a number. This includes all values except null which result in finite numbers when coerced. This excludes NaN, since it's not finite.
+   *
+   * @memberof Chartist.Core
+   * @param value
+   * @returns {Boolean}
+   */
+  Chartist.isNumeric = function(value) {
+    return value === null ? false : isFinite(value);
+  };
+
+  /**
+   * Returns true on all falsey values except the numeric value 0.
+   *
+   * @memberof Chartist.Core
+   * @param value
+   * @returns {boolean}
+   */
+  Chartist.isFalseyButZero = function(value) {
+    return !value && value !== 0;
+  };
+
+  /**
+   * Returns a number if the passed parameter is a valid number or the function will return undefined. On all other values than a valid number, this function will return undefined.
+   *
+   * @memberof Chartist.Core
+   * @param value
+   * @returns {*}
+   */
+  Chartist.getNumberOrUndefined = function(value) {
+    return Chartist.isNumeric(value) ? +value : undefined;
+  };
+
+  /**
+   * Checks if provided value object is multi value (contains x or y properties)
+   *
+   * @memberof Chartist.Core
+   * @param value
+   */
+  Chartist.isMultiValue = function(value) {
+    return typeof value === 'object' && ('x' in value || 'y' in value);
+  };
+
+  /**
+   * Gets a value from a dimension `value.x` or `value.y` while returning value directly if it's a valid numeric value. If the value is not numeric and it's falsey this function will return `defaultValue`.
+   *
+   * @memberof Chartist.Core
+   * @param value
+   * @param dimension
+   * @param defaultValue
+   * @returns {*}
+   */
+  Chartist.getMultiValue = function(value, dimension) {
+    if(Chartist.isMultiValue(value)) {
+      return Chartist.getNumberOrUndefined(value[dimension || 'y']);
+    } else {
+      return Chartist.getNumberOrUndefined(value);
+    }
+  };
+
+  /**
+   * Pollard Rho Algorithm to find smallest factor of an integer value. There are more efficient algorithms for factorization, but this one is quite efficient and not so complex.
+   *
+   * @memberof Chartist.Core
+   * @param {Number} num An integer number where the smallest factor should be searched for
+   * @returns {Number} The smallest integer factor of the parameter num.
+   */
+  Chartist.rho = function(num) {
+    if(num === 1) {
+      return num;
+    }
+
+    function gcd(p, q) {
+      if (p % q === 0) {
+        return q;
+      } else {
+        return gcd(q, p % q);
+      }
+    }
+
+    function f(x) {
+      return x * x + 1;
+    }
+
+    var x1 = 2, x2 = 2, divisor;
+    if (num % 2 === 0) {
+      return 2;
+    }
+
+    do {
+      x1 = f(x1) % num;
+      x2 = f(f(x2)) % num;
+      divisor = gcd(Math.abs(x1 - x2), num);
+    } while (divisor === 1);
+
+    return divisor;
+  };
+
+  /**
+   * Calculate and retrieve all the bounds for the chart and return them in one array
+   *
+   * @memberof Chartist.Core
+   * @param {Number} axisLength The length of the Axis used for
+   * @param {Object} highLow An object containing a high and low property indicating the value range of the chart.
+   * @param {Number} scaleMinSpace The minimum projected length a step should result in
+   * @param {Boolean} onlyInteger
+   * @return {Object} All the values to set the bounds of the chart
+   */
+  Chartist.getBounds = function (axisLength, highLow, scaleMinSpace, onlyInteger) {
+    var i,
+      optimizationCounter = 0,
+      newMin,
+      newMax,
+      bounds = {
+        high: highLow.high,
+        low: highLow.low
+      };
+
+    bounds.valueRange = bounds.high - bounds.low;
+    bounds.oom = Chartist.orderOfMagnitude(bounds.valueRange);
+    bounds.step = Math.pow(10, bounds.oom);
+    bounds.min = Math.floor(bounds.low / bounds.step) * bounds.step;
+    bounds.max = Math.ceil(bounds.high / bounds.step) * bounds.step;
+    bounds.range = bounds.max - bounds.min;
+    bounds.numberOfSteps = Math.round(bounds.range / bounds.step);
+
+    // Optimize scale step by checking if subdivision is possible based on horizontalGridMinSpace
+    // If we are already below the scaleMinSpace value we will scale up
+    var length = Chartist.projectLength(axisLength, bounds.step, bounds);
+    var scaleUp = length < scaleMinSpace;
+    var smallestFactor = onlyInteger ? Chartist.rho(bounds.range) : 0;
+
+    // First check if we should only use integer steps and if step 1 is still larger than scaleMinSpace so we can use 1
+    if(onlyInteger && Chartist.projectLength(axisLength, 1, bounds) >= scaleMinSpace) {
+      bounds.step = 1;
+    } else if(onlyInteger && smallestFactor < bounds.step && Chartist.projectLength(axisLength, smallestFactor, bounds) >= scaleMinSpace) {
+      // If step 1 was too small, we can try the smallest factor of range
+      // If the smallest factor is smaller than the current bounds.step and the projected length of smallest factor
+      // is larger than the scaleMinSpace we should go for it.
+      bounds.step = smallestFactor;
+    } else {
+      // Trying to divide or multiply by 2 and find the best step value
+      while (true) {
+        if (scaleUp && Chartist.projectLength(axisLength, bounds.step, bounds) <= scaleMinSpace) {
+          bounds.step *= 2;
+        } else if (!scaleUp && Chartist.projectLength(axisLength, bounds.step / 2, bounds) >= scaleMinSpace) {
+          bounds.step /= 2;
+          if(onlyInteger && bounds.step % 1 !== 0) {
+            bounds.step *= 2;
+            break;
+          }
+        } else {
+          break;
+        }
+
+        if(optimizationCounter++ > 1000) {
+          throw new Error('Exceeded maximum number of iterations while optimizing scale step!');
+        }
+      }
+    }
+
+    var EPSILON = 2.221E-16;
+    bounds.step = Math.max(bounds.step, EPSILON);
+    function safeIncrement(value, increment) {
+      // If increment is too small use *= (1+EPSILON) as a simple nextafter
+      if (value === (value += increment)) {
+      	value *= (1 + (increment > 0 ? EPSILON : -EPSILON));
+      }
+      return value;
+    }
+
+    // Narrow min and max based on new step
+    newMin = bounds.min;
+    newMax = bounds.max;
+    while (newMin + bounds.step <= bounds.low) {
+    	newMin = safeIncrement(newMin, bounds.step);
+    }
+    while (newMax - bounds.step >= bounds.high) {
+    	newMax = safeIncrement(newMax, -bounds.step);
+    }
+    bounds.min = newMin;
+    bounds.max = newMax;
+    bounds.range = bounds.max - bounds.min;
+
+    var values = [];
+    for (i = bounds.min; i <= bounds.max; i = safeIncrement(i, bounds.step)) {
+      var value = Chartist.roundWithPrecision(i);
+      if (value !== values[values.length - 1]) {
+        values.push(value);
+      }
+    }
+    bounds.values = values;
+    return bounds;
+  };
+
+  /**
+   * Calculate cartesian coordinates of polar coordinates
+   *
+   * @memberof Chartist.Core
+   * @param {Number} centerX X-axis coordinates of center point of circle segment
+   * @param {Number} centerY X-axis coordinates of center point of circle segment
+   * @param {Number} radius Radius of circle segment
+   * @param {Number} angleInDegrees Angle of circle segment in degrees
+   * @return {{x:Number, y:Number}} Coordinates of point on circumference
+   */
+  Chartist.polarToCartesian = function (centerX, centerY, radius, angleInDegrees) {
+    var angleInRadians = (angleInDegrees - 90) * Math.PI / 180.0;
+
+    return {
+      x: centerX + (radius * Math.cos(angleInRadians)),
+      y: centerY + (radius * Math.sin(angleInRadians))
+    };
+  };
+
+  /**
+   * Initialize chart drawing rectangle (area where chart is drawn) x1,y1 = bottom left / x2,y2 = top right
+   *
+   * @memberof Chartist.Core
+   * @param {Object} svg The svg element for the chart
+   * @param {Object} options The Object that contains all the optional values for the chart
+   * @param {Number} [fallbackPadding] The fallback padding if partial padding objects are used
+   * @return {Object} The chart rectangles coordinates inside the svg element plus the rectangles measurements
+   */
+  Chartist.createChartRect = function (svg, options, fallbackPadding) {
+    var hasAxis = !!(options.axisX || options.axisY);
+    var yAxisOffset = hasAxis ? options.axisY.offset : 0;
+    var xAxisOffset = hasAxis ? options.axisX.offset : 0;
+    // If width or height results in invalid value (including 0) we fallback to the unitless settings or even 0
+    var width = svg.width() || Chartist.quantity(options.width).value || 0;
+    var height = svg.height() || Chartist.quantity(options.height).value || 0;
+    var normalizedPadding = Chartist.normalizePadding(options.chartPadding, fallbackPadding);
+
+    // If settings were to small to cope with offset (legacy) and padding, we'll adjust
+    width = Math.max(width, yAxisOffset + normalizedPadding.left + normalizedPadding.right);
+    height = Math.max(height, xAxisOffset + normalizedPadding.top + normalizedPadding.bottom);
+
+    var chartRect = {
+      padding: normalizedPadding,
+      width: function () {
+        return this.x2 - this.x1;
+      },
+      height: function () {
+        return this.y1 - this.y2;
+      }
+    };
+
+    if(hasAxis) {
+      if (options.axisX.position === 'start') {
+        chartRect.y2 = normalizedPadding.top + xAxisOffset;
+        chartRect.y1 = Math.max(height - normalizedPadding.bottom, chartRect.y2 + 1);
+      } else {
+        chartRect.y2 = normalizedPadding.top;
+        chartRect.y1 = Math.max(height - normalizedPadding.bottom - xAxisOffset, chartRect.y2 + 1);
+      }
+
+      if (options.axisY.position === 'start') {
+        chartRect.x1 = normalizedPadding.left + yAxisOffset;
+        chartRect.x2 = Math.max(width - normalizedPadding.right, chartRect.x1 + 1);
+      } else {
+        chartRect.x1 = normalizedPadding.left;
+        chartRect.x2 = Math.max(width - normalizedPadding.right - yAxisOffset, chartRect.x1 + 1);
+      }
+    } else {
+      chartRect.x1 = normalizedPadding.left;
+      chartRect.x2 = Math.max(width - normalizedPadding.right, chartRect.x1 + 1);
+      chartRect.y2 = normalizedPadding.top;
+      chartRect.y1 = Math.max(height - normalizedPadding.bottom, chartRect.y2 + 1);
+    }
+
+    return chartRect;
+  };
+
+  /**
+   * Creates a grid line based on a projected value.
+   *
+   * @memberof Chartist.Core
+   * @param position
+   * @param index
+   * @param axis
+   * @param offset
+   * @param length
+   * @param group
+   * @param classes
+   * @param eventEmitter
+   */
+  Chartist.createGrid = function(position, index, axis, offset, length, group, classes, eventEmitter) {
+    var positionalData = {};
+    positionalData[axis.units.pos + '1'] = position;
+    positionalData[axis.units.pos + '2'] = position;
+    positionalData[axis.counterUnits.pos + '1'] = offset;
+    positionalData[axis.counterUnits.pos + '2'] = offset + length;
+
+    var gridElement = group.elem('line', positionalData, classes.join(' '));
+
+    // Event for grid draw
+    eventEmitter.emit('draw',
+      Chartist.extend({
+        type: 'grid',
+        axis: axis,
+        index: index,
+        group: group,
+        element: gridElement
+      }, positionalData)
+    );
+  };
+
+  /**
+   * Creates a grid background rect and emits the draw event.
+   *
+   * @memberof Chartist.Core
+   * @param gridGroup
+   * @param chartRect
+   * @param className
+   * @param eventEmitter
+   */
+  Chartist.createGridBackground = function (gridGroup, chartRect, className, eventEmitter) {
+    var gridBackground = gridGroup.elem('rect', {
+        x: chartRect.x1,
+        y: chartRect.y2,
+        width: chartRect.width(),
+        height: chartRect.height(),
+      }, className, true);
+
+      // Event for grid background draw
+      eventEmitter.emit('draw', {
+        type: 'gridBackground',
+        group: gridGroup,
+        element: gridBackground
+      });
+  };
+
+  /**
+   * Creates a label based on a projected value and an axis.
+   *
+   * @memberof Chartist.Core
+   * @param position
+   * @param length
+   * @param index
+   * @param labels
+   * @param axis
+   * @param axisOffset
+   * @param labelOffset
+   * @param group
+   * @param classes
+   * @param useForeignObject
+   * @param eventEmitter
+   */
+  Chartist.createLabel = function(position, length, index, labels, axis, axisOffset, labelOffset, group, classes, useForeignObject, eventEmitter) {
+    var labelElement;
+    var positionalData = {};
+
+    positionalData[axis.units.pos] = position + labelOffset[axis.units.pos];
+    positionalData[axis.counterUnits.pos] = labelOffset[axis.counterUnits.pos];
+    positionalData[axis.units.len] = length;
+    positionalData[axis.counterUnits.len] = Math.max(0, axisOffset - 10);
+
+    if(useForeignObject) {
+      // We need to set width and height explicitly to px as span will not expand with width and height being
+      // 100% in all browsers
+      var content = document.createElement('span');
+      content.className = classes.join(' ');
+      content.setAttribute('xmlns', Chartist.namespaces.xhtml);
+      content.innerText = labels[index];
+      content.style[axis.units.len] = Math.round(positionalData[axis.units.len]) + 'px';
+      content.style[axis.counterUnits.len] = Math.round(positionalData[axis.counterUnits.len]) + 'px';
+
+      labelElement = group.foreignObject(content, Chartist.extend({
+        style: 'overflow: visible;'
+      }, positionalData));
+    } else {
+      labelElement = group.elem('text', positionalData, classes.join(' ')).text(labels[index]);
+    }
+
+    eventEmitter.emit('draw', Chartist.extend({
+      type: 'label',
+      axis: axis,
+      index: index,
+      group: group,
+      element: labelElement,
+      text: labels[index]
+    }, positionalData));
+  };
+
+  /**
+   * Helper to read series specific options from options object. It automatically falls back to the global option if
+   * there is no option in the series options.
+   *
+   * @param {Object} series Series object
+   * @param {Object} options Chartist options object
+   * @param {string} key The options key that should be used to obtain the options
+   * @returns {*}
+   */
+  Chartist.getSeriesOption = function(series, options, key) {
+    if(series.name && options.series && options.series[series.name]) {
+      var seriesOptions = options.series[series.name];
+      return seriesOptions.hasOwnProperty(key) ? seriesOptions[key] : options[key];
+    } else {
+      return options[key];
+    }
+  };
+
+  /**
+   * Provides options handling functionality with callback for options changes triggered by responsive options and media query matches
+   *
+   * @memberof Chartist.Core
+   * @param {Object} options Options set by user
+   * @param {Array} responsiveOptions Optional functions to add responsive behavior to chart
+   * @param {Object} eventEmitter The event emitter that will be used to emit the options changed events
+   * @return {Object} The consolidated options object from the defaults, base and matching responsive options
+   */
+  Chartist.optionsProvider = function (options, responsiveOptions, eventEmitter) {
+    var baseOptions = Chartist.extend({}, options),
+      currentOptions,
+      mediaQueryListeners = [],
+      i;
+
+    function updateCurrentOptions(mediaEvent) {
+      var previousOptions = currentOptions;
+      currentOptions = Chartist.extend({}, baseOptions);
+
+      if (responsiveOptions) {
+        for (i = 0; i < responsiveOptions.length; i++) {
+          var mql = window.matchMedia(responsiveOptions[i][0]);
+          if (mql.matches) {
+            currentOptions = Chartist.extend(currentOptions, responsiveOptions[i][1]);
+          }
+        }
+      }
+
+      if(eventEmitter && mediaEvent) {
+        eventEmitter.emit('optionsChanged', {
+          previousOptions: previousOptions,
+          currentOptions: currentOptions
+        });
+      }
+    }
+
+    function removeMediaQueryListeners() {
+      mediaQueryListeners.forEach(function(mql) {
+        mql.removeListener(updateCurrentOptions);
+      });
+    }
+
+    if (!window.matchMedia) {
+      throw 'window.matchMedia not found! Make sure you\'re using a polyfill.';
+    } else if (responsiveOptions) {
+
+      for (i = 0; i < responsiveOptions.length; i++) {
+        var mql = window.matchMedia(responsiveOptions[i][0]);
+        mql.addListener(updateCurrentOptions);
+        mediaQueryListeners.push(mql);
+      }
+    }
+    // Execute initially without an event argument so we get the correct options
+    updateCurrentOptions();
+
+    return {
+      removeMediaQueryListeners: removeMediaQueryListeners,
+      getCurrentOptions: function getCurrentOptions() {
+        return Chartist.extend({}, currentOptions);
+      }
+    };
+  };
+
+
+  /**
+   * Splits a list of coordinates and associated values into segments. Each returned segment contains a pathCoordinates
+   * valueData property describing the segment.
+   *
+   * With the default options, segments consist of contiguous sets of points that do not have an undefined value. Any
+   * points with undefined values are discarded.
+   *
+   * **Options**
+   * The following options are used to determine how segments are formed
+   * ```javascript
+   * var options = {
+   *   // If fillHoles is true, undefined values are simply discarded without creating a new segment. Assuming other options are default, this returns single segment.
+   *   fillHoles: false,
+   *   // If increasingX is true, the coordinates in all segments have strictly increasing x-values.
+   *   increasingX: false
+   * };
+   * ```
+   *
+   * @memberof Chartist.Core
+   * @param {Array} pathCoordinates List of point coordinates to be split in the form [x1, y1, x2, y2 ... xn, yn]
+   * @param {Array} values List of associated point values in the form [v1, v2 .. vn]
+   * @param {Object} options Options set by user
+   * @return {Array} List of segments, each containing a pathCoordinates and valueData property.
+   */
+  Chartist.splitIntoSegments = function(pathCoordinates, valueData, options) {
+    var defaultOptions = {
+      increasingX: false,
+      fillHoles: false
+    };
+
+    options = Chartist.extend({}, defaultOptions, options);
+
+    var segments = [];
+    var hole = true;
+
+    for(var i = 0; i < pathCoordinates.length; i += 2) {
+      // If this value is a "hole" we set the hole flag
+      if(Chartist.getMultiValue(valueData[i / 2].value) === undefined) {
+      // if(valueData[i / 2].value === undefined) {
+        if(!options.fillHoles) {
+          hole = true;
+        }
+      } else {
+        if(options.increasingX && i >= 2 && pathCoordinates[i] <= pathCoordinates[i-2]) {
+          // X is not increasing, so we need to make sure we start a new segment
+          hole = true;
+        }
+
+
+        // If it's a valid value we need to check if we're coming out of a hole and create a new empty segment
+        if(hole) {
+          segments.push({
+            pathCoordinates: [],
+            valueData: []
+          });
+          // As we have a valid value now, we are not in a "hole" anymore
+          hole = false;
+        }
+
+        // Add to the segment pathCoordinates and valueData
+        segments[segments.length - 1].pathCoordinates.push(pathCoordinates[i], pathCoordinates[i + 1]);
+        segments[segments.length - 1].valueData.push(valueData[i / 2]);
+      }
+    }
+
+    return segments;
+  };
+}(this || global, Chartist));
+;/**
+ * Chartist path interpolation functions.
+ *
+ * @module Chartist.Interpolation
+ */
+/* global Chartist */
+(function(globalRoot, Chartist) {
+  'use strict';
+
+  Chartist.Interpolation = {};
+
+  /**
+   * This interpolation function does not smooth the path and the result is only containing lines and no curves.
+   *
+   * @example
+   * var chart = new Chartist.Line('.ct-chart', {
+   *   labels: [1, 2, 3, 4, 5],
+   *   series: [[1, 2, 8, 1, 7]]
+   * }, {
+   *   lineSmooth: Chartist.Interpolation.none({
+   *     fillHoles: false
+   *   })
+   * });
+   *
+   *
+   * @memberof Chartist.Interpolation
+   * @return {Function}
+   */
+  Chartist.Interpolation.none = function(options) {
+    var defaultOptions = {
+      fillHoles: false
+    };
+    options = Chartist.extend({}, defaultOptions, options);
+    return function none(pathCoordinates, valueData) {
+      var path = new Chartist.Svg.Path();
+      var hole = true;
+
+      for(var i = 0; i < pathCoordinates.length; i += 2) {
+        var currX = pathCoordinates[i];
+        var currY = pathCoordinates[i + 1];
+        var currData = valueData[i / 2];
+
+        if(Chartist.getMultiValue(currData.value) !== undefined) {
+
+          if(hole) {
+            path.move(currX, currY, false, currData);
+          } else {
+            path.line(currX, currY, false, currData);
+          }
+
+          hole = false;
+        } else if(!options.fillHoles) {
+          hole = true;
+        }
+      }
+
+      return path;
+    };
+  };
+
+  /**
+   * Simple smoothing creates horizontal handles that are positioned with a fraction of the length between two data points. You can use the divisor option to specify the amount of smoothing.
+   *
+   * Simple smoothing can be used instead of `Chartist.Smoothing.cardinal` if you'd like to get rid of the artifacts it produces sometimes. Simple smoothing produces less flowing lines but is accurate by hitting the points and it also doesn't swing below or above the given data point.
+   *
+   * All smoothing functions within Chartist are factory functions that accept an options parameter. The simple interpolation function accepts one configuration parameter `divisor`, between 1 and ∞, which controls the smoothing characteristics.
+   *
+   * @example
+   * var chart = new Chartist.Line('.ct-chart', {
+   *   labels: [1, 2, 3, 4, 5],
+   *   series: [[1, 2, 8, 1, 7]]
+   * }, {
+   *   lineSmooth: Chartist.Interpolation.simple({
+   *     divisor: 2,
+   *     fillHoles: false
+   *   })
+   * });
+   *
+   *
+   * @memberof Chartist.Interpolation
+   * @param {Object} options The options of the simple interpolation factory function.
+   * @return {Function}
+   */
+  Chartist.Interpolation.simple = function(options) {
+    var defaultOptions = {
+      divisor: 2,
+      fillHoles: false
+    };
+    options = Chartist.extend({}, defaultOptions, options);
+
+    var d = 1 / Math.max(1, options.divisor);
+
+    return function simple(pathCoordinates, valueData) {
+      var path = new Chartist.Svg.Path();
+      var prevX, prevY, prevData;
+
+      for(var i = 0; i < pathCoordinates.length; i += 2) {
+        var currX = pathCoordinates[i];
+        var currY = pathCoordinates[i + 1];
+        var length = (currX - prevX) * d;
+        var currData = valueData[i / 2];
+
+        if(currData.value !== undefined) {
+
+          if(prevData === undefined) {
+            path.move(currX, currY, false, currData);
+          } else {
+            path.curve(
+              prevX + length,
+              prevY,
+              currX - length,
+              currY,
+              currX,
+              currY,
+              false,
+              currData
+            );
+          }
+
+          prevX = currX;
+          prevY = currY;
+          prevData = currData;
+        } else if(!options.fillHoles) {
+          prevX = currX = prevData = undefined;
+        }
+      }
+
+      return path;
+    };
+  };
+
+  /**
+   * Cardinal / Catmull-Rome spline interpolation is the default smoothing function in Chartist. It produces nice results where the splines will always meet the points. It produces some artifacts though when data values are increased or decreased rapidly. The line may not follow a very accurate path and if the line should be accurate this smoothing function does not produce the best results.
+   *
+   * Cardinal splines can only be created if there are more than two data points. If this is not the case this smoothing will fallback to `Chartist.Smoothing.none`.
+   *
+   * All smoothing functions within Chartist are factory functions that accept an options parameter. The cardinal interpolation function accepts one configuration parameter `tension`, between 0 and 1, which controls the smoothing intensity.
+   *
+   * @example
+   * var chart = new Chartist.Line('.ct-chart', {
+   *   labels: [1, 2, 3, 4, 5],
+   *   series: [[1, 2, 8, 1, 7]]
+   * }, {
+   *   lineSmooth: Chartist.Interpolation.cardinal({
+   *     tension: 1,
+   *     fillHoles: false
+   *   })
+   * });
+   *
+   * @memberof Chartist.Interpolation
+   * @param {Object} options The options of the cardinal factory function.
+   * @return {Function}
+   */
+  Chartist.Interpolation.cardinal = function(options) {
+    var defaultOptions = {
+      tension: 1,
+      fillHoles: false
+    };
+
+    options = Chartist.extend({}, defaultOptions, options);
+
+    var t = Math.min(1, Math.max(0, options.tension)),
+      c = 1 - t;
+
+    return function cardinal(pathCoordinates, valueData) {
+      // First we try to split the coordinates into segments
+      // This is necessary to treat "holes" in line charts
+      var segments = Chartist.splitIntoSegments(pathCoordinates, valueData, {
+        fillHoles: options.fillHoles
+      });
+
+      if(!segments.length) {
+        // If there were no segments return 'Chartist.Interpolation.none'
+        return Chartist.Interpolation.none()([]);
+      } else if(segments.length > 1) {
+        // If the split resulted in more that one segment we need to interpolate each segment individually and join them
+        // afterwards together into a single path.
+          var paths = [];
+        // For each segment we will recurse the cardinal function
+        segments.forEach(function(segment) {
+          paths.push(cardinal(segment.pathCoordinates, segment.valueData));
+        });
+        // Join the segment path data into a single path and return
+        return Chartist.Svg.Path.join(paths);
+      } else {
+        // If there was only one segment we can proceed regularly by using pathCoordinates and valueData from the first
+        // segment
+        pathCoordinates = segments[0].pathCoordinates;
+        valueData = segments[0].valueData;
+
+        // If less than two points we need to fallback to no smoothing
+        if(pathCoordinates.length <= 4) {
+          return Chartist.Interpolation.none()(pathCoordinates, valueData);
+        }
+
+        var path = new Chartist.Svg.Path().move(pathCoordinates[0], pathCoordinates[1], false, valueData[0]),
+          z;
+
+        for (var i = 0, iLen = pathCoordinates.length; iLen - 2 * !z > i; i += 2) {
+          var p = [
+            {x: +pathCoordinates[i - 2], y: +pathCoordinates[i - 1]},
+            {x: +pathCoordinates[i], y: +pathCoordinates[i + 1]},
+            {x: +pathCoordinates[i + 2], y: +pathCoordinates[i + 3]},
+            {x: +pathCoordinates[i + 4], y: +pathCoordinates[i + 5]}
+          ];
+          if (z) {
+            if (!i) {
+              p[0] = {x: +pathCoordinates[iLen - 2], y: +pathCoordinates[iLen - 1]};
+            } else if (iLen - 4 === i) {
+              p[3] = {x: +pathCoordinates[0], y: +pathCoordinates[1]};
+            } else if (iLen - 2 === i) {
+              p[2] = {x: +pathCoordinates[0], y: +pathCoordinates[1]};
+              p[3] = {x: +pathCoordinates[2], y: +pathCoordinates[3]};
+            }
+          } else {
+            if (iLen - 4 === i) {
+              p[3] = p[2];
+            } else if (!i) {
+              p[0] = {x: +pathCoordinates[i], y: +pathCoordinates[i + 1]};
+            }
+          }
+
+          path.curve(
+            (t * (-p[0].x + 6 * p[1].x + p[2].x) / 6) + (c * p[2].x),
+            (t * (-p[0].y + 6 * p[1].y + p[2].y) / 6) + (c * p[2].y),
+            (t * (p[1].x + 6 * p[2].x - p[3].x) / 6) + (c * p[2].x),
+            (t * (p[1].y + 6 * p[2].y - p[3].y) / 6) + (c * p[2].y),
+            p[2].x,
+            p[2].y,
+            false,
+            valueData[(i + 2) / 2]
+          );
+        }
+
+        return path;
+      }
+    };
+  };
+
+  /**
+   * Monotone Cubic spline interpolation produces a smooth curve which preserves monotonicity. Unlike cardinal splines, the curve will not extend beyond the range of y-values of the original data points.
+   *
+   * Monotone Cubic splines can only be created if there are more than two data points. If this is not the case this smoothing will fallback to `Chartist.Smoothing.none`.
+   *
+   * The x-values of subsequent points must be increasing to fit a Monotone Cubic spline. If this condition is not met for a pair of adjacent points, then there will be a break in the curve between those data points.
+   *
+   * All smoothing functions within Chartist are factory functions that accept an options parameter.
+   *
+   * @example
+   * var chart = new Chartist.Line('.ct-chart', {
+   *   labels: [1, 2, 3, 4, 5],
+   *   series: [[1, 2, 8, 1, 7]]
+   * }, {
+   *   lineSmooth: Chartist.Interpolation.monotoneCubic({
+   *     fillHoles: false
+   *   })
+   * });
+   *
+   * @memberof Chartist.Interpolation
+   * @param {Object} options The options of the monotoneCubic factory function.
+   * @return {Function}
+   */
+  Chartist.Interpolation.monotoneCubic = function(options) {
+    var defaultOptions = {
+      fillHoles: false
+    };
+
+    options = Chartist.extend({}, defaultOptions, options);
+
+    return function monotoneCubic(pathCoordinates, valueData) {
+      // First we try to split the coordinates into segments
+      // This is necessary to treat "holes" in line charts
+      var segments = Chartist.splitIntoSegments(pathCoordinates, valueData, {
+        fillHoles: options.fillHoles,
+        increasingX: true
+      });
+
+      if(!segments.length) {
+        // If there were no segments return 'Chartist.Interpolation.none'
+        return Chartist.Interpolation.none()([]);
+      } else if(segments.length > 1) {
+        // If the split resulted in more that one segment we need to interpolate each segment individually and join them
+        // afterwards together into a single path.
+          var paths = [];
+        // For each segment we will recurse the monotoneCubic fn function
+        segments.forEach(function(segment) {
+          paths.push(monotoneCubic(segment.pathCoordinates, segment.valueData));
+        });
+        // Join the segment path data into a single path and return
+        return Chartist.Svg.Path.join(paths);
+      } else {
+        // If there was only one segment we can proceed regularly by using pathCoordinates and valueData from the first
+        // segment
+        pathCoordinates = segments[0].pathCoordinates;
+        valueData = segments[0].valueData;
+
+        // If less than three points we need to fallback to no smoothing
+        if(pathCoordinates.length <= 4) {
+          return Chartist.Interpolation.none()(pathCoordinates, valueData);
+        }
+
+        var xs = [],
+          ys = [],
+          i,
+          n = pathCoordinates.length / 2,
+          ms = [],
+          ds = [], dys = [], dxs = [],
+          path;
+
+        // Populate x and y coordinates into separate arrays, for readability
+
+        for(i = 0; i < n; i++) {
+          xs[i] = pathCoordinates[i * 2];
+          ys[i] = pathCoordinates[i * 2 + 1];
+        }
+
+        // Calculate deltas and derivative
+
+        for(i = 0; i < n - 1; i++) {
+          dys[i] = ys[i + 1] - ys[i];
+          dxs[i] = xs[i + 1] - xs[i];
+          ds[i] = dys[i] / dxs[i];
+        }
+
+        // Determine desired slope (m) at each point using Fritsch-Carlson method
+        // See: http://math.stackexchange.com/questions/45218/implementation-of-monotone-cubic-interpolation
+
+        ms[0] = ds[0];
+        ms[n - 1] = ds[n - 2];
+
+        for(i = 1; i < n - 1; i++) {
+          if(ds[i] === 0 || ds[i - 1] === 0 || (ds[i - 1] > 0) !== (ds[i] > 0)) {
+            ms[i] = 0;
+          } else {
+            ms[i] = 3 * (dxs[i - 1] + dxs[i]) / (
+              (2 * dxs[i] + dxs[i - 1]) / ds[i - 1] +
+              (dxs[i] + 2 * dxs[i - 1]) / ds[i]);
+
+            if(!isFinite(ms[i])) {
+              ms[i] = 0;
+            }
+          }
+        }
+
+        // Now build a path from the slopes
+
+        path = new Chartist.Svg.Path().move(xs[0], ys[0], false, valueData[0]);
+
+        for(i = 0; i < n - 1; i++) {
+          path.curve(
+            // First control point
+            xs[i] + dxs[i] / 3,
+            ys[i] + ms[i] * dxs[i] / 3,
+            // Second control point
+            xs[i + 1] - dxs[i] / 3,
+            ys[i + 1] - ms[i + 1] * dxs[i] / 3,
+            // End point
+            xs[i + 1],
+            ys[i + 1],
+
+            false,
+            valueData[i + 1]
+          );
+        }
+
+        return path;
+      }
+    };
+  };
+
+  /**
+   * Step interpolation will cause the line chart to move in steps rather than diagonal or smoothed lines. This interpolation will create additional points that will also be drawn when the `showPoint` option is enabled.
+   *
+   * All smoothing functions within Chartist are factory functions that accept an options parameter. The step interpolation function accepts one configuration parameter `postpone`, that can be `true` or `false`. The default value is `true` and will cause the step to occur where the value actually changes. If a different behaviour is needed where the step is shifted to the left and happens before the actual value, this option can be set to `false`.
+   *
+   * @example
+   * var chart = new Chartist.Line('.ct-chart', {
+   *   labels: [1, 2, 3, 4, 5],
+   *   series: [[1, 2, 8, 1, 7]]
+   * }, {
+   *   lineSmooth: Chartist.Interpolation.step({
+   *     postpone: true,
+   *     fillHoles: false
+   *   })
+   * });
+   *
+   * @memberof Chartist.Interpolation
+   * @param options
+   * @returns {Function}
+   */
+  Chartist.Interpolation.step = function(options) {
+    var defaultOptions = {
+      postpone: true,
+      fillHoles: false
+    };
+
+    options = Chartist.extend({}, defaultOptions, options);
+
+    return function step(pathCoordinates, valueData) {
+      var path = new Chartist.Svg.Path();
+
+      var prevX, prevY, prevData;
+
+      for (var i = 0; i < pathCoordinates.length; i += 2) {
+        var currX = pathCoordinates[i];
+        var currY = pathCoordinates[i + 1];
+        var currData = valueData[i / 2];
+
+        // If the current point is also not a hole we can draw the step lines
+        if(currData.value !== undefined) {
+          if(prevData === undefined) {
+            path.move(currX, currY, false, currData);
+          } else {
+            if(options.postpone) {
+              // If postponed we should draw the step line with the value of the previous value
+              path.line(currX, prevY, false, prevData);
+            } else {
+              // If not postponed we should draw the step line with the value of the current value
+              path.line(prevX, currY, false, currData);
+            }
+            // Line to the actual point (this should only be a Y-Axis movement
+            path.line(currX, currY, false, currData);
+          }
+
+          prevX = currX;
+          prevY = currY;
+          prevData = currData;
+        } else if(!options.fillHoles) {
+          prevX = prevY = prevData = undefined;
+        }
+      }
+
+      return path;
+    };
+  };
+
+}(this || global, Chartist));
+;/**
+ * A very basic event module that helps to generate and catch events.
+ *
+ * @module Chartist.Event
+ */
+/* global Chartist */
+(function (globalRoot, Chartist) {
+  'use strict';
+
+  Chartist.EventEmitter = function () {
+    var handlers = [];
+
+    /**
+     * Add an event handler for a specific event
+     *
+     * @memberof Chartist.Event
+     * @param {String} event The event name
+     * @param {Function} handler A event handler function
+     */
+    function addEventHandler(event, handler) {
+      handlers[event] = handlers[event] || [];
+      handlers[event].push(handler);
+    }
+
+    /**
+     * Remove an event handler of a specific event name or remove all event handlers for a specific event.
+     *
+     * @memberof Chartist.Event
+     * @param {String} event The event name where a specific or all handlers should be removed
+     * @param {Function} [handler] An optional event handler function. If specified only this specific handler will be removed and otherwise all handlers are removed.
+     */
+    function removeEventHandler(event, handler) {
+      // Only do something if there are event handlers with this name existing
+      if(handlers[event]) {
+        // If handler is set we will look for a specific handler and only remove this
+        if(handler) {
+          handlers[event].splice(handlers[event].indexOf(handler), 1);
+          if(handlers[event].length === 0) {
+            delete handlers[event];
+          }
+        } else {
+          // If no handler is specified we remove all handlers for this event
+          delete handlers[event];
+        }
+      }
+    }
+
+    /**
+     * Use this function to emit an event. All handlers that are listening for this event will be triggered with the data parameter.
+     *
+     * @memberof Chartist.Event
+     * @param {String} event The event name that should be triggered
+     * @param {*} data Arbitrary data that will be passed to the event handler callback functions
+     */
+    function emit(event, data) {
+      // Only do something if there are event handlers with this name existing
+      if(handlers[event]) {
+        handlers[event].forEach(function(handler) {
+          handler(data);
+        });
+      }
+
+      // Emit event to star event handlers
+      if(handlers['*']) {
+        handlers['*'].forEach(function(starHandler) {
+          starHandler(event, data);
+        });
+      }
+    }
+
+    return {
+      addEventHandler: addEventHandler,
+      removeEventHandler: removeEventHandler,
+      emit: emit
+    };
+  };
+
+}(this || global, Chartist));
+;/**
+ * This module provides some basic prototype inheritance utilities.
+ *
+ * @module Chartist.Class
+ */
+/* global Chartist */
+(function(globalRoot, Chartist) {
+  'use strict';
+
+  function listToArray(list) {
+    var arr = [];
+    if (list.length) {
+      for (var i = 0; i < list.length; i++) {
+        arr.push(list[i]);
+      }
+    }
+    return arr;
+  }
+
+  /**
+   * Method to extend from current prototype.
+   *
+   * @memberof Chartist.Class
+   * @param {Object} properties The object that serves as definition for the prototype that gets created for the new class. This object should always contain a constructor property that is the desired constructor for the newly created class.
+   * @param {Object} [superProtoOverride] By default extens will use the current class prototype or Chartist.class. With this parameter you can specify any super prototype that will be used.
+   * @return {Function} Constructor function of the new class
+   *
+   * @example
+   * var Fruit = Class.extend({
+     * color: undefined,
+     *   sugar: undefined,
+     *
+     *   constructor: function(color, sugar) {
+     *     this.color = color;
+     *     this.sugar = sugar;
+     *   },
+     *
+     *   eat: function() {
+     *     this.sugar = 0;
+     *     return this;
+     *   }
+     * });
+   *
+   * var Banana = Fruit.extend({
+     *   length: undefined,
+     *
+     *   constructor: function(length, sugar) {
+     *     Banana.super.constructor.call(this, 'Yellow', sugar);
+     *     this.length = length;
+     *   }
+     * });
+   *
+   * var banana = new Banana(20, 40);
+   * console.log('banana instanceof Fruit', banana instanceof Fruit);
+   * console.log('Fruit is prototype of banana', Fruit.prototype.isPrototypeOf(banana));
+   * console.log('bananas prototype is Fruit', Object.getPrototypeOf(banana) === Fruit.prototype);
+   * console.log(banana.sugar);
+   * console.log(banana.eat().sugar);
+   * console.log(banana.color);
+   */
+  function extend(properties, superProtoOverride) {
+    var superProto = superProtoOverride || this.prototype || Chartist.Class;
+    var proto = Object.create(superProto);
+
+    Chartist.Class.cloneDefinitions(proto, properties);
+
+    var constr = function() {
+      var fn = proto.constructor || function () {},
+        instance;
+
+      // If this is linked to the Chartist namespace the constructor was not called with new
+      // To provide a fallback we will instantiate here and return the instance
+      instance = this === Chartist ? Object.create(proto) : this;
+      fn.apply(instance, Array.prototype.slice.call(arguments, 0));
+
+      // If this constructor was not called with new we need to return the instance
+      // This will not harm when the constructor has been called with new as the returned value is ignored
+      return instance;
+    };
+
+    constr.prototype = proto;
+    constr.super = superProto;
+    constr.extend = this.extend;
+
+    return constr;
+  }
+
+  // Variable argument list clones args > 0 into args[0] and retruns modified args[0]
+  function cloneDefinitions() {
+    var args = listToArray(arguments);
+    var target = args[0];
+
+    args.splice(1, args.length - 1).forEach(function (source) {
+      Object.getOwnPropertyNames(source).forEach(function (propName) {
+        // If this property already exist in target we delete it first
+        delete target[propName];
+        // Define the property with the descriptor from source
+        Object.defineProperty(target, propName,
+          Object.getOwnPropertyDescriptor(source, propName));
+      });
+    });
+
+    return target;
+  }
+
+  Chartist.Class = {
+    extend: extend,
+    cloneDefinitions: cloneDefinitions
+  };
+
+}(this || global, Chartist));
+;/**
+ * Base for all chart types. The methods in Chartist.Base are inherited to all chart types.
+ *
+ * @module Chartist.Base
+ */
+/* global Chartist */
+(function(globalRoot, Chartist) {
+  'use strict';
+
+  var window = globalRoot.window;
+
+  // TODO: Currently we need to re-draw the chart on window resize. This is usually very bad and will affect performance.
+  // This is done because we can't work with relative coordinates when drawing the chart because SVG Path does not
+  // work with relative positions yet. We need to check if we can do a viewBox hack to switch to percentage.
+  // See http://mozilla.6506.n7.nabble.com/Specyfing-paths-with-percentages-unit-td247474.html
+  // Update: can be done using the above method tested here: http://codepen.io/gionkunz/pen/KDvLj
+  // The problem is with the label offsets that can't be converted into percentage and affecting the chart container
+  /**
+   * Updates the chart which currently does a full reconstruction of the SVG DOM
+   *
+   * @param {Object} [data] Optional data you'd like to set for the chart before it will update. If not specified the update method will use the data that is already configured with the chart.
+   * @param {Object} [options] Optional options you'd like to add to the previous options for the chart before it will update. If not specified the update method will use the options that have been already configured with the chart.
+   * @param {Boolean} [override] If set to true, the passed options will be used to extend the options that have been configured already. Otherwise the chart default options will be used as the base
+   * @memberof Chartist.Base
+   */
+  function update(data, options, override) {
+    if(data) {
+      this.data = data || {};
+      this.data.labels = this.data.labels || [];
+      this.data.series = this.data.series || [];
+      // Event for data transformation that allows to manipulate the data before it gets rendered in the charts
+      this.eventEmitter.emit('data', {
+        type: 'update',
+        data: this.data
+      });
+    }
+
+    if(options) {
+      this.options = Chartist.extend({}, override ? this.options : this.defaultOptions, options);
+
+      // If chartist was not initialized yet, we just set the options and leave the rest to the initialization
+      // Otherwise we re-create the optionsProvider at this point
+      if(!this.initializeTimeoutId) {
+        this.optionsProvider.removeMediaQueryListeners();
+        this.optionsProvider = Chartist.optionsProvider(this.options, this.responsiveOptions, this.eventEmitter);
+      }
+    }
+
+    // Only re-created the chart if it has been initialized yet
+    if(!this.initializeTimeoutId) {
+      this.createChart(this.optionsProvider.getCurrentOptions());
+    }
+
+    // Return a reference to the chart object to chain up calls
+    return this;
+  }
+
+  /**
+   * This method can be called on the API object of each chart and will un-register all event listeners that were added to other components. This currently includes a window.resize listener as well as media query listeners if any responsive options have been provided. Use this function if you need to destroy and recreate Chartist charts dynamically.
+   *
+   * @memberof Chartist.Base
+   */
+  function detach() {
+    // Only detach if initialization already occurred on this chart. If this chart still hasn't initialized (therefore
+    // the initializationTimeoutId is still a valid timeout reference, we will clear the timeout
+    if(!this.initializeTimeoutId) {
+      window.removeEventListener('resize', this.resizeListener);
+      this.optionsProvider.removeMediaQueryListeners();
+    } else {
+      window.clearTimeout(this.initializeTimeoutId);
+    }
+
+    return this;
+  }
+
+  /**
+   * Use this function to register event handlers. The handler callbacks are synchronous and will run in the main thread rather than the event loop.
+   *
+   * @memberof Chartist.Base
+   * @param {String} event Name of the event. Check the examples for supported events.
+   * @param {Function} handler The handler function that will be called when an event with the given name was emitted. This function will receive a data argument which contains event data. See the example for more details.
+   */
+  function on(event, handler) {
+    this.eventEmitter.addEventHandler(event, handler);
+    return this;
+  }
+
+  /**
+   * Use this function to un-register event handlers. If the handler function parameter is omitted all handlers for the given event will be un-registered.
+   *
+   * @memberof Chartist.Base
+   * @param {String} event Name of the event for which a handler should be removed
+   * @param {Function} [handler] The handler function that that was previously used to register a new event handler. This handler will be removed from the event handler list. If this parameter is omitted then all event handlers for the given event are removed from the list.
+   */
+  function off(event, handler) {
+    this.eventEmitter.removeEventHandler(event, handler);
+    return this;
+  }
+
+  function initialize() {
+    // Add window resize listener that re-creates the chart
+    window.addEventListener('resize', this.resizeListener);
+
+    // Obtain current options based on matching media queries (if responsive options are given)
+    // This will also register a listener that is re-creating the chart based on media changes
+    this.optionsProvider = Chartist.optionsProvider(this.options, this.responsiveOptions, this.eventEmitter);
+    // Register options change listener that will trigger a chart update
+    this.eventEmitter.addEventHandler('optionsChanged', function() {
+      this.update();
+    }.bind(this));
+
+    // Before the first chart creation we need to register us with all plugins that are configured
+    // Initialize all relevant plugins with our chart object and the plugin options specified in the config
+    if(this.options.plugins) {
+      this.options.plugins.forEach(function(plugin) {
+        if(plugin instanceof Array) {
+          plugin[0](this, plugin[1]);
+        } else {
+          plugin(this);
+        }
+      }.bind(this));
+    }
+
+    // Event for data transformation that allows to manipulate the data before it gets rendered in the charts
+    this.eventEmitter.emit('data', {
+      type: 'initial',
+      data: this.data
+    });
+
+    // Create the first chart
+    this.createChart(this.optionsProvider.getCurrentOptions());
+
+    // As chart is initialized from the event loop now we can reset our timeout reference
+    // This is important if the chart gets initialized on the same element twice
+    this.initializeTimeoutId = undefined;
+  }
+
+  /**
+   * Constructor of chart base class.
+   *
+   * @param query
+   * @param data
+   * @param defaultOptions
+   * @param options
+   * @param responsiveOptions
+   * @constructor
+   */
+  function Base(query, data, defaultOptions, options, responsiveOptions) {
+    this.container = Chartist.querySelector(query);
+    this.data = data || {};
+    this.data.labels = this.data.labels || [];
+    this.data.series = this.data.series || [];
+    this.defaultOptions = defaultOptions;
+    this.options = options;
+    this.responsiveOptions = responsiveOptions;
+    this.eventEmitter = Chartist.EventEmitter();
+    this.supportsForeignObject = Chartist.Svg.isSupported('Extensibility');
+    this.supportsAnimations = Chartist.Svg.isSupported('AnimationEventsAttribute');
+    this.resizeListener = function resizeListener(){
+      this.update();
+    }.bind(this);
+
+    if(this.container) {
+      // If chartist was already initialized in this container we are detaching all event listeners first
+      if(this.container.__chartist__) {
+        this.container.__chartist__.detach();
+      }
+
+      this.container.__chartist__ = this;
+    }
+
+    // Using event loop for first draw to make it possible to register event listeners in the same call stack where
+    // the chart was created.
+    this.initializeTimeoutId = setTimeout(initialize.bind(this), 0);
+  }
+
+  // Creating the chart base class
+  Chartist.Base = Chartist.Class.extend({
+    constructor: Base,
+    optionsProvider: undefined,
+    container: undefined,
+    svg: undefined,
+    eventEmitter: undefined,
+    createChart: function() {
+      throw new Error('Base chart type can\'t be instantiated!');
+    },
+    update: update,
+    detach: detach,
+    on: on,
+    off: off,
+    version: Chartist.version,
+    supportsForeignObject: false
+  });
+
+}(this || global, Chartist));
+;/**
+ * Chartist SVG module for simple SVG DOM abstraction
+ *
+ * @module Chartist.Svg
+ */
+/* global Chartist */
+(function(globalRoot, Chartist) {
+  'use strict';
+
+  var document = globalRoot.document;
+
+  /**
+   * Chartist.Svg creates a new SVG object wrapper with a starting element. You can use the wrapper to fluently create sub-elements and modify them.
+   *
+   * @memberof Chartist.Svg
+   * @constructor
+   * @param {String|Element} name The name of the SVG element to create or an SVG dom element which should be wrapped into Chartist.Svg
+   * @param {Object} attributes An object with properties that will be added as attributes to the SVG element that is created. Attributes with undefined values will not be added.
+   * @param {String} className This class or class list will be added to the SVG element
+   * @param {Object} parent The parent SVG wrapper object where this newly created wrapper and it's element will be attached to as child
+   * @param {Boolean} insertFirst If this param is set to true in conjunction with a parent element the newly created element will be added as first child element in the parent element
+   */
+  function Svg(name, attributes, className, parent, insertFirst) {
+    // If Svg is getting called with an SVG element we just return the wrapper
+    if(name instanceof Element) {
+      this._node = name;
+    } else {
+      this._node = document.createElementNS(Chartist.namespaces.svg, name);
+
+      // If this is an SVG element created then custom namespace
+      if(name === 'svg') {
+        this.attr({
+          'xmlns:ct': Chartist.namespaces.ct
+        });
+      }
+    }
+
+    if(attributes) {
+      this.attr(attributes);
+    }
+
+    if(className) {
+      this.addClass(className);
+    }
+
+    if(parent) {
+      if (insertFirst && parent._node.firstChild) {
+        parent._node.insertBefore(this._node, parent._node.firstChild);
+      } else {
+        parent._node.appendChild(this._node);
+      }
+    }
+  }
+
+  /**
+   * Set attributes on the current SVG element of the wrapper you're currently working on.
+   *
+   * @memberof Chartist.Svg
+   * @param {Object|String} attributes An object with properties that will be added as attributes to the SVG element that is created. Attributes with undefined values will not be added. If this parameter is a String then the function is used as a getter and will return the attribute value.
+   * @param {String} [ns] If specified, the attribute will be obtained using getAttributeNs. In order to write namepsaced attributes you can use the namespace:attribute notation within the attributes object.
+   * @return {Object|String} The current wrapper object will be returned so it can be used for chaining or the attribute value if used as getter function.
+   */
+  function attr(attributes, ns) {
+    if(typeof attributes === 'string') {
+      if(ns) {
+        return this._node.getAttributeNS(ns, attributes);
+      } else {
+        return this._node.getAttribute(attributes);
+      }
+    }
+
+    Object.keys(attributes).forEach(function(key) {
+      // If the attribute value is undefined we can skip this one
+      if(attributes[key] === undefined) {
+        return;
+      }
+
+      if (key.indexOf(':') !== -1) {
+        var namespacedAttribute = key.split(':');
+        this._node.setAttributeNS(Chartist.namespaces[namespacedAttribute[0]], key, attributes[key]);
+      } else {
+        this._node.setAttribute(key, attributes[key]);
+      }
+    }.bind(this));
+
+    return this;
+  }
+
+  /**
+   * Create a new SVG element whose wrapper object will be selected for further operations. This way you can also create nested groups easily.
+   *
+   * @memberof Chartist.Svg
+   * @param {String} name The name of the SVG element that should be created as child element of the currently selected element wrapper
+   * @param {Object} [attributes] An object with properties that will be added as attributes to the SVG element that is created. Attributes with undefined values will not be added.
+   * @param {String} [className] This class or class list will be added to the SVG element
+   * @param {Boolean} [insertFirst] If this param is set to true in conjunction with a parent element the newly created element will be added as first child element in the parent element
+   * @return {Chartist.Svg} Returns a Chartist.Svg wrapper object that can be used to modify the containing SVG data
+   */
+  function elem(name, attributes, className, insertFirst) {
+    return new Chartist.Svg(name, attributes, className, this, insertFirst);
+  }
+
+  /**
+   * Returns the parent Chartist.SVG wrapper object
+   *
+   * @memberof Chartist.Svg
+   * @return {Chartist.Svg} Returns a Chartist.Svg wrapper around the parent node of the current node. If the parent node is not existing or it's not an SVG node then this function will return null.
+   */
+  function parent() {
+    return this._node.parentNode instanceof SVGElement ? new Chartist.Svg(this._node.parentNode) : null;
+  }
+
+  /**
+   * This method returns a Chartist.Svg wrapper around the root SVG element of the current tree.
+   *
+   * @memberof Chartist.Svg
+   * @return {Chartist.Svg} The root SVG element wrapped in a Chartist.Svg element
+   */
+  function root() {
+    var node = this._node;
+    while(node.nodeName !== 'svg') {
+      node = node.parentNode;
+    }
+    return new Chartist.Svg(node);
+  }
+
+  /**
+   * Find the first child SVG element of the current element that matches a CSS selector. The returned object is a Chartist.Svg wrapper.
+   *
+   * @memberof Chartist.Svg
+   * @param {String} selector A CSS selector that is used to query for child SVG elements
+   * @return {Chartist.Svg} The SVG wrapper for the element found or null if no element was found
+   */
+  function querySelector(selector) {
+    var foundNode = this._node.querySelector(selector);
+    return foundNode ? new Chartist.Svg(foundNode) : null;
+  }
+
+  /**
+   * Find the all child SVG elements of the current element that match a CSS selector. The returned object is a Chartist.Svg.List wrapper.
+   *
+   * @memberof Chartist.Svg
+   * @param {String} selector A CSS selector that is used to query for child SVG elements
+   * @return {Chartist.Svg.List} The SVG wrapper list for the element found or null if no element was found
+   */
+  function querySelectorAll(selector) {
+    var foundNodes = this._node.querySelectorAll(selector);
+    return foundNodes.length ? new Chartist.Svg.List(foundNodes) : null;
+  }
+
+  /**
+   * Returns the underlying SVG node for the current element.
+   *
+   * @memberof Chartist.Svg
+   * @returns {Node}
+   */
+  function getNode() {
+    return this._node;
+  }
+
+  /**
+   * This method creates a foreignObject (see https://developer.mozilla.org/en-US/docs/Web/SVG/Element/foreignObject) that allows to embed HTML content into a SVG graphic. With the help of foreignObjects you can enable the usage of regular HTML elements inside of SVG where they are subject for SVG positioning and transformation but the Browser will use the HTML rendering capabilities for the containing DOM.
+   *
+   * @memberof Chartist.Svg
+   * @param {Node|String} content The DOM Node, or HTML string that will be converted to a DOM Node, that is then placed into and wrapped by the foreignObject
+   * @param {String} [attributes] An object with properties that will be added as attributes to the foreignObject element that is created. Attributes with undefined values will not be added.
+   * @param {String} [className] This class or class list will be added to the SVG element
+   * @param {Boolean} [insertFirst] Specifies if the foreignObject should be inserted as first child
+   * @return {Chartist.Svg} New wrapper object that wraps the foreignObject element
+   */
+  function foreignObject(content, attributes, className, insertFirst) {
+    // If content is string then we convert it to DOM
+    // TODO: Handle case where content is not a string nor a DOM Node
+    if(typeof content === 'string') {
+      var container = document.createElement('div');
+      container.innerHTML = content;
+      content = container.firstChild;
+    }
+
+    // Adding namespace to content element
+    content.setAttribute('xmlns', Chartist.namespaces.xmlns);
+
+    // Creating the foreignObject without required extension attribute (as described here
+    // http://www.w3.org/TR/SVG/extend.html#ForeignObjectElement)
+    var fnObj = this.elem('foreignObject', attributes, className, insertFirst);
+
+    // Add content to foreignObjectElement
+    fnObj._node.appendChild(content);
+
+    return fnObj;
+  }
+
+  /**
+   * This method adds a new text element to the current Chartist.Svg wrapper.
+   *
+   * @memberof Chartist.Svg
+   * @param {String} t The text that should be added to the text element that is created
+   * @return {Chartist.Svg} The same wrapper object that was used to add the newly created element
+   */
+  function text(t) {
+    this._node.appendChild(document.createTextNode(t));
+    return this;
+  }
+
+  /**
+   * This method will clear all child nodes of the current wrapper object.
+   *
+   * @memberof Chartist.Svg
+   * @return {Chartist.Svg} The same wrapper object that got emptied
+   */
+  function empty() {
+    while (this._node.firstChild) {
+      this._node.removeChild(this._node.firstChild);
+    }
+
+    return this;
+  }
+
+  /**
+   * This method will cause the current wrapper to remove itself from its parent wrapper. Use this method if you'd like to get rid of an element in a given DOM structure.
+   *
+   * @memberof Chartist.Svg
+   * @return {Chartist.Svg} The parent wrapper object of the element that got removed
+   */
+  function remove() {
+    this._node.parentNode.removeChild(this._node);
+    return this.parent();
+  }
+
+  /**
+   * This method will replace the element with a new element that can be created outside of the current DOM.
+   *
+   * @memberof Chartist.Svg
+   * @param {Chartist.Svg} newElement The new Chartist.Svg object that will be used to replace the current wrapper object
+   * @return {Chartist.Svg} The wrapper of the new element
+   */
+  function replace(newElement) {
+    this._node.parentNode.replaceChild(newElement._node, this._node);
+    return newElement;
+  }
+
+  /**
+   * This method will append an element to the current element as a child.
+   *
+   * @memberof Chartist.Svg
+   * @param {Chartist.Svg} element The Chartist.Svg element that should be added as a child
+   * @param {Boolean} [insertFirst] Specifies if the element should be inserted as first child
+   * @return {Chartist.Svg} The wrapper of the appended object
+   */
+  function append(element, insertFirst) {
+    if(insertFirst && this._node.firstChild) {
+      this._node.insertBefore(element._node, this._node.firstChild);
+    } else {
+      this._node.appendChild(element._node);
+    }
+
+    return this;
+  }
+
+  /**
+   * Returns an array of class names that are attached to the current wrapper element. This method can not be chained further.
+   *
+   * @memberof Chartist.Svg
+   * @return {Array} A list of classes or an empty array if there are no classes on the current element
+   */
+  function classes() {
+    return this._node.getAttribute('class') ? this._node.getAttribute('class').trim().split(/\s+/) : [];
+  }
+
+  /**
+   * Adds one or a space separated list of classes to the current element and ensures the classes are only existing once.
+   *
+   * @memberof Chartist.Svg
+   * @param {String} names A white space separated list of class names
+   * @return {Chartist.Svg} The wrapper of the current element
+   */
+  function addClass(names) {
+    this._node.setAttribute('class',
+      this.classes(this._node)
+        .concat(names.trim().split(/\s+/))
+        .filter(function(elem, pos, self) {
+          return self.indexOf(elem) === pos;
+        }).join(' ')
+    );
+
+    return this;
+  }
+
+  /**
+   * Removes one or a space separated list of classes from the current element.
+   *
+   * @memberof Chartist.Svg
+   * @param {String} names A white space separated list of class names
+   * @return {Chartist.Svg} The wrapper of the current element
+   */
+  function removeClass(names) {
+    var removedClasses = names.trim().split(/\s+/);
+
+    this._node.setAttribute('class', this.classes(this._node).filter(function(name) {
+      return removedClasses.indexOf(name) === -1;
+    }).join(' '));
+
+    return this;
+  }
+
+  /**
+   * Removes all classes from the current element.
+   *
+   * @memberof Chartist.Svg
+   * @return {Chartist.Svg} The wrapper of the current element
+   */
+  function removeAllClasses() {
+    this._node.setAttribute('class', '');
+
+    return this;
+  }
+
+  /**
+   * Get element height using `getBoundingClientRect`
+   *
+   * @memberof Chartist.Svg
+   * @return {Number} The elements height in pixels
+   */
+  function height() {
+    return this._node.getBoundingClientRect().height;
+  }
+
+  /**
+   * Get element width using `getBoundingClientRect`
+   *
+   * @memberof Chartist.Core
+   * @return {Number} The elements width in pixels
+   */
+  function width() {
+    return this._node.getBoundingClientRect().width;
+  }
+
+  /**
+   * The animate function lets you animate the current element with SMIL animations. You can add animations for multiple attributes at the same time by using an animation definition object. This object should contain SMIL animation attributes. Please refer to http://www.w3.org/TR/SVG/animate.html for a detailed specification about the available animation attributes. Additionally an easing property can be passed in the animation definition object. This can be a string with a name of an easing function in `Chartist.Svg.Easing` or an array with four numbers specifying a cubic Bézier curve.
+   * **An animations object could look like this:**
+   * ```javascript
+   * element.animate({
+   *   opacity: {
+   *     dur: 1000,
+   *     from: 0,
+   *     to: 1
+   *   },
+   *   x1: {
+   *     dur: '1000ms',
+   *     from: 100,
+   *     to: 200,
+   *     easing: 'easeOutQuart'
+   *   },
+   *   y1: {
+   *     dur: '2s',
+   *     from: 0,
+   *     to: 100
+   *   }
+   * });
+   * ```
+   * **Automatic unit conversion**
+   * For the `dur` and the `begin` animate attribute you can also omit a unit by passing a number. The number will automatically be converted to milli seconds.
+   * **Guided mode**
+   * The default behavior of SMIL animations with offset using the `begin` attribute is that the attribute will keep it's original value until the animation starts. Mostly this behavior is not desired as you'd like to have your element attributes already initialized with the animation `from` value even before the animation starts. Also if you don't specify `fill="freeze"` on an animate element or if you delete the animation after it's done (which is done in guided mode) the attribute will switch back to the initial value. This behavior is also not desired when performing simple one-time animations. For one-time animations you'd want to trigger animations immediately instead of relative to the document begin time. That's why in guided mode Chartist.Svg will also use the `begin` property to schedule a timeout and manually start the animation after the timeout. If you're using multiple SMIL definition objects for an attribute (in an array), guided mode will be disabled for this attribute, even if you explicitly enabled it.
+   * If guided mode is enabled the following behavior is added:
+   * - Before the animation starts (even when delayed with `begin`) the animated attribute will be set already to the `from` value of the animation
+   * - `begin` is explicitly set to `indefinite` so it can be started manually without relying on document begin time (creation)
+   * - The animate element will be forced to use `fill="freeze"`
+   * - The animation will be triggered with `beginElement()` in a timeout where `begin` of the definition object is interpreted in milli seconds. If no `begin` was specified the timeout is triggered immediately.
+   * - After the animation the element attribute value will be set to the `to` value of the animation
+   * - The animate element is deleted from the DOM
+   *
+   * @memberof Chartist.Svg
+   * @param {Object} animations An animations object where the property keys are the attributes you'd like to animate. The properties should be objects again that contain the SMIL animation attributes (usually begin, dur, from, and to). The property begin and dur is auto converted (see Automatic unit conversion). You can also schedule multiple animations for the same attribute by passing an Array of SMIL definition objects. Attributes that contain an array of SMIL definition objects will not be executed in guided mode.
+   * @param {Boolean} guided Specify if guided mode should be activated for this animation (see Guided mode). If not otherwise specified, guided mode will be activated.
+   * @param {Object} eventEmitter If specified, this event emitter will be notified when an animation starts or ends.
+   * @return {Chartist.Svg} The current element where the animation was added
+   */
+  function animate(animations, guided, eventEmitter) {
+    if(guided === undefined) {
+      guided = true;
+    }
+
+    Object.keys(animations).forEach(function createAnimateForAttributes(attribute) {
+
+      function createAnimate(animationDefinition, guided) {
+        var attributeProperties = {},
+          animate,
+          timeout,
+          easing;
+
+        // Check if an easing is specified in the definition object and delete it from the object as it will not
+        // be part of the animate element attributes.
+        if(animationDefinition.easing) {
+          // If already an easing Bézier curve array we take it or we lookup a easing array in the Easing object
+          easing = animationDefinition.easing instanceof Array ?
+            animationDefinition.easing :
+            Chartist.Svg.Easing[animationDefinition.easing];
+          delete animationDefinition.easing;
+        }
+
+        // If numeric dur or begin was provided we assume milli seconds
+        animationDefinition.begin = Chartist.ensureUnit(animationDefinition.begin, 'ms');
+        animationDefinition.dur = Chartist.ensureUnit(animationDefinition.dur, 'ms');
+
+        if(easing) {
+          animationDefinition.calcMode = 'spline';
+          animationDefinition.keySplines = easing.join(' ');
+          animationDefinition.keyTimes = '0;1';
+        }
+
+        // Adding "fill: freeze" if we are in guided mode and set initial attribute values
+        if(guided) {
+          animationDefinition.fill = 'freeze';
+          // Animated property on our element should already be set to the animation from value in guided mode
+          attributeProperties[attribute] = animationDefinition.from;
+          this.attr(attributeProperties);
+
+          // In guided mode we also set begin to indefinite so we can trigger the start manually and put the begin
+          // which needs to be in ms aside
+          timeout = Chartist.quantity(animationDefinition.begin || 0).value;
+          animationDefinition.begin = 'indefinite';
+        }
+
+        animate = this.elem('animate', Chartist.extend({
+          attributeName: attribute
+        }, animationDefinition));
+
+        if(guided) {
+          // If guided we take the value that was put aside in timeout and trigger the animation manually with a timeout
+          setTimeout(function() {
+            // If beginElement fails we set the animated attribute to the end position and remove the animate element
+            // This happens if the SMIL ElementTimeControl interface is not supported or any other problems occured in
+            // the browser. (Currently FF 34 does not support animate elements in foreignObjects)
+            try {
+              animate._node.beginElement();
+            } catch(err) {
+              // Set animated attribute to current animated value
+              attributeProperties[attribute] = animationDefinition.to;
+              this.attr(attributeProperties);
+              // Remove the animate element as it's no longer required
+              animate.remove();
+            }
+          }.bind(this), timeout);
+        }
+
+        if(eventEmitter) {
+          animate._node.addEventListener('beginEvent', function handleBeginEvent() {
+            eventEmitter.emit('animationBegin', {
+              element: this,
+              animate: animate._node,
+              params: animationDefinition
+            });
+          }.bind(this));
+        }
+
+        animate._node.addEventListener('endEvent', function handleEndEvent() {
+          if(eventEmitter) {
+            eventEmitter.emit('animationEnd', {
+              element: this,
+              animate: animate._node,
+              params: animationDefinition
+            });
+          }
+
+          if(guided) {
+            // Set animated attribute to current animated value
+            attributeProperties[attribute] = animationDefinition.to;
+            this.attr(attributeProperties);
+            // Remove the animate element as it's no longer required
+            animate.remove();
+          }
+        }.bind(this));
+      }
+
+      // If current attribute is an array of definition objects we create an animate for each and disable guided mode
+      if(animations[attribute] instanceof Array) {
+        animations[attribute].forEach(function(animationDefinition) {
+          createAnimate.bind(this)(animationDefinition, false);
+        }.bind(this));
+      } else {
+        createAnimate.bind(this)(animations[attribute], guided);
+      }
+
+    }.bind(this));
+
+    return this;
+  }
+
+  Chartist.Svg = Chartist.Class.extend({
+    constructor: Svg,
+    attr: attr,
+    elem: elem,
+    parent: parent,
+    root: root,
+    querySelector: querySelector,
+    querySelectorAll: querySelectorAll,
+    getNode: getNode,
+    foreignObject: foreignObject,
+    text: text,
+    empty: empty,
+    remove: remove,
+    replace: replace,
+    append: append,
+    classes: classes,
+    addClass: addClass,
+    removeClass: removeClass,
+    removeAllClasses: removeAllClasses,
+    height: height,
+    width: width,
+    animate: animate
+  });
+
+  /**
+   * This method checks for support of a given SVG feature like Extensibility, SVG-animation or the like. Check http://www.w3.org/TR/SVG11/feature for a detailed list.
+   *
+   * @memberof Chartist.Svg
+   * @param {String} feature The SVG 1.1 feature that should be checked for support.
+   * @return {Boolean} True of false if the feature is supported or not
+   */
+  Chartist.Svg.isSupported = function(feature) {
+    return document.implementation.hasFeature('http://www.w3.org/TR/SVG11/feature#' + feature, '1.1');
+  };
+
+  /**
+   * This Object contains some standard easing cubic bezier curves. Then can be used with their name in the `Chartist.Svg.animate`. You can also extend the list and use your own name in the `animate` function. Click the show code button to see the available bezier functions.
+   *
+   * @memberof Chartist.Svg
+   */
+  var easingCubicBeziers = {
+    easeInSine: [0.47, 0, 0.745, 0.715],
+    easeOutSine: [0.39, 0.575, 0.565, 1],
+    easeInOutSine: [0.445, 0.05, 0.55, 0.95],
+    easeInQuad: [0.55, 0.085, 0.68, 0.53],
+    easeOutQuad: [0.25, 0.46, 0.45, 0.94],
+    easeInOutQuad: [0.455, 0.03, 0.515, 0.955],
+    easeInCubic: [0.55, 0.055, 0.675, 0.19],
+    easeOutCubic: [0.215, 0.61, 0.355, 1],
+    easeInOutCubic: [0.645, 0.045, 0.355, 1],
+    easeInQuart: [0.895, 0.03, 0.685, 0.22],
+    easeOutQuart: [0.165, 0.84, 0.44, 1],
+    easeInOutQuart: [0.77, 0, 0.175, 1],
+    easeInQuint: [0.755, 0.05, 0.855, 0.06],
+    easeOutQuint: [0.23, 1, 0.32, 1],
+    easeInOutQuint: [0.86, 0, 0.07, 1],
+    easeInExpo: [0.95, 0.05, 0.795, 0.035],
+    easeOutExpo: [0.19, 1, 0.22, 1],
+    easeInOutExpo: [1, 0, 0, 1],
+    easeInCirc: [0.6, 0.04, 0.98, 0.335],
+    easeOutCirc: [0.075, 0.82, 0.165, 1],
+    easeInOutCirc: [0.785, 0.135, 0.15, 0.86],
+    easeInBack: [0.6, -0.28, 0.735, 0.045],
+    easeOutBack: [0.175, 0.885, 0.32, 1.275],
+    easeInOutBack: [0.68, -0.55, 0.265, 1.55]
+  };
+
+  Chartist.Svg.Easing = easingCubicBeziers;
+
+  /**
+   * This helper class is to wrap multiple `Chartist.Svg` elements into a list where you can call the `Chartist.Svg` functions on all elements in the list with one call. This is helpful when you'd like to perform calls with `Chartist.Svg` on multiple elements.
+   * An instance of this class is also returned by `Chartist.Svg.querySelectorAll`.
+   *
+   * @memberof Chartist.Svg
+   * @param {Array<Node>|NodeList} nodeList An Array of SVG DOM nodes or a SVG DOM NodeList (as returned by document.querySelectorAll)
+   * @constructor
+   */
+  function SvgList(nodeList) {
+    var list = this;
+
+    this.svgElements = [];
+    for(var i = 0; i < nodeList.length; i++) {
+      this.svgElements.push(new Chartist.Svg(nodeList[i]));
+    }
+
+    // Add delegation methods for Chartist.Svg
+    Object.keys(Chartist.Svg.prototype).filter(function(prototypeProperty) {
+      return ['constructor',
+          'parent',
+          'querySelector',
+          'querySelectorAll',
+          'replace',
+          'append',
+          'classes',
+          'height',
+          'width'].indexOf(prototypeProperty) === -1;
+    }).forEach(function(prototypeProperty) {
+      list[prototypeProperty] = function() {
+        var args = Array.prototype.slice.call(arguments, 0);
+        list.svgElements.forEach(function(element) {
+          Chartist.Svg.prototype[prototypeProperty].apply(element, args);
+        });
+        return list;
+      };
+    });
+  }
+
+  Chartist.Svg.List = Chartist.Class.extend({
+    constructor: SvgList
+  });
+}(this || global, Chartist));
+;/**
+ * Chartist SVG path module for SVG path description creation and modification.
+ *
+ * @module Chartist.Svg.Path
+ */
+/* global Chartist */
+(function(globalRoot, Chartist) {
+  'use strict';
+
+  /**
+   * Contains the descriptors of supported element types in a SVG path. Currently only move, line and curve are supported.
+   *
+   * @memberof Chartist.Svg.Path
+   * @type {Object}
+   */
+  var elementDescriptions = {
+    m: ['x', 'y'],
+    l: ['x', 'y'],
+    c: ['x1', 'y1', 'x2', 'y2', 'x', 'y'],
+    a: ['rx', 'ry', 'xAr', 'lAf', 'sf', 'x', 'y']
+  };
+
+  /**
+   * Default options for newly created SVG path objects.
+   *
+   * @memberof Chartist.Svg.Path
+   * @type {Object}
+   */
+  var defaultOptions = {
+    // The accuracy in digit count after the decimal point. This will be used to round numbers in the SVG path. If this option is set to false then no rounding will be performed.
+    accuracy: 3
+  };
+
+  function element(command, params, pathElements, pos, relative, data) {
+    var pathElement = Chartist.extend({
+      command: relative ? command.toLowerCase() : command.toUpperCase()
+    }, params, data ? { data: data } : {} );
+
+    pathElements.splice(pos, 0, pathElement);
+  }
+
+  function forEachParam(pathElements, cb) {
+    pathElements.forEach(function(pathElement, pathElementIndex) {
+      elementDescriptions[pathElement.command.toLowerCase()].forEach(function(paramName, paramIndex) {
+        cb(pathElement, paramName, pathElementIndex, paramIndex, pathElements);
+      });
+    });
+  }
+
+  /**
+   * Used to construct a new path object.
+   *
+   * @memberof Chartist.Svg.Path
+   * @param {Boolean} close If set to true then this path will be closed when stringified (with a Z at the end)
+   * @param {Object} options Options object that overrides the default objects. See default options for more details.
+   * @constructor
+   */
+  function SvgPath(close, options) {
+    this.pathElements = [];
+    this.pos = 0;
+    this.close = close;
+    this.options = Chartist.extend({}, defaultOptions, options);
+  }
+
+  /**
+   * Gets or sets the current position (cursor) inside of the path. You can move around the cursor freely but limited to 0 or the count of existing elements. All modifications with element functions will insert new elements at the position of this cursor.
+   *
+   * @memberof Chartist.Svg.Path
+   * @param {Number} [pos] If a number is passed then the cursor is set to this position in the path element array.
+   * @return {Chartist.Svg.Path|Number} If the position parameter was passed then the return value will be the path object for easy call chaining. If no position parameter was passed then the current position is returned.
+   */
+  function position(pos) {
+    if(pos !== undefined) {
+      this.pos = Math.max(0, Math.min(this.pathElements.length, pos));
+      return this;
+    } else {
+      return this.pos;
+    }
+  }
+
+  /**
+   * Removes elements from the path starting at the current position.
+   *
+   * @memberof Chartist.Svg.Path
+   * @param {Number} count Number of path elements that should be removed from the current position.
+   * @return {Chartist.Svg.Path} The current path object for easy call chaining.
+   */
+  function remove(count) {
+    this.pathElements.splice(this.pos, count);
+    return this;
+  }
+
+  /**
+   * Use this function to add a new move SVG path element.
+   *
+   * @memberof Chartist.Svg.Path
+   * @param {Number} x The x coordinate for the move element.
+   * @param {Number} y The y coordinate for the move element.
+   * @param {Boolean} [relative] If set to true the move element will be created with relative coordinates (lowercase letter)
+   * @param {*} [data] Any data that should be stored with the element object that will be accessible in pathElement
+   * @return {Chartist.Svg.Path} The current path object for easy call chaining.
+   */
+  function move(x, y, relative, data) {
+    element('M', {
+      x: +x,
+      y: +y
+    }, this.pathElements, this.pos++, relative, data);
+    return this;
+  }
+
+  /**
+   * Use this function to add a new line SVG path element.
+   *
+   * @memberof Chartist.Svg.Path
+   * @param {Number} x The x coordinate for the line element.
+   * @param {Number} y The y coordinate for the line element.
+   * @param {Boolean} [relative] If set to true the line element will be created with relative coordinates (lowercase letter)
+   * @param {*} [data] Any data that should be stored with the element object that will be accessible in pathElement
+   * @return {Chartist.Svg.Path} The current path object for easy call chaining.
+   */
+  function line(x, y, relative, data) {
+    element('L', {
+      x: +x,
+      y: +y
+    }, this.pathElements, this.pos++, relative, data);
+    return this;
+  }
+
+  /**
+   * Use this function to add a new curve SVG path element.
+   *
+   * @memberof Chartist.Svg.Path
+   * @param {Number} x1 The x coordinate for the first control point of the bezier curve.
+   * @param {Number} y1 The y coordinate for the first control point of the bezier curve.
+   * @param {Number} x2 The x coordinate for the second control point of the bezier curve.
+   * @param {Number} y2 The y coordinate for the second control point of the bezier curve.
+   * @param {Number} x The x coordinate for the target point of the curve element.
+   * @param {Number} y The y coordinate for the target point of the curve element.
+   * @param {Boolean} [relative] If set to true the curve element will be created with relative coordinates (lowercase letter)
+   * @param {*} [data] Any data that should be stored with the element object that will be accessible in pathElement
+   * @return {Chartist.Svg.Path} The current path object for easy call chaining.
+   */
+  function curve(x1, y1, x2, y2, x, y, relative, data) {
+    element('C', {
+      x1: +x1,
+      y1: +y1,
+      x2: +x2,
+      y2: +y2,
+      x: +x,
+      y: +y
+    }, this.pathElements, this.pos++, relative, data);
+    return this;
+  }
+
+  /**
+   * Use this function to add a new non-bezier curve SVG path element.
+   *
+   * @memberof Chartist.Svg.Path
+   * @param {Number} rx The radius to be used for the x-axis of the arc.
+   * @param {Number} ry The radius to be used for the y-axis of the arc.
+   * @param {Number} xAr Defines the orientation of the arc
+   * @param {Number} lAf Large arc flag
+   * @param {Number} sf Sweep flag
+   * @param {Number} x The x coordinate for the target point of the curve element.
+   * @param {Number} y The y coordinate for the target point of the curve element.
+   * @param {Boolean} [relative] If set to true the curve element will be created with relative coordinates (lowercase letter)
+   * @param {*} [data] Any data that should be stored with the element object that will be accessible in pathElement
+   * @return {Chartist.Svg.Path} The current path object for easy call chaining.
+   */
+  function arc(rx, ry, xAr, lAf, sf, x, y, relative, data) {
+    element('A', {
+      rx: +rx,
+      ry: +ry,
+      xAr: +xAr,
+      lAf: +lAf,
+      sf: +sf,
+      x: +x,
+      y: +y
+    }, this.pathElements, this.pos++, relative, data);
+    return this;
+  }
+
+  /**
+   * Parses an SVG path seen in the d attribute of path elements, and inserts the parsed elements into the existing path object at the current cursor position. Any closing path indicators (Z at the end of the path) will be ignored by the parser as this is provided by the close option in the options of the path object.
+   *
+   * @memberof Chartist.Svg.Path
+   * @param {String} path Any SVG path that contains move (m), line (l) or curve (c) components.
+   * @return {Chartist.Svg.Path} The current path object for easy call chaining.
+   */
+  function parse(path) {
+    // Parsing the SVG path string into an array of arrays [['M', '10', '10'], ['L', '100', '100']]
+    var chunks = path.replace(/([A-Za-z])([0-9])/g, '$1 $2')
+      .replace(/([0-9])([A-Za-z])/g, '$1 $2')
+      .split(/[\s,]+/)
+      .reduce(function(result, element) {
+        if(element.match(/[A-Za-z]/)) {
+          result.push([]);
+        }
+
+        result[result.length - 1].push(element);
+        return result;
+      }, []);
+
+    // If this is a closed path we remove the Z at the end because this is determined by the close option
+    if(chunks[chunks.length - 1][0].toUpperCase() === 'Z') {
+      chunks.pop();
+    }
+
+    // Using svgPathElementDescriptions to map raw path arrays into objects that contain the command and the parameters
+    // For example {command: 'M', x: '10', y: '10'}
+    var elements = chunks.map(function(chunk) {
+        var command = chunk.shift(),
+          description = elementDescriptions[command.toLowerCase()];
+
+        return Chartist.extend({
+          command: command
+        }, description.reduce(function(result, paramName, index) {
+          result[paramName] = +chunk[index];
+          return result;
+        }, {}));
+      });
+
+    // Preparing a splice call with the elements array as var arg params and insert the parsed elements at the current position
+    var spliceArgs = [this.pos, 0];
+    Array.prototype.push.apply(spliceArgs, elements);
+    Array.prototype.splice.apply(this.pathElements, spliceArgs);
+    // Increase the internal position by the element count
+    this.pos += elements.length;
+
+    return this;
+  }
+
+  /**
+   * This function renders to current SVG path object into a final SVG string that can be used in the d attribute of SVG path elements. It uses the accuracy option to round big decimals. If the close parameter was set in the constructor of this path object then a path closing Z will be appended to the output string.
+   *
+   * @memberof Chartist.Svg.Path
+   * @return {String}
+   */
+  function stringify() {
+    var accuracyMultiplier = Math.pow(10, this.options.accuracy);
+
+    return this.pathElements.reduce(function(path, pathElement) {
+        var params = elementDescriptions[pathElement.command.toLowerCase()].map(function(paramName) {
+          return this.options.accuracy ?
+            (Math.round(pathElement[paramName] * accuracyMultiplier) / accuracyMultiplier) :
+            pathElement[paramName];
+        }.bind(this));
+
+        return path + pathElement.command + params.join(',');
+      }.bind(this), '') + (this.close ? 'Z' : '');
+  }
+
+  /**
+   * Scales all elements in the current SVG path object. There is an individual parameter for each coordinate. Scaling will also be done for control points of curves, affecting the given coordinate.
+   *
+   * @memberof Chartist.Svg.Path
+   * @param {Number} x The number which will be used to scale the x, x1 and x2 of all path elements.
+   * @param {Number} y The number which will be used to scale the y, y1 and y2 of all path elements.
+   * @return {Chartist.Svg.Path} The current path object for easy call chaining.
+   */
+  function scale(x, y) {
+    forEachParam(this.pathElements, function(pathElement, paramName) {
+      pathElement[paramName] *= paramName[0] === 'x' ? x : y;
+    });
+    return this;
+  }
+
+  /**
+   * Translates all elements in the current SVG path object. The translation is relative and there is an individual parameter for each coordinate. Translation will also be done for control points of curves, affecting the given coordinate.
+   *
+   * @memberof Chartist.Svg.Path
+   * @param {Number} x The number which will be used to translate the x, x1 and x2 of all path elements.
+   * @param {Number} y The number which will be used to translate the y, y1 and y2 of all path elements.
+   * @return {Chartist.Svg.Path} The current path object for easy call chaining.
+   */
+  function translate(x, y) {
+    forEachParam(this.pathElements, function(pathElement, paramName) {
+      pathElement[paramName] += paramName[0] === 'x' ? x : y;
+    });
+    return this;
+  }
+
+  /**
+   * This function will run over all existing path elements and then loop over their attributes. The callback function will be called for every path element attribute that exists in the current path.
+   * The method signature of the callback function looks like this:
+   * ```javascript
+   * function(pathElement, paramName, pathElementIndex, paramIndex, pathElements)
+   * ```
+   * If something else than undefined is returned by the callback function, this value will be used to replace the old value. This allows you to build custom transformations of path objects that can't be achieved using the basic transformation functions scale and translate.
+   *
+   * @memberof Chartist.Svg.Path
+   * @param {Function} transformFnc The callback function for the transformation. Check the signature in the function description.
+   * @return {Chartist.Svg.Path} The current path object for easy call chaining.
+   */
+  function transform(transformFnc) {
+    forEachParam(this.pathElements, function(pathElement, paramName, pathElementIndex, paramIndex, pathElements) {
+      var transformed = transformFnc(pathElement, paramName, pathElementIndex, paramIndex, pathElements);
+      if(transformed || transformed === 0) {
+        pathElement[paramName] = transformed;
+      }
+    });
+    return this;
+  }
+
+  /**
+   * This function clones a whole path object with all its properties. This is a deep clone and path element objects will also be cloned.
+   *
+   * @memberof Chartist.Svg.Path
+   * @param {Boolean} [close] Optional option to set the new cloned path to closed. If not specified or false, the original path close option will be used.
+   * @return {Chartist.Svg.Path}
+   */
+  function clone(close) {
+    var c = new Chartist.Svg.Path(close || this.close);
+    c.pos = this.pos;
+    c.pathElements = this.pathElements.slice().map(function cloneElements(pathElement) {
+      return Chartist.extend({}, pathElement);
+    });
+    c.options = Chartist.extend({}, this.options);
+    return c;
+  }
+
+  /**
+   * Split a Svg.Path object by a specific command in the path chain. The path chain will be split and an array of newly created paths objects will be returned. This is useful if you'd like to split an SVG path by it's move commands, for example, in order to isolate chunks of drawings.
+   *
+   * @memberof Chartist.Svg.Path
+   * @param {String} command The command you'd like to use to split the path
+   * @return {Array<Chartist.Svg.Path>}
+   */
+  function splitByCommand(command) {
+    var split = [
+      new Chartist.Svg.Path()
+    ];
+
+    this.pathElements.forEach(function(pathElement) {
+      if(pathElement.command === command.toUpperCase() && split[split.length - 1].pathElements.length !== 0) {
+        split.push(new Chartist.Svg.Path());
+      }
+
+      split[split.length - 1].pathElements.push(pathElement);
+    });
+
+    return split;
+  }
+
+  /**
+   * This static function on `Chartist.Svg.Path` is joining multiple paths together into one paths.
+   *
+   * @memberof Chartist.Svg.Path
+   * @param {Array<Chartist.Svg.Path>} paths A list of paths to be joined together. The order is important.
+   * @param {boolean} close If the newly created path should be a closed path
+   * @param {Object} options Path options for the newly created path.
+   * @return {Chartist.Svg.Path}
+   */
+
+  function join(paths, close, options) {
+    var joinedPath = new Chartist.Svg.Path(close, options);
+    for(var i = 0; i < paths.length; i++) {
+      var path = paths[i];
+      for(var j = 0; j < path.pathElements.length; j++) {
+        joinedPath.pathElements.push(path.pathElements[j]);
+      }
+    }
+    return joinedPath;
+  }
+
+  Chartist.Svg.Path = Chartist.Class.extend({
+    constructor: SvgPath,
+    position: position,
+    remove: remove,
+    move: move,
+    line: line,
+    curve: curve,
+    arc: arc,
+    scale: scale,
+    translate: translate,
+    transform: transform,
+    parse: parse,
+    stringify: stringify,
+    clone: clone,
+    splitByCommand: splitByCommand
+  });
+
+  Chartist.Svg.Path.elementDescriptions = elementDescriptions;
+  Chartist.Svg.Path.join = join;
+}(this || global, Chartist));
+;/* global Chartist */
+(function (globalRoot, Chartist) {
+  'use strict';
+
+  var window = globalRoot.window;
+  var document = globalRoot.document;
+
+  var axisUnits = {
+    x: {
+      pos: 'x',
+      len: 'width',
+      dir: 'horizontal',
+      rectStart: 'x1',
+      rectEnd: 'x2',
+      rectOffset: 'y2'
+    },
+    y: {
+      pos: 'y',
+      len: 'height',
+      dir: 'vertical',
+      rectStart: 'y2',
+      rectEnd: 'y1',
+      rectOffset: 'x1'
+    }
+  };
+
+  function Axis(units, chartRect, ticks, options) {
+    this.units = units;
+    this.counterUnits = units === axisUnits.x ? axisUnits.y : axisUnits.x;
+    this.chartRect = chartRect;
+    this.axisLength = chartRect[units.rectEnd] - chartRect[units.rectStart];
+    this.gridOffset = chartRect[units.rectOffset];
+    this.ticks = ticks;
+    this.options = options;
+  }
+
+  function createGridAndLabels(gridGroup, labelGroup, useForeignObject, chartOptions, eventEmitter) {
+    var axisOptions = chartOptions['axis' + this.units.pos.toUpperCase()];
+    var projectedValues = this.ticks.map(this.projectValue.bind(this));
+    var labelValues = this.ticks.map(axisOptions.labelInterpolationFnc);
+
+    projectedValues.forEach(function(projectedValue, index) {
+      var labelOffset = {
+        x: 0,
+        y: 0
+      };
+
+      // TODO: Find better solution for solving this problem
+      // Calculate how much space we have available for the label
+      var labelLength;
+      if(projectedValues[index + 1]) {
+        // If we still have one label ahead, we can calculate the distance to the next tick / label
+        labelLength = projectedValues[index + 1] - projectedValue;
+      } else {
+        // If we don't have a label ahead and we have only two labels in total, we just take the remaining distance to
+        // on the whole axis length. We limit that to a minimum of 30 pixel, so that labels close to the border will
+        // still be visible inside of the chart padding.
+        labelLength = Math.max(this.axisLength - projectedValue, 30);
+      }
+
+      // Skip grid lines and labels where interpolated label values are falsey (execpt for 0)
+      if(Chartist.isFalseyButZero(labelValues[index]) && labelValues[index] !== '') {
+        return;
+      }
+
+      // Transform to global coordinates using the chartRect
+      // We also need to set the label offset for the createLabel function
+      if(this.units.pos === 'x') {
+        projectedValue = this.chartRect.x1 + projectedValue;
+        labelOffset.x = chartOptions.axisX.labelOffset.x;
+
+        // If the labels should be positioned in start position (top side for vertical axis) we need to set a
+        // different offset as for positioned with end (bottom)
+        if(chartOptions.axisX.position === 'start') {
+          labelOffset.y = this.chartRect.padding.top + chartOptions.axisX.labelOffset.y + (useForeignObject ? 5 : 20);
+        } else {
+          labelOffset.y = this.chartRect.y1 + chartOptions.axisX.labelOffset.y + (useForeignObject ? 5 : 20);
+        }
+      } else {
+        projectedValue = this.chartRect.y1 - projectedValue;
+        labelOffset.y = chartOptions.axisY.labelOffset.y - (useForeignObject ? labelLength : 0);
+
+        // If the labels should be positioned in start position (left side for horizontal axis) we need to set a
+        // different offset as for positioned with end (right side)
+        if(chartOptions.axisY.position === 'start') {
+          labelOffset.x = useForeignObject ? this.chartRect.padding.left + chartOptions.axisY.labelOffset.x : this.chartRect.x1 - 10;
+        } else {
+          labelOffset.x = this.chartRect.x2 + chartOptions.axisY.labelOffset.x + 10;
+        }
+      }
+
+      if(axisOptions.showGrid) {
+        Chartist.createGrid(projectedValue, index, this, this.gridOffset, this.chartRect[this.counterUnits.len](), gridGroup, [
+          chartOptions.classNames.grid,
+          chartOptions.classNames[this.units.dir]
+        ], eventEmitter);
+      }
+
+      if(axisOptions.showLabel) {
+        Chartist.createLabel(projectedValue, labelLength, index, labelValues, this, axisOptions.offset, labelOffset, labelGroup, [
+          chartOptions.classNames.label,
+          chartOptions.classNames[this.units.dir],
+          (axisOptions.position === 'start' ? chartOptions.classNames[axisOptions.position] : chartOptions.classNames['end'])
+        ], useForeignObject, eventEmitter);
+      }
+    }.bind(this));
+  }
+
+  Chartist.Axis = Chartist.Class.extend({
+    constructor: Axis,
+    createGridAndLabels: createGridAndLabels,
+    projectValue: function(value, index, data) {
+      throw new Error('Base axis can\'t be instantiated!');
+    }
+  });
+
+  Chartist.Axis.units = axisUnits;
+
+}(this || global, Chartist));
+;/**
+ * The auto scale axis uses standard linear scale projection of values along an axis. It uses order of magnitude to find a scale automatically and evaluates the available space in order to find the perfect amount of ticks for your chart.
+ * **Options**
+ * The following options are used by this axis in addition to the default axis options outlined in the axis configuration of the chart default settings.
+ * ```javascript
+ * var options = {
+ *   // If high is specified then the axis will display values explicitly up to this value and the computed maximum from the data is ignored
+ *   high: 100,
+ *   // If low is specified then the axis will display values explicitly down to this value and the computed minimum from the data is ignored
+ *   low: 0,
+ *   // This option will be used when finding the right scale division settings. The amount of ticks on the scale will be determined so that as many ticks as possible will be displayed, while not violating this minimum required space (in pixel).
+ *   scaleMinSpace: 20,
+ *   // Can be set to true or false. If set to true, the scale will be generated with whole numbers only.
+ *   onlyInteger: true,
+ *   // The reference value can be used to make sure that this value will always be on the chart. This is especially useful on bipolar charts where the bipolar center always needs to be part of the chart.
+ *   referenceValue: 5
+ * };
+ * ```
+ *
+ * @module Chartist.AutoScaleAxis
+ */
+/* global Chartist */
+(function (globalRoot, Chartist) {
+  'use strict';
+
+  var window = globalRoot.window;
+  var document = globalRoot.document;
+
+  function AutoScaleAxis(axisUnit, data, chartRect, options) {
+    // Usually we calculate highLow based on the data but this can be overriden by a highLow object in the options
+    var highLow = options.highLow || Chartist.getHighLow(data, options, axisUnit.pos);
+    this.bounds = Chartist.getBounds(chartRect[axisUnit.rectEnd] - chartRect[axisUnit.rectStart], highLow, options.scaleMinSpace || 20, options.onlyInteger);
+    this.range = {
+      min: this.bounds.min,
+      max: this.bounds.max
+    };
+
+    Chartist.AutoScaleAxis.super.constructor.call(this,
+      axisUnit,
+      chartRect,
+      this.bounds.values,
+      options);
+  }
+
+  function projectValue(value) {
+    return this.axisLength * (+Chartist.getMultiValue(value, this.units.pos) - this.bounds.min) / this.bounds.range;
+  }
+
+  Chartist.AutoScaleAxis = Chartist.Axis.extend({
+    constructor: AutoScaleAxis,
+    projectValue: projectValue
+  });
+
+}(this || global, Chartist));
+;/**
+ * The fixed scale axis uses standard linear projection of values along an axis. It makes use of a divisor option to divide the range provided from the minimum and maximum value or the options high and low that will override the computed minimum and maximum.
+ * **Options**
+ * The following options are used by this axis in addition to the default axis options outlined in the axis configuration of the chart default settings.
+ * ```javascript
+ * var options = {
+ *   // If high is specified then the axis will display values explicitly up to this value and the computed maximum from the data is ignored
+ *   high: 100,
+ *   // If low is specified then the axis will display values explicitly down to this value and the computed minimum from the data is ignored
+ *   low: 0,
+ *   // If specified then the value range determined from minimum to maximum (or low and high) will be divided by this number and ticks will be generated at those division points. The default divisor is 1.
+ *   divisor: 4,
+ *   // If ticks is explicitly set, then the axis will not compute the ticks with the divisor, but directly use the data in ticks to determine at what points on the axis a tick need to be generated.
+ *   ticks: [1, 10, 20, 30]
+ * };
+ * ```
+ *
+ * @module Chartist.FixedScaleAxis
+ */
+/* global Chartist */
+(function (globalRoot, Chartist) {
+  'use strict';
+
+  var window = globalRoot.window;
+  var document = globalRoot.document;
+
+  function FixedScaleAxis(axisUnit, data, chartRect, options) {
+    var highLow = options.highLow || Chartist.getHighLow(data, options, axisUnit.pos);
+    this.divisor = options.divisor || 1;
+    this.ticks = options.ticks || Chartist.times(this.divisor).map(function(value, index) {
+      return highLow.low + (highLow.high - highLow.low) / this.divisor * index;
+    }.bind(this));
+    this.ticks.sort(function(a, b) {
+      return a - b;
+    });
+    this.range = {
+      min: highLow.low,
+      max: highLow.high
+    };
+
+    Chartist.FixedScaleAxis.super.constructor.call(this,
+      axisUnit,
+      chartRect,
+      this.ticks,
+      options);
+
+    this.stepLength = this.axisLength / this.divisor;
+  }
+
+  function projectValue(value) {
+    return this.axisLength * (+Chartist.getMultiValue(value, this.units.pos) - this.range.min) / (this.range.max - this.range.min);
+  }
+
+  Chartist.FixedScaleAxis = Chartist.Axis.extend({
+    constructor: FixedScaleAxis,
+    projectValue: projectValue
+  });
+
+}(this || global, Chartist));
+;/**
+ * The step axis for step based charts like bar chart or step based line charts. It uses a fixed amount of ticks that will be equally distributed across the whole axis length. The projection is done using the index of the data value rather than the value itself and therefore it's only useful for distribution purpose.
+ * **Options**
+ * The following options are used by this axis in addition to the default axis options outlined in the axis configuration of the chart default settings.
+ * ```javascript
+ * var options = {
+ *   // Ticks to be used to distribute across the axis length. As this axis type relies on the index of the value rather than the value, arbitrary data that can be converted to a string can be used as ticks.
+ *   ticks: ['One', 'Two', 'Three'],
+ *   // If set to true the full width will be used to distribute the values where the last value will be at the maximum of the axis length. If false the spaces between the ticks will be evenly distributed instead.
+ *   stretch: true
+ * };
+ * ```
+ *
+ * @module Chartist.StepAxis
+ */
+/* global Chartist */
+(function (globalRoot, Chartist) {
+  'use strict';
+
+  var window = globalRoot.window;
+  var document = globalRoot.document;
+
+  function StepAxis(axisUnit, data, chartRect, options) {
+    Chartist.StepAxis.super.constructor.call(this,
+      axisUnit,
+      chartRect,
+      options.ticks,
+      options);
+
+    var calc = Math.max(1, options.ticks.length - (options.stretch ? 1 : 0));
+    this.stepLength = this.axisLength / calc;
+  }
+
+  function projectValue(value, index) {
+    return this.stepLength * index;
+  }
+
+  Chartist.StepAxis = Chartist.Axis.extend({
+    constructor: StepAxis,
+    projectValue: projectValue
+  });
+
+}(this || global, Chartist));
+;/**
+ * The Chartist line chart can be used to draw Line or Scatter charts. If used in the browser you can access the global `Chartist` namespace where you find the `Line` function as a main entry point.
+ *
+ * For examples on how to use the line chart please check the examples of the `Chartist.Line` method.
+ *
+ * @module Chartist.Line
+ */
+/* global Chartist */
+(function(globalRoot, Chartist){
+  'use strict';
+
+  var window = globalRoot.window;
+  var document = globalRoot.document;
+
+  /**
+   * Default options in line charts. Expand the code view to see a detailed list of options with comments.
+   *
+   * @memberof Chartist.Line
+   */
+  var defaultOptions = {
+    // Options for X-Axis
+    axisX: {
+      // The offset of the labels to the chart area
+      offset: 30,
+      // Position where labels are placed. Can be set to `start` or `end` where `start` is equivalent to left or top on vertical axis and `end` is equivalent to right or bottom on horizontal axis.
+      position: 'end',
+      // Allows you to correct label positioning on this axis by positive or negative x and y offset.
+      labelOffset: {
+        x: 0,
+        y: 0
+      },
+      // If labels should be shown or not
+      showLabel: true,
+      // If the axis grid should be drawn or not
+      showGrid: true,
+      // Interpolation function that allows you to intercept the value from the axis label
+      labelInterpolationFnc: Chartist.noop,
+      // Set the axis type to be used to project values on this axis. If not defined, Chartist.StepAxis will be used for the X-Axis, where the ticks option will be set to the labels in the data and the stretch option will be set to the global fullWidth option. This type can be changed to any axis constructor available (e.g. Chartist.FixedScaleAxis), where all axis options should be present here.
+      type: undefined
+    },
+    // Options for Y-Axis
+    axisY: {
+      // The offset of the labels to the chart area
+      offset: 40,
+      // Position where labels are placed. Can be set to `start` or `end` where `start` is equivalent to left or top on vertical axis and `end` is equivalent to right or bottom on horizontal axis.
+      position: 'start',
+      // Allows you to correct label positioning on this axis by positive or negative x and y offset.
+      labelOffset: {
+        x: 0,
+        y: 0
+      },
+      // If labels should be shown or not
+      showLabel: true,
+      // If the axis grid should be drawn or not
+      showGrid: true,
+      // Interpolation function that allows you to intercept the value from the axis label
+      labelInterpolationFnc: Chartist.noop,
+      // Set the axis type to be used to project values on this axis. If not defined, Chartist.AutoScaleAxis will be used for the Y-Axis, where the high and low options will be set to the global high and low options. This type can be changed to any axis constructor available (e.g. Chartist.FixedScaleAxis), where all axis options should be present here.
+      type: undefined,
+      // This value specifies the minimum height in pixel of the scale steps
+      scaleMinSpace: 20,
+      // Use only integer values (whole numbers) for the scale steps
+      onlyInteger: false
+    },
+    // Specify a fixed width for the chart as a string (i.e. '100px' or '50%')
+    width: undefined,
+    // Specify a fixed height for the chart as a string (i.e. '100px' or '50%')
+    height: undefined,
+    // If the line should be drawn or not
+    showLine: true,
+    // If dots should be drawn or not
+    showPoint: true,
+    // If the line chart should draw an area
+    showArea: false,
+    // The base for the area chart that will be used to close the area shape (is normally 0)
+    areaBase: 0,
+    // Specify if the lines should be smoothed. This value can be true or false where true will result in smoothing using the default smoothing interpolation function Chartist.Interpolation.cardinal and false results in Chartist.Interpolation.none. You can also choose other smoothing / interpolation functions available in the Chartist.Interpolation module, or write your own interpolation function. Check the examples for a brief description.
+    lineSmooth: true,
+    // If the line chart should add a background fill to the .ct-grids group.
+    showGridBackground: false,
+    // Overriding the natural low of the chart allows you to zoom in or limit the charts lowest displayed value
+    low: undefined,
+    // Overriding the natural high of the chart allows you to zoom in or limit the charts highest displayed value
+    high: undefined,
+    // Padding of the chart drawing area to the container element and labels as a number or padding object {top: 5, right: 5, bottom: 5, left: 5}
+    chartPadding: {
+      top: 15,
+      right: 15,
+      bottom: 5,
+      left: 10
+    },
+    // When set to true, the last grid line on the x-axis is not drawn and the chart elements will expand to the full available width of the chart. For the last label to be drawn correctly you might need to add chart padding or offset the last label with a draw event handler.
+    fullWidth: false,
+    // If true the whole data is reversed including labels, the series order as well as the whole series data arrays.
+    reverseData: false,
+    // Override the class names that get used to generate the SVG structure of the chart
+    classNames: {
+      chart: 'ct-chart-line',
+      label: 'ct-label',
+      labelGroup: 'ct-labels',
+      series: 'ct-series',
+      line: 'ct-line',
+      point: 'ct-point',
+      area: 'ct-area',
+      grid: 'ct-grid',
+      gridGroup: 'ct-grids',
+      gridBackground: 'ct-grid-background',
+      vertical: 'ct-vertical',
+      horizontal: 'ct-horizontal',
+      start: 'ct-start',
+      end: 'ct-end'
+    }
+  };
+
+  /**
+   * Creates a new chart
+   *
+   */
+  function createChart(options) {
+    var data = Chartist.normalizeData(this.data, options.reverseData, true);
+
+    // Create new svg object
+    this.svg = Chartist.createSvg(this.container, options.width, options.height, options.classNames.chart);
+    // Create groups for labels, grid and series
+    var gridGroup = this.svg.elem('g').addClass(options.classNames.gridGroup);
+    var seriesGroup = this.svg.elem('g');
+    var labelGroup = this.svg.elem('g').addClass(options.classNames.labelGroup);
+
+    var chartRect = Chartist.createChartRect(this.svg, options, defaultOptions.padding);
+    var axisX, axisY;
+
+    if(options.axisX.type === undefined) {
+      axisX = new Chartist.StepAxis(Chartist.Axis.units.x, data.normalized.series, chartRect, Chartist.extend({}, options.axisX, {
+        ticks: data.normalized.labels,
+        stretch: options.fullWidth
+      }));
+    } else {
+      axisX = options.axisX.type.call(Chartist, Chartist.Axis.units.x, data.normalized.series, chartRect, options.axisX);
+    }
+
+    if(options.axisY.type === undefined) {
+      axisY = new Chartist.AutoScaleAxis(Chartist.Axis.units.y, data.normalized.series, chartRect, Chartist.extend({}, options.axisY, {
+        high: Chartist.isNumeric(options.high) ? options.high : options.axisY.high,
+        low: Chartist.isNumeric(options.low) ? options.low : options.axisY.low
+      }));
+    } else {
+      axisY = options.axisY.type.call(Chartist, Chartist.Axis.units.y, data.normalized.series, chartRect, options.axisY);
+    }
+
+    axisX.createGridAndLabels(gridGroup, labelGroup, this.supportsForeignObject, options, this.eventEmitter);
+    axisY.createGridAndLabels(gridGroup, labelGroup, this.supportsForeignObject, options, this.eventEmitter);
+
+    if (options.showGridBackground) {
+      Chartist.createGridBackground(gridGroup, chartRect, options.classNames.gridBackground, this.eventEmitter);
+    }
+
+    // Draw the series
+    data.raw.series.forEach(function(series, seriesIndex) {
+      var seriesElement = seriesGroup.elem('g');
+
+      // Write attributes to series group element. If series name or meta is undefined the attributes will not be written
+      seriesElement.attr({
+        'ct:series-name': series.name,
+        'ct:meta': Chartist.serialize(series.meta)
+      });
+
+      // Use series class from series data or if not set generate one
+      seriesElement.addClass([
+        options.classNames.series,
+        (series.className || options.classNames.series + '-' + Chartist.alphaNumerate(seriesIndex))
+      ].join(' '));
+
+      var pathCoordinates = [],
+        pathData = [];
+
+      data.normalized.series[seriesIndex].forEach(function(value, valueIndex) {
+        var p = {
+          x: chartRect.x1 + axisX.projectValue(value, valueIndex, data.normalized.series[seriesIndex]),
+          y: chartRect.y1 - axisY.projectValue(value, valueIndex, data.normalized.series[seriesIndex])
+        };
+        pathCoordinates.push(p.x, p.y);
+        pathData.push({
+          value: value,
+          valueIndex: valueIndex,
+          meta: Chartist.getMetaData(series, valueIndex)
+        });
+      }.bind(this));
+
+      var seriesOptions = {
+        lineSmooth: Chartist.getSeriesOption(series, options, 'lineSmooth'),
+        showPoint: Chartist.getSeriesOption(series, options, 'showPoint'),
+        showLine: Chartist.getSeriesOption(series, options, 'showLine'),
+        showArea: Chartist.getSeriesOption(series, options, 'showArea'),
+        areaBase: Chartist.getSeriesOption(series, options, 'areaBase')
+      };
+
+      var smoothing = typeof seriesOptions.lineSmooth === 'function' ?
+        seriesOptions.lineSmooth : (seriesOptions.lineSmooth ? Chartist.Interpolation.monotoneCubic() : Chartist.Interpolation.none());
+      // Interpolating path where pathData will be used to annotate each path element so we can trace back the original
+      // index, value and meta data
+      var path = smoothing(pathCoordinates, pathData);
+
+      // If we should show points we need to create them now to avoid secondary loop
+      // Points are drawn from the pathElements returned by the interpolation function
+      // Small offset for Firefox to render squares correctly
+      if (seriesOptions.showPoint) {
+
+        path.pathElements.forEach(function(pathElement) {
+          var point = seriesElement.elem('line', {
+            x1: pathElement.x,
+            y1: pathElement.y,
+            x2: pathElement.x + 0.01,
+            y2: pathElement.y
+          }, options.classNames.point).attr({
+            'ct:value': [pathElement.data.value.x, pathElement.data.value.y].filter(Chartist.isNumeric).join(','),
+            'ct:meta': Chartist.serialize(pathElement.data.meta)
+          });
+
+          this.eventEmitter.emit('draw', {
+            type: 'point',
+            value: pathElement.data.value,
+            index: pathElement.data.valueIndex,
+            meta: pathElement.data.meta,
+            series: series,
+            seriesIndex: seriesIndex,
+            axisX: axisX,
+            axisY: axisY,
+            group: seriesElement,
+            element: point,
+            x: pathElement.x,
+            y: pathElement.y
+          });
+        }.bind(this));
+      }
+
+      if(seriesOptions.showLine) {
+        var line = seriesElement.elem('path', {
+          d: path.stringify()
+        }, options.classNames.line, true);
+
+        this.eventEmitter.emit('draw', {
+          type: 'line',
+          values: data.normalized.series[seriesIndex],
+          path: path.clone(),
+          chartRect: chartRect,
+          index: seriesIndex,
+          series: series,
+          seriesIndex: seriesIndex,
+          seriesMeta: series.meta,
+          axisX: axisX,
+          axisY: axisY,
+          group: seriesElement,
+          element: line
+        });
+      }
+
+      // Area currently only works with axes that support a range!
+      if(seriesOptions.showArea && axisY.range) {
+        // If areaBase is outside the chart area (< min or > max) we need to set it respectively so that
+        // the area is not drawn outside the chart area.
+        var areaBase = Math.max(Math.min(seriesOptions.areaBase, axisY.range.max), axisY.range.min);
+
+        // We project the areaBase value into screen coordinates
+        var areaBaseProjected = chartRect.y1 - axisY.projectValue(areaBase);
+
+        // In order to form the area we'll first split the path by move commands so we can chunk it up into segments
+        path.splitByCommand('M').filter(function onlySolidSegments(pathSegment) {
+          // We filter only "solid" segments that contain more than one point. Otherwise there's no need for an area
+          return pathSegment.pathElements.length > 1;
+        }).map(function convertToArea(solidPathSegments) {
+          // Receiving the filtered solid path segments we can now convert those segments into fill areas
+          var firstElement = solidPathSegments.pathElements[0];
+          var lastElement = solidPathSegments.pathElements[solidPathSegments.pathElements.length - 1];
+
+          // Cloning the solid path segment with closing option and removing the first move command from the clone
+          // We then insert a new move that should start at the area base and draw a straight line up or down
+          // at the end of the path we add an additional straight line to the projected area base value
+          // As the closing option is set our path will be automatically closed
+          return solidPathSegments.clone(true)
+            .position(0)
+            .remove(1)
+            .move(firstElement.x, areaBaseProjected)
+            .line(firstElement.x, firstElement.y)
+            .position(solidPathSegments.pathElements.length + 1)
+            .line(lastElement.x, areaBaseProjected);
+
+        }).forEach(function createArea(areaPath) {
+          // For each of our newly created area paths, we'll now create path elements by stringifying our path objects
+          // and adding the created DOM elements to the correct series group
+          var area = seriesElement.elem('path', {
+            d: areaPath.stringify()
+          }, options.classNames.area, true);
+
+          // Emit an event for each area that was drawn
+          this.eventEmitter.emit('draw', {
+            type: 'area',
+            values: data.normalized.series[seriesIndex],
+            path: areaPath.clone(),
+            series: series,
+            seriesIndex: seriesIndex,
+            axisX: axisX,
+            axisY: axisY,
+            chartRect: chartRect,
+            index: seriesIndex,
+            group: seriesElement,
+            element: area
+          });
+        }.bind(this));
+      }
+    }.bind(this));
+
+    this.eventEmitter.emit('created', {
+      bounds: axisY.bounds,
+      chartRect: chartRect,
+      axisX: axisX,
+      axisY: axisY,
+      svg: this.svg,
+      options: options
+    });
+  }
+
+  /**
+   * This method creates a new line chart.
+   *
+   * @memberof Chartist.Line
+   * @param {String|Node} query A selector query string or directly a DOM element
+   * @param {Object} data The data object that needs to consist of a labels and a series array
+   * @param {Object} [options] The options object with options that override the default options. Check the examples for a detailed list.
+   * @param {Array} [responsiveOptions] Specify an array of responsive option arrays which are a media query and options object pair => [[mediaQueryString, optionsObject],[more...]]
+   * @return {Object} An object which exposes the API for the created chart
+   *
+   * @example
+   * // Create a simple line chart
+   * var data = {
+   *   // A labels array that can contain any sort of values
+   *   labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'],
+   *   // Our series array that contains series objects or in this case series data arrays
+   *   series: [
+   *     [5, 2, 4, 2, 0]
+   *   ]
+   * };
+   *
+   * // As options we currently only set a static size of 300x200 px
+   * var options = {
+   *   width: '300px',
+   *   height: '200px'
+   * };
+   *
+   * // In the global name space Chartist we call the Line function to initialize a line chart. As a first parameter we pass in a selector where we would like to get our chart created. Second parameter is the actual data object and as a third parameter we pass in our options
+   * new Chartist.Line('.ct-chart', data, options);
+   *
+   * @example
+   * // Use specific interpolation function with configuration from the Chartist.Interpolation module
+   *
+   * var chart = new Chartist.Line('.ct-chart', {
+   *   labels: [1, 2, 3, 4, 5],
+   *   series: [
+   *     [1, 1, 8, 1, 7]
+   *   ]
+   * }, {
+   *   lineSmooth: Chartist.Interpolation.cardinal({
+   *     tension: 0.2
+   *   })
+   * });
+   *
+   * @example
+   * // Create a line chart with responsive options
+   *
+   * var data = {
+   *   // A labels array that can contain any sort of values
+   *   labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+   *   // Our series array that contains series objects or in this case series data arrays
+   *   series: [
+   *     [5, 2, 4, 2, 0]
+   *   ]
+   * };
+   *
+   * // In addition to the regular options we specify responsive option overrides that will override the default configutation based on the matching media queries.
+   * var responsiveOptions = [
+   *   ['screen and (min-width: 641px) and (max-width: 1024px)', {
+   *     showPoint: false,
+   *     axisX: {
+   *       labelInterpolationFnc: function(value) {
+   *         // Will return Mon, Tue, Wed etc. on medium screens
+   *         return value.slice(0, 3);
+   *       }
+   *     }
+   *   }],
+   *   ['screen and (max-width: 640px)', {
+   *     showLine: false,
+   *     axisX: {
+   *       labelInterpolationFnc: function(value) {
+   *         // Will return M, T, W etc. on small screens
+   *         return value[0];
+   *       }
+   *     }
+   *   }]
+   * ];
+   *
+   * new Chartist.Line('.ct-chart', data, null, responsiveOptions);
+   *
+   */
+  function Line(query, data, options, responsiveOptions) {
+    Chartist.Line.super.constructor.call(this,
+      query,
+      data,
+      defaultOptions,
+      Chartist.extend({}, defaultOptions, options),
+      responsiveOptions);
+  }
+
+  // Creating line chart type in Chartist namespace
+  Chartist.Line = Chartist.Base.extend({
+    constructor: Line,
+    createChart: createChart
+  });
+
+}(this || global, Chartist));
+;/**
+ * The bar chart module of Chartist that can be used to draw unipolar or bipolar bar and grouped bar charts.
+ *
+ * @module Chartist.Bar
+ */
+/* global Chartist */
+(function(globalRoot, Chartist){
+  'use strict';
+
+  var window = globalRoot.window;
+  var document = globalRoot.document;
+
+  /**
+   * Default options in bar charts. Expand the code view to see a detailed list of options with comments.
+   *
+   * @memberof Chartist.Bar
+   */
+  var defaultOptions = {
+    // Options for X-Axis
+    axisX: {
+      // The offset of the chart drawing area to the border of the container
+      offset: 30,
+      // Position where labels are placed. Can be set to `start` or `end` where `start` is equivalent to left or top on vertical axis and `end` is equivalent to right or bottom on horizontal axis.
+      position: 'end',
+      // Allows you to correct label positioning on this axis by positive or negative x and y offset.
+      labelOffset: {
+        x: 0,
+        y: 0
+      },
+      // If labels should be shown or not
+      showLabel: true,
+      // If the axis grid should be drawn or not
+      showGrid: true,
+      // Interpolation function that allows you to intercept the value from the axis label
+      labelInterpolationFnc: Chartist.noop,
+      // This value specifies the minimum width in pixel of the scale steps
+      scaleMinSpace: 30,
+      // Use only integer values (whole numbers) for the scale steps
+      onlyInteger: false
+    },
+    // Options for Y-Axis
+    axisY: {
+      // The offset of the chart drawing area to the border of the container
+      offset: 40,
+      // Position where labels are placed. Can be set to `start` or `end` where `start` is equivalent to left or top on vertical axis and `end` is equivalent to right or bottom on horizontal axis.
+      position: 'start',
+      // Allows you to correct label positioning on this axis by positive or negative x and y offset.
+      labelOffset: {
+        x: 0,
+        y: 0
+      },
+      // If labels should be shown or not
+      showLabel: true,
+      // If the axis grid should be drawn or not
+      showGrid: true,
+      // Interpolation function that allows you to intercept the value from the axis label
+      labelInterpolationFnc: Chartist.noop,
+      // This value specifies the minimum height in pixel of the scale steps
+      scaleMinSpace: 20,
+      // Use only integer values (whole numbers) for the scale steps
+      onlyInteger: false
+    },
+    // Specify a fixed width for the chart as a string (i.e. '100px' or '50%')
+    width: undefined,
+    // Specify a fixed height for the chart as a string (i.e. '100px' or '50%')
+    height: undefined,
+    // Overriding the natural high of the chart allows you to zoom in or limit the charts highest displayed value
+    high: undefined,
+    // Overriding the natural low of the chart allows you to zoom in or limit the charts lowest displayed value
+    low: undefined,
+    // Unless low/high are explicitly set, bar chart will be centered at zero by default. Set referenceValue to null to auto scale.
+    referenceValue: 0,
+    // Padding of the chart drawing area to the container element and labels as a number or padding object {top: 5, right: 5, bottom: 5, left: 5}
+    chartPadding: {
+      top: 15,
+      right: 15,
+      bottom: 5,
+      left: 10
+    },
+    // Specify the distance in pixel of bars in a group
+    seriesBarDistance: 15,
+    // If set to true this property will cause the series bars to be stacked. Check the `stackMode` option for further stacking options.
+    stackBars: false,
+    // If set to 'overlap' this property will force the stacked bars to draw from the zero line.
+    // If set to 'accumulate' this property will form a total for each series point. This will also influence the y-axis and the overall bounds of the chart. In stacked mode the seriesBarDistance property will have no effect.
+    stackMode: 'accumulate',
+    // Inverts the axes of the bar chart in order to draw a horizontal bar chart. Be aware that you also need to invert your axis settings as the Y Axis will now display the labels and the X Axis the values.
+    horizontalBars: false,
+    // If set to true then each bar will represent a series and the data array is expected to be a one dimensional array of data values rather than a series array of series. This is useful if the bar chart should represent a profile rather than some data over time.
+    distributeSeries: false,
+    // If true the whole data is reversed including labels, the series order as well as the whole series data arrays.
+    reverseData: false,
+    // If the bar chart should add a background fill to the .ct-grids group.
+    showGridBackground: false,
+    // Override the class names that get used to generate the SVG structure of the chart
+    classNames: {
+      chart: 'ct-chart-bar',
+      horizontalBars: 'ct-horizontal-bars',
+      label: 'ct-label',
+      labelGroup: 'ct-labels',
+      series: 'ct-series',
+      bar: 'ct-bar',
+      grid: 'ct-grid',
+      gridGroup: 'ct-grids',
+      gridBackground: 'ct-grid-background',
+      vertical: 'ct-vertical',
+      horizontal: 'ct-horizontal',
+      start: 'ct-start',
+      end: 'ct-end'
+    }
+  };
+
+  /**
+   * Creates a new chart
+   *
+   */
+  function createChart(options) {
+    var data;
+    var highLow;
+
+    if(options.distributeSeries) {
+      data = Chartist.normalizeData(this.data, options.reverseData, options.horizontalBars ? 'x' : 'y');
+      data.normalized.series = data.normalized.series.map(function(value) {
+        return [value];
+      });
+    } else {
+      data = Chartist.normalizeData(this.data, options.reverseData, options.horizontalBars ? 'x' : 'y');
+    }
+
+    // Create new svg element
+    this.svg = Chartist.createSvg(
+      this.container,
+      options.width,
+      options.height,
+      options.classNames.chart + (options.horizontalBars ? ' ' + options.classNames.horizontalBars : '')
+    );
+
+    // Drawing groups in correct order
+    var gridGroup = this.svg.elem('g').addClass(options.classNames.gridGroup);
+    var seriesGroup = this.svg.elem('g');
+    var labelGroup = this.svg.elem('g').addClass(options.classNames.labelGroup);
+
+    if(options.stackBars && data.normalized.series.length !== 0) {
+
+      // If stacked bars we need to calculate the high low from stacked values from each series
+      var serialSums = Chartist.serialMap(data.normalized.series, function serialSums() {
+        return Array.prototype.slice.call(arguments).map(function(value) {
+          return value;
+        }).reduce(function(prev, curr) {
+          return {
+            x: prev.x + (curr && curr.x) || 0,
+            y: prev.y + (curr && curr.y) || 0
+          };
+        }, {x: 0, y: 0});
+      });
+
+      highLow = Chartist.getHighLow([serialSums], options, options.horizontalBars ? 'x' : 'y');
+
+    } else {
+
+      highLow = Chartist.getHighLow(data.normalized.series, options, options.horizontalBars ? 'x' : 'y');
+    }
+
+    // Overrides of high / low from settings
+    highLow.high = +options.high || (options.high === 0 ? 0 : highLow.high);
+    highLow.low = +options.low || (options.low === 0 ? 0 : highLow.low);
+
+    var chartRect = Chartist.createChartRect(this.svg, options, defaultOptions.padding);
+
+    var valueAxis,
+      labelAxisTicks,
+      labelAxis,
+      axisX,
+      axisY;
+
+    // We need to set step count based on some options combinations
+    if(options.distributeSeries && options.stackBars) {
+      // If distributed series are enabled and bars need to be stacked, we'll only have one bar and therefore should
+      // use only the first label for the step axis
+      labelAxisTicks = data.normalized.labels.slice(0, 1);
+    } else {
+      // If distributed series are enabled but stacked bars aren't, we should use the series labels
+      // If we are drawing a regular bar chart with two dimensional series data, we just use the labels array
+      // as the bars are normalized
+      labelAxisTicks = data.normalized.labels;
+    }
+
+    // Set labelAxis and valueAxis based on the horizontalBars setting. This setting will flip the axes if necessary.
+    if(options.horizontalBars) {
+      if(options.axisX.type === undefined) {
+        valueAxis = axisX = new Chartist.AutoScaleAxis(Chartist.Axis.units.x, data.normalized.series, chartRect, Chartist.extend({}, options.axisX, {
+          highLow: highLow,
+          referenceValue: 0
+        }));
+      } else {
+        valueAxis = axisX = options.axisX.type.call(Chartist, Chartist.Axis.units.x, data.normalized.series, chartRect, Chartist.extend({}, options.axisX, {
+          highLow: highLow,
+          referenceValue: 0
+        }));
+      }
+
+      if(options.axisY.type === undefined) {
+        labelAxis = axisY = new Chartist.StepAxis(Chartist.Axis.units.y, data.normalized.series, chartRect, {
+          ticks: labelAxisTicks
+        });
+      } else {
+        labelAxis = axisY = options.axisY.type.call(Chartist, Chartist.Axis.units.y, data.normalized.series, chartRect, options.axisY);
+      }
+    } else {
+      if(options.axisX.type === undefined) {
+        labelAxis = axisX = new Chartist.StepAxis(Chartist.Axis.units.x, data.normalized.series, chartRect, {
+          ticks: labelAxisTicks
+        });
+      } else {
+        labelAxis = axisX = options.axisX.type.call(Chartist, Chartist.Axis.units.x, data.normalized.series, chartRect, options.axisX);
+      }
+
+      if(options.axisY.type === undefined) {
+        valueAxis = axisY = new Chartist.AutoScaleAxis(Chartist.Axis.units.y, data.normalized.series, chartRect, Chartist.extend({}, options.axisY, {
+          highLow: highLow,
+          referenceValue: 0
+        }));
+      } else {
+        valueAxis = axisY = options.axisY.type.call(Chartist, Chartist.Axis.units.y, data.normalized.series, chartRect, Chartist.extend({}, options.axisY, {
+          highLow: highLow,
+          referenceValue: 0
+        }));
+      }
+    }
+
+    // Projected 0 point
+    var zeroPoint = options.horizontalBars ? (chartRect.x1 + valueAxis.projectValue(0)) : (chartRect.y1 - valueAxis.projectValue(0));
+    // Used to track the screen coordinates of stacked bars
+    var stackedBarValues = [];
+
+    labelAxis.createGridAndLabels(gridGroup, labelGroup, this.supportsForeignObject, options, this.eventEmitter);
+    valueAxis.createGridAndLabels(gridGroup, labelGroup, this.supportsForeignObject, options, this.eventEmitter);
+
+    if (options.showGridBackground) {
+      Chartist.createGridBackground(gridGroup, chartRect, options.classNames.gridBackground, this.eventEmitter);
+    }
+
+    // Draw the series
+    data.raw.series.forEach(function(series, seriesIndex) {
+      // Calculating bi-polar value of index for seriesOffset. For i = 0..4 biPol will be -1.5, -0.5, 0.5, 1.5 etc.
+      var biPol = seriesIndex - (data.raw.series.length - 1) / 2;
+      // Half of the period width between vertical grid lines used to position bars
+      var periodHalfLength;
+      // Current series SVG element
+      var seriesElement;
+
+      // We need to set periodHalfLength based on some options combinations
+      if(options.distributeSeries && !options.stackBars) {
+        // If distributed series are enabled but stacked bars aren't, we need to use the length of the normaizedData array
+        // which is the series count and divide by 2
+        periodHalfLength = labelAxis.axisLength / data.normalized.series.length / 2;
+      } else if(options.distributeSeries && options.stackBars) {
+        // If distributed series and stacked bars are enabled we'll only get one bar so we should just divide the axis
+        // length by 2
+        periodHalfLength = labelAxis.axisLength / 2;
+      } else {
+        // On regular bar charts we should just use the series length
+        periodHalfLength = labelAxis.axisLength / data.normalized.series[seriesIndex].length / 2;
+      }
+
+      // Adding the series group to the series element
+      seriesElement = seriesGroup.elem('g');
+
+      // Write attributes to series group element. If series name or meta is undefined the attributes will not be written
+      seriesElement.attr({
+        'ct:series-name': series.name,
+        'ct:meta': Chartist.serialize(series.meta)
+      });
+
+      // Use series class from series data or if not set generate one
+      seriesElement.addClass([
+        options.classNames.series,
+        (series.className || options.classNames.series + '-' + Chartist.alphaNumerate(seriesIndex))
+      ].join(' '));
+
+      data.normalized.series[seriesIndex].forEach(function(value, valueIndex) {
+        var projected,
+          bar,
+          previousStack,
+          labelAxisValueIndex;
+
+        // We need to set labelAxisValueIndex based on some options combinations
+        if(options.distributeSeries && !options.stackBars) {
+          // If distributed series are enabled but stacked bars aren't, we can use the seriesIndex for later projection
+          // on the step axis for label positioning
+          labelAxisValueIndex = seriesIndex;
+        } else if(options.distributeSeries && options.stackBars) {
+          // If distributed series and stacked bars are enabled, we will only get one bar and therefore always use
+          // 0 for projection on the label step axis
+          labelAxisValueIndex = 0;
+        } else {
+          // On regular bar charts we just use the value index to project on the label step axis
+          labelAxisValueIndex = valueIndex;
+        }
+
+        // We need to transform coordinates differently based on the chart layout
+        if(options.horizontalBars) {
+          projected = {
+            x: chartRect.x1 + valueAxis.projectValue(value && value.x ? value.x : 0, valueIndex, data.normalized.series[seriesIndex]),
+            y: chartRect.y1 - labelAxis.projectValue(value && value.y ? value.y : 0, labelAxisValueIndex, data.normalized.series[seriesIndex])
+          };
+        } else {
+          projected = {
+            x: chartRect.x1 + labelAxis.projectValue(value && value.x ? value.x : 0, labelAxisValueIndex, data.normalized.series[seriesIndex]),
+            y: chartRect.y1 - valueAxis.projectValue(value && value.y ? value.y : 0, valueIndex, data.normalized.series[seriesIndex])
+          }
+        }
+
+        // If the label axis is a step based axis we will offset the bar into the middle of between two steps using
+        // the periodHalfLength value. Also we do arrange the different series so that they align up to each other using
+        // the seriesBarDistance. If we don't have a step axis, the bar positions can be chosen freely so we should not
+        // add any automated positioning.
+        if(labelAxis instanceof Chartist.StepAxis) {
+          // Offset to center bar between grid lines, but only if the step axis is not stretched
+          if(!labelAxis.options.stretch) {
+            projected[labelAxis.units.pos] += periodHalfLength * (options.horizontalBars ? -1 : 1);
+          }
+          // Using bi-polar offset for multiple series if no stacked bars or series distribution is used
+          projected[labelAxis.units.pos] += (options.stackBars || options.distributeSeries) ? 0 : biPol * options.seriesBarDistance * (options.horizontalBars ? -1 : 1);
+        }
+
+        // Enter value in stacked bar values used to remember previous screen value for stacking up bars
+        previousStack = stackedBarValues[valueIndex] || zeroPoint;
+        stackedBarValues[valueIndex] = previousStack - (zeroPoint - projected[labelAxis.counterUnits.pos]);
+
+        // Skip if value is undefined
+        if(value === undefined) {
+          return;
+        }
+
+        var positions = {};
+        positions[labelAxis.units.pos + '1'] = projected[labelAxis.units.pos];
+        positions[labelAxis.units.pos + '2'] = projected[labelAxis.units.pos];
+
+        if(options.stackBars && (options.stackMode === 'accumulate' || !options.stackMode)) {
+          // Stack mode: accumulate (default)
+          // If bars are stacked we use the stackedBarValues reference and otherwise base all bars off the zero line
+          // We want backwards compatibility, so the expected fallback without the 'stackMode' option
+          // to be the original behaviour (accumulate)
+          positions[labelAxis.counterUnits.pos + '1'] = previousStack;
+          positions[labelAxis.counterUnits.pos + '2'] = stackedBarValues[valueIndex];
+        } else {
+          // Draw from the zero line normally
+          // This is also the same code for Stack mode: overlap
+          positions[labelAxis.counterUnits.pos + '1'] = zeroPoint;
+          positions[labelAxis.counterUnits.pos + '2'] = projected[labelAxis.counterUnits.pos];
+        }
+
+        // Limit x and y so that they are within the chart rect
+        positions.x1 = Math.min(Math.max(positions.x1, chartRect.x1), chartRect.x2);
+        positions.x2 = Math.min(Math.max(positions.x2, chartRect.x1), chartRect.x2);
+        positions.y1 = Math.min(Math.max(positions.y1, chartRect.y2), chartRect.y1);
+        positions.y2 = Math.min(Math.max(positions.y2, chartRect.y2), chartRect.y1);
+
+        var metaData = Chartist.getMetaData(series, valueIndex);
+
+        // Create bar element
+        bar = seriesElement.elem('line', positions, options.classNames.bar).attr({
+          'ct:value': [value.x, value.y].filter(Chartist.isNumeric).join(','),
+          'ct:meta': Chartist.serialize(metaData)
+        });
+
+        this.eventEmitter.emit('draw', Chartist.extend({
+          type: 'bar',
+          value: value,
+          index: valueIndex,
+          meta: metaData,
+          series: series,
+          seriesIndex: seriesIndex,
+          axisX: axisX,
+          axisY: axisY,
+          chartRect: chartRect,
+          group: seriesElement,
+          element: bar
+        }, positions));
+      }.bind(this));
+    }.bind(this));
+
+    this.eventEmitter.emit('created', {
+      bounds: valueAxis.bounds,
+      chartRect: chartRect,
+      axisX: axisX,
+      axisY: axisY,
+      svg: this.svg,
+      options: options
+    });
+  }
+
+  /**
+   * This method creates a new bar chart and returns API object that you can use for later changes.
+   *
+   * @memberof Chartist.Bar
+   * @param {String|Node} query A selector query string or directly a DOM element
+   * @param {Object} data The data object that needs to consist of a labels and a series array
+   * @param {Object} [options] The options object with options that override the default options. Check the examples for a detailed list.
+   * @param {Array} [responsiveOptions] Specify an array of responsive option arrays which are a media query and options object pair => [[mediaQueryString, optionsObject],[more...]]
+   * @return {Object} An object which exposes the API for the created chart
+   *
+   * @example
+   * // Create a simple bar chart
+   * var data = {
+   *   labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'],
+   *   series: [
+   *     [5, 2, 4, 2, 0]
+   *   ]
+   * };
+   *
+   * // In the global name space Chartist we call the Bar function to initialize a bar chart. As a first parameter we pass in a selector where we would like to get our chart created and as a second parameter we pass our data object.
+   * new Chartist.Bar('.ct-chart', data);
+   *
+   * @example
+   * // This example creates a bipolar grouped bar chart where the boundaries are limitted to -10 and 10
+   * new Chartist.Bar('.ct-chart', {
+   *   labels: [1, 2, 3, 4, 5, 6, 7],
+   *   series: [
+   *     [1, 3, 2, -5, -3, 1, -6],
+   *     [-5, -2, -4, -1, 2, -3, 1]
+   *   ]
+   * }, {
+   *   seriesBarDistance: 12,
+   *   low: -10,
+   *   high: 10
+   * });
+   *
+   */
+  function Bar(query, data, options, responsiveOptions) {
+    Chartist.Bar.super.constructor.call(this,
+      query,
+      data,
+      defaultOptions,
+      Chartist.extend({}, defaultOptions, options),
+      responsiveOptions);
+  }
+
+  // Creating bar chart type in Chartist namespace
+  Chartist.Bar = Chartist.Base.extend({
+    constructor: Bar,
+    createChart: createChart
+  });
+
+}(this || global, Chartist));
+;/**
+ * The pie chart module of Chartist that can be used to draw pie, donut or gauge charts
+ *
+ * @module Chartist.Pie
+ */
+/* global Chartist */
+(function(globalRoot, Chartist) {
+  'use strict';
+
+  var window = globalRoot.window;
+  var document = globalRoot.document;
+
+  /**
+   * Default options in line charts. Expand the code view to see a detailed list of options with comments.
+   *
+   * @memberof Chartist.Pie
+   */
+  var defaultOptions = {
+    // Specify a fixed width for the chart as a string (i.e. '100px' or '50%')
+    width: undefined,
+    // Specify a fixed height for the chart as a string (i.e. '100px' or '50%')
+    height: undefined,
+    // Padding of the chart drawing area to the container element and labels as a number or padding object {top: 5, right: 5, bottom: 5, left: 5}
+    chartPadding: 5,
+    // Override the class names that are used to generate the SVG structure of the chart
+    classNames: {
+      chartPie: 'ct-chart-pie',
+      chartDonut: 'ct-chart-donut',
+      series: 'ct-series',
+      slicePie: 'ct-slice-pie',
+      sliceDonut: 'ct-slice-donut',
+      sliceDonutSolid: 'ct-slice-donut-solid',
+      label: 'ct-label'
+    },
+    // The start angle of the pie chart in degrees where 0 points north. A higher value offsets the start angle clockwise.
+    startAngle: 0,
+    // An optional total you can specify. By specifying a total value, the sum of the values in the series must be this total in order to draw a full pie. You can use this parameter to draw only parts of a pie or gauge charts.
+    total: undefined,
+    // If specified the donut CSS classes will be used and strokes will be drawn instead of pie slices.
+    donut: false,
+    // If specified the donut segments will be drawn as shapes instead of strokes.
+    donutSolid: false,
+    // Specify the donut stroke width, currently done in javascript for convenience. May move to CSS styles in the future.
+    // This option can be set as number or string to specify a relative width (i.e. 100 or '30%').
+    donutWidth: 60,
+    // If a label should be shown or not
+    showLabel: true,
+    // Label position offset from the standard position which is half distance of the radius. This value can be either positive or negative. Positive values will position the label away from the center.
+    labelOffset: 0,
+    // This option can be set to 'inside', 'outside' or 'center'. Positioned with 'inside' the labels will be placed on half the distance of the radius to the border of the Pie by respecting the 'labelOffset'. The 'outside' option will place the labels at the border of the pie and 'center' will place the labels in the absolute center point of the chart. The 'center' option only makes sense in conjunction with the 'labelOffset' option.
+    labelPosition: 'inside',
+    // An interpolation function for the label value
+    labelInterpolationFnc: Chartist.noop,
+    // Label direction can be 'neutral', 'explode' or 'implode'. The labels anchor will be positioned based on those settings as well as the fact if the labels are on the right or left side of the center of the chart. Usually explode is useful when labels are positioned far away from the center.
+    labelDirection: 'neutral',
+    // If true the whole data is reversed including labels, the series order as well as the whole series data arrays.
+    reverseData: false,
+    // If true empty values will be ignored to avoid drawing unncessary slices and labels
+    ignoreEmptyValues: false
+  };
+
+  /**
+   * Determines SVG anchor position based on direction and center parameter
+   *
+   * @param center
+   * @param label
+   * @param direction
+   * @return {string}
+   */
+  function determineAnchorPosition(center, label, direction) {
+    var toTheRight = label.x > center.x;
+
+    if(toTheRight && direction === 'explode' ||
+      !toTheRight && direction === 'implode') {
+      return 'start';
+    } else if(toTheRight && direction === 'implode' ||
+      !toTheRight && direction === 'explode') {
+      return 'end';
+    } else {
+      return 'middle';
+    }
+  }
+
+  /**
+   * Creates the pie chart
+   *
+   * @param options
+   */
+  function createChart(options) {
+    var data = Chartist.normalizeData(this.data);
+    var seriesGroups = [],
+      labelsGroup,
+      chartRect,
+      radius,
+      labelRadius,
+      totalDataSum,
+      startAngle = options.startAngle;
+
+    // Create SVG.js draw
+    this.svg = Chartist.createSvg(this.container, options.width, options.height,options.donut ? options.classNames.chartDonut : options.classNames.chartPie);
+    // Calculate charting rect
+    chartRect = Chartist.createChartRect(this.svg, options, defaultOptions.padding);
+    // Get biggest circle radius possible within chartRect
+    radius = Math.min(chartRect.width() / 2, chartRect.height() / 2);
+    // Calculate total of all series to get reference value or use total reference from optional options
+    totalDataSum = options.total || data.normalized.series.reduce(function(previousValue, currentValue) {
+      return previousValue + currentValue;
+    }, 0);
+
+    var donutWidth = Chartist.quantity(options.donutWidth);
+    if (donutWidth.unit === '%') {
+      donutWidth.value *= radius / 100;
+    }
+
+    // If this is a donut chart we need to adjust our radius to enable strokes to be drawn inside
+    // Unfortunately this is not possible with the current SVG Spec
+    // See this proposal for more details: http://lists.w3.org/Archives/Public/www-svg/2003Oct/0000.html
+    radius -= options.donut && !options.donutSolid ? donutWidth.value / 2  : 0;
+
+    // If labelPosition is set to `outside` or a donut chart is drawn then the label position is at the radius,
+    // if regular pie chart it's half of the radius
+    if(options.labelPosition === 'outside' || options.donut && !options.donutSolid) {
+      labelRadius = radius;
+    } else if(options.labelPosition === 'center') {
+      // If labelPosition is center we start with 0 and will later wait for the labelOffset
+      labelRadius = 0;
+    } else if(options.donutSolid) {
+      labelRadius = radius - donutWidth.value / 2;
+    } else {
+      // Default option is 'inside' where we use half the radius so the label will be placed in the center of the pie
+      // slice
+      labelRadius = radius / 2;
+    }
+    // Add the offset to the labelRadius where a negative offset means closed to the center of the chart
+    labelRadius += options.labelOffset;
+
+    // Calculate end angle based on total sum and current data value and offset with padding
+    var center = {
+      x: chartRect.x1 + chartRect.width() / 2,
+      y: chartRect.y2 + chartRect.height() / 2
+    };
+
+    // Check if there is only one non-zero value in the series array.
+    var hasSingleValInSeries = data.raw.series.filter(function(val) {
+      return val.hasOwnProperty('value') ? val.value !== 0 : val !== 0;
+    }).length === 1;
+
+    // Creating the series groups
+    data.raw.series.forEach(function(series, index) {
+      seriesGroups[index] = this.svg.elem('g', null, null);
+    }.bind(this));
+    //if we need to show labels we create the label group now
+    if(options.showLabel) {
+      labelsGroup = this.svg.elem('g', null, null);
+    }
+
+    // Draw the series
+    // initialize series groups
+    data.raw.series.forEach(function(series, index) {
+      // If current value is zero and we are ignoring empty values then skip to next value
+      if (data.normalized.series[index] === 0 && options.ignoreEmptyValues) return;
+
+      // If the series is an object and contains a name or meta data we add a custom attribute
+      seriesGroups[index].attr({
+        'ct:series-name': series.name
+      });
+
+      // Use series class from series data or if not set generate one
+      seriesGroups[index].addClass([
+        options.classNames.series,
+        (series.className || options.classNames.series + '-' + Chartist.alphaNumerate(index))
+      ].join(' '));
+
+      // If the whole dataset is 0 endAngle should be zero. Can't divide by 0.
+      var endAngle = (totalDataSum > 0 ? startAngle + data.normalized.series[index] / totalDataSum * 360 : 0);
+
+      // Use slight offset so there are no transparent hairline issues
+      var overlappigStartAngle = Math.max(0, startAngle - (index === 0 || hasSingleValInSeries ? 0 : 0.2));
+
+      // If we need to draw the arc for all 360 degrees we need to add a hack where we close the circle
+      // with Z and use 359.99 degrees
+      if(endAngle - overlappigStartAngle >= 359.99) {
+        endAngle = overlappigStartAngle + 359.99;
+      }
+
+      var start = Chartist.polarToCartesian(center.x, center.y, radius, overlappigStartAngle),
+        end = Chartist.polarToCartesian(center.x, center.y, radius, endAngle);
+
+      var innerStart,
+        innerEnd,
+        donutSolidRadius;
+
+      // Create a new path element for the pie chart. If this isn't a donut chart we should close the path for a correct stroke
+      var path = new Chartist.Svg.Path(!options.donut || options.donutSolid)
+        .move(end.x, end.y)
+        .arc(radius, radius, 0, endAngle - startAngle > 180, 0, start.x, start.y);
+
+      // If regular pie chart (no donut) we add a line to the center of the circle for completing the pie
+      if(!options.donut) {
+        path.line(center.x, center.y);
+      } else if (options.donutSolid) {
+        donutSolidRadius = radius - donutWidth.value;
+        innerStart = Chartist.polarToCartesian(center.x, center.y, donutSolidRadius, startAngle - (index === 0 || hasSingleValInSeries ? 0 : 0.2));
+        innerEnd = Chartist.polarToCartesian(center.x, center.y, donutSolidRadius, endAngle);
+        path.line(innerStart.x, innerStart.y);
+        path.arc(donutSolidRadius, donutSolidRadius, 0, endAngle - startAngle  > 180, 1, innerEnd.x, innerEnd.y);
+      }
+
+      // Create the SVG path
+      // If this is a donut chart we add the donut class, otherwise just a regular slice
+      var pathClassName = options.classNames.slicePie;
+      if (options.donut) {
+        pathClassName = options.classNames.sliceDonut;
+        if (options.donutSolid) {
+          pathClassName = options.classNames.sliceDonutSolid;
+        }
+      }
+      var pathElement = seriesGroups[index].elem('path', {
+        d: path.stringify()
+      }, pathClassName);
+
+      // Adding the pie series value to the path
+      pathElement.attr({
+        'ct:value': data.normalized.series[index],
+        'ct:meta': Chartist.serialize(series.meta)
+      });
+
+      // If this is a donut, we add the stroke-width as style attribute
+      if(options.donut && !options.donutSolid) {
+        pathElement._node.style.strokeWidth = donutWidth.value + 'px';
+      }
+
+      // Fire off draw event
+      this.eventEmitter.emit('draw', {
+        type: 'slice',
+        value: data.normalized.series[index],
+        totalDataSum: totalDataSum,
+        index: index,
+        meta: series.meta,
+        series: series,
+        group: seriesGroups[index],
+        element: pathElement,
+        path: path.clone(),
+        center: center,
+        radius: radius,
+        startAngle: startAngle,
+        endAngle: endAngle
+      });
+
+      // If we need to show labels we need to add the label for this slice now
+      if(options.showLabel) {
+        var labelPosition;
+        if(data.raw.series.length === 1) {
+          // If we have only 1 series, we can position the label in the center of the pie
+          labelPosition = {
+            x: center.x,
+            y: center.y
+          };
+        } else {
+          // Position at the labelRadius distance from center and between start and end angle
+          labelPosition = Chartist.polarToCartesian(
+            center.x,
+            center.y,
+            labelRadius,
+            startAngle + (endAngle - startAngle) / 2
+          );
+        }
+
+        var rawValue;
+        if(data.normalized.labels && !Chartist.isFalseyButZero(data.normalized.labels[index])) {
+          rawValue = data.normalized.labels[index];
+        } else {
+          rawValue = data.normalized.series[index];
+        }
+
+        var interpolatedValue = options.labelInterpolationFnc(rawValue, index);
+
+        if(interpolatedValue || interpolatedValue === 0) {
+          var labelElement = labelsGroup.elem('text', {
+            dx: labelPosition.x,
+            dy: labelPosition.y,
+            'text-anchor': determineAnchorPosition(center, labelPosition, options.labelDirection)
+          }, options.classNames.label).text('' + interpolatedValue);
+
+          // Fire off draw event
+          this.eventEmitter.emit('draw', {
+            type: 'label',
+            index: index,
+            group: labelsGroup,
+            element: labelElement,
+            text: '' + interpolatedValue,
+            x: labelPosition.x,
+            y: labelPosition.y
+          });
+        }
+      }
+
+      // Set next startAngle to current endAngle.
+      // (except for last slice)
+      startAngle = endAngle;
+    }.bind(this));
+
+    this.eventEmitter.emit('created', {
+      chartRect: chartRect,
+      svg: this.svg,
+      options: options
+    });
+  }
+
+  /**
+   * This method creates a new pie chart and returns an object that can be used to redraw the chart.
+   *
+   * @memberof Chartist.Pie
+   * @param {String|Node} query A selector query string or directly a DOM element
+   * @param {Object} data The data object in the pie chart needs to have a series property with a one dimensional data array. The values will be normalized against each other and don't necessarily need to be in percentage. The series property can also be an array of value objects that contain a value property and a className property to override the CSS class name for the series group.
+   * @param {Object} [options] The options object with options that override the default options. Check the examples for a detailed list.
+   * @param {Array} [responsiveOptions] Specify an array of responsive option arrays which are a media query and options object pair => [[mediaQueryString, optionsObject],[more...]]
+   * @return {Object} An object with a version and an update method to manually redraw the chart
+   *
+   * @example
+   * // Simple pie chart example with four series
+   * new Chartist.Pie('.ct-chart', {
+   *   series: [10, 2, 4, 3]
+   * });
+   *
+   * @example
+   * // Drawing a donut chart
+   * new Chartist.Pie('.ct-chart', {
+   *   series: [10, 2, 4, 3]
+   * }, {
+   *   donut: true
+   * });
+   *
+   * @example
+   * // Using donut, startAngle and total to draw a gauge chart
+   * new Chartist.Pie('.ct-chart', {
+   *   series: [20, 10, 30, 40]
+   * }, {
+   *   donut: true,
+   *   donutWidth: 20,
+   *   startAngle: 270,
+   *   total: 200
+   * });
+   *
+   * @example
+   * // Drawing a pie chart with padding and labels that are outside the pie
+   * new Chartist.Pie('.ct-chart', {
+   *   series: [20, 10, 30, 40]
+   * }, {
+   *   chartPadding: 30,
+   *   labelOffset: 50,
+   *   labelDirection: 'explode'
+   * });
+   *
+   * @example
+   * // Overriding the class names for individual series as well as a name and meta data.
+   * // The name will be written as ct:series-name attribute and the meta data will be serialized and written
+   * // to a ct:meta attribute.
+   * new Chartist.Pie('.ct-chart', {
+   *   series: [{
+   *     value: 20,
+   *     name: 'Series 1',
+   *     className: 'my-custom-class-one',
+   *     meta: 'Meta One'
+   *   }, {
+   *     value: 10,
+   *     name: 'Series 2',
+   *     className: 'my-custom-class-two',
+   *     meta: 'Meta Two'
+   *   }, {
+   *     value: 70,
+   *     name: 'Series 3',
+   *     className: 'my-custom-class-three',
+   *     meta: 'Meta Three'
+   *   }]
+   * });
+   */
+  function Pie(query, data, options, responsiveOptions) {
+    Chartist.Pie.super.constructor.call(this,
+      query,
+      data,
+      defaultOptions,
+      Chartist.extend({}, defaultOptions, options),
+      responsiveOptions);
+  }
+
+  // Creating pie chart type in Chartist namespace
+  Chartist.Pie = Chartist.Base.extend({
+    constructor: Pie,
+    createChart: createChart,
+    determineAnchorPosition: determineAnchorPosition
+  });
+
+}(this || global, Chartist));
+
+return Chartist;
+
+}));
+
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../webpack/buildin/global.js */ "./node_modules/webpack/buildin/global.js")))
 
 /***/ }),
 
@@ -369,6 +4971,635 @@ module.exports = checkPropTypes;
 
 /***/ }),
 
+/***/ "./node_modules/prop-types/factoryWithTypeCheckers.js":
+/*!************************************************************!*\
+  !*** ./node_modules/prop-types/factoryWithTypeCheckers.js ***!
+  \************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/**
+ * Copyright (c) 2013-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+
+
+var ReactIs = __webpack_require__(/*! react-is */ "./node_modules/react-is/index.js");
+var assign = __webpack_require__(/*! object-assign */ "./node_modules/object-assign/index.js");
+
+var ReactPropTypesSecret = __webpack_require__(/*! ./lib/ReactPropTypesSecret */ "./node_modules/prop-types/lib/ReactPropTypesSecret.js");
+var checkPropTypes = __webpack_require__(/*! ./checkPropTypes */ "./node_modules/prop-types/checkPropTypes.js");
+
+var has = Function.call.bind(Object.prototype.hasOwnProperty);
+var printWarning = function() {};
+
+if (true) {
+  printWarning = function(text) {
+    var message = 'Warning: ' + text;
+    if (typeof console !== 'undefined') {
+      console.error(message);
+    }
+    try {
+      // --- Welcome to debugging React ---
+      // This error was thrown as a convenience so that you can use this stack
+      // to find the callsite that caused this warning to fire.
+      throw new Error(message);
+    } catch (x) {}
+  };
+}
+
+function emptyFunctionThatReturnsNull() {
+  return null;
+}
+
+module.exports = function(isValidElement, throwOnDirectAccess) {
+  /* global Symbol */
+  var ITERATOR_SYMBOL = typeof Symbol === 'function' && Symbol.iterator;
+  var FAUX_ITERATOR_SYMBOL = '@@iterator'; // Before Symbol spec.
+
+  /**
+   * Returns the iterator method function contained on the iterable object.
+   *
+   * Be sure to invoke the function with the iterable as context:
+   *
+   *     var iteratorFn = getIteratorFn(myIterable);
+   *     if (iteratorFn) {
+   *       var iterator = iteratorFn.call(myIterable);
+   *       ...
+   *     }
+   *
+   * @param {?object} maybeIterable
+   * @return {?function}
+   */
+  function getIteratorFn(maybeIterable) {
+    var iteratorFn = maybeIterable && (ITERATOR_SYMBOL && maybeIterable[ITERATOR_SYMBOL] || maybeIterable[FAUX_ITERATOR_SYMBOL]);
+    if (typeof iteratorFn === 'function') {
+      return iteratorFn;
+    }
+  }
+
+  /**
+   * Collection of methods that allow declaration and validation of props that are
+   * supplied to React components. Example usage:
+   *
+   *   var Props = require('ReactPropTypes');
+   *   var MyArticle = React.createClass({
+   *     propTypes: {
+   *       // An optional string prop named "description".
+   *       description: Props.string,
+   *
+   *       // A required enum prop named "category".
+   *       category: Props.oneOf(['News','Photos']).isRequired,
+   *
+   *       // A prop named "dialog" that requires an instance of Dialog.
+   *       dialog: Props.instanceOf(Dialog).isRequired
+   *     },
+   *     render: function() { ... }
+   *   });
+   *
+   * A more formal specification of how these methods are used:
+   *
+   *   type := array|bool|func|object|number|string|oneOf([...])|instanceOf(...)
+   *   decl := ReactPropTypes.{type}(.isRequired)?
+   *
+   * Each and every declaration produces a function with the same signature. This
+   * allows the creation of custom validation functions. For example:
+   *
+   *  var MyLink = React.createClass({
+   *    propTypes: {
+   *      // An optional string or URI prop named "href".
+   *      href: function(props, propName, componentName) {
+   *        var propValue = props[propName];
+   *        if (propValue != null && typeof propValue !== 'string' &&
+   *            !(propValue instanceof URI)) {
+   *          return new Error(
+   *            'Expected a string or an URI for ' + propName + ' in ' +
+   *            componentName
+   *          );
+   *        }
+   *      }
+   *    },
+   *    render: function() {...}
+   *  });
+   *
+   * @internal
+   */
+
+  var ANONYMOUS = '<<anonymous>>';
+
+  // Important!
+  // Keep this list in sync with production version in `./factoryWithThrowingShims.js`.
+  var ReactPropTypes = {
+    array: createPrimitiveTypeChecker('array'),
+    bool: createPrimitiveTypeChecker('boolean'),
+    func: createPrimitiveTypeChecker('function'),
+    number: createPrimitiveTypeChecker('number'),
+    object: createPrimitiveTypeChecker('object'),
+    string: createPrimitiveTypeChecker('string'),
+    symbol: createPrimitiveTypeChecker('symbol'),
+
+    any: createAnyTypeChecker(),
+    arrayOf: createArrayOfTypeChecker,
+    element: createElementTypeChecker(),
+    elementType: createElementTypeTypeChecker(),
+    instanceOf: createInstanceTypeChecker,
+    node: createNodeChecker(),
+    objectOf: createObjectOfTypeChecker,
+    oneOf: createEnumTypeChecker,
+    oneOfType: createUnionTypeChecker,
+    shape: createShapeTypeChecker,
+    exact: createStrictShapeTypeChecker,
+  };
+
+  /**
+   * inlined Object.is polyfill to avoid requiring consumers ship their own
+   * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is
+   */
+  /*eslint-disable no-self-compare*/
+  function is(x, y) {
+    // SameValue algorithm
+    if (x === y) {
+      // Steps 1-5, 7-10
+      // Steps 6.b-6.e: +0 != -0
+      return x !== 0 || 1 / x === 1 / y;
+    } else {
+      // Step 6.a: NaN == NaN
+      return x !== x && y !== y;
+    }
+  }
+  /*eslint-enable no-self-compare*/
+
+  /**
+   * We use an Error-like object for backward compatibility as people may call
+   * PropTypes directly and inspect their output. However, we don't use real
+   * Errors anymore. We don't inspect their stack anyway, and creating them
+   * is prohibitively expensive if they are created too often, such as what
+   * happens in oneOfType() for any type before the one that matched.
+   */
+  function PropTypeError(message) {
+    this.message = message;
+    this.stack = '';
+  }
+  // Make `instanceof Error` still work for returned errors.
+  PropTypeError.prototype = Error.prototype;
+
+  function createChainableTypeChecker(validate) {
+    if (true) {
+      var manualPropTypeCallCache = {};
+      var manualPropTypeWarningCount = 0;
+    }
+    function checkType(isRequired, props, propName, componentName, location, propFullName, secret) {
+      componentName = componentName || ANONYMOUS;
+      propFullName = propFullName || propName;
+
+      if (secret !== ReactPropTypesSecret) {
+        if (throwOnDirectAccess) {
+          // New behavior only for users of `prop-types` package
+          var err = new Error(
+            'Calling PropTypes validators directly is not supported by the `prop-types` package. ' +
+            'Use `PropTypes.checkPropTypes()` to call them. ' +
+            'Read more at http://fb.me/use-check-prop-types'
+          );
+          err.name = 'Invariant Violation';
+          throw err;
+        } else if ( true && typeof console !== 'undefined') {
+          // Old behavior for people using React.PropTypes
+          var cacheKey = componentName + ':' + propName;
+          if (
+            !manualPropTypeCallCache[cacheKey] &&
+            // Avoid spamming the console because they are often not actionable except for lib authors
+            manualPropTypeWarningCount < 3
+          ) {
+            printWarning(
+              'You are manually calling a React.PropTypes validation ' +
+              'function for the `' + propFullName + '` prop on `' + componentName  + '`. This is deprecated ' +
+              'and will throw in the standalone `prop-types` package. ' +
+              'You may be seeing this warning due to a third-party PropTypes ' +
+              'library. See https://fb.me/react-warning-dont-call-proptypes ' + 'for details.'
+            );
+            manualPropTypeCallCache[cacheKey] = true;
+            manualPropTypeWarningCount++;
+          }
+        }
+      }
+      if (props[propName] == null) {
+        if (isRequired) {
+          if (props[propName] === null) {
+            return new PropTypeError('The ' + location + ' `' + propFullName + '` is marked as required ' + ('in `' + componentName + '`, but its value is `null`.'));
+          }
+          return new PropTypeError('The ' + location + ' `' + propFullName + '` is marked as required in ' + ('`' + componentName + '`, but its value is `undefined`.'));
+        }
+        return null;
+      } else {
+        return validate(props, propName, componentName, location, propFullName);
+      }
+    }
+
+    var chainedCheckType = checkType.bind(null, false);
+    chainedCheckType.isRequired = checkType.bind(null, true);
+
+    return chainedCheckType;
+  }
+
+  function createPrimitiveTypeChecker(expectedType) {
+    function validate(props, propName, componentName, location, propFullName, secret) {
+      var propValue = props[propName];
+      var propType = getPropType(propValue);
+      if (propType !== expectedType) {
+        // `propValue` being instance of, say, date/regexp, pass the 'object'
+        // check, but we can offer a more precise error message here rather than
+        // 'of type `object`'.
+        var preciseType = getPreciseType(propValue);
+
+        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + preciseType + '` supplied to `' + componentName + '`, expected ') + ('`' + expectedType + '`.'));
+      }
+      return null;
+    }
+    return createChainableTypeChecker(validate);
+  }
+
+  function createAnyTypeChecker() {
+    return createChainableTypeChecker(emptyFunctionThatReturnsNull);
+  }
+
+  function createArrayOfTypeChecker(typeChecker) {
+    function validate(props, propName, componentName, location, propFullName) {
+      if (typeof typeChecker !== 'function') {
+        return new PropTypeError('Property `' + propFullName + '` of component `' + componentName + '` has invalid PropType notation inside arrayOf.');
+      }
+      var propValue = props[propName];
+      if (!Array.isArray(propValue)) {
+        var propType = getPropType(propValue);
+        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + propType + '` supplied to `' + componentName + '`, expected an array.'));
+      }
+      for (var i = 0; i < propValue.length; i++) {
+        var error = typeChecker(propValue, i, componentName, location, propFullName + '[' + i + ']', ReactPropTypesSecret);
+        if (error instanceof Error) {
+          return error;
+        }
+      }
+      return null;
+    }
+    return createChainableTypeChecker(validate);
+  }
+
+  function createElementTypeChecker() {
+    function validate(props, propName, componentName, location, propFullName) {
+      var propValue = props[propName];
+      if (!isValidElement(propValue)) {
+        var propType = getPropType(propValue);
+        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + propType + '` supplied to `' + componentName + '`, expected a single ReactElement.'));
+      }
+      return null;
+    }
+    return createChainableTypeChecker(validate);
+  }
+
+  function createElementTypeTypeChecker() {
+    function validate(props, propName, componentName, location, propFullName) {
+      var propValue = props[propName];
+      if (!ReactIs.isValidElementType(propValue)) {
+        var propType = getPropType(propValue);
+        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + propType + '` supplied to `' + componentName + '`, expected a single ReactElement type.'));
+      }
+      return null;
+    }
+    return createChainableTypeChecker(validate);
+  }
+
+  function createInstanceTypeChecker(expectedClass) {
+    function validate(props, propName, componentName, location, propFullName) {
+      if (!(props[propName] instanceof expectedClass)) {
+        var expectedClassName = expectedClass.name || ANONYMOUS;
+        var actualClassName = getClassName(props[propName]);
+        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + actualClassName + '` supplied to `' + componentName + '`, expected ') + ('instance of `' + expectedClassName + '`.'));
+      }
+      return null;
+    }
+    return createChainableTypeChecker(validate);
+  }
+
+  function createEnumTypeChecker(expectedValues) {
+    if (!Array.isArray(expectedValues)) {
+      if (true) {
+        if (arguments.length > 1) {
+          printWarning(
+            'Invalid arguments supplied to oneOf, expected an array, got ' + arguments.length + ' arguments. ' +
+            'A common mistake is to write oneOf(x, y, z) instead of oneOf([x, y, z]).'
+          );
+        } else {
+          printWarning('Invalid argument supplied to oneOf, expected an array.');
+        }
+      }
+      return emptyFunctionThatReturnsNull;
+    }
+
+    function validate(props, propName, componentName, location, propFullName) {
+      var propValue = props[propName];
+      for (var i = 0; i < expectedValues.length; i++) {
+        if (is(propValue, expectedValues[i])) {
+          return null;
+        }
+      }
+
+      var valuesString = JSON.stringify(expectedValues, function replacer(key, value) {
+        var type = getPreciseType(value);
+        if (type === 'symbol') {
+          return String(value);
+        }
+        return value;
+      });
+      return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of value `' + String(propValue) + '` ' + ('supplied to `' + componentName + '`, expected one of ' + valuesString + '.'));
+    }
+    return createChainableTypeChecker(validate);
+  }
+
+  function createObjectOfTypeChecker(typeChecker) {
+    function validate(props, propName, componentName, location, propFullName) {
+      if (typeof typeChecker !== 'function') {
+        return new PropTypeError('Property `' + propFullName + '` of component `' + componentName + '` has invalid PropType notation inside objectOf.');
+      }
+      var propValue = props[propName];
+      var propType = getPropType(propValue);
+      if (propType !== 'object') {
+        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + propType + '` supplied to `' + componentName + '`, expected an object.'));
+      }
+      for (var key in propValue) {
+        if (has(propValue, key)) {
+          var error = typeChecker(propValue, key, componentName, location, propFullName + '.' + key, ReactPropTypesSecret);
+          if (error instanceof Error) {
+            return error;
+          }
+        }
+      }
+      return null;
+    }
+    return createChainableTypeChecker(validate);
+  }
+
+  function createUnionTypeChecker(arrayOfTypeCheckers) {
+    if (!Array.isArray(arrayOfTypeCheckers)) {
+       true ? printWarning('Invalid argument supplied to oneOfType, expected an instance of array.') : undefined;
+      return emptyFunctionThatReturnsNull;
+    }
+
+    for (var i = 0; i < arrayOfTypeCheckers.length; i++) {
+      var checker = arrayOfTypeCheckers[i];
+      if (typeof checker !== 'function') {
+        printWarning(
+          'Invalid argument supplied to oneOfType. Expected an array of check functions, but ' +
+          'received ' + getPostfixForTypeWarning(checker) + ' at index ' + i + '.'
+        );
+        return emptyFunctionThatReturnsNull;
+      }
+    }
+
+    function validate(props, propName, componentName, location, propFullName) {
+      for (var i = 0; i < arrayOfTypeCheckers.length; i++) {
+        var checker = arrayOfTypeCheckers[i];
+        if (checker(props, propName, componentName, location, propFullName, ReactPropTypesSecret) == null) {
+          return null;
+        }
+      }
+
+      return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` supplied to ' + ('`' + componentName + '`.'));
+    }
+    return createChainableTypeChecker(validate);
+  }
+
+  function createNodeChecker() {
+    function validate(props, propName, componentName, location, propFullName) {
+      if (!isNode(props[propName])) {
+        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` supplied to ' + ('`' + componentName + '`, expected a ReactNode.'));
+      }
+      return null;
+    }
+    return createChainableTypeChecker(validate);
+  }
+
+  function createShapeTypeChecker(shapeTypes) {
+    function validate(props, propName, componentName, location, propFullName) {
+      var propValue = props[propName];
+      var propType = getPropType(propValue);
+      if (propType !== 'object') {
+        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type `' + propType + '` ' + ('supplied to `' + componentName + '`, expected `object`.'));
+      }
+      for (var key in shapeTypes) {
+        var checker = shapeTypes[key];
+        if (!checker) {
+          continue;
+        }
+        var error = checker(propValue, key, componentName, location, propFullName + '.' + key, ReactPropTypesSecret);
+        if (error) {
+          return error;
+        }
+      }
+      return null;
+    }
+    return createChainableTypeChecker(validate);
+  }
+
+  function createStrictShapeTypeChecker(shapeTypes) {
+    function validate(props, propName, componentName, location, propFullName) {
+      var propValue = props[propName];
+      var propType = getPropType(propValue);
+      if (propType !== 'object') {
+        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type `' + propType + '` ' + ('supplied to `' + componentName + '`, expected `object`.'));
+      }
+      // We need to check all keys in case some are required but missing from
+      // props.
+      var allKeys = assign({}, props[propName], shapeTypes);
+      for (var key in allKeys) {
+        var checker = shapeTypes[key];
+        if (!checker) {
+          return new PropTypeError(
+            'Invalid ' + location + ' `' + propFullName + '` key `' + key + '` supplied to `' + componentName + '`.' +
+            '\nBad object: ' + JSON.stringify(props[propName], null, '  ') +
+            '\nValid keys: ' +  JSON.stringify(Object.keys(shapeTypes), null, '  ')
+          );
+        }
+        var error = checker(propValue, key, componentName, location, propFullName + '.' + key, ReactPropTypesSecret);
+        if (error) {
+          return error;
+        }
+      }
+      return null;
+    }
+
+    return createChainableTypeChecker(validate);
+  }
+
+  function isNode(propValue) {
+    switch (typeof propValue) {
+      case 'number':
+      case 'string':
+      case 'undefined':
+        return true;
+      case 'boolean':
+        return !propValue;
+      case 'object':
+        if (Array.isArray(propValue)) {
+          return propValue.every(isNode);
+        }
+        if (propValue === null || isValidElement(propValue)) {
+          return true;
+        }
+
+        var iteratorFn = getIteratorFn(propValue);
+        if (iteratorFn) {
+          var iterator = iteratorFn.call(propValue);
+          var step;
+          if (iteratorFn !== propValue.entries) {
+            while (!(step = iterator.next()).done) {
+              if (!isNode(step.value)) {
+                return false;
+              }
+            }
+          } else {
+            // Iterator will provide entry [k,v] tuples rather than values.
+            while (!(step = iterator.next()).done) {
+              var entry = step.value;
+              if (entry) {
+                if (!isNode(entry[1])) {
+                  return false;
+                }
+              }
+            }
+          }
+        } else {
+          return false;
+        }
+
+        return true;
+      default:
+        return false;
+    }
+  }
+
+  function isSymbol(propType, propValue) {
+    // Native Symbol.
+    if (propType === 'symbol') {
+      return true;
+    }
+
+    // falsy value can't be a Symbol
+    if (!propValue) {
+      return false;
+    }
+
+    // 19.4.3.5 Symbol.prototype[@@toStringTag] === 'Symbol'
+    if (propValue['@@toStringTag'] === 'Symbol') {
+      return true;
+    }
+
+    // Fallback for non-spec compliant Symbols which are polyfilled.
+    if (typeof Symbol === 'function' && propValue instanceof Symbol) {
+      return true;
+    }
+
+    return false;
+  }
+
+  // Equivalent of `typeof` but with special handling for array and regexp.
+  function getPropType(propValue) {
+    var propType = typeof propValue;
+    if (Array.isArray(propValue)) {
+      return 'array';
+    }
+    if (propValue instanceof RegExp) {
+      // Old webkits (at least until Android 4.0) return 'function' rather than
+      // 'object' for typeof a RegExp. We'll normalize this here so that /bla/
+      // passes PropTypes.object.
+      return 'object';
+    }
+    if (isSymbol(propType, propValue)) {
+      return 'symbol';
+    }
+    return propType;
+  }
+
+  // This handles more types than `getPropType`. Only used for error messages.
+  // See `createPrimitiveTypeChecker`.
+  function getPreciseType(propValue) {
+    if (typeof propValue === 'undefined' || propValue === null) {
+      return '' + propValue;
+    }
+    var propType = getPropType(propValue);
+    if (propType === 'object') {
+      if (propValue instanceof Date) {
+        return 'date';
+      } else if (propValue instanceof RegExp) {
+        return 'regexp';
+      }
+    }
+    return propType;
+  }
+
+  // Returns a string that is postfixed to a warning about an invalid type.
+  // For example, "undefined" or "of type array"
+  function getPostfixForTypeWarning(value) {
+    var type = getPreciseType(value);
+    switch (type) {
+      case 'array':
+      case 'object':
+        return 'an ' + type;
+      case 'boolean':
+      case 'date':
+      case 'regexp':
+        return 'a ' + type;
+      default:
+        return type;
+    }
+  }
+
+  // Returns class name of the object, if any.
+  function getClassName(propValue) {
+    if (!propValue.constructor || !propValue.constructor.name) {
+      return ANONYMOUS;
+    }
+    return propValue.constructor.name;
+  }
+
+  ReactPropTypes.checkPropTypes = checkPropTypes;
+  ReactPropTypes.resetWarningCache = checkPropTypes.resetWarningCache;
+  ReactPropTypes.PropTypes = ReactPropTypes;
+
+  return ReactPropTypes;
+};
+
+
+/***/ }),
+
+/***/ "./node_modules/prop-types/index.js":
+/*!******************************************!*\
+  !*** ./node_modules/prop-types/index.js ***!
+  \******************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+/**
+ * Copyright (c) 2013-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+if (true) {
+  var ReactIs = __webpack_require__(/*! react-is */ "./node_modules/react-is/index.js");
+
+  // By explicitly using `prop-types` you are opting into new development behavior.
+  // http://fb.me/prop-types-in-prod
+  var throwOnDirectAccess = true;
+  module.exports = __webpack_require__(/*! ./factoryWithTypeCheckers */ "./node_modules/prop-types/factoryWithTypeCheckers.js")(ReactIs.isElement, throwOnDirectAccess);
+} else {}
+
+
+/***/ }),
+
 /***/ "./node_modules/prop-types/lib/ReactPropTypesSecret.js":
 /*!*************************************************************!*\
   !*** ./node_modules/prop-types/lib/ReactPropTypesSecret.js ***!
@@ -389,6 +5620,141 @@ module.exports = checkPropTypes;
 var ReactPropTypesSecret = 'SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED';
 
 module.exports = ReactPropTypesSecret;
+
+
+/***/ }),
+
+/***/ "./node_modules/react-chartist/dist/index.js":
+/*!***************************************************!*\
+  !*** ./node_modules/react-chartist/dist/index.js ***!
+  \***************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var ChartistGraph = function (_Component) {
+  _inherits(ChartistGraph, _Component);
+
+  function ChartistGraph() {
+    _classCallCheck(this, ChartistGraph);
+
+    return _possibleConstructorReturn(this, (ChartistGraph.__proto__ || Object.getPrototypeOf(ChartistGraph)).apply(this, arguments));
+  }
+
+  _createClass(ChartistGraph, [{
+    key: 'componentWillUnmount',
+    value: function componentWillUnmount() {
+      if (this.chartist) {
+        try {
+          this.chartist.detach();
+        } catch (err) {
+          throw new Error('Internal chartist error', err);
+        }
+      }
+    }
+  }, {
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      this.updateChart(this.props);
+    }
+  }, {
+    key: 'componentDidUpdate',
+    value: function componentDidUpdate() {
+      this.updateChart(this.props);
+    }
+  }, {
+    key: 'updateChart',
+    value: function updateChart(config) {
+      var Chartist = __webpack_require__(/*! chartist */ "./node_modules/chartist/dist/chartist.js");
+
+      var type = config.type,
+          data = config.data;
+
+      var options = config.options || {};
+      var responsiveOptions = config.responsiveOptions || [];
+      var event = void 0;
+
+      if (this.chartist) {
+        this.chartist.update(data, options, responsiveOptions);
+      } else {
+        this.chartist = new Chartist[type](this.chart, data, options, responsiveOptions);
+
+        if (config.listener) {
+          for (event in config.listener) {
+            if (config.listener.hasOwnProperty(event)) {
+              this.chartist.on(event, config.listener[event]);
+            }
+          }
+        }
+      }
+
+      return this.chartist;
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var _this2 = this;
+
+      var _props = this.props,
+          className = _props.className,
+          style = _props.style,
+          children = _props.children,
+          data = _props.data,
+          type = _props.type;
+
+      var childrenWithProps = children && _react.Children.map(children, function (child) {
+        return (0, _react.cloneElement)(child, {
+          type: type,
+          data: data
+        });
+      });
+      return _react2.default.createElement(
+        'div',
+        { className: 'ct-chart ' + (className || ''), ref: function ref(_ref) {
+            return _this2.chart = _ref;
+          }, style: style },
+        childrenWithProps
+      );
+    }
+  }]);
+
+  return ChartistGraph;
+}(_react.Component);
+
+ChartistGraph.propTypes = {
+  type: _propTypes2.default.oneOf(['Line', 'Bar', 'Pie']).isRequired,
+  data: _propTypes2.default.object.isRequired,
+  className: _propTypes2.default.string,
+  options: _propTypes2.default.object,
+  responsiveOptions: _propTypes2.default.array,
+  style: _propTypes2.default.object
+};
+
+exports.default = ChartistGraph;
 
 
 /***/ }),
@@ -25462,6 +30828,216 @@ if (false) {} else {
 
 /***/ }),
 
+/***/ "./node_modules/react-is/cjs/react-is.development.js":
+/*!***********************************************************!*\
+  !*** ./node_modules/react-is/cjs/react-is.development.js ***!
+  \***********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/** @license React v16.13.1
+ * react-is.development.js
+ *
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+
+
+
+
+if (true) {
+  (function() {
+'use strict';
+
+// The Symbol used to tag the ReactElement-like types. If there is no native Symbol
+// nor polyfill, then a plain number is used for performance.
+var hasSymbol = typeof Symbol === 'function' && Symbol.for;
+var REACT_ELEMENT_TYPE = hasSymbol ? Symbol.for('react.element') : 0xeac7;
+var REACT_PORTAL_TYPE = hasSymbol ? Symbol.for('react.portal') : 0xeaca;
+var REACT_FRAGMENT_TYPE = hasSymbol ? Symbol.for('react.fragment') : 0xeacb;
+var REACT_STRICT_MODE_TYPE = hasSymbol ? Symbol.for('react.strict_mode') : 0xeacc;
+var REACT_PROFILER_TYPE = hasSymbol ? Symbol.for('react.profiler') : 0xead2;
+var REACT_PROVIDER_TYPE = hasSymbol ? Symbol.for('react.provider') : 0xeacd;
+var REACT_CONTEXT_TYPE = hasSymbol ? Symbol.for('react.context') : 0xeace; // TODO: We don't use AsyncMode or ConcurrentMode anymore. They were temporary
+// (unstable) APIs that have been removed. Can we remove the symbols?
+
+var REACT_ASYNC_MODE_TYPE = hasSymbol ? Symbol.for('react.async_mode') : 0xeacf;
+var REACT_CONCURRENT_MODE_TYPE = hasSymbol ? Symbol.for('react.concurrent_mode') : 0xeacf;
+var REACT_FORWARD_REF_TYPE = hasSymbol ? Symbol.for('react.forward_ref') : 0xead0;
+var REACT_SUSPENSE_TYPE = hasSymbol ? Symbol.for('react.suspense') : 0xead1;
+var REACT_SUSPENSE_LIST_TYPE = hasSymbol ? Symbol.for('react.suspense_list') : 0xead8;
+var REACT_MEMO_TYPE = hasSymbol ? Symbol.for('react.memo') : 0xead3;
+var REACT_LAZY_TYPE = hasSymbol ? Symbol.for('react.lazy') : 0xead4;
+var REACT_BLOCK_TYPE = hasSymbol ? Symbol.for('react.block') : 0xead9;
+var REACT_FUNDAMENTAL_TYPE = hasSymbol ? Symbol.for('react.fundamental') : 0xead5;
+var REACT_RESPONDER_TYPE = hasSymbol ? Symbol.for('react.responder') : 0xead6;
+var REACT_SCOPE_TYPE = hasSymbol ? Symbol.for('react.scope') : 0xead7;
+
+function isValidElementType(type) {
+  return typeof type === 'string' || typeof type === 'function' || // Note: its typeof might be other than 'symbol' or 'number' if it's a polyfill.
+  type === REACT_FRAGMENT_TYPE || type === REACT_CONCURRENT_MODE_TYPE || type === REACT_PROFILER_TYPE || type === REACT_STRICT_MODE_TYPE || type === REACT_SUSPENSE_TYPE || type === REACT_SUSPENSE_LIST_TYPE || typeof type === 'object' && type !== null && (type.$$typeof === REACT_LAZY_TYPE || type.$$typeof === REACT_MEMO_TYPE || type.$$typeof === REACT_PROVIDER_TYPE || type.$$typeof === REACT_CONTEXT_TYPE || type.$$typeof === REACT_FORWARD_REF_TYPE || type.$$typeof === REACT_FUNDAMENTAL_TYPE || type.$$typeof === REACT_RESPONDER_TYPE || type.$$typeof === REACT_SCOPE_TYPE || type.$$typeof === REACT_BLOCK_TYPE);
+}
+
+function typeOf(object) {
+  if (typeof object === 'object' && object !== null) {
+    var $$typeof = object.$$typeof;
+
+    switch ($$typeof) {
+      case REACT_ELEMENT_TYPE:
+        var type = object.type;
+
+        switch (type) {
+          case REACT_ASYNC_MODE_TYPE:
+          case REACT_CONCURRENT_MODE_TYPE:
+          case REACT_FRAGMENT_TYPE:
+          case REACT_PROFILER_TYPE:
+          case REACT_STRICT_MODE_TYPE:
+          case REACT_SUSPENSE_TYPE:
+            return type;
+
+          default:
+            var $$typeofType = type && type.$$typeof;
+
+            switch ($$typeofType) {
+              case REACT_CONTEXT_TYPE:
+              case REACT_FORWARD_REF_TYPE:
+              case REACT_LAZY_TYPE:
+              case REACT_MEMO_TYPE:
+              case REACT_PROVIDER_TYPE:
+                return $$typeofType;
+
+              default:
+                return $$typeof;
+            }
+
+        }
+
+      case REACT_PORTAL_TYPE:
+        return $$typeof;
+    }
+  }
+
+  return undefined;
+} // AsyncMode is deprecated along with isAsyncMode
+
+var AsyncMode = REACT_ASYNC_MODE_TYPE;
+var ConcurrentMode = REACT_CONCURRENT_MODE_TYPE;
+var ContextConsumer = REACT_CONTEXT_TYPE;
+var ContextProvider = REACT_PROVIDER_TYPE;
+var Element = REACT_ELEMENT_TYPE;
+var ForwardRef = REACT_FORWARD_REF_TYPE;
+var Fragment = REACT_FRAGMENT_TYPE;
+var Lazy = REACT_LAZY_TYPE;
+var Memo = REACT_MEMO_TYPE;
+var Portal = REACT_PORTAL_TYPE;
+var Profiler = REACT_PROFILER_TYPE;
+var StrictMode = REACT_STRICT_MODE_TYPE;
+var Suspense = REACT_SUSPENSE_TYPE;
+var hasWarnedAboutDeprecatedIsAsyncMode = false; // AsyncMode should be deprecated
+
+function isAsyncMode(object) {
+  {
+    if (!hasWarnedAboutDeprecatedIsAsyncMode) {
+      hasWarnedAboutDeprecatedIsAsyncMode = true; // Using console['warn'] to evade Babel and ESLint
+
+      console['warn']('The ReactIs.isAsyncMode() alias has been deprecated, ' + 'and will be removed in React 17+. Update your code to use ' + 'ReactIs.isConcurrentMode() instead. It has the exact same API.');
+    }
+  }
+
+  return isConcurrentMode(object) || typeOf(object) === REACT_ASYNC_MODE_TYPE;
+}
+function isConcurrentMode(object) {
+  return typeOf(object) === REACT_CONCURRENT_MODE_TYPE;
+}
+function isContextConsumer(object) {
+  return typeOf(object) === REACT_CONTEXT_TYPE;
+}
+function isContextProvider(object) {
+  return typeOf(object) === REACT_PROVIDER_TYPE;
+}
+function isElement(object) {
+  return typeof object === 'object' && object !== null && object.$$typeof === REACT_ELEMENT_TYPE;
+}
+function isForwardRef(object) {
+  return typeOf(object) === REACT_FORWARD_REF_TYPE;
+}
+function isFragment(object) {
+  return typeOf(object) === REACT_FRAGMENT_TYPE;
+}
+function isLazy(object) {
+  return typeOf(object) === REACT_LAZY_TYPE;
+}
+function isMemo(object) {
+  return typeOf(object) === REACT_MEMO_TYPE;
+}
+function isPortal(object) {
+  return typeOf(object) === REACT_PORTAL_TYPE;
+}
+function isProfiler(object) {
+  return typeOf(object) === REACT_PROFILER_TYPE;
+}
+function isStrictMode(object) {
+  return typeOf(object) === REACT_STRICT_MODE_TYPE;
+}
+function isSuspense(object) {
+  return typeOf(object) === REACT_SUSPENSE_TYPE;
+}
+
+exports.AsyncMode = AsyncMode;
+exports.ConcurrentMode = ConcurrentMode;
+exports.ContextConsumer = ContextConsumer;
+exports.ContextProvider = ContextProvider;
+exports.Element = Element;
+exports.ForwardRef = ForwardRef;
+exports.Fragment = Fragment;
+exports.Lazy = Lazy;
+exports.Memo = Memo;
+exports.Portal = Portal;
+exports.Profiler = Profiler;
+exports.StrictMode = StrictMode;
+exports.Suspense = Suspense;
+exports.isAsyncMode = isAsyncMode;
+exports.isConcurrentMode = isConcurrentMode;
+exports.isContextConsumer = isContextConsumer;
+exports.isContextProvider = isContextProvider;
+exports.isElement = isElement;
+exports.isForwardRef = isForwardRef;
+exports.isFragment = isFragment;
+exports.isLazy = isLazy;
+exports.isMemo = isMemo;
+exports.isPortal = isPortal;
+exports.isProfiler = isProfiler;
+exports.isStrictMode = isStrictMode;
+exports.isSuspense = isSuspense;
+exports.isValidElementType = isValidElementType;
+exports.typeOf = typeOf;
+  })();
+}
+
+
+/***/ }),
+
+/***/ "./node_modules/react-is/index.js":
+/*!****************************************!*\
+  !*** ./node_modules/react-is/index.js ***!
+  \****************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+if (false) {} else {
+  module.exports = __webpack_require__(/*! ./cjs/react-is.development.js */ "./node_modules/react-is/cjs/react-is.development.js");
+}
+
+
+/***/ }),
+
 /***/ "./node_modules/react/cjs/react.development.js":
 /*!*****************************************************!*\
   !*** ./node_modules/react/cjs/react.development.js ***!
@@ -28664,6 +34240,37 @@ if (false) {} else {
 if (false) {} else {
   module.exports = __webpack_require__(/*! ./cjs/scheduler-tracing.development.js */ "./node_modules/scheduler/cjs/scheduler-tracing.development.js");
 }
+
+
+/***/ }),
+
+/***/ "./node_modules/webpack/buildin/global.js":
+/*!***********************************!*\
+  !*** (webpack)/buildin/global.js ***!
+  \***********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+var g;
+
+// This works in non-strict mode
+g = (function() {
+	return this;
+})();
+
+try {
+	// This works if eval is allowed (see CSP)
+	g = g || new Function("return this")();
+} catch (e) {
+	// This works if the window reference is available
+	if (typeof window === "object") g = window;
+}
+
+// g can still be undefined, but nothing to do about it...
+// We return undefined, instead of nothing here, so it's
+// easier to handle this case. if(!global) { ...}
+
+module.exports = g;
 
 
 /***/ })
