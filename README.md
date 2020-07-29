@@ -9,7 +9,7 @@ To create data files, add a gpx file to the data directory and update the direct
 
 At the command line type: `node index.js`
 
-To check out the data displayed for an example session, run the server using `npm run dev` and navigate to (localhost:3000)
+To check out the data displayed for an example session, run the server using `npm run dev` and navigate to http://localhost:3000/
 
 ### Data to output
 Session Data:
