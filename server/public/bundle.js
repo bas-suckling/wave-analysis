@@ -182,6 +182,7 @@ var WaveGraph = /*#__PURE__*/function (_React$Component) {
       var options = {
         high: 30,
         low: 0,
+        height: '400px',
         axisX: {
           labelInterpolationFnc: function labelInterpolationFnc(value, index) {
             return index % 100 === 0 ? value : null;
