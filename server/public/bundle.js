@@ -102,7 +102,11 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var App = function App() {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Wave Analysis for 2020-05-25"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_WaveGraph__WEBPACK_IMPORTED_MODULE_1__["default"], null));
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Wave Analysis for 2020-05-25"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    style: {
+      border: '100px'
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_WaveGraph__WEBPACK_IMPORTED_MODULE_1__["default"], null)));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (App);
@@ -182,7 +186,9 @@ var WaveGraph = /*#__PURE__*/function (_React$Component) {
       var options = {
         high: 30,
         low: 0,
-        height: '400px',
+        height: '450px',
+        width: '80%',
+        overflow: 'visible',
         axisX: {
           labelInterpolationFnc: function labelInterpolationFnc(value, index) {
             return index % 100 === 0 ? value : null;
@@ -195,12 +201,12 @@ var WaveGraph = /*#__PURE__*/function (_React$Component) {
             axisClass: 'ct-axis-title',
             offset: {
               x: 0,
-              y: 50
+              y: 20
             },
             textAnchor: 'middle'
           },
           axisY: {
-            axisTitle: 'speed',
+            axisTitle: 'Speed (km/h)',
             axisClass: 'ct-axis-title',
             offset: {
               x: 0,

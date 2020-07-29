@@ -26,11 +26,15 @@ class WaveGraph extends React.Component {
         var options = {
             high: 30,
             low: 0,
-            height: '400px',
+            height: '450px',
+            width: '80%',
+            overflow: 'visible',
+            
             axisX: {
                 labelInterpolationFnc: function (value, index) {
                     return index % 100 === 0 ? value : null;
-                }
+                },
+                
 
             },
             showPoint: false,
@@ -40,12 +44,12 @@ class WaveGraph extends React.Component {
                     axisClass: 'ct-axis-title',
                     offset: {
                         x: 0,
-                        y: 50
+                        y: 20
                     },
-                    textAnchor: 'middle'
+                    textAnchor: 'middle',
                 },
                 axisY: {
-                    axisTitle: 'speed',
+                    axisTitle: 'Speed (km/h)',
                     axisClass: 'ct-axis-title',
                     offset: {
                         x: 0,

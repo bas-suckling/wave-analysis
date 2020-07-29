@@ -1,5 +1,6 @@
 const geolib = require('geolib');
 const moment = require('moment');
+const { duration } = require('moment');
 // const { unix } = require('moment');
 
 
@@ -21,6 +22,8 @@ function getTotalDistance(data) {
 function getDataArray(data) {
     let dataArray = []
     let cumulativeDistance = 0 
+    let startUnixTime = (convertUnixTime(parseTime(data[0].timestamp)))
+
     for (let i = 0; i < data.length - 1 ; i++) {
 
         let distanceIncrement = (geolib.getPreciseDistance({
@@ -31,7 +34,8 @@ function getDataArray(data) {
             "lon": data[i + 1].longitude,
         }))
 
-        let speed = (geolib.getSpeed({
+        //multiply speed by 3.6 to convert from m/s to km/hr 
+        let speed = 3.6*(geolib.getSpeed({
             "lat": data[i].latitude,
             "lon": data[i].longitude,
             "time": (convertUnixTime(parseTime(data[i].timestamp)))
@@ -40,51 +44,23 @@ function getDataArray(data) {
             "lon": data[i + 1].longitude,
             "time": (convertUnixTime(parseTime(data[i + 1].timestamp)))
         }))
+
         let isWave = false
+
         if (speed > 8) {
             isWave = true
         }
         cumulativeDistance += distanceIncrement
-        dataArray.push({"originalTime" : data[i].timestamp, "parseTime": parseTime(data[i].timestamp), "unixTime": convertUnixTime(parseTime(data[i].timestamp)), "incrementalDistance": distanceIncrement, "cumulativeDistance": cumulativeDistance, "speed": speed*3.6, "isWave": isWave })
+
+        parsedTime = parseTime(data[i].timestamp)
+        unixTime = convertUnixTime(parseTime(data[i].timestamp))
+        elapsedTime = convertHMS(unixTime - startUnixTime)
+
+        dataArray.push({"originalTime" : data[i].timestamp, "parsedTime": parsedTime, "unixTime": unixTime, "elapsedTime": elapsedTime, "incrementalDistance": distanceIncrement, "cumulativeDistance": cumulativeDistance, "speed": speed, "isWave": isWave })
     }
     return dataArray 
 
 }
-
-// function getDistanceArray(data){
-//     let distanceArray = []
-//     let cumulativeDistance = 0
-//     for (let i = 0; i < data.length - 1 ; i++) {
-//         let distanceIncrement = (geolib.getDistance({
-//             "lat": data[i].latitude,
-//             "lon": data[i].longitude,
-//         }, {
-//             "lat": data[i + 1].latitude,
-//             "lon": data[i + 1].longitude,
-//         }))
-//         cumulativeDistance += distanceIncrement
-//         distanceArray.push({"time": parseTime(data[i].timestamp), "unixTime": convertUnixTime(parseTime(data[i].timestamp)), "increment distance": distanceIncrement, "cumulative distance": cumulativeDistance})
-//     }
-//     return distanceArray 
-// }
-
-// function getSpeedArray(data) {
-//     let speedArray = []
-//     for (let i = 0; i < data.length - 1 ; i++) {
-//         let speed = (geolib.getSpeed({
-//             "lat": data[i].latitude,
-//             "lon": data[i].longitude,
-//             "time": (convertUnixTime(parseTime(data[i].timestamp)))
-//         }, {
-//             "lat": data[i + 1].latitude,
-//             "lon": data[i + 1].longitude,
-//             "time": (convertUnixTime(parseTime(data[i + 1].timestamp)))
-//         }))
-//         speedArray.push({"time": parseTime(data[i].timestamp), "unixTime": convertUnixTime(parseTime(data[i].timestamp)), "speed": speed*3.6})
-//     }
-//     return speedArray
-// }
-
 
 //converts timestamp to unix time (2020-07-07 03:42:40 to 1594093360 )
 function convertUnixTime(gpxTimeStamp) {
@@ -97,9 +73,20 @@ function parseTime(gpxTimeStamp) {
     return gpxTimeStamp.replace(/\T/g,' ').replace(/\Z/g,'');
 }
 
+function convertHMS(value) {
+    const sec = parseInt(value, 10); // convert value to number if it's string
+    let hours   = Math.floor(sec / 3600); // get hours
+    let minutes = Math.floor((sec - (hours * 3600)) / 60); // get minutes
+    let seconds = sec - (hours * 3600) - (minutes * 60); //  get seconds
+    // add 0 if value < 10; Example: 2 => 02
+    if (hours   < 10) {hours   = "0"+hours;}
+    if (minutes < 10) {minutes = "0"+minutes;}
+    if (seconds < 10) {seconds = "0"+seconds;}
+    return hours+':'+minutes+':'+seconds; // Return is HH : MM : SS
+}
+
+
 module.exports = {
     getTotalDistance,
-    // getDistanceArray,
-    // getSpeedArray,
     getDataArray
 }
