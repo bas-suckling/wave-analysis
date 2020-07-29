@@ -102,7 +102,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var App = function App() {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Wave Analysis"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_WaveGraph__WEBPACK_IMPORTED_MODULE_1__["default"], null));
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Wave Analysis for 2020-05-25"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_WaveGraph__WEBPACK_IMPORTED_MODULE_1__["default"], null));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (App);
@@ -179,15 +179,17 @@ var WaveGraph = /*#__PURE__*/function (_React$Component) {
         low: 0,
         axisX: {
           labelInterpolationFnc: function labelInterpolationFnc(value, index) {
-            return index % 100 === 0 ? value : null;
+            return index % 50 === 0 ? value : null;
           }
         }
       };
       var type = 'Line';
+      var lables = {};
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_chartist__WEBPACK_IMPORTED_MODULE_1___default.a, {
         data: data,
         options: options,
-        type: type
+        type: type,
+        lables: lables
       }));
     }
   }]);
