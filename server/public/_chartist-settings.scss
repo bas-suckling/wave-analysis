@@ -42,7 +42,7 @@ $ct-grid-width: 1px !default;
 $ct-grid-background-fill: none !default;
 
 // Line chart properties
-$ct-line-width: 4px !default;
+$ct-line-width: 2px !default;
 $ct-line-dasharray: false !default;
 $ct-point-size: 10px !default;
 // Line chart point, can be either round or square
@@ -70,7 +70,7 @@ $ct-include-alternative-responsive-containers: $ct-include-classes !default;
 // Series names and colors. This can be extended or customized as desired. Just add more series and colors.
 $ct-series-names: (a, b, c, d, e, f, g, h, i, j, k, l, m, n, o) !default;
 $ct-series-colors: (
-  #d70206,
+  #fff,
   #f05b4f,
   #f4c63d,
   #d17905,
