@@ -54,7 +54,7 @@ function getDataArray(data) {
 
         parsedTime = parseTime(data[i].timestamp)
         unixTime = convertUnixTime(parseTime(data[i].timestamp))
-        elapsedTime = convertHMS(unixTime - startUnixTime)
+        elapsedTime = convertHMS((unixTime - startUnixTime)/1000)
 
         dataArray.push({"originalTime" : data[i].timestamp, "parsedTime": parsedTime, "unixTime": unixTime, "elapsedTime": elapsedTime, "incrementalDistance": distanceIncrement, "cumulativeDistance": cumulativeDistance, "speed": speed, "isWave": isWave })
     }

@@ -13,7 +13,7 @@ class WaveGraph extends React.Component {
 
         waveData.forEach(function (element) {
             speedData.push(element.speed.toString())
-            timeData.push(element.parseTime)
+            timeData.push(element.elapsedTime)
             waveLine.push(8)
         }
         )
@@ -27,24 +27,26 @@ class WaveGraph extends React.Component {
             high: 30,
             low: 0,
             height: '450px',
-            width: '80%',
+            width: '90%',
             overflow: 'visible',
             
             axisX: {
                 labelInterpolationFnc: function (value, index) {
-                    return index % 100 === 0 ? value : null;
+                    return index % 150 === 0 ? value : null;
                 },
+                offset: 50
+                
                 
 
             },
             showPoint: false,
             plugins: [ChartistAxisTitle({
                 axisX: {
-                    axisTitle: 'Time',
+                    axisTitle: 'Time (hh:mm:ss)',
                     axisClass: 'ct-axis-title',
                     offset: {
                         x: 0,
-                        y: 20
+                        y: 40
                     },
                     textAnchor: 'middle',
                 },
