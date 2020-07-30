@@ -1,23 +1,6 @@
 const geolib = require('geolib');
 const moment = require('moment');
-const { duration } = require('moment');
 // const { unix } = require('moment');
-
-
-function getTotalDistance(data) {
-    let totalDistance = 0
-    for (let i = 0; i < data.length - 1; i++) {
-        let distanceIncrement = geolib.getDistance({
-            "lat": data[i].latitude,
-            "lon": data[i].longitude
-        }, {
-            "lat": data[i + 1].latitude,
-            "lon": data[i + 1].longitude
-        })
-        totalDistance += distanceIncrement
-    }
-    return totalDistance
-}
 
 function getDataArray(data) {
     let dataArray = []
@@ -74,7 +57,6 @@ function parseTime(gpxTimeStamp) {
 }
 
 function convertHMS(value) {
-    const sec = parseInt(value, 10); // convert value to number if it's string
     let hours   = Math.floor(sec / 3600); // get hours
     let minutes = Math.floor((sec - (hours * 3600)) / 60); // get minutes
     let seconds = sec - (hours * 3600) - (minutes * 60); //  get seconds
@@ -87,6 +69,5 @@ function convertHMS(value) {
 
 
 module.exports = {
-    getTotalDistance,
     getDataArray
 }
