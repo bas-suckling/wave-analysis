@@ -54,10 +54,10 @@ class WaveGraph extends React.Component {
                     axisClass: 'ct-axis-title',
                     offset: {
                         x: 0,
-                        y: 0
+                        y: 12
                     },
                     textAnchor: 'middle',
-                    flipTitle: false
+                    flipTitle: true
                 }
             })]
         };
