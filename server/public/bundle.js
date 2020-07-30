@@ -104,7 +104,7 @@ __webpack_require__.r(__webpack_exports__);
 var App = function App() {
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Wave Analysis for 2020-05-25"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     style: {
-      border: '100px'
+      padding: '5%'
     }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_WaveGraph__WEBPACK_IMPORTED_MODULE_1__["default"], null)));
 };
@@ -187,7 +187,6 @@ var WaveGraph = /*#__PURE__*/function (_React$Component) {
         high: 30,
         low: 0,
         height: '450px',
-        width: '90%',
         overflow: 'visible',
         axisX: {
           labelInterpolationFnc: function labelInterpolationFnc(value, index) {

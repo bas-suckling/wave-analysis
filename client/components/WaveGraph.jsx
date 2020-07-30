@@ -27,7 +27,6 @@ class WaveGraph extends React.Component {
             high: 30,
             low: 0,
             height: '450px',
-            width: '90%',
             overflow: 'visible',
             
             axisX: {
