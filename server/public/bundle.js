@@ -130,6 +130,8 @@ __webpack_require__.r(__webpack_exports__);
 var _data_2020_05_25_Surf_2020_05_25_PROC_json__WEBPACK_IMPORTED_MODULE_2___namespace = /*#__PURE__*/__webpack_require__.t(/*! ../../data/2020-05-25/Surf_2020-05-25_PROC.json */ "./data/2020-05-25/Surf_2020-05-25_PROC.json", 1);
 /* harmony import */ var chartist_plugin_axistitle__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! chartist-plugin-axistitle */ "./node_modules/chartist-plugin-axistitle/dist/chartist-plugin-axistitle.js");
 /* harmony import */ var chartist_plugin_axistitle__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(chartist_plugin_axistitle__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var chartist__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! chartist */ "./node_modules/chartist/dist/chartist.js");
+/* harmony import */ var chartist__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(chartist__WEBPACK_IMPORTED_MODULE_4__);
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -151,6 +153,7 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
 
 
 
@@ -187,7 +190,11 @@ var WaveGraph = /*#__PURE__*/function (_React$Component) {
         high: 30,
         low: 0,
         height: '450px',
+        width: '6000px',
         overflow: 'visible',
+        lineSmooth: chartist__WEBPACK_IMPORTED_MODULE_4___default.a.Interpolation.simple({
+          divisor: 200
+        }),
         axisX: {
           labelInterpolationFnc: function labelInterpolationFnc(value, index) {
             return index % 150 === 0 ? value : null;

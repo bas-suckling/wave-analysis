@@ -2,6 +2,7 @@ import React from 'react'
 import ChartistGraph from 'react-chartist';
 import waveData from '../../data/2020-05-25/Surf_2020-05-25_PROC.json'
 import ChartistAxisTitle from 'chartist-plugin-axistitle'
+import Chartist from 'chartist'
 
 
 class WaveGraph extends React.Component {
@@ -27,7 +28,11 @@ class WaveGraph extends React.Component {
             high: 30,
             low: 0,
             height: '450px',
+            width: '6000px',
             overflow: 'visible',
+            lineSmooth: Chartist.Interpolation.simple({
+                divisor: 200
+              }),
             
             axisX: {
                 labelInterpolationFnc: function (value, index) {
