@@ -5,16 +5,12 @@ function getDataArray(data) {
     let dataArray = []
     let cumulativeDistance = 0 
     let startUnixTime = (convertUnixTime(parseTime(data[0].timestamp)))
+    
 
     for (let i = 0; i < data.length - 1 ; i++) {
-
-        let distanceIncrement = (geolib.getPreciseDistance({
-            "lat": data[i].latitude,
-            "lon": data[i].longitude,
-        }, {
-            "lat": data[i + 1].latitude,
-            "lon": data[i + 1].longitude,
-        }))
+        let start = {"lat": data[i].latitude,"lon": data[i].longitude}
+        let end = {"lat": data[i + 1].latitude,"lon": data[i + 1].longitude}
+        let distanceIncrement = geolib.getPreciseDistance(start,end)
 
         //multiply speed by 3.6 to convert from m/s to km/hr 
         let speed = 3.6*(geolib.getSpeed({
@@ -31,39 +27,33 @@ function getDataArray(data) {
         if (speed > 30) {
             speed = 30
         }
-        
-        // //if speed is less than 8km/hr, set to 0
-        // if (speed < 8) {
-        //     speed = 0
-        // } 
 
-        let isWave = false
-
-        // if (speed >= 8) {
-        //     isWave = true
-        // }
         cumulativeDistance += distanceIncrement
-
+        let isWave = false
         let parsedTime = parseTime(data[i].timestamp)
         let unixTime = convertUnixTime(parseTime(data[i].timestamp))
         let elapsedTime = convertHMS((unixTime - startUnixTime)/1000)
 
-        dataArray.push({"originalTime" : data[i].timestamp, "parsedTime": parsedTime, "unixTime": unixTime, "elapsedTime": elapsedTime, "incrementalDistance": distanceIncrement, "cumulativeDistance": cumulativeDistance, "speed": speed, "isWave": isWave })
+        dataArray.push({"originalTime" : data[i].timestamp, "parsedTime": parsedTime, "unixTime": unixTime, "elapsedTime": elapsedTime, "incrementalDistance": distanceIncrement, "cumulativeDistance": cumulativeDistance, "wSpeed": null, "pSpeed": speed, "isWave": isWave })
     }
     return dataArray 
 }
 
 // average speeds out across 3 points
 function averageSpeed(array) {
-    let prev = array[0].speed
+    w = 1
+    let prev = array[0].pSpeed
     for (let i = 1; i < array.length-1; i++) {
-         let average = (prev + array[i].speed + array[i+1].speed)/3
-         prev = array[i].speed
-         array[i].speed = average
-         if (array[i].speed >= 8) {
+         let average = (prev + array[i].pSpeed*w + array[i+1].pSpeed)/(w+2)
+         prev = array[i].pSpeed
+         if (average >= 8){
              array[i].isWave = true
+             array[i].wSpeed = average
+             array[i].pSpeed = null
+             
          } else {
              array[i].isWave = false
+             array[i].pSpeed = average
          }
     }
     return array
@@ -76,16 +66,25 @@ function getWavesArray (array) {
     let wavesArray = []
     let wave = []
 
-    array.forEach(element => {
-        if (element.isWave) {
-            wave.push(element)
-        } else if (wave.length > 0) {
-            if (wave.length > 3) {
-                wavesArray.push(wave)
+    for (let i=0; i < array.length-1; i++) {
+        let datum = array[i]
+        let next = array[i+1]
+        if (datum.isWave) {
+            wave.push(datum)
+        } else {
+            if (next.isWave) { //if single slow pt include in wave
+                wave.push(datum)
+            } 
+            else {
+                if (wave.length > 0) {
+                    if (wave.length > 3) {
+                        wavesArray.push(wave)
+                    }
+                    wave = []
+                }
             }
-            wave = []
         }
-    });
+    }
     return wavesArray
 }
 
@@ -117,5 +116,5 @@ function convertHMS(sec) {
 module.exports = {
     getDataArray,
     getWavesArray,
-    averageSpeed
+    averageSpeed,
 }

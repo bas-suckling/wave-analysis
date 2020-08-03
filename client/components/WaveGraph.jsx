@@ -13,12 +13,14 @@ import WaveDataTable from './WaveData'
 class WaveGraph extends React.Component {
     render() {
 
-        let speedData = []
+        let waves = []
+        let paddling = []
         let timeData = []
         let waveLine = []
 
         surfData.forEach(function (element) {
-            speedData.push(element.speed.toString())
+            waves.push(element.wSpeed)
+            paddling.push(element.pSpeed)
             timeData.push(element.elapsedTime)
             waveLine.push(8)
         }
@@ -26,7 +28,7 @@ class WaveGraph extends React.Component {
 
         let data = {
             labels: timeData,
-            series: [speedData, waveLine]
+            series: [waves, paddling, waveLine]
         }
 
         var options = {
