@@ -1,7 +1,7 @@
 import React from 'react'
 import ChartistGraph from 'react-chartist';
 import surfData from '../../data/2020-08-01/Surf_2020-08-01_PROC.json'
-// import waveData from '../../data/2020-05-25/Surf_2020-05-25_PROC.json'
+import waveData from '../../data/2020-08-01/Surf_2020-08-01_waves.json'
 import ChartistAxisTitle from 'chartist-plugin-axistitle'
 import ChartistTooltip from 'chartist-plugin-tooltips-updated'
 import Chartist from 'chartist'
@@ -74,7 +74,7 @@ class WaveGraph extends React.Component {
         var type = 'Line'
 
         let sessionData = {
-            waves: 16,
+            waves: waveData.length,
             distanceSurfed: 700,
             distancePaddled: 5000,
             totalDistance: 5700,

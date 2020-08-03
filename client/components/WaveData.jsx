@@ -13,7 +13,7 @@ class WaveDataTable extends React.Component {
                 <table>
                     <thead>
                         <tr>
-                            <th>Wave {this.props.singleWaveData.wave_id} Data</th>
+                            <th>TEMPORARY Wave {this.props.singleWaveData.wave_id} Data</th>
                         </tr>
                     </thead>
                     <tbody>

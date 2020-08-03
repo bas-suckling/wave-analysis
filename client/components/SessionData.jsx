@@ -11,7 +11,7 @@ class SessionDataTable extends React.Component {
                 <table>
                     <thead>
                         <tr>
-                            <th>Session Data</th>
+                            <th>TEMPORARY Session Data</th>
                         </tr>
                     </thead>
                     <tbody>

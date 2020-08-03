@@ -54,7 +54,6 @@ function getDataArray(data) {
 
 }
 
-
 function getWavesArray (array) {
     let wavesArray = []
     let wave = []
@@ -62,11 +61,12 @@ function getWavesArray (array) {
     array.forEach(element => {
         if (element.isWave) {
             wave.push(element)
-        } else {
+        } else if (wave.length > 0) {
             wavesArray.push(wave)
             wave = []
         }
     });
+    return wavesArray
 }
 
 
@@ -95,5 +95,6 @@ function convertHMS(sec) {
 }
 
 module.exports = {
-    getDataArray
+    getDataArray,
+    getWavesArray
 }
