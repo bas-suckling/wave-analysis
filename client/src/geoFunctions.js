@@ -28,6 +28,11 @@ function getDataArray(data) {
             "time": (convertUnixTime(parseTime(data[i + 1].timestamp)))
         }))
 
+        // set max speed threshold to 30km/hr
+        if (speed > 30) {
+            speed = 30
+        }
+
         let isWave = false
 
         if (speed > 8) {
@@ -56,7 +61,7 @@ function parseTime(gpxTimeStamp) {
     return gpxTimeStamp.replace(/\T/g,' ').replace(/\Z/g,'');
 }
 
-function convertHMS(value) {
+function convertHMS(sec) {
     let hours   = Math.floor(sec / 3600); // get hours
     let minutes = Math.floor((sec - (hours * 3600)) / 60); // get minutes
     let seconds = sec - (hours * 3600) - (minutes * 60); //  get seconds

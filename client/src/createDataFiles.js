@@ -1,9 +1,9 @@
 const {createJSONFile, createTrackPoints} = require('./createTrackPointFile')
 const {getDataArray} = require('./geoFunctions')
 
-let gpxRawFile = '../../data/2020-05-25/Surf_2020-05-25.gpx'
-let jsonRawFile = '../../data/2020-05-25/Surf_2020-05-25_RAW.json'
-let jsonProcFile = '../../data/2020-05-25/Surf_2020-05-25_PROC.json'
+let gpxRawFile = '../../data/2020-08-01/Otaki_session.gpx'
+let jsonRawFile = '../../data/2020-08-01/Surf_2020-08-01_RAW.json'
+let jsonProcFile = '../../data/2020-08-01/Surf_2020-08-01_PROC.json'
 
 
 createTrackPoints(gpxRawFile)
