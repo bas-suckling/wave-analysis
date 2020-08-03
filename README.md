@@ -29,9 +29,6 @@ Specific Wave Data:
 
 - Convert gpx (xml) to RAW json format 
 - Convert RAW json format to processed json using [geolib](https://www.npmjs.com/package/geolib) functions
-- Import JSON to excel and play with the data, design algorithms based on this. 
-
-Need to figure out data smoothening method such as [Kalman Filter](https://en.wikipedia.org/wiki/Kalman_filter)
 
 ### Thresholds for Activities based on Speed
 | Speed (km/h) | Activity |
@@ -47,3 +44,6 @@ http://fpt.co.nz/wp-content/uploads/2018/06/Physiological_Demands_of_Competitive
 ### Data Presentation
 
 Graphs / charts could be made using [chartist.js](https://www.npmjs.com/package/react-chartist)
+
+### Application Architecture
+https://miro.com/app/board/o9J_koaQuQQ=/
