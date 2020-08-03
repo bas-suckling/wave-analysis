@@ -32,27 +32,45 @@ function getDataArray(data) {
             speed = 30
         }
         
-        //if speed is less than 8km/hr, set to 0
-        if (speed < 8) {
-            speed = 0
-        } 
+        // //if speed is less than 8km/hr, set to 0
+        // if (speed < 8) {
+        //     speed = 0
+        // } 
 
         let isWave = false
 
-        if (speed > 8) {
-            isWave = true
-        }
+        // if (speed >= 8) {
+        //     isWave = true
+        // }
         cumulativeDistance += distanceIncrement
 
-        parsedTime = parseTime(data[i].timestamp)
-        unixTime = convertUnixTime(parseTime(data[i].timestamp))
-        elapsedTime = convertHMS((unixTime - startUnixTime)/1000)
+        let parsedTime = parseTime(data[i].timestamp)
+        let unixTime = convertUnixTime(parseTime(data[i].timestamp))
+        let elapsedTime = convertHMS((unixTime - startUnixTime)/1000)
 
         dataArray.push({"originalTime" : data[i].timestamp, "parsedTime": parsedTime, "unixTime": unixTime, "elapsedTime": elapsedTime, "incrementalDistance": distanceIncrement, "cumulativeDistance": cumulativeDistance, "speed": speed, "isWave": isWave })
     }
     return dataArray 
-
 }
+
+// average speeds out across 3 points
+function averageSpeed(array) {
+    let prev = array[0].speed
+    for (let i = 1; i < array.length-1; i++) {
+         let average = (prev + array[i].speed + array[i+1].speed)/3
+         prev = array[i].speed
+         array[i].speed = average
+         if (array[i].speed >= 8) {
+             array[i].isWave = true
+         } else {
+             array[i].isWave = false
+         }
+    }
+    return array
+}
+
+
+
 
 function getWavesArray (array) {
     let wavesArray = []
@@ -62,7 +80,9 @@ function getWavesArray (array) {
         if (element.isWave) {
             wave.push(element)
         } else if (wave.length > 0) {
-            wavesArray.push(wave)
+            if (wave.length > 3) {
+                wavesArray.push(wave)
+            }
             wave = []
         }
     });
@@ -96,5 +116,6 @@ function convertHMS(sec) {
 
 module.exports = {
     getDataArray,
-    getWavesArray
+    getWavesArray,
+    averageSpeed
 }
