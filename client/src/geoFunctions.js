@@ -1,6 +1,5 @@
 const geolib = require('geolib');
 const moment = require('moment');
-// const { unix } = require('moment');
 
 function getDataArray(data) {
     let dataArray = []
@@ -32,6 +31,11 @@ function getDataArray(data) {
         if (speed > 30) {
             speed = 30
         }
+        
+        //if speed is less than 8km/hr, set to 0
+        if (speed < 8) {
+            speed = 0
+        } 
 
         let isWave = false
 
@@ -49,6 +53,24 @@ function getDataArray(data) {
     return dataArray 
 
 }
+
+
+function getWavesArray (array) {
+    let wavesArray = []
+    let wave = []
+
+    array.forEach(element => {
+        if (element.isWave) {
+            wave.push(element)
+        } else {
+            wavesArray.push(wave)
+            wave = []
+        }
+    });
+}
+
+
+
 
 //converts timestamp to unix time (2020-07-07 03:42:40 to 1594093360 )
 function convertUnixTime(gpxTimeStamp) {
@@ -71,7 +93,6 @@ function convertHMS(sec) {
     if (seconds < 10) {seconds = "0"+seconds;}
     return hours+':'+minutes+':'+seconds; // Return is HH : MM : SS
 }
-
 
 module.exports = {
     getDataArray

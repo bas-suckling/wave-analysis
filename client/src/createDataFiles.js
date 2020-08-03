@@ -11,7 +11,9 @@ createTrackPoints(gpxRawFile)
         
 createTrackPoints(gpxRawFile)
     .then(data => getDataArray(data))  
-    .then(res => createJSONFile(jsonProcFile, JSON.stringify(res)))    
+    .then(res => createJSONFile(jsonProcFile, JSON.stringify(res)))
+
+
 
 
 
