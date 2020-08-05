@@ -349,74 +349,70 @@ var SessionDataTable = /*#__PURE__*/function (_React$Component) {
 /*!******************************************!*\
   !*** ./client/components/SessionMap.jsx ***!
   \******************************************/
-/*! exports provided: SessionMap, default */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* WEBPACK VAR INJECTION */(function(process) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SessionMap", function() { return SessionMap; });
-/* harmony import */ var google_maps_react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! google-maps-react */ "./node_modules/google-maps-react/dist/index.js");
-/* harmony import */ var google_maps_react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(google_maps_react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _react_google_maps_api__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @react-google-maps/api */ "./node_modules/@react-google-maps/api/dist/reactgooglemapsapi.esm.js");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
 
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-var apiKey = process.env.API_KEY;
-var SessionMap = /*#__PURE__*/function (_React$Component) {
-  _inherits(SessionMap, _React$Component);
+var GOOGLE_API_KEY = "AIzaSyBnmpCuKdaeaLgswMRDExv3tGkn_4dUEWM";
 
-  var _super = _createSuper(SessionMap);
+function SessionMap() {
+  var containerStyle = {
+    width: '600px',
+    height: '400px'
+  };
+  var center = {
+    lat: -3.745,
+    lng: -38.523
+  };
 
-  function SessionMap() {
-    _classCallCheck(this, SessionMap);
+  var _React$useState = react__WEBPACK_IMPORTED_MODULE_0___default.a.useState(null),
+      _React$useState2 = _slicedToArray(_React$useState, 2),
+      map = _React$useState2[0],
+      setMap = _React$useState2[1];
 
-    return _super.apply(this, arguments);
-  }
-
-  _createClass(SessionMap, [{
-    key: "render",
-    value: function render() {
-      var style = {
-        width: '50%',
-        height: '50%'
-      };
-      console.log(apiKey);
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(google_maps_react__WEBPACK_IMPORTED_MODULE_0__["Map"], {
-        google: this.props.google,
-        zoom: 14,
-        style: style
-      });
+  var onLoad = react__WEBPACK_IMPORTED_MODULE_0___default.a.useCallback(function callback(map) {
+    var bounds = new window.google.maps.LatLngBounds();
+    map.fitBounds(bounds);
+    setMap(map);
+  }, []);
+  var onUnmount = react__WEBPACK_IMPORTED_MODULE_0___default.a.useCallback(function callback(map) {
+    setMap(null);
+  }, []);
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_react_google_maps_api__WEBPACK_IMPORTED_MODULE_1__["LoadScript"], {
+    googleMapsApiKey: GOOGLE_API_KEY
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_react_google_maps_api__WEBPACK_IMPORTED_MODULE_1__["GoogleMap"], {
+    mapContainerStyle: containerStyle,
+    center: center,
+    zoom: 2,
+    onLoad: onLoad,
+    onUnmount: onUnmount,
+    options: {
+      disableDefaultUI: true,
+      mapTypeId: 'satellite',
+      zoomControl: true
     }
-  }]);
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null)));
+}
 
-  return SessionMap;
-}(react__WEBPACK_IMPORTED_MODULE_1___default.a.Component);
-/* harmony default export */ __webpack_exports__["default"] = (Object(google_maps_react__WEBPACK_IMPORTED_MODULE_0__["GoogleApiWrapper"])({
-  apiKey: apiKey
-})(SessionMap));
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../node_modules/process/browser.js */ "./node_modules/process/browser.js")))
+/* harmony default export */ __webpack_exports__["default"] = (/*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.memo(SessionMap));
 
 /***/ }),
 
@@ -621,6 +617,5078 @@ __webpack_require__.r(__webpack_exports__);
 document.addEventListener('DOMContentLoaded', function () {
   react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_App__WEBPACK_IMPORTED_MODULE_2__["default"], null), document.getElementById('app'));
 });
+
+/***/ }),
+
+/***/ "./node_modules/@react-google-maps/api/dist/reactgooglemapsapi.esm.js":
+/*!****************************************************************************!*\
+  !*** ./node_modules/@react-google-maps/api/dist/reactgooglemapsapi.esm.js ***!
+  \****************************************************************************/
+/*! exports provided: Autocomplete, BicyclingLayer, Circle, Data, DirectionsRenderer, DirectionsService, DistanceMatrixService, DrawingManager, GoogleMap, GroundOverlay, HeatmapLayer, InfoBox, InfoWindow, KmlLayer, LoadScript, LoadScriptNext, MapContext, Marker, MarkerClusterer, OverlayView, Polygon, Polyline, Rectangle, StandaloneSearchBox, StreetViewPanorama, StreetViewService, TrafficLayer, TransitLayer, useGoogleMap, useLoadScript */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Autocomplete", function() { return Autocomplete; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "BicyclingLayer", function() { return BicyclingLayer; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Circle", function() { return Circle; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Data", function() { return Data; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DirectionsRenderer", function() { return DirectionsRenderer; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DirectionsService", function() { return DirectionsService; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DistanceMatrixService", function() { return DistanceMatrixService; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DrawingManager", function() { return DrawingManager; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GoogleMap", function() { return GoogleMap; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GroundOverlay", function() { return GroundOverlay; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "HeatmapLayer", function() { return HeatmapLayer; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "InfoBox", function() { return InfoBoxComponent; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "InfoWindow", function() { return InfoWindow; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "KmlLayer", function() { return KmlLayer; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LoadScript", function() { return LoadScript; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LoadScriptNext", function() { return LoadScriptNext$1; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MapContext", function() { return MapContext; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Marker", function() { return Marker; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MarkerClusterer", function() { return ClustererComponent; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "OverlayView", function() { return OverlayView; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Polygon", function() { return Polygon; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Polyline", function() { return Polyline; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Rectangle", function() { return Rectangle; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "StandaloneSearchBox", function() { return StandaloneSearchBox; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "StreetViewPanorama", function() { return StreetViewPanorama; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "StreetViewService", function() { return StreetViewService; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TrafficLayer", function() { return TrafficLayer; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TransitLayer", function() { return TransitLayer; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "useGoogleMap", function() { return useGoogleMap; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "useLoadScript", function() { return useLoadScript; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var invariant__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! invariant */ "./node_modules/invariant/browser.js");
+/* harmony import */ var invariant__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(invariant__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _react_google_maps_marker_clusterer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @react-google-maps/marker-clusterer */ "./node_modules/@react-google-maps/marker-clusterer/dist/markerclusterer.esm.js");
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _react_google_maps_infobox__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @react-google-maps/infobox */ "./node_modules/@react-google-maps/infobox/dist/infobox.esm.js");
+
+
+
+
+
+
+function _extends() {
+  _extends = Object.assign || function (target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];
+
+      for (var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+          target[key] = source[key];
+        }
+      }
+    }
+
+    return target;
+  };
+
+  return _extends.apply(this, arguments);
+}
+
+function _inheritsLoose(subClass, superClass) {
+  subClass.prototype = Object.create(superClass.prototype);
+  subClass.prototype.constructor = subClass;
+  subClass.__proto__ = superClass;
+}
+
+function _objectWithoutPropertiesLoose(source, excluded) {
+  if (source == null) return {};
+  var target = {};
+  var sourceKeys = Object.keys(source);
+  var key, i;
+
+  for (i = 0; i < sourceKeys.length; i++) {
+    key = sourceKeys[i];
+    if (excluded.indexOf(key) >= 0) continue;
+    target[key] = source[key];
+  }
+
+  return target;
+}
+
+var MapContext =
+/*#__PURE__*/
+Object(react__WEBPACK_IMPORTED_MODULE_0__["createContext"])(null);
+function useGoogleMap() {
+  !!!react__WEBPACK_IMPORTED_MODULE_0__["useContext"] ?  true ? invariant__WEBPACK_IMPORTED_MODULE_1___default()(false, 'useGoogleMap is React hook and requires React version 16.8+') : undefined : void 0;
+  var map = Object(react__WEBPACK_IMPORTED_MODULE_0__["useContext"])(MapContext);
+  !!!map ?  true ? invariant__WEBPACK_IMPORTED_MODULE_1___default()(false, 'useGoogleMap needs a GoogleMap available up in the tree') : undefined : void 0;
+  return map;
+}
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+var reduce = function reduce(obj, fn, acc) {
+  return Object.keys(obj).reduce(function reducer(newAcc, key) {
+    return fn(newAcc, obj[key], key);
+  }, acc);
+};
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function forEach(obj, fn) {
+  Object.keys(obj).forEach(function iterator(key) {
+    return fn(obj[key], key);
+  });
+}
+
+/* global google */
+var applyUpdaterToNextProps = function applyUpdaterToNextProps( // eslint-disable-next-line @typescript-eslint/no-explicit-any
+updaterMap, // eslint-disable-next-line @typescript-eslint/no-explicit-any
+prevProps, // eslint-disable-next-line @typescript-eslint/no-explicit-any
+nextProps, // eslint-disable-next-line @typescript-eslint/no-explicit-any
+instance // eslint-disable-next-line @typescript-eslint/no-explicit-any
+) {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  var map = {}; // eslint-disable-next-line @typescript-eslint/no-explicit-any
+
+  var iter = function iter(fn, key) {
+    var nextValue = nextProps[key];
+
+    if (nextValue !== prevProps[key]) {
+      map[key] = nextValue;
+      fn(instance, nextValue);
+    }
+  };
+
+  forEach(updaterMap, iter);
+  return map;
+};
+function registerEvents( // eslint-disable-next-line @typescript-eslint/no-explicit-any
+props, // eslint-disable-next-line @typescript-eslint/no-explicit-any
+instance, eventMap) {
+  var registeredList = reduce(eventMap, function reducer(acc, googleEventName, // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  onEventName) {
+    if (typeof props[onEventName] === 'function') {
+      acc.push(google.maps.event.addListener(instance, googleEventName, props[onEventName]));
+    }
+
+    return acc;
+  }, []);
+  return registeredList;
+}
+
+function unregisterEvent(registered) {
+  google.maps.event.removeListener(registered);
+}
+
+function unregisterEvents(events) {
+  if (events === void 0) {
+    events = [];
+  }
+
+  events.forEach(unregisterEvent);
+}
+function applyUpdatersToPropsAndRegisterEvents(_ref) {
+  var updaterMap = _ref.updaterMap,
+      eventMap = _ref.eventMap,
+      prevProps = _ref.prevProps,
+      nextProps = _ref.nextProps,
+      instance = _ref.instance;
+  var registeredEvents = registerEvents(nextProps, instance, eventMap);
+  applyUpdaterToNextProps(updaterMap, prevProps, nextProps, instance);
+  return registeredEvents;
+}
+
+var eventMap = {
+  onDblClick: 'dblclick',
+  onDragEnd: 'dragend',
+  onDragStart: 'dragstart',
+  onMapTypeIdChanged: 'maptypeid_changed',
+  onMouseMove: 'mousemove',
+  onMouseOut: 'mouseout',
+  onMouseOver: 'mouseover',
+  onMouseDown: 'mousedown',
+  onMouseUp: 'mouseup',
+  onRightClick: 'rightclick',
+  onTilesLoaded: 'tilesloaded',
+  onBoundsChanged: 'bounds_changed',
+  onCenterChanged: 'center_changed',
+  onClick: 'click',
+  onDrag: 'drag',
+  onHeadingChanged: 'heading_changed',
+  onIdle: 'idle',
+  onProjectionChanged: 'projection_changed',
+  onResize: 'resize',
+  onTiltChanged: 'tilt_changed',
+  onZoomChanged: 'zoom_changed'
+};
+var updaterMap = {
+  extraMapTypes: function extraMapTypes(map, extra) {
+    extra.forEach(function forEachExtra(it, i) {
+      map.mapTypes.set(String(i), it);
+    });
+  },
+  center: function center(map, _center) {
+    map.setCenter(_center);
+  },
+  clickableIcons: function clickableIcons(map, clickable) {
+    map.setClickableIcons(clickable);
+  },
+  heading: function heading(map, _heading) {
+    map.setHeading(_heading);
+  },
+  mapTypeId: function mapTypeId(map, _mapTypeId) {
+    map.setMapTypeId(_mapTypeId);
+  },
+  options: function options(map, _options) {
+    map.setOptions(_options);
+  },
+  streetView: function streetView(map, _streetView) {
+    map.setStreetView(_streetView);
+  },
+  tilt: function tilt(map, _tilt) {
+    map.setTilt(_tilt);
+  },
+  zoom: function zoom(map, _zoom) {
+    map.setZoom(_zoom);
+  }
+};
+var GoogleMap =
+/*#__PURE__*/
+function (_React$PureComponent) {
+  _inheritsLoose(GoogleMap, _React$PureComponent);
+
+  function GoogleMap() {
+    var _this;
+
+    _this = _React$PureComponent.apply(this, arguments) || this;
+    _this.state = {
+      map: null
+    };
+    _this.registeredEvents = [];
+    _this.mapRef = null;
+
+    _this.getInstance = function () {
+      if (_this.mapRef === null) {
+        return null;
+      }
+
+      return new google.maps.Map(_this.mapRef, _this.props.options);
+    };
+
+    _this.panTo = function (latLng) {
+      var map = _this.getInstance();
+
+      if (map) {
+        map.panTo(latLng);
+      }
+    };
+
+    _this.setMapCallback = function () {
+      if (_this.state.map !== null) {
+        if (_this.props.onLoad) {
+          _this.props.onLoad(_this.state.map);
+        }
+      }
+    };
+
+    _this.getRef = function (ref) {
+      _this.mapRef = ref;
+    };
+
+    return _this;
+  }
+
+  var _proto = GoogleMap.prototype;
+
+  _proto.componentDidMount = function componentDidMount() {
+    var map = this.getInstance();
+    this.registeredEvents = applyUpdatersToPropsAndRegisterEvents({
+      updaterMap: updaterMap,
+      eventMap: eventMap,
+      prevProps: {},
+      nextProps: this.props,
+      instance: map
+    });
+    this.setState(function setMap() {
+      return {
+        map: map
+      };
+    }, this.setMapCallback);
+  };
+
+  _proto.componentDidUpdate = function componentDidUpdate(prevProps) {
+    if (this.state.map !== null) {
+      unregisterEvents(this.registeredEvents);
+      this.registeredEvents = applyUpdatersToPropsAndRegisterEvents({
+        updaterMap: updaterMap,
+        eventMap: eventMap,
+        prevProps: prevProps,
+        nextProps: this.props,
+        instance: this.state.map
+      });
+    }
+  };
+
+  _proto.componentWillUnmount = function componentWillUnmount() {
+    if (this.state.map !== null) {
+      if (this.props.onUnmount) {
+        this.props.onUnmount(this.state.map);
+      }
+
+      unregisterEvents(this.registeredEvents);
+    }
+  };
+
+  _proto.render = function render() {
+    return Object(react__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+      id: this.props.id,
+      ref: this.getRef,
+      style: this.props.mapContainerStyle,
+      className: this.props.mapContainerClassName
+    }, Object(react__WEBPACK_IMPORTED_MODULE_0__["createElement"])(MapContext.Provider, {
+      value: this.state.map
+    }, this.state.map !== null ? this.props.children : Object(react__WEBPACK_IMPORTED_MODULE_0__["createElement"])(react__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null)));
+  };
+
+  return GoogleMap;
+}(react__WEBPACK_IMPORTED_MODULE_0__["PureComponent"]);
+
+var isBrowser = typeof document !== 'undefined';
+
+var injectScript = function injectScript(_ref) {
+  var url = _ref.url,
+      id = _ref.id,
+      nonce = _ref.nonce;
+
+  if (!isBrowser) {
+    return Promise.reject(new Error('document is undefined'));
+  }
+
+  return new Promise(function injectScriptCallback(resolve, reject) {
+    var existingScript = document.getElementById(id);
+    var windowWithGoogleMap = window;
+
+    if (existingScript) {
+      // Same script id/url: keep same script
+      var dataStateAttribute = existingScript.getAttribute('data-state');
+
+      if (existingScript.src === url && dataStateAttribute !== 'error') {
+        if (dataStateAttribute === 'ready') {
+          return resolve(id);
+        } else {
+          var originalInitMap = windowWithGoogleMap.initMap;
+          var originalErrorCallback = existingScript.onerror;
+
+          windowWithGoogleMap.initMap = function initMap() {
+            if (originalInitMap) {
+              originalInitMap();
+            }
+
+            resolve(id);
+          };
+
+          existingScript.onerror = function (err) {
+            if (originalErrorCallback) {
+              originalErrorCallback(err);
+            }
+
+            reject(err);
+          };
+
+          return;
+        }
+      } // Same script id, but either
+      // 1. requested URL is different
+      // 2. script failed to load
+      else {
+          existingScript.remove();
+        }
+    }
+
+    var script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.src = url;
+    script.id = id;
+    script.async = true;
+    script.nonce = nonce;
+
+    script.onerror = function onerror(err) {
+      script.setAttribute('data-state', 'error');
+      reject(err);
+    };
+
+    windowWithGoogleMap.initMap = function onload() {
+      script.setAttribute('data-state', 'ready');
+      resolve(id);
+    };
+
+    document.head.appendChild(script);
+  })["catch"](function (err) {
+    console.error('injectScript error: ', err);
+    throw err;
+  });
+};
+
+var isRobotoStyle = function isRobotoStyle(element) {
+  // roboto font download
+  if (element.href && element.href.indexOf('https://fonts.googleapis.com/css?family=Roboto') === 0) {
+    return true;
+  } // roboto style elements
+
+
+  if (element.tagName.toLowerCase() === 'style' && // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+  // @ts-ignore
+  element.styleSheet && // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+  // @ts-ignore
+  element.styleSheet.cssText && // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+  // @ts-ignore
+  element.styleSheet.cssText.replace('\r\n', '').indexOf('.gm-style') === 0) {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+    // @ts-ignore
+    element.styleSheet.cssText = '';
+    return true;
+  } // roboto style elements for other browsers
+
+
+  if (element.tagName.toLowerCase() === 'style' && element.innerHTML && element.innerHTML.replace('\r\n', '').indexOf('.gm-style') === 0) {
+    element.innerHTML = '';
+    return true;
+  } // when google tries to add empty style
+
+
+  if (element.tagName.toLowerCase() === 'style' && // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+  // @ts-ignore
+  !element.styleSheet && !element.innerHTML) {
+    return true;
+  }
+
+  return false;
+}; // Preventing the Google Maps library from downloading an extra font
+
+
+var preventGoogleFonts = function preventGoogleFonts() {
+  // we override these methods only for one particular head element
+  // default methods for other elements are not affected
+  var head = document.getElementsByTagName('head')[0];
+  var trueInsertBefore = head.insertBefore.bind(head); // TODO: adding return before reflect solves the TS issue
+  // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+  // @ts-ignore
+
+  head.insertBefore = function insertBefore(newElement, referenceElement) {
+    if (!isRobotoStyle(newElement)) {
+      Reflect.apply(trueInsertBefore, head, [newElement, referenceElement]);
+    }
+  };
+
+  var trueAppend = head.appendChild.bind(head); // TODO: adding return before reflect solves the TS issue
+  // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+  // @ts-ignore
+
+  head.appendChild = function appendChild(textNode) {
+    if (!isRobotoStyle(textNode)) {
+      Reflect.apply(trueAppend, head, [textNode]);
+    }
+  };
+};
+
+function makeLoadScriptUrl(_ref) {
+  var googleMapsApiKey = _ref.googleMapsApiKey,
+      googleMapsClientId = _ref.googleMapsClientId,
+      _ref$version = _ref.version,
+      version = _ref$version === void 0 ? 'weekly' : _ref$version,
+      language = _ref.language,
+      region = _ref.region,
+      libraries = _ref.libraries,
+      channel = _ref.channel;
+  var params = [];
+  !(googleMapsApiKey && googleMapsClientId || !(googleMapsApiKey && googleMapsClientId)) ?  true ? invariant__WEBPACK_IMPORTED_MODULE_1___default()(false, 'You need to specify either googleMapsApiKey or googleMapsClientId for @react-google-maps/api load script to work. You cannot use both at the same time.') : undefined : void 0;
+
+  if (googleMapsApiKey) {
+    params.push("key=" + googleMapsApiKey);
+  } else if (googleMapsClientId) {
+    params.push("client=" + googleMapsClientId);
+  }
+
+  if (version) {
+    params.push("v=" + version);
+  }
+
+  if (language) {
+    params.push("language=" + language);
+  }
+
+  if (region) {
+    params.push("region=" + region);
+  }
+
+  if (libraries && libraries.length) {
+    params.push("libraries=" + libraries.sort().join(','));
+  }
+
+  if (channel) {
+    params.push("channel=" + channel);
+  }
+
+  params.push('callback=initMap');
+  return "https://maps.googleapis.com/maps/api/js?" + params.join('&');
+}
+
+var cleaningUp = false;
+function DefaultLoadingElement() {
+  return Object(react__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", null, "Loading...");
+}
+var defaultLoadScriptProps = {
+  id: 'script-loader',
+  version: 'weekly'
+};
+
+var LoadScript =
+/*#__PURE__*/
+function (_React$PureComponent) {
+  _inheritsLoose(LoadScript, _React$PureComponent);
+
+  function LoadScript() {
+    var _this;
+
+    _this = _React$PureComponent.apply(this, arguments) || this;
+    _this.check = Object(react__WEBPACK_IMPORTED_MODULE_0__["createRef"])();
+    _this.state = {
+      loaded: false
+    };
+
+    _this.cleanupCallback = function () {
+      delete window.google.maps;
+
+      _this.injectScript();
+    };
+
+    _this.isCleaningUp = function () {
+      try {
+        var promiseCallback = function promiseCallback(resolve) {
+          if (!cleaningUp) {
+            resolve();
+          } else {
+            if (isBrowser) {
+              var timer = window.setInterval(function interval() {
+                if (!cleaningUp) {
+                  window.clearInterval(timer);
+                  resolve();
+                }
+              }, 1);
+            }
+          }
+
+          return;
+        };
+
+        return Promise.resolve(new Promise(promiseCallback));
+      } catch (e) {
+        return Promise.reject(e);
+      }
+    };
+
+    _this.cleanup = function () {
+      cleaningUp = true;
+      var script = document.getElementById(_this.props.id);
+
+      if (script && script.parentNode) {
+        script.parentNode.removeChild(script);
+      }
+
+      Array.prototype.slice.call(document.getElementsByTagName('script')).filter(function filter(script) {
+        return typeof script.src === 'string' && script.src.includes('maps.googleapis');
+      }).forEach(function forEach(script) {
+        if (script.parentNode) {
+          script.parentNode.removeChild(script);
+        }
+      });
+      Array.prototype.slice.call(document.getElementsByTagName('link')).filter(function filter(link) {
+        return link.href === 'https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Google+Sans';
+      }).forEach(function forEach(link) {
+        if (link.parentNode) {
+          link.parentNode.removeChild(link);
+        }
+      });
+      Array.prototype.slice.call(document.getElementsByTagName('style')).filter(function filter(style) {
+        return style.innerText !== undefined && style.innerText.length > 0 && style.innerText.includes('.gm-');
+      }).forEach(function forEach(style) {
+        if (style.parentNode) {
+          style.parentNode.removeChild(style);
+        }
+      });
+    };
+
+    _this.injectScript = function () {
+      if (_this.props.preventGoogleFontsLoading) {
+        preventGoogleFonts();
+      }
+
+      !!!_this.props.id ?  true ? invariant__WEBPACK_IMPORTED_MODULE_1___default()(false, 'LoadScript requires "id" prop to be a string: %s', _this.props.id) : undefined : void 0;
+      var injectScriptOptions = {
+        id: _this.props.id,
+        nonce: _this.props.nonce,
+        url: makeLoadScriptUrl(_this.props)
+      };
+      injectScript(injectScriptOptions).then(function () {
+        if (_this.props.onLoad) {
+          _this.props.onLoad();
+        }
+
+        _this.setState(function setLoaded() {
+          return {
+            loaded: true
+          };
+        });
+
+        return;
+      })["catch"](function (err) {
+        if (_this.props.onError) {
+          _this.props.onError(err);
+        }
+
+        console.error("\n          There has been an Error with loading Google Maps API script, please check that you provided correct google API key (" + (_this.props.googleMapsApiKey || '-') + ") or Client ID (" + (_this.props.googleMapsClientId || '-') + ") to <LoadScript />\n          Otherwise it is a Network issue.\n        ");
+      });
+    };
+
+    return _this;
+  }
+
+  var _proto = LoadScript.prototype;
+
+  _proto.componentDidMount = function componentDidMount() {
+    if (isBrowser) {
+      if (window.google && window.google.maps && !cleaningUp) {
+        console.error('google api is already presented');
+        return;
+      }
+
+      this.isCleaningUp().then(this.injectScript)["catch"](function error(err) {
+        console.error('Error at injecting script after cleaning up: ', err);
+      });
+    }
+  };
+
+  _proto.componentDidUpdate = function componentDidUpdate(prevProps) {
+    if (this.props.libraries !== prevProps.libraries) {
+      console.warn('Performance warning! LoadScript has been reloaded unintentionally! You should not pass `libraries` prop as new array. Please keep an array of libraries as static class property for Components and PureComponents, or just a const variable outside of component, or somewhere in config files or ENV variables');
+    }
+
+    if (isBrowser && prevProps.language !== this.props.language) {
+      this.cleanup(); // TODO: refactor to use gDSFP maybe... wait for hooks refactoring.
+      // eslint-disable-next-line react/no-did-update-set-state
+
+      this.setState(function setLoaded() {
+        return {
+          loaded: false
+        };
+      }, this.cleanupCallback);
+    }
+  };
+
+  _proto.componentWillUnmount = function componentWillUnmount() {
+    var _this2 = this;
+
+    if (isBrowser) {
+      this.cleanup();
+
+      var timeoutCallback = function timeoutCallback() {
+        if (!_this2.check.current) {
+          delete window.google;
+          cleaningUp = false;
+        }
+      };
+
+      window.setTimeout(timeoutCallback, 1);
+
+      if (this.props.onUnmount) {
+        this.props.onUnmount();
+      }
+    }
+  };
+
+  _proto.render = function render() {
+    return Object(react__WEBPACK_IMPORTED_MODULE_0__["createElement"])(react__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, Object(react__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+      ref: this.check
+    }), this.state.loaded ? this.props.children : this.props.loadingElement || Object(react__WEBPACK_IMPORTED_MODULE_0__["createElement"])(DefaultLoadingElement, null));
+  };
+
+  return LoadScript;
+}(react__WEBPACK_IMPORTED_MODULE_0__["PureComponent"]);
+
+LoadScript.defaultProps = defaultLoadScriptProps;
+
+/* eslint-disable filenames/match-regex */
+var previouslyLoadedUrl;
+function useLoadScript(_ref) {
+  var _ref$id = _ref.id,
+      id = _ref$id === void 0 ? defaultLoadScriptProps.id : _ref$id,
+      _ref$version = _ref.version,
+      version = _ref$version === void 0 ? defaultLoadScriptProps.version : _ref$version,
+      nonce = _ref.nonce,
+      googleMapsApiKey = _ref.googleMapsApiKey,
+      googleMapsClientId = _ref.googleMapsClientId,
+      language = _ref.language,
+      region = _ref.region,
+      libraries = _ref.libraries,
+      preventGoogleFontsLoading = _ref.preventGoogleFontsLoading,
+      channel = _ref.channel;
+  var isMounted = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])(false);
+
+  var _React$useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false),
+      isLoaded = _React$useState[0],
+      setLoaded = _React$useState[1];
+
+  var _React$useState2 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(undefined),
+      loadError = _React$useState2[0],
+      setLoadError = _React$useState2[1];
+
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function trackMountedState() {
+    isMounted.current = true;
+    return function () {
+      isMounted.current = false;
+    };
+  }, []);
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function applyPreventGoogleFonts() {
+    if (isBrowser && preventGoogleFontsLoading) {
+      preventGoogleFonts();
+    }
+  }, [preventGoogleFontsLoading]);
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function validateLoadedState() {
+    if (isLoaded) {
+      !!!window.google ?  true ? invariant__WEBPACK_IMPORTED_MODULE_1___default()(false, 'useLoadScript was marked as loaded, but window.google is not present. Something went wrong.') : undefined : void 0;
+    }
+  }, [isLoaded]);
+  var url = makeLoadScriptUrl({
+    version: version,
+    googleMapsApiKey: googleMapsApiKey,
+    googleMapsClientId: googleMapsClientId,
+    language: language,
+    region: region,
+    libraries: libraries,
+    channel: channel
+  });
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function loadScriptAndModifyLoadedState() {
+    if (!isBrowser) {
+      return;
+    }
+
+    function setLoadedIfMounted() {
+      if (isMounted.current) {
+        setLoaded(true);
+        previouslyLoadedUrl = url;
+      }
+    }
+
+    if (window.google && window.google.maps && previouslyLoadedUrl === url) {
+      setLoadedIfMounted();
+      return;
+    }
+
+    injectScript({
+      id: id,
+      url: url,
+      nonce: nonce
+    }).then(setLoadedIfMounted)["catch"](function handleInjectError(err) {
+      if (isMounted.current) {
+        setLoadError(err);
+      }
+
+      console.warn("\n        There has been an Error with loading Google Maps API script, please check that you provided correct google API key (" + (googleMapsApiKey || '-') + ") or Client ID (" + (googleMapsClientId || '-') + ")\n        Otherwise it is a Network issue.\n      ");
+      console.error(err);
+    });
+  }, [id, url, nonce]);
+  var prevLibraries = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])();
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function checkPerformance() {
+    if (prevLibraries.current && libraries !== prevLibraries.current) {
+      console.warn('Performance warning! LoadScript has been reloaded unintentionally! You should not pass `libraries` prop as new array. Please keep an array of libraries as static class property for Components and PureComponents, or just a const variable outside of component, or somewhere in config files or ENV variables');
+    }
+
+    prevLibraries.current = libraries;
+  }, [libraries]);
+  return {
+    isLoaded: isLoaded,
+    loadError: loadError,
+    url: url
+  };
+}
+
+var defaultLoadingElement =
+/*#__PURE__*/
+Object(react__WEBPACK_IMPORTED_MODULE_0__["createElement"])(DefaultLoadingElement, null);
+
+function LoadScriptNext(_ref) {
+  var loadingElement = _ref.loadingElement,
+      onLoad = _ref.onLoad,
+      onError = _ref.onError,
+      onUnmount = _ref.onUnmount,
+      children = _ref.children,
+      hookOptions = _objectWithoutPropertiesLoose(_ref, ["loadingElement", "onLoad", "onError", "onUnmount", "children"]);
+
+  var _useLoadScript = useLoadScript(hookOptions),
+      isLoaded = _useLoadScript.isLoaded,
+      loadError = _useLoadScript.loadError;
+
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function handleOnLoad() {
+    if (isLoaded && typeof onLoad === 'function') {
+      onLoad();
+    }
+  }, [isLoaded, onLoad]);
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function handleOnError() {
+    if (loadError && typeof onError === 'function') {
+      onError(loadError);
+    }
+  }, [loadError, onError]);
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function handleOnUnmount() {
+    return function () {
+      if (onUnmount) {
+        onUnmount();
+      }
+    };
+  }, [onUnmount]);
+  return isLoaded ? children : loadingElement || defaultLoadingElement;
+}
+
+var LoadScriptNext$1 = /*#__PURE__*/
+Object(react__WEBPACK_IMPORTED_MODULE_0__["memo"])(LoadScriptNext);
+
+var eventMap$1 = {};
+var updaterMap$1 = {
+  options: function options(instance, _options) {
+    instance.setOptions(_options);
+  }
+};
+var TrafficLayer =
+/*#__PURE__*/
+function (_PureComponent) {
+  _inheritsLoose(TrafficLayer, _PureComponent);
+
+  function TrafficLayer() {
+    var _this;
+
+    _this = _PureComponent.apply(this, arguments) || this;
+    _this.state = {
+      trafficLayer: null
+    };
+
+    _this.setTrafficLayerCallback = function () {
+      if (_this.state.trafficLayer !== null) {
+        if (_this.props.onLoad) {
+          // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+          // @ts-ignore
+          _this.props.onLoad(_this.state.trafficLayer);
+        }
+      }
+    };
+
+    _this.registeredEvents = [];
+    return _this;
+  }
+
+  var _proto = TrafficLayer.prototype;
+
+  _proto.componentDidMount = function componentDidMount() {
+    var trafficLayer = new google.maps.TrafficLayer(_extends({}, this.props.options || {}, {
+      map: this.context
+    }));
+    this.registeredEvents = applyUpdatersToPropsAndRegisterEvents({
+      updaterMap: updaterMap$1,
+      eventMap: eventMap$1,
+      prevProps: {},
+      nextProps: this.props,
+      instance: trafficLayer
+    });
+    this.setState(function setTrafficLayer() {
+      return {
+        trafficLayer: trafficLayer
+      };
+    }, this.setTrafficLayerCallback);
+  };
+
+  _proto.componentDidUpdate = function componentDidUpdate(prevProps) {
+    if (this.state.trafficLayer !== null) {
+      unregisterEvents(this.registeredEvents);
+      this.registeredEvents = applyUpdatersToPropsAndRegisterEvents({
+        updaterMap: updaterMap$1,
+        eventMap: eventMap$1,
+        prevProps: prevProps,
+        nextProps: this.props,
+        instance: this.state.trafficLayer
+      });
+    }
+  };
+
+  _proto.componentWillUnmount = function componentWillUnmount() {
+    if (this.state.trafficLayer !== null) {
+      if (this.props.onUnmount) {
+        // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+        // @ts-ignore
+        this.props.onUnmount(this.state.trafficLayer);
+      }
+
+      unregisterEvents(this.registeredEvents); // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+      // @ts-ignore
+
+      this.state.trafficLayer.setMap(null);
+    }
+  };
+
+  _proto.render = function render() {
+    return null;
+  };
+
+  return TrafficLayer;
+}(react__WEBPACK_IMPORTED_MODULE_0__["PureComponent"]);
+TrafficLayer.contextType = MapContext;
+
+var BicyclingLayer =
+/*#__PURE__*/
+function (_React$PureComponent) {
+  _inheritsLoose(BicyclingLayer, _React$PureComponent);
+
+  function BicyclingLayer() {
+    var _this;
+
+    _this = _React$PureComponent.apply(this, arguments) || this;
+    _this.state = {
+      bicyclingLayer: null
+    };
+
+    _this.setBicyclingLayerCallback = function () {
+      if (_this.state.bicyclingLayer !== null) {
+        // TODO: how is this possibly null if we're doing a null check
+        // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+        // @ts-ignore
+        _this.state.bicyclingLayer.setMap(_this.context);
+
+        if (_this.props.onLoad) {
+          // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+          // @ts-ignore
+          _this.props.onLoad(_this.state.bicyclingLayer);
+        }
+      }
+    };
+
+    return _this;
+  }
+
+  var _proto = BicyclingLayer.prototype;
+
+  _proto.componentDidMount = function componentDidMount() {
+    var bicyclingLayer = new google.maps.BicyclingLayer();
+    this.setState(function setBicyclingLayer() {
+      return {
+        bicyclingLayer: bicyclingLayer
+      };
+    }, this.setBicyclingLayerCallback);
+  };
+
+  _proto.componentWillUnmount = function componentWillUnmount() {
+    if (this.state.bicyclingLayer !== null) {
+      if (this.props.onUnmount) {
+        // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+        // @ts-ignore
+        this.props.onUnmount(this.state.bicyclingLayer);
+      } // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+      // @ts-ignore
+
+
+      this.state.bicyclingLayer.setMap(null);
+    }
+  };
+
+  _proto.render = function render() {
+    return null;
+  };
+
+  return BicyclingLayer;
+}(react__WEBPACK_IMPORTED_MODULE_0__["PureComponent"]);
+BicyclingLayer.contextType = MapContext;
+
+var TransitLayer =
+/*#__PURE__*/
+function (_React$PureComponent) {
+  _inheritsLoose(TransitLayer, _React$PureComponent);
+
+  function TransitLayer() {
+    var _this;
+
+    _this = _React$PureComponent.apply(this, arguments) || this;
+    _this.state = {
+      transitLayer: null
+    };
+
+    _this.setTransitLayerCallback = function () {
+      if (_this.state.transitLayer !== null) {
+        // TODO: how is this possibly null if we're doing a null check
+        // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+        // @ts-ignore
+        _this.state.transitLayer.setMap(_this.context);
+
+        if (_this.props.onLoad) {
+          // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+          // @ts-ignore
+          _this.props.onLoad(_this.state.transitLayer);
+        }
+      }
+    };
+
+    return _this;
+  }
+
+  var _proto = TransitLayer.prototype;
+
+  _proto.componentDidMount = function componentDidMount() {
+    var transitLayer = new google.maps.TransitLayer();
+    this.setState(function setTransitLayer() {
+      return {
+        transitLayer: transitLayer
+      };
+    }, this.setTransitLayerCallback);
+  };
+
+  _proto.componentWillUnmount = function componentWillUnmount() {
+    if (this.state.transitLayer !== null) {
+      if (this.props.onUnmount) {
+        // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+        // @ts-ignore
+        this.props.onUnmount(this.state.transitLayer);
+      } // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+      // @ts-ignore
+
+
+      this.state.transitLayer.setMap(null);
+    }
+  };
+
+  _proto.render = function render() {
+    return null;
+  };
+
+  return TransitLayer;
+}(react__WEBPACK_IMPORTED_MODULE_0__["PureComponent"]);
+TransitLayer.contextType = MapContext;
+
+var eventMap$2 = {
+  onCircleComplete: 'circlecomplete',
+  onMarkerComplete: 'markercomplete',
+  onOverlayComplete: 'overlaycomplete',
+  onPolygonComplete: 'polygoncomplete',
+  onPolylineComplete: 'polylinecomplete',
+  onRectangleComplete: 'rectanglecomplete'
+};
+var updaterMap$2 = {
+  drawingMode: function drawingMode(instance, _drawingMode) {
+    instance.setDrawingMode(_drawingMode);
+  },
+  options: function options(instance, _options) {
+    instance.setOptions(_options);
+  }
+};
+var DrawingManager =
+/*#__PURE__*/
+function (_React$PureComponent) {
+  _inheritsLoose(DrawingManager, _React$PureComponent);
+
+  function DrawingManager(props) {
+    var _this;
+
+    _this = _React$PureComponent.call(this, props) || this;
+    _this.registeredEvents = [];
+    _this.state = {
+      drawingManager: null
+    };
+
+    _this.setDrawingManagerCallback = function () {
+      if (_this.state.drawingManager !== null && _this.props.onLoad) {
+        _this.props.onLoad(_this.state.drawingManager);
+      }
+    };
+
+    !!!google.maps.drawing ?  true ? invariant__WEBPACK_IMPORTED_MODULE_1___default()(false, "Did you include prop libraries={['drawing']} in the URL? %s", google.maps.drawing) : undefined : void 0;
+    return _this;
+  }
+
+  var _proto = DrawingManager.prototype;
+
+  _proto.componentDidMount = function componentDidMount() {
+    var drawingManager = new google.maps.drawing.DrawingManager(_extends({}, this.props.options || {}, {
+      map: this.context
+    }));
+    this.registeredEvents = applyUpdatersToPropsAndRegisterEvents({
+      updaterMap: updaterMap$2,
+      eventMap: eventMap$2,
+      prevProps: {},
+      nextProps: this.props,
+      instance: drawingManager
+    });
+    this.setState(function setDrawingManager() {
+      return {
+        drawingManager: drawingManager
+      };
+    }, this.setDrawingManagerCallback);
+  };
+
+  _proto.componentDidUpdate = function componentDidUpdate(prevProps) {
+    if (this.state.drawingManager !== null) {
+      unregisterEvents(this.registeredEvents);
+      this.registeredEvents = applyUpdatersToPropsAndRegisterEvents({
+        updaterMap: updaterMap$2,
+        eventMap: eventMap$2,
+        prevProps: prevProps,
+        nextProps: this.props,
+        instance: this.state.drawingManager
+      });
+    }
+  };
+
+  _proto.componentWillUnmount = function componentWillUnmount() {
+    if (this.state.drawingManager !== null) {
+      if (this.props.onUnmount) {
+        this.props.onUnmount(this.state.drawingManager);
+      }
+
+      unregisterEvents(this.registeredEvents);
+      this.state.drawingManager.setMap(null);
+    }
+  };
+
+  _proto.render = function render() {
+    return Object(react__WEBPACK_IMPORTED_MODULE_0__["createElement"])(react__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null);
+  };
+
+  return DrawingManager;
+}(react__WEBPACK_IMPORTED_MODULE_0__["PureComponent"]);
+DrawingManager.contextType = MapContext;
+
+var eventMap$3 = {
+  onAnimationChanged: 'animation_changed',
+  onClick: 'click',
+  onClickableChanged: 'clickable_changed',
+  onCursorChanged: 'cursor_changed',
+  onDblClick: 'dblclick',
+  onDrag: 'drag',
+  onDragEnd: 'dragend',
+  onDraggableChanged: 'draggable_changed',
+  onDragStart: 'dragstart',
+  onFlatChanged: 'flat_changed',
+  onIconChanged: 'icon_changed',
+  onMouseDown: 'mousedown',
+  onMouseOut: 'mouseout',
+  onMouseOver: 'mouseover',
+  onMouseUp: 'mouseup',
+  onPositionChanged: 'position_changed',
+  onRightClick: 'rightclick',
+  onShapeChanged: 'shape_changed',
+  onTitleChanged: 'title_changed',
+  onVisibleChanged: 'visible_changed',
+  onZindexChanged: 'zindex_changed'
+};
+var updaterMap$3 = {
+  animation: function animation(instance, _animation) {
+    instance.setAnimation(_animation);
+  },
+  clickable: function clickable(instance, _clickable) {
+    instance.setClickable(_clickable);
+  },
+  cursor: function cursor(instance, _cursor) {
+    instance.setCursor(_cursor);
+  },
+  draggable: function draggable(instance, _draggable) {
+    instance.setDraggable(_draggable);
+  },
+  icon: function icon(instance, _icon) {
+    instance.setIcon(_icon);
+  },
+  label: function label(instance, _label) {
+    instance.setLabel(_label);
+  },
+  map: function map(instance, _map) {
+    instance.setMap(_map);
+  },
+  opacity: function opacity(instance, _opacity) {
+    instance.setOpacity(_opacity);
+  },
+  options: function options(instance, _options) {
+    instance.setOptions(_options);
+  },
+  position: function position(instance, _position) {
+    instance.setPosition(_position);
+  },
+  shape: function shape(instance, _shape) {
+    instance.setShape(_shape);
+  },
+  title: function title(instance, _title) {
+    instance.setTitle(_title);
+  },
+  visible: function visible(instance, _visible) {
+    instance.setVisible(_visible);
+  },
+  zIndex: function zIndex(instance, _zIndex) {
+    instance.setZIndex(_zIndex);
+  }
+};
+var Marker =
+/*#__PURE__*/
+function (_React$PureComponent) {
+  _inheritsLoose(Marker, _React$PureComponent);
+
+  function Marker() {
+    var _this;
+
+    _this = _React$PureComponent.apply(this, arguments) || this;
+    _this.registeredEvents = [];
+    _this.state = {
+      marker: null
+    };
+
+    _this.setMarkerCallback = function () {
+      if (_this.state.marker !== null && _this.props.onLoad) {
+        _this.props.onLoad(_this.state.marker);
+      }
+    };
+
+    return _this;
+  }
+
+  var _proto = Marker.prototype;
+
+  _proto.componentDidMount = function componentDidMount() {
+    var markerOptions = _extends({}, this.props.options || {}, {}, this.props.clusterer ? {} : {
+      map: this.context
+    }, {
+      position: this.props.position
+    });
+
+    var marker = new google.maps.Marker(markerOptions);
+
+    if (this.props.clusterer) {
+      this.props.clusterer.addMarker( // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+      // @ts-ignore
+      marker, !!this.props.noClustererRedraw);
+    } else {
+      marker.setMap(this.context);
+    }
+
+    this.registeredEvents = applyUpdatersToPropsAndRegisterEvents({
+      updaterMap: updaterMap$3,
+      eventMap: eventMap$3,
+      prevProps: {},
+      nextProps: this.props,
+      instance: marker
+    });
+    this.setState(function setMarker() {
+      return {
+        marker: marker
+      };
+    }, this.setMarkerCallback);
+  };
+
+  _proto.componentDidUpdate = function componentDidUpdate(prevProps) {
+    if (this.state.marker !== null) {
+      unregisterEvents(this.registeredEvents);
+      this.registeredEvents = applyUpdatersToPropsAndRegisterEvents({
+        updaterMap: updaterMap$3,
+        eventMap: eventMap$3,
+        prevProps: prevProps,
+        nextProps: this.props,
+        instance: this.state.marker
+      });
+    }
+  };
+
+  _proto.componentWillUnmount = function componentWillUnmount() {
+    if (this.state.marker !== null) {
+      if (this.props.onUnmount) {
+        this.props.onUnmount(this.state.marker);
+      }
+
+      unregisterEvents(this.registeredEvents);
+
+      if (this.props.clusterer) {
+        this.props.clusterer.removeMarker( // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+        // @ts-ignore
+        this.state.marker, !!this.props.noClustererRedraw);
+      } else {
+        this.state.marker && this.state.marker.setMap(null);
+      }
+    }
+  };
+
+  _proto.render = function render() {
+    var _this2 = this;
+
+    var children = null;
+
+    if (this.props.children) {
+      children = react__WEBPACK_IMPORTED_MODULE_0__["Children"].map(this.props.children, function (child) {
+        if (!Object(react__WEBPACK_IMPORTED_MODULE_0__["isValidElement"])(child)) {
+          return child;
+        }
+
+        var elementChild = child;
+        return Object(react__WEBPACK_IMPORTED_MODULE_0__["cloneElement"])(elementChild, {
+          anchor: _this2.state.marker
+        });
+      });
+    }
+
+    return children || null;
+  };
+
+  return Marker;
+}(react__WEBPACK_IMPORTED_MODULE_0__["PureComponent"]);
+Marker.contextType = MapContext;
+
+var eventMap$4 = {
+  onClick: 'click',
+  onClusteringBegin: 'clusteringbegin',
+  onClusteringEnd: 'clusteringend',
+  onMouseOut: 'mouseout',
+  onMouseOver: 'mouseover'
+};
+var updaterMap$4 = {
+  averageCenter: function averageCenter(instance, _averageCenter) {
+    instance.setAverageCenter(_averageCenter);
+  },
+  batchSizeIE: function batchSizeIE(instance, _batchSizeIE) {
+    instance.setBatchSizeIE(_batchSizeIE);
+  },
+  calculator: function calculator(instance, _calculator) {
+    instance.setCalculator(_calculator);
+  },
+  clusterClass: function clusterClass(instance, _clusterClass) {
+    instance.setClusterClass(_clusterClass);
+  },
+  enableRetinaIcons: function enableRetinaIcons(instance, _enableRetinaIcons) {
+    instance.setEnableRetinaIcons(_enableRetinaIcons);
+  },
+  gridSize: function gridSize(instance, _gridSize) {
+    instance.setGridSize(_gridSize);
+  },
+  ignoreHidden: function ignoreHidden(instance, _ignoreHidden) {
+    instance.setIgnoreHidden(_ignoreHidden);
+  },
+  imageExtension: function imageExtension(instance, _imageExtension) {
+    instance.setImageExtension(_imageExtension);
+  },
+  imagePath: function imagePath(instance, _imagePath) {
+    instance.setImagePath(_imagePath);
+  },
+  imageSizes: function imageSizes(instance, _imageSizes) {
+    instance.setImageSizes(_imageSizes);
+  },
+  maxZoom: function maxZoom(instance, _maxZoom) {
+    instance.setMaxZoom(_maxZoom);
+  },
+  minimumClusterSize: function minimumClusterSize(instance, _minimumClusterSize) {
+    instance.setMinimumClusterSize(_minimumClusterSize);
+  },
+  styles: function styles(instance, _styles) {
+    instance.setStyles(_styles);
+  },
+  title: function title(instance, _title) {
+    instance.setTitle(_title);
+  },
+  zoomOnClick: function zoomOnClick(instance, _zoomOnClick) {
+    instance.setZoomOnClick(_zoomOnClick);
+  }
+};
+var ClustererComponent =
+/*#__PURE__*/
+function (_React$PureComponent) {
+  _inheritsLoose(ClustererComponent, _React$PureComponent);
+
+  function ClustererComponent() {
+    var _this;
+
+    _this = _React$PureComponent.apply(this, arguments) || this;
+    _this.registeredEvents = [];
+    _this.state = {
+      markerClusterer: null
+    };
+
+    _this.setClustererCallback = function () {
+      if (_this.state.markerClusterer !== null && _this.props.onLoad) {
+        _this.props.onLoad(_this.state.markerClusterer);
+      }
+    };
+
+    return _this;
+  }
+
+  var _proto = ClustererComponent.prototype;
+
+  _proto.componentDidMount = function componentDidMount() {
+    if (this.context) {
+      var markerClusterer = new _react_google_maps_marker_clusterer__WEBPACK_IMPORTED_MODULE_2__["Clusterer"](this.context, [], this.props.options);
+      this.registeredEvents = applyUpdatersToPropsAndRegisterEvents({
+        updaterMap: updaterMap$4,
+        eventMap: eventMap$4,
+        prevProps: {},
+        nextProps: this.props,
+        instance: markerClusterer
+      });
+      this.setState(function setClusterer() {
+        return {
+          markerClusterer: markerClusterer
+        };
+      }, this.setClustererCallback);
+    }
+  };
+
+  _proto.componentDidUpdate = function componentDidUpdate(prevProps) {
+    if (this.state.markerClusterer) {
+      unregisterEvents(this.registeredEvents);
+      this.registeredEvents = applyUpdatersToPropsAndRegisterEvents({
+        updaterMap: updaterMap$4,
+        eventMap: eventMap$4,
+        prevProps: prevProps,
+        nextProps: this.props,
+        instance: this.state.markerClusterer
+      });
+    }
+  };
+
+  _proto.componentWillUnmount = function componentWillUnmount() {
+    if (this.state.markerClusterer !== null) {
+      if (this.props.onUnmount) {
+        this.props.onUnmount(this.state.markerClusterer);
+      }
+
+      unregisterEvents(this.registeredEvents); // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+      // @ts-ignore
+
+      this.state.markerClusterer.setMap(null);
+    }
+  };
+
+  _proto.render = function render() {
+    return this.state.markerClusterer !== null ? this.props.children(this.state.markerClusterer) : null;
+  };
+
+  return ClustererComponent;
+}(react__WEBPACK_IMPORTED_MODULE_0__["PureComponent"]);
+ClustererComponent.contextType = MapContext;
+
+var eventMap$5 = {
+  onCloseClick: 'closeclick',
+  onContentChanged: 'content_changed',
+  onDomReady: 'domready',
+  onPositionChanged: 'position_changed',
+  onZindexChanged: 'zindex_changed'
+};
+var updaterMap$5 = {
+  options: function options(instance, _options) {
+    instance.setOptions(_options);
+  },
+  position: function position(instance, _position) {
+    if (_position instanceof google.maps.LatLng) {
+      instance.setPosition(_position);
+    } else {
+      instance.setPosition(new google.maps.LatLng(_position.lat, _position.lng));
+    }
+  },
+  visible: function visible(instance, _visible) {
+    instance.setVisible(_visible);
+  },
+  zIndex: function zIndex(instance, _zIndex) {
+    instance.setZIndex(_zIndex);
+  }
+};
+var InfoBoxComponent =
+/*#__PURE__*/
+function (_React$PureComponent) {
+  _inheritsLoose(InfoBoxComponent, _React$PureComponent);
+
+  function InfoBoxComponent() {
+    var _this;
+
+    _this = _React$PureComponent.apply(this, arguments) || this;
+    _this.registeredEvents = [];
+    _this.containerElement = null;
+    _this.state = {
+      infoBox: null
+    };
+
+    _this.open = function (infoBox, anchor) {
+      if (anchor) {
+        infoBox.open(_this.context, anchor);
+      } else if (infoBox.getPosition()) {
+        infoBox.open(_this.context);
+      } else {
+          true ? invariant__WEBPACK_IMPORTED_MODULE_1___default()(false, 'You must provide either an anchor or a position prop for <InfoBox>.') : undefined ;
+      }
+    };
+
+    _this.setInfoBoxCallback = function () {
+      var _this$props = _this.props,
+          anchor = _this$props.anchor,
+          onLoad = _this$props.onLoad;
+      var infoBox = _this.state.infoBox;
+
+      if (infoBox !== null && _this.containerElement !== null) {
+        infoBox.setContent(_this.containerElement);
+
+        _this.open(infoBox, anchor);
+
+        if (onLoad) {
+          onLoad(infoBox);
+        }
+      }
+    };
+
+    return _this;
+  }
+
+  var _proto = InfoBoxComponent.prototype;
+
+  _proto.componentDidMount = function componentDidMount() {
+    var options = this.props.options;
+
+    var _ref = options || {},
+        position = _ref.position,
+        infoBoxOptions = _objectWithoutPropertiesLoose(_ref, ["position"]);
+
+    var positionLatLng;
+
+    if (position && !(position instanceof google.maps.LatLng)) {
+      positionLatLng = new google.maps.LatLng(position.lat, position.lng);
+    }
+
+    var infoBox = new _react_google_maps_infobox__WEBPACK_IMPORTED_MODULE_4__["InfoBox"](_extends({}, infoBoxOptions, {}, positionLatLng ? {
+      position: positionLatLng
+    } : {}));
+    this.containerElement = document.createElement('div');
+    this.registeredEvents = applyUpdatersToPropsAndRegisterEvents({
+      updaterMap: updaterMap$5,
+      eventMap: eventMap$5,
+      prevProps: {},
+      nextProps: this.props,
+      instance: infoBox
+    });
+    this.setState({
+      infoBox: infoBox
+    }, this.setInfoBoxCallback);
+  };
+
+  _proto.componentDidUpdate = function componentDidUpdate(prevProps) {
+    var infoBox = this.state.infoBox;
+
+    if (infoBox !== null) {
+      unregisterEvents(this.registeredEvents);
+      this.registeredEvents = applyUpdatersToPropsAndRegisterEvents({
+        updaterMap: updaterMap$5,
+        eventMap: eventMap$5,
+        prevProps: prevProps,
+        nextProps: this.props,
+        instance: infoBox
+      });
+    }
+  };
+
+  _proto.componentWillUnmount = function componentWillUnmount() {
+    var onUnmount = this.props.onUnmount;
+    var infoBox = this.state.infoBox;
+
+    if (infoBox !== null) {
+      if (onUnmount) {
+        onUnmount(infoBox);
+      }
+
+      unregisterEvents(this.registeredEvents);
+      infoBox.close();
+    }
+  };
+
+  _proto.render = function render() {
+    if (!this.containerElement) {
+      return null;
+    }
+
+    return Object(react_dom__WEBPACK_IMPORTED_MODULE_3__["createPortal"])(react__WEBPACK_IMPORTED_MODULE_0__["Children"].only(this.props.children), this.containerElement);
+  };
+
+  return InfoBoxComponent;
+}(react__WEBPACK_IMPORTED_MODULE_0__["PureComponent"]);
+InfoBoxComponent.contextType = MapContext;
+
+var eventMap$6 = {
+  onCloseClick: 'closeclick',
+  onContentChanged: 'content_changed',
+  onDomReady: 'domready',
+  onPositionChanged: 'position_changed',
+  onZindexChanged: 'zindex_changed'
+};
+var updaterMap$6 = {
+  options: function options(instance, _options) {
+    instance.setOptions(_options);
+  },
+  position: function position(instance, _position) {
+    instance.setPosition(_position);
+  },
+  zIndex: function zIndex(instance, _zIndex) {
+    instance.setZIndex(_zIndex);
+  }
+};
+var InfoWindow =
+/*#__PURE__*/
+function (_React$PureComponent) {
+  _inheritsLoose(InfoWindow, _React$PureComponent);
+
+  function InfoWindow() {
+    var _this;
+
+    _this = _React$PureComponent.apply(this, arguments) || this;
+    _this.registeredEvents = [];
+    _this.containerElement = null;
+    _this.state = {
+      infoWindow: null
+    };
+
+    _this.open = function (infoWindow, anchor) {
+      if (anchor) {
+        infoWindow.open(_this.context, anchor);
+      } else if (infoWindow.getPosition()) {
+        infoWindow.open(_this.context);
+      } else {
+          true ? invariant__WEBPACK_IMPORTED_MODULE_1___default()(false, "You must provide either an anchor (typically render it inside a <Marker>) or a position props for <InfoWindow>.") : undefined ;
+      }
+    };
+
+    _this.setInfoWindowCallback = function () {
+      if (_this.state.infoWindow !== null && _this.containerElement !== null) {
+        _this.state.infoWindow.setContent(_this.containerElement);
+
+        _this.open(_this.state.infoWindow, _this.props.anchor);
+
+        if (_this.props.onLoad) {
+          _this.props.onLoad(_this.state.infoWindow);
+        }
+      }
+    };
+
+    return _this;
+  }
+
+  var _proto = InfoWindow.prototype;
+
+  _proto.componentDidMount = function componentDidMount() {
+    var infoWindow = new google.maps.InfoWindow(_extends({}, this.props.options || {}));
+    this.containerElement = document.createElement('div');
+    this.registeredEvents = applyUpdatersToPropsAndRegisterEvents({
+      updaterMap: updaterMap$6,
+      eventMap: eventMap$6,
+      prevProps: {},
+      nextProps: this.props,
+      instance: infoWindow
+    });
+    this.setState(function setInfoWindow() {
+      return {
+        infoWindow: infoWindow
+      };
+    }, this.setInfoWindowCallback);
+  };
+
+  _proto.componentDidUpdate = function componentDidUpdate(prevProps) {
+    if (this.state.infoWindow !== null) {
+      unregisterEvents(this.registeredEvents);
+      this.registeredEvents = applyUpdatersToPropsAndRegisterEvents({
+        updaterMap: updaterMap$6,
+        eventMap: eventMap$6,
+        prevProps: prevProps,
+        nextProps: this.props,
+        instance: this.state.infoWindow
+      });
+    }
+  };
+
+  _proto.componentWillUnmount = function componentWillUnmount() {
+    if (this.state.infoWindow !== null) {
+      unregisterEvents(this.registeredEvents);
+      this.state.infoWindow.close();
+    }
+  };
+
+  _proto.render = function render() {
+    return this.containerElement ? Object(react_dom__WEBPACK_IMPORTED_MODULE_3__["createPortal"])(react__WEBPACK_IMPORTED_MODULE_0__["Children"].only(this.props.children), this.containerElement) : Object(react__WEBPACK_IMPORTED_MODULE_0__["createElement"])(react__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null);
+  };
+
+  return InfoWindow;
+}(react__WEBPACK_IMPORTED_MODULE_0__["PureComponent"]);
+InfoWindow.contextType = MapContext;
+
+var eventMap$7 = {
+  onClick: 'click',
+  onDblClick: 'dblclick',
+  onDrag: 'drag',
+  onDragEnd: 'dragend',
+  onDragStart: 'dragstart',
+  onMouseDown: 'mousedown',
+  onMouseMove: 'mousemove',
+  onMouseOut: 'mouseout',
+  onMouseOver: 'mouseover',
+  onMouseUp: 'mouseup',
+  onRightClick: 'rightclick'
+};
+var updaterMap$7 = {
+  draggable: function draggable(instance, _draggable) {
+    instance.setDraggable(_draggable);
+  },
+  editable: function editable(instance, _editable) {
+    instance.setEditable(_editable);
+  },
+  map: function map(instance, _map) {
+    instance.setMap(_map);
+  },
+  options: function options(instance, _options) {
+    instance.setOptions(_options);
+  },
+  path: function path(instance, _path) {
+    instance.setPath(_path);
+  },
+  visible: function visible(instance, _visible) {
+    instance.setVisible(_visible);
+  }
+};
+var Polyline =
+/*#__PURE__*/
+function (_React$PureComponent) {
+  _inheritsLoose(Polyline, _React$PureComponent);
+
+  function Polyline() {
+    var _this;
+
+    _this = _React$PureComponent.apply(this, arguments) || this;
+    _this.registeredEvents = [];
+    _this.state = {
+      polyline: null
+    };
+
+    _this.setPolylineCallback = function () {
+      if (_this.state.polyline !== null && _this.props.onLoad) {
+        _this.props.onLoad(_this.state.polyline);
+      }
+    };
+
+    return _this;
+  }
+
+  var _proto = Polyline.prototype;
+
+  _proto.componentDidMount = function componentDidMount() {
+    var polyline = new google.maps.Polyline(_extends({}, this.props.options || {}, {
+      map: this.context
+    }));
+    this.registeredEvents = applyUpdatersToPropsAndRegisterEvents({
+      updaterMap: updaterMap$7,
+      eventMap: eventMap$7,
+      prevProps: {},
+      nextProps: this.props,
+      instance: polyline
+    });
+    this.setState(function setPolyline() {
+      return {
+        polyline: polyline
+      };
+    }, this.setPolylineCallback);
+  };
+
+  _proto.componentDidUpdate = function componentDidUpdate(prevProps) {
+    if (this.state.polyline !== null) {
+      unregisterEvents(this.registeredEvents);
+      this.registeredEvents = applyUpdatersToPropsAndRegisterEvents({
+        updaterMap: updaterMap$7,
+        eventMap: eventMap$7,
+        prevProps: prevProps,
+        nextProps: this.props,
+        instance: this.state.polyline
+      });
+    }
+  };
+
+  _proto.componentWillUnmount = function componentWillUnmount() {
+    if (this.state.polyline !== null) {
+      if (this.props.onUnmount) {
+        this.props.onUnmount(this.state.polyline);
+      }
+
+      unregisterEvents(this.registeredEvents);
+      this.state.polyline.setMap(null);
+    }
+  };
+
+  _proto.render = function render() {
+    return Object(react__WEBPACK_IMPORTED_MODULE_0__["createElement"])(react__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null);
+  };
+
+  return Polyline;
+}(react__WEBPACK_IMPORTED_MODULE_0__["PureComponent"]);
+Polyline.contextType = MapContext;
+
+var eventMap$8 = {
+  onClick: 'click',
+  onDblClick: 'dblclick',
+  onDrag: 'drag',
+  onDragEnd: 'dragend',
+  onDragStart: 'dragstart',
+  onMouseDown: 'mousedown',
+  onMouseMove: 'mousemove',
+  onMouseOut: 'mouseout',
+  onMouseOver: 'mouseover',
+  onMouseUp: 'mouseup',
+  onRightClick: 'rightclick'
+};
+var updaterMap$8 = {
+  draggable: function draggable(instance, _draggable) {
+    instance.setDraggable(_draggable);
+  },
+  editable: function editable(instance, _editable) {
+    instance.setEditable(_editable);
+  },
+  map: function map(instance, _map) {
+    instance.setMap(_map);
+  },
+  options: function options(instance, _options) {
+    instance.setOptions(_options);
+  },
+  path: function path(instance, _path) {
+    instance.setPath(_path);
+  },
+  paths: function paths(instance, _paths) {
+    instance.setPaths(_paths);
+  },
+  visible: function visible(instance, _visible) {
+    instance.setVisible(_visible);
+  }
+};
+var Polygon =
+/*#__PURE__*/
+function (_React$PureComponent) {
+  _inheritsLoose(Polygon, _React$PureComponent);
+
+  function Polygon() {
+    var _this;
+
+    _this = _React$PureComponent.apply(this, arguments) || this;
+    _this.registeredEvents = [];
+    _this.state = {
+      polygon: null
+    };
+
+    _this.setPolygonCallback = function () {
+      if (_this.state.polygon !== null && _this.props.onLoad) {
+        _this.props.onLoad(_this.state.polygon);
+      }
+    };
+
+    return _this;
+  }
+
+  var _proto = Polygon.prototype;
+
+  _proto.componentDidMount = function componentDidMount() {
+    var polygon = new google.maps.Polygon(_extends({}, this.props.options || {}, {
+      map: this.context
+    }));
+    this.registeredEvents = applyUpdatersToPropsAndRegisterEvents({
+      updaterMap: updaterMap$8,
+      eventMap: eventMap$8,
+      prevProps: {},
+      nextProps: this.props,
+      instance: polygon
+    });
+    this.setState(function setPolygon() {
+      return {
+        polygon: polygon
+      };
+    }, this.setPolygonCallback);
+  };
+
+  _proto.componentDidUpdate = function componentDidUpdate(prevProps) {
+    if (this.state.polygon !== null) {
+      unregisterEvents(this.registeredEvents);
+      this.registeredEvents = applyUpdatersToPropsAndRegisterEvents({
+        updaterMap: updaterMap$8,
+        eventMap: eventMap$8,
+        prevProps: prevProps,
+        nextProps: this.props,
+        instance: this.state.polygon
+      });
+    }
+  };
+
+  _proto.componentWillUnmount = function componentWillUnmount() {
+    if (this.state.polygon !== null) {
+      if (this.props.onUnmount) {
+        this.props.onUnmount(this.state.polygon);
+      }
+
+      unregisterEvents(this.registeredEvents);
+      this.state.polygon && this.state.polygon.setMap(null);
+    }
+  };
+
+  _proto.render = function render() {
+    return null;
+  };
+
+  return Polygon;
+}(react__WEBPACK_IMPORTED_MODULE_0__["PureComponent"]);
+Polygon.contextType = MapContext;
+
+var eventMap$9 = {
+  onBoundsChanged: 'bounds_changed',
+  onClick: 'click',
+  onDblClick: 'dblclick',
+  onDrag: 'drag',
+  onDragEnd: 'dragend',
+  onDragStart: 'dragstart',
+  onMouseDown: 'mousedown',
+  onMouseMove: 'mousemove',
+  onMouseOut: 'mouseout',
+  onMouseOver: 'mouseover',
+  onMouseUp: 'mouseup',
+  onRightClick: 'rightclick'
+};
+var updaterMap$9 = {
+  bounds: function bounds(instance, _bounds) {
+    instance.setBounds(_bounds);
+  },
+  draggable: function draggable(instance, _draggable) {
+    instance.setDraggable(_draggable);
+  },
+  editable: function editable(instance, _editable) {
+    instance.setEditable(_editable);
+  },
+  map: function map(instance, _map) {
+    instance.setMap(_map);
+  },
+  options: function options(instance, _options) {
+    instance.setOptions(_options);
+  },
+  visible: function visible(instance, _visible) {
+    instance.setVisible(_visible);
+  }
+};
+var Rectangle =
+/*#__PURE__*/
+function (_React$PureComponent) {
+  _inheritsLoose(Rectangle, _React$PureComponent);
+
+  function Rectangle() {
+    var _this;
+
+    _this = _React$PureComponent.apply(this, arguments) || this;
+    _this.registeredEvents = [];
+    _this.state = {
+      rectangle: null
+    };
+
+    _this.setRectangleCallback = function () {
+      if (_this.state.rectangle !== null && _this.props.onLoad) {
+        _this.props.onLoad(_this.state.rectangle);
+      }
+    };
+
+    return _this;
+  }
+
+  var _proto = Rectangle.prototype;
+
+  _proto.componentDidMount = function componentDidMount() {
+    var rectangle = new google.maps.Rectangle(_extends({}, this.props.options || {}, {
+      map: this.context
+    }));
+    this.registeredEvents = applyUpdatersToPropsAndRegisterEvents({
+      updaterMap: updaterMap$9,
+      eventMap: eventMap$9,
+      prevProps: {},
+      nextProps: this.props,
+      instance: rectangle
+    });
+    this.setState(function setRectangle() {
+      return {
+        rectangle: rectangle
+      };
+    }, this.setRectangleCallback);
+  };
+
+  _proto.componentDidUpdate = function componentDidUpdate(prevProps) {
+    if (this.state.rectangle !== null) {
+      unregisterEvents(this.registeredEvents);
+      this.registeredEvents = applyUpdatersToPropsAndRegisterEvents({
+        updaterMap: updaterMap$9,
+        eventMap: eventMap$9,
+        prevProps: prevProps,
+        nextProps: this.props,
+        instance: this.state.rectangle
+      });
+    }
+  };
+
+  _proto.componentWillUnmount = function componentWillUnmount() {
+    if (this.state.rectangle !== null) {
+      if (this.props.onUnmount) {
+        this.props.onUnmount(this.state.rectangle);
+      }
+
+      unregisterEvents(this.registeredEvents);
+      this.state.rectangle.setMap(null);
+    }
+  };
+
+  _proto.render = function render() {
+    return Object(react__WEBPACK_IMPORTED_MODULE_0__["createElement"])(react__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null);
+  };
+
+  return Rectangle;
+}(react__WEBPACK_IMPORTED_MODULE_0__["PureComponent"]);
+Rectangle.contextType = MapContext;
+
+var eventMap$a = {
+  onCenterChanged: 'center_changed',
+  onClick: 'click',
+  onDblClick: 'dblclick',
+  onDrag: 'drag',
+  onDragEnd: 'dragend',
+  onDragStart: 'dragstart',
+  onMouseDown: 'mousedown',
+  onMouseMove: 'mousemove',
+  onMouseOut: 'mouseout',
+  onMouseOver: 'mouseover',
+  onMouseUp: 'mouseup',
+  onRadiusChanged: 'radius_changed',
+  onRightClick: 'rightclick'
+};
+var updaterMap$a = {
+  center: function center(instance, _center) {
+    instance.setCenter(_center);
+  },
+  draggable: function draggable(instance, _draggable) {
+    instance.setDraggable(_draggable);
+  },
+  editable: function editable(instance, _editable) {
+    instance.setEditable(_editable);
+  },
+  map: function map(instance, _map) {
+    instance.setMap(_map);
+  },
+  options: function options(instance, _options) {
+    instance.setOptions(_options);
+  },
+  radius: function radius(instance, _radius) {
+    instance.setRadius(_radius);
+  },
+  visible: function visible(instance, _visible) {
+    instance.setVisible(_visible);
+  }
+};
+var Circle =
+/*#__PURE__*/
+function (_React$PureComponent) {
+  _inheritsLoose(Circle, _React$PureComponent);
+
+  function Circle() {
+    var _this;
+
+    _this = _React$PureComponent.apply(this, arguments) || this;
+    _this.registeredEvents = [];
+    _this.state = {
+      circle: null
+    };
+
+    _this.setCircleCallback = function () {
+      if (_this.state.circle !== null && _this.props.onLoad) {
+        _this.props.onLoad(_this.state.circle);
+      }
+    };
+
+    return _this;
+  }
+
+  var _proto = Circle.prototype;
+
+  _proto.componentDidMount = function componentDidMount() {
+    var circle = new google.maps.Circle(_extends({}, this.props.options || {}, {
+      map: this.context
+    }));
+    this.registeredEvents = applyUpdatersToPropsAndRegisterEvents({
+      updaterMap: updaterMap$a,
+      eventMap: eventMap$a,
+      prevProps: {},
+      nextProps: this.props,
+      instance: circle
+    });
+    this.setState(function setCircle() {
+      return {
+        circle: circle
+      };
+    }, this.setCircleCallback);
+  };
+
+  _proto.componentDidUpdate = function componentDidUpdate(prevProps) {
+    if (this.state.circle !== null) {
+      unregisterEvents(this.registeredEvents);
+      this.registeredEvents = applyUpdatersToPropsAndRegisterEvents({
+        updaterMap: updaterMap$a,
+        eventMap: eventMap$a,
+        prevProps: prevProps,
+        nextProps: this.props,
+        instance: this.state.circle
+      });
+    }
+  };
+
+  _proto.componentWillUnmount = function componentWillUnmount() {
+    if (this.state.circle !== null) {
+      if (this.props.onUnmount) {
+        this.props.onUnmount(this.state.circle);
+      }
+
+      unregisterEvents(this.registeredEvents);
+      this.state.circle && this.state.circle.setMap(null);
+    }
+  };
+
+  _proto.render = function render() {
+    return Object(react__WEBPACK_IMPORTED_MODULE_0__["createElement"])(react__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null);
+  };
+
+  return Circle;
+}(react__WEBPACK_IMPORTED_MODULE_0__["PureComponent"]);
+Circle.contextType = MapContext;
+
+var eventMap$b = {
+  onAddFeature: 'addfeature',
+  onClick: 'click',
+  onDblClick: 'dblclick',
+  onMouseDown: 'mousedown',
+  onMouseOut: 'mouseout',
+  onMouseOver: 'mouseover',
+  onMouseUp: 'mouseup',
+  onRemoveFeature: 'removefeature',
+  onRemoveProperty: 'removeproperty',
+  onRightClick: 'rightclick',
+  onSetGeometry: 'setgeometry',
+  onSetProperty: 'setproperty'
+};
+var updaterMap$b = {
+  add: function add(instance, features) {
+    instance.add(features);
+  },
+  addgeojson: function addgeojson(instance, geojson, options) {
+    instance.addGeoJson(geojson, options);
+  },
+  contains: function contains(instance, feature) {
+    instance.contains(feature);
+  },
+  foreach: function foreach(instance, callback) {
+    instance.forEach(callback);
+  },
+  loadgeojson: function loadgeojson(instance, url, options, callback) {
+    instance.loadGeoJson(url, options, callback);
+  },
+  overridestyle: function overridestyle(instance, feature, style) {
+    instance.overrideStyle(feature, style);
+  },
+  remove: function remove(instance, feature) {
+    instance.remove(feature);
+  },
+  revertstyle: function revertstyle(instance, feature) {
+    instance.revertStyle(feature);
+  },
+  controlposition: function controlposition(instance, controlPosition) {
+    instance.setControlPosition(controlPosition);
+  },
+  controls: function controls(instance, _controls) {
+    instance.setControls(_controls);
+  },
+  drawingmode: function drawingmode(instance, mode) {
+    instance.setDrawingMode(mode);
+  },
+  map: function map(instance, _map) {
+    instance.setMap(_map);
+  },
+  style: function style(instance, _style) {
+    instance.setStyle(_style);
+  },
+  togeojson: function togeojson(instance, callback) {
+    instance.toGeoJson(callback);
+  }
+};
+var Data =
+/*#__PURE__*/
+function (_React$PureComponent) {
+  _inheritsLoose(Data, _React$PureComponent);
+
+  function Data() {
+    var _this;
+
+    _this = _React$PureComponent.apply(this, arguments) || this;
+    _this.registeredEvents = [];
+    _this.state = {
+      data: null
+    };
+
+    _this.setDataCallback = function () {
+      if (_this.state.data !== null && _this.props.onLoad) {
+        _this.props.onLoad(_this.state.data);
+      }
+    };
+
+    return _this;
+  }
+
+  var _proto = Data.prototype;
+
+  _proto.componentDidMount = function componentDidMount() {
+    var data = new google.maps.Data(_extends({}, this.props.options || {}, {
+      map: this.context
+    }));
+    this.registeredEvents = applyUpdatersToPropsAndRegisterEvents({
+      updaterMap: updaterMap$b,
+      eventMap: eventMap$b,
+      prevProps: {},
+      nextProps: this.props,
+      instance: data
+    });
+    this.setState(function setData() {
+      return {
+        data: data
+      };
+    }, this.setDataCallback);
+  };
+
+  _proto.componentDidUpdate = function componentDidUpdate(prevProps) {
+    if (this.state.data !== null) {
+      unregisterEvents(this.registeredEvents);
+      this.registeredEvents = applyUpdatersToPropsAndRegisterEvents({
+        updaterMap: updaterMap$b,
+        eventMap: eventMap$b,
+        prevProps: prevProps,
+        nextProps: this.props,
+        instance: this.state.data
+      });
+    }
+  };
+
+  _proto.componentWillUnmount = function componentWillUnmount() {
+    if (this.state.data !== null) {
+      if (this.props.onUnmount) {
+        this.props.onUnmount(this.state.data);
+      }
+
+      unregisterEvents(this.registeredEvents);
+
+      if (this.state.data) {
+        this.state.data.setMap(null);
+      }
+    }
+  };
+
+  _proto.render = function render() {
+    return null;
+  };
+
+  return Data;
+}(react__WEBPACK_IMPORTED_MODULE_0__["PureComponent"]);
+Data.contextType = MapContext;
+
+var eventMap$c = {
+  onClick: 'click',
+  onDefaultViewportChanged: 'defaultviewport_changed',
+  onStatusChanged: 'status_changed'
+};
+var updaterMap$c = {
+  options: function options(instance, _options) {
+    instance.setOptions(_options);
+  },
+  url: function url(instance, _url) {
+    instance.setUrl(_url);
+  },
+  zIndex: function zIndex(instance, _zIndex) {
+    instance.setZIndex(_zIndex);
+  }
+};
+var KmlLayer =
+/*#__PURE__*/
+function (_PureComponent) {
+  _inheritsLoose(KmlLayer, _PureComponent);
+
+  function KmlLayer() {
+    var _this;
+
+    _this = _PureComponent.apply(this, arguments) || this;
+    _this.registeredEvents = [];
+    _this.state = {
+      kmlLayer: null
+    };
+
+    _this.setKmlLayerCallback = function () {
+      if (_this.state.kmlLayer !== null && _this.props.onLoad) {
+        _this.props.onLoad(_this.state.kmlLayer);
+      }
+    };
+
+    return _this;
+  }
+
+  var _proto = KmlLayer.prototype;
+
+  _proto.componentDidMount = function componentDidMount() {
+    var kmlLayer = new google.maps.KmlLayer(_extends({}, this.props.options, {
+      map: this.context
+    }));
+    this.registeredEvents = applyUpdatersToPropsAndRegisterEvents({
+      updaterMap: updaterMap$c,
+      eventMap: eventMap$c,
+      prevProps: {},
+      nextProps: this.props,
+      instance: kmlLayer
+    });
+    this.setState(function setLmlLayer() {
+      return {
+        kmlLayer: kmlLayer
+      };
+    }, this.setKmlLayerCallback);
+  };
+
+  _proto.componentDidUpdate = function componentDidUpdate(prevProps) {
+    if (this.state.kmlLayer !== null) {
+      unregisterEvents(this.registeredEvents);
+      this.registeredEvents = applyUpdatersToPropsAndRegisterEvents({
+        updaterMap: updaterMap$c,
+        eventMap: eventMap$c,
+        prevProps: prevProps,
+        nextProps: this.props,
+        instance: this.state.kmlLayer
+      });
+    }
+  };
+
+  _proto.componentWillUnmount = function componentWillUnmount() {
+    if (this.state.kmlLayer !== null) {
+      if (this.props.onUnmount) {
+        this.props.onUnmount(this.state.kmlLayer);
+      }
+
+      unregisterEvents(this.registeredEvents);
+      this.state.kmlLayer.setMap(null);
+    }
+  };
+
+  _proto.render = function render() {
+    return null;
+  };
+
+  return KmlLayer;
+}(react__WEBPACK_IMPORTED_MODULE_0__["PureComponent"]);
+KmlLayer.contextType = MapContext;
+
+/* eslint-disable filenames/match-regex */
+function getOffsetOverride(containerElement, getPixelPositionOffset) {
+  return typeof getPixelPositionOffset === 'function' ? getPixelPositionOffset(containerElement.offsetWidth, containerElement.offsetHeight) : {};
+} // eslint-disable-next-line @typescript-eslint/no-explicit-any
+
+var createLatLng = function createLatLng(inst, Type) {
+  return new Type(inst.lat, inst.lng);
+}; // eslint-disable-next-line @typescript-eslint/no-explicit-any
+
+
+var createLatLngBounds = function createLatLngBounds(inst, Type) {
+  return new Type(new google.maps.LatLng(inst.ne.lat, inst.ne.lng), new google.maps.LatLng(inst.sw.lat, inst.sw.lng));
+}; // eslint-disable-next-line @typescript-eslint/no-explicit-any
+
+
+var ensureOfType = function ensureOfType(inst, type, factory) {
+  return inst instanceof type ? inst : factory(inst, type);
+};
+
+var getLayoutStylesByBounds = function getLayoutStylesByBounds(mapCanvasProjection, offset, bounds) {
+  var ne = mapCanvasProjection && mapCanvasProjection.fromLatLngToDivPixel(bounds.getNorthEast());
+  var sw = mapCanvasProjection && mapCanvasProjection.fromLatLngToDivPixel(bounds.getSouthWest());
+
+  if (ne && sw) {
+    return {
+      left: sw.x + offset.x + "px",
+      top: ne.y + offset.y + "px",
+      width: ne.x - sw.x - offset.x + "px",
+      height: sw.y - ne.y - offset.y + "px"
+    };
+  }
+
+  return {
+    left: '-9999px',
+    top: '-9999px'
+  };
+};
+
+var getLayoutStylesByPosition = function getLayoutStylesByPosition(mapCanvasProjection, offset, position) {
+  var point = mapCanvasProjection && mapCanvasProjection.fromLatLngToDivPixel(position);
+
+  if (point) {
+    var x = point.x,
+        y = point.y;
+    return {
+      left: x + offset.x + "px",
+      top: y + offset.y + "px"
+    };
+  }
+
+  return {
+    left: '-9999px',
+    top: '-9999px'
+  };
+};
+
+var getLayoutStyles = function getLayoutStyles(mapCanvasProjection, offset, bounds, position) {
+  return bounds !== undefined ? getLayoutStylesByBounds(mapCanvasProjection, offset, ensureOfType(bounds, google.maps.LatLngBounds, createLatLngBounds)) : getLayoutStylesByPosition(mapCanvasProjection, offset, ensureOfType(position, google.maps.LatLng, createLatLng));
+};
+
+var ContentMountHandler =
+/*#__PURE__*/
+function (_React$Component) {
+  _inheritsLoose(ContentMountHandler, _React$Component);
+
+  function ContentMountHandler() {
+    return _React$Component.apply(this, arguments) || this;
+  }
+
+  var _proto = ContentMountHandler.prototype;
+
+  _proto.componentDidMount = function componentDidMount() {
+    if (this.props.onLoad) {
+      this.props.onLoad();
+    }
+  };
+
+  _proto.render = function render() {
+    return this.props.children;
+  };
+
+  return ContentMountHandler;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
+function convertToLatLngString(latLngLike) {
+  if (!latLngLike) {
+    return '';
+  }
+
+  var latLng = latLngLike instanceof google.maps.LatLng ? latLngLike : new google.maps.LatLng(latLngLike.lat, latLngLike.lng);
+  return latLng + '';
+}
+
+function convertToLatLngBoundsString(latLngBoundsLike) {
+  if (!latLngBoundsLike) {
+    return '';
+  }
+
+  var latLngBounds = latLngBoundsLike instanceof google.maps.LatLngBounds ? latLngBoundsLike : new google.maps.LatLngBounds(new google.maps.LatLng(latLngBoundsLike.south, latLngBoundsLike.east), new google.maps.LatLng(latLngBoundsLike.north, latLngBoundsLike.west));
+  return latLngBounds + '';
+}
+
+var OverlayView =
+/*#__PURE__*/
+function (_React$PureComponent) {
+  _inheritsLoose(OverlayView, _React$PureComponent);
+
+  function OverlayView(props) {
+    var _this;
+
+    _this = _React$PureComponent.call(this, props) || this;
+    _this.state = {
+      overlayView: null,
+      containerStyle: {}
+    };
+    _this.mapPaneEl = null;
+
+    _this.setOverlayViewCallback = function () {
+      if (_this.state.overlayView !== null && _this.props.onLoad) {
+        _this.props.onLoad(_this.state.overlayView);
+      }
+
+      _this.onPositionElement();
+    };
+
+    _this.onAdd = function () {
+      var _this$state$overlayVi;
+
+      !!!_this.props.mapPaneName ?  true ? invariant__WEBPACK_IMPORTED_MODULE_1___default()(false, "OverlayView requires props.mapPaneName but got %s", _this.props.mapPaneName) : undefined : void 0; // https://developers.google.com/maps/documentation/javascript/3.exp/reference#MapPanes
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+
+      var mapPanes = (_this$state$overlayVi = _this.state.overlayView) === null || _this$state$overlayVi === void 0 ? void 0 : _this$state$overlayVi.getPanes();
+
+      if (!mapPanes) {
+        return;
+      }
+
+      _this.mapPaneEl = mapPanes[_this.props.mapPaneName];
+    };
+
+    _this.onPositionElement = function () {
+      if (_this.state.overlayView !== null) {
+        var mapCanvasProjection = _this.state.overlayView.getProjection();
+
+        var offset = _extends({
+          x: 0,
+          y: 0
+        }, _this.containerRef.current ? getOffsetOverride(_this.containerRef.current, _this.props.getPixelPositionOffset) : {});
+
+        var layoutStyles = getLayoutStyles(mapCanvasProjection, offset, _this.props.bounds, _this.props.position);
+
+        _this.setState({
+          containerStyle: layoutStyles
+        });
+      }
+    };
+
+    _this.draw = function () {
+      _this.onPositionElement();
+    };
+
+    _this.onRemove = function () {
+      _this.mapPaneEl = null;
+    };
+
+    _this.containerRef = Object(react__WEBPACK_IMPORTED_MODULE_0__["createRef"])();
+    return _this;
+  }
+
+  var _proto = OverlayView.prototype;
+
+  _proto.componentDidMount = function componentDidMount() {
+    var overlayView = new google.maps.OverlayView(); // You must implement three methods: onAdd(), draw(), and onRemove().
+
+    overlayView.onAdd = this.onAdd;
+    overlayView.draw = this.draw;
+    overlayView.onRemove = this.onRemove;
+    overlayView.setMap(this.context); // You must call setMap() with a valid Map object to trigger the call to
+    // the onAdd() method and setMap(null) in order to trigger the onRemove() method.
+
+    this.setState(function setOverlayView() {
+      return {
+        overlayView: overlayView
+      };
+    });
+  };
+
+  _proto.componentDidUpdate = function componentDidUpdate(prevProps) {
+    var _this2 = this;
+
+    var prevPositionString = convertToLatLngString(prevProps.position);
+    var positionString = convertToLatLngString(this.props.position);
+    var prevBoundsString = convertToLatLngBoundsString(prevProps.bounds);
+    var boundsString = convertToLatLngBoundsString(this.props.bounds);
+
+    if (prevPositionString !== positionString || prevBoundsString !== boundsString) {
+      setTimeout(function () {
+        _this2.state.overlayView !== null && _this2.state.overlayView.draw();
+      }, 0);
+    }
+  };
+
+  _proto.componentWillUnmount = function componentWillUnmount() {
+    if (this.state.overlayView !== null) {
+      if (this.props.onUnmount) {
+        this.props.onUnmount(this.state.overlayView);
+      }
+
+      this.state.overlayView.setMap(null);
+    }
+  };
+
+  _proto.render = function render() {
+    return this.mapPaneEl ? Object(react_dom__WEBPACK_IMPORTED_MODULE_3__["createPortal"])(Object(react__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+      ref: this.containerRef,
+      style: _extends({}, this.state.containerStyle, {
+        position: 'absolute'
+      })
+    }, Object(react__WEBPACK_IMPORTED_MODULE_0__["createElement"])(ContentMountHandler, {
+      onLoad: this.setOverlayViewCallback
+    }, react__WEBPACK_IMPORTED_MODULE_0__["Children"].only(this.props.children))), this.mapPaneEl) : Object(react__WEBPACK_IMPORTED_MODULE_0__["createElement"])(react__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null);
+  };
+
+  return OverlayView;
+}(react__WEBPACK_IMPORTED_MODULE_0__["PureComponent"]);
+OverlayView.FLOAT_PANE = "floatPane";
+OverlayView.MAP_PANE = "mapPane";
+OverlayView.MARKER_LAYER = "markerLayer";
+OverlayView.OVERLAY_LAYER = "overlayLayer";
+OverlayView.OVERLAY_MOUSE_TARGET = "overlayMouseTarget";
+OverlayView.contextType = MapContext;
+
+function noop() {}
+
+var eventMap$d = {
+  onDblClick: 'dblclick',
+  onClick: 'click'
+};
+var updaterMap$d = {
+  opacity: function opacity(instance, _opacity) {
+    instance.setOpacity(_opacity);
+  }
+};
+var GroundOverlay =
+/*#__PURE__*/
+function (_React$PureComponent) {
+  _inheritsLoose(GroundOverlay, _React$PureComponent);
+
+  function GroundOverlay() {
+    var _this;
+
+    _this = _React$PureComponent.apply(this, arguments) || this;
+    _this.registeredEvents = [];
+    _this.state = {
+      groundOverlay: null
+    };
+
+    _this.setGroundOverlayCallback = function () {
+      if (_this.state.groundOverlay !== null && _this.props.onLoad) {
+        _this.props.onLoad(_this.state.groundOverlay);
+      }
+    };
+
+    return _this;
+  }
+
+  var _proto = GroundOverlay.prototype;
+
+  _proto.componentDidMount = function componentDidMount() {
+    !(!!this.props.url || !!this.props.bounds) ?  true ? invariant__WEBPACK_IMPORTED_MODULE_1___default()(false, "For GroundOverlay, url and bounds are passed in to constructor and are immutable after instantiated. This is the behavior of Google Maps JavaScript API v3 ( See https://developers.google.com/maps/documentation/javascript/reference#GroundOverlay) Hence, use the corresponding two props provided by `react-google-maps-api`, url and bounds. In some cases, you'll need the GroundOverlay component to reflect the changes of url and bounds. You can leverage the React's key property to remount the component. Typically, just `key={url}` would serve your need. See https://github.com/tomchentw/react-google-maps/issues/655") : undefined : void 0;
+    var groundOverlay = new google.maps.GroundOverlay(this.props.url, this.props.bounds, _extends({}, this.props.options, {
+      map: this.context
+    }));
+    this.registeredEvents = applyUpdatersToPropsAndRegisterEvents({
+      updaterMap: updaterMap$d,
+      eventMap: eventMap$d,
+      prevProps: {},
+      nextProps: this.props,
+      instance: groundOverlay
+    });
+    this.setState(function setGroundOverlay() {
+      return {
+        groundOverlay: groundOverlay
+      };
+    }, this.setGroundOverlayCallback);
+  };
+
+  _proto.componentDidUpdate = function componentDidUpdate(prevProps) {
+    if (this.state.groundOverlay !== null) {
+      unregisterEvents(this.registeredEvents);
+      this.registeredEvents = applyUpdatersToPropsAndRegisterEvents({
+        updaterMap: updaterMap$d,
+        eventMap: eventMap$d,
+        prevProps: prevProps,
+        nextProps: this.props,
+        instance: this.state.groundOverlay
+      });
+    }
+  };
+
+  _proto.componentWillUnmount = function componentWillUnmount() {
+    if (this.state.groundOverlay) {
+      if (this.props.onUnmount) {
+        this.props.onUnmount(this.state.groundOverlay);
+      }
+
+      this.state.groundOverlay.setMap(null);
+    }
+  };
+
+  _proto.render = function render() {
+    return null;
+  };
+
+  return GroundOverlay;
+}(react__WEBPACK_IMPORTED_MODULE_0__["PureComponent"]);
+GroundOverlay.defaultProps = {
+  onLoad: noop
+};
+GroundOverlay.contextType = MapContext;
+
+var eventMap$e = {};
+var updaterMap$e = {
+  data: function data(instance, _data) {
+    instance.setData(_data);
+  },
+  map: function map(instance, _map) {
+    instance.setMap(_map);
+  },
+  options: function options(instance, _options) {
+    instance.setOptions(_options);
+  }
+};
+var HeatmapLayer =
+/*#__PURE__*/
+function (_React$PureComponent) {
+  _inheritsLoose(HeatmapLayer, _React$PureComponent);
+
+  function HeatmapLayer() {
+    var _this;
+
+    _this = _React$PureComponent.apply(this, arguments) || this;
+    _this.registeredEvents = [];
+    _this.state = {
+      heatmapLayer: null
+    };
+
+    _this.setHeatmapLayerCallback = function () {
+      if (_this.state.heatmapLayer !== null && _this.props.onLoad) {
+        _this.props.onLoad(_this.state.heatmapLayer);
+      }
+    };
+
+    return _this;
+  }
+
+  var _proto = HeatmapLayer.prototype;
+
+  _proto.componentDidMount = function componentDidMount() {
+    !!!google.maps.visualization ?  true ? invariant__WEBPACK_IMPORTED_MODULE_1___default()(false, 'Did you include prop libraries={["visualization"]} to <LoadScript />? %s', google.maps.visualization) : undefined : void 0;
+    !!!this.props.data ?  true ? invariant__WEBPACK_IMPORTED_MODULE_1___default()(false, 'data property is required in HeatmapLayer %s', this.props.data) : undefined : void 0;
+    var heatmapLayer = new google.maps.visualization.HeatmapLayer(_extends({}, this.props.options || {}, {
+      data: this.props.data,
+      map: this.context
+    }));
+    this.registeredEvents = applyUpdatersToPropsAndRegisterEvents({
+      updaterMap: updaterMap$e,
+      eventMap: eventMap$e,
+      prevProps: {},
+      nextProps: this.props,
+      instance: heatmapLayer
+    });
+    this.setState(function setHeatmapLayer() {
+      return {
+        heatmapLayer: heatmapLayer
+      };
+    }, this.setHeatmapLayerCallback);
+  };
+
+  _proto.componentDidUpdate = function componentDidUpdate(prevProps) {
+    unregisterEvents(this.registeredEvents);
+    this.registeredEvents = applyUpdatersToPropsAndRegisterEvents({
+      updaterMap: updaterMap$e,
+      eventMap: eventMap$e,
+      prevProps: prevProps,
+      nextProps: this.props,
+      instance: this.state.heatmapLayer
+    });
+  };
+
+  _proto.componentWillUnmount = function componentWillUnmount() {
+    if (this.state.heatmapLayer !== null) {
+      if (this.props.onUnmount) {
+        this.props.onUnmount(this.state.heatmapLayer);
+      }
+
+      unregisterEvents(this.registeredEvents);
+      this.state.heatmapLayer.setMap(null);
+    }
+  };
+
+  _proto.render = function render() {
+    return null;
+  };
+
+  return HeatmapLayer;
+}(react__WEBPACK_IMPORTED_MODULE_0__["PureComponent"]);
+HeatmapLayer.contextType = MapContext;
+
+var eventMap$f = {
+  onCloseClick: 'closeclick',
+  onPanoChanged: 'pano_changed',
+  onPositionChanged: 'position_changed',
+  onPovChanged: 'pov_changed',
+  onResize: 'resize',
+  onStatusChanged: 'status_changed',
+  onVisibleChanged: 'visible_changed',
+  onZoomChanged: 'zoom_changed'
+};
+var updaterMap$f = {
+  register: function register(instance, provider, options) {
+    instance.registerPanoProvider(provider, options);
+  },
+  links: function links(instance, _links) {
+    instance.setLinks(_links);
+  },
+  motionTracking: function motionTracking(instance, _motionTracking) {
+    instance.setMotionTracking(_motionTracking);
+  },
+  options: function options(instance, _options) {
+    instance.setOptions(_options);
+  },
+  pano: function pano(instance, _pano) {
+    instance.setPano(_pano);
+  },
+  position: function position(instance, _position) {
+    instance.setPosition(_position);
+  },
+  pov: function pov(instance, _pov) {
+    instance.setPov(_pov);
+  },
+  visible: function visible(instance, _visible) {
+    instance.setVisible(_visible);
+  },
+  zoom: function zoom(instance, _zoom) {
+    instance.setZoom(_zoom);
+  }
+};
+var StreetViewPanorama =
+/*#__PURE__*/
+function (_React$PureComponent) {
+  _inheritsLoose(StreetViewPanorama, _React$PureComponent);
+
+  function StreetViewPanorama() {
+    var _this;
+
+    _this = _React$PureComponent.apply(this, arguments) || this;
+    _this.registeredEvents = [];
+    _this.state = {
+      streetViewPanorama: null
+    };
+
+    _this.setStreetViewPanoramaCallback = function () {
+      if (_this.state.streetViewPanorama !== null && _this.props.onLoad) {
+        _this.props.onLoad(_this.state.streetViewPanorama);
+      }
+    };
+
+    return _this;
+  }
+
+  var _proto = StreetViewPanorama.prototype;
+
+  _proto.componentDidMount = function componentDidMount() {
+    var streetViewPanorama = this.context.getStreetView();
+    this.registeredEvents = applyUpdatersToPropsAndRegisterEvents({
+      updaterMap: updaterMap$f,
+      eventMap: eventMap$f,
+      prevProps: {},
+      nextProps: this.props,
+      instance: streetViewPanorama
+    });
+    this.setState(function setStreetViewPanorama() {
+      return {
+        streetViewPanorama: streetViewPanorama
+      };
+    }, this.setStreetViewPanoramaCallback);
+  };
+
+  _proto.componentDidUpdate = function componentDidUpdate(prevProps) {
+    if (this.state.streetViewPanorama !== null) {
+      unregisterEvents(this.registeredEvents);
+      this.registeredEvents = applyUpdatersToPropsAndRegisterEvents({
+        updaterMap: updaterMap$f,
+        eventMap: eventMap$f,
+        prevProps: prevProps,
+        nextProps: this.props,
+        instance: this.state.streetViewPanorama
+      });
+    }
+  };
+
+  _proto.componentWillUnmount = function componentWillUnmount() {
+    if (this.state.streetViewPanorama !== null) {
+      if (this.props.onUnmount) {
+        this.props.onUnmount(this.state.streetViewPanorama);
+      }
+
+      unregisterEvents(this.registeredEvents);
+      this.state.streetViewPanorama.setVisible(false);
+    }
+  };
+
+  _proto.render = function render() {
+    return null;
+  };
+
+  return StreetViewPanorama;
+}(react__WEBPACK_IMPORTED_MODULE_0__["PureComponent"]);
+StreetViewPanorama.contextType = MapContext;
+
+var StreetViewService =
+/*#__PURE__*/
+function (_React$PureComponent) {
+  _inheritsLoose(StreetViewService, _React$PureComponent);
+
+  function StreetViewService() {
+    var _this;
+
+    _this = _React$PureComponent.apply(this, arguments) || this;
+    _this.state = {
+      streetViewService: null
+    };
+
+    _this.setStreetViewServiceCallback = function () {
+      if (_this.state.streetViewService !== null && _this.props.onLoad) {
+        _this.props.onLoad(_this.state.streetViewService);
+      }
+    };
+
+    return _this;
+  }
+
+  var _proto = StreetViewService.prototype;
+
+  _proto.componentDidMount = function componentDidMount() {
+    var streetViewService = new google.maps.StreetViewService();
+    this.setState(function setStreetViewService() {
+      return {
+        streetViewService: streetViewService
+      };
+    }, this.setStreetViewServiceCallback);
+  };
+
+  _proto.componentWillUnmount = function componentWillUnmount() {
+    if (this.state.streetViewService !== null) {
+      if (this.props.onUnmount) {
+        this.props.onUnmount(this.state.streetViewService);
+      }
+    }
+  };
+
+  _proto.render = function render() {
+    return null;
+  };
+
+  return StreetViewService;
+}(react__WEBPACK_IMPORTED_MODULE_0__["PureComponent"]);
+StreetViewService.contextType = MapContext;
+
+var DirectionsService =
+/*#__PURE__*/
+function (_React$PureComponent) {
+  _inheritsLoose(DirectionsService, _React$PureComponent);
+
+  function DirectionsService() {
+    var _this;
+
+    _this = _React$PureComponent.apply(this, arguments) || this;
+    _this.state = {
+      directionsService: null
+    };
+
+    _this.setDirectionsServiceCallback = function () {
+      if (_this.state.directionsService !== null && _this.props.onLoad) {
+        _this.props.onLoad(_this.state.directionsService);
+      }
+    };
+
+    return _this;
+  }
+
+  var _proto = DirectionsService.prototype;
+
+  _proto.componentDidMount = function componentDidMount() {
+    !!!this.props.options ?  true ? invariant__WEBPACK_IMPORTED_MODULE_1___default()(false, 'DirectionsService expected options object as parameter, but got %s', this.props.options) : undefined : void 0;
+    var directionsService = new google.maps.DirectionsService();
+    this.setState(function setDirectionsService() {
+      return {
+        directionsService: directionsService
+      };
+    }, this.setDirectionsServiceCallback);
+  };
+
+  _proto.componentDidUpdate = function componentDidUpdate() {
+    if (this.state.directionsService !== null) {
+      this.state.directionsService.route(this.props.options, this.props.callback);
+    }
+  };
+
+  _proto.componentWillUnmount = function componentWillUnmount() {
+    if (this.state.directionsService !== null) {
+      if (this.props.onUnmount) {
+        this.props.onUnmount(this.state.directionsService);
+      }
+    }
+  };
+
+  _proto.render = function render() {
+    return Object(react__WEBPACK_IMPORTED_MODULE_0__["createElement"])(react__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null);
+  };
+
+  return DirectionsService;
+}(react__WEBPACK_IMPORTED_MODULE_0__["PureComponent"]);
+
+var eventMap$g = {
+  onDirectionsChanged: 'directions_changed'
+};
+var updaterMap$g = {
+  directions: function directions(instance, _directions) {
+    instance.setDirections(_directions);
+  },
+  map: function map(instance, _map) {
+    instance.setMap(_map);
+  },
+  options: function options(instance, _options) {
+    instance.setOptions(_options);
+  },
+  panel: function panel(instance, _panel) {
+    instance.setPanel(_panel);
+  },
+  routeIndex: function routeIndex(instance, _routeIndex) {
+    instance.setRouteIndex(_routeIndex);
+  }
+};
+var DirectionsRenderer =
+/*#__PURE__*/
+function (_React$PureComponent) {
+  _inheritsLoose(DirectionsRenderer, _React$PureComponent);
+
+  function DirectionsRenderer() {
+    var _this;
+
+    _this = _React$PureComponent.apply(this, arguments) || this;
+    _this.registeredEvents = [];
+    _this.state = {
+      directionsRenderer: null
+    };
+
+    _this.setDirectionsRendererCallback = function () {
+      if (_this.state.directionsRenderer !== null) {
+        _this.state.directionsRenderer.setMap(_this.context);
+
+        if (_this.props.onLoad) {
+          _this.props.onLoad(_this.state.directionsRenderer);
+        }
+      }
+    };
+
+    return _this;
+  }
+
+  var _proto = DirectionsRenderer.prototype;
+
+  _proto.componentDidMount = function componentDidMount() {
+    var directionsRenderer = new google.maps.DirectionsRenderer(this.props.options);
+    this.registeredEvents = applyUpdatersToPropsAndRegisterEvents({
+      updaterMap: updaterMap$g,
+      eventMap: eventMap$g,
+      prevProps: {},
+      nextProps: this.props,
+      instance: directionsRenderer
+    });
+    this.setState(function setDirectionsRenderer() {
+      return {
+        directionsRenderer: directionsRenderer
+      };
+    }, this.setDirectionsRendererCallback);
+  };
+
+  _proto.componentDidUpdate = function componentDidUpdate(prevProps) {
+    if (this.state.directionsRenderer !== null) {
+      unregisterEvents(this.registeredEvents);
+      this.registeredEvents = applyUpdatersToPropsAndRegisterEvents({
+        updaterMap: updaterMap$g,
+        eventMap: eventMap$g,
+        prevProps: prevProps,
+        nextProps: this.props,
+        instance: this.state.directionsRenderer
+      });
+    }
+  };
+
+  _proto.componentWillUnmount = function componentWillUnmount() {
+    if (this.state.directionsRenderer !== null) {
+      if (this.props.onUnmount) {
+        this.props.onUnmount(this.state.directionsRenderer);
+      }
+
+      unregisterEvents(this.registeredEvents);
+
+      if (this.state.directionsRenderer) {
+        this.state.directionsRenderer.setMap(null);
+      }
+    }
+  };
+
+  _proto.render = function render() {
+    return Object(react__WEBPACK_IMPORTED_MODULE_0__["createElement"])(react__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null);
+  };
+
+  return DirectionsRenderer;
+}(react__WEBPACK_IMPORTED_MODULE_0__["PureComponent"]);
+DirectionsRenderer.contextType = MapContext;
+
+var DistanceMatrixService =
+/*#__PURE__*/
+function (_React$PureComponent) {
+  _inheritsLoose(DistanceMatrixService, _React$PureComponent);
+
+  function DistanceMatrixService() {
+    var _this;
+
+    _this = _React$PureComponent.apply(this, arguments) || this;
+    _this.state = {
+      distanceMatrixService: null
+    };
+
+    _this.setDistanceMatrixServiceCallback = function () {
+      if (_this.state.distanceMatrixService !== null && _this.props.onLoad) {
+        _this.props.onLoad(_this.state.distanceMatrixService);
+      }
+    };
+
+    return _this;
+  }
+
+  var _proto = DistanceMatrixService.prototype;
+
+  _proto.componentDidMount = function componentDidMount() {
+    !!!this.props.options ?  true ? invariant__WEBPACK_IMPORTED_MODULE_1___default()(false, 'DistanceMatrixService expected options object as parameter, but go %s', this.props.options) : undefined : void 0;
+    var distanceMatrixService = new google.maps.DistanceMatrixService();
+    this.setState(function setDistanceMatrixService() {
+      return {
+        distanceMatrixService: distanceMatrixService
+      };
+    }, this.setDistanceMatrixServiceCallback);
+  };
+
+  _proto.componentDidUpdate = function componentDidUpdate() {
+    if (this.state.distanceMatrixService !== null) {
+      this.state.distanceMatrixService.getDistanceMatrix(this.props.options, this.props.callback);
+    }
+  };
+
+  _proto.componentWillUnmount = function componentWillUnmount() {
+    if (this.state.distanceMatrixService !== null) {
+      if (this.props.onUnmount) {
+        this.props.onUnmount(this.state.distanceMatrixService);
+      }
+    }
+  };
+
+  _proto.render = function render() {
+    return Object(react__WEBPACK_IMPORTED_MODULE_0__["createElement"])(react__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null);
+  };
+
+  return DistanceMatrixService;
+}(react__WEBPACK_IMPORTED_MODULE_0__["PureComponent"]);
+
+var eventMap$h = {
+  onPlacesChanged: 'places_changed'
+};
+var updaterMap$h = {
+  bounds: function bounds(instance, _bounds) {
+    instance.setBounds(_bounds);
+  }
+};
+
+var StandaloneSearchBox =
+/*#__PURE__*/
+function (_React$PureComponent) {
+  _inheritsLoose(StandaloneSearchBox, _React$PureComponent);
+
+  function StandaloneSearchBox() {
+    var _this;
+
+    _this = _React$PureComponent.apply(this, arguments) || this;
+    _this.registeredEvents = [];
+    _this.containerElement = Object(react__WEBPACK_IMPORTED_MODULE_0__["createRef"])();
+    _this.state = {
+      searchBox: null
+    };
+
+    _this.setSearchBoxCallback = function () {
+      if (_this.state.searchBox !== null && _this.props.onLoad) {
+        _this.props.onLoad(_this.state.searchBox);
+      }
+    };
+
+    return _this;
+  }
+
+  var _proto = StandaloneSearchBox.prototype;
+
+  _proto.componentDidMount = function componentDidMount() {
+    !!!google.maps.places ?  true ? invariant__WEBPACK_IMPORTED_MODULE_1___default()(false, 'You need to provide libraries={["places"]} prop to <LoadScript /> component %s', google.maps.places) : undefined : void 0;
+
+    if (this.containerElement !== null && this.containerElement.current !== null) {
+      var input = this.containerElement.current.querySelector('input');
+
+      if (input !== null) {
+        var searchBox = new google.maps.places.SearchBox(input, this.props.options);
+        this.registeredEvents = applyUpdatersToPropsAndRegisterEvents({
+          updaterMap: updaterMap$h,
+          eventMap: eventMap$h,
+          prevProps: {},
+          nextProps: this.props,
+          instance: searchBox
+        });
+        this.setState(function setSearchBox() {
+          return {
+            searchBox: searchBox
+          };
+        }, this.setSearchBoxCallback);
+      }
+    }
+  };
+
+  _proto.componentDidUpdate = function componentDidUpdate(prevProps) {
+    if (this.state.searchBox !== null) {
+      unregisterEvents(this.registeredEvents);
+      this.registeredEvents = applyUpdatersToPropsAndRegisterEvents({
+        updaterMap: updaterMap$h,
+        eventMap: eventMap$h,
+        prevProps: prevProps,
+        nextProps: this.props,
+        instance: this.state.searchBox
+      });
+    }
+  };
+
+  _proto.componentWillUnmount = function componentWillUnmount() {
+    if (this.state.searchBox !== null) {
+      if (this.props.onUnmount) {
+        this.props.onUnmount(this.state.searchBox);
+      }
+
+      unregisterEvents(this.registeredEvents);
+    }
+  };
+
+  _proto.render = function render() {
+    return Object(react__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+      ref: this.containerElement
+    }, react__WEBPACK_IMPORTED_MODULE_0__["Children"].only(this.props.children));
+  };
+
+  return StandaloneSearchBox;
+}(react__WEBPACK_IMPORTED_MODULE_0__["PureComponent"]);
+
+StandaloneSearchBox.contextType = MapContext;
+
+var eventMap$i = {
+  onPlaceChanged: 'place_changed'
+};
+var updaterMap$i = {
+  bounds: function bounds(instance, _bounds) {
+    instance.setBounds(_bounds);
+  },
+  restrictions: function restrictions(instance, _restrictions) {
+    instance.setComponentRestrictions(_restrictions);
+  },
+  fields: function fields(instance, _fields) {
+    instance.setFields(_fields);
+  },
+  options: function options(instance, _options) {
+    instance.setOptions(_options);
+  },
+  types: function types(instance, _types) {
+    instance.setTypes(_types);
+  }
+};
+var Autocomplete =
+/*#__PURE__*/
+function (_React$PureComponent) {
+  _inheritsLoose(Autocomplete, _React$PureComponent);
+
+  function Autocomplete() {
+    var _this;
+
+    _this = _React$PureComponent.apply(this, arguments) || this;
+    _this.registeredEvents = [];
+    _this.containerElement = Object(react__WEBPACK_IMPORTED_MODULE_0__["createRef"])();
+    _this.state = {
+      autocomplete: null
+    };
+
+    _this.setAutocompleteCallback = function () {
+      if (_this.state.autocomplete !== null && _this.props.onLoad) {
+        _this.props.onLoad(_this.state.autocomplete);
+      }
+    };
+
+    return _this;
+  }
+
+  var _proto = Autocomplete.prototype;
+
+  _proto.componentDidMount = function componentDidMount() {
+    !!!google.maps.places ?  true ? invariant__WEBPACK_IMPORTED_MODULE_1___default()(false, 'You need to provide libraries={["places"]} prop to <LoadScript /> component %s', google.maps.places) : undefined : void 0; // TODO: why current could be equal null?
+    // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+    // @ts-ignore
+
+    var input = this.containerElement.current.querySelector('input');
+
+    if (input) {
+      var autocomplete = new google.maps.places.Autocomplete(input, this.props.options);
+      this.registeredEvents = applyUpdatersToPropsAndRegisterEvents({
+        updaterMap: updaterMap$i,
+        eventMap: eventMap$i,
+        prevProps: {},
+        nextProps: this.props,
+        instance: autocomplete
+      });
+      this.setState(function setAutocomplete() {
+        return {
+          autocomplete: autocomplete
+        };
+      }, this.setAutocompleteCallback);
+    }
+  };
+
+  _proto.componentDidUpdate = function componentDidUpdate(prevProps) {
+    unregisterEvents(this.registeredEvents);
+    this.registeredEvents = applyUpdatersToPropsAndRegisterEvents({
+      updaterMap: updaterMap$i,
+      eventMap: eventMap$i,
+      prevProps: prevProps,
+      nextProps: this.props,
+      instance: this.state.autocomplete
+    });
+  };
+
+  _proto.componentWillUnmount = function componentWillUnmount() {
+    if (this.state.autocomplete !== null) {
+      unregisterEvents(this.registeredEvents);
+    }
+  };
+
+  _proto.render = function render() {
+    return Object(react__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+      ref: this.containerElement,
+      className: this.props.className || ''
+    }, react__WEBPACK_IMPORTED_MODULE_0__["Children"].only(this.props.children));
+  };
+
+  return Autocomplete;
+}(react__WEBPACK_IMPORTED_MODULE_0__["PureComponent"]);
+Autocomplete.contextType = MapContext;
+
+
+//# sourceMappingURL=reactgooglemapsapi.esm.js.map
+
+
+/***/ }),
+
+/***/ "./node_modules/@react-google-maps/infobox/dist/infobox.esm.js":
+/*!*********************************************************************!*\
+  !*** ./node_modules/@react-google-maps/infobox/dist/infobox.esm.js ***!
+  \*********************************************************************/
+/*! exports provided: InfoBox */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "InfoBox", function() { return InfoBox; });
+var InfoBox =
+/*#__PURE__*/
+function () {
+  function InfoBox(options) {
+    if (options === void 0) {
+      options = {};
+    }
+
+    this.extend(InfoBox, google.maps.OverlayView); // Standard options (in common with google.maps.InfoWindow):
+
+    this.content = options.content || '';
+    this.disableAutoPan = options.disableAutoPan || false;
+    this.maxWidth = options.maxWidth || 0;
+    this.pixelOffset = options.pixelOffset || new google.maps.Size(0, 0);
+    this.position = options.position || new google.maps.LatLng(0, 0);
+    this.zIndex = options.zIndex || null; // Additional options (unique to InfoBox):
+
+    this.boxClass = options.boxClass || 'infoBox';
+    this.boxStyle = options.boxStyle || {};
+    this.closeBoxMargin = options.closeBoxMargin || '2px';
+    this.closeBoxURL = options.closeBoxURL || 'http://www.google.com/intl/en_us/mapfiles/close.gif';
+
+    if (options.closeBoxURL === '') {
+      this.closeBoxURL = '';
+    }
+
+    this.infoBoxClearance = options.infoBoxClearance || new google.maps.Size(1, 1);
+
+    if (typeof options.visible === 'undefined') {
+      if (typeof options.isHidden === 'undefined') {
+        options.visible = true;
+      } else {
+        options.visible = !options.isHidden;
+      }
+    }
+
+    this.isHidden = !options.visible;
+    this.alignBottom = options.alignBottom || false;
+    this.pane = options.pane || 'floatPane';
+    this.enableEventPropagation = options.enableEventPropagation || false;
+    this.div = null;
+    this.closeListener = null;
+    this.moveListener = null;
+    this.mapListener = null;
+    this.contextListener = null;
+    this.eventListeners = null;
+    this.fixedWidthSet = null;
+  }
+
+  var _proto = InfoBox.prototype;
+
+  _proto.createInfoBoxDiv = function createInfoBoxDiv() {
+    var _this = this;
+
+    // This handler prevents an event in the InfoBox from being passed on to the map.
+    function cancelHandler(event) {
+      event.cancelBubble = true;
+
+      if (event.stopPropagation) {
+        event.stopPropagation();
+      }
+    } // This handler ignores the current event in the InfoBox and conditionally prevents
+    // the event from being passed on to the map. It is used for the contextmenu event.
+    // eslint-disable-next-line  @getify/proper-arrows/this
+
+
+    var ignoreHandler = function ignoreHandler(event) {
+      event.returnValue = false;
+
+      if (event.preventDefault) {
+        event.preventDefault();
+      }
+
+      if (!_this.enableEventPropagation) {
+        cancelHandler(event);
+      }
+    };
+
+    if (!this.div) {
+      this.div = document.createElement('div');
+      this.setBoxStyle();
+
+      if (typeof this.content === 'string') {
+        this.div.innerHTML = this.getCloseBoxImg() + this.content;
+      } else {
+        this.div.innerHTML = this.getCloseBoxImg();
+        this.div.appendChild(this.content);
+      } // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+      // @ts-ignore
+
+
+      var panes = this.getPanes();
+      panes[this.pane].appendChild(this.div); // Add the InfoBox div to the DOM
+
+      this.addClickHandler();
+
+      if (this.div.style.width) {
+        this.fixedWidthSet = true;
+      } else {
+        if (this.maxWidth !== 0 && this.div.offsetWidth > this.maxWidth) {
+          this.div.style.width = this.maxWidth + 'px';
+          this.fixedWidthSet = true;
+        } else {
+          // The following code is needed to overcome problems with MSIE
+          var bw = this.getBoxWidths();
+          this.div.style.width = this.div.offsetWidth - bw.left - bw.right + 'px';
+          this.fixedWidthSet = false;
+        }
+      }
+
+      this.panBox(this.disableAutoPan);
+
+      if (!this.enableEventPropagation) {
+        this.eventListeners = []; // Cancel event propagation.
+        // Note: mousemove not included (to resolve Issue 152)
+
+        var events = ['mousedown', 'mouseover', 'mouseout', 'mouseup', 'click', 'dblclick', 'touchstart', 'touchend', 'touchmove'];
+
+        for (var i = 0; i < events.length; i++) {
+          this.eventListeners.push(google.maps.event.addDomListener(this.div, events[i], cancelHandler));
+        } // Workaround for Google bug that causes the cursor to change to a pointer
+        // when the mouse moves over a marker underneath InfoBox.
+
+
+        this.eventListeners.push(google.maps.event.addDomListener(this.div, 'mouseover', // eslint-disable-next-line  @getify/proper-arrows/this, @getify/proper-arrows/name
+        function () {
+          if (_this.div) {
+            _this.div.style.cursor = 'default';
+          }
+        }));
+      }
+
+      this.contextListener = google.maps.event.addDomListener(this.div, 'contextmenu', ignoreHandler);
+      /**
+       * This event is fired when the DIV containing the InfoBox's content is attached to the DOM.
+       * @name InfoBox#domready
+       * @event
+       */
+
+      google.maps.event.trigger(this, 'domready');
+    }
+  };
+
+  _proto.getCloseBoxImg = function getCloseBoxImg() {
+    var img = '';
+
+    if (this.closeBoxURL !== '') {
+      img = '<img alt=""';
+      img += ' aria-hidden="true"';
+      img += " src='" + this.closeBoxURL + "'";
+      img += ' align=right'; // Do this because Opera chokes on style='float: right;'
+
+      img += " style='";
+      img += ' position: relative;'; // Required by MSIE
+
+      img += ' cursor: pointer;';
+      img += ' margin: ' + this.closeBoxMargin + ';';
+      img += "'>";
+    }
+
+    return img;
+  };
+
+  _proto.addClickHandler = function addClickHandler() {
+    if (this.div && this.div.firstChild && this.closeBoxURL !== '') {
+      var closeBox = this.div.firstChild;
+      this.closeListener = google.maps.event.addDomListener(closeBox, 'click', this.getCloseClickHandler());
+    } else {
+      this.closeListener = null;
+    }
+  };
+
+  _proto.getCloseClickHandler = function getCloseClickHandler() {
+    var _this2 = this;
+
+    // eslint-disable-next-line  @getify/proper-arrows/this, @getify/proper-arrows/name
+    return function (event) {
+      // 1.0.3 fix: Always prevent propagation of a close box click to the map:
+      event.cancelBubble = true;
+
+      if (event.stopPropagation) {
+        event.stopPropagation();
+      }
+      /**
+       * This event is fired when the InfoBox's close box is clicked.
+       * @name InfoBox#closeclick
+       * @event
+       */
+
+
+      google.maps.event.trigger(_this2, 'closeclick');
+
+      _this2.close();
+    };
+  };
+
+  _proto.panBox = function panBox(disablePan) {
+    if (this.div && !disablePan) {
+      // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+      // @ts-ignore
+      var map = this.getMap(); // Only pan if attached to map, not panorama
+
+      if (map instanceof google.maps.Map) {
+        var xOffset = 0;
+        var yOffset = 0;
+        var bounds = map.getBounds();
+
+        if (bounds && !bounds.contains(this.position)) {
+          // Marker not in visible area of map, so set center
+          // of map to the marker position first.
+          map.setCenter(this.position);
+        }
+
+        var mapDiv = map.getDiv(); // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+        // @ts-ignore
+
+        var mapWidth = mapDiv.offsetWidth; // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+        // @ts-ignore
+
+        var mapHeight = mapDiv.offsetHeight;
+        var iwOffsetX = this.pixelOffset.width;
+        var iwOffsetY = this.pixelOffset.height;
+        var iwWidth = this.div.offsetWidth;
+        var iwHeight = this.div.offsetHeight;
+        var padX = this.infoBoxClearance.width;
+        var padY = this.infoBoxClearance.height; // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+        // @ts-ignore
+
+        var projection = this.getProjection();
+        var pixPosition = projection.fromLatLngToContainerPixel(this.position);
+
+        if (pixPosition.x < -iwOffsetX + padX) {
+          xOffset = pixPosition.x + iwOffsetX - padX;
+        } else if (pixPosition.x + iwWidth + iwOffsetX + padX > mapWidth) {
+          xOffset = pixPosition.x + iwWidth + iwOffsetX + padX - mapWidth;
+        }
+
+        if (this.alignBottom) {
+          if (pixPosition.y < -iwOffsetY + padY + iwHeight) {
+            yOffset = pixPosition.y + iwOffsetY - padY - iwHeight;
+          } else if (pixPosition.y + iwOffsetY + padY > mapHeight) {
+            yOffset = pixPosition.y + iwOffsetY + padY - mapHeight;
+          }
+        } else {
+          if (pixPosition.y < -iwOffsetY + padY) {
+            yOffset = pixPosition.y + iwOffsetY - padY;
+          } else if (pixPosition.y + iwHeight + iwOffsetY + padY > mapHeight) {
+            yOffset = pixPosition.y + iwHeight + iwOffsetY + padY - mapHeight;
+          }
+        }
+
+        if (!(xOffset === 0 && yOffset === 0)) {
+          // Move the map to the shifted center.
+          map.panBy(xOffset, yOffset);
+        }
+      }
+    }
+  };
+
+  _proto.setBoxStyle = function setBoxStyle() {
+    if (this.div) {
+      // Apply style values from the style sheet defined in the boxClass parameter:
+      this.div.className = this.boxClass; // Clear existing inline style values:
+
+      this.div.style.cssText = ''; // Apply style values defined in the boxStyle parameter:
+
+      var boxStyle = this.boxStyle;
+
+      for (var i in boxStyle) {
+        if (boxStyle.hasOwnProperty(i)) {
+          // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+          // @ts-ignore
+          this.div.style[i] = boxStyle[i];
+        }
+      } // Fix for iOS disappearing InfoBox problem
+      // See http://stackoverflow.com/questions/9229535/google-maps-markers-disappear-at-certain-zoom-level-only-on-iphone-ipad
+
+
+      this.div.style.webkitTransform = 'translateZ(0)'; // Fix up opacity style for benefit of MSIE
+
+      if (typeof this.div.style.opacity !== 'undefined' && this.div.style.opacity !== '') {
+        // See http://www.quirksmode.org/css/opacity.html
+        var opacity = parseFloat(this.div.style.opacity || ''); // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+        // @ts-ignore
+
+        this.div.style.msFilter = '"progid:DXImageTransform.Microsoft.Alpha(Opacity=' + opacity * 100 + ')"';
+        this.div.style.filter = 'alpha(opacity=' + opacity * 100 + ')';
+      } // Apply required styles
+
+
+      this.div.style.position = 'absolute';
+      this.div.style.visibility = 'hidden';
+
+      if (this.zIndex !== null) {
+        this.div.style.zIndex = this.zIndex + '';
+      }
+
+      if (!this.div.style.overflow) {
+        this.div.style.overflow = 'auto';
+      }
+    }
+  };
+
+  _proto.getBoxWidths = function getBoxWidths() {
+    var bw = {
+      top: 0,
+      bottom: 0,
+      left: 0,
+      right: 0
+    };
+
+    if (!this.div) {
+      return bw;
+    }
+
+    if (document.defaultView && document.defaultView.getComputedStyle) {
+      var ownerDocument = this.div.ownerDocument;
+      var computedStyle = ownerDocument && ownerDocument.defaultView ? ownerDocument.defaultView.getComputedStyle(this.div, '') : null;
+
+      if (computedStyle) {
+        // The computed styles are always in pixel units (good!)
+        bw.top = parseInt(computedStyle.borderTopWidth || '', 10) || 0;
+        bw.bottom = parseInt(computedStyle.borderBottomWidth || '', 10) || 0;
+        bw.left = parseInt(computedStyle.borderLeftWidth || '', 10) || 0;
+        bw.right = parseInt(computedStyle.borderRightWidth || '', 10) || 0;
+      }
+    } else if ( // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+    // @ts-ignore
+    document.documentElement.currentStyle // MSIE
+    ) {
+        // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+        // @ts-ignore
+        var currentStyle = this.div.currentStyle;
+
+        if (currentStyle) {
+          // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+          // The current styles may not be in pixel units, but assume they are (bad!)
+          bw.top = parseInt(currentStyle.borderTopWidth || '', 10) || 0;
+          bw.bottom = parseInt(currentStyle.borderBottomWidth || '', 10) || 0;
+          bw.left = parseInt(currentStyle.borderLeftWidth || '', 10) || 0;
+          bw.right = parseInt(currentStyle.borderRightWidth || '', 10) || 0;
+        }
+      }
+
+    return bw;
+  };
+
+  _proto.onRemove = function onRemove() {
+    if (this.div && this.div.parentNode) {
+      this.div.parentNode.removeChild(this.div);
+      this.div = null;
+    }
+  };
+
+  _proto.draw = function draw() {
+    this.createInfoBoxDiv();
+
+    if (this.div) {
+      // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+      // @ts-ignore
+      var projection = this.getProjection();
+      var pixPosition = projection.fromLatLngToDivPixel(this.position);
+      this.div.style.left = pixPosition.x + this.pixelOffset.width + 'px';
+
+      if (this.alignBottom) {
+        this.div.style.bottom = -(pixPosition.y + this.pixelOffset.height) + 'px';
+      } else {
+        this.div.style.top = pixPosition.y + this.pixelOffset.height + 'px';
+      }
+
+      if (this.isHidden) {
+        this.div.style.visibility = 'hidden';
+      } else {
+        this.div.style.visibility = 'visible';
+      }
+    }
+  };
+
+  _proto.setOptions = function setOptions(options) {
+    if (options === void 0) {
+      options = {};
+    }
+
+    if (typeof options.boxClass !== 'undefined') {
+      // Must be first
+      this.boxClass = options.boxClass;
+      this.setBoxStyle();
+    }
+
+    if (typeof options.boxStyle !== 'undefined') {
+      // Must be second
+      this.boxStyle = options.boxStyle;
+      this.setBoxStyle();
+    }
+
+    if (typeof options.content !== 'undefined') {
+      this.setContent(options.content);
+    }
+
+    if (typeof options.disableAutoPan !== 'undefined') {
+      this.disableAutoPan = options.disableAutoPan;
+    }
+
+    if (typeof options.maxWidth !== 'undefined') {
+      this.maxWidth = options.maxWidth;
+    }
+
+    if (typeof options.pixelOffset !== 'undefined') {
+      this.pixelOffset = options.pixelOffset;
+    }
+
+    if (typeof options.alignBottom !== 'undefined') {
+      this.alignBottom = options.alignBottom;
+    }
+
+    if (typeof options.position !== 'undefined') {
+      this.setPosition(options.position);
+    }
+
+    if (typeof options.zIndex !== 'undefined') {
+      this.setZIndex(options.zIndex);
+    }
+
+    if (typeof options.closeBoxMargin !== 'undefined') {
+      this.closeBoxMargin = options.closeBoxMargin;
+    }
+
+    if (typeof options.closeBoxURL !== 'undefined') {
+      this.closeBoxURL = options.closeBoxURL;
+    }
+
+    if (typeof options.infoBoxClearance !== 'undefined') {
+      this.infoBoxClearance = options.infoBoxClearance;
+    }
+
+    if (typeof options.isHidden !== 'undefined') {
+      this.isHidden = options.isHidden;
+    }
+
+    if (typeof options.visible !== 'undefined') {
+      this.isHidden = !options.visible;
+    }
+
+    if (typeof options.enableEventPropagation !== 'undefined') {
+      this.enableEventPropagation = options.enableEventPropagation;
+    }
+
+    if (this.div) {
+      this.draw();
+    }
+  };
+
+  _proto.setContent = function setContent(content) {
+    this.content = content;
+
+    if (this.div) {
+      if (this.closeListener) {
+        google.maps.event.removeListener(this.closeListener);
+        this.closeListener = null;
+      } // Odd code required to make things work with MSIE.
+
+
+      if (!this.fixedWidthSet) {
+        this.div.style.width = '';
+      }
+
+      if (typeof content === 'string') {
+        this.div.innerHTML = this.getCloseBoxImg() + content;
+      } else {
+        this.div.innerHTML = this.getCloseBoxImg();
+        this.div.appendChild(content);
+      } // Perverse code required to make things work with MSIE.
+      // (Ensures the close box does, in fact, float to the right.)
+
+
+      if (!this.fixedWidthSet) {
+        this.div.style.width = this.div.offsetWidth + 'px';
+
+        if (typeof content === 'string') {
+          this.div.innerHTML = this.getCloseBoxImg() + content;
+        } else {
+          this.div.innerHTML = this.getCloseBoxImg();
+          this.div.appendChild(content);
+        }
+      }
+
+      this.addClickHandler();
+    }
+    /**
+     * This event is fired when the content of the InfoBox changes.
+     * @name InfoBox#content_changed
+     * @event
+     */
+
+
+    google.maps.event.trigger(this, 'content_changed');
+  };
+
+  _proto.setPosition = function setPosition(latLng) {
+    this.position = latLng;
+
+    if (this.div) {
+      this.draw();
+    }
+    /**
+     * This event is fired when the position of the InfoBox changes.
+     * @name InfoBox#position_changed
+     * @event
+     */
+
+
+    google.maps.event.trigger(this, 'position_changed');
+  };
+
+  _proto.setVisible = function setVisible(isVisible) {
+    this.isHidden = !isVisible;
+
+    if (this.div) {
+      this.div.style.visibility = this.isHidden ? 'hidden' : 'visible';
+    }
+  };
+
+  _proto.setZIndex = function setZIndex(index) {
+    this.zIndex = index;
+
+    if (this.div) {
+      this.div.style.zIndex = index + '';
+    }
+    /**
+     * This event is fired when the zIndex of the InfoBox changes.
+     * @name InfoBox#zindex_changed
+     * @event
+     */
+
+
+    google.maps.event.trigger(this, 'zindex_changed');
+  };
+
+  _proto.getContent = function getContent() {
+    return this.content;
+  };
+
+  _proto.getPosition = function getPosition() {
+    return this.position;
+  };
+
+  _proto.getZIndex = function getZIndex() {
+    return this.zIndex;
+  };
+
+  _proto.getVisible = function getVisible() {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+    // @ts-ignore
+    var map = this.getMap();
+    var isVisible;
+
+    if (typeof map === 'undefined' || map === null) {
+      isVisible = false;
+    } else {
+      isVisible = !this.isHidden;
+    }
+
+    return isVisible;
+  };
+
+  _proto.show = function show() {
+    this.isHidden = false;
+
+    if (this.div) {
+      this.div.style.visibility = 'visible';
+    }
+  };
+
+  _proto.hide = function hide() {
+    this.isHidden = true;
+
+    if (this.div) {
+      this.div.style.visibility = 'hidden';
+    }
+  };
+
+  _proto.open = function open(map, anchor) {
+    var _this3 = this;
+
+    if (anchor) {
+      // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+      // @ts-ignore
+      this.position = anchor.getPosition();
+      this.moveListener = google.maps.event.addListener(anchor, 'position_changed', // eslint-disable-next-line  @getify/proper-arrows/this, @getify/proper-arrows/name
+      function () {
+        // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+        // @ts-ignore
+        var position = anchor.getPosition();
+
+        _this3.setPosition(position);
+      });
+      this.mapListener = google.maps.event.addListener(anchor, 'map_changed', // eslint-disable-next-line  @getify/proper-arrows/this, @getify/proper-arrows/name
+      function () {
+        // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+        // @ts-ignore
+        _this3.setMap(anchor.map);
+      });
+    } // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+    // @ts-ignore
+
+
+    this.setMap(map);
+
+    if (this.div) {
+      this.panBox();
+    }
+  };
+
+  _proto.close = function close() {
+    if (this.closeListener) {
+      google.maps.event.removeListener(this.closeListener);
+      this.closeListener = null;
+    }
+
+    if (this.eventListeners) {
+      for (var i = 0; i < this.eventListeners.length; i++) {
+        google.maps.event.removeListener(this.eventListeners[i]);
+      }
+
+      this.eventListeners = null;
+    }
+
+    if (this.moveListener) {
+      google.maps.event.removeListener(this.moveListener);
+      this.moveListener = null;
+    }
+
+    if (this.mapListener) {
+      google.maps.event.removeListener(this.mapListener);
+      this.mapListener = null;
+    }
+
+    if (this.contextListener) {
+      google.maps.event.removeListener(this.contextListener);
+      this.contextListener = null;
+    } // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+    // @ts-ignore
+
+
+    this.setMap(null);
+  };
+
+  _proto.extend = function extend(obj1, obj2) {
+    return function applyExtend(object) {
+      // eslint-disable-next-line guard-for-in
+      for (var property in object.prototype) {
+        // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+        // @ts-ignore
+        if (!this.prototype.hasOwnProperty(property)) {
+          // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+          // @ts-ignore
+          this.prototype[property] = object.prototype[property];
+        }
+      } // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+      // @ts-ignore
+
+
+      return this;
+    }.apply(obj1, [obj2]);
+  };
+
+  return InfoBox;
+}();
+
+
+//# sourceMappingURL=infobox.esm.js.map
+
+
+/***/ }),
+
+/***/ "./node_modules/@react-google-maps/marker-clusterer/dist/markerclusterer.esm.js":
+/*!**************************************************************************************!*\
+  !*** ./node_modules/@react-google-maps/marker-clusterer/dist/markerclusterer.esm.js ***!
+  \**************************************************************************************/
+/*! exports provided: Cluster, ClusterIcon, Clusterer */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Cluster", function() { return Cluster; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ClusterIcon", function() { return ClusterIcon; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Clusterer", function() { return Clusterer; });
+var ClusterIcon =
+/*#__PURE__*/
+function () {
+  function ClusterIcon(cluster, styles) {
+    cluster.getClusterer().extend(ClusterIcon, google.maps.OverlayView);
+    this.cluster = cluster;
+    this.className = this.cluster.getClusterer().getClusterClass();
+    this.styles = styles;
+    this.center = undefined;
+    this.div = null;
+    this.sums = null;
+    this.visible = false;
+    this.boundsChangedListener = null;
+    this.url = '';
+    this.height = 0;
+    this.width = 0;
+    this.anchorText = [0, 0];
+    this.anchorIcon = [0, 0];
+    this.textColor = 'black';
+    this.textSize = 11;
+    this.textDecoration = 'none';
+    this.fontWeight = 'bold';
+    this.fontStyle = 'normal';
+    this.fontFamily = 'Arial,sans-serif';
+    this.backgroundPosition = '0 0'; // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+    // @ts-ignore
+
+    this.setMap(cluster.getMap()); // Note: this causes onAdd to be called
+  }
+
+  var _proto = ClusterIcon.prototype;
+
+  _proto.onAdd = function onAdd() {
+    var _this = this;
+
+    var cMouseDownInCluster;
+    var cDraggingMapByCluster;
+    this.div = document.createElement('div');
+    this.div.className = this.className;
+
+    if (this.visible) {
+      this.show();
+    } // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+    // @ts-ignore
+
+
+    this.getPanes().overlayMouseTarget.appendChild(this.div); // Fix for Issue 157
+
+    this.boundsChangedListener = google.maps.event.addListener( // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+    // @ts-ignore
+    this.getMap(), 'boundschanged', function boundsChanged() {
+      cDraggingMapByCluster = cMouseDownInCluster;
+    });
+    google.maps.event.addDomListener(this.div, 'mousedown', function onMouseDown() {
+      cMouseDownInCluster = true;
+      cDraggingMapByCluster = false;
+    }); // eslint-disable-next-line  @getify/proper-arrows/this, @getify/proper-arrows/name
+
+    google.maps.event.addDomListener(this.div, 'click', // eslint-disable-next-line  @getify/proper-arrows/this, @getify/proper-arrows/name
+    function (event) {
+      cMouseDownInCluster = false;
+
+      if (!cDraggingMapByCluster) {
+        var markerClusterer = _this.cluster.getClusterer();
+        /**
+         * This event is fired when a cluster marker is clicked.
+         * @name MarkerClusterer#click
+         * @param {Cluster} c The cluster that was clicked.
+         * @event
+         */
+
+
+        google.maps.event.trigger(markerClusterer, 'click', _this.cluster);
+        google.maps.event.trigger(markerClusterer, 'clusterclick', _this.cluster); // deprecated name
+        // The default click handler follows. Disable it by setting
+        // the zoomOnClick property to false.
+
+        if (markerClusterer.getZoomOnClick()) {
+          // Zoom into the cluster.
+          var maxZoom = markerClusterer.getMaxZoom();
+
+          var bounds = _this.cluster.getBounds(); // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+          // @ts-ignore
+
+
+          markerClusterer.getMap().fitBounds(bounds); // There is a fix for Issue 170 here:
+
+          setTimeout(function timeout() {
+            // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+            // @ts-ignore
+            markerClusterer.getMap().fitBounds(bounds); // Don't zoom beyond the max zoom level
+            // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+            // @ts-ignore
+
+            if (maxZoom !== null && markerClusterer.getMap().getZoom() > maxZoom) {
+              // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+              // @ts-ignore
+              markerClusterer.getMap().setZoom(maxZoom + 1);
+            }
+          }, 100);
+        } // Prevent event propagation to the map:
+
+
+        event.cancelBubble = true;
+
+        if (event.stopPropagation) {
+          event.stopPropagation();
+        }
+      }
+    });
+    google.maps.event.addDomListener(this.div, 'mouseover', // eslint-disable-next-line  @getify/proper-arrows/this, @getify/proper-arrows/name
+    function () {
+      /**
+       * This event is fired when the mouse moves over a cluster marker.
+       * @name MarkerClusterer#mouseover
+       * @param {Cluster} c The cluster that the mouse moved over.
+       * @event
+       */
+      google.maps.event.trigger(_this.cluster.getClusterer(), 'mouseover', _this.cluster);
+    }); // eslint-disable-next-line  @getify/proper-arrows/this, @getify/proper-arrows/name
+
+    google.maps.event.addDomListener(this.div, 'mouseout', // eslint-disable-next-line  @getify/proper-arrows/this, @getify/proper-arrows/name
+    function () {
+      /**
+       * This event is fired when the mouse moves out of a cluster marker.
+       * @name MarkerClusterer#mouseout
+       * @param {Cluster} c The cluster that the mouse moved out of.
+       * @event
+       */
+      google.maps.event.trigger(_this.cluster.getClusterer(), 'mouseout', _this.cluster);
+    });
+  };
+
+  _proto.onRemove = function onRemove() {
+    if (this.div && this.div.parentNode) {
+      this.hide();
+
+      if (this.boundsChangedListener !== null) {
+        google.maps.event.removeListener(this.boundsChangedListener);
+      }
+
+      google.maps.event.clearInstanceListeners(this.div);
+      this.div.parentNode.removeChild(this.div);
+      this.div = null;
+    }
+  };
+
+  _proto.draw = function draw() {
+    if (this.visible && this.div !== null && this.center) {
+      var _this$getPosFromLatLn = this.getPosFromLatLng(this.center),
+          x = _this$getPosFromLatLn.x,
+          y = _this$getPosFromLatLn.y;
+
+      this.div.style.top = y + 'px';
+      this.div.style.left = x + 'px';
+    }
+  };
+
+  _proto.hide = function hide() {
+    if (this.div) {
+      this.div.style.display = 'none';
+    }
+
+    this.visible = false;
+  };
+
+  _proto.show = function show() {
+    if (this.div && this.center) {
+      var img = '',
+          divTitle = ''; // NOTE: values must be specified in px units
+
+      var bp = this.backgroundPosition.split(' ');
+      var spriteH = parseInt(bp[0].replace(/^\s+|\s+$/g, ''), 10);
+      var spriteV = parseInt(bp[1].replace(/^\s+|\s+$/g, ''), 10);
+      var pos = this.getPosFromLatLng(this.center);
+
+      if (this.sums === null || typeof this.sums.title === 'undefined' || this.sums.title === '') {
+        divTitle = this.cluster.getClusterer().getTitle();
+      } else {
+        divTitle = this.sums.title;
+      }
+
+      this.div.style.cssText = this.createCss(pos);
+      img = "<img alt='" + divTitle + "' src='" + this.url + "' style='position: absolute; top: " + spriteV + 'px; left: ' + spriteH + 'px; '; // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+      //@ts-ignore
+
+      if (!this.cluster.getClusterer().enableRetinaIcons) {
+        img += 'clip: rect(' + -1 * spriteV + 'px, ' + (-1 * spriteH + this.width) + 'px, ' + (-1 * spriteV + this.height) + 'px, ' + -1 * spriteH + 'px);';
+      }
+
+      img += "'>";
+      this.div.innerHTML = img + "<div style='" + 'position: absolute;' + 'top: ' + this.anchorText[0] + 'px;' + 'left: ' + this.anchorText[1] + 'px;' + 'color: ' + this.textColor + ';' + 'font-size: ' + this.textSize + 'px;' + 'font-family: ' + this.fontFamily + ';' + 'font-weight: ' + this.fontWeight + ';' + 'font-style: ' + this.fontStyle + ';' + 'text-decoration: ' + this.textDecoration + ';' + 'text-align: center;' + 'width: ' + this.width + 'px;' + 'line-height:' + this.height + 'px;' + "'>" + // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+      // @ts-ignore
+      this.sums.text + '</div>';
+      this.div.title = divTitle;
+      this.div.style.display = '';
+    }
+
+    this.visible = true;
+  };
+
+  _proto.useStyle = function useStyle(sums) {
+    this.sums = sums;
+    var style = this.styles[Math.min(this.styles.length - 1, Math.max(0, sums.index - 1))];
+    this.url = style.url;
+    this.height = style.height;
+    this.width = style.width;
+    this.anchorText = style.anchorText || [0, 0];
+    this.anchorIcon = style.anchorIcon || [this.height / 2, this.width / 2];
+    this.textColor = style.textColor || 'black';
+    this.textSize = style.textSize || 11;
+    this.textDecoration = style.textDecoration || 'none';
+    this.fontWeight = style.fontWeight || 'bold';
+    this.fontStyle = style.fontStyle || 'normal';
+    this.fontFamily = style.fontFamily || 'Arial,sans-serif';
+    this.backgroundPosition = style.backgroundPosition || '0 0';
+  };
+
+  _proto.setCenter = function setCenter(center) {
+    this.center = center;
+  };
+
+  _proto.createCss = function createCss(pos) {
+    var style = [];
+    style.push('cursor: pointer;');
+    style.push('position: absolute; top: ' + pos.y + 'px; left: ' + pos.x + 'px;');
+    style.push('width: ' + this.width + 'px; height: ' + this.height + 'px;');
+    return style.join('');
+  };
+
+  _proto.getPosFromLatLng = function getPosFromLatLng(latlng) {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+    // @ts-ignore
+    var pos = this.getProjection().fromLatLngToDivPixel(latlng);
+    pos.x -= this.anchorIcon[1];
+    pos.y -= this.anchorIcon[0]; // pos.x = pos.x
+    // pos.y = pos.y
+
+    return pos;
+  };
+
+  return ClusterIcon;
+}();
+
+var Cluster =
+/*#__PURE__*/
+function () {
+  function Cluster(markerClusterer) {
+    this.markerClusterer = markerClusterer; // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+    // @ts-ignore
+
+    this.map = this.markerClusterer.getMap();
+    this.gridSize = this.markerClusterer.getGridSize();
+    this.minClusterSize = this.markerClusterer.getMinimumClusterSize();
+    this.averageCenter = this.markerClusterer.getAverageCenter();
+    this.markers = [];
+    this.center = undefined;
+    this.bounds = null;
+    this.clusterIcon = new ClusterIcon(this, this.markerClusterer.getStyles());
+  }
+
+  var _proto = Cluster.prototype;
+
+  _proto.getSize = function getSize() {
+    return this.markers.length;
+  };
+
+  _proto.getMarkers = function getMarkers() {
+    return this.markers;
+  };
+
+  _proto.getCenter = function getCenter() {
+    return this.center;
+  };
+
+  _proto.getMap = function getMap() {
+    return this.map;
+  };
+
+  _proto.getClusterer = function getClusterer() {
+    return this.markerClusterer;
+  };
+
+  _proto.getBounds = function getBounds() {
+    var bounds = new google.maps.LatLngBounds(this.center, this.center);
+    var markers = this.getMarkers();
+
+    for (var i = 0; i < markers.length; i++) {
+      var position = markers[i].getPosition();
+
+      if (position) {
+        bounds.extend(position);
+      }
+    }
+
+    return bounds;
+  };
+
+  _proto.remove = function remove() {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+    // @ts-ignore
+    this.clusterIcon.setMap(null);
+    this.markers = [];
+    delete this.markers;
+  };
+
+  _proto.addMarker = function addMarker(marker) {
+    if (this.isMarkerAlreadyAdded(marker)) {
+      return false;
+    }
+
+    if (!this.center) {
+      var position = marker.getPosition();
+
+      if (position) {
+        this.center = position;
+        this.calculateBounds();
+      }
+    } else {
+      if (this.averageCenter) {
+        var _position = marker.getPosition();
+
+        if (_position) {
+          var length = this.markers.length + 1;
+          this.center = new google.maps.LatLng((this.center.lat() * (length - 1) + _position.lat()) / length, (this.center.lng() * (length - 1) + _position.lng()) / length);
+          this.calculateBounds();
+        }
+      }
+    }
+
+    marker.isAdded = true;
+    this.markers.push(marker);
+    var mCount = this.markers.length;
+    var maxZoom = this.markerClusterer.getMaxZoom();
+
+    if (maxZoom !== null && this.map.getZoom() > maxZoom) {
+      // Zoomed in past max zoom, so show the marker.
+      if (marker.getMap() !== this.map) {
+        marker.setMap(this.map);
+      }
+    } else if (mCount < this.minClusterSize) {
+      // Min cluster size not reached so show the marker.
+      if (marker.getMap() !== this.map) {
+        marker.setMap(this.map);
+      }
+    } else if (mCount === this.minClusterSize) {
+      // Hide the markers that were showing.
+      for (var i = 0; i < mCount; i++) {
+        this.markers[i].setMap(null);
+      }
+    } else {
+      marker.setMap(null);
+    }
+
+    return true;
+  };
+
+  _proto.isMarkerInClusterBounds = function isMarkerInClusterBounds(marker) {
+    if (this.bounds !== null) {
+      var position = marker.getPosition();
+
+      if (position) {
+        return this.bounds.contains(position);
+      }
+    }
+
+    return false;
+  };
+
+  _proto.calculateBounds = function calculateBounds() {
+    this.bounds = this.markerClusterer.getExtendedBounds(new google.maps.LatLngBounds(this.center, this.center));
+  };
+
+  _proto.updateIcon = function updateIcon() {
+    var mCount = this.markers.length;
+    var maxZoom = this.markerClusterer.getMaxZoom();
+
+    if (maxZoom !== null && this.map.getZoom() > maxZoom) {
+      this.clusterIcon.hide();
+      return;
+    }
+
+    if (mCount < this.minClusterSize) {
+      // Min cluster size not yet reached.
+      this.clusterIcon.hide();
+      return;
+    }
+
+    if (this.center) {
+      this.clusterIcon.setCenter(this.center);
+    }
+
+    this.clusterIcon.useStyle(this.markerClusterer.getCalculator()(this.markers, this.markerClusterer.getStyles().length));
+    this.clusterIcon.show();
+  };
+
+  _proto.isMarkerAlreadyAdded = function isMarkerAlreadyAdded(marker) {
+    if (this.markers.includes) {
+      return this.markers.includes(marker);
+    } else {
+      for (var i = 0; i < this.markers.length; i++) {
+        if (marker === this.markers[i]) {
+          return true;
+        }
+      }
+    }
+
+    return false;
+  };
+
+  return Cluster;
+}();
+
+/* global google */
+
+var CALCULATOR = function CALCULATOR(markers, numStyles) {
+  var index = 0;
+  var title = '';
+  var count = markers.length.toString();
+  var dv = count;
+
+  while (dv !== 0) {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+    // @ts-ignore
+    dv = parseInt(dv, 10) / 10;
+    index++;
+  }
+
+  index = Math.min(index, numStyles);
+  return {
+    text: count,
+    index: index,
+    title: title
+  };
+};
+
+var BATCH_SIZE = 2000;
+var BATCH_SIZE_IE = 500;
+var IMAGE_PATH = 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m';
+var IMAGE_EXTENSION = 'png';
+var IMAGE_SIZES = [53, 56, 66, 78, 90];
+var CLUSTERER_CLASS = 'cluster';
+var Clusterer =
+/*#__PURE__*/
+function () {
+  function Clusterer(map, optMarkers, optOptions) {
+    if (optMarkers === void 0) {
+      optMarkers = [];
+    }
+
+    if (optOptions === void 0) {
+      optOptions = {};
+    }
+
+    this.extend(Clusterer, google.maps.OverlayView);
+    this.markers = [];
+    this.clusters = [];
+    this.listeners = [];
+    this.activeMap = null;
+    this.ready = false;
+    this.gridSize = optOptions.gridSize || 60;
+    this.minClusterSize = optOptions.minimumClusterSize || 2;
+    this.maxZoom = optOptions.maxZoom || null;
+    this.styles = optOptions.styles || [];
+    this.title = optOptions.title || '';
+    this.zoomOnClick = true;
+
+    if (optOptions.zoomOnClick !== undefined) {
+      this.zoomOnClick = optOptions.zoomOnClick;
+    }
+
+    this.averageCenter = false;
+
+    if (optOptions.averageCenter !== undefined) {
+      this.averageCenter = optOptions.averageCenter;
+    }
+
+    this.ignoreHidden = false;
+
+    if (optOptions.ignoreHidden !== undefined) {
+      this.ignoreHidden = optOptions.ignoreHidden;
+    }
+
+    this.enableRetinaIcons = false;
+
+    if (optOptions.enableRetinaIcons !== undefined) {
+      this.enableRetinaIcons = optOptions.enableRetinaIcons;
+    }
+
+    this.imagePath = optOptions.imagePath || IMAGE_PATH;
+    this.imageExtension = optOptions.imageExtension || IMAGE_EXTENSION;
+    this.imageSizes = optOptions.imageSizes || IMAGE_SIZES;
+    this.calculator = optOptions.calculator || CALCULATOR;
+    this.batchSize = optOptions.batchSize || BATCH_SIZE;
+    this.batchSizeIE = optOptions.batchSizeIE || BATCH_SIZE_IE;
+    this.clusterClass = optOptions.clusterClass || CLUSTERER_CLASS;
+
+    if (navigator.userAgent.toLowerCase().indexOf('msie') !== -1) {
+      // Try to avoid IE timeout when processing a huge number of markers:
+      this.batchSize = this.batchSizeIE;
+    }
+
+    this.timerRefStatic = null;
+    this.setupStyles();
+    this.addMarkers(optMarkers, true); // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+    // @ts-ignore
+
+    this.setMap(map); // Note: this causes onAdd to be called
+  }
+
+  var _proto = Clusterer.prototype;
+
+  _proto.onAdd = function onAdd() {
+    var _this = this;
+
+    // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+    // @ts-ignore
+    this.activeMap = this.getMap();
+    this.ready = true;
+    this.repaint(); // Add the map event listeners
+
+    this.listeners = [google.maps.event.addListener( // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+    // @ts-ignore
+    this.getMap(), 'zoom_changed', // eslint-disable-next-line  @getify/proper-arrows/this, @getify/proper-arrows/name
+    function () {
+      _this.resetViewport(false); // Workaround for this Google bug: when map is at level 0 and "-" of
+      // zoom slider is clicked, a "zoom_changed" event is fired even though
+      // the map doesn't zoom out any further. In this situation, no "idle"
+      // event is triggered so the cluster markers that have been removed
+      // do not get redrawn. Same goes for a zoom in at maxZoom.
+
+
+      if ( // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+      // @ts-ignore
+      _this.getMap().getZoom() === (_this.get('minZoom') || 0) || // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+      // @ts-ignore
+      _this.getMap().getZoom() === _this.get('maxZoom')) {
+        google.maps.event.trigger(_this, 'idle');
+      }
+    }), google.maps.event.addListener( // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+    // @ts-ignore
+    this.getMap(), 'idle', // eslint-disable-next-line  @getify/proper-arrows/this, @getify/proper-arrows/name
+    function () {
+      _this.redraw();
+    })];
+  } // eslint-disable-next-line @getify/proper-arrows/this
+  ;
+
+  _proto.onRemove = function onRemove() {
+    // Put all the managed markers back on the map:
+    for (var i = 0; i < this.markers.length; i++) {
+      if (this.markers[i].getMap() !== this.activeMap) {
+        this.markers[i].setMap(this.activeMap);
+      }
+    } // Remove all clusters:
+
+
+    for (var _i = 0; _i < this.clusters.length; _i++) {
+      this.clusters[_i].remove();
+    }
+
+    this.clusters = []; // Remove map event listeners:
+
+    for (var _i2 = 0; _i2 < this.listeners.length; _i2++) {
+      google.maps.event.removeListener(this.listeners[_i2]);
+    }
+
+    this.listeners = [];
+    this.activeMap = null;
+    this.ready = false;
+  } // eslint-disable-next-line @typescript-eslint/no-empty-function
+  ;
+
+  _proto.draw = function draw() {};
+
+  _proto.setupStyles = function setupStyles() {
+    if (this.styles.length > 0) {
+      return;
+    }
+
+    for (var i = 0; i < this.imageSizes.length; i++) {
+      this.styles.push({
+        url: this.imagePath + (i + 1) + '.' + this.imageExtension,
+        height: this.imageSizes[i],
+        width: this.imageSizes[i]
+      });
+    }
+  };
+
+  _proto.fitMapToMarkers = function fitMapToMarkers() {
+    var markers = this.getMarkers();
+    var bounds = new google.maps.LatLngBounds();
+
+    for (var i = 0; i < markers.length; i++) {
+      var position = markers[i].getPosition();
+
+      if (position) {
+        bounds.extend(position);
+      }
+    } // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+    // @ts-ignore
+
+
+    this.getMap().fitBounds(bounds);
+  };
+
+  _proto.getGridSize = function getGridSize() {
+    return this.gridSize;
+  };
+
+  _proto.setGridSize = function setGridSize(gridSize) {
+    this.gridSize = gridSize;
+  };
+
+  _proto.getMinimumClusterSize = function getMinimumClusterSize() {
+    return this.minClusterSize;
+  };
+
+  _proto.setMinimumClusterSize = function setMinimumClusterSize(minimumClusterSize) {
+    this.minClusterSize = minimumClusterSize;
+  };
+
+  _proto.getMaxZoom = function getMaxZoom() {
+    return this.maxZoom;
+  };
+
+  _proto.setMaxZoom = function setMaxZoom(maxZoom) {
+    this.maxZoom = maxZoom;
+  };
+
+  _proto.getStyles = function getStyles() {
+    return this.styles;
+  };
+
+  _proto.setStyles = function setStyles(styles) {
+    this.styles = styles;
+  };
+
+  _proto.getTitle = function getTitle() {
+    return this.title;
+  };
+
+  _proto.setTitle = function setTitle(title) {
+    this.title = title;
+  };
+
+  _proto.getZoomOnClick = function getZoomOnClick() {
+    return this.zoomOnClick;
+  };
+
+  _proto.setZoomOnClick = function setZoomOnClick(zoomOnClick) {
+    this.zoomOnClick = zoomOnClick;
+  };
+
+  _proto.getAverageCenter = function getAverageCenter() {
+    return this.averageCenter;
+  };
+
+  _proto.setAverageCenter = function setAverageCenter(averageCenter) {
+    this.averageCenter = averageCenter;
+  };
+
+  _proto.getIgnoreHidden = function getIgnoreHidden() {
+    return this.ignoreHidden;
+  };
+
+  _proto.setIgnoreHidden = function setIgnoreHidden(ignoreHidden) {
+    this.ignoreHidden = ignoreHidden;
+  };
+
+  _proto.getEnableRetinaIcons = function getEnableRetinaIcons() {
+    return this.enableRetinaIcons;
+  };
+
+  _proto.setEnableRetinaIcons = function setEnableRetinaIcons(enableRetinaIcons) {
+    this.enableRetinaIcons = enableRetinaIcons;
+  };
+
+  _proto.getImageExtension = function getImageExtension() {
+    return this.imageExtension;
+  };
+
+  _proto.setImageExtension = function setImageExtension(imageExtension) {
+    this.imageExtension = imageExtension;
+  };
+
+  _proto.getImagePath = function getImagePath() {
+    return this.imagePath;
+  };
+
+  _proto.setImagePath = function setImagePath(imagePath) {
+    this.imagePath = imagePath;
+  };
+
+  _proto.getImageSizes = function getImageSizes() {
+    return this.imageSizes;
+  };
+
+  _proto.setImageSizes = function setImageSizes(imageSizes) {
+    this.imageSizes = imageSizes;
+  };
+
+  _proto.getCalculator = function getCalculator() {
+    return this.calculator;
+  };
+
+  _proto.setCalculator = function setCalculator(calculator) {
+    this.calculator = calculator;
+  };
+
+  _proto.getBatchSizeIE = function getBatchSizeIE() {
+    return this.batchSizeIE;
+  };
+
+  _proto.setBatchSizeIE = function setBatchSizeIE(batchSizeIE) {
+    this.batchSizeIE = batchSizeIE;
+  };
+
+  _proto.getClusterClass = function getClusterClass() {
+    return this.clusterClass;
+  };
+
+  _proto.setClusterClass = function setClusterClass(clusterClass) {
+    this.clusterClass = clusterClass;
+  };
+
+  _proto.getMarkers = function getMarkers() {
+    return this.markers;
+  };
+
+  _proto.getTotalMarkers = function getTotalMarkers() {
+    return this.markers.length;
+  };
+
+  _proto.getClusters = function getClusters() {
+    return this.clusters;
+  };
+
+  _proto.getTotalClusters = function getTotalClusters() {
+    return this.clusters.length;
+  };
+
+  _proto.addMarker = function addMarker(marker, optNoDraw) {
+    this.pushMarkerTo(marker);
+
+    if (!optNoDraw) {
+      this.redraw();
+    }
+  };
+
+  _proto.addMarkers = function addMarkers(markers, optNoDraw) {
+    for (var key in markers) {
+      if (markers.hasOwnProperty(key)) {
+        this.pushMarkerTo(markers[key]);
+      }
+    }
+
+    if (!optNoDraw) {
+      this.redraw();
+    }
+  };
+
+  _proto.pushMarkerTo = function pushMarkerTo(marker) {
+    var _this2 = this;
+
+    // If the marker is draggable add a listener so we can update the clusters on the dragend:
+    if (marker.getDraggable()) {
+      // eslint-disable-next-line @getify/proper-arrows/name, @getify/proper-arrows/this
+      google.maps.event.addListener(marker, 'dragend', function () {
+        if (_this2.ready) {
+          marker.isAdded = false;
+
+          _this2.repaint();
+        }
+      });
+    }
+
+    marker.isAdded = false;
+    this.markers.push(marker);
+  };
+
+  _proto.removeMarker_ = function removeMarker_(marker) {
+    var index = -1;
+
+    if (this.markers.indexOf) {
+      index = this.markers.indexOf(marker);
+    } else {
+      for (var i = 0; i < this.markers.length; i++) {
+        if (marker === this.markers[i]) {
+          index = i;
+          break;
+        }
+      }
+    }
+
+    if (index === -1) {
+      // Marker is not in our list of markers, so do nothing:
+      return false;
+    }
+
+    marker.setMap(null);
+    this.markers.splice(index, 1); // Remove the marker from the list of managed markers
+
+    return true;
+  };
+
+  _proto.removeMarker = function removeMarker(marker, optNoDraw) {
+    var removed = this.removeMarker_(marker);
+
+    if (!optNoDraw && removed) {
+      this.repaint();
+    }
+
+    return removed;
+  };
+
+  _proto.removeMarkers = function removeMarkers(markers, optNoDraw) {
+    var removed = false;
+
+    for (var i = 0; i < markers.length; i++) {
+      removed = removed || this.removeMarker_(markers[i]);
+    }
+
+    if (!optNoDraw && removed) {
+      this.repaint();
+    }
+
+    return removed;
+  };
+
+  _proto.clearMarkers = function clearMarkers() {
+    this.resetViewport(true);
+    this.markers = [];
+  };
+
+  _proto.repaint = function repaint() {
+    var oldClusters = this.clusters.slice();
+    this.clusters = [];
+    this.resetViewport(false);
+    this.redraw(); // Remove the old clusters.
+    // Do it in a timeout to prevent blinking effect.
+
+    setTimeout(function timeout() {
+      for (var i = 0; i < oldClusters.length; i++) {
+        oldClusters[i].remove();
+      }
+    }, 0);
+  };
+
+  _proto.getExtendedBounds = function getExtendedBounds(bounds) {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+    // @ts-ignore
+    var projection = this.getProjection(); // Convert the points to pixels and the extend out by the grid size.
+
+    var trPix = projection.fromLatLngToDivPixel( // Turn the bounds into latlng.
+    new google.maps.LatLng(bounds.getNorthEast().lat(), bounds.getNorthEast().lng()));
+    trPix.x += this.gridSize;
+    trPix.y -= this.gridSize;
+    var blPix = projection.fromLatLngToDivPixel( // Turn the bounds into latlng.
+    new google.maps.LatLng(bounds.getSouthWest().lat(), bounds.getSouthWest().lng()));
+    blPix.x -= this.gridSize;
+    blPix.y += this.gridSize; // Extend the bounds to contain the new bounds.
+
+    bounds.extend( // Convert the pixel points back to LatLng nw
+    projection.fromDivPixelToLatLng(trPix));
+    bounds.extend( // Convert the pixel points back to LatLng sw
+    projection.fromDivPixelToLatLng(blPix));
+    return bounds;
+  };
+
+  _proto.redraw = function redraw() {
+    // Redraws all the clusters.
+    this.createClusters(0);
+  };
+
+  _proto.resetViewport = function resetViewport(optHide) {
+    // Remove all the clusters
+    for (var i = 0; i < this.clusters.length; i++) {
+      this.clusters[i].remove();
+    }
+
+    this.clusters = []; // Reset the markers to not be added and to be removed from the map.
+
+    for (var _i3 = 0; _i3 < this.markers.length; _i3++) {
+      var marker = this.markers[_i3];
+      marker.isAdded = false;
+
+      if (optHide) {
+        marker.setMap(null);
+      }
+    }
+  };
+
+  _proto.distanceBetweenPoints = function distanceBetweenPoints(p1, p2) {
+    var R = 6371; // Radius of the Earth in km
+
+    var dLat = (p2.lat() - p1.lat()) * Math.PI / 180;
+    var dLon = (p2.lng() - p1.lng()) * Math.PI / 180;
+    var a = Math.sin(dLat / 2) * Math.sin(dLat / 2) + Math.cos(p1.lat() * Math.PI / 180) * Math.cos(p2.lat() * Math.PI / 180) * Math.sin(dLon / 2) * Math.sin(dLon / 2);
+    return R * (2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a)));
+  };
+
+  _proto.isMarkerInBounds = function isMarkerInBounds(marker, bounds) {
+    var position = marker.getPosition();
+
+    if (position) {
+      return bounds.contains(position);
+    }
+
+    return false;
+  };
+
+  _proto.addToClosestCluster = function addToClosestCluster(marker) {
+    var cluster;
+    var distance = 40000; // Some large number
+
+    var clusterToAddTo = null;
+
+    for (var i = 0; i < this.clusters.length; i++) {
+      cluster = this.clusters[i];
+      var center = cluster.getCenter();
+      var position = marker.getPosition();
+
+      if (center && position) {
+        var d = this.distanceBetweenPoints(center, position);
+
+        if (d < distance) {
+          distance = d;
+          clusterToAddTo = cluster;
+        }
+      }
+    }
+
+    if (clusterToAddTo && clusterToAddTo.isMarkerInClusterBounds(marker)) {
+      clusterToAddTo.addMarker(marker);
+    } else {
+      cluster = new Cluster(this);
+      cluster.addMarker(marker);
+      this.clusters.push(cluster);
+    }
+  };
+
+  _proto.createClusters = function createClusters(iFirst) {
+    var _this3 = this;
+
+    if (!this.ready) {
+      return;
+    } // Cancel previous batch processing if we're working on the first batch:
+
+
+    if (iFirst === 0) {
+      /**
+       * This event is fired when the <code>Clusterer</code> begins
+       *  clustering markers.
+       * @name Clusterer#clusteringbegin
+       * @param {Clusterer} mc The Clusterer whose markers are being clustered.
+       * @event
+       */
+      google.maps.event.trigger(this, 'clusteringbegin', this);
+
+      if (this.timerRefStatic !== null) {
+        window.clearTimeout(this.timerRefStatic);
+        delete this.timerRefStatic;
+      }
+    } // Get our current map view bounds.
+    // Create a new bounds object so we don't affect the map.
+    //
+    // See Comments 9 & 11 on Issue 3651 relating to this workaround for a Google Maps bug:
+
+
+    var mapBounds = // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+    // @ts-ignore
+    this.getMap().getZoom() > 3 ? new google.maps.LatLngBounds( // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+    // @ts-ignore
+    this.getMap().getBounds().getSouthWest(), // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+    // @ts-ignore
+    this.getMap().getBounds().getNorthEast()) : new google.maps.LatLngBounds(new google.maps.LatLng(85.02070771743472, -178.48388434375), new google.maps.LatLng(-85.08136444384544, 178.00048865625));
+    var bounds = this.getExtendedBounds(mapBounds);
+    var iLast = Math.min(iFirst + this.batchSize, this.markers.length);
+
+    for (var i = iFirst; i < iLast; i++) {
+      var marker = this.markers[i];
+
+      if (!marker.isAdded && this.isMarkerInBounds(marker, bounds)) {
+        if (!this.ignoreHidden || this.ignoreHidden && marker.getVisible()) {
+          this.addToClosestCluster(marker);
+        }
+      }
+    }
+
+    if (iLast < this.markers.length) {
+      this.timerRefStatic = window.setTimeout( // eslint-disable-next-line @getify/proper-arrows/this, @getify/proper-arrows/name
+      function () {
+        _this3.createClusters(iLast);
+      }, 0);
+    } else {
+      this.timerRefStatic = null;
+      /**
+       * This event is fired when the <code>Clusterer</code> stops
+       *  clustering markers.
+       * @name Clusterer#clusteringend
+       * @param {Clusterer} mc The Clusterer whose markers are being clustered.
+       * @event
+       */
+
+      google.maps.event.trigger(this, 'clusteringend', this);
+
+      for (var _i4 = 0; _i4 < this.clusters.length; _i4++) {
+        this.clusters[_i4].updateIcon();
+      }
+    }
+  };
+
+  _proto.extend = function extend(obj1, obj2) {
+    return function applyExtend(object) {
+      // eslint-disable-next-line guard-for-in
+      for (var property in object.prototype) {
+        // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+        // @ts-ignore
+        this.prototype[property] = object.prototype[property];
+      } // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+      // @ts-ignore
+
+
+      return this;
+    }.apply(obj1, [obj2]);
+  };
+
+  return Clusterer;
+}();
+
+
+//# sourceMappingURL=markerclusterer.esm.js.map
+
 
 /***/ }),
 
@@ -5958,2914 +11026,64 @@ function replaceGetterValues (replacer) {
 
 /***/ }),
 
-/***/ "./node_modules/google-maps-react/dist/GoogleApiComponent.js":
-/*!*******************************************************************!*\
-  !*** ./node_modules/google-maps-react/dist/GoogleApiComponent.js ***!
-  \*******************************************************************/
+/***/ "./node_modules/invariant/browser.js":
+/*!*******************************************!*\
+  !*** ./node_modules/invariant/browser.js ***!
+  \*******************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;(function (global, factory) {
+"use strict";
+/**
+ * Copyright (c) 2013-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+
+
+/**
+ * Use invariant() to assert state which your program assumes to be true.
+ *
+ * Provide sprintf-style format (only %s is supported) and arguments
+ * to provide information about what broke and what you were
+ * expecting.
+ *
+ * The invariant message will be stripped in production, but the invariant
+ * will remain to ensure logic does not differ in production.
+ */
+
+var invariant = function(condition, format, a, b, c, d, e, f) {
   if (true) {
-    !(__WEBPACK_AMD_DEFINE_ARRAY__ = [exports, __webpack_require__(/*! react */ "./node_modules/react/index.js"), __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js"), __webpack_require__(/*! ./lib/ScriptCache */ "./node_modules/google-maps-react/dist/lib/ScriptCache.js"), __webpack_require__(/*! ./lib/GoogleApi */ "./node_modules/google-maps-react/dist/lib/GoogleApi.js")], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory),
-				__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?
-				(__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__),
-				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
-  } else { var mod; }
-})(this, function (exports, _react, _reactDom, _ScriptCache, _GoogleApi) {
-  'use strict';
-
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  exports.wrapper = undefined;
-
-  var _react2 = _interopRequireDefault(_react);
-
-  var _reactDom2 = _interopRequireDefault(_reactDom);
-
-  var _GoogleApi2 = _interopRequireDefault(_GoogleApi);
-
-  function _interopRequireDefault(obj) {
-    return obj && obj.__esModule ? obj : {
-      default: obj
-    };
-  }
-
-  function _classCallCheck(instance, Constructor) {
-    if (!(instance instanceof Constructor)) {
-      throw new TypeError("Cannot call a class as a function");
+    if (format === undefined) {
+      throw new Error('invariant requires an error message argument');
     }
   }
 
-  var _createClass = function () {
-    function defineProperties(target, props) {
-      for (var i = 0; i < props.length; i++) {
-        var descriptor = props[i];
-        descriptor.enumerable = descriptor.enumerable || false;
-        descriptor.configurable = true;
-        if ("value" in descriptor) descriptor.writable = true;
-        Object.defineProperty(target, descriptor.key, descriptor);
-      }
+  if (!condition) {
+    var error;
+    if (format === undefined) {
+      error = new Error(
+        'Minified exception occurred; use the non-minified dev environment ' +
+        'for the full error message and additional helpful warnings.'
+      );
+    } else {
+      var args = [a, b, c, d, e, f];
+      var argIndex = 0;
+      error = new Error(
+        format.replace(/%s/g, function() { return args[argIndex++]; })
+      );
+      error.name = 'Invariant Violation';
     }
 
-    return function (Constructor, protoProps, staticProps) {
-      if (protoProps) defineProperties(Constructor.prototype, protoProps);
-      if (staticProps) defineProperties(Constructor, staticProps);
-      return Constructor;
-    };
-  }();
-
-  function _possibleConstructorReturn(self, call) {
-    if (!self) {
-      throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-    }
-
-    return call && (typeof call === "object" || typeof call === "function") ? call : self;
+    error.framesToPop = 1; // we don't care about invariant's own frame
+    throw error;
   }
+};
 
-  function _inherits(subClass, superClass) {
-    if (typeof superClass !== "function" && superClass !== null) {
-      throw new TypeError("Super expression must either be null or a function, not " + typeof superClass);
-    }
+module.exports = invariant;
 
-    subClass.prototype = Object.create(superClass && superClass.prototype, {
-      constructor: {
-        value: subClass,
-        enumerable: false,
-        writable: true,
-        configurable: true
-      }
-    });
-    if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
-  }
-
-  var defaultMapConfig = {};
-
-  var serialize = function serialize(obj) {
-    return JSON.stringify(obj);
-  };
-  var isSame = function isSame(obj1, obj2) {
-    return obj1 === obj2 || serialize(obj1) === serialize(obj2);
-  };
-
-  var defaultCreateCache = function defaultCreateCache(options) {
-    options = options || {};
-    var apiKey = options.apiKey;
-    var libraries = options.libraries || ['places'];
-    var version = options.version || '3';
-    var language = options.language || 'en';
-    var url = options.url;
-    var client = options.client;
-    var region = options.region;
-
-    return (0, _ScriptCache.ScriptCache)({
-      google: (0, _GoogleApi2.default)({
-        apiKey: apiKey,
-        language: language,
-        libraries: libraries,
-        version: version,
-        url: url,
-        client: client,
-        region: region
-      })
-    });
-  };
-
-  var DefaultLoadingContainer = function DefaultLoadingContainer(props) {
-    return _react2.default.createElement(
-      'div',
-      null,
-      'Loading...'
-    );
-  };
-
-  var wrapper = exports.wrapper = function wrapper(input) {
-    return function (WrappedComponent) {
-      var Wrapper = function (_React$Component) {
-        _inherits(Wrapper, _React$Component);
-
-        function Wrapper(props, context) {
-          _classCallCheck(this, Wrapper);
-
-          // Build options from input
-          var _this = _possibleConstructorReturn(this, (Wrapper.__proto__ || Object.getPrototypeOf(Wrapper)).call(this, props, context));
-
-          var options = typeof input === 'function' ? input(props) : input;
-
-          // Initialize required Google scripts and other configured options
-          _this.initialize(options);
-
-          _this.state = {
-            loaded: false,
-            map: null,
-            google: null,
-            options: options
-          };
-
-          _this.mapRef = _react2.default.createRef();
-          return _this;
-        }
-
-        _createClass(Wrapper, [{
-          key: 'UNSAFE_componentWillReceiveProps',
-          value: function UNSAFE_componentWillReceiveProps(props) {
-            // Do not update input if it's not dynamic
-            if (typeof input !== 'function') {
-              return;
-            }
-
-            // Get options to compare
-            var prevOptions = this.state.options;
-            var options = typeof input === 'function' ? input(props) : input;
-
-            // Ignore when options are not changed
-            if (isSame(options, prevOptions)) {
-              return;
-            }
-
-            // Initialize with new options
-            this.initialize(options);
-
-            // Save new options in component state,
-            // and remove information about previous API handlers
-            this.setState({
-              options: options,
-              loaded: false,
-              google: null
-            });
-          }
-        }, {
-          key: 'componentWillUnmount',
-          value: function componentWillUnmount() {
-            if (this.unregisterLoadHandler) {
-              this.unregisterLoadHandler();
-            }
-          }
-        }, {
-          key: 'initialize',
-          value: function initialize(options) {
-            // Avoid race condition: remove previous 'load' listener
-            if (this.unregisterLoadHandler) {
-              this.unregisterLoadHandler();
-              this.unregisterLoadHandler = null;
-            }
-
-            // Load cache factory
-            var createCache = options.createCache || defaultCreateCache;
-
-            // Build script
-            this.scriptCache = createCache(options);
-            this.unregisterLoadHandler = this.scriptCache.google.onLoad(this.onLoad.bind(this));
-
-            // Store information about loading container
-            this.LoadingContainer = options.LoadingContainer || DefaultLoadingContainer;
-          }
-        }, {
-          key: 'onLoad',
-          value: function onLoad(err, tag) {
-            this._gapi = window.google;
-
-            this.setState({ loaded: true, google: this._gapi });
-          }
-        }, {
-          key: 'render',
-          value: function render() {
-            var LoadingContainer = this.LoadingContainer;
-
-            if (!this.state.loaded) {
-              return _react2.default.createElement(LoadingContainer, null);
-            }
-
-            var props = Object.assign({}, this.props, {
-              loaded: this.state.loaded,
-              google: window.google
-            });
-
-            return _react2.default.createElement(
-              'div',
-              null,
-              _react2.default.createElement(WrappedComponent, props),
-              _react2.default.createElement('div', { ref: this.mapRef })
-            );
-          }
-        }]);
-
-        return Wrapper;
-      }(_react2.default.Component);
-
-      return Wrapper;
-    };
-  };
-
-  exports.default = wrapper;
-});
-
-/***/ }),
-
-/***/ "./node_modules/google-maps-react/dist/components/Circle.js":
-/*!******************************************************************!*\
-  !*** ./node_modules/google-maps-react/dist/components/Circle.js ***!
-  \******************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;(function (global, factory) {
-  if (true) {
-    !(__WEBPACK_AMD_DEFINE_ARRAY__ = [exports, __webpack_require__(/*! react */ "./node_modules/react/index.js"), __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js"), __webpack_require__(/*! ../lib/arePathsEqual */ "./node_modules/google-maps-react/dist/lib/arePathsEqual.js"), __webpack_require__(/*! ../lib/String */ "./node_modules/google-maps-react/dist/lib/String.js")], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory),
-				__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?
-				(__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__),
-				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
-  } else { var mod; }
-})(this, function (exports, _react, _propTypes, _arePathsEqual, _String) {
-  'use strict';
-
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  exports.Circle = undefined;
-
-  var _react2 = _interopRequireDefault(_react);
-
-  var _propTypes2 = _interopRequireDefault(_propTypes);
-
-  function _interopRequireDefault(obj) {
-    return obj && obj.__esModule ? obj : {
-      default: obj
-    };
-  }
-
-  var _extends = Object.assign || function (target) {
-    for (var i = 1; i < arguments.length; i++) {
-      var source = arguments[i];
-
-      for (var key in source) {
-        if (Object.prototype.hasOwnProperty.call(source, key)) {
-          target[key] = source[key];
-        }
-      }
-    }
-
-    return target;
-  };
-
-  function _objectWithoutProperties(obj, keys) {
-    var target = {};
-
-    for (var i in obj) {
-      if (keys.indexOf(i) >= 0) continue;
-      if (!Object.prototype.hasOwnProperty.call(obj, i)) continue;
-      target[i] = obj[i];
-    }
-
-    return target;
-  }
-
-  function _classCallCheck(instance, Constructor) {
-    if (!(instance instanceof Constructor)) {
-      throw new TypeError("Cannot call a class as a function");
-    }
-  }
-
-  var _createClass = function () {
-    function defineProperties(target, props) {
-      for (var i = 0; i < props.length; i++) {
-        var descriptor = props[i];
-        descriptor.enumerable = descriptor.enumerable || false;
-        descriptor.configurable = true;
-        if ("value" in descriptor) descriptor.writable = true;
-        Object.defineProperty(target, descriptor.key, descriptor);
-      }
-    }
-
-    return function (Constructor, protoProps, staticProps) {
-      if (protoProps) defineProperties(Constructor.prototype, protoProps);
-      if (staticProps) defineProperties(Constructor, staticProps);
-      return Constructor;
-    };
-  }();
-
-  function _possibleConstructorReturn(self, call) {
-    if (!self) {
-      throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-    }
-
-    return call && (typeof call === "object" || typeof call === "function") ? call : self;
-  }
-
-  function _inherits(subClass, superClass) {
-    if (typeof superClass !== "function" && superClass !== null) {
-      throw new TypeError("Super expression must either be null or a function, not " + typeof superClass);
-    }
-
-    subClass.prototype = Object.create(superClass && superClass.prototype, {
-      constructor: {
-        value: subClass,
-        enumerable: false,
-        writable: true,
-        configurable: true
-      }
-    });
-    if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
-  }
-
-  var evtNames = ['click', 'mouseout', 'mouseover'];
-
-  var wrappedPromise = function wrappedPromise() {
-    var wrappedPromise = {},
-        promise = new Promise(function (resolve, reject) {
-      wrappedPromise.resolve = resolve;
-      wrappedPromise.reject = reject;
-    });
-    wrappedPromise.then = promise.then.bind(promise);
-    wrappedPromise.catch = promise.catch.bind(promise);
-    wrappedPromise.promise = promise;
-
-    return wrappedPromise;
-  };
-
-  var Circle = exports.Circle = function (_React$Component) {
-    _inherits(Circle, _React$Component);
-
-    function Circle() {
-      var _ref;
-
-      var _temp, _this, _ret;
-
-      _classCallCheck(this, Circle);
-
-      for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-        args[_key] = arguments[_key];
-      }
-
-      return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Circle.__proto__ || Object.getPrototypeOf(Circle)).call.apply(_ref, [this].concat(args))), _this), _this.centerChanged = function (newCenter) {
-        var _this$props$center = _this.props.center,
-            lat = _this$props$center.lat,
-            lng = _this$props$center.lng;
-
-        return lat !== newCenter.lat || lng !== newCenter.lng;
-      }, _this.propsChanged = function (newProps) {
-        if (_this.centerChanged(newProps.center)) return true;
-
-        return Object.keys(Circle.propTypes).some(function (key) {
-          return _this.props[key] !== newProps[key];
-        });
-      }, _this.destroyCircle = function () {
-        if (_this.circle) {
-          _this.circle.setMap(null);
-        }
-      }, _temp), _possibleConstructorReturn(_this, _ret);
-    }
-
-    _createClass(Circle, [{
-      key: 'componentDidMount',
-      value: function componentDidMount() {
-        this.circlePromise = wrappedPromise();
-        this.renderCircle();
-      }
-    }, {
-      key: 'componentDidUpdate',
-      value: function componentDidUpdate(prevProps) {
-        var _props = this.props,
-            path = _props.path,
-            map = _props.map;
-
-
-        if (this.propsChanged(prevProps) || map !== prevProps.map || !(0, _arePathsEqual.arePathsEqual)(path, prevProps.path)) {
-          this.destroyCircle();
-          this.renderCircle();
-        }
-      }
-    }, {
-      key: 'componentWillUnmount',
-      value: function componentWillUnmount() {
-        this.destroyCircle();
-      }
-    }, {
-      key: 'renderCircle',
-      value: function renderCircle() {
-        var _this2 = this;
-
-        var _props2 = this.props,
-            map = _props2.map,
-            google = _props2.google,
-            center = _props2.center,
-            radius = _props2.radius,
-            strokeColor = _props2.strokeColor,
-            strokeOpacity = _props2.strokeOpacity,
-            strokeWeight = _props2.strokeWeight,
-            fillColor = _props2.fillColor,
-            fillOpacity = _props2.fillOpacity,
-            draggable = _props2.draggable,
-            visible = _props2.visible,
-            props = _objectWithoutProperties(_props2, ['map', 'google', 'center', 'radius', 'strokeColor', 'strokeOpacity', 'strokeWeight', 'fillColor', 'fillOpacity', 'draggable', 'visible']);
-
-        if (!google) {
-          return null;
-        }
-
-        var params = _extends({}, props, {
-          map: map,
-          center: center,
-          radius: radius,
-          draggable: draggable,
-          visible: visible,
-          options: {
-            strokeColor: strokeColor,
-            strokeOpacity: strokeOpacity,
-            strokeWeight: strokeWeight,
-            fillColor: fillColor,
-            fillOpacity: fillOpacity
-          }
-        });
-
-        this.circle = new google.maps.Circle(params);
-
-        evtNames.forEach(function (e) {
-          _this2.circle.addListener(e, _this2.handleEvent(e));
-        });
-
-        this.circlePromise.resolve(this.circle);
-      }
-    }, {
-      key: 'getCircle',
-      value: function getCircle() {
-        return this.circlePromise;
-      }
-    }, {
-      key: 'handleEvent',
-      value: function handleEvent(evt) {
-        var _this3 = this;
-
-        return function (e) {
-          var evtName = 'on' + (0, _String.camelize)(evt);
-          if (_this3.props[evtName]) {
-            _this3.props[evtName](_this3.props, _this3.circle, e);
-          }
-        };
-      }
-    }, {
-      key: 'render',
-      value: function render() {
-        return null;
-      }
-    }]);
-
-    return Circle;
-  }(_react2.default.Component);
-
-  Circle.propTypes = {
-    center: _propTypes2.default.object,
-    radius: _propTypes2.default.number,
-    strokeColor: _propTypes2.default.string,
-    strokeOpacity: _propTypes2.default.number,
-    strokeWeight: _propTypes2.default.number,
-    fillColor: _propTypes2.default.string,
-    fillOpacity: _propTypes2.default.number,
-    draggable: _propTypes2.default.bool,
-    visible: _propTypes2.default.bool
-  };
-
-  evtNames.forEach(function (e) {
-    return Circle.propTypes[e] = _propTypes2.default.func;
-  });
-
-  Circle.defaultProps = {
-    name: 'Circle'
-  };
-
-  exports.default = Circle;
-});
-
-/***/ }),
-
-/***/ "./node_modules/google-maps-react/dist/components/HeatMap.js":
-/*!*******************************************************************!*\
-  !*** ./node_modules/google-maps-react/dist/components/HeatMap.js ***!
-  \*******************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;(function (global, factory) {
-  if (true) {
-    !(__WEBPACK_AMD_DEFINE_ARRAY__ = [exports, __webpack_require__(/*! react */ "./node_modules/react/index.js"), __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js"), __webpack_require__(/*! ../lib/String */ "./node_modules/google-maps-react/dist/lib/String.js")], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory),
-				__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?
-				(__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__),
-				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
-  } else { var mod; }
-})(this, function (exports, _react, _propTypes, _String) {
-  'use strict';
-
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  exports.HeatMap = undefined;
-
-  var _react2 = _interopRequireDefault(_react);
-
-  var _propTypes2 = _interopRequireDefault(_propTypes);
-
-  function _interopRequireDefault(obj) {
-    return obj && obj.__esModule ? obj : {
-      default: obj
-    };
-  }
-
-  var _extends = Object.assign || function (target) {
-    for (var i = 1; i < arguments.length; i++) {
-      var source = arguments[i];
-
-      for (var key in source) {
-        if (Object.prototype.hasOwnProperty.call(source, key)) {
-          target[key] = source[key];
-        }
-      }
-    }
-
-    return target;
-  };
-
-  function _objectWithoutProperties(obj, keys) {
-    var target = {};
-
-    for (var i in obj) {
-      if (keys.indexOf(i) >= 0) continue;
-      if (!Object.prototype.hasOwnProperty.call(obj, i)) continue;
-      target[i] = obj[i];
-    }
-
-    return target;
-  }
-
-  function _classCallCheck(instance, Constructor) {
-    if (!(instance instanceof Constructor)) {
-      throw new TypeError("Cannot call a class as a function");
-    }
-  }
-
-  var _createClass = function () {
-    function defineProperties(target, props) {
-      for (var i = 0; i < props.length; i++) {
-        var descriptor = props[i];
-        descriptor.enumerable = descriptor.enumerable || false;
-        descriptor.configurable = true;
-        if ("value" in descriptor) descriptor.writable = true;
-        Object.defineProperty(target, descriptor.key, descriptor);
-      }
-    }
-
-    return function (Constructor, protoProps, staticProps) {
-      if (protoProps) defineProperties(Constructor.prototype, protoProps);
-      if (staticProps) defineProperties(Constructor, staticProps);
-      return Constructor;
-    };
-  }();
-
-  function _possibleConstructorReturn(self, call) {
-    if (!self) {
-      throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-    }
-
-    return call && (typeof call === "object" || typeof call === "function") ? call : self;
-  }
-
-  function _inherits(subClass, superClass) {
-    if (typeof superClass !== "function" && superClass !== null) {
-      throw new TypeError("Super expression must either be null or a function, not " + typeof superClass);
-    }
-
-    subClass.prototype = Object.create(superClass && superClass.prototype, {
-      constructor: {
-        value: subClass,
-        enumerable: false,
-        writable: true,
-        configurable: true
-      }
-    });
-    if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
-  }
-
-  var evtNames = ['click', 'mouseover', 'recenter'];
-
-  var wrappedPromise = function wrappedPromise() {
-    var wrappedPromise = {},
-        promise = new Promise(function (resolve, reject) {
-      wrappedPromise.resolve = resolve;
-      wrappedPromise.reject = reject;
-    });
-    wrappedPromise.then = promise.then.bind(promise);
-    wrappedPromise.catch = promise.catch.bind(promise);
-    wrappedPromise.promise = promise;
-
-    return wrappedPromise;
-  };
-
-  var HeatMap = exports.HeatMap = function (_React$Component) {
-    _inherits(HeatMap, _React$Component);
-
-    function HeatMap() {
-      _classCallCheck(this, HeatMap);
-
-      return _possibleConstructorReturn(this, (HeatMap.__proto__ || Object.getPrototypeOf(HeatMap)).apply(this, arguments));
-    }
-
-    _createClass(HeatMap, [{
-      key: 'componentDidMount',
-      value: function componentDidMount() {
-        this.heatMapPromise = wrappedPromise();
-        this.renderHeatMap();
-      }
-    }, {
-      key: 'componentDidUpdate',
-      value: function componentDidUpdate(prevProps) {
-        if (this.props.map !== prevProps.map || this.props.position !== prevProps.position) {
-          if (this.heatMap) {
-            this.heatMap.setMap(null);
-            this.renderHeatMap();
-          }
-        }
-      }
-    }, {
-      key: 'componentWillUnmount',
-      value: function componentWillUnmount() {
-        if (this.heatMap) {
-          this.heatMap.setMap(null);
-        }
-      }
-    }, {
-      key: 'renderHeatMap',
-      value: function renderHeatMap() {
-        var _this2 = this;
-
-        var _props = this.props,
-            map = _props.map,
-            google = _props.google,
-            positions = _props.positions,
-            mapCenter = _props.mapCenter,
-            icon = _props.icon,
-            gradient = _props.gradient,
-            _props$radius = _props.radius,
-            radius = _props$radius === undefined ? 20 : _props$radius,
-            _props$opacity = _props.opacity,
-            opacity = _props$opacity === undefined ? 0.2 : _props$opacity,
-            props = _objectWithoutProperties(_props, ['map', 'google', 'positions', 'mapCenter', 'icon', 'gradient', 'radius', 'opacity']);
-
-        if (!google) {
-          return null;
-        }
-
-        var data = positions.map(function (pos) {
-          return { location: new google.maps.LatLng(pos.lat, pos.lng), weight: pos.weight };
-        });
-
-        var pref = _extends({
-          map: map,
-          gradient: gradient,
-          radius: radius,
-          opacity: opacity,
-          data: data
-        }, props);
-
-        this.heatMap = new google.maps.visualization.HeatmapLayer(pref);
-
-        this.heatMap.set('radius', radius === undefined ? 20 : radius);
-
-        this.heatMap.set('opacity', opacity === undefined ? 0.2 : opacity);
-
-        evtNames.forEach(function (e) {
-          _this2.heatMap.addListener(e, _this2.handleEvent(e));
-        });
-
-        this.heatMapPromise.resolve(this.heatMap);
-      }
-    }, {
-      key: 'getHeatMap',
-      value: function getHeatMap() {
-        return this.heatMapPromise;
-      }
-    }, {
-      key: 'handleEvent',
-      value: function handleEvent(evt) {
-        var _this3 = this;
-
-        return function (e) {
-          var evtName = 'on' + (0, _String.camelize)(evt);
-          if (_this3.props[evtName]) {
-            _this3.props[evtName](_this3.props, _this3.heatMap, e);
-          }
-        };
-      }
-    }, {
-      key: 'render',
-      value: function render() {
-        return null;
-      }
-    }]);
-
-    return HeatMap;
-  }(_react2.default.Component);
-
-  HeatMap.propTypes = {
-    position: _propTypes2.default.object,
-    map: _propTypes2.default.object,
-    icon: _propTypes2.default.string
-  };
-
-  evtNames.forEach(function (e) {
-    return HeatMap.propTypes[e] = _propTypes2.default.func;
-  });
-
-  HeatMap.defaultProps = {
-    name: 'HeatMap'
-  };
-
-  exports.default = HeatMap;
-});
-
-/***/ }),
-
-/***/ "./node_modules/google-maps-react/dist/components/InfoWindow.js":
-/*!**********************************************************************!*\
-  !*** ./node_modules/google-maps-react/dist/components/InfoWindow.js ***!
-  \**********************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;(function (global, factory) {
-  if (true) {
-    !(__WEBPACK_AMD_DEFINE_ARRAY__ = [exports, __webpack_require__(/*! react */ "./node_modules/react/index.js"), __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js"), __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js"), __webpack_require__(/*! react-dom/server */ "./node_modules/react-dom/server.browser.js")], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory),
-				__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?
-				(__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__),
-				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
-  } else { var mod; }
-})(this, function (exports, _react, _propTypes, _reactDom, _server) {
-  'use strict';
-
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  exports.InfoWindow = undefined;
-
-  var _react2 = _interopRequireDefault(_react);
-
-  var _propTypes2 = _interopRequireDefault(_propTypes);
-
-  var _reactDom2 = _interopRequireDefault(_reactDom);
-
-  var _server2 = _interopRequireDefault(_server);
-
-  function _interopRequireDefault(obj) {
-    return obj && obj.__esModule ? obj : {
-      default: obj
-    };
-  }
-
-  var _extends = Object.assign || function (target) {
-    for (var i = 1; i < arguments.length; i++) {
-      var source = arguments[i];
-
-      for (var key in source) {
-        if (Object.prototype.hasOwnProperty.call(source, key)) {
-          target[key] = source[key];
-        }
-      }
-    }
-
-    return target;
-  };
-
-  function _objectWithoutProperties(obj, keys) {
-    var target = {};
-
-    for (var i in obj) {
-      if (keys.indexOf(i) >= 0) continue;
-      if (!Object.prototype.hasOwnProperty.call(obj, i)) continue;
-      target[i] = obj[i];
-    }
-
-    return target;
-  }
-
-  function _classCallCheck(instance, Constructor) {
-    if (!(instance instanceof Constructor)) {
-      throw new TypeError("Cannot call a class as a function");
-    }
-  }
-
-  var _createClass = function () {
-    function defineProperties(target, props) {
-      for (var i = 0; i < props.length; i++) {
-        var descriptor = props[i];
-        descriptor.enumerable = descriptor.enumerable || false;
-        descriptor.configurable = true;
-        if ("value" in descriptor) descriptor.writable = true;
-        Object.defineProperty(target, descriptor.key, descriptor);
-      }
-    }
-
-    return function (Constructor, protoProps, staticProps) {
-      if (protoProps) defineProperties(Constructor.prototype, protoProps);
-      if (staticProps) defineProperties(Constructor, staticProps);
-      return Constructor;
-    };
-  }();
-
-  function _possibleConstructorReturn(self, call) {
-    if (!self) {
-      throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-    }
-
-    return call && (typeof call === "object" || typeof call === "function") ? call : self;
-  }
-
-  function _inherits(subClass, superClass) {
-    if (typeof superClass !== "function" && superClass !== null) {
-      throw new TypeError("Super expression must either be null or a function, not " + typeof superClass);
-    }
-
-    subClass.prototype = Object.create(superClass && superClass.prototype, {
-      constructor: {
-        value: subClass,
-        enumerable: false,
-        writable: true,
-        configurable: true
-      }
-    });
-    if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
-  }
-
-  var InfoWindow = exports.InfoWindow = function (_React$Component) {
-    _inherits(InfoWindow, _React$Component);
-
-    function InfoWindow() {
-      _classCallCheck(this, InfoWindow);
-
-      return _possibleConstructorReturn(this, (InfoWindow.__proto__ || Object.getPrototypeOf(InfoWindow)).apply(this, arguments));
-    }
-
-    _createClass(InfoWindow, [{
-      key: 'componentDidMount',
-      value: function componentDidMount() {
-        this.renderInfoWindow();
-      }
-    }, {
-      key: 'componentDidUpdate',
-      value: function componentDidUpdate(prevProps) {
-        var _props = this.props,
-            google = _props.google,
-            map = _props.map;
-
-
-        if (!google || !map) {
-          return;
-        }
-
-        if (map !== prevProps.map) {
-          this.renderInfoWindow();
-        }
-
-        if (this.props.position !== prevProps.position) {
-          this.updatePosition();
-        }
-
-        if (this.props.children !== prevProps.children) {
-          this.updateContent();
-        }
-
-        if (this.props.visible !== prevProps.visible || this.props.marker !== prevProps.marker || this.props.position !== prevProps.position) {
-          this.props.visible ? this.openWindow() : this.closeWindow();
-        }
-      }
-    }, {
-      key: 'renderInfoWindow',
-      value: function renderInfoWindow() {
-        var _props2 = this.props,
-            map = _props2.map,
-            google = _props2.google,
-            mapCenter = _props2.mapCenter,
-            props = _objectWithoutProperties(_props2, ['map', 'google', 'mapCenter']);
-
-        if (!google || !google.maps) {
-          return;
-        }
-
-        var iw = this.infowindow = new google.maps.InfoWindow(_extends({
-          content: ''
-        }, props));
-
-        google.maps.event.addListener(iw, 'closeclick', this.onClose.bind(this));
-        google.maps.event.addListener(iw, 'domready', this.onOpen.bind(this));
-      }
-    }, {
-      key: 'onOpen',
-      value: function onOpen() {
-        if (this.props.onOpen) {
-          this.props.onOpen();
-        }
-      }
-    }, {
-      key: 'onClose',
-      value: function onClose() {
-        if (this.props.onClose) {
-          this.props.onClose();
-        }
-      }
-    }, {
-      key: 'openWindow',
-      value: function openWindow() {
-        this.infowindow.open(this.props.map, this.props.marker);
-      }
-    }, {
-      key: 'updatePosition',
-      value: function updatePosition() {
-        var pos = this.props.position;
-        if (!(pos instanceof google.maps.LatLng)) {
-          pos = pos && new google.maps.LatLng(pos.lat, pos.lng);
-        }
-        this.infowindow.setPosition(pos);
-      }
-    }, {
-      key: 'updateContent',
-      value: function updateContent() {
-        var content = this.renderChildren();
-        this.infowindow.setContent(content);
-      }
-    }, {
-      key: 'closeWindow',
-      value: function closeWindow() {
-        this.infowindow.close();
-      }
-    }, {
-      key: 'renderChildren',
-      value: function renderChildren() {
-        var children = this.props.children;
-
-        return _server2.default.renderToString(children);
-      }
-    }, {
-      key: 'render',
-      value: function render() {
-        return null;
-      }
-    }]);
-
-    return InfoWindow;
-  }(_react2.default.Component);
-
-  InfoWindow.propTypes = {
-    children: _propTypes2.default.element.isRequired,
-    map: _propTypes2.default.object,
-    marker: _propTypes2.default.object,
-    position: _propTypes2.default.object,
-    visible: _propTypes2.default.bool,
-
-    // callbacks
-    onClose: _propTypes2.default.func,
-    onOpen: _propTypes2.default.func
-  };
-
-  InfoWindow.defaultProps = {
-    visible: false
-  };
-
-  exports.default = InfoWindow;
-});
-
-/***/ }),
-
-/***/ "./node_modules/google-maps-react/dist/components/Marker.js":
-/*!******************************************************************!*\
-  !*** ./node_modules/google-maps-react/dist/components/Marker.js ***!
-  \******************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;(function (global, factory) {
-  if (true) {
-    !(__WEBPACK_AMD_DEFINE_ARRAY__ = [exports, __webpack_require__(/*! react */ "./node_modules/react/index.js"), __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js"), __webpack_require__(/*! ../lib/String */ "./node_modules/google-maps-react/dist/lib/String.js")], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory),
-				__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?
-				(__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__),
-				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
-  } else { var mod; }
-})(this, function (exports, _react, _propTypes, _String) {
-  'use strict';
-
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  exports.Marker = undefined;
-
-  var _react2 = _interopRequireDefault(_react);
-
-  var _propTypes2 = _interopRequireDefault(_propTypes);
-
-  function _interopRequireDefault(obj) {
-    return obj && obj.__esModule ? obj : {
-      default: obj
-    };
-  }
-
-  var _extends = Object.assign || function (target) {
-    for (var i = 1; i < arguments.length; i++) {
-      var source = arguments[i];
-
-      for (var key in source) {
-        if (Object.prototype.hasOwnProperty.call(source, key)) {
-          target[key] = source[key];
-        }
-      }
-    }
-
-    return target;
-  };
-
-  function _objectWithoutProperties(obj, keys) {
-    var target = {};
-
-    for (var i in obj) {
-      if (keys.indexOf(i) >= 0) continue;
-      if (!Object.prototype.hasOwnProperty.call(obj, i)) continue;
-      target[i] = obj[i];
-    }
-
-    return target;
-  }
-
-  function _classCallCheck(instance, Constructor) {
-    if (!(instance instanceof Constructor)) {
-      throw new TypeError("Cannot call a class as a function");
-    }
-  }
-
-  var _createClass = function () {
-    function defineProperties(target, props) {
-      for (var i = 0; i < props.length; i++) {
-        var descriptor = props[i];
-        descriptor.enumerable = descriptor.enumerable || false;
-        descriptor.configurable = true;
-        if ("value" in descriptor) descriptor.writable = true;
-        Object.defineProperty(target, descriptor.key, descriptor);
-      }
-    }
-
-    return function (Constructor, protoProps, staticProps) {
-      if (protoProps) defineProperties(Constructor.prototype, protoProps);
-      if (staticProps) defineProperties(Constructor, staticProps);
-      return Constructor;
-    };
-  }();
-
-  function _possibleConstructorReturn(self, call) {
-    if (!self) {
-      throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-    }
-
-    return call && (typeof call === "object" || typeof call === "function") ? call : self;
-  }
-
-  function _inherits(subClass, superClass) {
-    if (typeof superClass !== "function" && superClass !== null) {
-      throw new TypeError("Super expression must either be null or a function, not " + typeof superClass);
-    }
-
-    subClass.prototype = Object.create(superClass && superClass.prototype, {
-      constructor: {
-        value: subClass,
-        enumerable: false,
-        writable: true,
-        configurable: true
-      }
-    });
-    if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
-  }
-
-  var evtNames = ['click', 'dblclick', 'dragend', 'mousedown', 'mouseout', 'mouseover', 'mouseup', 'recenter'];
-
-  var wrappedPromise = function wrappedPromise() {
-    var wrappedPromise = {},
-        promise = new Promise(function (resolve, reject) {
-      wrappedPromise.resolve = resolve;
-      wrappedPromise.reject = reject;
-    });
-    wrappedPromise.then = promise.then.bind(promise);
-    wrappedPromise.catch = promise.catch.bind(promise);
-    wrappedPromise.promise = promise;
-
-    return wrappedPromise;
-  };
-
-  var Marker = exports.Marker = function (_React$Component) {
-    _inherits(Marker, _React$Component);
-
-    function Marker() {
-      _classCallCheck(this, Marker);
-
-      return _possibleConstructorReturn(this, (Marker.__proto__ || Object.getPrototypeOf(Marker)).apply(this, arguments));
-    }
-
-    _createClass(Marker, [{
-      key: 'componentDidMount',
-      value: function componentDidMount() {
-        this.markerPromise = wrappedPromise();
-        this.renderMarker();
-      }
-    }, {
-      key: 'componentDidUpdate',
-      value: function componentDidUpdate(prevProps) {
-        if (this.props.map !== prevProps.map || this.props.position !== prevProps.position || this.props.icon !== prevProps.icon) {
-          if (this.marker) {
-            this.marker.setMap(null);
-          }
-          this.renderMarker();
-        }
-      }
-    }, {
-      key: 'componentWillUnmount',
-      value: function componentWillUnmount() {
-        if (this.marker) {
-          this.marker.setMap(null);
-        }
-      }
-    }, {
-      key: 'renderMarker',
-      value: function renderMarker() {
-        var _this2 = this;
-
-        var _props = this.props,
-            map = _props.map,
-            google = _props.google,
-            position = _props.position,
-            mapCenter = _props.mapCenter,
-            icon = _props.icon,
-            label = _props.label,
-            draggable = _props.draggable,
-            title = _props.title,
-            props = _objectWithoutProperties(_props, ['map', 'google', 'position', 'mapCenter', 'icon', 'label', 'draggable', 'title']);
-
-        if (!google) {
-          return null;
-        }
-
-        var pos = position || mapCenter;
-        if (!(pos instanceof google.maps.LatLng)) {
-          pos = new google.maps.LatLng(pos.lat, pos.lng);
-        }
-
-        var pref = _extends({
-          map: map,
-          position: pos,
-          icon: icon,
-          label: label,
-          title: title,
-          draggable: draggable
-        }, props);
-        this.marker = new google.maps.Marker(pref);
-
-        evtNames.forEach(function (e) {
-          _this2.marker.addListener(e, _this2.handleEvent(e));
-        });
-
-        this.markerPromise.resolve(this.marker);
-      }
-    }, {
-      key: 'getMarker',
-      value: function getMarker() {
-        return this.markerPromise;
-      }
-    }, {
-      key: 'handleEvent',
-      value: function handleEvent(evt) {
-        var _this3 = this;
-
-        return function (e) {
-          var evtName = 'on' + (0, _String.camelize)(evt);
-          if (_this3.props[evtName]) {
-            _this3.props[evtName](_this3.props, _this3.marker, e);
-          }
-        };
-      }
-    }, {
-      key: 'render',
-      value: function render() {
-        return null;
-      }
-    }]);
-
-    return Marker;
-  }(_react2.default.Component);
-
-  Marker.propTypes = {
-    position: _propTypes2.default.object,
-    map: _propTypes2.default.object
-  };
-
-  evtNames.forEach(function (e) {
-    return Marker.propTypes[e] = _propTypes2.default.func;
-  });
-
-  Marker.defaultProps = {
-    name: 'Marker'
-  };
-
-  exports.default = Marker;
-});
-
-/***/ }),
-
-/***/ "./node_modules/google-maps-react/dist/components/Polygon.js":
-/*!*******************************************************************!*\
-  !*** ./node_modules/google-maps-react/dist/components/Polygon.js ***!
-  \*******************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;(function (global, factory) {
-  if (true) {
-    !(__WEBPACK_AMD_DEFINE_ARRAY__ = [exports, __webpack_require__(/*! react */ "./node_modules/react/index.js"), __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js"), __webpack_require__(/*! ../lib/arePathsEqual */ "./node_modules/google-maps-react/dist/lib/arePathsEqual.js"), __webpack_require__(/*! ../lib/String */ "./node_modules/google-maps-react/dist/lib/String.js")], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory),
-				__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?
-				(__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__),
-				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
-  } else { var mod; }
-})(this, function (exports, _react, _propTypes, _arePathsEqual, _String) {
-  'use strict';
-
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  exports.Polygon = undefined;
-
-  var _react2 = _interopRequireDefault(_react);
-
-  var _propTypes2 = _interopRequireDefault(_propTypes);
-
-  function _interopRequireDefault(obj) {
-    return obj && obj.__esModule ? obj : {
-      default: obj
-    };
-  }
-
-  var _extends = Object.assign || function (target) {
-    for (var i = 1; i < arguments.length; i++) {
-      var source = arguments[i];
-
-      for (var key in source) {
-        if (Object.prototype.hasOwnProperty.call(source, key)) {
-          target[key] = source[key];
-        }
-      }
-    }
-
-    return target;
-  };
-
-  function _objectWithoutProperties(obj, keys) {
-    var target = {};
-
-    for (var i in obj) {
-      if (keys.indexOf(i) >= 0) continue;
-      if (!Object.prototype.hasOwnProperty.call(obj, i)) continue;
-      target[i] = obj[i];
-    }
-
-    return target;
-  }
-
-  function _classCallCheck(instance, Constructor) {
-    if (!(instance instanceof Constructor)) {
-      throw new TypeError("Cannot call a class as a function");
-    }
-  }
-
-  var _createClass = function () {
-    function defineProperties(target, props) {
-      for (var i = 0; i < props.length; i++) {
-        var descriptor = props[i];
-        descriptor.enumerable = descriptor.enumerable || false;
-        descriptor.configurable = true;
-        if ("value" in descriptor) descriptor.writable = true;
-        Object.defineProperty(target, descriptor.key, descriptor);
-      }
-    }
-
-    return function (Constructor, protoProps, staticProps) {
-      if (protoProps) defineProperties(Constructor.prototype, protoProps);
-      if (staticProps) defineProperties(Constructor, staticProps);
-      return Constructor;
-    };
-  }();
-
-  function _possibleConstructorReturn(self, call) {
-    if (!self) {
-      throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-    }
-
-    return call && (typeof call === "object" || typeof call === "function") ? call : self;
-  }
-
-  function _inherits(subClass, superClass) {
-    if (typeof superClass !== "function" && superClass !== null) {
-      throw new TypeError("Super expression must either be null or a function, not " + typeof superClass);
-    }
-
-    subClass.prototype = Object.create(superClass && superClass.prototype, {
-      constructor: {
-        value: subClass,
-        enumerable: false,
-        writable: true,
-        configurable: true
-      }
-    });
-    if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
-  }
-
-  var evtNames = ['click', 'mouseout', 'mouseover'];
-
-  var wrappedPromise = function wrappedPromise() {
-    var wrappedPromise = {},
-        promise = new Promise(function (resolve, reject) {
-      wrappedPromise.resolve = resolve;
-      wrappedPromise.reject = reject;
-    });
-    wrappedPromise.then = promise.then.bind(promise);
-    wrappedPromise.catch = promise.catch.bind(promise);
-    wrappedPromise.promise = promise;
-
-    return wrappedPromise;
-  };
-
-  var Polygon = exports.Polygon = function (_React$Component) {
-    _inherits(Polygon, _React$Component);
-
-    function Polygon() {
-      _classCallCheck(this, Polygon);
-
-      return _possibleConstructorReturn(this, (Polygon.__proto__ || Object.getPrototypeOf(Polygon)).apply(this, arguments));
-    }
-
-    _createClass(Polygon, [{
-      key: 'componentDidMount',
-      value: function componentDidMount() {
-        this.polygonPromise = wrappedPromise();
-        this.renderPolygon();
-      }
-    }, {
-      key: 'componentDidUpdate',
-      value: function componentDidUpdate(prevProps) {
-        if (this.props.map !== prevProps.map || !(0, _arePathsEqual.arePathsEqual)(this.props.paths, prevProps.paths)) {
-          if (this.polygon) {
-            this.polygon.setMap(null);
-          }
-          this.renderPolygon();
-        }
-      }
-    }, {
-      key: 'componentWillUnmount',
-      value: function componentWillUnmount() {
-        if (this.polygon) {
-          this.polygon.setMap(null);
-        }
-      }
-    }, {
-      key: 'renderPolygon',
-      value: function renderPolygon() {
-        var _this2 = this;
-
-        var _props = this.props,
-            map = _props.map,
-            google = _props.google,
-            paths = _props.paths,
-            strokeColor = _props.strokeColor,
-            strokeOpacity = _props.strokeOpacity,
-            strokeWeight = _props.strokeWeight,
-            fillColor = _props.fillColor,
-            fillOpacity = _props.fillOpacity,
-            props = _objectWithoutProperties(_props, ['map', 'google', 'paths', 'strokeColor', 'strokeOpacity', 'strokeWeight', 'fillColor', 'fillOpacity']);
-
-        if (!google) {
-          return null;
-        }
-
-        var params = _extends({
-          map: map,
-          paths: paths,
-          strokeColor: strokeColor,
-          strokeOpacity: strokeOpacity,
-          strokeWeight: strokeWeight,
-          fillColor: fillColor,
-          fillOpacity: fillOpacity
-        }, props);
-
-        this.polygon = new google.maps.Polygon(params);
-
-        evtNames.forEach(function (e) {
-          _this2.polygon.addListener(e, _this2.handleEvent(e));
-        });
-
-        this.polygonPromise.resolve(this.polygon);
-      }
-    }, {
-      key: 'getPolygon',
-      value: function getPolygon() {
-        return this.polygonPromise;
-      }
-    }, {
-      key: 'handleEvent',
-      value: function handleEvent(evt) {
-        var _this3 = this;
-
-        return function (e) {
-          var evtName = 'on' + (0, _String.camelize)(evt);
-          if (_this3.props[evtName]) {
-            _this3.props[evtName](_this3.props, _this3.polygon, e);
-          }
-        };
-      }
-    }, {
-      key: 'render',
-      value: function render() {
-        return null;
-      }
-    }]);
-
-    return Polygon;
-  }(_react2.default.Component);
-
-  Polygon.propTypes = {
-    paths: _propTypes2.default.array,
-    strokeColor: _propTypes2.default.string,
-    strokeOpacity: _propTypes2.default.number,
-    strokeWeight: _propTypes2.default.number,
-    fillColor: _propTypes2.default.string,
-    fillOpacity: _propTypes2.default.number
-  };
-
-  evtNames.forEach(function (e) {
-    return Polygon.propTypes[e] = _propTypes2.default.func;
-  });
-
-  Polygon.defaultProps = {
-    name: 'Polygon'
-  };
-
-  exports.default = Polygon;
-});
-
-/***/ }),
-
-/***/ "./node_modules/google-maps-react/dist/components/Polyline.js":
-/*!********************************************************************!*\
-  !*** ./node_modules/google-maps-react/dist/components/Polyline.js ***!
-  \********************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;(function (global, factory) {
-  if (true) {
-    !(__WEBPACK_AMD_DEFINE_ARRAY__ = [exports, __webpack_require__(/*! react */ "./node_modules/react/index.js"), __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js"), __webpack_require__(/*! ../lib/arePathsEqual */ "./node_modules/google-maps-react/dist/lib/arePathsEqual.js"), __webpack_require__(/*! ../lib/String */ "./node_modules/google-maps-react/dist/lib/String.js")], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory),
-				__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?
-				(__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__),
-				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
-  } else { var mod; }
-})(this, function (exports, _react, _propTypes, _arePathsEqual, _String) {
-  'use strict';
-
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  exports.Polyline = undefined;
-
-  var _react2 = _interopRequireDefault(_react);
-
-  var _propTypes2 = _interopRequireDefault(_propTypes);
-
-  function _interopRequireDefault(obj) {
-    return obj && obj.__esModule ? obj : {
-      default: obj
-    };
-  }
-
-  var _extends = Object.assign || function (target) {
-    for (var i = 1; i < arguments.length; i++) {
-      var source = arguments[i];
-
-      for (var key in source) {
-        if (Object.prototype.hasOwnProperty.call(source, key)) {
-          target[key] = source[key];
-        }
-      }
-    }
-
-    return target;
-  };
-
-  function _objectWithoutProperties(obj, keys) {
-    var target = {};
-
-    for (var i in obj) {
-      if (keys.indexOf(i) >= 0) continue;
-      if (!Object.prototype.hasOwnProperty.call(obj, i)) continue;
-      target[i] = obj[i];
-    }
-
-    return target;
-  }
-
-  function _classCallCheck(instance, Constructor) {
-    if (!(instance instanceof Constructor)) {
-      throw new TypeError("Cannot call a class as a function");
-    }
-  }
-
-  var _createClass = function () {
-    function defineProperties(target, props) {
-      for (var i = 0; i < props.length; i++) {
-        var descriptor = props[i];
-        descriptor.enumerable = descriptor.enumerable || false;
-        descriptor.configurable = true;
-        if ("value" in descriptor) descriptor.writable = true;
-        Object.defineProperty(target, descriptor.key, descriptor);
-      }
-    }
-
-    return function (Constructor, protoProps, staticProps) {
-      if (protoProps) defineProperties(Constructor.prototype, protoProps);
-      if (staticProps) defineProperties(Constructor, staticProps);
-      return Constructor;
-    };
-  }();
-
-  function _possibleConstructorReturn(self, call) {
-    if (!self) {
-      throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-    }
-
-    return call && (typeof call === "object" || typeof call === "function") ? call : self;
-  }
-
-  function _inherits(subClass, superClass) {
-    if (typeof superClass !== "function" && superClass !== null) {
-      throw new TypeError("Super expression must either be null or a function, not " + typeof superClass);
-    }
-
-    subClass.prototype = Object.create(superClass && superClass.prototype, {
-      constructor: {
-        value: subClass,
-        enumerable: false,
-        writable: true,
-        configurable: true
-      }
-    });
-    if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
-  }
-
-  var evtNames = ['click', 'mouseout', 'mouseover'];
-
-  var wrappedPromise = function wrappedPromise() {
-    var wrappedPromise = {},
-        promise = new Promise(function (resolve, reject) {
-      wrappedPromise.resolve = resolve;
-      wrappedPromise.reject = reject;
-    });
-    wrappedPromise.then = promise.then.bind(promise);
-    wrappedPromise.catch = promise.catch.bind(promise);
-    wrappedPromise.promise = promise;
-
-    return wrappedPromise;
-  };
-
-  var Polyline = exports.Polyline = function (_React$Component) {
-    _inherits(Polyline, _React$Component);
-
-    function Polyline() {
-      _classCallCheck(this, Polyline);
-
-      return _possibleConstructorReturn(this, (Polyline.__proto__ || Object.getPrototypeOf(Polyline)).apply(this, arguments));
-    }
-
-    _createClass(Polyline, [{
-      key: 'componentDidMount',
-      value: function componentDidMount() {
-        this.polylinePromise = wrappedPromise();
-        this.renderPolyline();
-      }
-    }, {
-      key: 'componentDidUpdate',
-      value: function componentDidUpdate(prevProps) {
-        if (this.props.map !== prevProps.map || !(0, _arePathsEqual.arePathsEqual)(this.props.path, prevProps.path)) {
-          if (this.polyline) {
-            this.polyline.setMap(null);
-          }
-          this.renderPolyline();
-        }
-      }
-    }, {
-      key: 'componentWillUnmount',
-      value: function componentWillUnmount() {
-        if (this.polyline) {
-          this.polyline.setMap(null);
-        }
-      }
-    }, {
-      key: 'renderPolyline',
-      value: function renderPolyline() {
-        var _this2 = this;
-
-        var _props = this.props,
-            map = _props.map,
-            google = _props.google,
-            path = _props.path,
-            strokeColor = _props.strokeColor,
-            strokeOpacity = _props.strokeOpacity,
-            strokeWeight = _props.strokeWeight,
-            props = _objectWithoutProperties(_props, ['map', 'google', 'path', 'strokeColor', 'strokeOpacity', 'strokeWeight']);
-
-        if (!google) {
-          return null;
-        }
-
-        var params = _extends({
-          map: map,
-          path: path,
-          strokeColor: strokeColor,
-          strokeOpacity: strokeOpacity,
-          strokeWeight: strokeWeight
-        }, props);
-
-        this.polyline = new google.maps.Polyline(params);
-
-        evtNames.forEach(function (e) {
-          _this2.polyline.addListener(e, _this2.handleEvent(e));
-        });
-
-        this.polylinePromise.resolve(this.polyline);
-      }
-    }, {
-      key: 'getPolyline',
-      value: function getPolyline() {
-        return this.polylinePromise;
-      }
-    }, {
-      key: 'handleEvent',
-      value: function handleEvent(evt) {
-        var _this3 = this;
-
-        return function (e) {
-          var evtName = 'on' + (0, _String.camelize)(evt);
-          if (_this3.props[evtName]) {
-            _this3.props[evtName](_this3.props, _this3.polyline, e);
-          }
-        };
-      }
-    }, {
-      key: 'render',
-      value: function render() {
-        return null;
-      }
-    }]);
-
-    return Polyline;
-  }(_react2.default.Component);
-
-  Polyline.propTypes = {
-    path: _propTypes2.default.array,
-    strokeColor: _propTypes2.default.string,
-    strokeOpacity: _propTypes2.default.number,
-    strokeWeight: _propTypes2.default.number
-  };
-
-  evtNames.forEach(function (e) {
-    return Polyline.propTypes[e] = _propTypes2.default.func;
-  });
-
-  Polyline.defaultProps = {
-    name: 'Polyline'
-  };
-
-  exports.default = Polyline;
-});
-
-/***/ }),
-
-/***/ "./node_modules/google-maps-react/dist/components/Rectangle.js":
-/*!*********************************************************************!*\
-  !*** ./node_modules/google-maps-react/dist/components/Rectangle.js ***!
-  \*********************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;(function (global, factory) {
-  if (true) {
-    !(__WEBPACK_AMD_DEFINE_ARRAY__ = [exports, __webpack_require__(/*! react */ "./node_modules/react/index.js"), __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js"), __webpack_require__(/*! ../lib/areBoundsEqual */ "./node_modules/google-maps-react/dist/lib/areBoundsEqual.js"), __webpack_require__(/*! ../lib/String */ "./node_modules/google-maps-react/dist/lib/String.js")], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory),
-				__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?
-				(__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__),
-				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
-  } else { var mod; }
-})(this, function (exports, _react, _propTypes, _areBoundsEqual, _String) {
-  'use strict';
-
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  exports.Rectangle = undefined;
-
-  var _react2 = _interopRequireDefault(_react);
-
-  var _propTypes2 = _interopRequireDefault(_propTypes);
-
-  function _interopRequireDefault(obj) {
-    return obj && obj.__esModule ? obj : {
-      default: obj
-    };
-  }
-
-  var _extends = Object.assign || function (target) {
-    for (var i = 1; i < arguments.length; i++) {
-      var source = arguments[i];
-
-      for (var key in source) {
-        if (Object.prototype.hasOwnProperty.call(source, key)) {
-          target[key] = source[key];
-        }
-      }
-    }
-
-    return target;
-  };
-
-  function _objectWithoutProperties(obj, keys) {
-    var target = {};
-
-    for (var i in obj) {
-      if (keys.indexOf(i) >= 0) continue;
-      if (!Object.prototype.hasOwnProperty.call(obj, i)) continue;
-      target[i] = obj[i];
-    }
-
-    return target;
-  }
-
-  function _classCallCheck(instance, Constructor) {
-    if (!(instance instanceof Constructor)) {
-      throw new TypeError("Cannot call a class as a function");
-    }
-  }
-
-  var _createClass = function () {
-    function defineProperties(target, props) {
-      for (var i = 0; i < props.length; i++) {
-        var descriptor = props[i];
-        descriptor.enumerable = descriptor.enumerable || false;
-        descriptor.configurable = true;
-        if ("value" in descriptor) descriptor.writable = true;
-        Object.defineProperty(target, descriptor.key, descriptor);
-      }
-    }
-
-    return function (Constructor, protoProps, staticProps) {
-      if (protoProps) defineProperties(Constructor.prototype, protoProps);
-      if (staticProps) defineProperties(Constructor, staticProps);
-      return Constructor;
-    };
-  }();
-
-  function _possibleConstructorReturn(self, call) {
-    if (!self) {
-      throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-    }
-
-    return call && (typeof call === "object" || typeof call === "function") ? call : self;
-  }
-
-  function _inherits(subClass, superClass) {
-    if (typeof superClass !== "function" && superClass !== null) {
-      throw new TypeError("Super expression must either be null or a function, not " + typeof superClass);
-    }
-
-    subClass.prototype = Object.create(superClass && superClass.prototype, {
-      constructor: {
-        value: subClass,
-        enumerable: false,
-        writable: true,
-        configurable: true
-      }
-    });
-    if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
-  }
-
-  var evtNames = ['click', 'mouseout', 'mouseover'];
-
-  var wrappedPromise = function wrappedPromise() {
-    var wrappedPromise = {},
-        promise = new Promise(function (resolve, reject) {
-      wrappedPromise.resolve = resolve;
-      wrappedPromise.reject = reject;
-    });
-    wrappedPromise.then = promise.then.bind(promise);
-    wrappedPromise.catch = promise.catch.bind(promise);
-    wrappedPromise.promise = promise;
-
-    return wrappedPromise;
-  };
-
-  var Rectangle = exports.Rectangle = function (_React$Component) {
-    _inherits(Rectangle, _React$Component);
-
-    function Rectangle() {
-      _classCallCheck(this, Rectangle);
-
-      return _possibleConstructorReturn(this, (Rectangle.__proto__ || Object.getPrototypeOf(Rectangle)).apply(this, arguments));
-    }
-
-    _createClass(Rectangle, [{
-      key: 'componentDidMount',
-      value: function componentDidMount() {
-        this.rectanglePromise = wrappedPromise();
-        this.renderRectangle();
-      }
-    }, {
-      key: 'componentDidUpdate',
-      value: function componentDidUpdate(prevProps) {
-        if (this.props.map !== prevProps.map || !(0, _areBoundsEqual.areBoundsEqual)(this.props.bounds, prevProps.bounds)) {
-          if (this.rectangle) {
-            this.rectangle.setMap(null);
-          }
-          this.renderRectangle();
-        }
-      }
-    }, {
-      key: 'componentWillUnmount',
-      value: function componentWillUnmount() {
-        if (this.rectangle) {
-          this.rectangle.setMap(null);
-        }
-      }
-    }, {
-      key: 'renderRectangle',
-      value: function renderRectangle() {
-        var _this2 = this;
-
-        var _props = this.props,
-            map = _props.map,
-            google = _props.google,
-            bounds = _props.bounds,
-            strokeColor = _props.strokeColor,
-            strokeOpacity = _props.strokeOpacity,
-            strokeWeight = _props.strokeWeight,
-            fillColor = _props.fillColor,
-            fillOpacity = _props.fillOpacity,
-            props = _objectWithoutProperties(_props, ['map', 'google', 'bounds', 'strokeColor', 'strokeOpacity', 'strokeWeight', 'fillColor', 'fillOpacity']);
-
-        if (!google) {
-          return null;
-        }
-
-        var params = _extends({
-          map: map,
-          bounds: bounds,
-          strokeColor: strokeColor,
-          strokeOpacity: strokeOpacity,
-          strokeWeight: strokeWeight,
-          fillColor: fillColor,
-          fillOpacity: fillOpacity
-        }, props);
-
-        this.rectangle = new google.maps.Rectangle(params);
-
-        evtNames.forEach(function (e) {
-          _this2.rectangle.addListener(e, _this2.handleEvent(e));
-        });
-
-        this.rectanglePromise.resolve(this.rectangle);
-      }
-    }, {
-      key: 'getRectangle',
-      value: function getRectangle() {
-        return this.rectanglePromise;
-      }
-    }, {
-      key: 'handleEvent',
-      value: function handleEvent(evt) {
-        var _this3 = this;
-
-        return function (e) {
-          var evtName = 'on' + (0, _String.camelize)(evt);
-          if (_this3.props[evtName]) {
-            _this3.props[evtName](_this3.props, _this3.rectangle, e);
-          }
-        };
-      }
-    }, {
-      key: 'render',
-      value: function render() {
-        console.log('hii, ', this.props.bounds);
-        return null;
-      }
-    }]);
-
-    return Rectangle;
-  }(_react2.default.Component);
-
-  Rectangle.propTypes = {
-    bounds: _propTypes2.default.object,
-    strokeColor: _propTypes2.default.string,
-    strokeOpacity: _propTypes2.default.number,
-    strokeWeight: _propTypes2.default.number,
-    fillColor: _propTypes2.default.string,
-    fillOpacity: _propTypes2.default.number
-  };
-
-  evtNames.forEach(function (e) {
-    return Rectangle.propTypes[e] = _propTypes2.default.func;
-  });
-
-  Rectangle.defaultProps = {
-    name: 'Rectangle'
-  };
-
-  exports.default = Rectangle;
-});
-
-/***/ }),
-
-/***/ "./node_modules/google-maps-react/dist/index.js":
-/*!******************************************************!*\
-  !*** ./node_modules/google-maps-react/dist/index.js ***!
-  \******************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;(function (global, factory) {
-  if (true) {
-    !(__WEBPACK_AMD_DEFINE_ARRAY__ = [exports, __webpack_require__(/*! ./GoogleApiComponent */ "./node_modules/google-maps-react/dist/GoogleApiComponent.js"), __webpack_require__(/*! ./components/Marker */ "./node_modules/google-maps-react/dist/components/Marker.js"), __webpack_require__(/*! ./components/InfoWindow */ "./node_modules/google-maps-react/dist/components/InfoWindow.js"), __webpack_require__(/*! ./components/HeatMap */ "./node_modules/google-maps-react/dist/components/HeatMap.js"), __webpack_require__(/*! ./components/Polygon */ "./node_modules/google-maps-react/dist/components/Polygon.js"), __webpack_require__(/*! ./components/Polyline */ "./node_modules/google-maps-react/dist/components/Polyline.js"), __webpack_require__(/*! ./components/Circle */ "./node_modules/google-maps-react/dist/components/Circle.js"), __webpack_require__(/*! ./components/Rectangle */ "./node_modules/google-maps-react/dist/components/Rectangle.js"), __webpack_require__(/*! react */ "./node_modules/react/index.js"), __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js"), __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js"), __webpack_require__(/*! ./lib/String */ "./node_modules/google-maps-react/dist/lib/String.js"), __webpack_require__(/*! ./lib/cancelablePromise */ "./node_modules/google-maps-react/dist/lib/cancelablePromise.js")], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory),
-				__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?
-				(__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__),
-				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
-  } else { var mod; }
-})(this, function (exports, _GoogleApiComponent, _Marker, _InfoWindow, _HeatMap, _Polygon, _Polyline, _Circle, _Rectangle, _react, _propTypes, _reactDom, _String, _cancelablePromise) {
-  'use strict';
-
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  exports.Map = exports.Rectangle = exports.Circle = exports.Polyline = exports.Polygon = exports.HeatMap = exports.InfoWindow = exports.Marker = exports.GoogleApiWrapper = undefined;
-  Object.defineProperty(exports, 'GoogleApiWrapper', {
-    enumerable: true,
-    get: function () {
-      return _GoogleApiComponent.wrapper;
-    }
-  });
-  Object.defineProperty(exports, 'Marker', {
-    enumerable: true,
-    get: function () {
-      return _Marker.Marker;
-    }
-  });
-  Object.defineProperty(exports, 'InfoWindow', {
-    enumerable: true,
-    get: function () {
-      return _InfoWindow.InfoWindow;
-    }
-  });
-  Object.defineProperty(exports, 'HeatMap', {
-    enumerable: true,
-    get: function () {
-      return _HeatMap.HeatMap;
-    }
-  });
-  Object.defineProperty(exports, 'Polygon', {
-    enumerable: true,
-    get: function () {
-      return _Polygon.Polygon;
-    }
-  });
-  Object.defineProperty(exports, 'Polyline', {
-    enumerable: true,
-    get: function () {
-      return _Polyline.Polyline;
-    }
-  });
-  Object.defineProperty(exports, 'Circle', {
-    enumerable: true,
-    get: function () {
-      return _Circle.Circle;
-    }
-  });
-  Object.defineProperty(exports, 'Rectangle', {
-    enumerable: true,
-    get: function () {
-      return _Rectangle.Rectangle;
-    }
-  });
-
-  var _react2 = _interopRequireDefault(_react);
-
-  var _propTypes2 = _interopRequireDefault(_propTypes);
-
-  var _reactDom2 = _interopRequireDefault(_reactDom);
-
-  function _interopRequireDefault(obj) {
-    return obj && obj.__esModule ? obj : {
-      default: obj
-    };
-  }
-
-  function _classCallCheck(instance, Constructor) {
-    if (!(instance instanceof Constructor)) {
-      throw new TypeError("Cannot call a class as a function");
-    }
-  }
-
-  var _createClass = function () {
-    function defineProperties(target, props) {
-      for (var i = 0; i < props.length; i++) {
-        var descriptor = props[i];
-        descriptor.enumerable = descriptor.enumerable || false;
-        descriptor.configurable = true;
-        if ("value" in descriptor) descriptor.writable = true;
-        Object.defineProperty(target, descriptor.key, descriptor);
-      }
-    }
-
-    return function (Constructor, protoProps, staticProps) {
-      if (protoProps) defineProperties(Constructor.prototype, protoProps);
-      if (staticProps) defineProperties(Constructor, staticProps);
-      return Constructor;
-    };
-  }();
-
-  function _possibleConstructorReturn(self, call) {
-    if (!self) {
-      throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-    }
-
-    return call && (typeof call === "object" || typeof call === "function") ? call : self;
-  }
-
-  function _inherits(subClass, superClass) {
-    if (typeof superClass !== "function" && superClass !== null) {
-      throw new TypeError("Super expression must either be null or a function, not " + typeof superClass);
-    }
-
-    subClass.prototype = Object.create(superClass && superClass.prototype, {
-      constructor: {
-        value: subClass,
-        enumerable: false,
-        writable: true,
-        configurable: true
-      }
-    });
-    if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
-  }
-
-  var mapStyles = {
-    container: {
-      position: 'absolute',
-      width: '100%',
-      height: '100%'
-    },
-    map: {
-      position: 'absolute',
-      left: 0,
-      right: 0,
-      bottom: 0,
-      top: 0
-    }
-  };
-
-  var evtNames = ['ready', 'click', 'dragend', 'recenter', 'bounds_changed', 'center_changed', 'dblclick', 'dragstart', 'heading_change', 'idle', 'maptypeid_changed', 'mousemove', 'mouseout', 'mouseover', 'projection_changed', 'resize', 'rightclick', 'tilesloaded', 'tilt_changed', 'zoom_changed'];
-
-  var Map = exports.Map = function (_React$Component) {
-    _inherits(Map, _React$Component);
-
-    function Map(props) {
-      _classCallCheck(this, Map);
-
-      var _this = _possibleConstructorReturn(this, (Map.__proto__ || Object.getPrototypeOf(Map)).call(this, props));
-
-      if (!props.hasOwnProperty('google')) {
-        throw new Error('You must include a `google` prop');
-      }
-
-      _this.listeners = {};
-      _this.state = {
-        currentLocation: {
-          lat: _this.props.initialCenter.lat,
-          lng: _this.props.initialCenter.lng
-        }
-      };
-
-      _this.mapRef = _react2.default.createRef();
-      return _this;
-    }
-
-    _createClass(Map, [{
-      key: 'componentDidMount',
-      value: function componentDidMount() {
-        var _this2 = this;
-
-        if (this.props.centerAroundCurrentLocation) {
-          if (navigator && navigator.geolocation) {
-            this.geoPromise = (0, _cancelablePromise.makeCancelable)(new Promise(function (resolve, reject) {
-              navigator.geolocation.getCurrentPosition(resolve, reject);
-            }));
-
-            this.geoPromise.promise.then(function (pos) {
-              var coords = pos.coords;
-              _this2.setState({
-                currentLocation: {
-                  lat: coords.latitude,
-                  lng: coords.longitude
-                }
-              });
-            }).catch(function (e) {
-              return e;
-            });
-          }
-        }
-        this.loadMap();
-      }
-    }, {
-      key: 'componentDidUpdate',
-      value: function componentDidUpdate(prevProps, prevState) {
-        if (prevProps.google !== this.props.google) {
-          this.loadMap();
-        }
-        if (this.props.visible !== prevProps.visible) {
-          this.restyleMap();
-        }
-        if (this.props.zoom !== prevProps.zoom) {
-          this.map.setZoom(this.props.zoom);
-        }
-        if (this.props.center !== prevProps.center) {
-          this.setState({
-            currentLocation: this.props.center
-          });
-        }
-        if (prevState.currentLocation !== this.state.currentLocation) {
-          this.recenterMap();
-        }
-        if (this.props.bounds && this.props.bounds !== prevProps.bounds) {
-          this.map.fitBounds(this.props.bounds);
-        }
-      }
-    }, {
-      key: 'componentWillUnmount',
-      value: function componentWillUnmount() {
-        var _this3 = this;
-
-        var google = this.props.google;
-
-        if (this.geoPromise) {
-          this.geoPromise.cancel();
-        }
-        Object.keys(this.listeners).forEach(function (e) {
-          google.maps.event.removeListener(_this3.listeners[e]);
-        });
-      }
-    }, {
-      key: 'loadMap',
-      value: function loadMap() {
-        var _this4 = this;
-
-        if (this.props && this.props.google) {
-          var google = this.props.google;
-
-          var maps = google.maps;
-
-          var mapRef = this.mapRef.current;
-          var node = _reactDom2.default.findDOMNode(mapRef);
-          var curr = this.state.currentLocation;
-          var center = new maps.LatLng(curr.lat, curr.lng);
-
-          var mapTypeIds = this.props.google.maps.MapTypeId || {};
-          var mapTypeFromProps = String(this.props.mapType).toUpperCase();
-
-          var mapConfig = Object.assign({}, {
-            mapTypeId: mapTypeIds[mapTypeFromProps],
-            center: center,
-            zoom: this.props.zoom,
-            maxZoom: this.props.maxZoom,
-            minZoom: this.props.minZoom,
-            clickableIcons: !!this.props.clickableIcons,
-            disableDefaultUI: this.props.disableDefaultUI,
-            zoomControl: this.props.zoomControl,
-            zoomControlOptions: this.props.zoomControlOptions,
-            mapTypeControl: this.props.mapTypeControl,
-            mapTypeControlOptions: this.props.mapTypeControlOptions,
-            scaleControl: this.props.scaleControl,
-            streetViewControl: this.props.streetViewControl,
-            streetViewControlOptions: this.props.streetViewControlOptions,
-            panControl: this.props.panControl,
-            rotateControl: this.props.rotateControl,
-            fullscreenControl: this.props.fullscreenControl,
-            scrollwheel: this.props.scrollwheel,
-            draggable: this.props.draggable,
-            draggableCursor: this.props.draggableCursor,
-            keyboardShortcuts: this.props.keyboardShortcuts,
-            disableDoubleClickZoom: this.props.disableDoubleClickZoom,
-            noClear: this.props.noClear,
-            styles: this.props.styles,
-            gestureHandling: this.props.gestureHandling
-          });
-
-          Object.keys(mapConfig).forEach(function (key) {
-            // Allow to configure mapConfig with 'false'
-            if (mapConfig[key] === null) {
-              delete mapConfig[key];
-            }
-          });
-
-          this.map = new maps.Map(node, mapConfig);
-
-          evtNames.forEach(function (e) {
-            _this4.listeners[e] = _this4.map.addListener(e, _this4.handleEvent(e));
-          });
-          maps.event.trigger(this.map, 'ready');
-          this.forceUpdate();
-        }
-      }
-    }, {
-      key: 'handleEvent',
-      value: function handleEvent(evtName) {
-        var _this5 = this;
-
-        var timeout = void 0;
-        var handlerName = 'on' + (0, _String.camelize)(evtName);
-
-        return function (e) {
-          if (timeout) {
-            clearTimeout(timeout);
-            timeout = null;
-          }
-          timeout = setTimeout(function () {
-            if (_this5.props[handlerName]) {
-              _this5.props[handlerName](_this5.props, _this5.map, e);
-            }
-          }, 0);
-        };
-      }
-    }, {
-      key: 'recenterMap',
-      value: function recenterMap() {
-        var map = this.map;
-
-        var google = this.props.google;
-
-
-        if (!google) return;
-        var maps = google.maps;
-
-        if (map) {
-          var center = this.state.currentLocation;
-          if (!(center instanceof google.maps.LatLng)) {
-            center = new google.maps.LatLng(center.lat, center.lng);
-          }
-          // map.panTo(center)
-          map.setCenter(center);
-          maps.event.trigger(map, 'recenter');
-        }
-      }
-    }, {
-      key: 'restyleMap',
-      value: function restyleMap() {
-        if (this.map) {
-          var google = this.props.google;
-
-          google.maps.event.trigger(this.map, 'resize');
-        }
-      }
-    }, {
-      key: 'renderChildren',
-      value: function renderChildren() {
-        var _this6 = this;
-
-        var children = this.props.children;
-
-
-        if (!children) return;
-
-        return _react2.default.Children.map(children, function (c) {
-          if (!c) return;
-          return _react2.default.cloneElement(c, {
-            map: _this6.map,
-            google: _this6.props.google,
-            mapCenter: _this6.state.currentLocation
-          });
-        });
-      }
-    }, {
-      key: 'render',
-      value: function render() {
-        var style = Object.assign({}, mapStyles.map, this.props.style, {
-          display: this.props.visible ? 'inherit' : 'none'
-        });
-
-        var containerStyles = Object.assign({}, mapStyles.container, this.props.containerStyle);
-
-        return _react2.default.createElement(
-          'div',
-          { style: containerStyles, className: this.props.className },
-          _react2.default.createElement(
-            'div',
-            { style: style, ref: this.mapRef },
-            'Loading map...'
-          ),
-          this.renderChildren()
-        );
-      }
-    }]);
-
-    return Map;
-  }(_react2.default.Component);
-
-  Map.propTypes = {
-    google: _propTypes2.default.object,
-    zoom: _propTypes2.default.number,
-    centerAroundCurrentLocation: _propTypes2.default.bool,
-    center: _propTypes2.default.object,
-    initialCenter: _propTypes2.default.object,
-    className: _propTypes2.default.string,
-    style: _propTypes2.default.object,
-    containerStyle: _propTypes2.default.object,
-    visible: _propTypes2.default.bool,
-    mapType: _propTypes2.default.string,
-    maxZoom: _propTypes2.default.number,
-    minZoom: _propTypes2.default.number,
-    clickableIcons: _propTypes2.default.bool,
-    disableDefaultUI: _propTypes2.default.bool,
-    zoomControl: _propTypes2.default.bool,
-    zoomControlOptions: _propTypes2.default.object,
-    mapTypeControl: _propTypes2.default.bool,
-    mapTypeControlOptions: _propTypes2.default.bool,
-    scaleControl: _propTypes2.default.bool,
-    streetViewControl: _propTypes2.default.bool,
-    streetViewControlOptions: _propTypes2.default.object,
-    panControl: _propTypes2.default.bool,
-    rotateControl: _propTypes2.default.bool,
-    fullscreenControl: _propTypes2.default.bool,
-    scrollwheel: _propTypes2.default.bool,
-    draggable: _propTypes2.default.bool,
-    draggableCursor: _propTypes2.default.string,
-    keyboardShortcuts: _propTypes2.default.bool,
-    disableDoubleClickZoom: _propTypes2.default.bool,
-    noClear: _propTypes2.default.bool,
-    styles: _propTypes2.default.array,
-    gestureHandling: _propTypes2.default.string,
-    bounds: _propTypes2.default.object
-  };
-
-  evtNames.forEach(function (e) {
-    return Map.propTypes[(0, _String.camelize)(e)] = _propTypes2.default.func;
-  });
-
-  Map.defaultProps = {
-    zoom: 14,
-    initialCenter: {
-      lat: 37.774929,
-      lng: -122.419416
-    },
-    center: {},
-    centerAroundCurrentLocation: false,
-    style: {},
-    containerStyle: {},
-    visible: true
-  };
-
-  exports.default = Map;
-});
-
-/***/ }),
-
-/***/ "./node_modules/google-maps-react/dist/lib/GoogleApi.js":
-/*!**************************************************************!*\
-  !*** ./node_modules/google-maps-react/dist/lib/GoogleApi.js ***!
-  \**************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;(function (global, factory) {
-  if (true) {
-    !(__WEBPACK_AMD_DEFINE_ARRAY__ = [exports], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory),
-				__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?
-				(__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__),
-				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
-  } else { var mod; }
-})(this, function (exports) {
-  'use strict';
-
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  var GoogleApi = exports.GoogleApi = function GoogleApi(opts) {
-    opts = opts || {};
-
-    if (!opts.hasOwnProperty('apiKey')) {
-      throw new Error('You must pass an apiKey to use GoogleApi');
-    }
-
-    var apiKey = opts.apiKey;
-    var libraries = opts.libraries || ['places'];
-    var client = opts.client;
-    var URL = opts.url || 'https://maps.googleapis.com/maps/api/js';
-
-    var googleVersion = opts.version || '3.31';
-
-    var script = null;
-    var google = typeof window !== 'undefined' && window.google || null;
-    var loading = false;
-    var channel = null;
-    var language = opts.language;
-    var region = opts.region || null;
-
-    var onLoadEvents = [];
-
-    var url = function url() {
-      var url = URL;
-      var params = {
-        key: apiKey,
-        callback: 'CALLBACK_NAME',
-        libraries: libraries.join(','),
-        client: client,
-        v: googleVersion,
-        channel: channel,
-        language: language,
-        region: region,
-        onerror: 'ERROR_FUNCTION'
-      };
-
-      var paramStr = Object.keys(params).filter(function (k) {
-        return !!params[k];
-      }).map(function (k) {
-        return k + '=' + params[k];
-      }).join('&');
-
-      return url + '?' + paramStr;
-    };
-
-    return url();
-  };
-
-  exports.default = GoogleApi;
-});
-
-/***/ }),
-
-/***/ "./node_modules/google-maps-react/dist/lib/ScriptCache.js":
-/*!****************************************************************!*\
-  !*** ./node_modules/google-maps-react/dist/lib/ScriptCache.js ***!
-  \****************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;(function (global, factory) {
-    if (true) {
-        !(__WEBPACK_AMD_DEFINE_ARRAY__ = [exports, __webpack_require__(/*! ./windowOrGlobal */ "./node_modules/google-maps-react/dist/lib/windowOrGlobal.js")], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory),
-				__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?
-				(__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__),
-				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
-    } else { var mod; }
-})(this, function (exports, window) {
-    'use strict';
-
-    Object.defineProperty(exports, "__esModule", {
-        value: true
-    });
-    var counter = 0;
-    var scriptMap = typeof window !== 'undefined' && window._scriptMap || new Map();
-    var ScriptCache = exports.ScriptCache = function (global) {
-        global._scriptMap = global._scriptMap || scriptMap;
-        return function ScriptCache(scripts) {
-            var Cache = {};
-
-            Cache._onLoad = function (key) {
-                return function (cb) {
-                    var registered = true;
-
-                    function unregister() {
-                        registered = false;
-                    }
-
-                    var stored = scriptMap.get(key);
-
-                    if (stored) {
-                        stored.promise.then(function () {
-                            if (registered) {
-                                stored.error ? cb(stored.error) : cb(null, stored);
-                            }
-
-                            return stored;
-                        }).catch(function (error) {
-                            return cb(error);
-                        });
-                    } else {
-                        // TODO:
-                    }
-
-                    return unregister;
-                };
-            };
-
-            Cache._scriptTag = function (key, src) {
-                if (!scriptMap.has(key)) {
-                    // Server side rendering environments don't always have access to the `document` global.
-                    // In these cases, we're not going to be able to return a script tag, so just return null.
-                    if (typeof document === 'undefined') return null;
-
-                    var tag = document.createElement('script');
-                    var promise = new Promise(function (resolve, reject) {
-                        var body = document.getElementsByTagName('body')[0];
-
-                        tag.type = 'text/javascript';
-                        tag.async = false; // Load in order
-
-                        var cbName = 'loaderCB' + counter++ + Date.now();
-                        var cb = void 0;
-
-                        var handleResult = function handleResult(state) {
-                            return function (evt) {
-                                var stored = scriptMap.get(key);
-                                if (state === 'loaded') {
-                                    stored.resolved = true;
-                                    resolve(src);
-                                    // stored.handlers.forEach(h => h.call(null, stored))
-                                    // stored.handlers = []
-                                } else if (state === 'error') {
-                                    stored.errored = true;
-                                    // stored.handlers.forEach(h => h.call(null, stored))
-                                    // stored.handlers = [];
-                                    reject(evt);
-                                }
-                                stored.loaded = true;
-
-                                cleanup();
-                            };
-                        };
-
-                        var cleanup = function cleanup() {
-                            if (global[cbName] && typeof global[cbName] === 'function') {
-                                global[cbName] = null;
-                                delete global[cbName];
-                            }
-                        };
-
-                        tag.onload = handleResult('loaded');
-                        tag.onerror = handleResult('error');
-                        tag.onreadystatechange = function () {
-                            handleResult(tag.readyState);
-                        };
-
-                        // Pick off callback, if there is one
-                        if (src.match(/callback=CALLBACK_NAME/)) {
-                            src = src.replace(/(callback=)[^\&]+/, '$1' + cbName);
-                            cb = window[cbName] = tag.onload;
-                        } else {
-                            tag.addEventListener('load', tag.onload);
-                        }
-                        tag.addEventListener('error', tag.onerror);
-
-                        tag.src = src;
-                        body.appendChild(tag);
-
-                        return tag;
-                    });
-                    var initialState = {
-                        loaded: false,
-                        error: false,
-                        promise: promise,
-                        tag: tag
-                    };
-                    scriptMap.set(key, initialState);
-                }
-                return scriptMap.get(key).tag;
-            };
-
-            // let scriptTags = document.querySelectorAll('script')
-            //
-            // NodeList.prototype.filter = Array.prototype.filter;
-            // NodeList.prototype.map = Array.prototype.map;
-            // const initialScripts = scriptTags
-            //   .filter(s => !!s.src)
-            //   .map(s => s.src.split('?')[0])
-            //   .reduce((memo, script) => {
-            //     memo[script] = script;
-            //     return memo;
-            //   }, {});
-
-            Object.keys(scripts).forEach(function (key) {
-                var script = scripts[key];
-
-                var tag = window._scriptMap.has(key) ? window._scriptMap.get(key).tag : Cache._scriptTag(key, script);
-
-                Cache[key] = {
-                    tag: tag,
-                    onLoad: Cache._onLoad(key)
-                };
-            });
-
-            return Cache;
-        };
-    }(window);
-
-    exports.default = ScriptCache;
-});
-
-/***/ }),
-
-/***/ "./node_modules/google-maps-react/dist/lib/String.js":
-/*!***********************************************************!*\
-  !*** ./node_modules/google-maps-react/dist/lib/String.js ***!
-  \***********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;(function (global, factory) {
-  if (true) {
-    !(__WEBPACK_AMD_DEFINE_ARRAY__ = [exports], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory),
-				__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?
-				(__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__),
-				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
-  } else { var mod; }
-})(this, function (exports) {
-  'use strict';
-
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  var camelize = exports.camelize = function camelize(str) {
-    return str.split('_').map(function (word) {
-      return word.charAt(0).toUpperCase() + word.slice(1);
-    }).join('');
-  };
-});
-
-/***/ }),
-
-/***/ "./node_modules/google-maps-react/dist/lib/areBoundsEqual.js":
-/*!*******************************************************************!*\
-  !*** ./node_modules/google-maps-react/dist/lib/areBoundsEqual.js ***!
-  \*******************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;(function (global, factory) {
-  if (true) {
-    !(__WEBPACK_AMD_DEFINE_ARRAY__ = [exports], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory),
-				__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?
-				(__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__),
-				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
-  } else { var mod; }
-})(this, function (exports) {
-  'use strict';
-
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-
-  var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) {
-    return typeof obj;
-  } : function (obj) {
-    return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
-  };
-
-  /**
-   * Compares two bound objects.
-   */
-
-  var areBoundsEqual = exports.areBoundsEqual = function areBoundsEqual(boundA, boundB) {
-    if (boundA === boundB) {
-      return true;
-    }
-    if (!(boundA instanceof Object) || !(boundB instanceof Object)) {
-      return false;
-    }
-    if (Object.keys(boundA).length !== Object.keys(boundB).length) {
-      return false;
-    }
-    if (!areValidBounds(boundA) || !areValidBounds(boundB)) {
-      return false;
-    }
-    var _iteratorNormalCompletion = true;
-    var _didIteratorError = false;
-    var _iteratorError = undefined;
-
-    try {
-      for (var _iterator = Object.keys(boundA)[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-        var key = _step.value;
-
-        if (boundA[key] !== boundB[key]) {
-          return false;
-        }
-      }
-    } catch (err) {
-      _didIteratorError = true;
-      _iteratorError = err;
-    } finally {
-      try {
-        if (!_iteratorNormalCompletion && _iterator.return) {
-          _iterator.return();
-        }
-      } finally {
-        if (_didIteratorError) {
-          throw _iteratorError;
-        }
-      }
-    }
-
-    return true;
-  };
-
-  /**
-   * Helper that checks whether an array consists of objects
-   * with lat and lng properties
-   * @param {object} elem the element to check
-   * @returns {boolean} whether or not it's valid
-   */
-  var areValidBounds = function areValidBounds(elem) {
-    return elem !== null && (typeof elem === 'undefined' ? 'undefined' : _typeof(elem)) === 'object' && elem.hasOwnProperty('north') && elem.hasOwnProperty('south') && elem.hasOwnProperty('east') && elem.hasOwnProperty('west');
-  };
-});
-
-/***/ }),
-
-/***/ "./node_modules/google-maps-react/dist/lib/arePathsEqual.js":
-/*!******************************************************************!*\
-  !*** ./node_modules/google-maps-react/dist/lib/arePathsEqual.js ***!
-  \******************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;(function (global, factory) {
-  if (true) {
-    !(__WEBPACK_AMD_DEFINE_ARRAY__ = [exports], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory),
-				__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?
-				(__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__),
-				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
-  } else { var mod; }
-})(this, function (exports) {
-  'use strict';
-
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-
-  var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) {
-    return typeof obj;
-  } : function (obj) {
-    return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
-  };
-
-  /**
-   * Compares two path arrays of LatLng objects.
-   */
-
-  var arePathsEqual = exports.arePathsEqual = function arePathsEqual(pathA, pathB) {
-    if (pathA === pathB) {
-      return true;
-    }
-    if (!Array.isArray(pathA) || !Array.isArray(pathB)) {
-      return false;
-    }
-    if (pathA.length !== pathB.length) {
-      return false;
-    }
-    for (var i = 0; i < pathA.length; ++i) {
-      if (pathA[i] === pathB[i]) {
-        continue;
-      }
-      if (!isValidLatLng(pathA[i]) || !isValidLatLng(pathB[i])) {
-        return false;
-      }
-      if (pathB[i].lat !== pathA[i].lat || pathB[i].lng !== pathA[i].lng) {
-        return false;
-      }
-    }
-    return true;
-  };
-
-  /**
-   * Helper that checks whether an array consists of objects
-   * with lat and lng properties
-   * @param {object} elem the element to check
-   * @returns {boolean} whether or not it's valid
-   */
-  var isValidLatLng = function isValidLatLng(elem) {
-    return elem !== null && (typeof elem === 'undefined' ? 'undefined' : _typeof(elem)) === 'object' && elem.hasOwnProperty('lat') && elem.hasOwnProperty('lng');
-  };
-});
-
-/***/ }),
-
-/***/ "./node_modules/google-maps-react/dist/lib/cancelablePromise.js":
-/*!**********************************************************************!*\
-  !*** ./node_modules/google-maps-react/dist/lib/cancelablePromise.js ***!
-  \**********************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;(function (global, factory) {
-  if (true) {
-    !(__WEBPACK_AMD_DEFINE_ARRAY__ = [exports], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory),
-				__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?
-				(__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__),
-				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
-  } else { var mod; }
-})(this, function (exports) {
-  "use strict";
-
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  // https://facebook.github.io/react/blog/2015/12/16/ismounted-antipattern.html
-
-  var makeCancelable = exports.makeCancelable = function makeCancelable(promise) {
-    var hasCanceled_ = false;
-
-    var wrappedPromise = new Promise(function (resolve, reject) {
-      promise.then(function (val) {
-        return hasCanceled_ ? reject({ isCanceled: true }) : resolve(val);
-      });
-      promise.catch(function (error) {
-        return hasCanceled_ ? reject({ isCanceled: true }) : reject(error);
-      });
-    });
-
-    return {
-      promise: wrappedPromise,
-      cancel: function cancel() {
-        hasCanceled_ = true;
-      }
-    };
-  };
-});
-
-/***/ }),
-
-/***/ "./node_modules/google-maps-react/dist/lib/windowOrGlobal.js":
-/*!*******************************************************************!*\
-  !*** ./node_modules/google-maps-react/dist/lib/windowOrGlobal.js ***!
-  \*******************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-/* WEBPACK VAR INJECTION */(function(global) {var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;(function (global, factory) {
-  if (true) {
-    !(__WEBPACK_AMD_DEFINE_ARRAY__ = [module], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory),
-				__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?
-				(__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__),
-				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
-  } else { var mod; }
-})(this, function (module) {
-  'use strict';
-
-  var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) {
-    return typeof obj;
-  } : function (obj) {
-    return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
-  };
-
-  module.exports = (typeof self === 'undefined' ? 'undefined' : _typeof(self)) === 'object' && self.self === self && self || (typeof global === 'undefined' ? 'undefined' : _typeof(global)) === 'object' && global.global === global && global || undefined;
-});
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../webpack/buildin/global.js */ "./node_modules/webpack/buildin/global.js")))
 
 /***/ }),
 
@@ -8967,201 +11185,6 @@ module.exports = shouldUseNative() ? Object.assign : function (target, source) {
 
 	return to;
 };
-
-
-/***/ }),
-
-/***/ "./node_modules/process/browser.js":
-/*!*****************************************!*\
-  !*** ./node_modules/process/browser.js ***!
-  \*****************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-// shim for using process in browser
-var process = module.exports = {};
-
-// cached from whatever global is present so that test runners that stub it
-// don't break things.  But we need to wrap it in a try catch in case it is
-// wrapped in strict mode code which doesn't define any globals.  It's inside a
-// function because try/catches deoptimize in certain engines.
-
-var cachedSetTimeout;
-var cachedClearTimeout;
-
-function defaultSetTimout() {
-    throw new Error('setTimeout has not been defined');
-}
-function defaultClearTimeout () {
-    throw new Error('clearTimeout has not been defined');
-}
-(function () {
-    try {
-        if (typeof setTimeout === 'function') {
-            cachedSetTimeout = setTimeout;
-        } else {
-            cachedSetTimeout = defaultSetTimout;
-        }
-    } catch (e) {
-        cachedSetTimeout = defaultSetTimout;
-    }
-    try {
-        if (typeof clearTimeout === 'function') {
-            cachedClearTimeout = clearTimeout;
-        } else {
-            cachedClearTimeout = defaultClearTimeout;
-        }
-    } catch (e) {
-        cachedClearTimeout = defaultClearTimeout;
-    }
-} ())
-function runTimeout(fun) {
-    if (cachedSetTimeout === setTimeout) {
-        //normal enviroments in sane situations
-        return setTimeout(fun, 0);
-    }
-    // if setTimeout wasn't available but was latter defined
-    if ((cachedSetTimeout === defaultSetTimout || !cachedSetTimeout) && setTimeout) {
-        cachedSetTimeout = setTimeout;
-        return setTimeout(fun, 0);
-    }
-    try {
-        // when when somebody has screwed with setTimeout but no I.E. maddness
-        return cachedSetTimeout(fun, 0);
-    } catch(e){
-        try {
-            // When we are in I.E. but the script has been evaled so I.E. doesn't trust the global object when called normally
-            return cachedSetTimeout.call(null, fun, 0);
-        } catch(e){
-            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error
-            return cachedSetTimeout.call(this, fun, 0);
-        }
-    }
-
-
-}
-function runClearTimeout(marker) {
-    if (cachedClearTimeout === clearTimeout) {
-        //normal enviroments in sane situations
-        return clearTimeout(marker);
-    }
-    // if clearTimeout wasn't available but was latter defined
-    if ((cachedClearTimeout === defaultClearTimeout || !cachedClearTimeout) && clearTimeout) {
-        cachedClearTimeout = clearTimeout;
-        return clearTimeout(marker);
-    }
-    try {
-        // when when somebody has screwed with setTimeout but no I.E. maddness
-        return cachedClearTimeout(marker);
-    } catch (e){
-        try {
-            // When we are in I.E. but the script has been evaled so I.E. doesn't  trust the global object when called normally
-            return cachedClearTimeout.call(null, marker);
-        } catch (e){
-            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error.
-            // Some versions of I.E. have different rules for clearTimeout vs setTimeout
-            return cachedClearTimeout.call(this, marker);
-        }
-    }
-
-
-
-}
-var queue = [];
-var draining = false;
-var currentQueue;
-var queueIndex = -1;
-
-function cleanUpNextTick() {
-    if (!draining || !currentQueue) {
-        return;
-    }
-    draining = false;
-    if (currentQueue.length) {
-        queue = currentQueue.concat(queue);
-    } else {
-        queueIndex = -1;
-    }
-    if (queue.length) {
-        drainQueue();
-    }
-}
-
-function drainQueue() {
-    if (draining) {
-        return;
-    }
-    var timeout = runTimeout(cleanUpNextTick);
-    draining = true;
-
-    var len = queue.length;
-    while(len) {
-        currentQueue = queue;
-        queue = [];
-        while (++queueIndex < len) {
-            if (currentQueue) {
-                currentQueue[queueIndex].run();
-            }
-        }
-        queueIndex = -1;
-        len = queue.length;
-    }
-    currentQueue = null;
-    draining = false;
-    runClearTimeout(timeout);
-}
-
-process.nextTick = function (fun) {
-    var args = new Array(arguments.length - 1);
-    if (arguments.length > 1) {
-        for (var i = 1; i < arguments.length; i++) {
-            args[i - 1] = arguments[i];
-        }
-    }
-    queue.push(new Item(fun, args));
-    if (queue.length === 1 && !draining) {
-        runTimeout(drainQueue);
-    }
-};
-
-// v8 likes predictible objects
-function Item(fun, array) {
-    this.fun = fun;
-    this.array = array;
-}
-Item.prototype.run = function () {
-    this.fun.apply(null, this.array);
-};
-process.title = 'browser';
-process.browser = true;
-process.env = {};
-process.argv = [];
-process.version = ''; // empty string to avoid regexp issues
-process.versions = {};
-
-function noop() {}
-
-process.on = noop;
-process.addListener = noop;
-process.once = noop;
-process.off = noop;
-process.removeListener = noop;
-process.removeAllListeners = noop;
-process.emit = noop;
-process.prependListener = noop;
-process.prependOnceListener = noop;
-
-process.listeners = function (name) { return [] }
-
-process.binding = function (name) {
-    throw new Error('process.binding is not supported');
-};
-
-process.cwd = function () { return '/' };
-process.chdir = function (dir) {
-    throw new Error('process.chdir is not supported');
-};
-process.umask = function() { return 0; };
 
 
 /***/ }),
@@ -10064,4061 +12087,6 @@ ChartistGraph.propTypes = {
 };
 
 exports.default = ChartistGraph;
-
-
-/***/ }),
-
-/***/ "./node_modules/react-dom/cjs/react-dom-server.browser.development.js":
-/*!****************************************************************************!*\
-  !*** ./node_modules/react-dom/cjs/react-dom-server.browser.development.js ***!
-  \****************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/** @license React v16.13.1
- * react-dom-server.browser.development.js
- *
- * Copyright (c) Facebook, Inc. and its affiliates.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
-
-
-
-
-if (true) {
-  (function() {
-'use strict';
-
-var React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-var _assign = __webpack_require__(/*! object-assign */ "./node_modules/object-assign/index.js");
-var checkPropTypes = __webpack_require__(/*! prop-types/checkPropTypes */ "./node_modules/prop-types/checkPropTypes.js");
-
-// Do not require this module directly! Use normal `invariant` calls with
-// template literal strings. The messages will be replaced with error codes
-// during build.
-function formatProdErrorMessage(code) {
-  var url = 'https://reactjs.org/docs/error-decoder.html?invariant=' + code;
-
-  for (var i = 1; i < arguments.length; i++) {
-    url += '&args[]=' + encodeURIComponent(arguments[i]);
-  }
-
-  return "Minified React error #" + code + "; visit " + url + " for the full message or " + 'use the non-minified dev environment for full errors and additional ' + 'helpful warnings.';
-}
-
-var ReactVersion = '16.13.1';
-
-var ReactSharedInternals = React.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED; // Prevent newer renderers from RTE when used with older react package versions.
-// Current owner and dispatcher used to share the same ref,
-// but PR #14548 split them out to better support the react-debug-tools package.
-
-if (!ReactSharedInternals.hasOwnProperty('ReactCurrentDispatcher')) {
-  ReactSharedInternals.ReactCurrentDispatcher = {
-    current: null
-  };
-}
-
-if (!ReactSharedInternals.hasOwnProperty('ReactCurrentBatchConfig')) {
-  ReactSharedInternals.ReactCurrentBatchConfig = {
-    suspense: null
-  };
-}
-
-// by calls to these methods by a Babel plugin.
-//
-// In PROD (or in packages without access to React internals),
-// they are left as they are instead.
-
-function warn(format) {
-  {
-    for (var _len = arguments.length, args = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
-      args[_key - 1] = arguments[_key];
-    }
-
-    printWarning('warn', format, args);
-  }
-}
-function error(format) {
-  {
-    for (var _len2 = arguments.length, args = new Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++) {
-      args[_key2 - 1] = arguments[_key2];
-    }
-
-    printWarning('error', format, args);
-  }
-}
-
-function printWarning(level, format, args) {
-  // When changing this logic, you might want to also
-  // update consoleWithStackDev.www.js as well.
-  {
-    var hasExistingStack = args.length > 0 && typeof args[args.length - 1] === 'string' && args[args.length - 1].indexOf('\n    in') === 0;
-
-    if (!hasExistingStack) {
-      var ReactDebugCurrentFrame = ReactSharedInternals.ReactDebugCurrentFrame;
-      var stack = ReactDebugCurrentFrame.getStackAddendum();
-
-      if (stack !== '') {
-        format += '%s';
-        args = args.concat([stack]);
-      }
-    }
-
-    var argsWithFormat = args.map(function (item) {
-      return '' + item;
-    }); // Careful: RN currently depends on this prefix
-
-    argsWithFormat.unshift('Warning: ' + format); // We intentionally don't use spread (or .apply) directly because it
-    // breaks IE9: https://github.com/facebook/react/issues/13610
-    // eslint-disable-next-line react-internal/no-production-logging
-
-    Function.prototype.apply.call(console[level], console, argsWithFormat);
-
-    try {
-      // --- Welcome to debugging React ---
-      // This error was thrown as a convenience so that you can use this stack
-      // to find the callsite that caused this warning to fire.
-      var argIndex = 0;
-      var message = 'Warning: ' + format.replace(/%s/g, function () {
-        return args[argIndex++];
-      });
-      throw new Error(message);
-    } catch (x) {}
-  }
-}
-
-// The Symbol used to tag the ReactElement-like types. If there is no native Symbol
-// nor polyfill, then a plain number is used for performance.
-var hasSymbol = typeof Symbol === 'function' && Symbol.for;
-var REACT_PORTAL_TYPE = hasSymbol ? Symbol.for('react.portal') : 0xeaca;
-var REACT_FRAGMENT_TYPE = hasSymbol ? Symbol.for('react.fragment') : 0xeacb;
-var REACT_STRICT_MODE_TYPE = hasSymbol ? Symbol.for('react.strict_mode') : 0xeacc;
-var REACT_PROFILER_TYPE = hasSymbol ? Symbol.for('react.profiler') : 0xead2;
-var REACT_PROVIDER_TYPE = hasSymbol ? Symbol.for('react.provider') : 0xeacd;
-var REACT_CONTEXT_TYPE = hasSymbol ? Symbol.for('react.context') : 0xeace; // TODO: We don't use AsyncMode or ConcurrentMode anymore. They were temporary
-var REACT_CONCURRENT_MODE_TYPE = hasSymbol ? Symbol.for('react.concurrent_mode') : 0xeacf;
-var REACT_FORWARD_REF_TYPE = hasSymbol ? Symbol.for('react.forward_ref') : 0xead0;
-var REACT_SUSPENSE_TYPE = hasSymbol ? Symbol.for('react.suspense') : 0xead1;
-var REACT_SUSPENSE_LIST_TYPE = hasSymbol ? Symbol.for('react.suspense_list') : 0xead8;
-var REACT_MEMO_TYPE = hasSymbol ? Symbol.for('react.memo') : 0xead3;
-var REACT_LAZY_TYPE = hasSymbol ? Symbol.for('react.lazy') : 0xead4;
-var REACT_BLOCK_TYPE = hasSymbol ? Symbol.for('react.block') : 0xead9;
-var REACT_FUNDAMENTAL_TYPE = hasSymbol ? Symbol.for('react.fundamental') : 0xead5;
-var REACT_SCOPE_TYPE = hasSymbol ? Symbol.for('react.scope') : 0xead7;
-
-var Uninitialized = -1;
-var Pending = 0;
-var Resolved = 1;
-var Rejected = 2;
-function refineResolvedLazyComponent(lazyComponent) {
-  return lazyComponent._status === Resolved ? lazyComponent._result : null;
-}
-function initializeLazyComponentType(lazyComponent) {
-  if (lazyComponent._status === Uninitialized) {
-    lazyComponent._status = Pending;
-    var ctor = lazyComponent._ctor;
-    var thenable = ctor();
-    lazyComponent._result = thenable;
-    thenable.then(function (moduleObject) {
-      if (lazyComponent._status === Pending) {
-        var defaultExport = moduleObject.default;
-
-        {
-          if (defaultExport === undefined) {
-            error('lazy: Expected the result of a dynamic import() call. ' + 'Instead received: %s\n\nYour code should look like: \n  ' + "const MyComponent = lazy(() => import('./MyComponent'))", moduleObject);
-          }
-        }
-
-        lazyComponent._status = Resolved;
-        lazyComponent._result = defaultExport;
-      }
-    }, function (error) {
-      if (lazyComponent._status === Pending) {
-        lazyComponent._status = Rejected;
-        lazyComponent._result = error;
-      }
-    });
-  }
-}
-
-function getWrappedName(outerType, innerType, wrapperName) {
-  var functionName = innerType.displayName || innerType.name || '';
-  return outerType.displayName || (functionName !== '' ? wrapperName + "(" + functionName + ")" : wrapperName);
-}
-
-function getComponentName(type) {
-  if (type == null) {
-    // Host root, text node or just invalid type.
-    return null;
-  }
-
-  {
-    if (typeof type.tag === 'number') {
-      error('Received an unexpected object in getComponentName(). ' + 'This is likely a bug in React. Please file an issue.');
-    }
-  }
-
-  if (typeof type === 'function') {
-    return type.displayName || type.name || null;
-  }
-
-  if (typeof type === 'string') {
-    return type;
-  }
-
-  switch (type) {
-    case REACT_FRAGMENT_TYPE:
-      return 'Fragment';
-
-    case REACT_PORTAL_TYPE:
-      return 'Portal';
-
-    case REACT_PROFILER_TYPE:
-      return "Profiler";
-
-    case REACT_STRICT_MODE_TYPE:
-      return 'StrictMode';
-
-    case REACT_SUSPENSE_TYPE:
-      return 'Suspense';
-
-    case REACT_SUSPENSE_LIST_TYPE:
-      return 'SuspenseList';
-  }
-
-  if (typeof type === 'object') {
-    switch (type.$$typeof) {
-      case REACT_CONTEXT_TYPE:
-        return 'Context.Consumer';
-
-      case REACT_PROVIDER_TYPE:
-        return 'Context.Provider';
-
-      case REACT_FORWARD_REF_TYPE:
-        return getWrappedName(type, type.render, 'ForwardRef');
-
-      case REACT_MEMO_TYPE:
-        return getComponentName(type.type);
-
-      case REACT_BLOCK_TYPE:
-        return getComponentName(type.render);
-
-      case REACT_LAZY_TYPE:
-        {
-          var thenable = type;
-          var resolvedThenable = refineResolvedLazyComponent(thenable);
-
-          if (resolvedThenable) {
-            return getComponentName(resolvedThenable);
-          }
-
-          break;
-        }
-    }
-  }
-
-  return null;
-}
-
-var BEFORE_SLASH_RE = /^(.*)[\\\/]/;
-function describeComponentFrame (name, source, ownerName) {
-  var sourceInfo = '';
-
-  if (source) {
-    var path = source.fileName;
-    var fileName = path.replace(BEFORE_SLASH_RE, '');
-
-    {
-      // In DEV, include code for a common special case:
-      // prefer "folder/index.js" instead of just "index.js".
-      if (/^index\./.test(fileName)) {
-        var match = path.match(BEFORE_SLASH_RE);
-
-        if (match) {
-          var pathBeforeSlash = match[1];
-
-          if (pathBeforeSlash) {
-            var folderName = pathBeforeSlash.replace(BEFORE_SLASH_RE, '');
-            fileName = folderName + '/' + fileName;
-          }
-        }
-      }
-    }
-
-    sourceInfo = ' (at ' + fileName + ':' + source.lineNumber + ')';
-  } else if (ownerName) {
-    sourceInfo = ' (created by ' + ownerName + ')';
-  }
-
-  return '\n    in ' + (name || 'Unknown') + sourceInfo;
-}
-
-var enableSuspenseServerRenderer = false;
-
-var enableDeprecatedFlareAPI = false; // Experimental Host Component support.
-
-var ReactDebugCurrentFrame;
-var didWarnAboutInvalidateContextType;
-
-{
-  ReactDebugCurrentFrame = ReactSharedInternals.ReactDebugCurrentFrame;
-  didWarnAboutInvalidateContextType = new Set();
-}
-
-var emptyObject = {};
-
-{
-  Object.freeze(emptyObject);
-}
-
-function maskContext(type, context) {
-  var contextTypes = type.contextTypes;
-
-  if (!contextTypes) {
-    return emptyObject;
-  }
-
-  var maskedContext = {};
-
-  for (var contextName in contextTypes) {
-    maskedContext[contextName] = context[contextName];
-  }
-
-  return maskedContext;
-}
-
-function checkContextTypes(typeSpecs, values, location) {
-  {
-    checkPropTypes(typeSpecs, values, location, 'Component', ReactDebugCurrentFrame.getCurrentStack);
-  }
-}
-
-function validateContextBounds(context, threadID) {
-  // If we don't have enough slots in this context to store this threadID,
-  // fill it in without leaving any holes to ensure that the VM optimizes
-  // this as non-holey index properties.
-  // (Note: If `react` package is < 16.6, _threadCount is undefined.)
-  for (var i = context._threadCount | 0; i <= threadID; i++) {
-    // We assume that this is the same as the defaultValue which might not be
-    // true if we're rendering inside a secondary renderer but they are
-    // secondary because these use cases are very rare.
-    context[i] = context._currentValue2;
-    context._threadCount = i + 1;
-  }
-}
-function processContext(type, context, threadID, isClass) {
-  if (isClass) {
-    var contextType = type.contextType;
-
-    {
-      if ('contextType' in type) {
-        var isValid = // Allow null for conditional declaration
-        contextType === null || contextType !== undefined && contextType.$$typeof === REACT_CONTEXT_TYPE && contextType._context === undefined; // Not a <Context.Consumer>
-
-        if (!isValid && !didWarnAboutInvalidateContextType.has(type)) {
-          didWarnAboutInvalidateContextType.add(type);
-          var addendum = '';
-
-          if (contextType === undefined) {
-            addendum = ' However, it is set to undefined. ' + 'This can be caused by a typo or by mixing up named and default imports. ' + 'This can also happen due to a circular dependency, so ' + 'try moving the createContext() call to a separate file.';
-          } else if (typeof contextType !== 'object') {
-            addendum = ' However, it is set to a ' + typeof contextType + '.';
-          } else if (contextType.$$typeof === REACT_PROVIDER_TYPE) {
-            addendum = ' Did you accidentally pass the Context.Provider instead?';
-          } else if (contextType._context !== undefined) {
-            // <Context.Consumer>
-            addendum = ' Did you accidentally pass the Context.Consumer instead?';
-          } else {
-            addendum = ' However, it is set to an object with keys {' + Object.keys(contextType).join(', ') + '}.';
-          }
-
-          error('%s defines an invalid contextType. ' + 'contextType should point to the Context object returned by React.createContext().%s', getComponentName(type) || 'Component', addendum);
-        }
-      }
-    }
-
-    if (typeof contextType === 'object' && contextType !== null) {
-      validateContextBounds(contextType, threadID);
-      return contextType[threadID];
-    }
-
-    {
-      var maskedContext = maskContext(type, context);
-
-      {
-        if (type.contextTypes) {
-          checkContextTypes(type.contextTypes, maskedContext, 'context');
-        }
-      }
-
-      return maskedContext;
-    }
-  } else {
-    {
-      var _maskedContext = maskContext(type, context);
-
-      {
-        if (type.contextTypes) {
-          checkContextTypes(type.contextTypes, _maskedContext, 'context');
-        }
-      }
-
-      return _maskedContext;
-    }
-  }
-}
-
-var nextAvailableThreadIDs = new Uint16Array(16);
-
-for (var i = 0; i < 15; i++) {
-  nextAvailableThreadIDs[i] = i + 1;
-}
-
-nextAvailableThreadIDs[15] = 0;
-
-function growThreadCountAndReturnNextAvailable() {
-  var oldArray = nextAvailableThreadIDs;
-  var oldSize = oldArray.length;
-  var newSize = oldSize * 2;
-
-  if (!(newSize <= 0x10000)) {
-    {
-      throw Error( "Maximum number of concurrent React renderers exceeded. This can happen if you are not properly destroying the Readable provided by React. Ensure that you call .destroy() on it if you no longer want to read from it, and did not read to the end. If you use .pipe() this should be automatic." );
-    }
-  }
-
-  var newArray = new Uint16Array(newSize);
-  newArray.set(oldArray);
-  nextAvailableThreadIDs = newArray;
-  nextAvailableThreadIDs[0] = oldSize + 1;
-
-  for (var _i = oldSize; _i < newSize - 1; _i++) {
-    nextAvailableThreadIDs[_i] = _i + 1;
-  }
-
-  nextAvailableThreadIDs[newSize - 1] = 0;
-  return oldSize;
-}
-
-function allocThreadID() {
-  var nextID = nextAvailableThreadIDs[0];
-
-  if (nextID === 0) {
-    return growThreadCountAndReturnNextAvailable();
-  }
-
-  nextAvailableThreadIDs[0] = nextAvailableThreadIDs[nextID];
-  return nextID;
-}
-function freeThreadID(id) {
-  nextAvailableThreadIDs[id] = nextAvailableThreadIDs[0];
-  nextAvailableThreadIDs[0] = id;
-}
-
-// A reserved attribute.
-// It is handled by React separately and shouldn't be written to the DOM.
-var RESERVED = 0; // A simple string attribute.
-// Attributes that aren't in the whitelist are presumed to have this type.
-
-var STRING = 1; // A string attribute that accepts booleans in React. In HTML, these are called
-// "enumerated" attributes with "true" and "false" as possible values.
-// When true, it should be set to a "true" string.
-// When false, it should be set to a "false" string.
-
-var BOOLEANISH_STRING = 2; // A real boolean attribute.
-// When true, it should be present (set either to an empty string or its name).
-// When false, it should be omitted.
-
-var BOOLEAN = 3; // An attribute that can be used as a flag as well as with a value.
-// When true, it should be present (set either to an empty string or its name).
-// When false, it should be omitted.
-// For any other value, should be present with that value.
-
-var OVERLOADED_BOOLEAN = 4; // An attribute that must be numeric or parse as a numeric.
-// When falsy, it should be removed.
-
-var NUMERIC = 5; // An attribute that must be positive numeric or parse as a positive numeric.
-// When falsy, it should be removed.
-
-var POSITIVE_NUMERIC = 6;
-
-/* eslint-disable max-len */
-var ATTRIBUTE_NAME_START_CHAR = ":A-Z_a-z\\u00C0-\\u00D6\\u00D8-\\u00F6\\u00F8-\\u02FF\\u0370-\\u037D\\u037F-\\u1FFF\\u200C-\\u200D\\u2070-\\u218F\\u2C00-\\u2FEF\\u3001-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFFD";
-/* eslint-enable max-len */
-
-var ATTRIBUTE_NAME_CHAR = ATTRIBUTE_NAME_START_CHAR + "\\-.0-9\\u00B7\\u0300-\\u036F\\u203F-\\u2040";
-var ROOT_ATTRIBUTE_NAME = 'data-reactroot';
-var VALID_ATTRIBUTE_NAME_REGEX = new RegExp('^[' + ATTRIBUTE_NAME_START_CHAR + '][' + ATTRIBUTE_NAME_CHAR + ']*$');
-var hasOwnProperty = Object.prototype.hasOwnProperty;
-var illegalAttributeNameCache = {};
-var validatedAttributeNameCache = {};
-function isAttributeNameSafe(attributeName) {
-  if (hasOwnProperty.call(validatedAttributeNameCache, attributeName)) {
-    return true;
-  }
-
-  if (hasOwnProperty.call(illegalAttributeNameCache, attributeName)) {
-    return false;
-  }
-
-  if (VALID_ATTRIBUTE_NAME_REGEX.test(attributeName)) {
-    validatedAttributeNameCache[attributeName] = true;
-    return true;
-  }
-
-  illegalAttributeNameCache[attributeName] = true;
-
-  {
-    error('Invalid attribute name: `%s`', attributeName);
-  }
-
-  return false;
-}
-function shouldIgnoreAttribute(name, propertyInfo, isCustomComponentTag) {
-  if (propertyInfo !== null) {
-    return propertyInfo.type === RESERVED;
-  }
-
-  if (isCustomComponentTag) {
-    return false;
-  }
-
-  if (name.length > 2 && (name[0] === 'o' || name[0] === 'O') && (name[1] === 'n' || name[1] === 'N')) {
-    return true;
-  }
-
-  return false;
-}
-function shouldRemoveAttributeWithWarning(name, value, propertyInfo, isCustomComponentTag) {
-  if (propertyInfo !== null && propertyInfo.type === RESERVED) {
-    return false;
-  }
-
-  switch (typeof value) {
-    case 'function': // $FlowIssue symbol is perfectly valid here
-
-    case 'symbol':
-      // eslint-disable-line
-      return true;
-
-    case 'boolean':
-      {
-        if (isCustomComponentTag) {
-          return false;
-        }
-
-        if (propertyInfo !== null) {
-          return !propertyInfo.acceptsBooleans;
-        } else {
-          var prefix = name.toLowerCase().slice(0, 5);
-          return prefix !== 'data-' && prefix !== 'aria-';
-        }
-      }
-
-    default:
-      return false;
-  }
-}
-function shouldRemoveAttribute(name, value, propertyInfo, isCustomComponentTag) {
-  if (value === null || typeof value === 'undefined') {
-    return true;
-  }
-
-  if (shouldRemoveAttributeWithWarning(name, value, propertyInfo, isCustomComponentTag)) {
-    return true;
-  }
-
-  if (isCustomComponentTag) {
-    return false;
-  }
-
-  if (propertyInfo !== null) {
-    switch (propertyInfo.type) {
-      case BOOLEAN:
-        return !value;
-
-      case OVERLOADED_BOOLEAN:
-        return value === false;
-
-      case NUMERIC:
-        return isNaN(value);
-
-      case POSITIVE_NUMERIC:
-        return isNaN(value) || value < 1;
-    }
-  }
-
-  return false;
-}
-function getPropertyInfo(name) {
-  return properties.hasOwnProperty(name) ? properties[name] : null;
-}
-
-function PropertyInfoRecord(name, type, mustUseProperty, attributeName, attributeNamespace, sanitizeURL) {
-  this.acceptsBooleans = type === BOOLEANISH_STRING || type === BOOLEAN || type === OVERLOADED_BOOLEAN;
-  this.attributeName = attributeName;
-  this.attributeNamespace = attributeNamespace;
-  this.mustUseProperty = mustUseProperty;
-  this.propertyName = name;
-  this.type = type;
-  this.sanitizeURL = sanitizeURL;
-} // When adding attributes to this list, be sure to also add them to
-// the `possibleStandardNames` module to ensure casing and incorrect
-// name warnings.
-
-
-var properties = {}; // These props are reserved by React. They shouldn't be written to the DOM.
-
-var reservedProps = ['children', 'dangerouslySetInnerHTML', // TODO: This prevents the assignment of defaultValue to regular
-// elements (not just inputs). Now that ReactDOMInput assigns to the
-// defaultValue property -- do we need this?
-'defaultValue', 'defaultChecked', 'innerHTML', 'suppressContentEditableWarning', 'suppressHydrationWarning', 'style'];
-
-reservedProps.forEach(function (name) {
-  properties[name] = new PropertyInfoRecord(name, RESERVED, false, // mustUseProperty
-  name, // attributeName
-  null, // attributeNamespace
-  false);
-}); // A few React string attributes have a different name.
-// This is a mapping from React prop names to the attribute names.
-
-[['acceptCharset', 'accept-charset'], ['className', 'class'], ['htmlFor', 'for'], ['httpEquiv', 'http-equiv']].forEach(function (_ref) {
-  var name = _ref[0],
-      attributeName = _ref[1];
-  properties[name] = new PropertyInfoRecord(name, STRING, false, // mustUseProperty
-  attributeName, // attributeName
-  null, // attributeNamespace
-  false);
-}); // These are "enumerated" HTML attributes that accept "true" and "false".
-// In React, we let users pass `true` and `false` even though technically
-// these aren't boolean attributes (they are coerced to strings).
-
-['contentEditable', 'draggable', 'spellCheck', 'value'].forEach(function (name) {
-  properties[name] = new PropertyInfoRecord(name, BOOLEANISH_STRING, false, // mustUseProperty
-  name.toLowerCase(), // attributeName
-  null, // attributeNamespace
-  false);
-}); // These are "enumerated" SVG attributes that accept "true" and "false".
-// In React, we let users pass `true` and `false` even though technically
-// these aren't boolean attributes (they are coerced to strings).
-// Since these are SVG attributes, their attribute names are case-sensitive.
-
-['autoReverse', 'externalResourcesRequired', 'focusable', 'preserveAlpha'].forEach(function (name) {
-  properties[name] = new PropertyInfoRecord(name, BOOLEANISH_STRING, false, // mustUseProperty
-  name, // attributeName
-  null, // attributeNamespace
-  false);
-}); // These are HTML boolean attributes.
-
-['allowFullScreen', 'async', // Note: there is a special case that prevents it from being written to the DOM
-// on the client side because the browsers are inconsistent. Instead we call focus().
-'autoFocus', 'autoPlay', 'controls', 'default', 'defer', 'disabled', 'disablePictureInPicture', 'formNoValidate', 'hidden', 'loop', 'noModule', 'noValidate', 'open', 'playsInline', 'readOnly', 'required', 'reversed', 'scoped', 'seamless', // Microdata
-'itemScope'].forEach(function (name) {
-  properties[name] = new PropertyInfoRecord(name, BOOLEAN, false, // mustUseProperty
-  name.toLowerCase(), // attributeName
-  null, // attributeNamespace
-  false);
-}); // These are the few React props that we set as DOM properties
-// rather than attributes. These are all booleans.
-
-['checked', // Note: `option.selected` is not updated if `select.multiple` is
-// disabled with `removeAttribute`. We have special logic for handling this.
-'multiple', 'muted', 'selected' // NOTE: if you add a camelCased prop to this list,
-// you'll need to set attributeName to name.toLowerCase()
-// instead in the assignment below.
-].forEach(function (name) {
-  properties[name] = new PropertyInfoRecord(name, BOOLEAN, true, // mustUseProperty
-  name, // attributeName
-  null, // attributeNamespace
-  false);
-}); // These are HTML attributes that are "overloaded booleans": they behave like
-// booleans, but can also accept a string value.
-
-['capture', 'download' // NOTE: if you add a camelCased prop to this list,
-// you'll need to set attributeName to name.toLowerCase()
-// instead in the assignment below.
-].forEach(function (name) {
-  properties[name] = new PropertyInfoRecord(name, OVERLOADED_BOOLEAN, false, // mustUseProperty
-  name, // attributeName
-  null, // attributeNamespace
-  false);
-}); // These are HTML attributes that must be positive numbers.
-
-['cols', 'rows', 'size', 'span' // NOTE: if you add a camelCased prop to this list,
-// you'll need to set attributeName to name.toLowerCase()
-// instead in the assignment below.
-].forEach(function (name) {
-  properties[name] = new PropertyInfoRecord(name, POSITIVE_NUMERIC, false, // mustUseProperty
-  name, // attributeName
-  null, // attributeNamespace
-  false);
-}); // These are HTML attributes that must be numbers.
-
-['rowSpan', 'start'].forEach(function (name) {
-  properties[name] = new PropertyInfoRecord(name, NUMERIC, false, // mustUseProperty
-  name.toLowerCase(), // attributeName
-  null, // attributeNamespace
-  false);
-});
-var CAMELIZE = /[\-\:]([a-z])/g;
-
-var capitalize = function (token) {
-  return token[1].toUpperCase();
-}; // This is a list of all SVG attributes that need special casing, namespacing,
-// or boolean value assignment. Regular attributes that just accept strings
-// and have the same names are omitted, just like in the HTML whitelist.
-// Some of these attributes can be hard to find. This list was created by
-// scraping the MDN documentation.
-
-
-['accent-height', 'alignment-baseline', 'arabic-form', 'baseline-shift', 'cap-height', 'clip-path', 'clip-rule', 'color-interpolation', 'color-interpolation-filters', 'color-profile', 'color-rendering', 'dominant-baseline', 'enable-background', 'fill-opacity', 'fill-rule', 'flood-color', 'flood-opacity', 'font-family', 'font-size', 'font-size-adjust', 'font-stretch', 'font-style', 'font-variant', 'font-weight', 'glyph-name', 'glyph-orientation-horizontal', 'glyph-orientation-vertical', 'horiz-adv-x', 'horiz-origin-x', 'image-rendering', 'letter-spacing', 'lighting-color', 'marker-end', 'marker-mid', 'marker-start', 'overline-position', 'overline-thickness', 'paint-order', 'panose-1', 'pointer-events', 'rendering-intent', 'shape-rendering', 'stop-color', 'stop-opacity', 'strikethrough-position', 'strikethrough-thickness', 'stroke-dasharray', 'stroke-dashoffset', 'stroke-linecap', 'stroke-linejoin', 'stroke-miterlimit', 'stroke-opacity', 'stroke-width', 'text-anchor', 'text-decoration', 'text-rendering', 'underline-position', 'underline-thickness', 'unicode-bidi', 'unicode-range', 'units-per-em', 'v-alphabetic', 'v-hanging', 'v-ideographic', 'v-mathematical', 'vector-effect', 'vert-adv-y', 'vert-origin-x', 'vert-origin-y', 'word-spacing', 'writing-mode', 'xmlns:xlink', 'x-height' // NOTE: if you add a camelCased prop to this list,
-// you'll need to set attributeName to name.toLowerCase()
-// instead in the assignment below.
-].forEach(function (attributeName) {
-  var name = attributeName.replace(CAMELIZE, capitalize);
-  properties[name] = new PropertyInfoRecord(name, STRING, false, // mustUseProperty
-  attributeName, null, // attributeNamespace
-  false);
-}); // String SVG attributes with the xlink namespace.
-
-['xlink:actuate', 'xlink:arcrole', 'xlink:role', 'xlink:show', 'xlink:title', 'xlink:type' // NOTE: if you add a camelCased prop to this list,
-// you'll need to set attributeName to name.toLowerCase()
-// instead in the assignment below.
-].forEach(function (attributeName) {
-  var name = attributeName.replace(CAMELIZE, capitalize);
-  properties[name] = new PropertyInfoRecord(name, STRING, false, // mustUseProperty
-  attributeName, 'http://www.w3.org/1999/xlink', false);
-}); // String SVG attributes with the xml namespace.
-
-['xml:base', 'xml:lang', 'xml:space' // NOTE: if you add a camelCased prop to this list,
-// you'll need to set attributeName to name.toLowerCase()
-// instead in the assignment below.
-].forEach(function (attributeName) {
-  var name = attributeName.replace(CAMELIZE, capitalize);
-  properties[name] = new PropertyInfoRecord(name, STRING, false, // mustUseProperty
-  attributeName, 'http://www.w3.org/XML/1998/namespace', false);
-}); // These attribute exists both in HTML and SVG.
-// The attribute name is case-sensitive in SVG so we can't just use
-// the React name like we do for attributes that exist only in HTML.
-
-['tabIndex', 'crossOrigin'].forEach(function (attributeName) {
-  properties[attributeName] = new PropertyInfoRecord(attributeName, STRING, false, // mustUseProperty
-  attributeName.toLowerCase(), // attributeName
-  null, // attributeNamespace
-  false);
-}); // These attributes accept URLs. These must not allow javascript: URLS.
-// These will also need to accept Trusted Types object in the future.
-
-var xlinkHref = 'xlinkHref';
-properties[xlinkHref] = new PropertyInfoRecord('xlinkHref', STRING, false, // mustUseProperty
-'xlink:href', 'http://www.w3.org/1999/xlink', true);
-['src', 'href', 'action', 'formAction'].forEach(function (attributeName) {
-  properties[attributeName] = new PropertyInfoRecord(attributeName, STRING, false, // mustUseProperty
-  attributeName.toLowerCase(), // attributeName
-  null, // attributeNamespace
-  true);
-});
-
-var ReactDebugCurrentFrame$1 = null;
-
-{
-  ReactDebugCurrentFrame$1 = ReactSharedInternals.ReactDebugCurrentFrame;
-} // A javascript: URL can contain leading C0 control or \u0020 SPACE,
-// and any newline or tab are filtered out as if they're not part of the URL.
-// https://url.spec.whatwg.org/#url-parsing
-// Tab or newline are defined as \r\n\t:
-// https://infra.spec.whatwg.org/#ascii-tab-or-newline
-// A C0 control is a code point in the range \u0000 NULL to \u001F
-// INFORMATION SEPARATOR ONE, inclusive:
-// https://infra.spec.whatwg.org/#c0-control-or-space
-
-/* eslint-disable max-len */
-
-
-var isJavaScriptProtocol = /^[\u0000-\u001F ]*j[\r\n\t]*a[\r\n\t]*v[\r\n\t]*a[\r\n\t]*s[\r\n\t]*c[\r\n\t]*r[\r\n\t]*i[\r\n\t]*p[\r\n\t]*t[\r\n\t]*\:/i;
-var didWarn = false;
-
-function sanitizeURL(url) {
-  {
-    if (!didWarn && isJavaScriptProtocol.test(url)) {
-      didWarn = true;
-
-      error('A future version of React will block javascript: URLs as a security precaution. ' + 'Use event handlers instead if you can. If you need to generate unsafe HTML try ' + 'using dangerouslySetInnerHTML instead. React was passed %s.', JSON.stringify(url));
-    }
-  }
-}
-
-// code copied and modified from escape-html
-
-/**
- * Module variables.
- * @private
- */
-var matchHtmlRegExp = /["'&<>]/;
-/**
- * Escapes special characters and HTML entities in a given html string.
- *
- * @param  {string} string HTML string to escape for later insertion
- * @return {string}
- * @public
- */
-
-function escapeHtml(string) {
-  var str = '' + string;
-  var match = matchHtmlRegExp.exec(str);
-
-  if (!match) {
-    return str;
-  }
-
-  var escape;
-  var html = '';
-  var index;
-  var lastIndex = 0;
-
-  for (index = match.index; index < str.length; index++) {
-    switch (str.charCodeAt(index)) {
-      case 34:
-        // "
-        escape = '&quot;';
-        break;
-
-      case 38:
-        // &
-        escape = '&amp;';
-        break;
-
-      case 39:
-        // '
-        escape = '&#x27;'; // modified from escape-html; used to be '&#39'
-
-        break;
-
-      case 60:
-        // <
-        escape = '&lt;';
-        break;
-
-      case 62:
-        // >
-        escape = '&gt;';
-        break;
-
-      default:
-        continue;
-    }
-
-    if (lastIndex !== index) {
-      html += str.substring(lastIndex, index);
-    }
-
-    lastIndex = index + 1;
-    html += escape;
-  }
-
-  return lastIndex !== index ? html + str.substring(lastIndex, index) : html;
-} // end code copied and modified from escape-html
-
-/**
- * Escapes text to prevent scripting attacks.
- *
- * @param {*} text Text value to escape.
- * @return {string} An escaped string.
- */
-
-
-function escapeTextForBrowser(text) {
-  if (typeof text === 'boolean' || typeof text === 'number') {
-    // this shortcircuit helps perf for types that we know will never have
-    // special characters, especially given that this function is used often
-    // for numeric dom ids.
-    return '' + text;
-  }
-
-  return escapeHtml(text);
-}
-
-/**
- * Escapes attribute value to prevent scripting attacks.
- *
- * @param {*} value Value to escape.
- * @return {string} An escaped string.
- */
-
-function quoteAttributeValueForBrowser(value) {
-  return '"' + escapeTextForBrowser(value) + '"';
-}
-
-function createMarkupForRoot() {
-  return ROOT_ATTRIBUTE_NAME + '=""';
-}
-/**
- * Creates markup for a property.
- *
- * @param {string} name
- * @param {*} value
- * @return {?string} Markup string, or null if the property was invalid.
- */
-
-function createMarkupForProperty(name, value) {
-  var propertyInfo = getPropertyInfo(name);
-
-  if (name !== 'style' && shouldIgnoreAttribute(name, propertyInfo, false)) {
-    return '';
-  }
-
-  if (shouldRemoveAttribute(name, value, propertyInfo, false)) {
-    return '';
-  }
-
-  if (propertyInfo !== null) {
-    var attributeName = propertyInfo.attributeName;
-    var type = propertyInfo.type;
-
-    if (type === BOOLEAN || type === OVERLOADED_BOOLEAN && value === true) {
-      return attributeName + '=""';
-    } else {
-      if (propertyInfo.sanitizeURL) {
-        value = '' + value;
-        sanitizeURL(value);
-      }
-
-      return attributeName + '=' + quoteAttributeValueForBrowser(value);
-    }
-  } else if (isAttributeNameSafe(name)) {
-    return name + '=' + quoteAttributeValueForBrowser(value);
-  }
-
-  return '';
-}
-/**
- * Creates markup for a custom property.
- *
- * @param {string} name
- * @param {*} value
- * @return {string} Markup string, or empty string if the property was invalid.
- */
-
-function createMarkupForCustomAttribute(name, value) {
-  if (!isAttributeNameSafe(name) || value == null) {
-    return '';
-  }
-
-  return name + '=' + quoteAttributeValueForBrowser(value);
-}
-
-/**
- * inlined Object.is polyfill to avoid requiring consumers ship their own
- * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is
- */
-function is(x, y) {
-  return x === y && (x !== 0 || 1 / x === 1 / y) || x !== x && y !== y // eslint-disable-line no-self-compare
-  ;
-}
-
-var objectIs = typeof Object.is === 'function' ? Object.is : is;
-
-var currentlyRenderingComponent = null;
-var firstWorkInProgressHook = null;
-var workInProgressHook = null; // Whether the work-in-progress hook is a re-rendered hook
-
-var isReRender = false; // Whether an update was scheduled during the currently executing render pass.
-
-var didScheduleRenderPhaseUpdate = false; // Lazily created map of render-phase updates
-
-var renderPhaseUpdates = null; // Counter to prevent infinite loops.
-
-var numberOfReRenders = 0;
-var RE_RENDER_LIMIT = 25;
-var isInHookUserCodeInDev = false; // In DEV, this is the name of the currently executing primitive hook
-
-var currentHookNameInDev;
-
-function resolveCurrentlyRenderingComponent() {
-  if (!(currentlyRenderingComponent !== null)) {
-    {
-      throw Error( "Invalid hook call. Hooks can only be called inside of the body of a function component. This could happen for one of the following reasons:\n1. You might have mismatching versions of React and the renderer (such as React DOM)\n2. You might be breaking the Rules of Hooks\n3. You might have more than one copy of React in the same app\nSee https://fb.me/react-invalid-hook-call for tips about how to debug and fix this problem." );
-    }
-  }
-
-  {
-    if (isInHookUserCodeInDev) {
-      error('Do not call Hooks inside useEffect(...), useMemo(...), or other built-in Hooks. ' + 'You can only call Hooks at the top level of your React function. ' + 'For more information, see ' + 'https://fb.me/rules-of-hooks');
-    }
-  }
-
-  return currentlyRenderingComponent;
-}
-
-function areHookInputsEqual(nextDeps, prevDeps) {
-  if (prevDeps === null) {
-    {
-      error('%s received a final argument during this render, but not during ' + 'the previous render. Even though the final argument is optional, ' + 'its type cannot change between renders.', currentHookNameInDev);
-    }
-
-    return false;
-  }
-
-  {
-    // Don't bother comparing lengths in prod because these arrays should be
-    // passed inline.
-    if (nextDeps.length !== prevDeps.length) {
-      error('The final argument passed to %s changed size between renders. The ' + 'order and size of this array must remain constant.\n\n' + 'Previous: %s\n' + 'Incoming: %s', currentHookNameInDev, "[" + nextDeps.join(', ') + "]", "[" + prevDeps.join(', ') + "]");
-    }
-  }
-
-  for (var i = 0; i < prevDeps.length && i < nextDeps.length; i++) {
-    if (objectIs(nextDeps[i], prevDeps[i])) {
-      continue;
-    }
-
-    return false;
-  }
-
-  return true;
-}
-
-function createHook() {
-  if (numberOfReRenders > 0) {
-    {
-      {
-        throw Error( "Rendered more hooks than during the previous render" );
-      }
-    }
-  }
-
-  return {
-    memoizedState: null,
-    queue: null,
-    next: null
-  };
-}
-
-function createWorkInProgressHook() {
-  if (workInProgressHook === null) {
-    // This is the first hook in the list
-    if (firstWorkInProgressHook === null) {
-      isReRender = false;
-      firstWorkInProgressHook = workInProgressHook = createHook();
-    } else {
-      // There's already a work-in-progress. Reuse it.
-      isReRender = true;
-      workInProgressHook = firstWorkInProgressHook;
-    }
-  } else {
-    if (workInProgressHook.next === null) {
-      isReRender = false; // Append to the end of the list
-
-      workInProgressHook = workInProgressHook.next = createHook();
-    } else {
-      // There's already a work-in-progress. Reuse it.
-      isReRender = true;
-      workInProgressHook = workInProgressHook.next;
-    }
-  }
-
-  return workInProgressHook;
-}
-
-function prepareToUseHooks(componentIdentity) {
-  currentlyRenderingComponent = componentIdentity;
-
-  {
-    isInHookUserCodeInDev = false;
-  } // The following should have already been reset
-  // didScheduleRenderPhaseUpdate = false;
-  // firstWorkInProgressHook = null;
-  // numberOfReRenders = 0;
-  // renderPhaseUpdates = null;
-  // workInProgressHook = null;
-
-}
-function finishHooks(Component, props, children, refOrContext) {
-  // This must be called after every function component to prevent hooks from
-  // being used in classes.
-  while (didScheduleRenderPhaseUpdate) {
-    // Updates were scheduled during the render phase. They are stored in
-    // the `renderPhaseUpdates` map. Call the component again, reusing the
-    // work-in-progress hooks and applying the additional updates on top. Keep
-    // restarting until no more updates are scheduled.
-    didScheduleRenderPhaseUpdate = false;
-    numberOfReRenders += 1; // Start over from the beginning of the list
-
-    workInProgressHook = null;
-    children = Component(props, refOrContext);
-  }
-
-  currentlyRenderingComponent = null;
-  firstWorkInProgressHook = null;
-  numberOfReRenders = 0;
-  renderPhaseUpdates = null;
-  workInProgressHook = null;
-
-  {
-    isInHookUserCodeInDev = false;
-  } // These were reset above
-  // currentlyRenderingComponent = null;
-  // didScheduleRenderPhaseUpdate = false;
-  // firstWorkInProgressHook = null;
-  // numberOfReRenders = 0;
-  // renderPhaseUpdates = null;
-  // workInProgressHook = null;
-
-
-  return children;
-}
-
-function readContext(context, observedBits) {
-  var threadID = currentThreadID;
-  validateContextBounds(context, threadID);
-
-  {
-    if (isInHookUserCodeInDev) {
-      error('Context can only be read while React is rendering. ' + 'In classes, you can read it in the render method or getDerivedStateFromProps. ' + 'In function components, you can read it directly in the function body, but not ' + 'inside Hooks like useReducer() or useMemo().');
-    }
-  }
-
-  return context[threadID];
-}
-
-function useContext(context, observedBits) {
-  {
-    currentHookNameInDev = 'useContext';
-  }
-
-  resolveCurrentlyRenderingComponent();
-  var threadID = currentThreadID;
-  validateContextBounds(context, threadID);
-  return context[threadID];
-}
-
-function basicStateReducer(state, action) {
-  // $FlowFixMe: Flow doesn't like mixed types
-  return typeof action === 'function' ? action(state) : action;
-}
-
-function useState(initialState) {
-  {
-    currentHookNameInDev = 'useState';
-  }
-
-  return useReducer(basicStateReducer, // useReducer has a special case to support lazy useState initializers
-  initialState);
-}
-function useReducer(reducer, initialArg, init) {
-  {
-    if (reducer !== basicStateReducer) {
-      currentHookNameInDev = 'useReducer';
-    }
-  }
-
-  currentlyRenderingComponent = resolveCurrentlyRenderingComponent();
-  workInProgressHook = createWorkInProgressHook();
-
-  if (isReRender) {
-    // This is a re-render. Apply the new render phase updates to the previous
-    // current hook.
-    var queue = workInProgressHook.queue;
-    var dispatch = queue.dispatch;
-
-    if (renderPhaseUpdates !== null) {
-      // Render phase updates are stored in a map of queue -> linked list
-      var firstRenderPhaseUpdate = renderPhaseUpdates.get(queue);
-
-      if (firstRenderPhaseUpdate !== undefined) {
-        renderPhaseUpdates.delete(queue);
-        var newState = workInProgressHook.memoizedState;
-        var update = firstRenderPhaseUpdate;
-
-        do {
-          // Process this render phase update. We don't have to check the
-          // priority because it will always be the same as the current
-          // render's.
-          var action = update.action;
-
-          {
-            isInHookUserCodeInDev = true;
-          }
-
-          newState = reducer(newState, action);
-
-          {
-            isInHookUserCodeInDev = false;
-          }
-
-          update = update.next;
-        } while (update !== null);
-
-        workInProgressHook.memoizedState = newState;
-        return [newState, dispatch];
-      }
-    }
-
-    return [workInProgressHook.memoizedState, dispatch];
-  } else {
-    {
-      isInHookUserCodeInDev = true;
-    }
-
-    var initialState;
-
-    if (reducer === basicStateReducer) {
-      // Special case for `useState`.
-      initialState = typeof initialArg === 'function' ? initialArg() : initialArg;
-    } else {
-      initialState = init !== undefined ? init(initialArg) : initialArg;
-    }
-
-    {
-      isInHookUserCodeInDev = false;
-    }
-
-    workInProgressHook.memoizedState = initialState;
-
-    var _queue = workInProgressHook.queue = {
-      last: null,
-      dispatch: null
-    };
-
-    var _dispatch = _queue.dispatch = dispatchAction.bind(null, currentlyRenderingComponent, _queue);
-
-    return [workInProgressHook.memoizedState, _dispatch];
-  }
-}
-
-function useMemo(nextCreate, deps) {
-  currentlyRenderingComponent = resolveCurrentlyRenderingComponent();
-  workInProgressHook = createWorkInProgressHook();
-  var nextDeps = deps === undefined ? null : deps;
-
-  if (workInProgressHook !== null) {
-    var prevState = workInProgressHook.memoizedState;
-
-    if (prevState !== null) {
-      if (nextDeps !== null) {
-        var prevDeps = prevState[1];
-
-        if (areHookInputsEqual(nextDeps, prevDeps)) {
-          return prevState[0];
-        }
-      }
-    }
-  }
-
-  {
-    isInHookUserCodeInDev = true;
-  }
-
-  var nextValue = nextCreate();
-
-  {
-    isInHookUserCodeInDev = false;
-  }
-
-  workInProgressHook.memoizedState = [nextValue, nextDeps];
-  return nextValue;
-}
-
-function useRef(initialValue) {
-  currentlyRenderingComponent = resolveCurrentlyRenderingComponent();
-  workInProgressHook = createWorkInProgressHook();
-  var previousRef = workInProgressHook.memoizedState;
-
-  if (previousRef === null) {
-    var ref = {
-      current: initialValue
-    };
-
-    {
-      Object.seal(ref);
-    }
-
-    workInProgressHook.memoizedState = ref;
-    return ref;
-  } else {
-    return previousRef;
-  }
-}
-
-function useLayoutEffect(create, inputs) {
-  {
-    currentHookNameInDev = 'useLayoutEffect';
-
-    error('useLayoutEffect does nothing on the server, because its effect cannot ' + "be encoded into the server renderer's output format. This will lead " + 'to a mismatch between the initial, non-hydrated UI and the intended ' + 'UI. To avoid this, useLayoutEffect should only be used in ' + 'components that render exclusively on the client. ' + 'See https://fb.me/react-uselayouteffect-ssr for common fixes.');
-  }
-}
-
-function dispatchAction(componentIdentity, queue, action) {
-  if (!(numberOfReRenders < RE_RENDER_LIMIT)) {
-    {
-      throw Error( "Too many re-renders. React limits the number of renders to prevent an infinite loop." );
-    }
-  }
-
-  if (componentIdentity === currentlyRenderingComponent) {
-    // This is a render phase update. Stash it in a lazily-created map of
-    // queue -> linked list of updates. After this render pass, we'll restart
-    // and apply the stashed updates on top of the work-in-progress hook.
-    didScheduleRenderPhaseUpdate = true;
-    var update = {
-      action: action,
-      next: null
-    };
-
-    if (renderPhaseUpdates === null) {
-      renderPhaseUpdates = new Map();
-    }
-
-    var firstRenderPhaseUpdate = renderPhaseUpdates.get(queue);
-
-    if (firstRenderPhaseUpdate === undefined) {
-      renderPhaseUpdates.set(queue, update);
-    } else {
-      // Append the update to the end of the list.
-      var lastRenderPhaseUpdate = firstRenderPhaseUpdate;
-
-      while (lastRenderPhaseUpdate.next !== null) {
-        lastRenderPhaseUpdate = lastRenderPhaseUpdate.next;
-      }
-
-      lastRenderPhaseUpdate.next = update;
-    }
-  }
-}
-
-function useCallback(callback, deps) {
-  // Callbacks are passed as they are in the server environment.
-  return callback;
-}
-
-function useResponder(responder, props) {
-  return {
-    props: props,
-    responder: responder
-  };
-}
-
-function useDeferredValue(value, config) {
-  resolveCurrentlyRenderingComponent();
-  return value;
-}
-
-function useTransition(config) {
-  resolveCurrentlyRenderingComponent();
-
-  var startTransition = function (callback) {
-    callback();
-  };
-
-  return [startTransition, false];
-}
-
-function noop() {}
-
-var currentThreadID = 0;
-function setCurrentThreadID(threadID) {
-  currentThreadID = threadID;
-}
-var Dispatcher = {
-  readContext: readContext,
-  useContext: useContext,
-  useMemo: useMemo,
-  useReducer: useReducer,
-  useRef: useRef,
-  useState: useState,
-  useLayoutEffect: useLayoutEffect,
-  useCallback: useCallback,
-  // useImperativeHandle is not run in the server environment
-  useImperativeHandle: noop,
-  // Effects are not run in the server environment.
-  useEffect: noop,
-  // Debugging effect
-  useDebugValue: noop,
-  useResponder: useResponder,
-  useDeferredValue: useDeferredValue,
-  useTransition: useTransition
-};
-
-var HTML_NAMESPACE = 'http://www.w3.org/1999/xhtml';
-var MATH_NAMESPACE = 'http://www.w3.org/1998/Math/MathML';
-var SVG_NAMESPACE = 'http://www.w3.org/2000/svg';
-var Namespaces = {
-  html: HTML_NAMESPACE,
-  mathml: MATH_NAMESPACE,
-  svg: SVG_NAMESPACE
-}; // Assumes there is no parent namespace.
-
-function getIntrinsicNamespace(type) {
-  switch (type) {
-    case 'svg':
-      return SVG_NAMESPACE;
-
-    case 'math':
-      return MATH_NAMESPACE;
-
-    default:
-      return HTML_NAMESPACE;
-  }
-}
-function getChildNamespace(parentNamespace, type) {
-  if (parentNamespace == null || parentNamespace === HTML_NAMESPACE) {
-    // No (or default) parent namespace: potential entry point.
-    return getIntrinsicNamespace(type);
-  }
-
-  if (parentNamespace === SVG_NAMESPACE && type === 'foreignObject') {
-    // We're leaving SVG.
-    return HTML_NAMESPACE;
-  } // By default, pass namespace below.
-
-
-  return parentNamespace;
-}
-
-var ReactDebugCurrentFrame$2 = null;
-var ReactControlledValuePropTypes = {
-  checkPropTypes: null
-};
-
-{
-  ReactDebugCurrentFrame$2 = ReactSharedInternals.ReactDebugCurrentFrame;
-  var hasReadOnlyValue = {
-    button: true,
-    checkbox: true,
-    image: true,
-    hidden: true,
-    radio: true,
-    reset: true,
-    submit: true
-  };
-  var propTypes = {
-    value: function (props, propName, componentName) {
-      if (hasReadOnlyValue[props.type] || props.onChange || props.readOnly || props.disabled || props[propName] == null || enableDeprecatedFlareAPI ) {
-        return null;
-      }
-
-      return new Error('You provided a `value` prop to a form field without an ' + '`onChange` handler. This will render a read-only field. If ' + 'the field should be mutable use `defaultValue`. Otherwise, ' + 'set either `onChange` or `readOnly`.');
-    },
-    checked: function (props, propName, componentName) {
-      if (props.onChange || props.readOnly || props.disabled || props[propName] == null || enableDeprecatedFlareAPI ) {
-        return null;
-      }
-
-      return new Error('You provided a `checked` prop to a form field without an ' + '`onChange` handler. This will render a read-only field. If ' + 'the field should be mutable use `defaultChecked`. Otherwise, ' + 'set either `onChange` or `readOnly`.');
-    }
-  };
-  /**
-   * Provide a linked `value` attribute for controlled forms. You should not use
-   * this outside of the ReactDOM controlled form components.
-   */
-
-  ReactControlledValuePropTypes.checkPropTypes = function (tagName, props) {
-    checkPropTypes(propTypes, props, 'prop', tagName, ReactDebugCurrentFrame$2.getStackAddendum);
-  };
-}
-
-// For HTML, certain tags should omit their close tag. We keep a whitelist for
-// those special-case tags.
-var omittedCloseTags = {
-  area: true,
-  base: true,
-  br: true,
-  col: true,
-  embed: true,
-  hr: true,
-  img: true,
-  input: true,
-  keygen: true,
-  link: true,
-  meta: true,
-  param: true,
-  source: true,
-  track: true,
-  wbr: true // NOTE: menuitem's close tag should be omitted, but that causes problems.
-
-};
-
-// `omittedCloseTags` except that `menuitem` should still have its closing tag.
-
-var voidElementTags = _assign({
-  menuitem: true
-}, omittedCloseTags);
-
-var HTML = '__html';
-var ReactDebugCurrentFrame$3 = null;
-
-{
-  ReactDebugCurrentFrame$3 = ReactSharedInternals.ReactDebugCurrentFrame;
-}
-
-function assertValidProps(tag, props) {
-  if (!props) {
-    return;
-  } // Note the use of `==` which checks for null or undefined.
-
-
-  if (voidElementTags[tag]) {
-    if (!(props.children == null && props.dangerouslySetInnerHTML == null)) {
-      {
-        throw Error( tag + " is a void element tag and must neither have `children` nor use `dangerouslySetInnerHTML`." + ( ReactDebugCurrentFrame$3.getStackAddendum() ) );
-      }
-    }
-  }
-
-  if (props.dangerouslySetInnerHTML != null) {
-    if (!(props.children == null)) {
-      {
-        throw Error( "Can only set one of `children` or `props.dangerouslySetInnerHTML`." );
-      }
-    }
-
-    if (!(typeof props.dangerouslySetInnerHTML === 'object' && HTML in props.dangerouslySetInnerHTML)) {
-      {
-        throw Error( "`props.dangerouslySetInnerHTML` must be in the form `{__html: ...}`. Please visit https://fb.me/react-invariant-dangerously-set-inner-html for more information." );
-      }
-    }
-  }
-
-  {
-    if (!props.suppressContentEditableWarning && props.contentEditable && props.children != null) {
-      error('A component is `contentEditable` and contains `children` managed by ' + 'React. It is now your responsibility to guarantee that none of ' + 'those nodes are unexpectedly modified or duplicated. This is ' + 'probably not intentional.');
-    }
-  }
-
-  if (!(props.style == null || typeof props.style === 'object')) {
-    {
-      throw Error( "The `style` prop expects a mapping from style properties to values, not a string. For example, style={{marginRight: spacing + 'em'}} when using JSX." + ( ReactDebugCurrentFrame$3.getStackAddendum() ) );
-    }
-  }
-}
-
-/**
- * CSS properties which accept numbers but are not in units of "px".
- */
-var isUnitlessNumber = {
-  animationIterationCount: true,
-  borderImageOutset: true,
-  borderImageSlice: true,
-  borderImageWidth: true,
-  boxFlex: true,
-  boxFlexGroup: true,
-  boxOrdinalGroup: true,
-  columnCount: true,
-  columns: true,
-  flex: true,
-  flexGrow: true,
-  flexPositive: true,
-  flexShrink: true,
-  flexNegative: true,
-  flexOrder: true,
-  gridArea: true,
-  gridRow: true,
-  gridRowEnd: true,
-  gridRowSpan: true,
-  gridRowStart: true,
-  gridColumn: true,
-  gridColumnEnd: true,
-  gridColumnSpan: true,
-  gridColumnStart: true,
-  fontWeight: true,
-  lineClamp: true,
-  lineHeight: true,
-  opacity: true,
-  order: true,
-  orphans: true,
-  tabSize: true,
-  widows: true,
-  zIndex: true,
-  zoom: true,
-  // SVG-related properties
-  fillOpacity: true,
-  floodOpacity: true,
-  stopOpacity: true,
-  strokeDasharray: true,
-  strokeDashoffset: true,
-  strokeMiterlimit: true,
-  strokeOpacity: true,
-  strokeWidth: true
-};
-/**
- * @param {string} prefix vendor-specific prefix, eg: Webkit
- * @param {string} key style name, eg: transitionDuration
- * @return {string} style name prefixed with `prefix`, properly camelCased, eg:
- * WebkitTransitionDuration
- */
-
-function prefixKey(prefix, key) {
-  return prefix + key.charAt(0).toUpperCase() + key.substring(1);
-}
-/**
- * Support style names that may come passed in prefixed by adding permutations
- * of vendor prefixes.
- */
-
-
-var prefixes = ['Webkit', 'ms', 'Moz', 'O']; // Using Object.keys here, or else the vanilla for-in loop makes IE8 go into an
-// infinite loop, because it iterates over the newly added props too.
-
-Object.keys(isUnitlessNumber).forEach(function (prop) {
-  prefixes.forEach(function (prefix) {
-    isUnitlessNumber[prefixKey(prefix, prop)] = isUnitlessNumber[prop];
-  });
-});
-
-/**
- * Convert a value into the proper css writable value. The style name `name`
- * should be logical (no hyphens), as specified
- * in `CSSProperty.isUnitlessNumber`.
- *
- * @param {string} name CSS property name such as `topMargin`.
- * @param {*} value CSS property value such as `10px`.
- * @return {string} Normalized style value with dimensions applied.
- */
-
-function dangerousStyleValue(name, value, isCustomProperty) {
-  // Note that we've removed escapeTextForBrowser() calls here since the
-  // whole string will be escaped when the attribute is injected into
-  // the markup. If you provide unsafe user data here they can inject
-  // arbitrary CSS which may be problematic (I couldn't repro this):
-  // https://www.owasp.org/index.php/XSS_Filter_Evasion_Cheat_Sheet
-  // http://www.thespanner.co.uk/2007/11/26/ultimate-xss-css-injection/
-  // This is not an XSS hole but instead a potential CSS injection issue
-  // which has lead to a greater discussion about how we're going to
-  // trust URLs moving forward. See #2115901
-  var isEmpty = value == null || typeof value === 'boolean' || value === '';
-
-  if (isEmpty) {
-    return '';
-  }
-
-  if (!isCustomProperty && typeof value === 'number' && value !== 0 && !(isUnitlessNumber.hasOwnProperty(name) && isUnitlessNumber[name])) {
-    return value + 'px'; // Presumes implicit 'px' suffix for unitless numbers
-  }
-
-  return ('' + value).trim();
-}
-
-var uppercasePattern = /([A-Z])/g;
-var msPattern = /^ms-/;
-/**
- * Hyphenates a camelcased CSS property name, for example:
- *
- *   > hyphenateStyleName('backgroundColor')
- *   < "background-color"
- *   > hyphenateStyleName('MozTransition')
- *   < "-moz-transition"
- *   > hyphenateStyleName('msTransition')
- *   < "-ms-transition"
- *
- * As Modernizr suggests (http://modernizr.com/docs/#prefixed), an `ms` prefix
- * is converted to `-ms-`.
- */
-
-function hyphenateStyleName(name) {
-  return name.replace(uppercasePattern, '-$1').toLowerCase().replace(msPattern, '-ms-');
-}
-
-function isCustomComponent(tagName, props) {
-  if (tagName.indexOf('-') === -1) {
-    return typeof props.is === 'string';
-  }
-
-  switch (tagName) {
-    // These are reserved SVG and MathML elements.
-    // We don't mind this whitelist too much because we expect it to never grow.
-    // The alternative is to track the namespace in a few places which is convoluted.
-    // https://w3c.github.io/webcomponents/spec/custom/#custom-elements-core-concepts
-    case 'annotation-xml':
-    case 'color-profile':
-    case 'font-face':
-    case 'font-face-src':
-    case 'font-face-uri':
-    case 'font-face-format':
-    case 'font-face-name':
-    case 'missing-glyph':
-      return false;
-
-    default:
-      return true;
-  }
-}
-
-var warnValidStyle = function () {};
-
-{
-  // 'msTransform' is correct, but the other prefixes should be capitalized
-  var badVendoredStyleNamePattern = /^(?:webkit|moz|o)[A-Z]/;
-  var msPattern$1 = /^-ms-/;
-  var hyphenPattern = /-(.)/g; // style values shouldn't contain a semicolon
-
-  var badStyleValueWithSemicolonPattern = /;\s*$/;
-  var warnedStyleNames = {};
-  var warnedStyleValues = {};
-  var warnedForNaNValue = false;
-  var warnedForInfinityValue = false;
-
-  var camelize = function (string) {
-    return string.replace(hyphenPattern, function (_, character) {
-      return character.toUpperCase();
-    });
-  };
-
-  var warnHyphenatedStyleName = function (name) {
-    if (warnedStyleNames.hasOwnProperty(name) && warnedStyleNames[name]) {
-      return;
-    }
-
-    warnedStyleNames[name] = true;
-
-    error('Unsupported style property %s. Did you mean %s?', name, // As Andi Smith suggests
-    // (http://www.andismith.com/blog/2012/02/modernizr-prefixed/), an `-ms` prefix
-    // is converted to lowercase `ms`.
-    camelize(name.replace(msPattern$1, 'ms-')));
-  };
-
-  var warnBadVendoredStyleName = function (name) {
-    if (warnedStyleNames.hasOwnProperty(name) && warnedStyleNames[name]) {
-      return;
-    }
-
-    warnedStyleNames[name] = true;
-
-    error('Unsupported vendor-prefixed style property %s. Did you mean %s?', name, name.charAt(0).toUpperCase() + name.slice(1));
-  };
-
-  var warnStyleValueWithSemicolon = function (name, value) {
-    if (warnedStyleValues.hasOwnProperty(value) && warnedStyleValues[value]) {
-      return;
-    }
-
-    warnedStyleValues[value] = true;
-
-    error("Style property values shouldn't contain a semicolon. " + 'Try "%s: %s" instead.', name, value.replace(badStyleValueWithSemicolonPattern, ''));
-  };
-
-  var warnStyleValueIsNaN = function (name, value) {
-    if (warnedForNaNValue) {
-      return;
-    }
-
-    warnedForNaNValue = true;
-
-    error('`NaN` is an invalid value for the `%s` css style property.', name);
-  };
-
-  var warnStyleValueIsInfinity = function (name, value) {
-    if (warnedForInfinityValue) {
-      return;
-    }
-
-    warnedForInfinityValue = true;
-
-    error('`Infinity` is an invalid value for the `%s` css style property.', name);
-  };
-
-  warnValidStyle = function (name, value) {
-    if (name.indexOf('-') > -1) {
-      warnHyphenatedStyleName(name);
-    } else if (badVendoredStyleNamePattern.test(name)) {
-      warnBadVendoredStyleName(name);
-    } else if (badStyleValueWithSemicolonPattern.test(value)) {
-      warnStyleValueWithSemicolon(name, value);
-    }
-
-    if (typeof value === 'number') {
-      if (isNaN(value)) {
-        warnStyleValueIsNaN(name, value);
-      } else if (!isFinite(value)) {
-        warnStyleValueIsInfinity(name, value);
-      }
-    }
-  };
-}
-
-var warnValidStyle$1 = warnValidStyle;
-
-var ariaProperties = {
-  'aria-current': 0,
-  // state
-  'aria-details': 0,
-  'aria-disabled': 0,
-  // state
-  'aria-hidden': 0,
-  // state
-  'aria-invalid': 0,
-  // state
-  'aria-keyshortcuts': 0,
-  'aria-label': 0,
-  'aria-roledescription': 0,
-  // Widget Attributes
-  'aria-autocomplete': 0,
-  'aria-checked': 0,
-  'aria-expanded': 0,
-  'aria-haspopup': 0,
-  'aria-level': 0,
-  'aria-modal': 0,
-  'aria-multiline': 0,
-  'aria-multiselectable': 0,
-  'aria-orientation': 0,
-  'aria-placeholder': 0,
-  'aria-pressed': 0,
-  'aria-readonly': 0,
-  'aria-required': 0,
-  'aria-selected': 0,
-  'aria-sort': 0,
-  'aria-valuemax': 0,
-  'aria-valuemin': 0,
-  'aria-valuenow': 0,
-  'aria-valuetext': 0,
-  // Live Region Attributes
-  'aria-atomic': 0,
-  'aria-busy': 0,
-  'aria-live': 0,
-  'aria-relevant': 0,
-  // Drag-and-Drop Attributes
-  'aria-dropeffect': 0,
-  'aria-grabbed': 0,
-  // Relationship Attributes
-  'aria-activedescendant': 0,
-  'aria-colcount': 0,
-  'aria-colindex': 0,
-  'aria-colspan': 0,
-  'aria-controls': 0,
-  'aria-describedby': 0,
-  'aria-errormessage': 0,
-  'aria-flowto': 0,
-  'aria-labelledby': 0,
-  'aria-owns': 0,
-  'aria-posinset': 0,
-  'aria-rowcount': 0,
-  'aria-rowindex': 0,
-  'aria-rowspan': 0,
-  'aria-setsize': 0
-};
-
-var warnedProperties = {};
-var rARIA = new RegExp('^(aria)-[' + ATTRIBUTE_NAME_CHAR + ']*$');
-var rARIACamel = new RegExp('^(aria)[A-Z][' + ATTRIBUTE_NAME_CHAR + ']*$');
-var hasOwnProperty$1 = Object.prototype.hasOwnProperty;
-
-function validateProperty(tagName, name) {
-  {
-    if (hasOwnProperty$1.call(warnedProperties, name) && warnedProperties[name]) {
-      return true;
-    }
-
-    if (rARIACamel.test(name)) {
-      var ariaName = 'aria-' + name.slice(4).toLowerCase();
-      var correctName = ariaProperties.hasOwnProperty(ariaName) ? ariaName : null; // If this is an aria-* attribute, but is not listed in the known DOM
-      // DOM properties, then it is an invalid aria-* attribute.
-
-      if (correctName == null) {
-        error('Invalid ARIA attribute `%s`. ARIA attributes follow the pattern aria-* and must be lowercase.', name);
-
-        warnedProperties[name] = true;
-        return true;
-      } // aria-* attributes should be lowercase; suggest the lowercase version.
-
-
-      if (name !== correctName) {
-        error('Invalid ARIA attribute `%s`. Did you mean `%s`?', name, correctName);
-
-        warnedProperties[name] = true;
-        return true;
-      }
-    }
-
-    if (rARIA.test(name)) {
-      var lowerCasedName = name.toLowerCase();
-      var standardName = ariaProperties.hasOwnProperty(lowerCasedName) ? lowerCasedName : null; // If this is an aria-* attribute, but is not listed in the known DOM
-      // DOM properties, then it is an invalid aria-* attribute.
-
-      if (standardName == null) {
-        warnedProperties[name] = true;
-        return false;
-      } // aria-* attributes should be lowercase; suggest the lowercase version.
-
-
-      if (name !== standardName) {
-        error('Unknown ARIA attribute `%s`. Did you mean `%s`?', name, standardName);
-
-        warnedProperties[name] = true;
-        return true;
-      }
-    }
-  }
-
-  return true;
-}
-
-function warnInvalidARIAProps(type, props) {
-  {
-    var invalidProps = [];
-
-    for (var key in props) {
-      var isValid = validateProperty(type, key);
-
-      if (!isValid) {
-        invalidProps.push(key);
-      }
-    }
-
-    var unknownPropString = invalidProps.map(function (prop) {
-      return '`' + prop + '`';
-    }).join(', ');
-
-    if (invalidProps.length === 1) {
-      error('Invalid aria prop %s on <%s> tag. ' + 'For details, see https://fb.me/invalid-aria-prop', unknownPropString, type);
-    } else if (invalidProps.length > 1) {
-      error('Invalid aria props %s on <%s> tag. ' + 'For details, see https://fb.me/invalid-aria-prop', unknownPropString, type);
-    }
-  }
-}
-
-function validateProperties(type, props) {
-  if (isCustomComponent(type, props)) {
-    return;
-  }
-
-  warnInvalidARIAProps(type, props);
-}
-
-var didWarnValueNull = false;
-function validateProperties$1(type, props) {
-  {
-    if (type !== 'input' && type !== 'textarea' && type !== 'select') {
-      return;
-    }
-
-    if (props != null && props.value === null && !didWarnValueNull) {
-      didWarnValueNull = true;
-
-      if (type === 'select' && props.multiple) {
-        error('`value` prop on `%s` should not be null. ' + 'Consider using an empty array when `multiple` is set to `true` ' + 'to clear the component or `undefined` for uncontrolled components.', type);
-      } else {
-        error('`value` prop on `%s` should not be null. ' + 'Consider using an empty string to clear the component or `undefined` ' + 'for uncontrolled components.', type);
-      }
-    }
-  }
-}
-
-/**
- * Mapping from registration name to plugin module
- */
-
-var registrationNameModules = {};
-/**
- * Mapping from lowercase registration names to the properly cased version,
- * used to warn in the case of missing event handlers. Available
- * only in true.
- * @type {Object}
- */
-
-var possibleRegistrationNames =  {} ; // Trust the developer to only use possibleRegistrationNames in true
-
-// When adding attributes to the HTML or SVG whitelist, be sure to
-// also add them to this module to ensure casing and incorrect name
-// warnings.
-var possibleStandardNames = {
-  // HTML
-  accept: 'accept',
-  acceptcharset: 'acceptCharset',
-  'accept-charset': 'acceptCharset',
-  accesskey: 'accessKey',
-  action: 'action',
-  allowfullscreen: 'allowFullScreen',
-  alt: 'alt',
-  as: 'as',
-  async: 'async',
-  autocapitalize: 'autoCapitalize',
-  autocomplete: 'autoComplete',
-  autocorrect: 'autoCorrect',
-  autofocus: 'autoFocus',
-  autoplay: 'autoPlay',
-  autosave: 'autoSave',
-  capture: 'capture',
-  cellpadding: 'cellPadding',
-  cellspacing: 'cellSpacing',
-  challenge: 'challenge',
-  charset: 'charSet',
-  checked: 'checked',
-  children: 'children',
-  cite: 'cite',
-  class: 'className',
-  classid: 'classID',
-  classname: 'className',
-  cols: 'cols',
-  colspan: 'colSpan',
-  content: 'content',
-  contenteditable: 'contentEditable',
-  contextmenu: 'contextMenu',
-  controls: 'controls',
-  controlslist: 'controlsList',
-  coords: 'coords',
-  crossorigin: 'crossOrigin',
-  dangerouslysetinnerhtml: 'dangerouslySetInnerHTML',
-  data: 'data',
-  datetime: 'dateTime',
-  default: 'default',
-  defaultchecked: 'defaultChecked',
-  defaultvalue: 'defaultValue',
-  defer: 'defer',
-  dir: 'dir',
-  disabled: 'disabled',
-  disablepictureinpicture: 'disablePictureInPicture',
-  download: 'download',
-  draggable: 'draggable',
-  enctype: 'encType',
-  for: 'htmlFor',
-  form: 'form',
-  formmethod: 'formMethod',
-  formaction: 'formAction',
-  formenctype: 'formEncType',
-  formnovalidate: 'formNoValidate',
-  formtarget: 'formTarget',
-  frameborder: 'frameBorder',
-  headers: 'headers',
-  height: 'height',
-  hidden: 'hidden',
-  high: 'high',
-  href: 'href',
-  hreflang: 'hrefLang',
-  htmlfor: 'htmlFor',
-  httpequiv: 'httpEquiv',
-  'http-equiv': 'httpEquiv',
-  icon: 'icon',
-  id: 'id',
-  innerhtml: 'innerHTML',
-  inputmode: 'inputMode',
-  integrity: 'integrity',
-  is: 'is',
-  itemid: 'itemID',
-  itemprop: 'itemProp',
-  itemref: 'itemRef',
-  itemscope: 'itemScope',
-  itemtype: 'itemType',
-  keyparams: 'keyParams',
-  keytype: 'keyType',
-  kind: 'kind',
-  label: 'label',
-  lang: 'lang',
-  list: 'list',
-  loop: 'loop',
-  low: 'low',
-  manifest: 'manifest',
-  marginwidth: 'marginWidth',
-  marginheight: 'marginHeight',
-  max: 'max',
-  maxlength: 'maxLength',
-  media: 'media',
-  mediagroup: 'mediaGroup',
-  method: 'method',
-  min: 'min',
-  minlength: 'minLength',
-  multiple: 'multiple',
-  muted: 'muted',
-  name: 'name',
-  nomodule: 'noModule',
-  nonce: 'nonce',
-  novalidate: 'noValidate',
-  open: 'open',
-  optimum: 'optimum',
-  pattern: 'pattern',
-  placeholder: 'placeholder',
-  playsinline: 'playsInline',
-  poster: 'poster',
-  preload: 'preload',
-  profile: 'profile',
-  radiogroup: 'radioGroup',
-  readonly: 'readOnly',
-  referrerpolicy: 'referrerPolicy',
-  rel: 'rel',
-  required: 'required',
-  reversed: 'reversed',
-  role: 'role',
-  rows: 'rows',
-  rowspan: 'rowSpan',
-  sandbox: 'sandbox',
-  scope: 'scope',
-  scoped: 'scoped',
-  scrolling: 'scrolling',
-  seamless: 'seamless',
-  selected: 'selected',
-  shape: 'shape',
-  size: 'size',
-  sizes: 'sizes',
-  span: 'span',
-  spellcheck: 'spellCheck',
-  src: 'src',
-  srcdoc: 'srcDoc',
-  srclang: 'srcLang',
-  srcset: 'srcSet',
-  start: 'start',
-  step: 'step',
-  style: 'style',
-  summary: 'summary',
-  tabindex: 'tabIndex',
-  target: 'target',
-  title: 'title',
-  type: 'type',
-  usemap: 'useMap',
-  value: 'value',
-  width: 'width',
-  wmode: 'wmode',
-  wrap: 'wrap',
-  // SVG
-  about: 'about',
-  accentheight: 'accentHeight',
-  'accent-height': 'accentHeight',
-  accumulate: 'accumulate',
-  additive: 'additive',
-  alignmentbaseline: 'alignmentBaseline',
-  'alignment-baseline': 'alignmentBaseline',
-  allowreorder: 'allowReorder',
-  alphabetic: 'alphabetic',
-  amplitude: 'amplitude',
-  arabicform: 'arabicForm',
-  'arabic-form': 'arabicForm',
-  ascent: 'ascent',
-  attributename: 'attributeName',
-  attributetype: 'attributeType',
-  autoreverse: 'autoReverse',
-  azimuth: 'azimuth',
-  basefrequency: 'baseFrequency',
-  baselineshift: 'baselineShift',
-  'baseline-shift': 'baselineShift',
-  baseprofile: 'baseProfile',
-  bbox: 'bbox',
-  begin: 'begin',
-  bias: 'bias',
-  by: 'by',
-  calcmode: 'calcMode',
-  capheight: 'capHeight',
-  'cap-height': 'capHeight',
-  clip: 'clip',
-  clippath: 'clipPath',
-  'clip-path': 'clipPath',
-  clippathunits: 'clipPathUnits',
-  cliprule: 'clipRule',
-  'clip-rule': 'clipRule',
-  color: 'color',
-  colorinterpolation: 'colorInterpolation',
-  'color-interpolation': 'colorInterpolation',
-  colorinterpolationfilters: 'colorInterpolationFilters',
-  'color-interpolation-filters': 'colorInterpolationFilters',
-  colorprofile: 'colorProfile',
-  'color-profile': 'colorProfile',
-  colorrendering: 'colorRendering',
-  'color-rendering': 'colorRendering',
-  contentscripttype: 'contentScriptType',
-  contentstyletype: 'contentStyleType',
-  cursor: 'cursor',
-  cx: 'cx',
-  cy: 'cy',
-  d: 'd',
-  datatype: 'datatype',
-  decelerate: 'decelerate',
-  descent: 'descent',
-  diffuseconstant: 'diffuseConstant',
-  direction: 'direction',
-  display: 'display',
-  divisor: 'divisor',
-  dominantbaseline: 'dominantBaseline',
-  'dominant-baseline': 'dominantBaseline',
-  dur: 'dur',
-  dx: 'dx',
-  dy: 'dy',
-  edgemode: 'edgeMode',
-  elevation: 'elevation',
-  enablebackground: 'enableBackground',
-  'enable-background': 'enableBackground',
-  end: 'end',
-  exponent: 'exponent',
-  externalresourcesrequired: 'externalResourcesRequired',
-  fill: 'fill',
-  fillopacity: 'fillOpacity',
-  'fill-opacity': 'fillOpacity',
-  fillrule: 'fillRule',
-  'fill-rule': 'fillRule',
-  filter: 'filter',
-  filterres: 'filterRes',
-  filterunits: 'filterUnits',
-  floodopacity: 'floodOpacity',
-  'flood-opacity': 'floodOpacity',
-  floodcolor: 'floodColor',
-  'flood-color': 'floodColor',
-  focusable: 'focusable',
-  fontfamily: 'fontFamily',
-  'font-family': 'fontFamily',
-  fontsize: 'fontSize',
-  'font-size': 'fontSize',
-  fontsizeadjust: 'fontSizeAdjust',
-  'font-size-adjust': 'fontSizeAdjust',
-  fontstretch: 'fontStretch',
-  'font-stretch': 'fontStretch',
-  fontstyle: 'fontStyle',
-  'font-style': 'fontStyle',
-  fontvariant: 'fontVariant',
-  'font-variant': 'fontVariant',
-  fontweight: 'fontWeight',
-  'font-weight': 'fontWeight',
-  format: 'format',
-  from: 'from',
-  fx: 'fx',
-  fy: 'fy',
-  g1: 'g1',
-  g2: 'g2',
-  glyphname: 'glyphName',
-  'glyph-name': 'glyphName',
-  glyphorientationhorizontal: 'glyphOrientationHorizontal',
-  'glyph-orientation-horizontal': 'glyphOrientationHorizontal',
-  glyphorientationvertical: 'glyphOrientationVertical',
-  'glyph-orientation-vertical': 'glyphOrientationVertical',
-  glyphref: 'glyphRef',
-  gradienttransform: 'gradientTransform',
-  gradientunits: 'gradientUnits',
-  hanging: 'hanging',
-  horizadvx: 'horizAdvX',
-  'horiz-adv-x': 'horizAdvX',
-  horizoriginx: 'horizOriginX',
-  'horiz-origin-x': 'horizOriginX',
-  ideographic: 'ideographic',
-  imagerendering: 'imageRendering',
-  'image-rendering': 'imageRendering',
-  in2: 'in2',
-  in: 'in',
-  inlist: 'inlist',
-  intercept: 'intercept',
-  k1: 'k1',
-  k2: 'k2',
-  k3: 'k3',
-  k4: 'k4',
-  k: 'k',
-  kernelmatrix: 'kernelMatrix',
-  kernelunitlength: 'kernelUnitLength',
-  kerning: 'kerning',
-  keypoints: 'keyPoints',
-  keysplines: 'keySplines',
-  keytimes: 'keyTimes',
-  lengthadjust: 'lengthAdjust',
-  letterspacing: 'letterSpacing',
-  'letter-spacing': 'letterSpacing',
-  lightingcolor: 'lightingColor',
-  'lighting-color': 'lightingColor',
-  limitingconeangle: 'limitingConeAngle',
-  local: 'local',
-  markerend: 'markerEnd',
-  'marker-end': 'markerEnd',
-  markerheight: 'markerHeight',
-  markermid: 'markerMid',
-  'marker-mid': 'markerMid',
-  markerstart: 'markerStart',
-  'marker-start': 'markerStart',
-  markerunits: 'markerUnits',
-  markerwidth: 'markerWidth',
-  mask: 'mask',
-  maskcontentunits: 'maskContentUnits',
-  maskunits: 'maskUnits',
-  mathematical: 'mathematical',
-  mode: 'mode',
-  numoctaves: 'numOctaves',
-  offset: 'offset',
-  opacity: 'opacity',
-  operator: 'operator',
-  order: 'order',
-  orient: 'orient',
-  orientation: 'orientation',
-  origin: 'origin',
-  overflow: 'overflow',
-  overlineposition: 'overlinePosition',
-  'overline-position': 'overlinePosition',
-  overlinethickness: 'overlineThickness',
-  'overline-thickness': 'overlineThickness',
-  paintorder: 'paintOrder',
-  'paint-order': 'paintOrder',
-  panose1: 'panose1',
-  'panose-1': 'panose1',
-  pathlength: 'pathLength',
-  patterncontentunits: 'patternContentUnits',
-  patterntransform: 'patternTransform',
-  patternunits: 'patternUnits',
-  pointerevents: 'pointerEvents',
-  'pointer-events': 'pointerEvents',
-  points: 'points',
-  pointsatx: 'pointsAtX',
-  pointsaty: 'pointsAtY',
-  pointsatz: 'pointsAtZ',
-  prefix: 'prefix',
-  preservealpha: 'preserveAlpha',
-  preserveaspectratio: 'preserveAspectRatio',
-  primitiveunits: 'primitiveUnits',
-  property: 'property',
-  r: 'r',
-  radius: 'radius',
-  refx: 'refX',
-  refy: 'refY',
-  renderingintent: 'renderingIntent',
-  'rendering-intent': 'renderingIntent',
-  repeatcount: 'repeatCount',
-  repeatdur: 'repeatDur',
-  requiredextensions: 'requiredExtensions',
-  requiredfeatures: 'requiredFeatures',
-  resource: 'resource',
-  restart: 'restart',
-  result: 'result',
-  results: 'results',
-  rotate: 'rotate',
-  rx: 'rx',
-  ry: 'ry',
-  scale: 'scale',
-  security: 'security',
-  seed: 'seed',
-  shaperendering: 'shapeRendering',
-  'shape-rendering': 'shapeRendering',
-  slope: 'slope',
-  spacing: 'spacing',
-  specularconstant: 'specularConstant',
-  specularexponent: 'specularExponent',
-  speed: 'speed',
-  spreadmethod: 'spreadMethod',
-  startoffset: 'startOffset',
-  stddeviation: 'stdDeviation',
-  stemh: 'stemh',
-  stemv: 'stemv',
-  stitchtiles: 'stitchTiles',
-  stopcolor: 'stopColor',
-  'stop-color': 'stopColor',
-  stopopacity: 'stopOpacity',
-  'stop-opacity': 'stopOpacity',
-  strikethroughposition: 'strikethroughPosition',
-  'strikethrough-position': 'strikethroughPosition',
-  strikethroughthickness: 'strikethroughThickness',
-  'strikethrough-thickness': 'strikethroughThickness',
-  string: 'string',
-  stroke: 'stroke',
-  strokedasharray: 'strokeDasharray',
-  'stroke-dasharray': 'strokeDasharray',
-  strokedashoffset: 'strokeDashoffset',
-  'stroke-dashoffset': 'strokeDashoffset',
-  strokelinecap: 'strokeLinecap',
-  'stroke-linecap': 'strokeLinecap',
-  strokelinejoin: 'strokeLinejoin',
-  'stroke-linejoin': 'strokeLinejoin',
-  strokemiterlimit: 'strokeMiterlimit',
-  'stroke-miterlimit': 'strokeMiterlimit',
-  strokewidth: 'strokeWidth',
-  'stroke-width': 'strokeWidth',
-  strokeopacity: 'strokeOpacity',
-  'stroke-opacity': 'strokeOpacity',
-  suppresscontenteditablewarning: 'suppressContentEditableWarning',
-  suppresshydrationwarning: 'suppressHydrationWarning',
-  surfacescale: 'surfaceScale',
-  systemlanguage: 'systemLanguage',
-  tablevalues: 'tableValues',
-  targetx: 'targetX',
-  targety: 'targetY',
-  textanchor: 'textAnchor',
-  'text-anchor': 'textAnchor',
-  textdecoration: 'textDecoration',
-  'text-decoration': 'textDecoration',
-  textlength: 'textLength',
-  textrendering: 'textRendering',
-  'text-rendering': 'textRendering',
-  to: 'to',
-  transform: 'transform',
-  typeof: 'typeof',
-  u1: 'u1',
-  u2: 'u2',
-  underlineposition: 'underlinePosition',
-  'underline-position': 'underlinePosition',
-  underlinethickness: 'underlineThickness',
-  'underline-thickness': 'underlineThickness',
-  unicode: 'unicode',
-  unicodebidi: 'unicodeBidi',
-  'unicode-bidi': 'unicodeBidi',
-  unicoderange: 'unicodeRange',
-  'unicode-range': 'unicodeRange',
-  unitsperem: 'unitsPerEm',
-  'units-per-em': 'unitsPerEm',
-  unselectable: 'unselectable',
-  valphabetic: 'vAlphabetic',
-  'v-alphabetic': 'vAlphabetic',
-  values: 'values',
-  vectoreffect: 'vectorEffect',
-  'vector-effect': 'vectorEffect',
-  version: 'version',
-  vertadvy: 'vertAdvY',
-  'vert-adv-y': 'vertAdvY',
-  vertoriginx: 'vertOriginX',
-  'vert-origin-x': 'vertOriginX',
-  vertoriginy: 'vertOriginY',
-  'vert-origin-y': 'vertOriginY',
-  vhanging: 'vHanging',
-  'v-hanging': 'vHanging',
-  videographic: 'vIdeographic',
-  'v-ideographic': 'vIdeographic',
-  viewbox: 'viewBox',
-  viewtarget: 'viewTarget',
-  visibility: 'visibility',
-  vmathematical: 'vMathematical',
-  'v-mathematical': 'vMathematical',
-  vocab: 'vocab',
-  widths: 'widths',
-  wordspacing: 'wordSpacing',
-  'word-spacing': 'wordSpacing',
-  writingmode: 'writingMode',
-  'writing-mode': 'writingMode',
-  x1: 'x1',
-  x2: 'x2',
-  x: 'x',
-  xchannelselector: 'xChannelSelector',
-  xheight: 'xHeight',
-  'x-height': 'xHeight',
-  xlinkactuate: 'xlinkActuate',
-  'xlink:actuate': 'xlinkActuate',
-  xlinkarcrole: 'xlinkArcrole',
-  'xlink:arcrole': 'xlinkArcrole',
-  xlinkhref: 'xlinkHref',
-  'xlink:href': 'xlinkHref',
-  xlinkrole: 'xlinkRole',
-  'xlink:role': 'xlinkRole',
-  xlinkshow: 'xlinkShow',
-  'xlink:show': 'xlinkShow',
-  xlinktitle: 'xlinkTitle',
-  'xlink:title': 'xlinkTitle',
-  xlinktype: 'xlinkType',
-  'xlink:type': 'xlinkType',
-  xmlbase: 'xmlBase',
-  'xml:base': 'xmlBase',
-  xmllang: 'xmlLang',
-  'xml:lang': 'xmlLang',
-  xmlns: 'xmlns',
-  'xml:space': 'xmlSpace',
-  xmlnsxlink: 'xmlnsXlink',
-  'xmlns:xlink': 'xmlnsXlink',
-  xmlspace: 'xmlSpace',
-  y1: 'y1',
-  y2: 'y2',
-  y: 'y',
-  ychannelselector: 'yChannelSelector',
-  z: 'z',
-  zoomandpan: 'zoomAndPan'
-};
-
-var validateProperty$1 = function () {};
-
-{
-  var warnedProperties$1 = {};
-  var _hasOwnProperty = Object.prototype.hasOwnProperty;
-  var EVENT_NAME_REGEX = /^on./;
-  var INVALID_EVENT_NAME_REGEX = /^on[^A-Z]/;
-  var rARIA$1 = new RegExp('^(aria)-[' + ATTRIBUTE_NAME_CHAR + ']*$');
-  var rARIACamel$1 = new RegExp('^(aria)[A-Z][' + ATTRIBUTE_NAME_CHAR + ']*$');
-
-  validateProperty$1 = function (tagName, name, value, canUseEventSystem) {
-    if (_hasOwnProperty.call(warnedProperties$1, name) && warnedProperties$1[name]) {
-      return true;
-    }
-
-    var lowerCasedName = name.toLowerCase();
-
-    if (lowerCasedName === 'onfocusin' || lowerCasedName === 'onfocusout') {
-      error('React uses onFocus and onBlur instead of onFocusIn and onFocusOut. ' + 'All React events are normalized to bubble, so onFocusIn and onFocusOut ' + 'are not needed/supported by React.');
-
-      warnedProperties$1[name] = true;
-      return true;
-    } // We can't rely on the event system being injected on the server.
-
-
-    if (canUseEventSystem) {
-      if (registrationNameModules.hasOwnProperty(name)) {
-        return true;
-      }
-
-      var registrationName = possibleRegistrationNames.hasOwnProperty(lowerCasedName) ? possibleRegistrationNames[lowerCasedName] : null;
-
-      if (registrationName != null) {
-        error('Invalid event handler property `%s`. Did you mean `%s`?', name, registrationName);
-
-        warnedProperties$1[name] = true;
-        return true;
-      }
-
-      if (EVENT_NAME_REGEX.test(name)) {
-        error('Unknown event handler property `%s`. It will be ignored.', name);
-
-        warnedProperties$1[name] = true;
-        return true;
-      }
-    } else if (EVENT_NAME_REGEX.test(name)) {
-      // If no event plugins have been injected, we are in a server environment.
-      // So we can't tell if the event name is correct for sure, but we can filter
-      // out known bad ones like `onclick`. We can't suggest a specific replacement though.
-      if (INVALID_EVENT_NAME_REGEX.test(name)) {
-        error('Invalid event handler property `%s`. ' + 'React events use the camelCase naming convention, for example `onClick`.', name);
-      }
-
-      warnedProperties$1[name] = true;
-      return true;
-    } // Let the ARIA attribute hook validate ARIA attributes
-
-
-    if (rARIA$1.test(name) || rARIACamel$1.test(name)) {
-      return true;
-    }
-
-    if (lowerCasedName === 'innerhtml') {
-      error('Directly setting property `innerHTML` is not permitted. ' + 'For more information, lookup documentation on `dangerouslySetInnerHTML`.');
-
-      warnedProperties$1[name] = true;
-      return true;
-    }
-
-    if (lowerCasedName === 'aria') {
-      error('The `aria` attribute is reserved for future use in React. ' + 'Pass individual `aria-` attributes instead.');
-
-      warnedProperties$1[name] = true;
-      return true;
-    }
-
-    if (lowerCasedName === 'is' && value !== null && value !== undefined && typeof value !== 'string') {
-      error('Received a `%s` for a string attribute `is`. If this is expected, cast ' + 'the value to a string.', typeof value);
-
-      warnedProperties$1[name] = true;
-      return true;
-    }
-
-    if (typeof value === 'number' && isNaN(value)) {
-      error('Received NaN for the `%s` attribute. If this is expected, cast ' + 'the value to a string.', name);
-
-      warnedProperties$1[name] = true;
-      return true;
-    }
-
-    var propertyInfo = getPropertyInfo(name);
-    var isReserved = propertyInfo !== null && propertyInfo.type === RESERVED; // Known attributes should match the casing specified in the property config.
-
-    if (possibleStandardNames.hasOwnProperty(lowerCasedName)) {
-      var standardName = possibleStandardNames[lowerCasedName];
-
-      if (standardName !== name) {
-        error('Invalid DOM property `%s`. Did you mean `%s`?', name, standardName);
-
-        warnedProperties$1[name] = true;
-        return true;
-      }
-    } else if (!isReserved && name !== lowerCasedName) {
-      // Unknown attributes should have lowercase casing since that's how they
-      // will be cased anyway with server rendering.
-      error('React does not recognize the `%s` prop on a DOM element. If you ' + 'intentionally want it to appear in the DOM as a custom ' + 'attribute, spell it as lowercase `%s` instead. ' + 'If you accidentally passed it from a parent component, remove ' + 'it from the DOM element.', name, lowerCasedName);
-
-      warnedProperties$1[name] = true;
-      return true;
-    }
-
-    if (typeof value === 'boolean' && shouldRemoveAttributeWithWarning(name, value, propertyInfo, false)) {
-      if (value) {
-        error('Received `%s` for a non-boolean attribute `%s`.\n\n' + 'If you want to write it to the DOM, pass a string instead: ' + '%s="%s" or %s={value.toString()}.', value, name, name, value, name);
-      } else {
-        error('Received `%s` for a non-boolean attribute `%s`.\n\n' + 'If you want to write it to the DOM, pass a string instead: ' + '%s="%s" or %s={value.toString()}.\n\n' + 'If you used to conditionally omit it with %s={condition && value}, ' + 'pass %s={condition ? value : undefined} instead.', value, name, name, value, name, name, name);
-      }
-
-      warnedProperties$1[name] = true;
-      return true;
-    } // Now that we've validated casing, do not validate
-    // data types for reserved props
-
-
-    if (isReserved) {
-      return true;
-    } // Warn when a known attribute is a bad type
-
-
-    if (shouldRemoveAttributeWithWarning(name, value, propertyInfo, false)) {
-      warnedProperties$1[name] = true;
-      return false;
-    } // Warn when passing the strings 'false' or 'true' into a boolean prop
-
-
-    if ((value === 'false' || value === 'true') && propertyInfo !== null && propertyInfo.type === BOOLEAN) {
-      error('Received the string `%s` for the boolean attribute `%s`. ' + '%s ' + 'Did you mean %s={%s}?', value, name, value === 'false' ? 'The browser will interpret it as a truthy value.' : 'Although this works, it will not work as expected if you pass the string "false".', name, value);
-
-      warnedProperties$1[name] = true;
-      return true;
-    }
-
-    return true;
-  };
-}
-
-var warnUnknownProperties = function (type, props, canUseEventSystem) {
-  {
-    var unknownProps = [];
-
-    for (var key in props) {
-      var isValid = validateProperty$1(type, key, props[key], canUseEventSystem);
-
-      if (!isValid) {
-        unknownProps.push(key);
-      }
-    }
-
-    var unknownPropString = unknownProps.map(function (prop) {
-      return '`' + prop + '`';
-    }).join(', ');
-
-    if (unknownProps.length === 1) {
-      error('Invalid value for prop %s on <%s> tag. Either remove it from the element, ' + 'or pass a string or number value to keep it in the DOM. ' + 'For details, see https://fb.me/react-attribute-behavior', unknownPropString, type);
-    } else if (unknownProps.length > 1) {
-      error('Invalid values for props %s on <%s> tag. Either remove them from the element, ' + 'or pass a string or number value to keep them in the DOM. ' + 'For details, see https://fb.me/react-attribute-behavior', unknownPropString, type);
-    }
-  }
-};
-
-function validateProperties$2(type, props, canUseEventSystem) {
-  if (isCustomComponent(type, props)) {
-    return;
-  }
-
-  warnUnknownProperties(type, props, canUseEventSystem);
-}
-
-var toArray = React.Children.toArray; // This is only used in DEV.
-// Each entry is `this.stack` from a currently executing renderer instance.
-// (There may be more than one because ReactDOMServer is reentrant).
-// Each stack is an array of frames which may contain nested stacks of elements.
-
-var currentDebugStacks = [];
-var ReactCurrentDispatcher = ReactSharedInternals.ReactCurrentDispatcher;
-var ReactDebugCurrentFrame$4;
-var prevGetCurrentStackImpl = null;
-
-var getCurrentServerStackImpl = function () {
-  return '';
-};
-
-var describeStackFrame = function (element) {
-  return '';
-};
-
-var validatePropertiesInDevelopment = function (type, props) {};
-
-var pushCurrentDebugStack = function (stack) {};
-
-var pushElementToDebugStack = function (element) {};
-
-var popCurrentDebugStack = function () {};
-
-var hasWarnedAboutUsingContextAsConsumer = false;
-
-{
-  ReactDebugCurrentFrame$4 = ReactSharedInternals.ReactDebugCurrentFrame;
-
-  validatePropertiesInDevelopment = function (type, props) {
-    validateProperties(type, props);
-    validateProperties$1(type, props);
-    validateProperties$2(type, props,
-    /* canUseEventSystem */
-    false);
-  };
-
-  describeStackFrame = function (element) {
-    var source = element._source;
-    var type = element.type;
-    var name = getComponentName(type);
-    var ownerName = null;
-    return describeComponentFrame(name, source, ownerName);
-  };
-
-  pushCurrentDebugStack = function (stack) {
-    currentDebugStacks.push(stack);
-
-    if (currentDebugStacks.length === 1) {
-      // We are entering a server renderer.
-      // Remember the previous (e.g. client) global stack implementation.
-      prevGetCurrentStackImpl = ReactDebugCurrentFrame$4.getCurrentStack;
-      ReactDebugCurrentFrame$4.getCurrentStack = getCurrentServerStackImpl;
-    }
-  };
-
-  pushElementToDebugStack = function (element) {
-    // For the innermost executing ReactDOMServer call,
-    var stack = currentDebugStacks[currentDebugStacks.length - 1]; // Take the innermost executing frame (e.g. <Foo>),
-
-    var frame = stack[stack.length - 1]; // and record that it has one more element associated with it.
-
-    frame.debugElementStack.push(element); // We only need this because we tail-optimize single-element
-    // children and directly handle them in an inner loop instead of
-    // creating separate frames for them.
-  };
-
-  popCurrentDebugStack = function () {
-    currentDebugStacks.pop();
-
-    if (currentDebugStacks.length === 0) {
-      // We are exiting the server renderer.
-      // Restore the previous (e.g. client) global stack implementation.
-      ReactDebugCurrentFrame$4.getCurrentStack = prevGetCurrentStackImpl;
-      prevGetCurrentStackImpl = null;
-    }
-  };
-
-  getCurrentServerStackImpl = function () {
-    if (currentDebugStacks.length === 0) {
-      // Nothing is currently rendering.
-      return '';
-    } // ReactDOMServer is reentrant so there may be multiple calls at the same time.
-    // Take the frames from the innermost call which is the last in the array.
-
-
-    var frames = currentDebugStacks[currentDebugStacks.length - 1];
-    var stack = ''; // Go through every frame in the stack from the innermost one.
-
-    for (var i = frames.length - 1; i >= 0; i--) {
-      var frame = frames[i]; // Every frame might have more than one debug element stack entry associated with it.
-      // This is because single-child nesting doesn't create materialized frames.
-      // Instead it would push them through `pushElementToDebugStack()`.
-
-      var debugElementStack = frame.debugElementStack;
-
-      for (var ii = debugElementStack.length - 1; ii >= 0; ii--) {
-        stack += describeStackFrame(debugElementStack[ii]);
-      }
-    }
-
-    return stack;
-  };
-}
-
-var didWarnDefaultInputValue = false;
-var didWarnDefaultChecked = false;
-var didWarnDefaultSelectValue = false;
-var didWarnDefaultTextareaValue = false;
-var didWarnInvalidOptionChildren = false;
-var didWarnAboutNoopUpdateForComponent = {};
-var didWarnAboutBadClass = {};
-var didWarnAboutModulePatternComponent = {};
-var didWarnAboutDeprecatedWillMount = {};
-var didWarnAboutUndefinedDerivedState = {};
-var didWarnAboutUninitializedState = {};
-var valuePropNames = ['value', 'defaultValue'];
-var newlineEatingTags = {
-  listing: true,
-  pre: true,
-  textarea: true
-}; // We accept any tag to be rendered but since this gets injected into arbitrary
-// HTML, we want to make sure that it's a safe tag.
-// http://www.w3.org/TR/REC-xml/#NT-Name
-
-var VALID_TAG_REGEX = /^[a-zA-Z][a-zA-Z:_\.\-\d]*$/; // Simplified subset
-
-var validatedTagCache = {};
-
-function validateDangerousTag(tag) {
-  if (!validatedTagCache.hasOwnProperty(tag)) {
-    if (!VALID_TAG_REGEX.test(tag)) {
-      {
-        throw Error( "Invalid tag: " + tag );
-      }
-    }
-
-    validatedTagCache[tag] = true;
-  }
-}
-
-var styleNameCache = {};
-
-var processStyleName = function (styleName) {
-  if (styleNameCache.hasOwnProperty(styleName)) {
-    return styleNameCache[styleName];
-  }
-
-  var result = hyphenateStyleName(styleName);
-  styleNameCache[styleName] = result;
-  return result;
-};
-
-function createMarkupForStyles(styles) {
-  var serialized = '';
-  var delimiter = '';
-
-  for (var styleName in styles) {
-    if (!styles.hasOwnProperty(styleName)) {
-      continue;
-    }
-
-    var isCustomProperty = styleName.indexOf('--') === 0;
-    var styleValue = styles[styleName];
-
-    {
-      if (!isCustomProperty) {
-        warnValidStyle$1(styleName, styleValue);
-      }
-    }
-
-    if (styleValue != null) {
-      serialized += delimiter + (isCustomProperty ? styleName : processStyleName(styleName)) + ':';
-      serialized += dangerousStyleValue(styleName, styleValue, isCustomProperty);
-      delimiter = ';';
-    }
-  }
-
-  return serialized || null;
-}
-
-function warnNoop(publicInstance, callerName) {
-  {
-    var _constructor = publicInstance.constructor;
-    var componentName = _constructor && getComponentName(_constructor) || 'ReactClass';
-    var warningKey = componentName + '.' + callerName;
-
-    if (didWarnAboutNoopUpdateForComponent[warningKey]) {
-      return;
-    }
-
-    error('%s(...): Can only update a mounting component. ' + 'This usually means you called %s() outside componentWillMount() on the server. ' + 'This is a no-op.\n\nPlease check the code for the %s component.', callerName, callerName, componentName);
-
-    didWarnAboutNoopUpdateForComponent[warningKey] = true;
-  }
-}
-
-function shouldConstruct(Component) {
-  return Component.prototype && Component.prototype.isReactComponent;
-}
-
-function getNonChildrenInnerMarkup(props) {
-  var innerHTML = props.dangerouslySetInnerHTML;
-
-  if (innerHTML != null) {
-    if (innerHTML.__html != null) {
-      return innerHTML.__html;
-    }
-  } else {
-    var content = props.children;
-
-    if (typeof content === 'string' || typeof content === 'number') {
-      return escapeTextForBrowser(content);
-    }
-  }
-
-  return null;
-}
-
-function flattenTopLevelChildren(children) {
-  if (!React.isValidElement(children)) {
-    return toArray(children);
-  }
-
-  var element = children;
-
-  if (element.type !== REACT_FRAGMENT_TYPE) {
-    return [element];
-  }
-
-  var fragmentChildren = element.props.children;
-
-  if (!React.isValidElement(fragmentChildren)) {
-    return toArray(fragmentChildren);
-  }
-
-  var fragmentChildElement = fragmentChildren;
-  return [fragmentChildElement];
-}
-
-function flattenOptionChildren(children) {
-  if (children === undefined || children === null) {
-    return children;
-  }
-
-  var content = ''; // Flatten children and warn if they aren't strings or numbers;
-  // invalid types are ignored.
-
-  React.Children.forEach(children, function (child) {
-    if (child == null) {
-      return;
-    }
-
-    content += child;
-
-    {
-      if (!didWarnInvalidOptionChildren && typeof child !== 'string' && typeof child !== 'number') {
-        didWarnInvalidOptionChildren = true;
-
-        error('Only strings and numbers are supported as <option> children.');
-      }
-    }
-  });
-  return content;
-}
-
-var hasOwnProperty$2 = Object.prototype.hasOwnProperty;
-var STYLE = 'style';
-var RESERVED_PROPS = {
-  children: null,
-  dangerouslySetInnerHTML: null,
-  suppressContentEditableWarning: null,
-  suppressHydrationWarning: null
-};
-
-function createOpenTagMarkup(tagVerbatim, tagLowercase, props, namespace, makeStaticMarkup, isRootElement) {
-  var ret = '<' + tagVerbatim;
-
-  for (var propKey in props) {
-    if (!hasOwnProperty$2.call(props, propKey)) {
-      continue;
-    }
-
-    var propValue = props[propKey];
-
-    if (propValue == null) {
-      continue;
-    }
-
-    if (propKey === STYLE) {
-      propValue = createMarkupForStyles(propValue);
-    }
-
-    var markup = null;
-
-    if (isCustomComponent(tagLowercase, props)) {
-      if (!RESERVED_PROPS.hasOwnProperty(propKey)) {
-        markup = createMarkupForCustomAttribute(propKey, propValue);
-      }
-    } else {
-      markup = createMarkupForProperty(propKey, propValue);
-    }
-
-    if (markup) {
-      ret += ' ' + markup;
-    }
-  } // For static pages, no need to put React ID and checksum. Saves lots of
-  // bytes.
-
-
-  if (makeStaticMarkup) {
-    return ret;
-  }
-
-  if (isRootElement) {
-    ret += ' ' + createMarkupForRoot();
-  }
-
-  return ret;
-}
-
-function validateRenderResult(child, type) {
-  if (child === undefined) {
-    {
-      {
-        throw Error( (getComponentName(type) || 'Component') + "(...): Nothing was returned from render. This usually means a return statement is missing. Or, to render nothing, return null." );
-      }
-    }
-  }
-}
-
-function resolve(child, context, threadID) {
-  while (React.isValidElement(child)) {
-    // Safe because we just checked it's an element.
-    var element = child;
-    var Component = element.type;
-
-    {
-      pushElementToDebugStack(element);
-    }
-
-    if (typeof Component !== 'function') {
-      break;
-    }
-
-    processChild(element, Component);
-  } // Extra closure so queue and replace can be captured properly
-
-
-  function processChild(element, Component) {
-    var isClass = shouldConstruct(Component);
-    var publicContext = processContext(Component, context, threadID, isClass);
-    var queue = [];
-    var replace = false;
-    var updater = {
-      isMounted: function (publicInstance) {
-        return false;
-      },
-      enqueueForceUpdate: function (publicInstance) {
-        if (queue === null) {
-          warnNoop(publicInstance, 'forceUpdate');
-          return null;
-        }
-      },
-      enqueueReplaceState: function (publicInstance, completeState) {
-        replace = true;
-        queue = [completeState];
-      },
-      enqueueSetState: function (publicInstance, currentPartialState) {
-        if (queue === null) {
-          warnNoop(publicInstance, 'setState');
-          return null;
-        }
-
-        queue.push(currentPartialState);
-      }
-    };
-    var inst;
-
-    if (isClass) {
-      inst = new Component(element.props, publicContext, updater);
-
-      if (typeof Component.getDerivedStateFromProps === 'function') {
-        {
-          if (inst.state === null || inst.state === undefined) {
-            var componentName = getComponentName(Component) || 'Unknown';
-
-            if (!didWarnAboutUninitializedState[componentName]) {
-              error('`%s` uses `getDerivedStateFromProps` but its initial state is ' + '%s. This is not recommended. Instead, define the initial state by ' + 'assigning an object to `this.state` in the constructor of `%s`. ' + 'This ensures that `getDerivedStateFromProps` arguments have a consistent shape.', componentName, inst.state === null ? 'null' : 'undefined', componentName);
-
-              didWarnAboutUninitializedState[componentName] = true;
-            }
-          }
-        }
-
-        var partialState = Component.getDerivedStateFromProps.call(null, element.props, inst.state);
-
-        {
-          if (partialState === undefined) {
-            var _componentName = getComponentName(Component) || 'Unknown';
-
-            if (!didWarnAboutUndefinedDerivedState[_componentName]) {
-              error('%s.getDerivedStateFromProps(): A valid state object (or null) must be returned. ' + 'You have returned undefined.', _componentName);
-
-              didWarnAboutUndefinedDerivedState[_componentName] = true;
-            }
-          }
-        }
-
-        if (partialState != null) {
-          inst.state = _assign({}, inst.state, partialState);
-        }
-      }
-    } else {
-      {
-        if (Component.prototype && typeof Component.prototype.render === 'function') {
-          var _componentName2 = getComponentName(Component) || 'Unknown';
-
-          if (!didWarnAboutBadClass[_componentName2]) {
-            error("The <%s /> component appears to have a render method, but doesn't extend React.Component. " + 'This is likely to cause errors. Change %s to extend React.Component instead.', _componentName2, _componentName2);
-
-            didWarnAboutBadClass[_componentName2] = true;
-          }
-        }
-      }
-
-      var componentIdentity = {};
-      prepareToUseHooks(componentIdentity);
-      inst = Component(element.props, publicContext, updater);
-      inst = finishHooks(Component, element.props, inst, publicContext);
-
-      if (inst == null || inst.render == null) {
-        child = inst;
-        validateRenderResult(child, Component);
-        return;
-      }
-
-      {
-        var _componentName3 = getComponentName(Component) || 'Unknown';
-
-        if (!didWarnAboutModulePatternComponent[_componentName3]) {
-          error('The <%s /> component appears to be a function component that returns a class instance. ' + 'Change %s to a class that extends React.Component instead. ' + "If you can't use a class try assigning the prototype on the function as a workaround. " + "`%s.prototype = React.Component.prototype`. Don't use an arrow function since it " + 'cannot be called with `new` by React.', _componentName3, _componentName3, _componentName3);
-
-          didWarnAboutModulePatternComponent[_componentName3] = true;
-        }
-      }
-    }
-
-    inst.props = element.props;
-    inst.context = publicContext;
-    inst.updater = updater;
-    var initialState = inst.state;
-
-    if (initialState === undefined) {
-      inst.state = initialState = null;
-    }
-
-    if (typeof inst.UNSAFE_componentWillMount === 'function' || typeof inst.componentWillMount === 'function') {
-      if (typeof inst.componentWillMount === 'function') {
-        {
-          if ( inst.componentWillMount.__suppressDeprecationWarning !== true) {
-            var _componentName4 = getComponentName(Component) || 'Unknown';
-
-            if (!didWarnAboutDeprecatedWillMount[_componentName4]) {
-              warn( // keep this warning in sync with ReactStrictModeWarning.js
-              'componentWillMount has been renamed, and is not recommended for use. ' + 'See https://fb.me/react-unsafe-component-lifecycles for details.\n\n' + '* Move code from componentWillMount to componentDidMount (preferred in most cases) ' + 'or the constructor.\n' + '\nPlease update the following components: %s', _componentName4);
-
-              didWarnAboutDeprecatedWillMount[_componentName4] = true;
-            }
-          }
-        } // In order to support react-lifecycles-compat polyfilled components,
-        // Unsafe lifecycles should not be invoked for any component with the new gDSFP.
-
-
-        if (typeof Component.getDerivedStateFromProps !== 'function') {
-          inst.componentWillMount();
-        }
-      }
-
-      if (typeof inst.UNSAFE_componentWillMount === 'function' && typeof Component.getDerivedStateFromProps !== 'function') {
-        // In order to support react-lifecycles-compat polyfilled components,
-        // Unsafe lifecycles should not be invoked for any component with the new gDSFP.
-        inst.UNSAFE_componentWillMount();
-      }
-
-      if (queue.length) {
-        var oldQueue = queue;
-        var oldReplace = replace;
-        queue = null;
-        replace = false;
-
-        if (oldReplace && oldQueue.length === 1) {
-          inst.state = oldQueue[0];
-        } else {
-          var nextState = oldReplace ? oldQueue[0] : inst.state;
-          var dontMutate = true;
-
-          for (var i = oldReplace ? 1 : 0; i < oldQueue.length; i++) {
-            var partial = oldQueue[i];
-
-            var _partialState = typeof partial === 'function' ? partial.call(inst, nextState, element.props, publicContext) : partial;
-
-            if (_partialState != null) {
-              if (dontMutate) {
-                dontMutate = false;
-                nextState = _assign({}, nextState, _partialState);
-              } else {
-                _assign(nextState, _partialState);
-              }
-            }
-          }
-
-          inst.state = nextState;
-        }
-      } else {
-        queue = null;
-      }
-    }
-
-    child = inst.render();
-
-    {
-      if (child === undefined && inst.render._isMockFunction) {
-        // This is probably bad practice. Consider warning here and
-        // deprecating this convenience.
-        child = null;
-      }
-    }
-
-    validateRenderResult(child, Component);
-    var childContext;
-
-    {
-      if (typeof inst.getChildContext === 'function') {
-        var _childContextTypes = Component.childContextTypes;
-
-        if (typeof _childContextTypes === 'object') {
-          childContext = inst.getChildContext();
-
-          for (var contextKey in childContext) {
-            if (!(contextKey in _childContextTypes)) {
-              {
-                throw Error( (getComponentName(Component) || 'Unknown') + ".getChildContext(): key \"" + contextKey + "\" is not defined in childContextTypes." );
-              }
-            }
-          }
-        } else {
-          {
-            error('%s.getChildContext(): childContextTypes must be defined in order to ' + 'use getChildContext().', getComponentName(Component) || 'Unknown');
-          }
-        }
-      }
-
-      if (childContext) {
-        context = _assign({}, context, childContext);
-      }
-    }
-  }
-
-  return {
-    child: child,
-    context: context
-  };
-}
-
-var ReactDOMServerRenderer =
-/*#__PURE__*/
-function () {
-  // TODO: type this more strictly:
-  // DEV-only
-  function ReactDOMServerRenderer(children, makeStaticMarkup) {
-    var flatChildren = flattenTopLevelChildren(children);
-    var topFrame = {
-      type: null,
-      // Assume all trees start in the HTML namespace (not totally true, but
-      // this is what we did historically)
-      domNamespace: Namespaces.html,
-      children: flatChildren,
-      childIndex: 0,
-      context: emptyObject,
-      footer: ''
-    };
-
-    {
-      topFrame.debugElementStack = [];
-    }
-
-    this.threadID = allocThreadID();
-    this.stack = [topFrame];
-    this.exhausted = false;
-    this.currentSelectValue = null;
-    this.previousWasTextNode = false;
-    this.makeStaticMarkup = makeStaticMarkup;
-    this.suspenseDepth = 0; // Context (new API)
-
-    this.contextIndex = -1;
-    this.contextStack = [];
-    this.contextValueStack = [];
-
-    {
-      this.contextProviderStack = [];
-    }
-  }
-
-  var _proto = ReactDOMServerRenderer.prototype;
-
-  _proto.destroy = function destroy() {
-    if (!this.exhausted) {
-      this.exhausted = true;
-      this.clearProviders();
-      freeThreadID(this.threadID);
-    }
-  }
-  /**
-   * Note: We use just two stacks regardless of how many context providers you have.
-   * Providers are always popped in the reverse order to how they were pushed
-   * so we always know on the way down which provider you'll encounter next on the way up.
-   * On the way down, we push the current provider, and its context value *before*
-   * we mutated it, onto the stacks. Therefore, on the way up, we always know which
-   * provider needs to be "restored" to which value.
-   * https://github.com/facebook/react/pull/12985#issuecomment-396301248
-   */
-  ;
-
-  _proto.pushProvider = function pushProvider(provider) {
-    var index = ++this.contextIndex;
-    var context = provider.type._context;
-    var threadID = this.threadID;
-    validateContextBounds(context, threadID);
-    var previousValue = context[threadID]; // Remember which value to restore this context to on our way up.
-
-    this.contextStack[index] = context;
-    this.contextValueStack[index] = previousValue;
-
-    {
-      // Only used for push/pop mismatch warnings.
-      this.contextProviderStack[index] = provider;
-    } // Mutate the current value.
-
-
-    context[threadID] = provider.props.value;
-  };
-
-  _proto.popProvider = function popProvider(provider) {
-    var index = this.contextIndex;
-
-    {
-      if (index < 0 || provider !== this.contextProviderStack[index]) {
-        error('Unexpected pop.');
-      }
-    }
-
-    var context = this.contextStack[index];
-    var previousValue = this.contextValueStack[index]; // "Hide" these null assignments from Flow by using `any`
-    // because conceptually they are deletions--as long as we
-    // promise to never access values beyond `this.contextIndex`.
-
-    this.contextStack[index] = null;
-    this.contextValueStack[index] = null;
-
-    {
-      this.contextProviderStack[index] = null;
-    }
-
-    this.contextIndex--; // Restore to the previous value we stored as we were walking down.
-    // We've already verified that this context has been expanded to accommodate
-    // this thread id, so we don't need to do it again.
-
-    context[this.threadID] = previousValue;
-  };
-
-  _proto.clearProviders = function clearProviders() {
-    // Restore any remaining providers on the stack to previous values
-    for (var index = this.contextIndex; index >= 0; index--) {
-      var context = this.contextStack[index];
-      var previousValue = this.contextValueStack[index];
-      context[this.threadID] = previousValue;
-    }
-  };
-
-  _proto.read = function read(bytes) {
-    if (this.exhausted) {
-      return null;
-    }
-
-    var prevThreadID = currentThreadID;
-    setCurrentThreadID(this.threadID);
-    var prevDispatcher = ReactCurrentDispatcher.current;
-    ReactCurrentDispatcher.current = Dispatcher;
-
-    try {
-      // Markup generated within <Suspense> ends up buffered until we know
-      // nothing in that boundary suspended
-      var out = [''];
-      var suspended = false;
-
-      while (out[0].length < bytes) {
-        if (this.stack.length === 0) {
-          this.exhausted = true;
-          freeThreadID(this.threadID);
-          break;
-        }
-
-        var frame = this.stack[this.stack.length - 1];
-
-        if (suspended || frame.childIndex >= frame.children.length) {
-          var footer = frame.footer;
-
-          if (footer !== '') {
-            this.previousWasTextNode = false;
-          }
-
-          this.stack.pop();
-
-          if (frame.type === 'select') {
-            this.currentSelectValue = null;
-          } else if (frame.type != null && frame.type.type != null && frame.type.type.$$typeof === REACT_PROVIDER_TYPE) {
-            var provider = frame.type;
-            this.popProvider(provider);
-          } else if (frame.type === REACT_SUSPENSE_TYPE) {
-            this.suspenseDepth--;
-            var buffered = out.pop();
-
-            if (suspended) {
-              suspended = false; // If rendering was suspended at this boundary, render the fallbackFrame
-
-              var fallbackFrame = frame.fallbackFrame;
-
-              if (!fallbackFrame) {
-                {
-                  throw Error(true ? "ReactDOMServer did not find an internal fallback frame for Suspense. This is a bug in React. Please file an issue." : undefined);
-                }
-              }
-
-              this.stack.push(fallbackFrame);
-              out[this.suspenseDepth] += '<!--$!-->'; // Skip flushing output since we're switching to the fallback
-
-              continue;
-            } else {
-              out[this.suspenseDepth] += buffered;
-            }
-          } // Flush output
-
-
-          out[this.suspenseDepth] += footer;
-          continue;
-        }
-
-        var child = frame.children[frame.childIndex++];
-        var outBuffer = '';
-
-        if (true) {
-          pushCurrentDebugStack(this.stack); // We're starting work on this frame, so reset its inner stack.
-
-          frame.debugElementStack.length = 0;
-        }
-
-        try {
-          outBuffer += this.render(child, frame.context, frame.domNamespace);
-        } catch (err) {
-          if (err != null && typeof err.then === 'function') {
-            if (enableSuspenseServerRenderer) {
-              if (!(this.suspenseDepth > 0)) {
-                {
-                  throw Error(true ? "A React component suspended while rendering, but no fallback UI was specified.\n\nAdd a <Suspense fallback=...> component higher in the tree to provide a loading indicator or placeholder to display." : undefined);
-                }
-              }
-
-              suspended = true;
-            } else {
-              if (true) {
-                {
-                  throw Error(true ? "ReactDOMServer does not yet support Suspense." : undefined);
-                }
-              }
-            }
-          } else {
-            throw err;
-          }
-        } finally {
-          if (true) {
-            popCurrentDebugStack();
-          }
-        }
-
-        if (out.length <= this.suspenseDepth) {
-          out.push('');
-        }
-
-        out[this.suspenseDepth] += outBuffer;
-      }
-
-      return out[0];
-    } finally {
-      ReactCurrentDispatcher.current = prevDispatcher;
-      setCurrentThreadID(prevThreadID);
-    }
-  };
-
-  _proto.render = function render(child, context, parentNamespace) {
-    if (typeof child === 'string' || typeof child === 'number') {
-      var text = '' + child;
-
-      if (text === '') {
-        return '';
-      }
-
-      if (this.makeStaticMarkup) {
-        return escapeTextForBrowser(text);
-      }
-
-      if (this.previousWasTextNode) {
-        return '<!-- -->' + escapeTextForBrowser(text);
-      }
-
-      this.previousWasTextNode = true;
-      return escapeTextForBrowser(text);
-    } else {
-      var nextChild;
-
-      var _resolve = resolve(child, context, this.threadID);
-
-      nextChild = _resolve.child;
-      context = _resolve.context;
-
-      if (nextChild === null || nextChild === false) {
-        return '';
-      } else if (!React.isValidElement(nextChild)) {
-        if (nextChild != null && nextChild.$$typeof != null) {
-          // Catch unexpected special types early.
-          var $$typeof = nextChild.$$typeof;
-
-          if (!($$typeof !== REACT_PORTAL_TYPE)) {
-            {
-              throw Error( "Portals are not currently supported by the server renderer. Render them conditionally so that they only appear on the client render." );
-            }
-          } // Catch-all to prevent an infinite loop if React.Children.toArray() supports some new type.
-
-
-          {
-            {
-              throw Error( "Unknown element-like object type: " + $$typeof.toString() + ". This is likely a bug in React. Please file an issue." );
-            }
-          }
-        }
-
-        var nextChildren = toArray(nextChild);
-        var frame = {
-          type: null,
-          domNamespace: parentNamespace,
-          children: nextChildren,
-          childIndex: 0,
-          context: context,
-          footer: ''
-        };
-
-        {
-          frame.debugElementStack = [];
-        }
-
-        this.stack.push(frame);
-        return '';
-      } // Safe because we just checked it's an element.
-
-
-      var nextElement = nextChild;
-      var elementType = nextElement.type;
-
-      if (typeof elementType === 'string') {
-        return this.renderDOM(nextElement, context, parentNamespace);
-      }
-
-      switch (elementType) {
-        case REACT_STRICT_MODE_TYPE:
-        case REACT_CONCURRENT_MODE_TYPE:
-        case REACT_PROFILER_TYPE:
-        case REACT_SUSPENSE_LIST_TYPE:
-        case REACT_FRAGMENT_TYPE:
-          {
-            var _nextChildren = toArray(nextChild.props.children);
-
-            var _frame = {
-              type: null,
-              domNamespace: parentNamespace,
-              children: _nextChildren,
-              childIndex: 0,
-              context: context,
-              footer: ''
-            };
-
-            {
-              _frame.debugElementStack = [];
-            }
-
-            this.stack.push(_frame);
-            return '';
-          }
-
-        case REACT_SUSPENSE_TYPE:
-          {
-            {
-              {
-                {
-                  throw Error( "ReactDOMServer does not yet support Suspense." );
-                }
-              }
-            }
-          }
-      }
-
-      if (typeof elementType === 'object' && elementType !== null) {
-        switch (elementType.$$typeof) {
-          case REACT_FORWARD_REF_TYPE:
-            {
-              var element = nextChild;
-
-              var _nextChildren4;
-
-              var componentIdentity = {};
-              prepareToUseHooks(componentIdentity);
-              _nextChildren4 = elementType.render(element.props, element.ref);
-              _nextChildren4 = finishHooks(elementType.render, element.props, _nextChildren4, element.ref);
-              _nextChildren4 = toArray(_nextChildren4);
-              var _frame4 = {
-                type: null,
-                domNamespace: parentNamespace,
-                children: _nextChildren4,
-                childIndex: 0,
-                context: context,
-                footer: ''
-              };
-
-              {
-                _frame4.debugElementStack = [];
-              }
-
-              this.stack.push(_frame4);
-              return '';
-            }
-
-          case REACT_MEMO_TYPE:
-            {
-              var _element = nextChild;
-              var _nextChildren5 = [React.createElement(elementType.type, _assign({
-                ref: _element.ref
-              }, _element.props))];
-              var _frame5 = {
-                type: null,
-                domNamespace: parentNamespace,
-                children: _nextChildren5,
-                childIndex: 0,
-                context: context,
-                footer: ''
-              };
-
-              {
-                _frame5.debugElementStack = [];
-              }
-
-              this.stack.push(_frame5);
-              return '';
-            }
-
-          case REACT_PROVIDER_TYPE:
-            {
-              var provider = nextChild;
-              var nextProps = provider.props;
-
-              var _nextChildren6 = toArray(nextProps.children);
-
-              var _frame6 = {
-                type: provider,
-                domNamespace: parentNamespace,
-                children: _nextChildren6,
-                childIndex: 0,
-                context: context,
-                footer: ''
-              };
-
-              {
-                _frame6.debugElementStack = [];
-              }
-
-              this.pushProvider(provider);
-              this.stack.push(_frame6);
-              return '';
-            }
-
-          case REACT_CONTEXT_TYPE:
-            {
-              var reactContext = nextChild.type; // The logic below for Context differs depending on PROD or DEV mode. In
-              // DEV mode, we create a separate object for Context.Consumer that acts
-              // like a proxy to Context. This proxy object adds unnecessary code in PROD
-              // so we use the old behaviour (Context.Consumer references Context) to
-              // reduce size and overhead. The separate object references context via
-              // a property called "_context", which also gives us the ability to check
-              // in DEV mode if this property exists or not and warn if it does not.
-
-              {
-                if (reactContext._context === undefined) {
-                  // This may be because it's a Context (rather than a Consumer).
-                  // Or it may be because it's older React where they're the same thing.
-                  // We only want to warn if we're sure it's a new React.
-                  if (reactContext !== reactContext.Consumer) {
-                    if (!hasWarnedAboutUsingContextAsConsumer) {
-                      hasWarnedAboutUsingContextAsConsumer = true;
-
-                      error('Rendering <Context> directly is not supported and will be removed in ' + 'a future major release. Did you mean to render <Context.Consumer> instead?');
-                    }
-                  }
-                } else {
-                  reactContext = reactContext._context;
-                }
-              }
-
-              var _nextProps = nextChild.props;
-              var threadID = this.threadID;
-              validateContextBounds(reactContext, threadID);
-              var nextValue = reactContext[threadID];
-
-              var _nextChildren7 = toArray(_nextProps.children(nextValue));
-
-              var _frame7 = {
-                type: nextChild,
-                domNamespace: parentNamespace,
-                children: _nextChildren7,
-                childIndex: 0,
-                context: context,
-                footer: ''
-              };
-
-              {
-                _frame7.debugElementStack = [];
-              }
-
-              this.stack.push(_frame7);
-              return '';
-            }
-          // eslint-disable-next-line-no-fallthrough
-
-          case REACT_FUNDAMENTAL_TYPE:
-            {
-
-              {
-                {
-                  throw Error( "ReactDOMServer does not yet support the fundamental API." );
-                }
-              }
-            }
-          // eslint-disable-next-line-no-fallthrough
-
-          case REACT_LAZY_TYPE:
-            {
-              var _element2 = nextChild;
-              var lazyComponent = nextChild.type; // Attempt to initialize lazy component regardless of whether the
-              // suspense server-side renderer is enabled so synchronously
-              // resolved constructors are supported.
-
-              initializeLazyComponentType(lazyComponent);
-
-              switch (lazyComponent._status) {
-                case Resolved:
-                  {
-                    var _nextChildren9 = [React.createElement(lazyComponent._result, _assign({
-                      ref: _element2.ref
-                    }, _element2.props))];
-                    var _frame9 = {
-                      type: null,
-                      domNamespace: parentNamespace,
-                      children: _nextChildren9,
-                      childIndex: 0,
-                      context: context,
-                      footer: ''
-                    };
-
-                    {
-                      _frame9.debugElementStack = [];
-                    }
-
-                    this.stack.push(_frame9);
-                    return '';
-                  }
-
-                case Rejected:
-                  throw lazyComponent._result;
-
-                case Pending:
-                default:
-                  {
-                    {
-                      throw Error( "ReactDOMServer does not yet support lazy-loaded components." );
-                    }
-                  }
-
-              }
-            }
-          // eslint-disable-next-line-no-fallthrough
-
-          case REACT_SCOPE_TYPE:
-            {
-
-              {
-                {
-                  throw Error( "ReactDOMServer does not yet support scope components." );
-                }
-              }
-            }
-        }
-      }
-
-      var info = '';
-
-      {
-        var owner = nextElement._owner;
-
-        if (elementType === undefined || typeof elementType === 'object' && elementType !== null && Object.keys(elementType).length === 0) {
-          info += ' You likely forgot to export your component from the file ' + "it's defined in, or you might have mixed up default and " + 'named imports.';
-        }
-
-        var ownerName = owner ? getComponentName(owner) : null;
-
-        if (ownerName) {
-          info += '\n\nCheck the render method of `' + ownerName + '`.';
-        }
-      }
-
-      {
-        {
-          throw Error( "Element type is invalid: expected a string (for built-in components) or a class/function (for composite components) but got: " + (elementType == null ? elementType : typeof elementType) + "." + info );
-        }
-      }
-    }
-  };
-
-  _proto.renderDOM = function renderDOM(element, context, parentNamespace) {
-    var tag = element.type.toLowerCase();
-    var namespace = parentNamespace;
-
-    if (parentNamespace === Namespaces.html) {
-      namespace = getIntrinsicNamespace(tag);
-    }
-
-    {
-      if (namespace === Namespaces.html) {
-        // Should this check be gated by parent namespace? Not sure we want to
-        // allow <SVG> or <mATH>.
-        if (tag !== element.type) {
-          error('<%s /> is using incorrect casing. ' + 'Use PascalCase for React components, ' + 'or lowercase for HTML elements.', element.type);
-        }
-      }
-    }
-
-    validateDangerousTag(tag);
-    var props = element.props;
-
-    if (tag === 'input') {
-      {
-        ReactControlledValuePropTypes.checkPropTypes('input', props);
-
-        if (props.checked !== undefined && props.defaultChecked !== undefined && !didWarnDefaultChecked) {
-          error('%s contains an input of type %s with both checked and defaultChecked props. ' + 'Input elements must be either controlled or uncontrolled ' + '(specify either the checked prop, or the defaultChecked prop, but not ' + 'both). Decide between using a controlled or uncontrolled input ' + 'element and remove one of these props. More info: ' + 'https://fb.me/react-controlled-components', 'A component', props.type);
-
-          didWarnDefaultChecked = true;
-        }
-
-        if (props.value !== undefined && props.defaultValue !== undefined && !didWarnDefaultInputValue) {
-          error('%s contains an input of type %s with both value and defaultValue props. ' + 'Input elements must be either controlled or uncontrolled ' + '(specify either the value prop, or the defaultValue prop, but not ' + 'both). Decide between using a controlled or uncontrolled input ' + 'element and remove one of these props. More info: ' + 'https://fb.me/react-controlled-components', 'A component', props.type);
-
-          didWarnDefaultInputValue = true;
-        }
-      }
-
-      props = _assign({
-        type: undefined
-      }, props, {
-        defaultChecked: undefined,
-        defaultValue: undefined,
-        value: props.value != null ? props.value : props.defaultValue,
-        checked: props.checked != null ? props.checked : props.defaultChecked
-      });
-    } else if (tag === 'textarea') {
-      {
-        ReactControlledValuePropTypes.checkPropTypes('textarea', props);
-
-        if (props.value !== undefined && props.defaultValue !== undefined && !didWarnDefaultTextareaValue) {
-          error('Textarea elements must be either controlled or uncontrolled ' + '(specify either the value prop, or the defaultValue prop, but not ' + 'both). Decide between using a controlled or uncontrolled textarea ' + 'and remove one of these props. More info: ' + 'https://fb.me/react-controlled-components');
-
-          didWarnDefaultTextareaValue = true;
-        }
-      }
-
-      var initialValue = props.value;
-
-      if (initialValue == null) {
-        var defaultValue = props.defaultValue; // TODO (yungsters): Remove support for children content in <textarea>.
-
-        var textareaChildren = props.children;
-
-        if (textareaChildren != null) {
-          {
-            error('Use the `defaultValue` or `value` props instead of setting ' + 'children on <textarea>.');
-          }
-
-          if (!(defaultValue == null)) {
-            {
-              throw Error( "If you supply `defaultValue` on a <textarea>, do not pass children." );
-            }
-          }
-
-          if (Array.isArray(textareaChildren)) {
-            if (!(textareaChildren.length <= 1)) {
-              {
-                throw Error( "<textarea> can only have at most one child." );
-              }
-            }
-
-            textareaChildren = textareaChildren[0];
-          }
-
-          defaultValue = '' + textareaChildren;
-        }
-
-        if (defaultValue == null) {
-          defaultValue = '';
-        }
-
-        initialValue = defaultValue;
-      }
-
-      props = _assign({}, props, {
-        value: undefined,
-        children: '' + initialValue
-      });
-    } else if (tag === 'select') {
-      {
-        ReactControlledValuePropTypes.checkPropTypes('select', props);
-
-        for (var i = 0; i < valuePropNames.length; i++) {
-          var propName = valuePropNames[i];
-
-          if (props[propName] == null) {
-            continue;
-          }
-
-          var isArray = Array.isArray(props[propName]);
-
-          if (props.multiple && !isArray) {
-            error('The `%s` prop supplied to <select> must be an array if ' + '`multiple` is true.', propName);
-          } else if (!props.multiple && isArray) {
-            error('The `%s` prop supplied to <select> must be a scalar ' + 'value if `multiple` is false.', propName);
-          }
-        }
-
-        if (props.value !== undefined && props.defaultValue !== undefined && !didWarnDefaultSelectValue) {
-          error('Select elements must be either controlled or uncontrolled ' + '(specify either the value prop, or the defaultValue prop, but not ' + 'both). Decide between using a controlled or uncontrolled select ' + 'element and remove one of these props. More info: ' + 'https://fb.me/react-controlled-components');
-
-          didWarnDefaultSelectValue = true;
-        }
-      }
-
-      this.currentSelectValue = props.value != null ? props.value : props.defaultValue;
-      props = _assign({}, props, {
-        value: undefined
-      });
-    } else if (tag === 'option') {
-      var selected = null;
-      var selectValue = this.currentSelectValue;
-      var optionChildren = flattenOptionChildren(props.children);
-
-      if (selectValue != null) {
-        var value;
-
-        if (props.value != null) {
-          value = props.value + '';
-        } else {
-          value = optionChildren;
-        }
-
-        selected = false;
-
-        if (Array.isArray(selectValue)) {
-          // multiple
-          for (var j = 0; j < selectValue.length; j++) {
-            if ('' + selectValue[j] === value) {
-              selected = true;
-              break;
-            }
-          }
-        } else {
-          selected = '' + selectValue === value;
-        }
-
-        props = _assign({
-          selected: undefined,
-          children: undefined
-        }, props, {
-          selected: selected,
-          children: optionChildren
-        });
-      }
-    }
-
-    {
-      validatePropertiesInDevelopment(tag, props);
-    }
-
-    assertValidProps(tag, props);
-    var out = createOpenTagMarkup(element.type, tag, props, namespace, this.makeStaticMarkup, this.stack.length === 1);
-    var footer = '';
-
-    if (omittedCloseTags.hasOwnProperty(tag)) {
-      out += '/>';
-    } else {
-      out += '>';
-      footer = '</' + element.type + '>';
-    }
-
-    var children;
-    var innerMarkup = getNonChildrenInnerMarkup(props);
-
-    if (innerMarkup != null) {
-      children = [];
-
-      if (newlineEatingTags.hasOwnProperty(tag) && innerMarkup.charAt(0) === '\n') {
-        // text/html ignores the first character in these tags if it's a newline
-        // Prefer to break application/xml over text/html (for now) by adding
-        // a newline specifically to get eaten by the parser. (Alternately for
-        // textareas, replacing "^\n" with "\r\n" doesn't get eaten, and the first
-        // \r is normalized out by HTMLTextAreaElement#value.)
-        // See: <http://www.w3.org/TR/html-polyglot/#newlines-in-textarea-and-pre>
-        // See: <http://www.w3.org/TR/html5/syntax.html#element-restrictions>
-        // See: <http://www.w3.org/TR/html5/syntax.html#newlines>
-        // See: Parsing of "textarea" "listing" and "pre" elements
-        //  from <http://www.w3.org/TR/html5/syntax.html#parsing-main-inbody>
-        out += '\n';
-      }
-
-      out += innerMarkup;
-    } else {
-      children = toArray(props.children);
-    }
-
-    var frame = {
-      domNamespace: getChildNamespace(parentNamespace, element.type),
-      type: tag,
-      children: children,
-      childIndex: 0,
-      context: context,
-      footer: footer
-    };
-
-    {
-      frame.debugElementStack = [];
-    }
-
-    this.stack.push(frame);
-    this.previousWasTextNode = false;
-    return out;
-  };
-
-  return ReactDOMServerRenderer;
-}();
-
-/**
- * Render a ReactElement to its initial HTML. This should only be used on the
- * server.
- * See https://reactjs.org/docs/react-dom-server.html#rendertostring
- */
-
-function renderToString(element) {
-  var renderer = new ReactDOMServerRenderer(element, false);
-
-  try {
-    var markup = renderer.read(Infinity);
-    return markup;
-  } finally {
-    renderer.destroy();
-  }
-}
-/**
- * Similar to renderToString, except this doesn't create extra DOM attributes
- * such as data-react-id that React uses internally.
- * See https://reactjs.org/docs/react-dom-server.html#rendertostaticmarkup
- */
-
-function renderToStaticMarkup(element) {
-  var renderer = new ReactDOMServerRenderer(element, true);
-
-  try {
-    var markup = renderer.read(Infinity);
-    return markup;
-  } finally {
-    renderer.destroy();
-  }
-}
-
-function renderToNodeStream() {
-  {
-    {
-      throw Error( "ReactDOMServer.renderToNodeStream(): The streaming API is not available in the browser. Use ReactDOMServer.renderToString() instead." );
-    }
-  }
-}
-
-function renderToStaticNodeStream() {
-  {
-    {
-      throw Error( "ReactDOMServer.renderToStaticNodeStream(): The streaming API is not available in the browser. Use ReactDOMServer.renderToStaticMarkup() instead." );
-    }
-  }
-} // Note: when changing this, also consider https://github.com/facebook/react/issues/11526
-
-
-var ReactDOMServer = {
-  renderToString: renderToString,
-  renderToStaticMarkup: renderToStaticMarkup,
-  renderToNodeStream: renderToNodeStream,
-  renderToStaticNodeStream: renderToStaticNodeStream,
-  version: ReactVersion
-};
-
-// TODO: decide on the top-level export form.
-// This is hacky but makes it work with both Rollup and Jest
-
-
-var server_browser = ReactDOMServer.default || ReactDOMServer;
-
-module.exports = server_browser;
-  })();
-}
 
 
 /***/ }),
@@ -39187,23 +37155,6 @@ function checkDCE() {
 
 if (false) {} else {
   module.exports = __webpack_require__(/*! ./cjs/react-dom.development.js */ "./node_modules/react-dom/cjs/react-dom.development.js");
-}
-
-
-/***/ }),
-
-/***/ "./node_modules/react-dom/server.browser.js":
-/*!**************************************************!*\
-  !*** ./node_modules/react-dom/server.browser.js ***!
-  \**************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-if (false) {} else {
-  module.exports = __webpack_require__(/*! ./cjs/react-dom-server.browser.development.js */ "./node_modules/react-dom/cjs/react-dom-server.browser.development.js");
 }
 
 
