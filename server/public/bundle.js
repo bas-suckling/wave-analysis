@@ -379,8 +379,8 @@ function SessionMap() {
     height: '400px'
   };
   var center = {
-    lat: -3.745,
-    lng: -38.523
+    lat: -41.286,
+    lng: 174.776
   };
 
   var _React$useState = react__WEBPACK_IMPORTED_MODULE_0___default.a.useState(null),
@@ -388,22 +388,12 @@ function SessionMap() {
       map = _React$useState2[0],
       setMap = _React$useState2[1];
 
-  var onLoad = react__WEBPACK_IMPORTED_MODULE_0___default.a.useCallback(function callback(map) {
-    var bounds = new window.google.maps.LatLngBounds();
-    map.fitBounds(bounds);
-    setMap(map);
-  }, []);
-  var onUnmount = react__WEBPACK_IMPORTED_MODULE_0___default.a.useCallback(function callback(map) {
-    setMap(null);
-  }, []);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_react_google_maps_api__WEBPACK_IMPORTED_MODULE_1__["LoadScript"], {
     googleMapsApiKey: GOOGLE_API_KEY
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_react_google_maps_api__WEBPACK_IMPORTED_MODULE_1__["GoogleMap"], {
     mapContainerStyle: containerStyle,
     center: center,
-    zoom: 2,
-    onLoad: onLoad,
-    onUnmount: onUnmount,
+    zoom: 5.2,
     options: {
       disableDefaultUI: true,
       mapTypeId: 'satellite',

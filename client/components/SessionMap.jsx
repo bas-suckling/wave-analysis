@@ -9,24 +9,15 @@ function SessionMap() {
       width: '600px',
       height: '400px'
     };
-    
+
     const center = {
-        lat: -3.745,
-        lng: -38.523
-      };
+        lat: -41.286,
+        lng: 174.776 
+    }
      
   const [map, setMap] = React.useState(null)
  
-  const onLoad = React.useCallback(function callback(map) {
-    const bounds = new window.google.maps.LatLngBounds();
-    map.fitBounds(bounds);
-    setMap(map)
-  }, [])
- 
-  const onUnmount = React.useCallback(function callback(map) {
-    setMap(null)
-  }, [])
- 
+
   return (
     <LoadScript
       googleMapsApiKey={GOOGLE_API_KEY}
@@ -34,9 +25,7 @@ function SessionMap() {
       <GoogleMap
         mapContainerStyle={containerStyle}
         center={center}
-        zoom={2}
-        onLoad={onLoad}
-        onUnmount={onUnmount}
+        zoom={5.2}
         options={{
             disableDefaultUI: true,
             mapTypeId: 'satellite',
