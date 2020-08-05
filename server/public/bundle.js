@@ -152,7 +152,7 @@ var Dashboard = function Dashboard() {
     waveLine: waveLine
   };
   var sessionTableData = {
-    waves: waves.length,
+    waves: _server_data_processedData_2020_08_01_waves_json__WEBPACK_IMPORTED_MODULE_5__.length,
     distanceSurfed: 700,
     distancePaddled: 5000,
     totalDistance: 5700,

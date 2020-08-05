@@ -28,7 +28,7 @@ const Dashboard = () => {
     } 
         
     let sessionTableData = {
-        waves: waves.length,
+        waves: waveData.length,
         distanceSurfed: 700,
         distancePaddled: 5000,
         totalDistance: 5700,
