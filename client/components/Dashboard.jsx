@@ -2,6 +2,7 @@ import React from 'react'
 import WaveGraph from './WaveGraph'
 import SessionDataTable from './SessionDataTable'
 import WaveDataTable from './WaveDataTable'
+import SessionMap from './SessionMap'
 
 import surfData from '../../server/data/processedData/2020-08-01.json'
 import waveData from '../../server/data/processedData/2020-08-01_waves.json'
@@ -73,9 +74,8 @@ class Dashboard extends React.Component {
                         return <li key={i}>{session.date}</li>
                     })}
                 </ul>
-                
-                <div style={{ padding: '2%' }}>
-                    <WaveGraph sessionData={sessionData}/>
+                <div style={{ padding: '2%', height: "50%"}}>
+                    <WaveGraph style={{ padding: '2%', height: "100px"}} sessionData={sessionData} />
                 </div>
                 <div>
                     <SessionDataTable sessionTableData={sessionTableData} />
@@ -83,6 +83,9 @@ class Dashboard extends React.Component {
                 </div>
                 <div>
                     <WaveDataTable singleWaveData={singleWaveData} />
+                </div>
+                <div>
+                    <SessionMap/>
                 </div>
             </>
             )
