@@ -17,27 +17,27 @@ class SessionDataTable extends React.Component {
                     <tbody>
                         <tr>
                             <td>Total Waves:</td>
-                            <td>{this.props.sessionData.waves}</td>
+                            <td>{this.props.sessionTableData.waves}</td>
                         </tr>
                         <tr>
                             <td>Longest Wave:</td>
-                            <td>{this.props.sessionData.longestWave}m</td>
+                            <td>{this.props.sessionTableData.longestWave}m</td>
                         </tr>
                         <tr>
                             <td>Max Speed:</td>
-                            <td>{this.props.sessionData.maxSpeed}km/hr</td>
+                            <td>{this.props.sessionTableData.maxSpeed}km/hr</td>
                         </tr>
                         <tr>
                             <td>Total Distance:</td>
-                            <td>{this.props.sessionData.totalDistance}m</td>
+                            <td>{this.props.sessionTableData.totalDistance}m</td>
                         </tr>
                         <tr>
                             <td>Distance Surfed:</td>
-                            <td>{this.props.sessionData.distanceSurfed}m</td>
+                            <td>{this.props.sessionTableData.distanceSurfed}m</td>
                         </tr>
                         <tr>
                             <td>Distance Paddled:</td>
-                            <td>{this.props.sessionData.distancePaddled}m</td>
+                            <td>{this.props.sessionTableData.distancePaddled}m</td>
                         </tr>
                     </tbody>
                 </table>
