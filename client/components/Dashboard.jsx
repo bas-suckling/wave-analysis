@@ -5,7 +5,7 @@ import WaveDataTable from './WaveDataTable'
 
 import surfData from '../../server/data/processedData/2020-08-01.json'
 import waveData from '../../server/data/processedData/2020-08-01_waves.json'
-import { apiGetSessions } from '../api/sessions'
+import { apiGetSessionsList, apiGetSessionData } from '../api/sessions'
 
 class Dashboard extends React.Component {
 
@@ -13,14 +13,20 @@ class Dashboard extends React.Component {
         super(props)
 
         this.state={
-            sessions:[]
+            sessions:[],
+            tempData: null
         }
     }
 
     componentDidMount() {
-        apiGetSessions()
+        apiGetSessionsList()
         .then(res => this.setState({
             sessions: res
+        }))
+
+        apiGetSessionData(2)
+        .then(res => this.setState({
+           tempData: res
         }))
     }
 

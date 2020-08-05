@@ -90,18 +90,24 @@
 /*!********************************!*\
   !*** ./client/api/sessions.js ***!
   \********************************/
-/*! exports provided: apiGetSessions */
+/*! exports provided: apiGetSessionsList, apiGetSessionData */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "apiGetSessions", function() { return apiGetSessions; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "apiGetSessionsList", function() { return apiGetSessionsList; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "apiGetSessionData", function() { return apiGetSessionData; });
 /* harmony import */ var superagent__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! superagent */ "./node_modules/superagent/lib/client.js");
 /* harmony import */ var superagent__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(superagent__WEBPACK_IMPORTED_MODULE_0__);
 
-var url = '/api/v1/sessions';
-function apiGetSessions() {
+var url = '/api/v1/sessions/';
+function apiGetSessionsList() {
   return superagent__WEBPACK_IMPORTED_MODULE_0___default.a.get(url).then(function (res) {
+    return res.body;
+  });
+}
+function apiGetSessionData(session_id) {
+  return superagent__WEBPACK_IMPORTED_MODULE_0___default.a.get(url + session_id).then(function (res) {
     return res.body;
   });
 }
@@ -192,7 +198,8 @@ var Dashboard = /*#__PURE__*/function (_React$Component) {
 
     _this = _super.call(this, props);
     _this.state = {
-      sessions: []
+      sessions: [],
+      tempData: null
     };
     return _this;
   }
@@ -202,9 +209,14 @@ var Dashboard = /*#__PURE__*/function (_React$Component) {
     value: function componentDidMount() {
       var _this2 = this;
 
-      Object(_api_sessions__WEBPACK_IMPORTED_MODULE_6__["apiGetSessions"])().then(function (res) {
+      Object(_api_sessions__WEBPACK_IMPORTED_MODULE_6__["apiGetSessionsList"])().then(function (res) {
         return _this2.setState({
           sessions: res
+        });
+      });
+      Object(_api_sessions__WEBPACK_IMPORTED_MODULE_6__["apiGetSessionData"])(2).then(function (res) {
+        return _this2.setState({
+          tempData: res
         });
       });
     }

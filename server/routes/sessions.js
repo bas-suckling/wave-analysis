@@ -21,7 +21,7 @@ router.get('/', (req, res) => {
 
 router.get('/:id', (req, res) =>{
     // some function to get the specific session data
-    let tempResponse = "this is the data from a single surf session"
+    let tempResponse = [{payload:"this is a placeholder for data from a single surf session"}]
     res.send(tempResponse)
 })
 
