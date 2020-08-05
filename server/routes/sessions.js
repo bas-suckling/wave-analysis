@@ -12,4 +12,4 @@ router.get('/:id', (req, res) =>{
     res.send(tempResponse)
 })
 
-module.exports(router)
+module.exports = router
