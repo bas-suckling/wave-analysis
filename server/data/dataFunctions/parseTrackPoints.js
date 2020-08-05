@@ -2,7 +2,8 @@ const xml2js = require('xml2js');
 const fs = require('fs');
 const parseTrack = require('./parseTrack');
 
-function createTrackPoints(filename) {
+// reads .gpx file (xml) returns the track data as a string (json format)
+function parseTrackPoints(filename) {
     return new Promise((res, rej) => {
         fs.readFile(filename,'utf8', (err, data) => {
             if(err) {
@@ -22,17 +23,8 @@ function createTrackPoints(filename) {
     })
 }
 
-function createJSONFile(path, content) {
-    fs.writeFile(path, content, (err) => {
-        if (err) throw err;
-        console.log(` ${path} file was succesfully saved`);
-    }); 
-}
-
 module.exports = {
-    createJSONFile,
-    createTrackPoints
-
+    parseTrackPoints
 }
 
     

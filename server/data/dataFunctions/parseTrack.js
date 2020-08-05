@@ -1,3 +1,5 @@
+// Class definition for an individual track point. Parses from .gpx (xml) format to json format. 
+
 class TrackPoint {
   constructor(el, lat, lng, time, heartrate, cadence) {
       this.elevation = el;
