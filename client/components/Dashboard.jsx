@@ -5,9 +5,15 @@ import WaveDataTable from './WaveDataTable'
 
 import surfData from '../../server/data/processedData/2020-08-01.json'
 import waveData from '../../server/data/processedData/2020-08-01_waves.json'
+import { apiGetSessions } from '../api/sessions'
 
-const Dashboard = () => {
+class Dashboard extends React.Component {
 
+    componentDidMount() {
+        apiGetSessions()
+    }
+
+    render() {
     let waves = []
     let paddling = []
     let timeData = []
@@ -42,24 +48,23 @@ const Dashboard = () => {
         maxSpeed: 30,
         timeStamp: "03:33:33",
     }
-
-
-    return (
-        <>
-            <h1>Wave Analysis for 2020-08-01</h1>
-            <div style={{ padding: '5%' }}>
-                <WaveGraph sessionData={sessionData}/>
-            </div>
-            <div>
-                <SessionDataTable sessionTableData={sessionTableData} />
-                <br />
-            </div>
-            <div>
-                <WaveDataTable singleWaveData={singleWaveData} />
-            </div>
-        </>
-        )
-    
+        return (
+            <>
+                <h1>Wave Analysis for 2020-08-01</h1>
+                <div style={{ padding: '5%' }}>
+                    <WaveGraph sessionData={sessionData}/>
+                </div>
+                <div>
+                    <SessionDataTable sessionTableData={sessionTableData} />
+                    <br />
+                </div>
+                <div>
+                    <WaveDataTable singleWaveData={singleWaveData} />
+                </div>
+            </>
+            )
+        
+    }
 }
 
 export default Dashboard
