@@ -12,7 +12,7 @@ router.get('/', (req, res) => {
             "session_id": 2
         },
         {
-            "date": "2020-07-07",
+            "date": "2020-08-01",
             "session_id": 3
         }
     ]

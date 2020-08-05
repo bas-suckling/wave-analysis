@@ -9,8 +9,19 @@ import { apiGetSessions } from '../api/sessions'
 
 class Dashboard extends React.Component {
 
+    constructor(props) {
+        super(props)
+
+        this.state={
+            sessions:[]
+        }
+    }
+
     componentDidMount() {
         apiGetSessions()
+        .then(res => this.setState({
+            sessions: res
+        }))
     }
 
     render() {
@@ -50,8 +61,14 @@ class Dashboard extends React.Component {
     }
         return (
             <>
-                <h1>Wave Analysis for 2020-08-01</h1>
-                <div style={{ padding: '5%' }}>
+                <h1>Sessions</h1>
+                <ul>
+                    {this.state.sessions.map((session, i) => {
+                        return <li key={i}>{session.date}</li>
+                    })}
+                </ul>
+                
+                <div style={{ padding: '2%' }}>
                     <WaveGraph sessionData={sessionData}/>
                 </div>
                 <div>

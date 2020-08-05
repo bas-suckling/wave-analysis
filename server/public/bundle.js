@@ -102,7 +102,7 @@ __webpack_require__.r(__webpack_exports__);
 var url = '/api/v1/sessions';
 function apiGetSessions() {
   return superagent__WEBPACK_IMPORTED_MODULE_0___default.a.get(url).then(function (res) {
-    return console.log(res.body);
+    return res.body;
   });
 }
 
@@ -185,16 +185,28 @@ var Dashboard = /*#__PURE__*/function (_React$Component) {
 
   var _super = _createSuper(Dashboard);
 
-  function Dashboard() {
+  function Dashboard(props) {
+    var _this;
+
     _classCallCheck(this, Dashboard);
 
-    return _super.apply(this, arguments);
+    _this = _super.call(this, props);
+    _this.state = {
+      sessions: []
+    };
+    return _this;
   }
 
   _createClass(Dashboard, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      Object(_api_sessions__WEBPACK_IMPORTED_MODULE_6__["apiGetSessions"])();
+      var _this2 = this;
+
+      Object(_api_sessions__WEBPACK_IMPORTED_MODULE_6__["apiGetSessions"])().then(function (res) {
+        return _this2.setState({
+          sessions: res
+        });
+      });
     }
   }, {
     key: "render",
@@ -229,9 +241,13 @@ var Dashboard = /*#__PURE__*/function (_React$Component) {
         maxSpeed: 30,
         timeStamp: "03:33:33"
       };
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Wave Analysis for 2020-08-01"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Sessions"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, this.state.sessions.map(function (session, i) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+          key: i
+        }, session.date);
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         style: {
-          padding: '5%'
+          padding: '2%'
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_WaveGraph__WEBPACK_IMPORTED_MODULE_1__["default"], {
         sessionData: sessionData
@@ -476,7 +492,7 @@ var WaveGraph = /*#__PURE__*/function (_React$Component) {
         })]
       };
       var type = 'Line';
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_chartist__WEBPACK_IMPORTED_MODULE_1___default.a, {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Wave Analysis for 2020-08-01"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_chartist__WEBPACK_IMPORTED_MODULE_1___default.a, {
         data: data,
         options: options,
         type: type

@@ -64,6 +64,7 @@ class WaveGraph extends React.Component {
         return (
             <>
                 <div>
+                    <h1>Wave Analysis for 2020-08-01</h1>
                     <ChartistGraph data={data} options={options} type={type}/>
                 </div>
                 
