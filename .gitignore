@@ -9,3 +9,7 @@ sh.exe.stackdump
 logs
 *.log
 bundle.*
+bundle.js.map
+bundle.js
+0.bundle.js.map
+0.bundle.js

@@ -4,6 +4,7 @@ import SessionDataTable from './SessionDataTable'
 import WaveDataTable from './WaveDataTable'
 import SessionMap from './SessionMap'
 
+import sessionTrackPoints from '../../server/data/rawData/tempTrackPoints.json'
 import surfData from '../../server/data/processedData/2020-08-01.json'
 import waveData from '../../server/data/processedData/2020-08-01_waves.json'
 import { apiGetSessionsList, apiGetSessionData } from '../api/sessions'
@@ -85,7 +86,7 @@ class Dashboard extends React.Component {
                     <WaveDataTable singleWaveData={singleWaveData} />
                 </div>
                 <div>
-                    <SessionMap/>
+                    <SessionMap sessionTrackPoints={sessionTrackPoints}/>
                 </div>
             </>
             )
