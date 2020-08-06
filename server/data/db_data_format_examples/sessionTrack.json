@@ -1,0 +1,97 @@
+//This is an example of the data structure for a sessionTrack
+
+//This data will be used by the map component to represent the whole session broken up into separate waves / paddling sections
+//The boolean isWave can be used to assign custom CSS so its easy to spot the difference between waves and paddling.
+
+//It also will be used by the timeline component, where the width each block of paddling / surfing will be defined based on its duration.
+
+//
+
+
+{
+    "session_id": 1,
+    "date": "HH:MM DD:MM:YYYY",
+    "totalWaves": 10,
+    "distanceSurfed":1100,
+    "distancePaddled":6000,
+    "totalTime": "HH:MM",
+    "totalTimeSurfing": "HH:MM",
+    "averagePaddleSpeed": 3,
+    "averageSurfSpeed": 25,
+    "segments": {
+        "segment_id":1,
+        "isWave": true,
+        "distance":300,
+        "time": 20,
+        "trackPoints": [
+            {
+            "lat": 1234567,
+            "lng": 7654321
+            },
+            {
+            "lat": 1234567,
+            "lng": 7654321
+            },
+            {
+            "lat": 1234567,
+            "lng": 7654321
+            },
+            {
+            "lat": 1234567,
+            "lng": 7654321
+            },
+            {
+            "lat": 1234567,
+            "lng": 7654321
+            }
+        ]
+    },
+    {
+        "segment_id":2,
+        "isWave": false,
+        "distance":800,
+        "time": 600,
+        "trackPoints": [
+            {
+            "lat": 1234567,
+            "lng": 7654321
+            },
+            {
+            "lat": 1234567,
+            "lng": 7654321
+            },
+            {
+            "lat": 1234567,
+            "lng": 7654321
+            },
+            {
+            "lat": 1234567,
+            "lng": 7654321
+            },
+            {
+            "lat": 1234567,
+            "lng": 7654321
+            },
+            {
+            "lat": 1234567,
+            "lng": 7654321
+            },
+            {
+            "lat": 1234567,
+            "lng": 7654321
+            },
+            {
+            "lat": 1234567,
+            "lng": 7654321
+            },
+            {
+            "lat": 1234567,
+            "lng": 7654321
+            },
+            {
+            "lat": 1234567,
+            "lng": 7654321
+            }
+        ]
+    }
+}

@@ -18,12 +18,11 @@ class SessionMap extends React.Component {
       }
 
     const containerStyle = {
-        width: '600px',
-        height: '400px'
+        width: '1200px',
+        height: '800px'
     };
 
     const center = sessionTrackPoints[Math.floor(sessionTrackPoints.length/2)]
-
 
     return (
         <LoadScript
