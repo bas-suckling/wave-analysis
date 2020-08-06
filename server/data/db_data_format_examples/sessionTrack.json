@@ -18,7 +18,7 @@
     "totalTimeSurfing": "HH:MM",
     "averagePaddleSpeed": 3,
     "averageSurfSpeed": 25,
-    "segments": {
+    "segments": [{
         "segment_id":1,
         "isWave": true,
         "distance":300,
@@ -93,5 +93,5 @@
             "lng": 7654321
             }
         ]
-    }
+    }]
 }
