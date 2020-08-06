@@ -11,6 +11,7 @@
 {
     "session_id": 1,
     "date": "HH:MM DD:MM:YYYY",
+    "unixTime": 12344567889,
     "totalWaves": 10,
     "distanceSurfed":1100,
     "distancePaddled":6000,
@@ -19,6 +20,7 @@
     "averagePaddleSpeed": 3,
     "averageSurfSpeed": 25,
     "segments": [{
+        "segmentStartTime": 1234,
         "segment_id":1,
         "isWave": true,
         "distance":300,
