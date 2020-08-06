@@ -22,7 +22,7 @@ class SessionMap extends React.Component {
         height: '400px'
     };
 
-    const center = sessionTrackPoints[0]
+    const center = sessionTrackPoints[Math.floor(sessionTrackPoints.length/2)]
 
 
     return (
@@ -32,7 +32,7 @@ class SessionMap extends React.Component {
             <GoogleMap
                 mapContainerStyle={containerStyle}
                 center={center}
-                zoom={20}
+                zoom={16}
                 options={{
                     disableDefaultUI: true,
                     mapTypeId: 'satellite',
