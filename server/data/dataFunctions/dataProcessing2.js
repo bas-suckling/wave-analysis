@@ -94,40 +94,38 @@ function findBeachDirection(bearingArray) {
     return beachDirection
 }
 
-function setIsWave(trackPoints, beachDirection) {
 
+//
+function setIsWave(trackPoints, beachDirection) {
     if (90 >= beachDirection >= 270){
-        let type = "i"
-        let low = beachDirection-90
-        let high = beachDirection+90
+        let angleRange = "inside360"
+        let minAngle = beachDirection-90
+        let maxAngle = beachDirection+90
     }
     else{
-        let type = "o"
+        let angleRange = "outside360"
         if (beachDirection > 270){
-            let low = beachDirection - 270
-            let high = beachDirection - 90
+            let minAngle = beachDirection - 270
+            let maxAngle = beachDirection - 90
         }
         else{
-            let low = beachDirection + 90
-            let high = beachDirection + 270
+            let minAngle = beachDirection + 90
+            let maxAngle = beachDirection + 270
         }
     }
 
     for (let i = 0; i < trackPoints.length-1; i++) {
-        if (dataset[i].speed>threshold && dirCheck(trackPoints[i].bearing,low,high,type)){
+        if (dataset[i].speed > MIN_SURF_SPEED && dirCheck(trackPoints[i].bearing,minAngle,maxAngle,angleRange)){
             trackPoints[i].isWave=true
-        }
-        else{
-            trackPoints[i].isWave = false
         }
     }
     return trackPoints
 }
 
 
-function dirCheck(dir,low,high,type){
-    if (type == "i"){ //decides wheter you are check if value is between our outside of
-        return (low<dir<high) //not sure if you are allowed to chain together like this in js
+function dirCheck(bearing,minAngle,maxAngle,angleRange){
+    if (angleRange == "inside360"){
+        return (minAngle<bearing<maxAngle)
     }
-    else return (dir<low || high<dir)
+    else return (bearing<minAngle || maxAngle<bearing)
 }
