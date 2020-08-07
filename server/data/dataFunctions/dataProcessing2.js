@@ -65,6 +65,11 @@ function processTrackPoints(rawJSONData) {
 
     let beachDirection = findBeachDirection(waveDirections)
 
+    processedTrackPoints = setIsWave(processedTrackPoints)
+
+    //need to add function to create session segments based on being a wave or not, as well as speed and wave summary totals
+
+
     return {
         processedTrackPoints,
         totalDistance,
@@ -115,7 +120,7 @@ function setIsWave(trackPoints, beachDirection) {
     }
 
     for (let i = 0; i < trackPoints.length-1; i++) {
-        if (dataset[i].speed > MIN_SURF_SPEED && dirCheck(trackPoints[i].bearing,minAngle,maxAngle,angleRange)){
+        if (trackPoints[i].speed > MIN_SURF_SPEED && bearingCheck(trackPoints[i].bearing,minAngle,maxAngle,angleRange)){
             trackPoints[i].isWave=true
         }
     }
@@ -123,7 +128,7 @@ function setIsWave(trackPoints, beachDirection) {
 }
 
 
-function dirCheck(bearing,minAngle,maxAngle,angleRange){
+function bearingCheck(bearing,minAngle,maxAngle,angleRange){
     if (angleRange == "inside360"){
         return (minAngle<bearing<maxAngle)
     }
