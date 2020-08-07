@@ -20,6 +20,10 @@
     "total_time_surfing": "HH:MM",
     "average_paddle_speed": 3,
     "average_surf_speed": 25,
+    "location":{
+        "lat":1234567,
+        "lng":7654321
+    },
     "segments": [{
         "segmentStartTime": 1234,
         "segment_id":1,
