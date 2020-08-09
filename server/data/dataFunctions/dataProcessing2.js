@@ -4,6 +4,9 @@ const geolib = require('geolib');
 const {convertUnixTime, convertHMS, parseTime} = require('./timeConversions');
 const MAX_SURF_SPEED = 30
 const MIN_SURF_SPEED = 8
+const KMPH_CONVERT = 3.6
+const TO_RAD = Math.PI/180
+const TO_DEG = 180/Math.PI
 
 function getMetaData(rawJSONData) {
     return{
@@ -33,7 +36,7 @@ function processTrackPoints(rawJSONData) {
         
         let bearing = Math.floor(geolib.getRhumbLineBearing(p1, p2))
 
-        let speed = 3.6*(geolib.getSpeed({
+        let speed = KMPH_CONVERT*(geolib.getSpeed({
             "lat": lat1,
             "lon": lng1,
             "time": unixTime1
@@ -45,9 +48,9 @@ function processTrackPoints(rawJSONData) {
             }
         ))
 
-        setMaxSpeed(speed)
+        speed = setMaxSpeed(speed)
 
-        if (speed > 8) {
+        if (speed > MIN_SURF_SPEED) {
             waveDirections.push(bearing)
         }
 
@@ -65,8 +68,10 @@ function processTrackPoints(rawJSONData) {
 
     let beachDirection = findBeachDirection(waveDirections)
 
-    processedTrackPoints = setIsWave(processedTrackPoints)
 
+
+    //smooth first
+    processedTrackPoints = setIsWave(processedTrackPoints)
     //need to add function to create session segments based on being a wave or not, as well as speed and wave summary totals
 
 
@@ -89,19 +94,19 @@ function findBeachDirection(bearingArray) {
     let n = bearingArray.length
 
     bearingArray.forEach(bearing => {
-        let rad = bearing*Math.PI/180
+        let rad = bearing*TO_RAD
         dirX+=Math.sin(rad)/n
         dirY+=Math.cos(rad)/n
     });
 
-    beachDirection = Math.atan2(dirX,dirY) * 180/Math.PI
+    beachDirection = Math.atan2(dirX,dirY) * TO_DEG
 
     return beachDirection
 }
 
 
 //
-function setIsWave(trackPoints, beachDirection) {
+function setIsWave(trackPoints, beachDirection) { //not perfectly factored but more reader friendly    do you want to swap magic number for consts?
     if (90 >= beachDirection >= 270){
         let angleRange = "inside360"
         let minAngle = beachDirection-90
@@ -128,7 +133,7 @@ function setIsWave(trackPoints, beachDirection) {
 }
 
 
-function bearingCheck(bearing,minAngle,maxAngle,angleRange){
+function bearingCheck(bearing,minAngle,maxAngle,angleRange){//var names not intuitive for "outside case"?
     if (angleRange == "inside360"){
         return (minAngle<bearing<maxAngle)
     }
