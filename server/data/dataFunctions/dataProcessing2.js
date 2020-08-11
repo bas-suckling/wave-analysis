@@ -121,7 +121,7 @@ function setIsWave(trackPoints, beachDirection) {
 
     for (let i = 0; i < trackPoints.length-1; i++) {
         if (trackPoints[i].speed > MIN_SURF_SPEED && bearingCheck(trackPoints[i].bearing,minAngle,maxAngle,angleRange)){
-            trackPoints[i].isWave=true
+            trackPoints[i].isWave = true
         }
     }
     return trackPoints

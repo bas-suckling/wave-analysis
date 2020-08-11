@@ -3,6 +3,7 @@ import WaveGraph from './WaveGraph'
 import SessionDataTable from './SessionDataTable'
 import WaveDataTable from './WaveDataTable'
 import SessionMap from './SessionMap'
+import Timeline from './Timeline'
 
 import sessionTrackPoints from '../../server/data/rawData/tempTrackPoints.json'
 import surfData from '../../server/data/processedData/2020-08-01.json'
@@ -87,6 +88,9 @@ class Dashboard extends React.Component {
                 </div>
                 <div>
                     <SessionMap sessionTrackPoints={sessionTrackPoints}/>
+                </div>
+                <div>
+                    <Timeline/>
                 </div>
             </>
             )
