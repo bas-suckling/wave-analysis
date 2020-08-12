@@ -2,8 +2,12 @@
 // Task 2 -> dataProcessing.js rewrite
 const geolib = require('geolib');
 const {convertUnixTime, convertHMS, parseTime} = require('./timeConversions');
+const {findBeachDirection, setIsWave} = require ('./bearingFunctions')
+const {averageSpeed} = require ('./speedFunctions')
+
 const MAX_SURF_SPEED = 30
 const MIN_SURF_SPEED = 8
+
 
 function getMetaData(rawJSONData) {
     return{
@@ -66,9 +70,11 @@ function processTrackPoints(rawJSONData) {
     let beachDirection = findBeachDirection(waveDirections)
 
     processedTrackPoints = setIsWave(processedTrackPoints)
+    //at this point we should have an array called processed track points, with a beach direction, and isWave set to true or false, based on the beach direction. 
 
     //need to add function to create session segments based on being a wave or not, as well as speed and wave summary totals
 
+    console.log(processedTrackPoints)
 
     return {
         processedTrackPoints,
@@ -77,60 +83,17 @@ function processTrackPoints(rawJSONData) {
     }
 }
 
+function createSegments (trackPointsArray) {
+
+
+    
+}
+
+
 function setMaxSpeed(speed) {
     if (speed > MAX_SURF_SPEED) {
     return MAX_SURF_SPEED
     }
 }
 
-function findBeachDirection(bearingArray) {
-    let dirX = 0
-    let dirY = 0
-    let n = bearingArray.length
 
-    bearingArray.forEach(bearing => {
-        let rad = bearing*Math.PI/180
-        dirX+=Math.sin(rad)/n
-        dirY+=Math.cos(rad)/n
-    });
-
-    beachDirection = Math.atan2(dirX,dirY) * 180/Math.PI
-
-    return beachDirection
-}
-
-
-//
-function setIsWave(trackPoints, beachDirection) {
-    if (90 >= beachDirection >= 270){
-        let angleRange = "inside360"
-        let minAngle = beachDirection-90
-        let maxAngle = beachDirection+90
-    }
-    else{
-        let angleRange = "outside360"
-        if (beachDirection > 270){
-            let minAngle = beachDirection - 270
-            let maxAngle = beachDirection - 90
-        }
-        else{
-            let minAngle = beachDirection + 90
-            let maxAngle = beachDirection + 270
-        }
-    }
-
-    for (let i = 0; i < trackPoints.length-1; i++) {
-        if (trackPoints[i].speed > MIN_SURF_SPEED && bearingCheck(trackPoints[i].bearing,minAngle,maxAngle,angleRange)){
-            trackPoints[i].isWave = true
-        }
-    }
-    return trackPoints
-}
-
-
-function bearingCheck(bearing,minAngle,maxAngle,angleRange){
-    if (angleRange == "inside360"){
-        return (minAngle<bearing<maxAngle)
-    }
-    else return (bearing<minAngle || maxAngle<bearing)
-}
