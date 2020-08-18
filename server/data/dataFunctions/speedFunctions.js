@@ -1,27 +1,17 @@
-
-
-function averageSpeed(array) {
-    w = 1
-    let prev = array[0].pSpeed
+function smoothArray(array, weight) {
+    let prev = array[0].speed
     for (let i = 1; i < array.length-1; i++) {
-         let average = (prev + array[i].pSpeed*w + array[i+1].pSpeed)/(w+2)
-         prev = array[i].pSpeed
+         let average = (prev + array[i].speed*weight + array[i+1].speed)/(weight+2)
+         prev = array[i].speed
          if (average >= 8){
-             array[i].isWave = true
-             array[i].wSpeed = average
-             array[i].pSpeed = null
-             
+             array[i].speed = average
          } else {
-             array[i].isWave = false
-             array[i].pSpeed = average
+             array[i].speed = average
          }
     }
     return array
 }
 
-
-
 module.exports = {
-    averageSpeed,
-    setMaxSpeed
+    smoothArray,
 }
