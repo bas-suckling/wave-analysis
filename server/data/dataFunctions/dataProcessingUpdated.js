@@ -7,6 +7,9 @@ const {averageSpeed} = require ('./speedFunctions')
 
 const MAX_SURF_SPEED = 30
 const MIN_SURF_SPEED = 8
+const KMPH_CONVERT = 3.6
+const TO_RAD = Math.PI/180
+const TO_DEG = 180/Math.PI
 
 
 function getMetaData(rawJSONData) {
@@ -37,7 +40,7 @@ function processTrackPoints(rawJSONData) {
         
         let bearing = Math.floor(geolib.getRhumbLineBearing(p1, p2))
 
-        let speed = 3.6*(geolib.getSpeed({
+        let speed = KMPH_CONVERT*(geolib.getSpeed({
             "lat": lat1,
             "lon": lng1,
             "time": unixTime1
@@ -49,9 +52,9 @@ function processTrackPoints(rawJSONData) {
             }
         ))
 
-        setMaxSpeed(speed)
+        speed = setMaxSpeed(speed)
 
-        if (speed > 8) {
+        if (speed > MIN_SURF_SPEED) {
             waveDirections.push(bearing)
         }
 
@@ -69,9 +72,17 @@ function processTrackPoints(rawJSONData) {
 
     let beachDirection = findBeachDirection(waveDirections)
 
+<<<<<<< HEAD:server/data/dataFunctions/dataProcessingUpdated.js
     processedTrackPoints = setIsWave(processedTrackPoints)
     //at this point we should have an array called processed track points, with a beach direction, and isWave set to true or false, based on the beach direction. 
+||||||| merged common ancestors:server/data/dataFunctions/dataProcessing2.js
+    processedTrackPoints = setIsWave(processedTrackPoints)
+=======
+>>>>>>> f3dbdb82bb990dd9009fac329a67e498c8e53947:server/data/dataFunctions/dataProcessing2.js
 
+
+    //smooth first
+    processedTrackPoints = setIsWave(processedTrackPoints)
     //need to add function to create session segments based on being a wave or not, as well as speed and wave summary totals
 
     console.log(processedTrackPoints)
@@ -85,15 +96,105 @@ function processTrackPoints(rawJSONData) {
 
 function createSegments (trackPointsArray) {
 
+<<<<<<< HEAD:server/data/dataFunctions/dataProcessingUpdated.js
+||||||| merged common ancestors:server/data/dataFunctions/dataProcessing2.js
+    bearingArray.forEach(bearing => {
+        let rad = bearing*Math.PI/180
+        dirX+=Math.sin(rad)/n
+        dirY+=Math.cos(rad)/n
+    });
+=======
+    bearingArray.forEach(bearing => {
+        let rad = bearing*TO_RAD
+        dirX+=Math.sin(rad)/n
+        dirY+=Math.cos(rad)/n
+    });
+>>>>>>> f3dbdb82bb990dd9009fac329a67e498c8e53947:server/data/dataFunctions/dataProcessing2.js
 
+<<<<<<< HEAD:server/data/dataFunctions/dataProcessingUpdated.js
     
+||||||| merged common ancestors:server/data/dataFunctions/dataProcessing2.js
+    beachDirection = Math.atan2(dirX,dirY) * 180/Math.PI
+
+    return beachDirection
+=======
+    beachDirection = Math.atan2(dirX,dirY) * TO_DEG
+
+    return beachDirection
+>>>>>>> f3dbdb82bb990dd9009fac329a67e498c8e53947:server/data/dataFunctions/dataProcessing2.js
 }
 
 
+<<<<<<< HEAD:server/data/dataFunctions/dataProcessingUpdated.js
 function setMaxSpeed(speed) {
     if (speed > MAX_SURF_SPEED) {
     return MAX_SURF_SPEED
+||||||| merged common ancestors:server/data/dataFunctions/dataProcessing2.js
+//
+function setIsWave(trackPoints, beachDirection) {
+    if (90 >= beachDirection >= 270){
+        let angleRange = "inside360"
+        let minAngle = beachDirection-90
+        let maxAngle = beachDirection+90
+    }
+    else{
+        let angleRange = "outside360"
+        if (beachDirection > 270){
+            let minAngle = beachDirection - 270
+            let maxAngle = beachDirection - 90
+        }
+        else{
+            let minAngle = beachDirection + 90
+            let maxAngle = beachDirection + 270
+        }
+    }
+
+    for (let i = 0; i < trackPoints.length-1; i++) {
+        if (trackPoints[i].speed > MIN_SURF_SPEED && bearingCheck(trackPoints[i].bearing,minAngle,maxAngle,angleRange)){
+            trackPoints[i].isWave=true
+        }
+=======
+//
+function setIsWave(trackPoints, beachDirection) { //not perfectly factored but more reader friendly    do you want to swap magic number for consts?
+    if (90 >= beachDirection >= 270){
+        let angleRange = "inside360"
+        let minAngle = beachDirection-90
+        let maxAngle = beachDirection+90
+    }
+    else{
+        let angleRange = "outside360"
+        if (beachDirection > 270){
+            let minAngle = beachDirection - 270
+            let maxAngle = beachDirection - 90
+        }
+        else{
+            let minAngle = beachDirection + 90
+            let maxAngle = beachDirection + 270
+        }
+    }
+
+    for (let i = 0; i < trackPoints.length-1; i++) {
+        if (trackPoints[i].speed > MIN_SURF_SPEED && bearingCheck(trackPoints[i].bearing,minAngle,maxAngle,angleRange)){
+            trackPoints[i].isWave=true
+        }
+>>>>>>> f3dbdb82bb990dd9009fac329a67e498c8e53947:server/data/dataFunctions/dataProcessing2.js
     }
 }
 
 
+<<<<<<< HEAD:server/data/dataFunctions/dataProcessingUpdated.js
+||||||| merged common ancestors:server/data/dataFunctions/dataProcessing2.js
+function bearingCheck(bearing,minAngle,maxAngle,angleRange){
+    if (angleRange == "inside360"){
+        return (minAngle<bearing<maxAngle)
+    }
+    else return (bearing<minAngle || maxAngle<bearing)
+}
+=======
+function bearingCheck(bearing,minAngle,maxAngle,angleRange){//var names not intuitive for "outside case"?
+    if (angleRange == "inside360"){
+        return (minAngle<bearing<maxAngle)
+    }
+    else return (bearing<minAngle || maxAngle<bearing)
+}
+>>>>>>> f3dbdb82bb990dd9009fac329a67e498c8e53947:server/data/dataFunctions/dataProcessing2.js

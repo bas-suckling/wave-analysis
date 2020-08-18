@@ -7,9 +7,12 @@ enter the `wave analysis` directory
 At the command line type: `npm install` 
 
     To create/update data files,,, 
-    -add a gpx file to the data directory
-    -update the directory refs in wave 'client/src/createDataFiles.js' 
-    -At the command line (from the client/src dir) type: `node createDataFiles.js`
+    -add a gpx file to the data directory "sever/data/rawData/[fileName.gpx]
+    - NB at current stage of devel...
+    - - Filename must be of from YYYY-MM-DD
+    - - only accepts 1 session perday 
+    -( the directory refs in wave 'sever/dataFunctions/index.js' ????)
+    -At the command line (from the sever/data/dataFunctions dir) type: `node createDataFiles.js`
 
 To check out the data displayed for an example session, run the server using `npm run dev` and navigate to http://localhost:3000/
 
