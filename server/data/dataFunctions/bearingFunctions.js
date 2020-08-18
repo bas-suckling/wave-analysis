@@ -34,11 +34,14 @@ function findBearingType(beachDirection){
         let minAngle = beachDirection + 90
         let maxAngle = beachDirection + 270
     }
+    return {"angleRange": angleRange,
+            "minAngle": minAngle,
+            "maxAngle": maxAngle}
 
 }
 
 function setIsWave(trackPoints, beachDirection) {
-    
+    bearings = findBearingType(beachDirection)
 
     for (let i = 0; i < trackPoints.length-1; i++) {
         if (trackPoints[i].speed > MIN_SURF_SPEED && bearingCheck(trackPoints[i].bearing,minAngle,maxAngle,angleRange)){
