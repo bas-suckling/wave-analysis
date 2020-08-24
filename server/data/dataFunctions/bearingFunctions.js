@@ -36,20 +36,24 @@ function setIsWave(trackPoints, beachDirection) {
 // find if bearing arc crosses the north 360->0 boundary
 // returns this arc bounds ("minangle"/"maxAngle") and the rangetype "insideRange" bool
 function findBearingType(beachDirection){
+    var insideRange
+    var minAngle
+    var maxAngle
+    
     if (90 >= beachDirection){
         if (beachDirection >= 270){
-            let insideRange = true
-            let minAngle = beachDirection-90
-            let maxAngle = beachDirection+90
+            insideRange = true
+            minAngle = beachDirection-90
+            maxAngle = beachDirection+90
         }else{// >270
-            let insideRange = false
-            let minAngle = beachDirection - 270
-            let maxAngle = beachDirection - 90
+            insideRange = false
+            minAngle = beachDirection - 270
+            maxAngle = beachDirection - 90
         }
     }else{// >90
-        let insideRange = false
-        let minAngle = beachDirection + 90
-        let maxAngle = beachDirection + 270
+        insideRange = false
+        minAngle = beachDirection + 90
+        maxAngle = beachDirection + 270
     }
     return {"insideRange": insideRange,
             "minAngle": minAngle,

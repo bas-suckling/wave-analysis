@@ -23,7 +23,8 @@ function mainFunk(rawJSONData){
 
     return({
         "meta": meta,
-        "segments": segments
+        "segments": segments,
+        "data": finalProcess
     })
 }
 //--------------------------------- LOOK HERE 1st ---------------------
@@ -68,8 +69,8 @@ function processTrackPoints(rawJSONData) {//main()? or basic process()?
         let lng1 = rawJSONdata[i].longitude
         let lat2 = rawJSONdata[i + 1].latitude
         let lng2 = rawJSONdata[i + 1].longitude
-        let p1 = {"lat": lat1,"lng": lng1}
-        let p2 = {"lat": lat2,"lng": lng2}
+        let p1 = {"lat": lat1,"lon": lng1}
+        let p2 = {"lat": lat2,"lon": lng2}
         
         let distanceIncrement = geolib.getPreciseDistance(p1, p2)
         //totalDistance += distanceIncrement
@@ -105,21 +106,8 @@ function processTrackPoints(rawJSONData) {//main()? or basic process()?
             "isWave": false
         })
     }
-
-    //let beachDirection = findBeachDirection(waveDirections)
-
-    //processedTrackPoints = smoothArray(processedTrackPoints, SMOOTH_WEIGHT)
-    //processedTrackPoints = setIsWave(processedTrackPoints)
-    //segments = createSegments (processedTrackPoints)
-    
     console.log(processedTrackPoints)//debug only?
-
     return {"processedTrackPoints": processedTrackPoints, "waveDirections": waveDirections}
-        //processedTrackPoints,
-        //segments
-        //totalDistance,??
-        //beachDirection??
-    //}
 }
 
 
