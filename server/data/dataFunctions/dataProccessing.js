@@ -173,19 +173,28 @@ function setMaxSpeed(speed) {
     return speed
 }
 
+function toLng(raw) {
+    return {"lat": parseFloat(raw.lat), "lng": parseFloat(raw.lon)}
+}
 function mapReady(segs) {
     let segPaths = []
     segs.forEach(seg => {
         segPath = []
-        segPath.push(seg.points[0].startPoint)
+        
+        segPath.push(toLng(seg.points[0].startPoint))
         seg.points.forEach(point =>{
-            segPath.push(point.endPoint)
-        })
-        segPaths.push({"isWave": seg.isWave, "path": segPath})
+            segPath.push(toLng(point.endPoint))
+        }) 
+
+        let segmentType = "paddle"
+        if (seg.isWave) {
+            segmentType = "wave" 
+        }
+        
+        segPaths.push({"segmentType": segmentType, "path": segPath})
     })
     return segPaths
 }
-
 
 module.exports = {
     sessionData

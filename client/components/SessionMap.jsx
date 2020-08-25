@@ -11,12 +11,16 @@ class SessionMap extends React.Component {
         
     const sessionTrackPoints = this.props.sessionTrackPoints
 
-    const POLYLINE_OPTIONS = {
-        strokeColor: '#FF0000',
+    const POLYLINE_PADDLE = {
+        strokeColor: '#000000',
         strokeOpacity: 1.0,
-        strokeWeight: 2,
+        strokeWeight: 2
       }
-
+      const POLYLINE_WAVE = {
+        strokeColor: '#0000FF',
+        strokeOpacity: 2.0,
+        strokeWeight: 2
+      }
     const containerStyle = {
         width: '1200px',
         height: '800px'
@@ -47,10 +51,12 @@ class SessionMap extends React.Component {
                 return (
                 <Polyline
                     key={i}
-                    class={segment.isWave}
-                    path={segment.path}
+                    class={segment.segmentType}
+                    path={segment.path}  
+                    options={(segment.segmentType == 'wave' ? POLYLINE_WAVE : POLYLINE_PADDLE)}
                 />)
             })}
+
             
             </GoogleMap>
         </LoadScript>
