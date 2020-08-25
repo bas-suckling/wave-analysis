@@ -8,19 +8,19 @@ const {smoothArray} = require ('./speedFunctions');
 const MAX_SURF_SPEED = 30
 const KMPH_CONVERT = 3.6
 const MIN_SEGMENT_LENGTH = 4
-const SMOOTH_WEIGHT = 1
+const SMOOTH_WEIGHT = 4
 const ACCURACY = 0.01
 
 
 //--------------------------------- LOOK HERE 1st ---------------------
 function sessionData(rawJSONData){
-    let basicProcess=processTrackPoints(rawJSONData)
-    let beachDirection = findBeachDirection(basicProcess.waveDirections)
-    let smoothedData = smoothArray(basicProcess.processedTrackPoints, SMOOTH_WEIGHT)
-    let finalProcess = setIsWave(smoothedData, beachDirection)
-    let segments = createSegments (finalProcess)
-    let mapData = mapReady(segments)
-    let meta = getMetaData(rawJSONData,segments)
+    let basicProcess = processTrackPoints(rawJSONData)                                  // (points)->(pairs); calcs; beachDirArray;
+    let beachDirection = findBeachDirection(basicProcess.waveDirections)                // returns assumed dir of beach from all fast moves
+    let smoothedData = smoothArray(basicProcess.processedTrackPoints, SMOOTH_WEIGHT)    // smooths all track speeds
+    let finalProcess = setIsWave(smoothedData, beachDirection)                          // set pair.isWave bool for all pairs
+    let segments = createSegments (finalProcess)                                        // separate data into segments
+    let mapData = mapReady(segments)                                                    // get segments into map format
+    let meta = getMetaData(rawJSONData,segments)                                        // - not currently used
 
     console.log('beach direction is: ', beachDirection)
     console.log(`there are: ${segments.length} segments`)
@@ -59,11 +59,10 @@ function getMetaData(rawJSONData, segments) {
 
 
 
-function processTrackPoints(inputdata) {//main()? or basic process()?
+function processTrackPoints(inputdata) {
     let processedTrackPoints = []
     let waveDirections = []
-    //let totalDistance = 0
-
+    
     for (let i = 0; i < inputdata.length - 1 ; i++) {
 
         let unixTime1 = convertUnixTime(parseTime(inputdata[i].timestamp))
@@ -76,7 +75,6 @@ function processTrackPoints(inputdata) {//main()? or basic process()?
         let p2 = {"lat": lat2,"lon": lng2}
         
         let distanceIncrement = geolib.getPreciseDistance(p1, p2, ACCURACY)
-        //totalDistance += distanceIncrement
         
         let bearing = Math.floor(geolib.getRhumbLineBearing(p1, p2))
 
@@ -127,11 +125,12 @@ function createSegments (trackPointsArray) {
                 segmentArray.push(segment)
                 segment = [trackPointsArray[i]]
             }
-            else{ // if prev seg too small
+            else{ // if prev seg too small flip ".isWave" and push to segments (effectively "add to last segment")
                 segment.forEach(element => {
                     element.isWave = !element.isWave
                 })
-                segment.push(trackPointsArray[i])            
+                segmentArray.push(segment)
+                segment=[trackPointsArray[i]]       //reset segment      
             }
         }
     }
@@ -141,18 +140,19 @@ function createSegments (trackPointsArray) {
         if (segmentArray[i][0].isWave == segmentArray[i+1][0].isWave){//if i&i+1 share isWave
             segmentArray[i]=segmentArray[i].concat(segmentArray[i+1]) // concate
             segmentArray.splice(i+1,1)//remove i+1 & shorten segments len
+            i-- // retest combined segment against next
         }
     }
 
     let segmentArrayFull =[]
     segmentArray.forEach(seg=>{
-        //seg ID ?? use array index? 
         let isWave=seg[0].isWave
-        let duration = seg[seg.length-1].time2-seg[0].time1
-        let dist = 0
+        let duration = seg[seg.length-1].unixTime2-seg[0].unixTime1  // convert to seconds
+        var dist = 0
         seg.forEach (part=> {
-            dist+=part.dist
+            dist+=part.distance
         })
+        //console.log("duration: ",duration," distance: ",dist)
         segmentArrayFull.push({
             "isWave": isWave,
             "duration": duration,
