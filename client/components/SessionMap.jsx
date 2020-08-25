@@ -23,6 +23,10 @@ class SessionMap extends React.Component {
     };
 
     // const center = sessionTrackPoints[Math.floor(sessionTrackPoints.length/2)]
+    const center = {
+        "lat": -40.7411720,
+        "lng": 175.1104580
+    }
 
     return (
         <LoadScript
@@ -30,7 +34,7 @@ class SessionMap extends React.Component {
         >
             <GoogleMap
                 mapContainerStyle={containerStyle}
-                // center={center}
+                center={center}
                 zoom={16}
                 options={{
                     disableDefaultUI: true,
@@ -40,21 +44,13 @@ class SessionMap extends React.Component {
             >
 
             {sessionTrackPoints.map((segment, i) => {
-                return <>
+                return (
                 <Polyline
                     key={i}
                     class={segment.isWave}
                     path={segment.path}
-                />
-                </>
+                />)
             })}
-
-
-            {/* for each seg{ create array of points {lat,lng} for segment and dray polyline (alt colors**)  */}
-            {/* <Polyline
-                class={segment.isWave}
-                path={segPath}>
-            </Polyline> */}
             
             </GoogleMap>
         </LoadScript>
