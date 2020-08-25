@@ -20,12 +20,17 @@ function sessionData(rawJSONData){
     let smoothedData = smoothArray(basicProcess.processedTrackPoints, SMOOTH_WEIGHT)
     let finalProcess = setIsWave(smoothedData, beachDirection)
     let segments = createSegments (finalProcess)
+    let mapData = mapReady(segments)
     let meta = getMetaData(rawJSONData,segments)
+
+    console.log('beach direction is: ', beachDirection)
+    console.log(`there are: ${segments.length} segments`)
 
     return({
         "meta": meta,
         "segments": segments,
-        "data": finalProcess
+        "data": finalProcess,
+        "mapData": mapData
     })
 }
 //--------------------------------- LOOK HERE 1st ---------------------
@@ -167,6 +172,20 @@ function setMaxSpeed(speed) {
     }
     return speed
 }
+
+function mapReady(segs) {
+    let segPaths = []
+    segs.forEach(seg => {
+        segPath = []
+        segPath.push(seg.points[0].startPoint)
+        seg.points.forEach(point =>{
+            segPath.push(point.endPoint)
+        })
+        segPaths.push({"isWave": seg.isWave, "path": segPath})
+    })
+    return segPaths
+}
+
 
 module.exports = {
     sessionData

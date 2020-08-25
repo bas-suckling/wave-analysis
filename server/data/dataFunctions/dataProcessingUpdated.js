@@ -12,7 +12,7 @@ const SMOOTH_WEIGHT = 1
 
 
 //--------------------------------- LOOK HERE 1st ---------------------
-//
+
 function mainFunk(rawJSONData){
     let basicProcess=processTrackPoints(rawJSONData)
     let beachDirection = findBeachDirection(basicProcess.waveDirections)
