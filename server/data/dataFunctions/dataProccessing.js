@@ -13,7 +13,6 @@ const ACCURACY = 0.01
 
 
 //--------------------------------- LOOK HERE 1st ---------------------
-//
 function sessionData(rawJSONData){
     let basicProcess=processTrackPoints(rawJSONData)
     let beachDirection = findBeachDirection(basicProcess.waveDirections)
@@ -33,9 +32,7 @@ function sessionData(rawJSONData){
         "mapData": mapData
     })
 }
-//--------------------------------- LOOK HERE 1st ---------------------
-
-
+//---------------------------------------------------------------------
 
 
 function getMetaData(rawJSONData, segments) {

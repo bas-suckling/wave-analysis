@@ -15,12 +15,19 @@ class SessionMap extends React.Component {
         strokeColor: '#000000',
         strokeOpacity: 1.0,
         strokeWeight: 2
-      }
-      const POLYLINE_WAVE = {
+    }
+    const POLYLINE_WAVE = {
         strokeColor: '#0000FF',
         strokeOpacity: 2.0,
         strokeWeight: 2
-      }
+    }
+
+    // const POLYLINE_CURRENT = {
+    //     strokeColor: '#FF0000',
+    //     strokeOpacity: 1.0,
+    //     strokeWeight: 4
+    // }
+    
     const containerStyle = {
         width: '1200px',
         height: '800px'
@@ -54,6 +61,7 @@ class SessionMap extends React.Component {
                     class={segment.segmentType}
                     path={segment.path}  
                     options={(segment.segmentType == 'wave' ? POLYLINE_WAVE : POLYLINE_PADDLE)}
+                    // onClick={() => this.options={POLYLINE_CURRENT}}
                 />)
             })}
 
