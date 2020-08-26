@@ -3,14 +3,17 @@ import WaveGraph from './WaveGraph'
 import SessionDataTable from './SessionDataTable'
 import WaveDataTable from './WaveDataTable'
 import SessionMap from './SessionMap'
+import Timeline from './Timeline'
 
-import sessionTrackPoints from '../../server/data/rawData/tempTrackPoints.json'
+// import sessionTrackPoints from '../../server/data/rawData/tempTrackPoints.json'
+import sessionTrackPoints from '../../server/data/processedData/2020-08-01_mapData.json'
+
 import surfData from '../../server/data/processedData/2020-08-01.json'
-import waveData from '../../server/data/processedData/2020-08-01_waves.json'
+import waveData from '../../server/data/processedData/2020-08-01_segmented.json'
 import { apiGetSessionsList, apiGetSessionData } from '../api/sessions'
+import { isPointInLine } from 'geolib'
 
 class Dashboard extends React.Component {
-
     constructor(props) {
         super(props)
 
@@ -34,20 +37,17 @@ class Dashboard extends React.Component {
 
     render() {
     let waves = []
-    let paddling = []
     let timeData = []
     let waveLine = []
     
     surfData.forEach(function (element) {
-        waves.push(element.wSpeed)
-        paddling.push(element.pSpeed)
+        waves.push(element.speed)
         timeData.push(element.elapsedTime)
         waveLine.push(8)
     })
 
     let sessionData = {
         waves: waves,
-        paddling: paddling,
         timeData: timeData,
         waveLine: waveLine,
     } 
@@ -88,6 +88,9 @@ class Dashboard extends React.Component {
                 <div>
                     <SessionMap sessionTrackPoints={sessionTrackPoints}/>
                 </div>
+                {/* <div>
+                    <Timeline/>
+                </div> */}
             </>
             )
         
