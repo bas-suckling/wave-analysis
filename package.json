@@ -24,11 +24,6 @@
       "@babel/plugin-proposal-object-rest-spread"
     ]
   },
-  "jest": {
-    "setupFiles": [
-      "./tests/setup.js"
-    ]
-  },
   "dependencies": {
     "@react-google-maps/api": "^1.9.12",
     "chartist": "^0.11.4",

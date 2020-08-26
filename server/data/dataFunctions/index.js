@@ -1,5 +1,5 @@
 const {parseTrackPoints} = require('./parseTrackPoints')
-const {sessionData, wavesData, averageSpeed} = require('./dataProccessing')
+const {sessionData} = require('./dataProccessing')
 const {writeFile} = require('./writeFiles')
  
 let rawPath =  '../rawData/'
@@ -10,17 +10,19 @@ let session_gpx = rawPath + date + '.gpx'
 let session_JSON_RAW = rawPath + date + '_RAW.json' 
 
 let session_JSON = processedPath + date + '.json'
-let waves_JSON = processedPath + date + '_waves.json'
+let waves_JSON = processedPath + date + '_segmented.json'
+let map_JSON = processedPath + date + '_mapData.json'
 
 
+// save raw data as json
 parseTrackPoints(session_gpx)
-    .then(data => sessionData(data))  
-    .then(dataArray => writeFile((session_JSON), JSON.stringify(averageSpeed(dataArray))))
+     .then(data => writeFile(session_JSON_RAW, JSON.stringify(data)))
 
-parseTrackPoints(rawPath+session_gpx)
+// Process & Save
+parseTrackPoints(session_gpx)
     .then(data => sessionData(data))
-    .then(dataArray => wavesData(averageSpeed(dataArray)))  
-    .then(wavesData => writeFile((waves_JSON), JSON.stringify(wavesData)))
-
-parseTrackPoints(session_gpx)
-    .then(data => writeFile(session_JSON_RAW, JSON.stringify(data)))
+    .then(dataArray => {
+        writeFile((session_JSON), JSON.stringify(dataArray.data))   //  ./processed/[data] _ (BASIC) .json
+        writeFile((waves_JSON), JSON.stringify(dataArray.segments)) //  ./processed/[data] _ segmented .json
+        writeFile((map_JSON), JSON.stringify(dataArray.mapData))    //  ./processed/[data] _ mapData .json
+    })
