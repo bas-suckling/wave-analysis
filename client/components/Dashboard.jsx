@@ -4,6 +4,7 @@ import SessionDataTable from './SessionDataTable'
 import WaveDataTable from './WaveDataTable'
 import SessionMap from './SessionMap'
 import Timeline from './Timeline'
+import LeafletMap from './LeafletMap'
 
 // import sessionTrackPoints from '../../server/data/rawData/tempTrackPoints.json'
 import sessionTrackPoints from '../../server/data/processedData/2020-08-01_mapData.json'
@@ -91,6 +92,9 @@ class Dashboard extends React.Component {
                 {/* <div>
                     <Timeline/>
                 </div> */}
+                <div>
+                    <LeafletMap/>
+                </div>
             </>
             )
         
