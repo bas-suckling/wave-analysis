@@ -19,7 +19,9 @@ function sessionData(rawJSONData){
     let smoothedData = smoothArray(basicProcess.processedTrackPoints, SMOOTH_WEIGHT)    // smooths all track speeds
     let finalProcess = setIsWave(smoothedData, beachDirection)                          // set pair.isWave bool for all pairs
     let segments = createSegments (finalProcess)                                        // separate data into segments
-    let mapData = mapReady(segments)                                                    // get segments into map format
+    let gMapData = gMapReady(segments)                                                    // get segments into map format
+    let lMapData = lMapReady(segments)
+    console.log(lMapData)                                                    // get segments into map format
     let meta = getMetaData(rawJSONData,segments)                                        // - not currently used
 
     console.log('beach direction is: ', beachDirection)
@@ -29,7 +31,8 @@ function sessionData(rawJSONData){
         "meta": meta,
         "segments": segments,
         "data": finalProcess,
-        "mapData": mapData
+        "gMapData": gMapData,
+        "lMapData": lMapData
     })
 }
 //---------------------------------------------------------------------
@@ -182,7 +185,7 @@ function setMaxSpeed(speed) {
 function toLng(raw) {
     return {"lat": parseFloat(raw.lat), "lng": parseFloat(raw.lon)}
 }
-function mapReady(segs) {
+function gMapReady(segs) {
     let segPaths = []
     segs.forEach(seg => {
         segPath = []
@@ -201,7 +204,31 @@ function mapReady(segs) {
     })
     return segPaths
 }
+function lMapReady(segs) {
+    let segPaths = []
+    segs.forEach(seg => {
+        segPath = []
+        
+        segPath.push([
+            seg.points[0].startPoint.lat, 
+            seg.points[0].startPoint.lon
+        ])
+        seg.points.forEach(point =>{
+            segPath.push([
+                point.endPoint.lat, 
+                point.endPoint.lon
+            ])
+        }) 
 
+        let segmentType = "paddle"
+        if (seg.isWave) {
+            segmentType = "wave" 
+        }
+        
+        segPaths.push({"segmentType": segmentType, "path": segPath})
+    })
+    return segPaths
+}
 module.exports = {
     sessionData
 }

@@ -7,7 +7,8 @@ import Timeline from './Timeline'
 import LeafletMap from './LeafletMap'
 
 // import sessionTrackPoints from '../../server/data/rawData/tempTrackPoints.json'
-import sessionTrackPoints from '../../server/data/processedData/2020-08-01_mapData.json'
+import gMapPoints from '../../server/data/processedData/2020-08-01_googleMapData.json'
+import lMapPoints from '../../server/data/processedData/2020-08-01_leafMapData.json'
 
 import surfData from '../../server/data/processedData/2020-08-01.json'
 import waveData from '../../server/data/processedData/2020-08-01_segmented.json'
@@ -87,13 +88,13 @@ class Dashboard extends React.Component {
                     <WaveDataTable singleWaveData={singleWaveData} />
                 </div>
                 <div>
-                    <SessionMap sessionTrackPoints={sessionTrackPoints}/>
+                    <SessionMap gSessionTrackPoints={gMapPoints}/>
                 </div>
                 {/* <div>
                     <Timeline/>
                 </div> */}
                 <div>
-                    <LeafletMap/>
+                    <LeafletMap lSessionTrackPoints={lMapPoints}/>
                 </div>
             </>
             )

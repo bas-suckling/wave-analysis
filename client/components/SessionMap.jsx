@@ -9,7 +9,7 @@ class SessionMap extends React.Component {
     }
     render() {
         
-    const sessionTrackPoints = this.props.sessionTrackPoints
+    const sessionTrackPoints = this.props.gSessionTrackPoints
 
     const POLYLINE_PADDLE = {
         strokeColor: '#000000',

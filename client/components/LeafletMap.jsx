@@ -1,6 +1,12 @@
 import React from 'react'
 import {Map, Marker, Popup, TileLayer, Polyline} from 'react-leaflet'
-import data from '../../server/data/rawData/tempTrackPoints.json'
+//import data from '../../server/data/rawData/tempTrackPoints.json'
+import data from "../../server/data/processedData/2020-08-01_leafMapData.json"
+
+
+        
+
+
 
 class LeafletMap extends React.Component {
 
@@ -19,7 +25,7 @@ class LeafletMap extends React.Component {
                     />
 
                     <Polyline
-                    positions={data}>
+                    positions={data[0].path}>
                         
                     </Polyline>
                   </Map>
