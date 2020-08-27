@@ -1,7 +1,7 @@
 // Task 1 -> when processing .gpx file, include session_name and date into raw JSON file 
 // Task 2 -> dataProcessing.js rewrite
 const geolib = require('geolib');
-const {convertUnixTime, convertHMS, parseTime} = require('./timeConversions');
+const {convertUnixTime, parseTime} = require('./timeConversions');
 const {findBeachDirection, setIsWave, MIN_SURF_SPEED} = require ('./bearingFunctions');
 const {smoothArray} = require ('./speedFunctions');
 
@@ -74,7 +74,7 @@ function processTrackPoints(inputdata) {
         let p1 = {"lat": lat1,"lon": lng1}
         let p2 = {"lat": lat2,"lon": lng2}
         
-        let distanceIncrement = geolib.getPreciseDistance(p1, p2, ACCURACY)
+        let distanceIncrement = (geolib.getPreciseDistance(p1, p2, ACCURACY))
         
         let bearing = Math.floor(geolib.getRhumbLineBearing(p1, p2))
 
@@ -112,12 +112,21 @@ function processTrackPoints(inputdata) {
 }
 
 
-//-------------------------------------------------------you were right this won't work corectly in a W-P-W-P-W situation
-//----------------------------------------------------------instead of adding to prev, it will append to next segment! is that okay?
+// joins short segs to prev
 function createSegments (trackPointsArray) {
     let segmentArray = []
-    let segment = []
-    for (let i = 1; i < trackPointsArray.length; i++) {
+    
+    //manually build first seg
+    let segment = [trackPointsArray[0]]
+    let segType = trackPointsArray[0].isWave
+    let j = 1
+    while (trackPointsArray[j] == segType){
+        segment.push(trackPointsArray[j])
+        j++
+    }
+    segmentArray.push(segment)
+
+    for (let i = j; i < trackPointsArray.length; i++) {
         if (trackPointsArray[i].isWave == trackPointsArray[i-1].isWave) { //if same
             segment.push(trackPointsArray[i])
         }else{ 
@@ -152,7 +161,7 @@ function createSegments (trackPointsArray) {
         seg.forEach (part=> {
             dist+=part.distance
         })
-        //console.log("duration: ",duration," distance: ",dist)
+        //console.log("Segment duration: ",duration," distance: ",dist)
         segmentArrayFull.push({
             "isWave": isWave,
             "duration": duration,
