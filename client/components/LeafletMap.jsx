@@ -3,11 +3,6 @@ import { Map, Marker, Popup, TileLayer, Polyline } from 'react-leaflet'
 //import data from '../../server/data/rawData/tempTrackPoints.json'
 import data from "../../server/data/processedData/2020-08-01_leafMapData.json"
 
-
-
-
-
-
 class LeafletMap extends React.Component {
 
     constructor(props) {
@@ -15,6 +10,13 @@ class LeafletMap extends React.Component {
     }
 
     render() {
+
+        const POLYLINE_PADDLE = {
+            color: '#000000',
+        }
+        const POLYLINE_WAVE = {
+            color: '#0000FF',
+        }
 
         return (
             <>
@@ -29,6 +31,7 @@ class LeafletMap extends React.Component {
                             <Polyline
                                 key={i}
                                 positions={segment.path}
+                                color={(segment.segmentType == 'wave') ? POLYLINE_WAVE.color : POLYLINE_PADDLE.color}
                             />)
                     })}
 
