@@ -1,7 +1,7 @@
 // Task 1 -> when processing .gpx file, include session_name and date into raw JSON file 
 // Task 2 -> dataProcessing.js rewrite
 const geolib = require('geolib');
-const {convertUnixTime, convertHMS, parseTime} = require('./timeConversions');
+const {convertUnixTime, parseTime} = require('./timeConversions');
 const {findBeachDirection, setIsWave, MIN_SURF_SPEED} = require ('./bearingFunctions');
 const {smoothArray} = require ('./speedFunctions');
 
@@ -19,7 +19,7 @@ function sessionData(rawJSONData){
     let smoothedData = smoothArray(basicProcess.processedTrackPoints, SMOOTH_WEIGHT)    // smooths all track speeds
     let finalProcess = setIsWave(smoothedData, beachDirection)                          // set pair.isWave bool for all pairs
     let segments = createSegments (finalProcess)                                        // separate data into segments
-    let mapData = mapReady(segments)                                                    // get segments into map format
+    let lMapData = lMapReady(segments)
     let meta = getMetaData(rawJSONData,segments)                                        // - not currently used
 
     console.log('beach direction is: ', beachDirection)
@@ -29,7 +29,7 @@ function sessionData(rawJSONData){
         "meta": meta,
         "segments": segments,
         "data": finalProcess,
-        "mapData": mapData
+        "lMapData": lMapData
     })
 }
 //---------------------------------------------------------------------
@@ -50,7 +50,6 @@ function getMetaData(rawJSONData, segments) {
     return{
         "session_name": rawJSONData.session_name,
         "date": rawJSONData.date,
-        //"locationName":(lookup??),
         "waveCount": waveCount,
         "totalDist": totalDist,
         "totalDur:": totalDur
@@ -74,7 +73,7 @@ function processTrackPoints(inputdata) {
         let p1 = {"lat": lat1,"lon": lng1}
         let p2 = {"lat": lat2,"lon": lng2}
         
-        let distanceIncrement = geolib.getPreciseDistance(p1, p2, ACCURACY)
+        let distanceIncrement = (geolib.getPreciseDistance(p1, p2, ACCURACY))
         
         let bearing = Math.floor(geolib.getRhumbLineBearing(p1, p2))
 
@@ -107,17 +106,25 @@ function processTrackPoints(inputdata) {
             "isWave": false
         })
     }
-    //console.log(processedTrackPoints)//debug only?
     return {"processedTrackPoints": processedTrackPoints, "waveDirections": waveDirections}
 }
 
 
-//-------------------------------------------------------you were right this won't work corectly in a W-P-W-P-W situation
-//----------------------------------------------------------instead of adding to prev, it will append to next segment! is that okay?
+// current bhvr is to join short segs to prev
 function createSegments (trackPointsArray) {
     let segmentArray = []
-    let segment = []
-    for (let i = 1; i < trackPointsArray.length; i++) {
+    
+    //manually build first seg
+    let segment = [trackPointsArray[0]]
+    let segType = trackPointsArray[0].isWave
+    let j = 1
+    while (trackPointsArray[j] == segType){
+        segment.push(trackPointsArray[j])
+        j++
+    }
+    segmentArray.push(segment)
+
+    for (let i = j; i < trackPointsArray.length; i++) {
         if (trackPointsArray[i].isWave == trackPointsArray[i-1].isWave) { //if same
             segment.push(trackPointsArray[i])
         }else{ 
@@ -149,17 +156,23 @@ function createSegments (trackPointsArray) {
         let isWave=seg[0].isWave
         let duration = seg[seg.length-1].unixTime2-seg[0].unixTime1  // convert to seconds
         var dist = 0
+        var path = [[ parseFloat(seg[0].startPoint.lat) , parseFloat(seg[0].startPoint.lon) ]]
+        
         seg.forEach (part=> {
+            path.push([
+                parseFloat(part.endPoint.lat), 
+                parseFloat(part.endPoint.lon)
+            ])
             dist+=part.distance
         })
-        //console.log("duration: ",duration," distance: ",dist)
-        segmentArrayFull.push({
+        let props = {
             "isWave": isWave,
             "duration": duration,
             "dist": dist,
-            "points": seg
-        })
-       })
+        }
+        let geom = {"type": "LineString", "coordinates": path}
+        segmentArrayFull.push({"type": "Feature", "properties": props, "geometry": geom})
+    })
     return segmentArrayFull
 }
 
@@ -170,29 +183,11 @@ function setMaxSpeed(speed) {
     return speed
 }
 
-function toLng(raw) {
-    return {"lat": parseFloat(raw.lat), "lng": parseFloat(raw.lon)}
-}
-function mapReady(segs) {
-    let segPaths = []
-    segs.forEach(seg => {
-        segPath = []
-        
-        segPath.push(toLng(seg.points[0].startPoint))
-        seg.points.forEach(point =>{
-            segPath.push(toLng(point.endPoint))
-        }) 
 
-        let segmentType = "paddle"
-        if (seg.isWave) {
-            segmentType = "wave" 
-        }
-        
-        segPaths.push({"segmentType": segmentType, "path": segPath})
-    })
-    return segPaths
-}
+function lMapReady(segs) {
 
+    return segs
+}
 module.exports = {
     sessionData
 }
