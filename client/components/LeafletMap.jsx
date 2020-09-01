@@ -47,8 +47,8 @@ class LeafletMap extends React.Component {
                             >
                                 <Popup>
                                     isWave: {segment.properties.isWave.toString()} <br/> 
-                                    distance: {segment.properties.dist.toString()} meters<br/> 
-                                    duration: {(segment.properties.duration/1000).toString()} seconds
+                                    distance: {Math.floor(segment.properties.dist).toString()} meters<br/> 
+                                    duration: {Math.floor((segment.properties.duration/1000)).toString()} seconds
                                 </Popup>
                             </Polyline>
                         )
