@@ -1,11 +1,23 @@
 import React from 'react'
-import { Map, TileLayer, Polyline } from 'react-leaflet'
+import { Map, TileLayer, Polyline, Marker, Popup } from 'react-leaflet'
 
 class LeafletMap extends React.Component {
 
     constructor(props) {
         super(props)
+
+        this.state = {
+            currentSegment: [],
+        }
+        this.handleClick = this.handleClick.bind(this)
     }
+
+    handleClick(segment) {
+        this.setState({
+            currentSegment: segment
+        })
+    }
+
 
     render() {
 
@@ -27,10 +39,18 @@ class LeafletMap extends React.Component {
                     {this.props.sessionTrackPoints.map((segment, i) => {
                         return (
                             <Polyline
+                                ref={polyline => { this.polyline = polyline; }}
                                 key={i}
                                 positions={segment.geometry.coordinates}
                                 color={(segment.properties.isWave == true) ? POLYLINE_WAVE.color : POLYLINE_PADDLE.color}
-                            />)
+                            >
+                                <Popup>
+                                    isWave: {segment.properties.isWave.toString()} <br/> 
+                                    distance: {segment.properties.dist.toString()} <br/> 
+                                    duration: {segment.properties.duration.toString()}
+                                </Popup>
+                            </Polyline>
+                        )
                     })}
                 </Map>
             </>
