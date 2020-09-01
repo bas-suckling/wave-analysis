@@ -73,6 +73,9 @@ class Dashboard extends React.Component {
                         return <li key={i}>{session.date}</li>
                     })}
                 </ul>
+                <div>
+                    <LeafletMap sessionTrackPoints={mapPoints}/>
+                </div>
                 <div style={{ padding: '2%', height: "50%"}}>
                     <WaveGraph style={{ padding: '2%', height: "100px"}} sessionData={sessionData} />
                 </div>
@@ -83,9 +86,7 @@ class Dashboard extends React.Component {
                 <div>
                     <WaveDataTable singleWaveData={singleWaveData} />
                 </div>
-                <div>
-                    <LeafletMap sessionTrackPoints={mapPoints}/>
-                </div>
+                
             </>
             )
         
