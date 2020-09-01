@@ -19,9 +19,7 @@ function sessionData(rawJSONData){
     let smoothedData = smoothArray(basicProcess.processedTrackPoints, SMOOTH_WEIGHT)    // smooths all track speeds
     let finalProcess = setIsWave(smoothedData, beachDirection)                          // set pair.isWave bool for all pairs
     let segments = createSegments (finalProcess)                                        // separate data into segments
-    let gMapData = gMapReady(segments)                                                    // get segments into map format
     let lMapData = lMapReady(segments)
-    console.log(lMapData)                                                    // get segments into map format
     let meta = getMetaData(rawJSONData,segments)                                        // - not currently used
 
     console.log('beach direction is: ', beachDirection)
@@ -31,7 +29,6 @@ function sessionData(rawJSONData){
         "meta": meta,
         "segments": segments,
         "data": finalProcess,
-        "gMapData": gMapData,
         "lMapData": lMapData
     })
 }
@@ -53,7 +50,6 @@ function getMetaData(rawJSONData, segments) {
     return{
         "session_name": rawJSONData.session_name,
         "date": rawJSONData.date,
-        //"locationName":(lookup??),
         "waveCount": waveCount,
         "totalDist": totalDist,
         "totalDur:": totalDur
@@ -110,12 +106,11 @@ function processTrackPoints(inputdata) {
             "isWave": false
         })
     }
-    //console.log(processedTrackPoints)//debug only?
     return {"processedTrackPoints": processedTrackPoints, "waveDirections": waveDirections}
 }
 
 
-// joins short segs to prev
+// current bhvr is to join short segs to prev
 function createSegments (trackPointsArray) {
     let segmentArray = []
     
@@ -161,17 +156,23 @@ function createSegments (trackPointsArray) {
         let isWave=seg[0].isWave
         let duration = seg[seg.length-1].unixTime2-seg[0].unixTime1  // convert to seconds
         var dist = 0
+        var path = [[ parseFloat(seg[0].startPoint.lat) , parseFloat(seg[0].startPoint.lon) ]]
+        
         seg.forEach (part=> {
+            path.push([
+                parseFloat(part.endPoint.lat), 
+                parseFloat(part.endPoint.lon)
+            ])
             dist+=part.distance
         })
-        //console.log("Segment duration: ",duration," distance: ",dist)
-        segmentArrayFull.push({
+        let props = {
             "isWave": isWave,
             "duration": duration,
             "dist": dist,
-            "points": seg
-        })
-       })
+        }
+        let geom = {"type": "LineString", "coordinates": path}
+        segmentArrayFull.push({"type": "Feature", "properties": props, "geometry": geom})
+    })
     return segmentArrayFull
 }
 
@@ -182,52 +183,10 @@ function setMaxSpeed(speed) {
     return speed
 }
 
-function toLng(raw) {
-    return {"lat": parseFloat(raw.lat), "lng": parseFloat(raw.lon)}
-}
-function gMapReady(segs) {
-    let segPaths = []
-    segs.forEach(seg => {
-        segPath = []
-        
-        segPath.push(toLng(seg.points[0].startPoint))
-        seg.points.forEach(point =>{
-            segPath.push(toLng(point.endPoint))
-        }) 
 
-        let segmentType = "paddle"
-        if (seg.isWave) {
-            segmentType = "wave" 
-        }
-        
-        segPaths.push({"segmentType": segmentType, "path": segPath})
-    })
-    return segPaths
-}
 function lMapReady(segs) {
-    let segPaths = []
-    segs.forEach(seg => {
-        segPath = []
-        
-        segPath.push([
-            seg.points[0].startPoint.lat, 
-            seg.points[0].startPoint.lon
-        ])
-        seg.points.forEach(point =>{
-            segPath.push([
-                point.endPoint.lat, 
-                point.endPoint.lon
-            ])
-        }) 
 
-        let segmentType = "paddle"
-        if (seg.isWave) {
-            segmentType = "wave" 
-        }
-        
-        segPaths.push({"segmentType": segmentType, "path": segPath})
-    })
-    return segPaths
+    return segs
 }
 module.exports = {
     sessionData

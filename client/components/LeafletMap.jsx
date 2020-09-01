@@ -30,15 +30,10 @@ class LeafletMap extends React.Component {
                         return (
                             <Polyline
                                 key={i}
-                                positions={segment.path}
-                                color={(segment.segmentType == 'wave') ? POLYLINE_WAVE.color : POLYLINE_PADDLE.color}
+                                positions={segment.geometry.coordinates}
+                                color={(segment.properties.isWave == true) ? POLYLINE_WAVE.color : POLYLINE_PADDLE.color}
                             />)
                     })}
-
-                    {/* <Polyline
-                    positions={data[0].path}>
-                        
-                    </Polyline> */}
                 </Map>
             </>
         )
