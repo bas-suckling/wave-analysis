@@ -25,7 +25,6 @@
     ]
   },
   "dependencies": {
-    "@react-google-maps/api": "^1.9.12",
     "chartist": "^0.11.4",
     "chartist-plugin-axistitle": "0.0.7",
     "chartist-plugin-threshold": "0.0.2",
