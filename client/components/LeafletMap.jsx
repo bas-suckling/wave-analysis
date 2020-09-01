@@ -1,7 +1,5 @@
 import React from 'react'
-import { Map, Marker, Popup, TileLayer, Polyline } from 'react-leaflet'
-//import data from '../../server/data/rawData/tempTrackPoints.json'
-import data from "../../server/data/processedData/2020-08-01_leafMapData.json"
+import { Map, TileLayer, Polyline } from 'react-leaflet'
 
 class LeafletMap extends React.Component {
 
@@ -26,7 +24,7 @@ class LeafletMap extends React.Component {
                         attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
                     />
 
-                    {data.map((segment, i) => {
+                    {this.props.sessionTrackPoints.map((segment, i) => {
                         return (
                             <Polyline
                                 key={i}
