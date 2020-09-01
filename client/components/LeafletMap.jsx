@@ -30,7 +30,7 @@ class LeafletMap extends React.Component {
 
         return (
             <>
-                <Map id="mapid" center={[-40.7411720, 175.1104580]} zoom={16}>
+                <Map id="mapid" center={[-40.7411720, 175.1104580]} zoom={17}>
                     <TileLayer
                         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                         attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
@@ -47,7 +47,7 @@ class LeafletMap extends React.Component {
                                 <Popup>
                                     isWave: {segment.properties.isWave.toString()} <br/> 
                                     distance: {segment.properties.dist.toString()} <br/> 
-                                    duration: {segment.properties.duration.toString()}
+                                    duration: {(segment.properties.duration/1000).toString()} seconds
                                 </Popup>
                             </Polyline>
                         )
