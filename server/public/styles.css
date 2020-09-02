@@ -619,3 +619,12 @@ body {
 #mapid {
   height: 800px;
   width: 1200px; }
+
+.custom-popup .leaflet-popup-content-wrapper {
+  background: #2c3e50;
+  color: #fff;
+  font-size: 16px;
+  line-height: 24px; }
+
+.custom-popup .leaflet-popup-tip {
+  background: #2c3e50; }

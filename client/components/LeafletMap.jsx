@@ -72,7 +72,7 @@ e                    />
 
                     {this.props.sessionTrackPoints.map((segment, i) => {
                         return (
-                            <Polyline
+                            <Polyline 
                                 key={i}
                                 positions={segment.geometry.coordinates}
                                 color={this.state.color[i]}
@@ -80,12 +80,12 @@ e                    />
                                 opacity={this.state.opacity[i]}
                                 onMouseOver={e => this.onMouseOver(i)}
                                 onMouseOut={e => this.onMouseOut(i)}
-                                
                             >
-                                <Popup>
+                                <Popup className="custom-popup">
+
                                     isWave: {segment.properties.isWave.toString()} <br/> 
-                                    distance: {Math.floor(segment.properties.dist).toString()} meters<br/> 
-                                    duration: {Math.floor((segment.properties.duration/1000)).toString()} seconds
+                                    Distance: {Math.floor(segment.properties.dist).toString()} meters<br/> 
+                                    Duration: {Math.floor((segment.properties.duration/1000)).toString()} seconds
                                 </Popup>
                             </Polyline>
                         )
