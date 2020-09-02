@@ -6,36 +6,55 @@ class LeafletMap extends React.Component {
     constructor(props) {
         super(props)
 
-        let array = []
+        let waveColor = '#000000'
+        let paddleColor = '#0000FF'
         let weight = 2
-            for(let i = 0; i < this.props.sessionTrackPoints.length; i++) {
-                array.push(weight)
+        let opacity = 1
+        let weightArray = []
+        let colorArray = []
+        let opacityArray = []
+        let sessionTrackPoints = this.props.sessionTrackPoints
+
+        for(let j = 0; j < sessionTrackPoints.length; j++) {
+            weightArray.push(weight)
+            opacityArray.push(opacity)
+            if (sessionTrackPoints[j].properties.isWave) {
+                colorArray.push(waveColor)
+                } else {
+                colorArray.push(paddleColor)
             }
-        
+        }
+
         this.state = {
-            weight: array,
-            paddle: {
-                color:'#000000',
-            },
-            wave: {
-                color: '#0000FF',
-            }
+            weight: weightArray,
+            color: colorArray,
+            opacity: opacityArray
         }
     }
 
     onMouseOver = (i) => {
         let weightArray = this.state.weight
         weightArray[i] = 6
+        let opacityArray = this.state.opacity
+        opacityArray[i] = 0.8
         this.setState (
-            {weight: weightArray}
+            {
+                weight: weightArray,
+                opacity: opacityArray
+            }
         )
     }
 
     onMouseOut = (i) => {
         let weightArray = this.state.weight
         weightArray[i] = 2
+        let opacityArray = this.state.opacity
+        opacityArray[i] = 1
         this.setState (
-            {weight: weightArray}
+            {
+                weight: weightArray,
+                opacity: opacityArray
+            }
         )
     }
 
@@ -43,7 +62,7 @@ class LeafletMap extends React.Component {
 
         return (
             <>
-                <Map id="mapid" center={[-40.7411720, 175.1104580]} zoom={16.5} zoomSnap={0.5}>
+                <Map id="mapid" center={[-40.7411720, 175.1104580]} zoom={16.5} zoomSnap={0.25}>
                     <TileLayer
                         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                         attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
@@ -56,8 +75,9 @@ e                    />
                             <Polyline
                                 key={i}
                                 positions={segment.geometry.coordinates}
-                                color={(segment.properties.isWave == true) ? this.state.wave.color : this.state.paddle.color}
+                                color={this.state.color[i]}
                                 weight={this.state.weight[i]}
+                                opacity={this.state.opacity[i]}
                                 onMouseOut={() => this.onMouseOut(i)}
                                 onMouseOver={() => this.onMouseOver(i)}
                             >
