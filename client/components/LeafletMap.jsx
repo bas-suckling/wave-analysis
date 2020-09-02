@@ -78,8 +78,9 @@ e                    />
                                 color={this.state.color[i]}
                                 weight={this.state.weight[i]}
                                 opacity={this.state.opacity[i]}
-                                onMouseOut={() => this.onMouseOut(i)}
-                                onMouseOver={() => this.onMouseOver(i)}
+                                onMouseOver={e => this.onMouseOver(i)}
+                                onMouseOut={e => this.onMouseOut(i)}
+                                
                             >
                                 <Popup>
                                     isWave: {segment.properties.isWave.toString()} <br/> 
