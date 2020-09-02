@@ -6,27 +6,40 @@ class LeafletMap extends React.Component {
     constructor(props) {
         super(props)
 
+        let array = []
+        let weight = 2
+            for(let i = 0; i < this.props.sessionTrackPoints.length; i++) {
+                array.push(weight)
+            }
+        
         this.state = {
-            currentSegment: [],
+            weight: array,
+            paddle: {
+                color:'#000000',
+            },
+            wave: {
+                color: '#0000FF',
+            }
         }
-        this.handleClick = this.handleClick.bind(this)
     }
 
-    handleClick(segment) {
-        this.setState({
-            currentSegment: segment
-        })
+    onMouseOver = (i) => {
+        let weightArray = this.state.weight
+        weightArray[i] = 6
+        this.setState (
+            {weight: weightArray}
+        )
     }
 
+    onMouseOut = (i) => {
+        let weightArray = this.state.weight
+        weightArray[i] = 2
+        this.setState (
+            {weight: weightArray}
+        )
+    }
 
-    render() {
-
-        const POLYLINE_PADDLE = {
-            color: '#000000',
-        }
-        const POLYLINE_WAVE = {
-            color: '#0000FF',
-        }
+    render() {         
 
         return (
             <>
@@ -35,16 +48,18 @@ class LeafletMap extends React.Component {
                         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                         attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
                         maxZoom={19}
-                    />
+e                    />
                     <ScaleControl updateWhenIdle={true}/>
 
                     {this.props.sessionTrackPoints.map((segment, i) => {
                         return (
                             <Polyline
-                                ref={polyline => { this.polyline = polyline; }}
                                 key={i}
                                 positions={segment.geometry.coordinates}
-                                color={(segment.properties.isWave == true) ? POLYLINE_WAVE.color : POLYLINE_PADDLE.color}
+                                color={(segment.properties.isWave == true) ? this.state.wave.color : this.state.paddle.color}
+                                weight={this.state.weight[i]}
+                                onMouseOut={() => this.onMouseOut(i)}
+                                onMouseOver={() => this.onMouseOver(i)}
                             >
                                 <Popup>
                                     isWave: {segment.properties.isWave.toString()} <br/> 
