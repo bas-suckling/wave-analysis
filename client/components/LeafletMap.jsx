@@ -6,8 +6,8 @@ class LeafletMap extends React.Component {
     constructor(props) {
         super(props)
 
-        let waveColor = '#000000'
-        let paddleColor = '#0000FF'
+        let paddleColor = '#000000'
+        let waveColor = '#0000FF'
         let weight = 2
         let opacity = 1
         let weightArray = []
