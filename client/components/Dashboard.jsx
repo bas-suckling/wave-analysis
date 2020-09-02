@@ -26,29 +26,24 @@ class Dashboard extends React.Component {
         .then(res => this.setState({
             sessions: res
         }))
-
-        apiGetSessionData(2)
-        .then(res => this.setState({
-           tempData: res
-        }))
     }
 
     render() {
-    let waves = []
-    let timeData = []
-    let waveLine = []
+    // let waves = []
+    // let timeData = []
+    // let waveLine = []
     
-    surfData.forEach(function (element) {
-        waves.push(element.speed)
-        timeData.push(element.elapsedTime)
-        waveLine.push(8)
-    })
+    // surfData.forEach(function (element) {
+    //     waves.push(element.speed)
+    //     timeData.push(element.elapsedTime)
+    //     waveLine.push(8)
+    // })
 
-    let sessionData = {
-        waves: waves,
-        timeData: timeData,
-        waveLine: waveLine,
-    } 
+    // let sessionData = {
+    //     waves: waves,
+    //     timeData: timeData,
+    //     waveLine: waveLine,
+    // } 
         
     let sessionTableData = {
         waves: waveData.length,
@@ -74,15 +69,17 @@ class Dashboard extends React.Component {
                     })}
                 </ul>
                 <div>
-                    <LeafletMap sessionTrackPoints={mapPoints}/>
-                </div>
-                <div style={{ padding: '2%', height: "50%"}}>
-                    <WaveGraph style={{ padding: '2%', height: "100px"}} sessionData={sessionData} />
-                </div>
-                <div>
+                    <h1>Wave Analysis for 2020-08-01</h1>
                     <SessionDataTable sessionTableData={sessionTableData} />
                     <br />
                 </div>
+                <div>
+                    <LeafletMap sessionTrackPoints={mapPoints}/>
+                </div>
+                {/* <div style={{ padding: '2%', height: "50%"}}>
+                    <WaveGraph style={{ padding: '2%', height: "100px"}} sessionData={sessionData} />
+                </div> */}
+                
                 <div>
                     <WaveDataTable singleWaveData={singleWaveData} />
                 </div>
