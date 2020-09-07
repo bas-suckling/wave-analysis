@@ -11,7 +11,7 @@ class SessionDataTable extends React.Component {
                 <table>
                     <thead>
                         <tr>
-                            <th>TEMPORARY Session Data</th>
+                            <th>Session Data</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -22,10 +22,6 @@ class SessionDataTable extends React.Component {
                         <tr>
                             <td>Longest Wave:</td>
                             <td>{this.props.sessionTableData.longestWave}m</td>
-                        </tr>
-                        <tr>
-                            <td>Max Speed:</td>
-                            <td>{this.props.sessionTableData.maxSpeed}km/hr</td>
                         </tr>
                         <tr>
                             <td>Total Distance:</td>

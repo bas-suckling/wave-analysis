@@ -1,0 +1,23 @@
+{
+    "dur:": 0,
+    "waveCount": 33,
+    "totalDist": 8185.0700000000015,
+    "paddleDist": 6273.250000000002,
+    "waveDist": 1911.8199999999997,
+    "longestWaveDist": {
+        "i": 31,
+        "dist": 197.24999999999994
+    },
+    "longestWaveDur": {
+        "i": 31,
+        "dur": 51000
+    },
+    "longestPaddleDist": {
+        "i": 11,
+        "dist": 562.9799999999993
+    },
+    "longestPaddleDur": {
+        "i": 22,
+        "dur": 451000
+    }
+}

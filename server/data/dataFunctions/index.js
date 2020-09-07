@@ -6,23 +6,23 @@ let rawPath =  '../rawData/'
 let processedPath = '../processedData/'
 
 let date = "2020-08-01"
-let session_gpx = rawPath + date + '.gpx'
-let session_JSON_RAW = rawPath + date + '_RAW.json' 
+let session_gpx = rawPath + date + '.gpx'                   // input location
+let session_JSON_RAW = rawPath + date + '_RAW.json'         // output location: not required
 
-let session_JSON = processedPath + date + '.json'
+let session_JSON = processedPath + date + '_processed.json' // output location: not required
 let waves_JSON = processedPath + date + '_segmented.json'
-let lMap_JSON = processedPath + date + '_leafMapData.json'
+let meta_JSON = processedPath + date + '_meta.json'
 
 
 // save raw data as json
 parseTrackPoints(session_gpx)
-     .then(data => writeFile(session_JSON_RAW, JSON.stringify(data)))
+     .then(data => writeFile(session_JSON_RAW, JSON.stringify(data))) // not required
 
 // Process & Save
 parseTrackPoints(session_gpx)
     .then(data => sessionData(data))
     .then(dataArray => {
-        writeFile((session_JSON), JSON.stringify(dataArray.data))   //  ./processed/[data] _ (BASIC) .json
+        writeFile((session_JSON), JSON.stringify(dataArray.data))   //  ./processed/[data] _ processed .json  - not required
         writeFile((waves_JSON), JSON.stringify(dataArray.segments)) //  ./processed/[data] _ segmented .json
-        writeFile((lMap_JSON), JSON.stringify(dataArray.lMapData))    //  ./processed/[data] _ mapData .json
+        writeFile((meta_JSON), JSON.stringify(dataArray.meta)) //  ./processed/[data] _ meta .json
     })

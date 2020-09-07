@@ -1,15 +1,16 @@
 import React from 'react'
-import WaveGraph from './WaveGraph'
 import SessionDataTable from './SessionDataTable'
 import WaveDataTable from './WaveDataTable'
 import LeafletMap from './LeafletMap'
-
-import mapPoints from '../../server/data/processedData/2020-08-01_leafMapData.json'
-
-import surfData from '../../server/data/processedData/2020-08-01.json'
-import waveData from '../../server/data/processedData/2020-08-01_segmented.json'
+import mapPoints from '../../server/data/processedData/2020-08-01_segmented.json'
+//import waveData from '../../server/data/processedData/2020-08-01_segmented.json'
+import metaD from '../../server/data/processedData/2020-08-01_meta.json'
 import { apiGetSessionsList, apiGetSessionData } from '../api/sessions'
-import { isPointInLine } from 'geolib'
+
+//remove?
+//import { isPointInLine } from 'geolib'
+import WaveGraph from './WaveGraph'
+import surfData from '../../server/data/processedData/2020-08-01_processed.json'  // only used by old graph
 
 class Dashboard extends React.Component {
     constructor(props) {
@@ -51,18 +52,17 @@ class Dashboard extends React.Component {
     } 
         
     let sessionTableData = {
-        waves: waveData.length,
-        distanceSurfed: 700,
-        distancePaddled: 5000,
-        totalDistance: 5700,
-        maxSpeed: 30,
-        longestWave: 150
+        waves:              metaD.waveCount,
+        distanceSurfed:     metaD.waveDist,
+        distancePaddled:    metaD.paddleDist,
+        totalDistance:      metaD.totalDist,
+        longestWave:        metaD.longestWaveDist.dist
     }
 
     let singleWaveData = {
-        wave_id: 1,
-        distanceSurfed: 150,
-        maxSpeed: 30,
+        wave_id: "?",
+        distanceSurfed: "?",
+        maxSpeed: "?",
         timeStamp: "03:33:33",
     }
         return (
