@@ -85,7 +85,9 @@ e                    />
 
                                     isWave: {segment.properties.isWave.toString()} <br/> 
                                     Distance: {Math.floor(segment.properties.dist).toString()} meters<br/> 
-                                    Duration: {Math.floor((segment.properties.duration/1000)).toString()} seconds
+                                    Duration: {Math.floor((segment.properties.duration/1000)).toString()} seconds<br/>
+                                    Wave Number: {segment.properties.index.toString()}<br/>
+                                    Time Stamp: {(segment.properties.tStamp/1000/60).toString()}
                                 </Popup>
                             </Polyline>
                         )
