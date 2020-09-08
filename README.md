@@ -1,5 +1,19 @@
 # Wave Analysis - Analysing GPS (.gpx) data for surf sessions.
 
+todo...
+- database
+    - session select
+    - user meta data 
+- timeline
+    - redux / context provider
+
+- react hooks? (learn)
+
+- refactor segment
+
+
+
+
 ### Usage
 Clone repo to your local machine
 
@@ -11,24 +25,24 @@ At the command line type: `npm install`
     - NB at current stage of devel...
     - - Filename must be of from YYYY-MM-DD
     - - only accepts 1 session perday 
-    -( the directory refs in wave 'sever/dataFunctions/index.js' ????)
-    -At the command line (from the sever/data/dataFunctions dir) type: `node createDataFiles.js`
+    -update input ref ( the directory refs in wave 'sever/dataFunctions/index.js' ????)
+    -At the command line (from the sever/data/dataFunctions dir) type: `node index.js`
 
 To check out the data displayed for an example session, run the server using `npm run dev` and navigate to http://localhost:3000/
 
 ### Data to output
 Session Data:
- - Number of waves           [/]
- - Distance surfed              [/] 
- - Distance Paddled           [ ]
- - Fastest Speed                [ ]
- - Total time surfing            [/]
- - Average paddle speed   [ ]
- - Average surf speed        [ ]
+ - Number of waves          [done]
+ - Distance surfed          [done] 
+ - Distance Paddled         [done]
+ - Fastest Speed            [x]
+ - Total time surfing       [X]
+ - Average paddle speed     [X]
+ - Average surf speed       [x]
 
 Specific Wave Data:
-- Distance surfed               [ ]
-- Max speed                      [ ]
+- Distance surfed           [done]
+- Max speed                 [x]
 
 ### Analysis Methods
 

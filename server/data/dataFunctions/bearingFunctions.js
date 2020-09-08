@@ -23,20 +23,20 @@ function findBeachDirection(bearingArray) {
 
 function setIsWave(trackPoints, beachDirection) {
     beachBearingsPack = findBearingType(beachDirection)
-    if (beachBearingsPack.insideRange){
-        console.log("setting isWave based on:",beachBearingsPack.minAngle,"<a<",beachBearingsPack.maxAngle)
-    }else{
-        console.log("setting isWave based on: a<",beachBearingsPack.minAngle," or ",beachBearingsPack.maxAngle,"<a")
-    }
+    // if (beachBearingsPack.insideRange){
+    //     console.log("setting isWave based on:",beachBearingsPack.minAngle,"<a<",beachBearingsPack.maxAngle)
+    // }else{
+    //     console.log("setting isWave based on: a<",beachBearingsPack.minAngle," or ",beachBearingsPack.maxAngle,"<a")
+    // }
 
 
     for (let i = 0; i < trackPoints.length-1; i++) {
         if (trackPoints[i].speed > MIN_SURF_SPEED){
             if (bearingCheck(trackPoints[i].bearing, beachBearingsPack)){
-                console.log(trackPoints[i].bearing, "passed")
+                // console.log(trackPoints[i].bearing, "passed")
                 trackPoints[i].isWave = true
-            }else{
-                console.log(trackPoints[i].bearing, "failed") 
+            // }else{
+            //     console.log(trackPoints[i].bearing, "failed") 
             }
         }
     }

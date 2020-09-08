@@ -20,7 +20,7 @@ class LeafletMap extends React.Component {
     constructor(props) {
         super(props)
 
-        let paddleColor = '#000000'
+        let paddleColor = '#373D42'
         let waveColor = '#0000FF'
         let weightArray = []
         let colorArray = []
@@ -48,9 +48,13 @@ class LeafletMap extends React.Component {
 
     onMouseOver = (i, segment) => {
         let weightArray = this.state.weight
-        weightArray[i] = 6
         let opacityArray = this.state.opacity
-        opacityArray[i] = 0.8
+
+        for (let j = 0; j < opacityArray.length; j++) {
+            opacityArray[j] = 0.5;
+        }
+        opacityArray[i] = 1
+        weightArray[i] = 6
         this.setState(
             {
                 weight: weightArray,
@@ -62,9 +66,11 @@ class LeafletMap extends React.Component {
 
     onMouseOut = (i) => {
         let weightArray = this.state.weight
-        weightArray[i] = WEIGHT
         let opacityArray = this.state.opacity
-        opacityArray[i] = OPACITY
+        for (let j = 0; j < opacityArray.length; j++) {
+            opacityArray[j] = OPACITY;
+        }
+        weightArray[i] = WEIGHT
         this.setState(
             {
                 weight: weightArray,
