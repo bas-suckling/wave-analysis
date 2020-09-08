@@ -1,6 +1,20 @@
 import React from 'react'
 import { Map, TileLayer, Polyline, Popup, ScaleControl } from 'react-leaflet'
+import WaveDataTable from './WaveDataTable'
 
+const WEIGHT = 2
+const OPACITY = 1
+const NULL_WAVE = {
+     "properties": {
+         "index": "",
+         "isWave": "",
+         "tStamp": "",
+         "duration": "",
+         "dist": ""
+     }
+ }
+
+//const NULL_WAVE = []
 class LeafletMap extends React.Component {
 
     constructor(props) {
@@ -8,19 +22,17 @@ class LeafletMap extends React.Component {
 
         let paddleColor = '#000000'
         let waveColor = '#0000FF'
-        let weight = 2
-        let opacity = 1
         let weightArray = []
         let colorArray = []
         let opacityArray = []
         let sessionTrackPoints = this.props.sessionTrackPoints
 
-        for(let j = 0; j < sessionTrackPoints.length; j++) {
-            weightArray.push(weight)
-            opacityArray.push(opacity)
+        for (let j = 0; j < sessionTrackPoints.length; j++) {
+            weightArray.push(WEIGHT)
+            opacityArray.push(OPACITY)
             if (sessionTrackPoints[j].properties.isWave) {
                 colorArray.push(waveColor)
-                } else {
+            } else {
                 colorArray.push(paddleColor)
             }
         }
@@ -28,29 +40,32 @@ class LeafletMap extends React.Component {
         this.state = {
             weight: weightArray,
             color: colorArray,
-            opacity: opacityArray
+            opacity: opacityArray,
+            currentSegment: NULL_WAVE
+            // currentSegment: sessionTrackPoints[0
         }
     }
 
-    onMouseOver = (i) => {
+    onMouseOver = (i, segment) => {
         let weightArray = this.state.weight
         weightArray[i] = 6
         let opacityArray = this.state.opacity
         opacityArray[i] = 0.8
-        this.setState (
+        this.setState(
             {
                 weight: weightArray,
-                opacity: opacityArray
+                opacity: opacityArray,
+                currentSegment: segment
             }
         )
     }
 
     onMouseOut = (i) => {
         let weightArray = this.state.weight
-        weightArray[i] = 2
+        weightArray[i] = WEIGHT
         let opacityArray = this.state.opacity
-        opacityArray[i] = 1
-        this.setState (
+        opacityArray[i] = OPACITY
+        this.setState(
             {
                 weight: weightArray,
                 opacity: opacityArray
@@ -58,7 +73,7 @@ class LeafletMap extends React.Component {
         )
     }
 
-    render() {         
+    render() {
 
         return (
             <>
@@ -67,32 +82,37 @@ class LeafletMap extends React.Component {
                         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                         attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
                         maxZoom={19}
-e                    />
-                    <ScaleControl updateWhenIdle={true}/>
+                        e />
+                    <ScaleControl updateWhenIdle={true} />
+                    <Polyline
+                    key={1000}
+                    weight={5}
+                    positions
+                    />
 
                     {this.props.sessionTrackPoints.map((segment, i) => {
                         return (
-                            <Polyline 
+                            <Polyline
                                 key={i}
                                 positions={segment.geometry.coordinates}
                                 color={this.state.color[i]}
                                 weight={this.state.weight[i]}
                                 opacity={this.state.opacity[i]}
-                                onMouseOver={e => this.onMouseOver(i)}
+                                onMouseOver={e => this.onMouseOver(i, segment)}
                                 onMouseOut={e => this.onMouseOut(i)}
                             >
                                 <Popup className="custom-popup">
-
-                                    isWave: {segment.properties.isWave.toString()} <br/> 
-                                    Distance: {Math.floor(segment.properties.dist).toString()} meters<br/> 
-                                    Duration: {Math.floor((segment.properties.duration/1000)).toString()} seconds<br/>
-                                    Wave Number: {segment.properties.index.toString()}<br/>
-                                    Time Stamp: {(segment.properties.tStamp/1000/60).toString()}
+                                    isWave: {segment.properties.isWave.toString()} <br />
+                                    Distance: {Math.floor(segment.properties.dist).toString()} meters<br />
+                                    Duration: {Math.floor((segment.properties.duration / 1000)).toString()} seconds<br />
+                                    Wave Number: {segment.properties.index.toString()}<br />
+                                    Time Stamp: {(segment.properties.tStamp / 1000 / 60).toString()}
                                 </Popup>
                             </Polyline>
                         )
                     })}
                 </Map>
+                <WaveDataTable singleWaveData={this.state.currentSegment} />
             </>
         )
     }

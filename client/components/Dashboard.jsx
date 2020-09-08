@@ -79,11 +79,7 @@ class Dashboard extends React.Component {
                 {/* <div style={{ padding: '2%', height: "50%"}}>
                     <WaveGraph style={{ padding: '2%', height: "100px"}} sessionData={sessionData} />
                 </div> */}
-                
-                <div>
-                    <WaveDataTable singleWaveData={singleWaveData} />
-                </div>
-                
+                                
             </>
             )
     }

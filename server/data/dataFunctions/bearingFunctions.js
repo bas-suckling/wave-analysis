@@ -1,6 +1,7 @@
 const TO_RAD = Math.PI/180
 const TO_DEG = 180/Math.PI
 const MIN_SURF_SPEED = 8
+const BEACH_ANGLE_CONE = 90
 
 function findBeachDirection(bearingArray) {
     let dirX = 0
@@ -22,10 +23,21 @@ function findBeachDirection(bearingArray) {
 
 function setIsWave(trackPoints, beachDirection) {
     beachBearingsPack = findBearingType(beachDirection)
+    if (beachBearingsPack.insideRange){
+        console.log("setting isWave based on:",beachBearingsPack.minAngle,"<a<",beachBearingsPack.maxAngle)
+    }else{
+        console.log("setting isWave based on: a<",beachBearingsPack.minAngle," or ",beachBearingsPack.maxAngle,"<a")
+    }
+
 
     for (let i = 0; i < trackPoints.length-1; i++) {
-        if (trackPoints[i].speed > MIN_SURF_SPEED   &&   bearingCheck(trackPoints[i].bearing, beachBearingsPack)){
-            trackPoints[i].isWave = true
+        if (trackPoints[i].speed > MIN_SURF_SPEED){
+            if (bearingCheck(trackPoints[i].bearing, beachBearingsPack)){
+                console.log(trackPoints[i].bearing, "passed")
+                trackPoints[i].isWave = true
+            }else{
+                console.log(trackPoints[i].bearing, "failed") 
+            }
         }
     }
     return trackPoints
@@ -40,21 +52,22 @@ function findBearingType(beachDirection){
     var minAngle
     var maxAngle
     
-    if (90 >= beachDirection){
-        if (beachDirection >= 270){
+    if (BEACH_ANGLE_CONE <= beachDirection){
+        if (beachDirection <= 360-BEACH_ANGLE_CONE){
             insideRange = true
-            minAngle = beachDirection-90
-            maxAngle = beachDirection+90
-        }else{// >270
+            minAngle = beachDirection-BEACH_ANGLE_CONE
+            maxAngle = beachDirection+BEACH_ANGLE_CONE
+        }else{// Large Beach Dir
             insideRange = false
-            minAngle = beachDirection - 270
-            maxAngle = beachDirection - 90
+            minAngle = beachDirection + BEACH_ANGLE_CONE - 360
+            maxAngle = beachDirection - BEACH_ANGLE_CONE
         }
-    }else{// >90
+    }else{// Small Beach Dir
         insideRange = false
-        minAngle = beachDirection + 90
-        maxAngle = beachDirection + 270
+        minAngle = beachDirection + BEACH_ANGLE_CONE
+        maxAngle = beachDirection - BEACH_ANGLE_CONE + 360
     }
+    console.log("normal range?",insideRange,"min",minAngle,"max",maxAngle)
     return {"insideRange": insideRange,
             "minAngle": minAngle,
             "maxAngle": maxAngle}
@@ -63,7 +76,7 @@ function findBearingType(beachDirection){
 
 function bearingCheck(bearing,checks){
     if (checks.insideRange){
-        return (checks.minAngle < bearing < checks.maxAngle)
+        return (checks.minAngle < bearing && bearing < checks.maxAngle)
     }
     else return (bearing < checks.minAngle   ||   checks.maxAngle < bearing)
 }

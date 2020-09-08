@@ -5,33 +5,37 @@ class WaveDataTable extends React.Component {
     constructor(props) {
         super(props)
     }
-    
     render() {
-
+       
+        
+    let data = this.props.singleWaveData
+        
         return (
             <>
+
                 <table>
                     <thead>
-                        <tr>
-                            <th>TEMPORARY Wave {this.props.singleWaveData.wave_id} Data</th>
+                        <tr> 
+                            <th>{(data.properties.isWave)?"Wave":"Paddle"} {data.properties.index}</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                             <td>Distance:</td>
-                            <td>{this.props.singleWaveData.distanceSurfed}m</td>
+                            <td>{Math.floor(data.properties.dist)} m</td>
                         </tr>
                         <tr>
-                            <td>Max Speed:</td>
-                            <td>{this.props.singleWaveData.maxSpeed}km/hr</td>
+                            <td>Duration:</td>
+                            <td>{Math.floor(data.properties.duration)/1000} s</td>
                         </tr>
                         <tr>
                             <td>Timestamp:</td>
-                            <td>{this.props.singleWaveData.timeStamp}</td>
+                            <td>{Math.floor(data.properties.tStamp/1000)}</td>
                         </tr>
                     </tbody>
                 </table>
-            </>
+      
+    </>
         )
     }
 }

@@ -161,7 +161,7 @@ function createSegments (trackPointsArray) {
 
     // ---- funct combine adjacent segments (with same isWave values)
     for (let segSize = 1; segSize < MIN_SEGMENT_LENGTH; segSize++){
-        //let elimCounter = 0
+        let elimCounter = 0
         for (let i = 1; i < segmentArray.length-1; i++) {
             let seg = segmentArray[i]
             if (seg.length == segSize){  // combine with segs to either side
@@ -169,10 +169,10 @@ function createSegments (trackPointsArray) {
                 segmentArray[i-1]=segmentArray[i-1].concat(segmentArray[i+1])
                 segmentArray.splice(i,2)
                 i--
-                //elimCounter++
+                elimCounter++
             }
         }
-        //console.log(elimCounter,"segments of len", segSize, "have been removed")
+        console.log(elimCounter,"segments of len", segSize, "have been removed")
     } 
     // ---- end funct combine adjacent segments (with same isWave values)
 
@@ -199,8 +199,8 @@ function createSegments (trackPointsArray) {
             "index": Math.ceil(i/2),
             "isWave": seg[0].isWave,
             "tStamp": seg[0].unixTime1-tZero,
-            "duration": dur,
-            "dist": dist,
+            "duration": Math.floor(dur),
+            "dist": Math.floor(dist),
         }
         let geom = {"type": "LineString", "coordinates": path}
         segmentArrayFull.push({"type": "Feature", "properties": props, "geometry": geom})
