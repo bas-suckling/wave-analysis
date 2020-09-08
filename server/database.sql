@@ -1,0 +1,3 @@
+CREATE DATABASE wave_analysis
+
+CREATE TABLE 
