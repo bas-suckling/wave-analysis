@@ -54,7 +54,7 @@ class LeafletMap extends React.Component {
             opacityArray[j] = 0.5;
         }
         opacityArray[i] = 1
-        weightArray[i] = 6
+        weightArray[i] = 4
         this.setState(
             {
                 weight: weightArray,
@@ -90,12 +90,6 @@ class LeafletMap extends React.Component {
                         maxZoom={19}
                         e />
                     <ScaleControl updateWhenIdle={true} />
-                    <Polyline
-                    key={1000}
-                    weight={5}
-                    positions
-                    />
-
                     {this.props.sessionTrackPoints.map((segment, i) => {
                         return (
                             <Polyline
@@ -109,10 +103,10 @@ class LeafletMap extends React.Component {
                             >
                                 <Popup className="custom-popup">
                                     isWave: {segment.properties.isWave.toString()} <br />
-                                    Distance: {Math.floor(segment.properties.dist).toString()} meters<br />
-                                    Duration: {Math.floor((segment.properties.duration / 1000)).toString()} seconds<br />
+                                    Distance: {segment.properties.dist.toString()} meters<br />
+                                    Duration: {(segment.properties.duration / 1000).toString()} seconds<br />
                                     Wave Number: {segment.properties.index.toString()}<br />
-                                    Time Stamp: {(segment.properties.tStamp / 1000 / 60).toString()}
+                                    Time Stamp: {Math.floor(segment.properties.tStamp / 1000).toString()}
                                 </Popup>
                             </Polyline>
                         )

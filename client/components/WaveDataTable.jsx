@@ -1,4 +1,5 @@
 import React from 'react'
+import {convertSeconds} from '../helpers/timeFormat'
 
 class WaveDataTable extends React.Component {
 
@@ -30,7 +31,7 @@ class WaveDataTable extends React.Component {
                         </tr>
                         <tr>
                             <td>Timestamp:</td>
-                            <td>{Math.floor(data.properties.tStamp/1000)}</td>
+                            <td>{convertSeconds(Math.floor(data.properties.tStamp/1000))}</td>
                         </tr>
                     </tbody>
                 </table>
