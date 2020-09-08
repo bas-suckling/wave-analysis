@@ -16,6 +16,14 @@ class SessionDataTable extends React.Component {
                     </thead>
                     <tbody>
                         <tr>
+                            <td>Start Time:</td>
+                            <td>TO BE ADDED</td>
+                        </tr>
+                        <tr>
+                            <td>Duration:</td>
+                            <td>TO BE ADDED</td>
+                        </tr>
+                        <tr>
                             <td>Total Waves:</td>
                             <td>{this.props.sessionTableData.waves}</td>
                         </tr>

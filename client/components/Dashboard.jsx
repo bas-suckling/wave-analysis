@@ -47,6 +47,7 @@ class Dashboard extends React.Component {
     // } 
         
     let sessionTableData = {
+
         waves:              metaD.waveCount,
         distanceSurfed:     metaD.waveDist,
         distancePaddled:    metaD.paddleDist,
@@ -54,12 +55,6 @@ class Dashboard extends React.Component {
         longestWave:        metaD.longestWaveDist.dist
     }
 
-    let singleWaveData = {
-        wave_id: "?",
-        distanceSurfed: "?",
-        maxSpeed: "?",
-        timeStamp: "03:33:33",
-    }
         return (
             <>
                 <h1>Sessions</h1>

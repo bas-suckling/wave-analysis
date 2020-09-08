@@ -1,6 +1,8 @@
 import React from 'react'
 import { Map, TileLayer, Polyline, Popup, ScaleControl } from 'react-leaflet'
 import WaveDataTable from './WaveDataTable'
+import {convertSeconds} from '../helpers/timeFormat'
+
 
 const WEIGHT = 2
 const OPACITY = 1
@@ -106,7 +108,7 @@ class LeafletMap extends React.Component {
                                     Distance: {segment.properties.dist.toString()} meters<br />
                                     Duration: {(segment.properties.duration / 1000).toString()} seconds<br />
                                     Wave Number: {segment.properties.index.toString()}<br />
-                                    Time Stamp: {Math.floor(segment.properties.tStamp / 1000).toString()}
+                                    Time Stamp: {convertSeconds(Math.floor(segment.properties.tStamp / 1000)).toString()}
                                 </Popup>
                             </Polyline>
                         )
