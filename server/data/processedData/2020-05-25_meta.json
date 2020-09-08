@@ -1,1 +1,23 @@
-{"dur:":0,"waveCount":16,"totalDist":6210,"paddleDist":4963,"waveDist":1247,"longestWaveDist":{"i":16,"dist":158},"longestWaveDur":{"i":16,"dur":36000},"longestPaddleDist":{"i":2,"dist":1285},"longestPaddleDur":{"i":2,"dur":978000}}
+{
+    "dur:": 0,
+    "waveCount": 16,
+    "totalDist": 6210,
+    "paddleDist": 4963,
+    "waveDist": 1247,
+    "longestWaveDist": {
+        "i": 16,
+        "dist": 158
+    },
+    "longestWaveDur": {
+        "i": 16,
+        "dur": 36000
+    },
+    "longestPaddleDist": {
+        "i": 2,
+        "dist": 1285
+    },
+    "longestPaddleDur": {
+        "i": 2,
+        "dur": 978000
+    }
+}

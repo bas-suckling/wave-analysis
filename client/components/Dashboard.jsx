@@ -15,18 +15,47 @@ import surfData from '../../server/data/processedData/2020-08-01_processed.json'
 class Dashboard extends React.Component {
     constructor(props) {
         super(props)
-
         this.state={
             sessions:[],
-            tempData: null
+            tempData: null,
+            currentSession:[],
+            currentMeta:{
+                "dur:": "",
+                "waveCount": "",
+                "totalDist": "5401",
+                "paddleDist": "",
+                "waveDist": "",
+                "longestWaveDist": {
+                    "i": "",
+                    "dist": ""
+                },
+                "longestWaveDur": {
+                    "i": "",
+                    "dur": ""
+                },
+                "longestPaddleDist": {
+                    "i": "",
+                    "dist": ""
+                },
+                "longestPaddleDur": {
+                    "i": "",
+                    "dur": ""
+                }
+            }
         }
     }
 
     componentDidMount() {
         apiGetSessionsList()
-        .then(res => this.setState({
-            sessions: res
-        }))
+            .then(res => this.setState({
+                sessions: res
+            }))
+
+        apiGetSessionData(1)
+            .then(res => this.setState({
+                currentSession: res.currentSession,
+                currentMeta: res.currentMeta
+            }))    
     }
 
     render() {
@@ -46,15 +75,6 @@ class Dashboard extends React.Component {
     //     waveLine: waveLine,
     // } 
         
-    let sessionTableData = {
-
-        waves:              metaD.waveCount,
-        distanceSurfed:     metaD.waveDist,
-        distancePaddled:    metaD.paddleDist,
-        totalDistance:      metaD.totalDist,
-        longestWave:        metaD.longestWaveDist.dist
-    }
-
         return (
             <>
                 <h1>Sessions</h1>
@@ -65,16 +85,20 @@ class Dashboard extends React.Component {
                 </ul>
                 <div>
                     <h1>Wave Analysis for 2020-08-01</h1>
-                    <SessionDataTable sessionTableData={sessionTableData} />
+                    <SessionDataTable sessionTableData={this.state.currentMeta} />
                     <br />
                 </div>
+
+                {(this.state.currentSession.length < 2) ?
+                <h1>Map Loading</h1> :
                 <div>
-                    <LeafletMap sessionTrackPoints={mapPoints}/>
+                    <LeafletMap sessionTrackPoints={this.state.currentSession}/>
                 </div>
+                }
+
                 {/* <div style={{ padding: '2%', height: "50%"}}>
                     <WaveGraph style={{ padding: '2%', height: "100px"}} sessionData={sessionData} />
-                </div> */}
-                                
+                </div> */}          
             </>
             )
     }

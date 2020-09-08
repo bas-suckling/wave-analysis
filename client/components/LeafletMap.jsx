@@ -44,7 +44,6 @@ class LeafletMap extends React.Component {
             color: colorArray,
             opacity: opacityArray,
             currentSegment: NULL_WAVE
-            // currentSegment: sessionTrackPoints[0
         }
     }
 
@@ -82,6 +81,8 @@ class LeafletMap extends React.Component {
     }
 
     render() {
+
+        console.log(this.props.sessionTrackPoints)
 
         return (
             <>

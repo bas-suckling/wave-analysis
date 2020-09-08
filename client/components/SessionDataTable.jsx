@@ -25,23 +25,23 @@ class SessionDataTable extends React.Component {
                         </tr>
                         <tr>
                             <td>Total Waves:</td>
-                            <td>{this.props.sessionTableData.waves}</td>
+                            <td>{this.props.sessionTableData.waveCount}</td>
                         </tr>
                         <tr>
                             <td>Longest Wave:</td>
-                            <td>{this.props.sessionTableData.longestWave} m</td>
+                            <td>{this.props.sessionTableData.longestWaveDist.dist} m</td>
                         </tr>
                         <tr>
                             <td>Total Distance:</td>
-                            <td>{this.props.sessionTableData.totalDistance} m</td>
+                            <td>{this.props.sessionTableData.totalDist} m</td>
                         </tr>
                         <tr>
                             <td>Distance Surfed:</td>
-                            <td>{this.props.sessionTableData.distanceSurfed} m</td>
+                            <td>{this.props.sessionTableData.waveDist} m</td>
                         </tr>
                         <tr>
                             <td>Distance Paddled:</td>
-                            <td>{this.props.sessionTableData.distancePaddled} m</td>
+                            <td>{this.props.sessionTableData.paddleDist} m</td>
                         </tr>
                     </tbody>
                 </table>
