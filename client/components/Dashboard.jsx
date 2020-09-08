@@ -58,6 +58,14 @@ class Dashboard extends React.Component {
             }))    
     }
 
+    handleClick(session) {
+        apiGetSessionData(session.session_id)
+        .then((res => this.setState({
+            currentSession: res.currentSession,
+            currentMeta: res.currentMeta
+        })))
+    }
+
     render() {
     // let waves = []
     // let timeData = []
@@ -80,11 +88,11 @@ class Dashboard extends React.Component {
                 <h1>Sessions</h1>
                 <ul>
                     {this.state.sessions.map((session, i) => {
-                        return <li key={i}>{session.date}</li>
+                        return <li key={i} className={"session-link"} onClick={() => this.handleClick(session)}>{session.date}</li>
                     })}
                 </ul>
                 <div>
-                    <h1>Wave Analysis for 2020-08-01</h1>
+                    <h1>Wave Analysis for this.state.currentMeta.date - to be added</h1>
                     <SessionDataTable sessionTableData={this.state.currentMeta} />
                     <br />
                 </div>

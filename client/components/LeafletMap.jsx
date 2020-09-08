@@ -81,9 +81,6 @@ class LeafletMap extends React.Component {
     }
 
     render() {
-
-        console.log(this.props.sessionTrackPoints)
-
         return (
             <>
                 <Map id="mapid" center={this.props.sessionTrackPoints[0].geometry.coordinates[0]} zoom={16.5} zoomSnap={0.25}>

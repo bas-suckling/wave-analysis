@@ -628,3 +628,7 @@ body {
 
 .custom-popup .leaflet-popup-tip {
   background: #2c3e50; }
+
+.session-link:hover {
+  cursor: pointer;
+  text-decoration: underline; }
