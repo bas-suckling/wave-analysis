@@ -85,7 +85,7 @@ class LeafletMap extends React.Component {
 
         return (
             <>
-                <Map id="mapid" center={[-40.7411720, 175.1104580]} zoom={16.5} zoomSnap={0.25}>
+                <Map id="mapid" center={this.props.sessionTrackPoints[0].geometry.coordinates[0]} zoom={16.5} zoomSnap={0.25}>
                     <TileLayer
                         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                         attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'

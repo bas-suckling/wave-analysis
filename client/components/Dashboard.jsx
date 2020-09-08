@@ -2,9 +2,9 @@ import React from 'react'
 import SessionDataTable from './SessionDataTable'
 import WaveDataTable from './WaveDataTable'
 import LeafletMap from './LeafletMap'
-import mapPoints from '../../server/data/processedData/2020-08-01_segmented.json'
+import mapPoints from '../../server/data/processedData/2020-05-25_segmented.json'
 //import waveData from '../../server/data/processedData/2020-08-01_segmented.json'
-import metaD from '../../server/data/processedData/2020-08-01_meta.json'
+import metaD from '../../server/data/processedData/2020-05-25_meta.json'
 import { apiGetSessionsList, apiGetSessionData } from '../api/sessions'
 
 //remove?
