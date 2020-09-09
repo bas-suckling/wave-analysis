@@ -29,7 +29,7 @@ class SessionDataTable extends React.Component {
                         </tr>
                         <tr>
                             <td>Longest Wave:</td>
-                            <td>{this.props.sessionTableData.longestWaveDist.dist} m</td>
+                            <td>Wave {this.props.sessionTableData.longestWaveDist.i} - {this.props.sessionTableData.longestWaveDist.dist} m</td>
                         </tr>
                         <tr>
                             <td>Total Distance:</td>

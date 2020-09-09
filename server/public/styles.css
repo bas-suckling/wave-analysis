@@ -617,8 +617,8 @@ body {
   font: 1em sans-serif; }
 
 #mapid {
-  height: 800px;
-  width: 1200px; }
+  height: 600px;
+  width: 900px; }
 
 .custom-popup .leaflet-popup-content-wrapper {
   background: #2c3e50;
