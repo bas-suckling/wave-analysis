@@ -613,8 +613,7 @@
     left: 0; }
 
 body {
-  background-color: lightskyblue;
-  font: 1em sans-serif; }
+  background-color: lightskyblue; }
 
 #mapid {
   height: 600px;

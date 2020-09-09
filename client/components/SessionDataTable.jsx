@@ -8,43 +8,32 @@ class SessionDataTable extends React.Component {
 
         return (
             <>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Session Data</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Start Time:</td>
-                            <td>TO BE ADDED</td>
-                        </tr>
-                        <tr>
-                            <td>Duration:</td>
-                            <td>TO BE ADDED</td>
-                        </tr>
-                        <tr>
-                            <td>Total Waves:</td>
-                            <td>{this.props.sessionTableData.waveCount}</td>
-                        </tr>
-                        <tr>
-                            <td>Longest Wave:</td>
-                            <td>Wave {this.props.sessionTableData.longestWaveDist.i} - {this.props.sessionTableData.longestWaveDist.dist} m</td>
-                        </tr>
-                        <tr>
-                            <td>Total Distance:</td>
-                            <td>{this.props.sessionTableData.totalDist} m</td>
-                        </tr>
-                        <tr>
-                            <td>Distance Surfed:</td>
-                            <td>{this.props.sessionTableData.waveDist} m</td>
-                        </tr>
-                        <tr>
-                            <td>Distance Paddled:</td>
-                            <td>{this.props.sessionTableData.paddleDist} m</td>
-                        </tr>
-                    </tbody>
-                </table>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm">
+                        Total Waves: {this.props.sessionTableData.waveCount}
+                        </div>
+                        <div class="col-sm">
+                        Total Distance: {this.props.sessionTableData.totalDist} m
+                        </div>
+                        <div class="col-sm">
+                        Longest Wave: Wave {this.props.sessionTableData.longestWaveDist.i} - {this.props.sessionTableData.longestWaveDist.dist} m
+                        </div>
+                        <div class="col-sm">
+                        Distance Surfed: {this.props.sessionTableData.waveDist} m
+                        </div>
+                        <div class="col-sm">
+                        Distance Paddled: {this.props.sessionTableData.paddleDist} m
+                        </div>
+                        <div class="col-sm">
+                        Start Time: TO BE ADDED
+                        </div>
+                        <div class="col-sm">
+                        Duration: TO BE ADDED
+                        </div>
+                    </div>
+                </div>
+
             </>
         )
     }

@@ -85,24 +85,26 @@ class Dashboard extends React.Component {
         
         return (
             <>
+            <div className={"container"}>
                 <h1>Sessions</h1>
                 <ul>
                     {this.state.sessions.map((session, i) => {
                         return <li key={i} className={"session-link"} onClick={() => this.handleClick(session)}>{session.date}</li>
                     })}
                 </ul>
-                <div>
+            </div>
+                <div className={"container"}>
                     <h1>Wave Analysis for this.state.currentMeta.date - to be added</h1>
                     <SessionDataTable sessionTableData={this.state.currentMeta} />
                     <br />
                 </div>
-
+                <div className={"container"}>
                 {(this.state.currentSession.length < 2) ?
                 <h1>Map Loading</h1> :
-                <div>
+                
                     <LeafletMap sessionTrackPoints={this.state.currentSession}/>
-                </div>
                 }
+                </div>
 
                 {/* <div style={{ padding: '2%', height: "50%"}}>
                     <WaveGraph style={{ padding: '2%', height: "100px"}} sessionData={sessionData} />
