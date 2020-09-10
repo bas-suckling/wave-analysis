@@ -27,7 +27,7 @@ class WaveDataTable extends React.Component {
                         </tr>
                         <tr>
                             <td>Duration:</td>
-                            <td>{Math.floor(data.properties.duration)/1000} s</td>
+                            <td>{convertSeconds(Math.floor(data.properties.duration)/1000)}</td>
                         </tr>
                         <tr>
                             <td>Timestamp:</td>

@@ -22,7 +22,7 @@ class Dashboard extends React.Component {
             currentMeta:{
                 "dur:": "",
                 "waveCount": "",
-                "totalDist": "5401",
+                "totalDist": "",
                 "paddleDist": "",
                 "waveDist": "",
                 "longestWaveDist": {
@@ -94,7 +94,8 @@ class Dashboard extends React.Component {
                 </ul>
             </div>
                 <div className={"container"}>
-                    <h1>Wave Analysis for this.state.currentMeta.date - to be added</h1>
+                    {/* this.state.currentMeta.date - to be added */}
+                    <h1>Session Analysis</h1>
                     <SessionDataTable sessionTableData={this.state.currentMeta} />
                     <br />
                 </div>
