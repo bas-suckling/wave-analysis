@@ -17,10 +17,14 @@ class WaveDataTable extends React.Component {
                 <table>
                     <thead>
                         <tr> 
-                            <th>{(data.properties.isWave)?"Wave":"Paddle"} {data.properties.index}</th>
+                            <th> Segment Data</th>
                         </tr>
                     </thead>
                     <tbody>
+                        <tr>
+                            <td>{(data.properties.isWave)?"Wave":"Paddle"} number:</td>
+                            <td>{data.properties.index}</td>
+                        </tr>
                         <tr>
                             <td>Distance:</td>
                             <td>{Math.floor(data.properties.dist)} m</td>
