@@ -1,11 +1,12 @@
 import React from 'react'
-import { Map, TileLayer, Polyline, Popup, ScaleControl } from 'react-leaflet'
+import { Map, TileLayer, Polyline, Popup, ScaleControl, LayerGroup, LayersControl } from 'react-leaflet'
+const { BaseLayer, Overlay } = LayersControl
 import WaveDataTable from './WaveDataTable'
 import { convertSeconds } from '../helpers/timeFormat'
 
-
-const WEIGHT = 2
 const OPACITY = 1
+const WEIGHT = 2
+
 const NULL_WAVE = {
     "properties": {
         "index": "",
@@ -21,18 +22,20 @@ class LeafletMap extends React.Component {
     constructor(props) {
         super(props)
 
-        let paddleColor = '#373D42'
-        let waveColor = '#0000FF'
+        
+        let paddleColor = '#0d1b1e'
+        let waveColor = '#22007c'
         let weightArray = []
         let colorArray = []
         let opacityArray = []
         let sessionTrackPoints = this.props.sessionTrackPoints
 
         for (let j = 0; j < sessionTrackPoints.length; j++) {
-            weightArray.push(WEIGHT)
             opacityArray.push(OPACITY)
+            weightArray.push(WEIGHT)
             if (sessionTrackPoints[j].properties.isWave) {
                 colorArray.push(waveColor)
+
             } else {
                 colorArray.push(paddleColor)
             }
@@ -83,33 +86,79 @@ class LeafletMap extends React.Component {
         return (
             <>
                 <Map id="mapid" center={this.props.sessionTrackPoints[0].geometry.coordinates[0]} zoom={16.5} zoomSnap={0.25}>
-                        <TileLayer
-                            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                            attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-                            maxZoom={19}>
-                        </TileLayer>
+                    <LayersControl position="topright">
+                        <BaseLayer checked name="Satellite">
+                            <TileLayer
+                                attribution='Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
+                                url="https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"
+                            />
+                        </BaseLayer>
+                        <BaseLayer name="Street Map">
+                            <TileLayer
+                                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                                attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+                                maxZoom={19}>
+                            </TileLayer>
+                        </BaseLayer>
                         <ScaleControl updateWhenIdle={true} />
-                        {this.props.sessionTrackPoints.map((segment, i) => {
-                            return (
-                                <Polyline
-                                    key={i}
-                                    positions={segment.geometry.coordinates}
-                                    color={this.state.color[i]}
-                                    weight={this.state.weight[i]}
-                                    opacity={this.state.opacity[i]}
-                                    onMouseOver={e => this.onMouseOver(i, segment)}
-                                    onMouseOut={e => this.onMouseOut(i)}
-                                >
-                                    <Popup className="custom-popup">
-                                        isWave: {segment.properties.isWave.toString()} <br />
-                                        Distance: {segment.properties.dist.toString()} meters<br />
-                                        Duration: {(segment.properties.duration / 1000).toString()} seconds<br />
-                                        Wave Number: {segment.properties.index.toString()}<br />
-                                        Time Stamp: {convertSeconds(Math.floor(segment.properties.tStamp / 1000)).toString()}
-                                    </Popup>
-                                </Polyline>
-                            )
-                        })}
+                        <Overlay checked name="Waves">
+                            <LayerGroup>
+                                {this.props.sessionTrackPoints.map((segment, i) => {
+                                    if (segment.properties.isWave) {
+                                    return (
+                                        <Polyline
+                                            key={i}
+                                            positions={segment.geometry.coordinates}
+                                            color={this.state.color[i]}
+                                            weight={this.state.weight[i]}
+                                            opacity={this.state.opacity[i]}
+                                            onMouseOver={e => this.onMouseOver(i, segment)}
+                                            onMouseOut={e => this.onMouseOut(i)}
+                                        >
+                                            <Popup className="custom-popup">
+                                                isWave: {segment.properties.isWave.toString()} <br />
+                                                Distance: {segment.properties.dist.toString()} meters<br />
+                                                Duration: {(segment.properties.duration / 1000).toString()} seconds<br />
+                                                Wave Number: {segment.properties.index.toString()}<br />
+                                                Time Stamp: {convertSeconds(Math.floor(segment.properties.tStamp / 1000)).toString()}
+                                            </Popup>
+                                        </Polyline>
+                                    )
+                                    }
+                                })
+                            }
+                            </LayerGroup>
+                        </Overlay>
+                        <Overlay checked name="Paddling">
+                            <LayerGroup>
+                                {this.props.sessionTrackPoints.map((segment, i) => {
+                                    if (!segment.properties.isWave) {
+                                    return (
+                                        <Polyline
+                                            key={i}
+                                            dashArray= {["10 5"]}
+                                            positions={segment.geometry.coordinates}
+                                            color={this.state.color[i]}
+                                            weight={this.state.weight[i]}
+                                            opacity={this.state.opacity[i]}
+                                            onMouseOver={e => this.onMouseOver(i, segment)}
+                                            onMouseOut={e => this.onMouseOut(i)}
+                                        >
+                                            <Popup className="custom-popup">
+                                                isWave: {segment.properties.isWave.toString()} <br />
+                                                Distance: {segment.properties.dist.toString()} meters<br />
+                                                Duration: {(segment.properties.duration / 1000).toString()} seconds<br />
+                                                Wave Number: {segment.properties.index.toString()}<br />
+                                                Time Stamp: {convertSeconds(Math.floor(segment.properties.tStamp / 1000)).toString()}
+                                            </Popup>
+                                        </Polyline>
+                                    )
+                                    }
+                                })
+                            }
+                            </LayerGroup>
+                        </Overlay>
+                    </LayersControl>
                 </Map>
                 <WaveDataTable singleWaveData={this.state.currentSegment} />
             </>
