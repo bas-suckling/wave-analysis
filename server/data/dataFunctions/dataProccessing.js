@@ -70,7 +70,7 @@ function getMetaData(rawJSONData, segments) {
     return{
         "session_name": rawJSONData.session_name,
         "date": rawJSONData.date,
-        "dur:": totalDur,
+        "dur": totalDur,
         "waveCount": waveCount,
         "totalDist": waveDist+paddleDist,
         "paddleDist": paddleDist,
