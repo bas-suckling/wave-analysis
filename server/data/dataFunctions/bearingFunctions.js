@@ -1,7 +1,7 @@
 const TO_RAD = Math.PI/180
 const TO_DEG = 180/Math.PI
 const MIN_SURF_SPEED = 8
-const BEACH_ANGLE_CONE = 105
+const BEACH_ANGLE_CONE = 80
 
 function findBeachDirection(bearingArray) {
     let dirX = 0

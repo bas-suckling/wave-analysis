@@ -7,7 +7,7 @@ const {smoothArray} = require ('./speedFunctions');
 
 const MAX_SURF_SPEED = 30
 const KMPH_CONVERT = 3.6
-const MIN_SEGMENT_LENGTH = 6
+const MIN_SEGMENT_LENGTH = 3
 const SMOOTH_WEIGHT = 4
 const ACCURACY = 0.01
 

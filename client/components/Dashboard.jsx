@@ -1,10 +1,6 @@
 import React from 'react'
 import SessionDataTable from './SessionDataTable'
-import WaveDataTable from './WaveDataTable'
 import LeafletMap from './LeafletMap'
-import mapPoints from '../../server/data/processedData/2020-05-25_segmented.json'
-//import waveData from '../../server/data/processedData/2020-08-01_segmented.json'
-import metaD from '../../server/data/processedData/2020-05-25_meta.json'
 import { apiGetSessionsList, apiGetSessionData } from '../api/sessions'
 
 //remove?
@@ -51,7 +47,7 @@ class Dashboard extends React.Component {
                 sessions: res
             }))
 
-        apiGetSessionData(3)
+        apiGetSessionData(2)
             .then(res => this.setState({
                 currentSession: res.currentSession,
                 currentMeta: res.currentMeta

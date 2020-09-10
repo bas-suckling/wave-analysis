@@ -1,5 +1,5 @@
 import React from 'react'
-import { Map, TileLayer, Polyline, Popup, ScaleControl, LayerGroup, LayersControl } from 'react-leaflet'
+import { Map, TileLayer, Polyline, Popup, ScaleControl, LayerGroup, LayersControl, Circle } from 'react-leaflet'
 const { BaseLayer, Overlay } = LayersControl
 import WaveDataTable from './WaveDataTable'
 import { convertSeconds } from '../helpers/timeFormat'
@@ -22,7 +22,6 @@ class LeafletMap extends React.Component {
     constructor(props) {
         super(props)
 
-        
         let paddleColor = '#0d1b1e'
         let waveColor = '#22007c'
         let weightArray = []
@@ -77,27 +76,29 @@ class LeafletMap extends React.Component {
         this.setState(
             {
                 weight: weightArray,
-                opacity: opacityArray
+                opacity: opacityArray,
+                currentSegment: NULL_WAVE
             }
         )
     }
-
     render() {
         return (
             <>
                 <Map id="mapid" center={this.props.sessionTrackPoints[0].geometry.coordinates[0]} zoom={16.5} zoomSnap={0.25}>
                     <LayersControl position="topright">
-                        <BaseLayer checked name="Satellite">
+                        <BaseLayer key={1} checked name="Satellite">
                             <TileLayer
                                 attribution='Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
                                 url="https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"
+                                maxZoom={20}
                             />
                         </BaseLayer>
-                        <BaseLayer name="Street Map">
+                        <BaseLayer key={2} name="Street Map">
                             <TileLayer
                                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                                 attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-                                maxZoom={19}>
+                                maxNativeZoom={19}
+                                maxZoom={20}>
                             </TileLayer>
                         </BaseLayer>
                         <ScaleControl updateWhenIdle={true} />
@@ -127,6 +128,7 @@ class LeafletMap extends React.Component {
                                     }
                                 })
                             }
+                            
                             </LayerGroup>
                         </Overlay>
                         <Overlay checked name="Paddling">
@@ -148,7 +150,7 @@ class LeafletMap extends React.Component {
                                                 isWave: {segment.properties.isWave.toString()} <br />
                                                 Distance: {segment.properties.dist.toString()} meters<br />
                                                 Duration: {(segment.properties.duration / 1000).toString()} seconds<br />
-                                                Wave Number: {segment.properties.index.toString()}<br />
+                                                {(segment.properties.isWave)?"Wave":"Paddle"} Number: {segment.properties.index.toString()}<br />
                                                 Time Stamp: {convertSeconds(Math.floor(segment.properties.tStamp / 1000)).toString()}
                                             </Popup>
                                         </Polyline>
@@ -156,6 +158,21 @@ class LeafletMap extends React.Component {
                                     }
                                 })
                             }
+                            </LayerGroup>
+                        </Overlay>
+                        <Overlay checked name="Start">
+                        <LayerGroup >
+                            <Circle 
+                                center={this.props.sessionTrackPoints[0].geometry.coordinates[0]} 
+                                fillOpacity="green" 
+                                color="green"
+                                radius={3} />
+                            <Circle
+                                center={this.props.sessionTrackPoints[this.props.sessionTrackPoints.length -1].geometry.coordinates[this.props.sessionTrackPoints[this.props.sessionTrackPoints.length -1].geometry.coordinates.length -1]} 
+                                fillColor="red"
+                                fillOpacity="1" 
+                                color="red"
+                                radius={3} />
                             </LayerGroup>
                         </Overlay>
                     </LayersControl>
