@@ -22,8 +22,8 @@ class WaveDataTable extends React.Component {
                     </thead>
                     <tbody>
                         <tr>
-                            <td>{(data.properties.isWave)?"Wave":"Paddle"} number:</td>
-                            <td>{data.properties.index}</td>
+                            <td>Segment:</td>
+                            <td> {(data.properties.isWave)?"Wave":"Paddle"} {data.properties.index}</td>
                         </tr>
                         <tr>
                             <td>Distance:</td>

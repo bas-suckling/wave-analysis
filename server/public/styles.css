@@ -619,6 +619,9 @@ body {
   height: 600px;
   width: 900px; }
 
+.logo {
+  width: 150px; }
+
 .custom-popup .leaflet-popup-content-wrapper {
   background: #2c3e50;
   color: #fff;

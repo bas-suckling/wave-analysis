@@ -77,7 +77,6 @@ class LeafletMap extends React.Component {
             {
                 weight: weightArray,
                 opacity: opacityArray,
-                currentSegment: NULL_WAVE
             }
         )
     }
@@ -119,10 +118,9 @@ class LeafletMap extends React.Component {
                                             onMouseOut={e => this.onMouseOut(i)}
                                         >
                                             <Popup className="custom-popup">
-                                                isWave: {segment.properties.isWave.toString()} <br />
+                                                Segment: {(segment.properties.isWave)?"Wave":"Paddle"} {segment.properties.index.toString()} <br />
                                                 Distance: {segment.properties.dist.toString()} meters<br />
                                                 Duration: {(segment.properties.duration / 1000).toString()} seconds<br />
-                                                Wave Number: {segment.properties.index.toString()}<br />
                                                 Time Stamp: {convertSeconds(Math.floor(segment.properties.tStamp / 1000)).toString()}
                                             </Popup>
                                         </Polyline>

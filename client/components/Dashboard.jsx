@@ -83,7 +83,7 @@ class Dashboard extends React.Component {
         return (
             <>
             <div className={"container"}>
-                <h1>Sessions</h1>
+                <h2>Sessions</h2>
                 <ul>
                     {this.state.sessions.map((session, i) => {
                         return <li key={i} className={"session-link"} onClick={() => this.handleClick(session)}>{session.date}</li>
@@ -92,13 +92,13 @@ class Dashboard extends React.Component {
             </div>
                 <div className={"container"}>
                     {/* this.state.currentMeta.date - to be added */}
-                    <h1>Session Analysis</h1>
+                    <h2>Session Analysis</h2>
                     <SessionDataTable sessionTableData={this.state.currentMeta} />
                     <br />
                 </div>
                 <div className={"container"}>
                 {(this.state.currentSession.length < 2) ?
-                <h1>Map Loading</h1> :
+                <h2>Map Loading</h2> :
                 
                     <LeafletMap sessionTrackPoints={this.state.currentSession}/>
                 }
