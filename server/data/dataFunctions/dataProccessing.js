@@ -22,7 +22,7 @@ function sessionData(rawJSONData){
     let meta = getMetaData(rawJSONData,segments)                                        // - not currently used
 
     console.log('beach direction is: ', beachDirection)
-    console.log(`there are: ${segments.length} segments`)
+    console.log('there are:', segments.length, ' segments')
     console.log(meta.waveCount, 'of which are waves')
 
     return({

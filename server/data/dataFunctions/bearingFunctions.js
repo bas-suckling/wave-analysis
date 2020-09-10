@@ -1,7 +1,7 @@
 const TO_RAD = Math.PI/180
 const TO_DEG = 180/Math.PI
 const MIN_SURF_SPEED = 8
-const BEACH_ANGLE_CONE = 90
+const BEACH_ANGLE_CONE = 105
 
 function findBeachDirection(bearingArray) {
     let dirX = 0
@@ -17,9 +17,6 @@ function findBeachDirection(bearingArray) {
     beachDirection = Math.atan2(dirX,dirY) * TO_DEG
     return beachDirection
 }
-
-
-
 
 function setIsWave(trackPoints, beachDirection) {
     beachBearingsPack = findBearingType(beachDirection)
