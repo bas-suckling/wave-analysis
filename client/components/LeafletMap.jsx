@@ -84,6 +84,8 @@ class LeafletMap extends React.Component {
     render() {
         return (
             <>
+                <WaveDataTable singleWaveData={this.state.currentSegment} />
+
                 <Map id="mapid" center={this.props.sessionTrackPoints[0].geometry.coordinates[0]} zoom={16.5} zoomSnap={0.25}>
                     <LayersControl position="topright">
                         <BaseLayer key={1} checked name="Satellite">
@@ -177,7 +179,6 @@ class LeafletMap extends React.Component {
                         </Overlay>
                     </LayersControl>
                 </Map>
-                <WaveDataTable singleWaveData={this.state.currentSegment} />
             </>
         )
     }
