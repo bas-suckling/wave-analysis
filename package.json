@@ -45,9 +45,7 @@
     "sass-loader": "^8.0.2",
     "sqlite3": "^5.0.0",
     "superagent": "^5.3.1",
-    "xml2js": "^0.4.23"
-  },
-  "devDependencies": {
+    "xml2js": "^0.4.23",
     "@babel/core": "^7.4.3",
     "@babel/plugin-proposal-class-properties": "^7.4.0",
     "@babel/plugin-proposal-object-rest-spread": "^7.4.3",
@@ -65,5 +63,7 @@
     "webpack": "^4.29.6",
     "webpack-cli": "^3.3.0",
     "webpack-dev-server": "^3.2.1"
+  },
+  "devDependencies": {
   }
 }
