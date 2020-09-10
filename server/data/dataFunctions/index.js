@@ -1,11 +1,15 @@
 const {parseTrackPoints} = require('./parseTrackPoints')
 const {sessionData} = require('./dataProccessing')
 const {writeFile} = require('./writeFiles')
- 
+
 let rawPath =  '../rawData/'
 let processedPath = '../processedData/'
 
-let date = "2020-07-07"
+//let date = "2020-05-25"     //  Sumner  
+//let date = "2020-07-07"     //  N.Brighton  
+//let date = "2020-08-01"     //  Otaki
+let date = "2020-08-15"     //  C.Palliser
+
 let session_gpx = rawPath + date + '.gpx'                   // input location
 let session_JSON_RAW = rawPath + date + '_RAW.json'         // output location: not required
 

@@ -15,6 +15,12 @@ function findBeachDirection(bearingArray) {
     })
 
     beachDirection = Math.atan2(dirX,dirY) * TO_DEG
+    while (beachDirection < 0){
+        beachDirection += 360
+    }
+    while (beachDirection > 360){
+        beachDirection -= 360
+    }
     return beachDirection
 }
 
@@ -64,7 +70,10 @@ function findBearingType(beachDirection){
         minAngle = beachDirection + BEACH_ANGLE_CONE
         maxAngle = beachDirection - BEACH_ANGLE_CONE + 360
     }
-    console.log("normal range?",insideRange,"min",minAngle,"max",maxAngle)
+
+    console.log("BeachDir:",beachDirection, "cone angle:",2*BEACH_ANGLE_CONE,"normal range?",insideRange)
+    console.log("min",minAngle,"max",maxAngle)
+    console.log("")
     return {"insideRange": insideRange,
             "minAngle": minAngle,
             "maxAngle": maxAngle}

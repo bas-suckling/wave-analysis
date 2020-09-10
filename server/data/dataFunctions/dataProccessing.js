@@ -7,7 +7,7 @@ const {smoothArray} = require ('./speedFunctions');
 
 const MAX_SURF_SPEED = 30
 const KMPH_CONVERT = 3.6
-const MIN_SEGMENT_LENGTH = 3
+const MIN_SEGMENT_LENGTH = 6
 const SMOOTH_WEIGHT = 4
 const ACCURACY = 0.01
 
@@ -21,9 +21,10 @@ function sessionData(rawJSONData){
     let segments = createSegments (finalProcess)                                        // separate data into segments
     let meta = getMetaData(rawJSONData,segments)                                        // - not currently used
 
-    console.log('beach direction is: ', beachDirection)
+    //console.log('beach direction is: ', beachDirection)
     console.log('there are:', segments.length, ' segments')
     console.log(meta.waveCount, 'of which are waves')
+    console.log("")
 
     return({
         "meta": meta,
@@ -160,20 +161,25 @@ function createSegments (trackPointsArray) {
 
 
     // ---- funct combine adjacent segments (with same isWave values)
+    console.log("Begin removing small segs, min dur set to",MIN_SEGMENT_LENGTH)
+    console.log("begining with array of len:",segmentArray.length)
     for (let segSize = 1; segSize < MIN_SEGMENT_LENGTH; segSize++){
-        let elimCounter = 0
+        let elimCounter = 0 // v
         for (let i = 1; i < segmentArray.length-1; i++) {
-            let seg = segmentArray[i]
-            if (seg.length == segSize){  // combine with segs to either side
-                segmentArray[i-1]=segmentArray[i-1].concat(segmentArray[i])
-                segmentArray[i-1]=segmentArray[i-1].concat(segmentArray[i+1])
-                segmentArray.splice(i,2)
-                i--
-                elimCounter++
+            let segDur = (segmentArray[i][segmentArray[i].length-1].unixTime2-segmentArray[i][0].unixTime1)/1000
+        
+            if (segDur == segSize){  // combine with segs to either side
+                segmentArray[i-1]=segmentArray[i-1].concat(segmentArray[i])     // add short seg to prev
+                segmentArray[i-1]=segmentArray[i-1].concat(segmentArray[i+1])   // also combine with the folllowing seg (now of same type)
+                segmentArray.splice(i,2)                                        // remove 2 segs (now joined to i-1)
+                i--                                                             // adjust pointer so as not to skip seg
+                elimCounter++ // v
             }
         }
         console.log(elimCounter,"segments of len", segSize, "have been removed")
     } 
+    console.log("elims complete array down to size:", segmentArray.length)
+    console.log("")
     // ---- end funct combine adjacent segments (with same isWave values)
 
     
