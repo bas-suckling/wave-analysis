@@ -83,7 +83,7 @@ class LeafletMap extends React.Component {
     render() {
         return (
             <>
-                <Map id="mapid" center={this.props.sessionTrackPoints[this.props.sessionTrackPoints.length /2].geometry.coordinates[this.props.sessionTrackPoints[this.props.sessionTrackPoints.length /2].geometry.coordinates.length /2]} zoom={16.5} zoomSnap={0.25}>
+                <Map id="mapid" center={this.props.sessionTrackPoints[Math.floor(this.props.sessionTrackPoints.length /2)].geometry.coordinates[Math.floor(this.props.sessionTrackPoints[Math.floor(this.props.sessionTrackPoints.length /2)].geometry.coordinates.length /2)]} zoom={16.5} zoomSnap={0.25}>
                     <LayersControl position="topright">
                         <BaseLayer key={1} checked name="Satellite">
                             <TileLayer
