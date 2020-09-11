@@ -158,7 +158,7 @@ class LeafletMap extends React.Component {
                             }
                             </LayerGroup>
                         </Overlay>
-                        <Overlay checked name="Start">
+                        <Overlay checked name="Start/Finish">
                         <LayerGroup >
                             <Circle 
                                 center={this.props.sessionTrackPoints[0].geometry.coordinates[0]} 
