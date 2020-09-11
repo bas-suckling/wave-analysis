@@ -7,13 +7,13 @@ body {
 }
 
 #mapid { 
-    height: 600px;
-    width: 100%;                        
+    width: 100%;
+    height: 70vh;                        
 }
 
-.session-analysis{ 
-    width: 100%;
-}
+// .session-analysis{ 
+//     width: 100%;
+// }
 
 .logo {
     width:100%;
@@ -26,12 +26,12 @@ body {
             transform: rotate(360deg);
 }
 
-ul {
-    list-style: none;
+p {
+    font-size: 0.8rem;
 }
 
 li:hover {
-    transform:scale(1.02)
+    transform:scale(1.02);
 }
 
 .heading {
@@ -39,6 +39,7 @@ li:hover {
     padding-bottom: 2%;
     text-align: center;
 } 
+
 
 // Popup Customisation
 

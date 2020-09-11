@@ -90,20 +90,18 @@ class Dashboard extends React.Component {
                         <div className={"container"}>
                             <img className="logo" src="./images/BFBSA_Logo_Black.png" alt="logo"/>
                             <h1 className="heading">Sessions</h1>
-                            <ul>
                                 {this.state.sessions.map((session, i) => {
-                                    return <li key={i} className={"session-link"} onClick={() => this.handleClick(session)}>{session.date}</li>
+                                    return <h6 key={i} className={"session-link"} onClick={() => this.handleClick(session)}>{session.date}</h6>
                                 })}
-                            </ul>
                         </div>
                     </div>
                     <div className={"col-8"}>
-                        <div className={"session-analysis"}>
+                        <div>
                             {/* this.state.currentMeta.date - to be added */}
                             <SessionDataTable sessionTableData={this.state.currentMeta} />
                             <br />
                         </div>
-                        <div className={"container-fluid"}>
+                        <div >
                             {(this.state.currentSession.length < 2) ?
                                 <h2>Map Loading</h2> :
                                 <LeafletMap sessionTrackPoints={this.state.currentSession} />
