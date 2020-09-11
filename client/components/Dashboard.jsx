@@ -1,6 +1,7 @@
 import React from 'react'
 import SessionDataTable from './SessionDataTable'
 import LeafletMap from './LeafletMap'
+
 import { apiGetSessionsList, apiGetSessionData } from '../api/sessions'
 
 //remove?
@@ -11,11 +12,11 @@ import surfData from '../../server/data/processedData/2020-08-01_processed.json'
 class Dashboard extends React.Component {
     constructor(props) {
         super(props)
-        this.state={
-            sessions:[],
+        this.state = {
+            sessions: [],
             tempData: null,
-            currentSession:[],
-            currentMeta:{
+            currentSession: [],
+            currentMeta: {
                 "dur:": "",
                 "waveCount": "",
                 "totalDist": "",
@@ -51,64 +52,78 @@ class Dashboard extends React.Component {
             .then(res => this.setState({
                 currentSession: res.currentSession,
                 currentMeta: res.currentMeta
-            }))    
+            }))
     }
-    
+
 
     handleClick(session) {
         apiGetSessionData(session.session_id)
-        .then((res => this.setState({
-            currentSession: res.currentSession,
-            currentMeta: res.currentMeta
-        })))
+            .then((res => this.setState({
+                currentSession: res.currentSession,
+                currentMeta: res.currentMeta
+            })))
     }
 
     render() {
-    // let waves = []
-    // let timeData = []
-    // let waveLine = []
-    
-    // surfData.forEach(function (element) {
-    //     waves.push(element.speed)
-    //     timeData.push(element.elapsedTime)
-    //     waveLine.push(8)
-    // })
+        // let waves = []
+        // let timeData = []
+        // let waveLine = []
 
-    // let sessionData = {
-    //     waves: waves,
-    //     timeData: timeData,
-    //     waveLine: waveLine,
-    // } 
-        
+        // surfData.forEach(function (element) {
+        //     waves.push(element.speed)
+        //     timeData.push(element.elapsedTime)
+        //     waveLine.push(8)
+        // })
+
+        // let sessionData = {
+        //     waves: waves,
+        //     timeData: timeData,
+        //     waveLine: waveLine,
+        // } 
+
         return (
             <>
-            <div className={"container"}>
-                <h2>Sessions</h2>
-                <ul>
-                    {this.state.sessions.map((session, i) => {
-                        return <li key={i} className={"session-link"} onClick={() => this.handleClick(session)}>{session.date}</li>
-                    })}
-                </ul>
+
+            <div className={"container-fluid"}>
+                <div className="row">
+                    <div className={"col-2"}>
+                        <div className={"container"}>
+                            <img className="logo" src="./images/BFBSA_Logo_Black.png" alt="logo"/>
+                            <h1 className="heading">Sessions</h1>
+                            <ul>
+                                {this.state.sessions.map((session, i) => {
+                                    return <li key={i} className={"session-link"} onClick={() => this.handleClick(session)}>{session.date}</li>
+                                })}
+                            </ul>
+                        </div>
+                    </div>
+                    <div className={"col-8"}>
+                        <div className={"session-analysis"}>
+                            {/* this.state.currentMeta.date - to be added */}
+                            <SessionDataTable sessionTableData={this.state.currentMeta} />
+                            <br />
+                        </div>
+                        <div className={"container-fluid"}>
+                            {(this.state.currentSession.length < 2) ?
+                                <h2>Map Loading</h2> :
+                                <LeafletMap sessionTrackPoints={this.state.currentSession} />
+                            }
+                        </div>
+
+                    </div>
+                    
+                </div>
+
             </div>
-                <div className={"container"}>
-                    {/* this.state.currentMeta.date - to be added */}
-                    <h2>Session Analysis</h2>
-                    <SessionDataTable sessionTableData={this.state.currentMeta} />
-                    <br />
-                </div>
-                <div className={"container"}>
-                {(this.state.currentSession.length < 2) ?
-                <h2>Map Loading</h2> :
+
+
                 
-                    <LeafletMap sessionTrackPoints={this.state.currentSession}/>
-                }
-                </div>
 
                 {/* <div style={{ padding: '2%', height: "50%"}}>
                     <WaveGraph style={{ padding: '2%', height: "100px"}} sessionData={sessionData} />
-                </div> */}          
+                </div> */}
             </>
-            )
+        )
     }
 }
 

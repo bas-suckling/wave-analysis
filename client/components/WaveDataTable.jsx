@@ -13,7 +13,7 @@ class WaveDataTable extends React.Component {
         
         return (
             <>
-
+                <div className={"container-fluid"}>
                 <table>
                     <thead>
                         <tr> 
@@ -39,6 +39,7 @@ class WaveDataTable extends React.Component {
                         </tr>
                     </tbody>
                 </table>
+                </div>
       
     </>
         )
