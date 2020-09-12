@@ -8,8 +8,10 @@ import { convertSeconds } from '../helpers/timeFormat'
 const OPACITY = 1
 const WEIGHT = 2
 const RADIUS = 1
-let WAVECOLOR = '#22007c'
+// let WAVECOLOR = '#22007c'
+const WAVECOLOR = 'darkBlue'
 const PADDLECOLOR = '#0d1b1e'
+
 
 let play = new Icon ({
     iconUrl: "./icons/play.svg",
@@ -123,7 +125,7 @@ class LeafletMap extends React.Component {
                             </TileLayer>
                         </BaseLayer>
                         <ScaleControl updateWhenIdle={true} />
-                        <Overlay  checked name="Paddling">
+                        <Overlay name="Paddling">
                             <LayerGroup>
                                 {this.props.sessionTrackPoints.map((segment, i) => {
                                     if (!segment.properties.isWave) {
@@ -140,7 +142,7 @@ class LeafletMap extends React.Component {
                                                 onMouseOut={e => this.onMouseOut(i)}
                                             >
                                                 <Popup className="custom-popup">
-                                                    Segment: {(segment.properties.isWave) ? "Wave" : "Paddle"} {segment.properties.index.toString()} <br />
+                                                    {(segment.properties.isWave) ? "Wave" : "Paddle"} {segment.properties.index.toString()} <br />
                                                     Distance: {segment.properties.dist.toString()} meters<br />
                                                     Duration: {(segment.properties.duration / 1000).toString()} seconds<br />
                                                     Time Stamp: {convertSeconds(Math.floor(segment.properties.tStamp / 1000)).toString()}
@@ -159,6 +161,7 @@ class LeafletMap extends React.Component {
                                         return (
                                             <div>
                                             <Polyline
+                                                zIndex={3}
                                                 key={i}
                                                 positions={segment.geometry.coordinates}
                                                 color={this.state.color[i]}
@@ -168,13 +171,14 @@ class LeafletMap extends React.Component {
                                                 onMouseOut={e => this.onMouseOut(i)}
                                             >
                                                 <Popup className="custom-popup">
-                                                    Segment: {(segment.properties.isWave) ? "Wave" : "Paddle"} {segment.properties.index.toString()} <br />
+                                                    {(segment.properties.isWave) ? "Wave" : "Paddle"} {segment.properties.index.toString()} <br />
                                                     Distance: {segment.properties.dist.toString()} meters<br />
                                                     Duration: {(segment.properties.duration / 1000).toString()} seconds<br />
                                                     Time Stamp: {convertSeconds(Math.floor(segment.properties.tStamp / 1000)).toString()}
                                                 </Popup>
                                             </Polyline>
                                             <Circle
+                                                zIndex={4}
                                                 center={segment.geometry.coordinates[0]}
                                                 fillOpacity={1}
                                                 fillColor="white"
@@ -183,6 +187,7 @@ class LeafletMap extends React.Component {
                                                 onMouseOver={e => this.onMouseOver(i, segment)}
                                                 onMouseOut={e => this.onMouseOut(i)}/>
                                             <Circle
+                                                zIndex={4}
                                                 center={segment.geometry.coordinates[segment.geometry.coordinates.length-1]}
                                                 fillOpacity={1}
                                                 fillColor="white"
@@ -212,7 +217,7 @@ class LeafletMap extends React.Component {
                         </Overlay>
                     </LayersControl>
                 </Map>
-                <WaveDataTable singleWaveData={this.state.currentSegment} />
+                {/* <WaveDataTable singleWaveData={this.state.currentSegment} /> */}
                 {/* <div>Icons made by <a href="https://www.flaticon.com/authors/roundicons" title="Roundicons">Roundicons</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div> */}
             </>
         )
