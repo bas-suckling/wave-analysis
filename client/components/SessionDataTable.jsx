@@ -35,7 +35,7 @@ class SessionDataTable extends React.Component {
                     </div>
                     <div className="row">
                         <div className="col-sm">
-                            <p>Waves</p>
+                            <p>Waves Surfed</p>
                         </div>
                         <div className="col-sm">
                             <p>Longest Wave</p>

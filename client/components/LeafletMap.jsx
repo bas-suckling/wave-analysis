@@ -1,11 +1,25 @@
 import React from 'react'
-import { Map, TileLayer, Polyline, Popup, ScaleControl, LayerGroup, LayersControl, Circle } from 'react-leaflet'
+import { Map, TileLayer, Polyline, Popup, ScaleControl, LayerGroup, LayersControl, Circle, Marker} from 'react-leaflet'
+import {Icon} from "leaflet"
 const { BaseLayer, Overlay } = LayersControl
 import WaveDataTable from './WaveDataTable'
 import { convertSeconds } from '../helpers/timeFormat'
 
 const OPACITY = 1
 const WEIGHT = 2
+const RADIUS = 1
+let WAVECOLOR = '#22007c'
+const PADDLECOLOR = '#0d1b1e'
+
+let play = new Icon ({
+    iconUrl: "./icons/play.svg",
+    iconSize: [25, 25]
+})
+
+let stop = new Icon ({
+    iconUrl: "./icons/stop.svg",
+    iconSize: [20, 20]
+})
 
 const NULL_WAVE = {
     "properties": {
@@ -22,21 +36,21 @@ class LeafletMap extends React.Component {
     constructor(props) {
         super(props)
 
-        let paddleColor = '#0d1b1e'
-        let waveColor = '#22007c'
         let weightArray = []
         let colorArray = []
         let opacityArray = []
+        let radiusArray = []
         let sessionTrackPoints = this.props.sessionTrackPoints
 
         for (let j = 0; j < sessionTrackPoints.length; j++) {
             opacityArray.push(OPACITY)
             weightArray.push(WEIGHT)
+            radiusArray.push(RADIUS)
             if (sessionTrackPoints[j].properties.isWave) {
-                colorArray.push(waveColor)
+                colorArray.push(WAVECOLOR)
 
             } else {
-                colorArray.push(paddleColor)
+                colorArray.push(PADDLECOLOR)
             }
         }
 
@@ -44,6 +58,7 @@ class LeafletMap extends React.Component {
             weight: weightArray,
             color: colorArray,
             opacity: opacityArray,
+            radius: radiusArray,
             currentSegment: NULL_WAVE
         }
     }
@@ -51,16 +66,19 @@ class LeafletMap extends React.Component {
     onMouseOver = (i, segment) => {
         let weightArray = this.state.weight
         let opacityArray = this.state.opacity
+        let radiusArray = this.state.radius
 
         for (let j = 0; j < opacityArray.length; j++) {
             opacityArray[j] = 0.5;
         }
         opacityArray[i] = 1
         weightArray[i] = 4
+        radiusArray[i] = 1.5
         this.setState(
             {
                 weight: weightArray,
                 opacity: opacityArray,
+                radius: radiusArray,
                 currentSegment: segment
             }
         )
@@ -69,21 +87,25 @@ class LeafletMap extends React.Component {
     onMouseOut = (i) => {
         let weightArray = this.state.weight
         let opacityArray = this.state.opacity
+        let radiusArray = this.state.radius
+
         for (let j = 0; j < opacityArray.length; j++) {
             opacityArray[j] = OPACITY;
         }
         weightArray[i] = WEIGHT
+        radiusArray[i] = RADIUS
         this.setState(
             {
                 weight: weightArray,
                 opacity: opacityArray,
+                radius: radiusArray
             }
         )
     }
     render() {
         return (
             <>
-                <Map id="mapid" center={this.props.sessionTrackPoints[Math.floor(this.props.sessionTrackPoints.length /2)].geometry.coordinates[Math.floor(this.props.sessionTrackPoints[Math.floor(this.props.sessionTrackPoints.length /2)].geometry.coordinates.length /2)]} zoom={16.5} zoomSnap={0.25}>
+                <Map id="mapid" center={this.props.sessionTrackPoints[Math.floor(this.props.sessionTrackPoints.length / 2)].geometry.coordinates[Math.floor(this.props.sessionTrackPoints[Math.floor(this.props.sessionTrackPoints.length / 2)].geometry.coordinates.length / 2)]} zoom={16.5} zoomSnap={0.25}>
                     <LayersControl position="topright">
                         <BaseLayer key={1} checked name="Satellite">
                             <TileLayer
@@ -101,80 +123,97 @@ class LeafletMap extends React.Component {
                             </TileLayer>
                         </BaseLayer>
                         <ScaleControl updateWhenIdle={true} />
+                        <Overlay  checked name="Paddling">
+                            <LayerGroup>
+                                {this.props.sessionTrackPoints.map((segment, i) => {
+                                    if (!segment.properties.isWave) {
+                                        return (
+                                            <Polyline
+                                                zIndex={2}
+                                                key={i}
+                                                dashArray={["10 5"]}
+                                                positions={segment.geometry.coordinates}
+                                                color={this.state.color[i]}
+                                                weight={this.state.weight[i]}
+                                                opacity={this.state.opacity[i]}
+                                                onMouseOver={e => this.onMouseOver(i, segment)}
+                                                onMouseOut={e => this.onMouseOut(i)}
+                                            >
+                                                <Popup className="custom-popup">
+                                                    Segment: {(segment.properties.isWave) ? "Wave" : "Paddle"} {segment.properties.index.toString()} <br />
+                                                    Distance: {segment.properties.dist.toString()} meters<br />
+                                                    Duration: {(segment.properties.duration / 1000).toString()} seconds<br />
+                                                    Time Stamp: {convertSeconds(Math.floor(segment.properties.tStamp / 1000)).toString()}
+                                                </Popup>
+                                            </Polyline>
+                                        )
+                                    }
+                                })
+                                }
+                            </LayerGroup>
+                        </Overlay>
                         <Overlay checked name="Waves">
                             <LayerGroup>
                                 {this.props.sessionTrackPoints.map((segment, i) => {
                                     if (segment.properties.isWave) {
-                                    return (
-                                        <Polyline
-                                            key={i}
-                                            positions={segment.geometry.coordinates}
-                                            color={this.state.color[i]}
-                                            weight={this.state.weight[i]}
-                                            opacity={this.state.opacity[i]}
-                                            onMouseOver={e => this.onMouseOver(i, segment)}
-                                            onMouseOut={e => this.onMouseOut(i)}
-                                        >
-                                            <Popup className="custom-popup">
-                                                Segment: {(segment.properties.isWave)?"Wave":"Paddle"} {segment.properties.index.toString()} <br />
-                                                Distance: {segment.properties.dist.toString()} meters<br />
-                                                Duration: {(segment.properties.duration / 1000).toString()} seconds<br />
-                                                Time Stamp: {convertSeconds(Math.floor(segment.properties.tStamp / 1000)).toString()}
-                                            </Popup>
-                                        </Polyline>
-                                    )
+                                        return (
+                                            <div>
+                                            <Polyline
+                                                key={i}
+                                                positions={segment.geometry.coordinates}
+                                                color={this.state.color[i]}
+                                                weight={this.state.weight[i]}
+                                                opacity={this.state.opacity[i]}
+                                                onMouseOver={e => this.onMouseOver(i, segment)}
+                                                onMouseOut={e => this.onMouseOut(i)}
+                                            >
+                                                <Popup className="custom-popup">
+                                                    Segment: {(segment.properties.isWave) ? "Wave" : "Paddle"} {segment.properties.index.toString()} <br />
+                                                    Distance: {segment.properties.dist.toString()} meters<br />
+                                                    Duration: {(segment.properties.duration / 1000).toString()} seconds<br />
+                                                    Time Stamp: {convertSeconds(Math.floor(segment.properties.tStamp / 1000)).toString()}
+                                                </Popup>
+                                            </Polyline>
+                                            <Circle
+                                                center={segment.geometry.coordinates[0]}
+                                                fillOpacity={1}
+                                                fillColor="white"
+                                                color={WAVECOLOR}
+                                                radius={this.state.radius[i]} 
+                                                onMouseOver={e => this.onMouseOver(i, segment)}
+                                                onMouseOut={e => this.onMouseOut(i)}/>
+                                            <Circle
+                                                center={segment.geometry.coordinates[segment.geometry.coordinates.length-1]}
+                                                fillOpacity={1}
+                                                fillColor="white"
+                                                color={WAVECOLOR}
+                                                radius={this.state.radius[i]}
+                                                onMouseOver={e => this.onMouseOver(i, segment)}
+                                                onMouseOut={e => this.onMouseOut(i)} 
+                                            />
+                                            </div>
+                                        )
                                     }
                                 })
-                            }
+                                }
                             </LayerGroup>
                         </Overlay>
-                        <Overlay checked name="Paddling">
+                        <Overlay name="Start/Finish">
                             <LayerGroup>
-                                {this.props.sessionTrackPoints.map((segment, i) => {
-                                    if (!segment.properties.isWave) {
-                                    return (
-                                        <Polyline
-                                            key={i}
-                                            dashArray= {["10 5"]}
-                                            positions={segment.geometry.coordinates}
-                                            color={this.state.color[i]}
-                                            weight={this.state.weight[i]}
-                                            opacity={this.state.opacity[i]}
-                                            onMouseOver={e => this.onMouseOver(i, segment)}
-                                            onMouseOut={e => this.onMouseOut(i)}
-                                        >
-                                            <Popup className="custom-popup">
-                                                isWave: {segment.properties.isWave.toString()} <br />
-                                                Distance: {segment.properties.dist.toString()} meters<br />
-                                                Duration: {(segment.properties.duration / 1000).toString()} seconds<br />
-                                                {(segment.properties.isWave)?"Wave":"Paddle"} Number: {segment.properties.index.toString()}<br />
-                                                Time Stamp: {convertSeconds(Math.floor(segment.properties.tStamp / 1000)).toString()}
-                                            </Popup>
-                                        </Polyline>
-                                    )
-                                    }
-                                })
-                            }
-                            </LayerGroup>
-                        </Overlay>
-                        <Overlay checked name="Start/Finish">
-                        <LayerGroup >
-                            <Circle 
-                                center={this.props.sessionTrackPoints[0].geometry.coordinates[0]} 
-                                fillOpacity="green" 
-                                color="green"
-                                radius={3} />
-                            <Circle
-                                center={this.props.sessionTrackPoints[this.props.sessionTrackPoints.length -1].geometry.coordinates[this.props.sessionTrackPoints[this.props.sessionTrackPoints.length -1].geometry.coordinates.length -1]} 
-                                fillColor="red"
-                                fillOpacity="1" 
-                                color="red"
-                                radius={3} />
+                                <Marker
+                                    position={this.props.sessionTrackPoints[0].geometry.coordinates[0]}
+                                    icon={play}
+                                />
+                                <Marker
+                                    position={this.props.sessionTrackPoints[this.props.sessionTrackPoints.length - 1].geometry.coordinates[this.props.sessionTrackPoints[this.props.sessionTrackPoints.length - 1].geometry.coordinates.length - 1]}
+                                    icon={stop}
+                                />
                             </LayerGroup>
                         </Overlay>
                     </LayersControl>
                 </Map>
                 <WaveDataTable singleWaveData={this.state.currentSegment} />
+                {/* <div>Icons made by <a href="https://www.flaticon.com/authors/roundicons" title="Roundicons">Roundicons</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div> */}
             </>
         )
     }
