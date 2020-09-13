@@ -72,8 +72,33 @@ function bearingCheck(bearing,checks){
     else return (bearing < checks.minAngle   ||   checks.maxAngle < bearing)
 }
 
+
+function endPoint(start,brng){
+    brng *= TO_RAD
+
+    const R = 6371000000    // earth Radius
+    const d = 100            // line dist
+    let lat1 = start[0]*TO_RAD
+    let lon1 = start[1]*TO_RAD
+
+    let a = Math.sin(lat1)*Math.cos(d/R)
+    let b = Math.cos(lat1)*Math.sin(d/R)*Math.cos(brng)
+    let lat2 = Math.asin( a + b )*TO_DEG
+    //console.log("lat1:",start[0],"lat2:",lat2)
+    
+
+    let e = Math.sin(brng)*Math.sin(d/R)*Math.cos(lat1)
+    let f = Math.cos(d/R)-Math.sin(lat1)*Math.sin(lat2)
+    let lon2 = (lon1 + Math.atan2( e , f ))*TO_DEG
+    //console.log("lon1:",start[1],"lon2:",lon2)
+
+    return ([lat2,lon2])
+}
+
+
 module.exports = {
     findBeachDirection,
     setIsWave,
+    endPoint,
     MIN_SURF_SPEED
 }

@@ -1,6 +1,6 @@
 const geolib = require('geolib');
 const {convertUnixTime, parseTime, timeRead} = require('./timeConversions');
-const {findBeachDirection, setIsWave, MIN_SURF_SPEED} = require ('./bearingFunctions');
+const {findBeachDirection, setIsWave, endPoint, MIN_SURF_SPEED} = require ('./bearingFunctions');
 const {smoothArray} = require ('./speedFunctions');
 
 const KMPH_CONVERT = 3.6
@@ -186,8 +186,7 @@ function getMetaData(rawJSONData, segments, beachDirection) {
         totalDur += seg.properties.duration
     })
     
-    //waveDist = parseFloat(waveDist/1000).toPrecision(2)
-
+    start = segments[0].geometry.coordinates[0]
     return{
         "session_name": rawJSONData.session_name,
         "time": timeRead(convertUnixTime(parseTime(rawJSONData[0].timestamp))),
@@ -200,7 +199,8 @@ function getMetaData(rawJSONData, segments, beachDirection) {
         "longestWaveDur": longestWaveDur,       // not used
         "longestPaddleDist": longestPaddleDist, // not used
         "longestPaddleDur": longestPaddleDur,     // not used
-        "beachDirection": parseFloat(beachDirection).toPrecision(3)       // not used
+        "beachDirection": parseFloat(beachDirection).toPrecision(3),       // not used
+        "beachArrow": {"start":start, "end": endPoint(start, beachDirection)}
     }
 }
 
