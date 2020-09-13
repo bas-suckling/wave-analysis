@@ -1,4 +1,5 @@
 import React from 'react'
+import {convertSeconds} from '../helpers/timeFormat'
 
 class SessionDataTable extends React.Component {
     constructor(props) {
@@ -27,10 +28,10 @@ class SessionDataTable extends React.Component {
                             <h2>{this.props.sessionTableData.paddleDist}m</h2>
                         </div>
                         <div className="col-sm">
-                            <h2><span style={{ color: "red" }}>11am</span></h2>
+                            <h2>{this.props.sessionTableData.date}</h2>
                         </div>
                         <div className="col-sm">
-                            <h2><span style={{ color: "red" }}>{this.props.sessionTableData.dur}</span></h2>
+                            <h2>{convertSeconds(Math.floor(this.props.sessionTableData.dur)/1000)}</h2>
                         </div>
                     </div>
                     <div className="row">

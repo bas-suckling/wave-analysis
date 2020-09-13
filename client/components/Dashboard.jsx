@@ -18,7 +18,8 @@ class Dashboard extends React.Component {
             tempData: null,
             currentSession: [],
             currentMeta: {
-                "dur:": "",
+                "date":"",
+                "dur": "",
                 "waveCount": "",
                 "totalDist": "",
                 "paddleDist": "",

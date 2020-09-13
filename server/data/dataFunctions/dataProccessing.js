@@ -65,11 +65,16 @@ function getMetaData(rawJSONData, segments) {
                 longestPaddleDur = {"i": seg.properties.index, "dur": seg.properties.duration}
             }
         }
+        totalDur += seg.properties.duration
     })
+    
+
+
+    console.log("duration:",totalDur)
 
     return{
         "session_name": rawJSONData.session_name,
-        "date": rawJSONData.date,
+        "date": rawJSONData[0].timestamp,
         "dur": totalDur,
         "waveCount": waveCount,
         "totalDist": waveDist+paddleDist,

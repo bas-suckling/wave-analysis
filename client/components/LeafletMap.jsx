@@ -190,7 +190,7 @@ class LeafletMap extends React.Component {
                                                 zIndex={4}
                                                 center={segment.geometry.coordinates[segment.geometry.coordinates.length-1]}
                                                 fillOpacity={1}
-                                                fillColor="white"
+                                                fillColor="White"
                                                 color={WAVECOLOR}
                                                 radius={this.state.radius[i]}
                                                 onMouseOver={e => this.onMouseOver(i, segment)}
