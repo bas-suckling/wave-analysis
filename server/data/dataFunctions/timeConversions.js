@@ -26,7 +26,7 @@ function convertUnixTime(gpxTimeStamp) {
 // }
 
 function timeRead(unix){
-    return new Date(unix).toUTCString().slice(-11, -4)
+    return new Date(unix).toUTCString().slice(-12, -4)
 } 
     
 

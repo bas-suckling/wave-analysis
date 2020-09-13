@@ -1,1 +1,1 @@
-{"time":"0:59:12","dur":5253000,"waveCount":32,"totalDist":8155,"paddleDist":6428,"waveDist":1727,"longestWaveDist":{"i":32,"dist":156},"longestWaveDur":{"i":32,"dur":39000},"longestPaddleDist":{"i":11,"dist":562},"longestPaddleDur":{"i":22,"dur":453000}}
+{"time":"10:59:12","dur":5253000,"waveCount":30,"totalDist":"8.2","paddleDist":"6.6","waveDist":"1.6","longestWaveDist":{"i":28,"dist":154},"longestWaveDur":{"i":30,"dur":37000},"longestPaddleDist":{"i":10,"dist":565},"longestPaddleDur":{"i":20,"dur":453000},"beachDirection":"124"}

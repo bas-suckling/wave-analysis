@@ -3,13 +3,13 @@ const {convertUnixTime, parseTime, timeRead} = require('./timeConversions');
 const {findBeachDirection, setIsWave, MIN_SURF_SPEED} = require ('./bearingFunctions');
 const {smoothArray} = require ('./speedFunctions');
 
-const MAX_SURF_SPEED = 30
 const KMPH_CONVERT = 3.6
-const MIN_SEGMENT_LENGTH = 6
-const SMOOTH_WEIGHT = 4
 const ACCURACY = 0.01
+const MAX_SURF_SPEED = 30
 
-const V = false // verbose
+const SMOOTH_WEIGHT = 4
+const MIN_SEGMENT_LENGTH = 6
+
 
 
 // ---------------------------------------------------  M A I N - F U N C T I O N  ----------------------------
@@ -17,16 +17,10 @@ function sessionData(rawJSONData){
     let processed = processTrackPoints(rawJSONData)                         // (points)->(pairs); calcs; beachDirArray;
     let beachDirection = findBeachDirection(processed.waveDirections)       // returns assumed dir of beach from all fast moves
     let smoothedData = smoothArray(processed.trackPoints, SMOOTH_WEIGHT)    // smooths all track speeds
-    let finalProcess = setIsWave(smoothedData, beachDirection, V)           // set pair.isWave bool for all pairs
+    let finalProcess = setIsWave(smoothedData, beachDirection)           // set pair.isWave bool for all pairs
     let segments = createSegments (finalProcess)                            // separate data into segments
-    let meta = getMetaData(rawJSONData,segments)                            //
+    let meta = getMetaData(rawJSONData,segments,beachDirection)                            //
     
-
-    if(V){
-        console.log("complete: saved ",meta.waveCount, 'waves')
-        console.log("")
-    }
-
     return({
         "meta": meta,
         "segments": segments,
@@ -45,16 +39,8 @@ function processTrackPoints(inputdata) {
     let waveDirections = []
     
     for (let i = 0; i < inputdata.length - 1 ; i++) {
-        let p1 = {
-            "lat": inputdata[i].latitude,
-            "lon": inputdata[i].longitude,
-            "time": convertUnixTime(parseTime(inputdata[i].timestamp))
-        }
-        let p2 = {
-            "lat": inputdata[i+1].latitude,
-            "lon": inputdata[i+1].longitude,
-            "time": convertUnixTime(parseTime(inputdata[i+1].timestamp))
-        }
+        p1 = createPoint(inputdata[i])
+        p2 = createPoint(inputdata[i+1])
 
         let distanceIncrement = (geolib.getPreciseDistance(p1, p2, ACCURACY))
         let bearing = Math.floor(geolib.getRhumbLineBearing(p1, p2))
@@ -76,6 +62,13 @@ function processTrackPoints(inputdata) {
     return {"trackPoints": trackPoints, "waveDirections": waveDirections}
 }
 
+function createPoint(trackpoint){
+    return {
+        "lat": trackpoint.latitude,
+        "lon": trackpoint.longitude,
+        "time": convertUnixTime(parseTime(trackpoint.timestamp))
+    }
+}
 function setMaxSpeed(speed) {
     if (speed > MAX_SURF_SPEED) {
         return MAX_SURF_SPEED
@@ -96,7 +89,7 @@ function createSegments (trackPoints) {
 }
     
 
-function initSplit(trackPoints){
+function initSplit(trackPoints){ // splits array based on isWave val
     let segmentArray = []
     let segment = [trackPoints[0]]
     for (let i = 1; i < trackPoints.length; i++) {
@@ -110,7 +103,7 @@ function initSplit(trackPoints){
     return(segmentArray)
 }
 
-function combSegs(segmentArray){    //combine adjacent segments (with same isWave values)
+function combSegs(segmentArray){    //removes small/error segments
     for (let segSize = 1; segSize < MIN_SEGMENT_LENGTH; segSize++){
         for (let i = 1; i < segmentArray.length-1; i++) {
             
@@ -123,10 +116,11 @@ function combSegs(segmentArray){    //combine adjacent segments (with same isWav
             }
         }    
     }
+    // if seg 0 is short & isWave convert to notWave
     return(segmentArray)
 }
     
-function addMeta(segmentArray){
+function addMeta(segmentArray){     // packs and returns segs in geojson w seg meta data
     let segmentArrayFull =[]
     let i = 1 
     let tZero = segmentArray[0][0].start.time
@@ -158,7 +152,7 @@ function addMeta(segmentArray){
 
 // ---------------------------------------------------  M E T A - D A T A  ------------------------------------
 
-function getMetaData(rawJSONData, segments) {
+function getMetaData(rawJSONData, segments, beachDirection) {
     let waveDist = 0
     let paddleDist = 0
     let totalDur = 0
@@ -192,21 +186,26 @@ function getMetaData(rawJSONData, segments) {
         totalDur += seg.properties.duration
     })
     
-
+    //waveDist = parseFloat(waveDist/1000).toPrecision(2)
 
     return{
         "session_name": rawJSONData.session_name,
         "time": timeRead(convertUnixTime(parseTime(rawJSONData[0].timestamp))),
         "dur": totalDur,
         "waveCount": waveCount,
-        "totalDist": waveDist+paddleDist,
-        "paddleDist": paddleDist,
-        "waveDist": waveDist,
+        "totalDist": toKM(waveDist+paddleDist),
+        "paddleDist": toKM(paddleDist),
+        "waveDist": toKM(waveDist),
         "longestWaveDist": longestWaveDist,
-        "longestWaveDur": longestWaveDur,
-        "longestPaddleDist": longestPaddleDist,
-        "longestPaddleDur":longestPaddleDur
+        "longestWaveDur": longestWaveDur,       // not used
+        "longestPaddleDist": longestPaddleDist, // not used
+        "longestPaddleDur": longestPaddleDur,     // not used
+        "beachDirection": parseFloat(beachDirection).toPrecision(3)       // not used
     }
+}
+
+function toKM(float){
+    return(parseFloat(float/1000).toPrecision(2))
 }
 // ------------------------------------------------------------------------------------------------------------
 

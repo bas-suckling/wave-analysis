@@ -1,7 +1,7 @@
 const TO_RAD = Math.PI/180
 const TO_DEG = 180/Math.PI
 const MIN_SURF_SPEED = 8
-const BEACH_ANGLE_CONE = 80
+const BEACH_ANGLE_CONE = 50
 
 function findBeachDirection(bearingArray) {
     let dirX = 0
@@ -21,8 +21,8 @@ function findBeachDirection(bearingArray) {
     return beachDirection
 }
 
-function setIsWave(trackPoints, beachDirection, V) {
-    beachBearingsPack = findBearingType(beachDirection, V)
+function setIsWave(trackPoints, beachDirection) {
+    beachBearingsPack = findBearingType(beachDirection)
 
     for (let i = 0; i < trackPoints.length-1; i++) {
         if (trackPoints[i].speed > MIN_SURF_SPEED){
@@ -38,10 +38,10 @@ function setIsWave(trackPoints, beachDirection, V) {
 
 // find if bearing arc crosses the north 360->0 boundary
 // returns this, arc bounds ("minangle"/"maxAngle"), and the rangetype "insideRange" bool
-function findBearingType(beachDirection,V){
-    var insideRange
-    var minAngle
-    var maxAngle
+function findBearingType(beachDirection){
+    let insideRange
+    let minAngle
+    let maxAngle
     
     if (BEACH_ANGLE_CONE <= beachDirection){
         if (beachDirection <= 360-BEACH_ANGLE_CONE){
@@ -59,11 +59,6 @@ function findBearingType(beachDirection,V){
         maxAngle = beachDirection - BEACH_ANGLE_CONE + 360
     }
 
-    if (V){
-        console.log("BeachDir:",beachDirection, "cone angle:",2*BEACH_ANGLE_CONE,"normal range?",insideRange)
-        console.log("min",minAngle,"max",maxAngle)
-        console.log("")
-    }
     return {"insideRange": insideRange,
             "minAngle": minAngle,
             "maxAngle": maxAngle}
