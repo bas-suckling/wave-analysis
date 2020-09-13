@@ -17,6 +17,7 @@ class Dashboard extends React.Component {
             sessions: [],
             tempData: null,
             currentSession: [],
+            sessionTitle:"Session Analysis",
             currentMeta: {
                 "date":"",
                 "dur": "",
@@ -62,7 +63,8 @@ class Dashboard extends React.Component {
         apiGetSessionData(session.session_id)
             .then((res => this.setState({
                 currentSession: res.currentSession,
-                currentMeta: res.currentMeta
+                currentMeta: res.currentMeta,
+                sessionTitle: session.date
             })))
     }
 
@@ -85,7 +87,7 @@ class Dashboard extends React.Component {
                     <div className="col-8 " id='map-container'>
                         <div>
                             {/* this.state.currentMeta.date - to be added */}
-                            <SessionDataTable sessionTableData={this.state.currentMeta} />
+                            <SessionDataTable sessionTableData={this.state.currentMeta} sessionTitle={this.state.sessionTitle}/>
                             <br />
                         </div>
                         <div >

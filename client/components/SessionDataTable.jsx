@@ -11,7 +11,7 @@ class SessionDataTable extends React.Component {
             <>
                 <div >
                     <br></br>
-                    <h1>Session Analysis</h1>
+                    <h1>{this.props.sessionTitle}</h1>
                     <br></br>
                     
                     <div className="row">
@@ -31,7 +31,7 @@ class SessionDataTable extends React.Component {
                             <h2>{this.props.sessionTableData.paddleDist}km</h2>
                         </div>
                         <div className="col-sm">
-                            <h2><span style={{color:"red"}}>{this.props.sessionTableData.time}</span></h2>
+                            <h2>{this.props.sessionTableData.time}</h2>
                         </div>
                         <div className="col-sm">
                             <h2>{convertSeconds(Math.floor(this.props.sessionTableData.dur)/1000)}</h2>
