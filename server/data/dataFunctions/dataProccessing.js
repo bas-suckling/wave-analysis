@@ -11,20 +11,23 @@ const MIN_SEGMENT_LENGTH = 6
 const SMOOTH_WEIGHT = 4
 const ACCURACY = 0.01
 
+const V = false // verbose
+
 
 //--------------------------------- LOOK HERE 1st ---------------------
 function sessionData(rawJSONData){
-    let basicProcess = processTrackPoints(rawJSONData)                                  // (points)->(pairs); calcs; beachDirArray;
-    let beachDirection = findBeachDirection(basicProcess.waveDirections)                // returns assumed dir of beach from all fast moves
-    let smoothedData = smoothArray(basicProcess.processedTrackPoints, SMOOTH_WEIGHT)    // smooths all track speeds
-    let finalProcess = setIsWave(smoothedData, beachDirection)                          // set pair.isWave bool for all pairs
-    let segments = createSegments (finalProcess)                                        // separate data into segments
-    let meta = getMetaData(rawJSONData,segments)                                        // - not currently used
+    let processed = processTrackPoints(rawJSONData)                         // (points)->(pairs); calcs; beachDirArray;
+    let beachDirection = findBeachDirection(processed.waveDirections)       // returns assumed dir of beach from all fast moves
+    let smoothedData = smoothArray(processed.trackPoints, SMOOTH_WEIGHT)    // smooths all track speeds
+    let finalProcess = setIsWave(smoothedData, beachDirection, V)              // set pair.isWave bool for all pairs
+    let segments = createSegments (finalProcess)                            // separate data into segments
+    let meta = getMetaData(rawJSONData,segments)                            // - not currently used
 
-    //console.log('beach direction is: ', beachDirection)
-    console.log('there are:', segments.length, ' segments')
-    console.log(meta.waveCount, 'of which are waves')
-    console.log("")
+    if(V){
+        console.log('there are:', segments.length, ' segments')
+        console.log(meta.waveCount, 'of which are waves')
+        console.log("")
+    }
 
     return({
         "meta": meta,
@@ -70,8 +73,6 @@ function getMetaData(rawJSONData, segments) {
     
 
 
-    console.log("duration:",totalDur)
-
     return{
         "session_name": rawJSONData.session_name,
         "date": rawJSONData[0].timestamp,
@@ -90,58 +91,43 @@ function getMetaData(rawJSONData, segments) {
 
 
 function processTrackPoints(inputdata) {
-    let processedTrackPoints = []
+    let trackPoints = []
     let waveDirections = []
     
     for (let i = 0; i < inputdata.length - 1 ; i++) {
+        let p1 = {
+            "lat": inputdata[i].latitude,
+            "lon": inputdata[i].longitude,
+            "time": convertUnixTime(parseTime(inputdata[i].timestamp))
+        }
+        let p2 = {
+            "lat": inputdata[i+1].latitude,
+            "lon": inputdata[i+1].longitude,
+            "time": convertUnixTime(parseTime(inputdata[i+1].timestamp))
+        }
 
-        let unixTime1 = convertUnixTime(parseTime(inputdata[i].timestamp))
-        let unixTime2 = convertUnixTime(parseTime(inputdata[i+1].timestamp))
-        let lat1 = inputdata[i].latitude
-        let lng1 = inputdata[i].longitude
-        let lat2 = inputdata[i + 1].latitude
-        let lng2 = inputdata[i + 1].longitude
-        let p1 = {"lat": lat1,"lon": lng1}
-        let p2 = {"lat": lat2,"lon": lng2}
-        
         let distanceIncrement = (geolib.getPreciseDistance(p1, p2, ACCURACY))
-        
         let bearing = Math.floor(geolib.getRhumbLineBearing(p1, p2))
-
-        let speed = KMPH_CONVERT*(geolib.getSpeed({
-            "lat": lat1,
-            "lon": lng1,
-            "time": unixTime1
-            }, 
-            {
-            "lat": lat2,
-            "lon": lng2,
-            "time": unixTime2
-            }
-        ))
-
-
+        let speed = KMPH_CONVERT*(geolib.getSpeed(p1,p2))
         if (speed > MIN_SURF_SPEED) {
             speed = setMaxSpeed(speed)
             waveDirections.push(bearing)
         }
 
-        processedTrackPoints.push({
-            "unixTime1": unixTime1,
-            "unixTime2": unixTime2,
-            "startPoint": p1,
-            "endPoint": p2,
+        trackPoints.push({
+            "start": p1,
+            "end": p2,
             "distance": distanceIncrement,
             "speed": speed,
             "bearing": bearing,
             "isWave": false
         })
     }
-    return {"processedTrackPoints": processedTrackPoints, "waveDirections": waveDirections}
+    return {"trackPoints": trackPoints, "waveDirections": waveDirections}
 }
 
 
-// current bhvr is to join short segs to prev
+
 function createSegments (trackPointsArray) {
     // consider split into 3 parts...
     //    part1 = initialSplit(input)
@@ -166,12 +152,14 @@ function createSegments (trackPointsArray) {
 
 
     // ---- funct combine adjacent segments (with same isWave values)
-    console.log("Begin removing small segs, min dur set to",MIN_SEGMENT_LENGTH)
-    console.log("begining with array of len:",segmentArray.length)
+    if (V){
+        console.log("Begin removing small segs, min dur set to",MIN_SEGMENT_LENGTH)
+        console.log("begining with array of len:",segmentArray.length)
+    }
     for (let segSize = 1; segSize < MIN_SEGMENT_LENGTH; segSize++){
         let elimCounter = 0 // v
         for (let i = 1; i < segmentArray.length-1; i++) {
-            let segDur = (segmentArray[i][segmentArray[i].length-1].unixTime2-segmentArray[i][0].unixTime1)/1000
+            let segDur = (segmentArray[i][segmentArray[i].length-1].end.time-segmentArray[i][0].start.time)/1000
         
             if (segDur == segSize){  // combine with segs to either side
                 segmentArray[i-1]=segmentArray[i-1].concat(segmentArray[i])     // add short seg to prev
@@ -181,10 +169,15 @@ function createSegments (trackPointsArray) {
                 elimCounter++ // v
             }
         }
-        console.log(elimCounter,"segments of len", segSize, "have been removed")
+        if (V){
+            console.log(elimCounter,"segments of len", segSize, "have been removed    ",-2*elimCounter)
+
+        }
     } 
-    console.log("elims complete array down to size:", segmentArray.length)
-    console.log("")
+    if (V){
+        console.log("elims complete array down to size:", segmentArray.length)
+        console.log("")
+    }
     // ---- end funct combine adjacent segments (with same isWave values)
 
     
@@ -193,23 +186,23 @@ function createSegments (trackPointsArray) {
     // ---- funct build return array
     let segmentArrayFull =[]
     let i = 1 
-    let tZero = segmentArray[0][0].unixTime1
+    let tZero = segmentArray[0][0].start.time
     
     segmentArray.forEach(seg=>{
         var dist = 0
-        var dur = seg[seg.length-1].unixTime2-seg[0].unixTime1
-        var path = [[parseFloat(seg[0].startPoint.lat) , parseFloat(seg[0].startPoint.lon) ]]
+        var dur = seg[seg.length-1].end.time-seg[0].start.time
+        var path = [[parseFloat(seg[0].start.lat) , parseFloat(seg[0].start.lon) ]]
         seg.forEach (part=> {
             path.push([
-                parseFloat(part.endPoint.lat), 
-                parseFloat(part.endPoint.lon)
+                parseFloat(part.end.lat), 
+                parseFloat(part.end.lon)
             ])
             dist+=part.distance
         })
         let props = {
             "index": Math.ceil(i/2),
             "isWave": seg[0].isWave,
-            "tStamp": seg[0].unixTime1-tZero,
+            "tStamp": seg[0].start.time-tZero,
             "duration": Math.floor(dur),
             "dist": Math.floor(dist),
         }

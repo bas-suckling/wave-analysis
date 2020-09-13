@@ -7,8 +7,8 @@ import { apiGetSessionsList, apiGetSessionData } from '../api/sessions'
 
 //remove?
 //import { isPointInLine } from 'geolib'
-import WaveGraph from './WaveGraph'
-import surfData from '../../server/data/processedData/2020-08-01_processed.json'  // only used by old graph
+//import WaveGraph from './WaveGraph'
+//import surfData from '../../server/data/processedData/2020-08-01_processed.json'  // only used by old graph
 
 class Dashboard extends React.Component {
     constructor(props) {
@@ -67,21 +67,6 @@ class Dashboard extends React.Component {
     }
 
     render() {
-        // let waves = []
-        // let timeData = []
-        // let waveLine = []
-
-        // surfData.forEach(function (element) {
-        //     waves.push(element.speed)
-        //     timeData.push(element.elapsedTime)
-        //     waveLine.push(8)
-        // })
-
-        // let sessionData = {
-        //     waves: waves,
-        //     timeData: timeData,
-        //     waveLine: waveLine,
-        // } 
 
         return (
             <>

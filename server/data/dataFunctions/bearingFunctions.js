@@ -24,22 +24,13 @@ function findBeachDirection(bearingArray) {
     return beachDirection
 }
 
-function setIsWave(trackPoints, beachDirection) {
-    beachBearingsPack = findBearingType(beachDirection)
-    // if (beachBearingsPack.insideRange){
-    //     console.log("setting isWave based on:",beachBearingsPack.minAngle,"<a<",beachBearingsPack.maxAngle)
-    // }else{
-    //     console.log("setting isWave based on: a<",beachBearingsPack.minAngle," or ",beachBearingsPack.maxAngle,"<a")
-    // }
-
+function setIsWave(trackPoints, beachDirection, V) {
+    beachBearingsPack = findBearingType(beachDirection, V)
 
     for (let i = 0; i < trackPoints.length-1; i++) {
         if (trackPoints[i].speed > MIN_SURF_SPEED){
             if (bearingCheck(trackPoints[i].bearing, beachBearingsPack)){
-                // console.log(trackPoints[i].bearing, "passed")
                 trackPoints[i].isWave = true
-            // }else{
-            //     console.log(trackPoints[i].bearing, "failed") 
             }
         }
     }
@@ -49,8 +40,8 @@ function setIsWave(trackPoints, beachDirection) {
 
 
 // find if bearing arc crosses the north 360->0 boundary
-// returns this arc bounds ("minangle"/"maxAngle") and the rangetype "insideRange" bool
-function findBearingType(beachDirection){
+// returns this, arc bounds ("minangle"/"maxAngle"), and the rangetype "insideRange" bool
+function findBearingType(beachDirection,V){
     var insideRange
     var minAngle
     var maxAngle
@@ -71,9 +62,11 @@ function findBearingType(beachDirection){
         maxAngle = beachDirection - BEACH_ANGLE_CONE + 360
     }
 
-    console.log("BeachDir:",beachDirection, "cone angle:",2*BEACH_ANGLE_CONE,"normal range?",insideRange)
-    console.log("min",minAngle,"max",maxAngle)
-    console.log("")
+    if (V){
+        console.log("BeachDir:",beachDirection, "cone angle:",2*BEACH_ANGLE_CONE,"normal range?",insideRange)
+        console.log("min",minAngle,"max",maxAngle)
+        console.log("")
+    }
     return {"insideRange": insideRange,
             "minAngle": minAngle,
             "maxAngle": maxAngle}
