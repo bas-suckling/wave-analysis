@@ -15,11 +15,8 @@ function findBeachDirection(bearingArray) {
     })
 
     beachDirection = Math.atan2(dirX,dirY) * TO_DEG
-    while (beachDirection < 0){
+    if (beachDirection < 0){
         beachDirection += 360
-    }
-    while (beachDirection > 360){
-        beachDirection -= 360
     }
     return beachDirection
 }

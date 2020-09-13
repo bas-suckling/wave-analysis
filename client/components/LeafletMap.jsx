@@ -6,12 +6,16 @@ import WaveDataTable from './WaveDataTable'
 import { convertSeconds } from '../helpers/timeFormat'
 
 const OPACITY = 1
-const WEIGHT = 2
+const PADDLEWEIGHT = 1.5
+const WAVEWEIGHT = 3
 const RADIUS = 1
 // let WAVECOLOR = '#22007c'
-const WAVECOLOR = 'darkBlue'
-const PADDLECOLOR = '#0d1b1e'
-
+const WAVECOLOR = '#2c3e50'
+// const WAVECOLOR = 'darkBlue'
+// const PADDLECOLOR = '#0d1b1e'
+// const PADDLECOLOR = 'white'
+// const WAVECOLOR = 'lightSkyBlue'
+const PADDLECOLOR = '#252525'
 
 let play = new Icon ({
     iconUrl: "./icons/play.svg",
@@ -39,6 +43,7 @@ class LeafletMap extends React.Component {
         super(props)
 
         let weightArray = []
+
         let colorArray = []
         let opacityArray = []
         let radiusArray = []
@@ -46,13 +51,14 @@ class LeafletMap extends React.Component {
 
         for (let j = 0; j < sessionTrackPoints.length; j++) {
             opacityArray.push(OPACITY)
-            weightArray.push(WEIGHT)
             radiusArray.push(RADIUS)
             if (sessionTrackPoints[j].properties.isWave) {
                 colorArray.push(WAVECOLOR)
+                weightArray.push(WAVEWEIGHT)
 
             } else {
                 colorArray.push(PADDLECOLOR)
+                weightArray.push(PADDLEWEIGHT)
             }
         }
 
@@ -94,6 +100,7 @@ class LeafletMap extends React.Component {
         for (let j = 0; j < opacityArray.length; j++) {
             opacityArray[j] = OPACITY;
         }
+        //if
         weightArray[i] = WEIGHT
         radiusArray[i] = RADIUS
         this.setState(
@@ -180,7 +187,8 @@ class LeafletMap extends React.Component {
                                             <Circle
                                                 zIndex={4}
                                                 center={segment.geometry.coordinates[0]}
-                                                fillOpacity={1}
+                                                opacity={this.state.opacity[i]}
+                                                fillOpacity={this.state.opacity[i]}
                                                 fillColor="white"
                                                 color={WAVECOLOR}
                                                 radius={this.state.radius[i]} 
@@ -189,7 +197,8 @@ class LeafletMap extends React.Component {
                                             <Circle
                                                 zIndex={4}
                                                 center={segment.geometry.coordinates[segment.geometry.coordinates.length-1]}
-                                                fillOpacity={1}
+                                                opacity={this.state.opacity[i]}
+                                                fillOpacity={this.state.opacity[i]}
                                                 fillColor="White"
                                                 color={WAVECOLOR}
                                                 radius={this.state.radius[i]}

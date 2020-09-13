@@ -50,7 +50,7 @@ class Dashboard extends React.Component {
                 sessions: res
             }))
 
-        apiGetSessionData(2)
+        apiGetSessionData(7)
             .then(res => this.setState({
                 currentSession: res.currentSession,
                 currentMeta: res.currentMeta

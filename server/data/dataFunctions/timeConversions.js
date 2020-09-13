@@ -34,4 +34,5 @@ function timeRead(unix){
 module.exports = {
     convertUnixTime,
     parseTime,
+    timeRead
 }
