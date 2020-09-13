@@ -19,7 +19,7 @@ function sessionData(rawJSONData){
     let smoothedData = smoothArray(processed.trackPoints, SMOOTH_WEIGHT)    // smooths all track speeds
     let finalProcess = setIsWave(smoothedData, beachDirection, V)           // set pair.isWave bool for all pairs
     let segments = createSegments (finalProcess)                            // separate data into segments
-    let meta = getMetaData(rawJSONData,segments)                            // - not currently used
+    let meta = getMetaData(rawJSONData,segments)                            //
     
 
     if(V){

@@ -16,15 +16,16 @@ body {
 }
 
 #map-container {
-    height:100vh
+    height:100%
 }
 
 #mapid { 
     width: 100%;
-    height: 80vh;                        
+    height: 78vh;                        
 }
 
 .logo {
+    padding: 20px;
     width:100%;
     -webkit-transition: -webkit-transform 2.5s ease-in-out;
             transition:         transform 2.5s ease-in-out;
@@ -59,12 +60,10 @@ li:hover {
     line-height:24px;
 }
 
-
 .custom-popup .leaflet-popup-tip {
     background:#2c3e50;
 }
   
-
 .session-link:hover {
     cursor: pointer;
     text-decoration: underline;

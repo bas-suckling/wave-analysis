@@ -17,12 +17,12 @@ const WAVECOLOR = '#2c3e50'
 // const WAVECOLOR = 'lightSkyBlue'
 const PADDLECOLOR = '#252525'
 
-let play = new Icon ({
+let play = new Icon ({              // should be const?
     iconUrl: "./icons/play.svg",
     iconSize: [25, 25]
 })
 
-let stop = new Icon ({
+let stop = new Icon ({                 // should be const?
     iconUrl: "./icons/stop.svg",
     iconSize: [20, 20]
 })
@@ -43,11 +43,10 @@ class LeafletMap extends React.Component {
         super(props)
 
         let weightArray = []
-
         let colorArray = []
         let opacityArray = []
         let radiusArray = []
-        let sessionTrackPoints = this.props.sessionTrackPoints
+        let sessionTrackPoints = this.props.sessionTrackPoints    //changeName to "segments"
 
         for (let j = 0; j < sessionTrackPoints.length; j++) {
             opacityArray.push(OPACITY)
@@ -71,6 +70,10 @@ class LeafletMap extends React.Component {
         }
     }
 
+
+    // defaults
+    // - OPACITY = 1        - PADDLEWEIGHT = 1.5        - WAVEWEIGHT = 3
+    // - RADIUS = 1         - WAVECOLOR = '#2c3e50'      - PADDLECOLOR = '#252525'
     onMouseOver = (i, segment) => {
         let weightArray = this.state.weight
         let opacityArray = this.state.opacity
@@ -80,7 +83,7 @@ class LeafletMap extends React.Component {
             opacityArray[j] = 0.5;
         }
         opacityArray[i] = 1
-        weightArray[i] = 4
+        weightArray[i] *= 2
         radiusArray[i] = 1.5
         this.setState(
             {
@@ -99,10 +102,9 @@ class LeafletMap extends React.Component {
 
         for (let j = 0; j < opacityArray.length; j++) {
             opacityArray[j] = OPACITY;
+            radiusArray[j] = RADIUS
         }
-        //if
-        weightArray[i] = WEIGHT
-        radiusArray[i] = RADIUS
+        weightArray[i] /= 2
         this.setState(
             {
                 weight: weightArray,
