@@ -2,16 +2,16 @@ import React, { useState } from 'react'
 import { Map, TileLayer, Polyline, Popup, ScaleControl, LayerGroup, LayersControl, Circle, Marker } from 'react-leaflet'
 const { BaseLayer, Overlay } = LayersControl
 import { Icon } from "leaflet"
-import WaveDataTable from './WaveDataTable'
-import { convertSeconds } from '../helpers/timeFormat'
-import {mapStyles, createInitialArrays, makeTransparent, updateArrayElement} from '../helpers/mapStyles'
+import { mapStyles, createInitialArrays, makeTransparent, updateArrayElement } from '../helpers/mapStyles'
+import {convertSeconds} from '../helpers/timeFormat'
+// import WaveDataTable from './WaveDataTable'
 
 const LeafletMap = (props) => {
 
     let initialArrays = createInitialArrays(props.segments)
 
     const [currentStyle, setStyle] = useState(initialArrays)
-    const [currentSegment, setCurrentSegment] = useState([])
+    // const [currentSegment, setCurrentSegment] = useState([])
 
     const onMouseOver = (i, segment) => {
         // setCurrentSegment(segment)
@@ -20,7 +20,7 @@ const LeafletMap = (props) => {
             weightArray: updateArrayElement(currentStyle.weightArray, i, 2),
             radiusArray: updateArrayElement(currentStyle.radiusArray, i, 1.5),
             ...currentStyle
-             })
+        })
     }
 
     const onMouseOut = () => {
@@ -75,9 +75,9 @@ const LeafletMap = (props) => {
                                         >
                                             <Popup className="custom-popup">
                                                 {(segment.properties.isWave) ? "Wave" : "Paddle"} {segment.properties.index.toString()} <br />
-                                                    Distance: {segment.properties.dist.toString()} meters<br />
-                                                    Duration: {(segment.properties.duration / 1000).toString()} seconds<br />
-                                                    Time Stamp: {convertSeconds(Math.floor(segment.properties.tStamp / 1000)).toString()}
+                                                Distance: {segment.properties.dist.toString()} meters<br />
+                                                Duration: {(segment.properties.duration / 1000).toString()} seconds<br />
+                                                Time Stamp: {convertSeconds(Math.floor(segment.properties.tStamp / 1000)).toString()}
                                             </Popup>
                                         </Polyline>
                                     )
@@ -150,7 +150,6 @@ const LeafletMap = (props) => {
                     </Overlay>
                 </LayersControl>
             </Map>
-
             {/* <WaveDataTable singleWaveData={currentSegment} /> */}
             {/* <div>Icons made by <a href="https://www.flaticon.com/authors/roundicons" title="Roundicons">Roundicons</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div> */}
         </>

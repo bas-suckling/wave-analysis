@@ -1,6 +1,5 @@
 import React from 'react'
 import ChartistGraph from 'react-chartist';
-
 import ChartistAxisTitle from 'chartist-plugin-axistitle'
 import ChartistTooltip from 'chartist-plugin-tooltips-updated'
 import Chartist from 'chartist'

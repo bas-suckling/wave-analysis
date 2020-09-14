@@ -13,16 +13,16 @@ function SessionDataTable (props) {
                             <h2>{props.sessionTableData.waveCount}</h2>
                         </div>
                         <div className="col-sm">
-                            <h2>{props.sessionTableData.longestWaveDist.dist}m</h2>
+                            <h2>{props.sessionTableData.longestWaveDist.dist} m</h2>
                         </div>
                         <div className="col-sm">
-                            <h2>{props.sessionTableData.totalDist}km</h2>
+                            <h2>{props.sessionTableData.totalDist} km</h2>
                         </div>
                         <div className="col-sm">
-                            <h2>{props.sessionTableData.waveDist}km</h2>
+                            <h2>{props.sessionTableData.waveDist} km</h2>
                         </div>
                         <div className="col-sm">
-                            <h2>{props.sessionTableData.paddleDist}km</h2>
+                            <h2>{props.sessionTableData.paddleDist} km</h2>
                         </div>
                         <div className="col-sm">
                             <h2>{props.sessionTableData.time}</h2>
