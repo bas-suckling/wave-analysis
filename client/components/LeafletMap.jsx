@@ -13,8 +13,6 @@ const LeafletMap = (props) => {
     const [currentStyle, setStyle] = useState(initialArrays)
     const [currentSegment, setCurrentSegment] = useState([])
 
-    
-
     const onMouseOver = (i, segment) => {
         // setCurrentSegment(segment)
         setStyle({
