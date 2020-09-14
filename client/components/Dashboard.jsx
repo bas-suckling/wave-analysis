@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import SessionDataTable from './SessionDataTable'
 import LeafletMap from './LeafletMap'
 import Footer from './Footer'
@@ -9,46 +9,48 @@ import { apiGetSessionsList, apiGetSessionData } from '../api/sessions'
 //import WaveGraph from './WaveGraph'
 //import surfData from '../../server/data/processedData/2020-08-01_processed.json'  // only used by old graph
 
-class Dashboard extends React.Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            sessions: [],
-            tempData: null,
-            currentSession: [],
-            sessionTitle: "Session Analysis",
-            currentMeta: []
-        }
-    }
+const Dashboard = () => {
+    
+        // this.state = {
+        //     sessions: [],
+        //     tempData: null,
+        //     currentSession: [],
+        //     sessionTitle: "Session Analysis",
+        //     currentMeta: []
+        // }
 
-    componentDidMount() {
+    const [sessions, setSessions] = useState([])
+    const [currentSession, setCurrentSession] = useState([])
+    const [sessionTitle, setSessionTitle] = useState(["Session Analysis"])
+
+    useEffect(() => {
         apiGetSessionsList()
-            .then(res => this.setState({
-                sessions: res
-            }))
+            .then(res => setSessions(res))
+            .then(           
 
         apiGetSessionData(7)
-            .then(res => this.setState({
-                currentSession: res.currentSession,
-                currentMeta: res.currentMeta
-            }))
-    }
+            .then(res => {
+                setCurrentSession({
+                    sessionData: res.currentSession,
+                    metaData: res.currentMeta,
+                })                   
+            })
+    )}, [])
 
-
-    handleClick(session) {
+    const handleClick = session => {
         apiGetSessionData(session.session_id)
-            .then((res => this.setState({
-                currentSession: res.currentSession,
-                currentMeta: res.currentMeta,
-                sessionTitle: session.date
-            })))
+            .then((res => setCurrentSession({
+                sessionData: res.currentSession,
+                metaData: res.currentMeta,
+            })  
+        ))
+        .then(setSessionTitle(session.date))
     }
 
-    render() {
 
         return (
             <>
-                {(this.state.currentSession.length < 2) ?
+                {(currentSession.length < 2) ?
                     <div className="loading-spinner">
                         <h4>Data loading...</h4>
                         <div className="spinner-border text-light" style={{ width: "3rem", height: "3rem" }} role="status">
@@ -62,17 +64,17 @@ class Dashboard extends React.Component {
                                 <div className={"container"}>
                                     <img className="logo" src="./images/BFBSA_Logo_White.png" alt="logo" />
                                     <h1 className="heading">Sessions</h1>
-                                    {this.state.sessions.map((session, i) => {
-                                        return <h6 key={i} className={"session-link"} onClick={() => this.handleClick(session)}>{session.date}</h6>
+                                    {sessions.map((session, i) => {
+                                        return <h6 key={i} className={"session-link"} onClick={() => handleClick(session)}>{session.date}</h6>
                                     })}
                                 </div>
                             </div>
                             <div className="col-8 " id='map-container'>
                                 <div>
-                                    <SessionDataTable sessionTableData={this.state.currentMeta} sessionTitle={this.state.sessionTitle} />
+                                    <SessionDataTable sessionTableData={currentSession.metaData} sessionTitle={sessionTitle} />
                                 </div>
                                 <div>
-                                    <LeafletMap segments={this.state.currentSession} />
+                                    <LeafletMap segments={currentSession.sessionData} />
                                 </div>
                                 <div>
                                     <Footer />
@@ -86,6 +88,5 @@ class Dashboard extends React.Component {
             </>
         )
     }
-}
 
 export default Dashboard
