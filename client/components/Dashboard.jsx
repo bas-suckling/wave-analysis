@@ -18,30 +18,6 @@ class Dashboard extends React.Component {
             currentSession: [],
             sessionTitle: "Session Analysis",
             currentMeta: []
-            // currentMeta: {
-            //     "date":"",
-            //     "dur": "",
-            //     "waveCount": "",
-            //     "totalDist": "",
-            //     "paddleDist": "",
-            //     "waveDist": "",
-            //     "longestWaveDist": {
-            //         "i": "",
-            //         "dist": ""
-            //     },
-            //     "longestWaveDur": {
-            //         "i": "",
-            //         "dur": ""
-            //     },
-            //     "longestPaddleDist": {
-            //         "i": "",
-            //         "dist": ""
-            //     },
-            //     "longestPaddleDur": {
-            //         "i": "",
-            //         "dur": ""
-            //     }
-            // }
         }
     }
 
