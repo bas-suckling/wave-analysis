@@ -1,43 +1,38 @@
 import React from 'react'
 import {convertSeconds} from '../helpers/timeFormat'
 
-class SessionDataTable extends React.Component {
-    constructor(props) {
-        super(props)
-    }
-    render() {
-
-        return (
+function SessionDataTable (props) {
+         return (
             <>
                 <div >
                     <br></br>
-                    <h1>{this.props.sessionTitle}</h1>
+                    <h1>{props.sessionTitle}</h1>
                     <br></br>
                     
                     <div className="row">
                         <div className="col-sm">
-                            <h2>{this.props.sessionTableData.waveCount}</h2>
+                            <h2>{props.sessionTableData.waveCount}</h2>
                         </div>
                         <div className="col-sm">
-                            <h2>{this.props.sessionTableData.longestWaveDist.dist}m</h2>
+                            <h2>{props.sessionTableData.longestWaveDist.dist}m</h2>
                         </div>
                         <div className="col-sm">
-                            <h2>{this.props.sessionTableData.totalDist}km</h2>
+                            <h2>{props.sessionTableData.totalDist}km</h2>
                         </div>
                         <div className="col-sm">
-                            <h2>{this.props.sessionTableData.waveDist}km</h2>
+                            <h2>{props.sessionTableData.waveDist}km</h2>
                         </div>
                         <div className="col-sm">
-                            <h2>{this.props.sessionTableData.paddleDist}km</h2>
+                            <h2>{props.sessionTableData.paddleDist}km</h2>
                         </div>
                         <div className="col-sm">
-                            <h2>{this.props.sessionTableData.time}</h2>
+                            <h2>{props.sessionTableData.time}</h2>
                         </div>
                         <div className="col-sm">
-                            <h2>{convertSeconds(Math.floor(this.props.sessionTableData.dur)/1000)}</h2>
+                            <h2>{convertSeconds(Math.floor(props.sessionTableData.dur)/1000)}</h2>
                         </div>
                         <div className="col-sm">
-                            <h2>{this.props.sessionTableData.beachDirection} deg</h2>
+                            <h2>{props.sessionTableData.beachDirection} deg</h2>
                         </div>
                     </div>
                     <div className="row">
@@ -70,7 +65,6 @@ class SessionDataTable extends React.Component {
 
             </>
         )
-    }
 }
 
 export default SessionDataTable

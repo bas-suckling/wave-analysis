@@ -9,20 +9,15 @@ const OPACITY = 1
 const PADDLEWEIGHT = 1.5
 const WAVEWEIGHT = 3
 const RADIUS = 1
-// let WAVECOLOR = '#22007c'
 const WAVECOLOR = '#2c3e50'
-// const WAVECOLOR = 'darkBlue'
-// const PADDLECOLOR = '#0d1b1e'
-// const PADDLECOLOR = 'white'
-// const WAVECOLOR = 'lightSkyBlue'
 const PADDLECOLOR = '#252525'
 
-let play = new Icon ({              // should be const?
+let startIcon = new Icon ({              // should be const?
     iconUrl: "./icons/play.svg",
     iconSize: [25, 25]
 })
 
-let stop = new Icon ({                 // should be const?
+let finishIcon = new Icon ({                 // should be const?
     iconUrl: "./icons/stop.svg",
     iconSize: [20, 20]
 })
@@ -168,10 +163,9 @@ class LeafletMap extends React.Component {
                                 {this.props.sessionTrackPoints.map((segment, i) => {
                                     if (segment.properties.isWave) {
                                         return (
-                                            <div>
+                                            <div key={i}>
                                             <Polyline
                                                 zIndex={3}
-                                                key={i}
                                                 positions={segment.geometry.coordinates}
                                                 color={this.state.color[i]}
                                                 weight={this.state.weight[i]}
@@ -218,11 +212,11 @@ class LeafletMap extends React.Component {
                             <LayerGroup>
                                 <Marker
                                     position={this.props.sessionTrackPoints[0].geometry.coordinates[0]}
-                                    icon={play}
+                                    icon={startIcon}
                                 />
                                 <Marker
                                     position={this.props.sessionTrackPoints[this.props.sessionTrackPoints.length - 1].geometry.coordinates[this.props.sessionTrackPoints[this.props.sessionTrackPoints.length - 1].geometry.coordinates.length - 1]}
-                                    icon={stop}
+                                    icon={finishIcon}
                                 />
                             </LayerGroup>
                         </Overlay>
