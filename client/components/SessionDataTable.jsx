@@ -4,11 +4,10 @@ import {convertSeconds} from '../helpers/timeFormat'
 function SessionDataTable (props) {
          return (
             <>
-                <div >
+                <div>
                     <br></br>
                     <h1>{props.sessionTitle}</h1>
                     <br></br>
-                    
                     <div className="row">
                         <div className="col-sm">
                             <h2>{props.sessionTableData.waveCount}</h2>
@@ -33,7 +32,8 @@ function SessionDataTable (props) {
                         </div>
                         <div className="col-sm">
                             <h2>{props.sessionTableData.beachDirection} deg</h2>
-                        </div>
+                        </div> 
+                        <div/>
                     </div>
                     <div className="row">
                         <div className="col-sm">
@@ -61,8 +61,7 @@ function SessionDataTable (props) {
                             <p>Beach Direction</p>
                         </div>
                     </div>
-                </div>
-
+                </div> 
             </>
         )
 }

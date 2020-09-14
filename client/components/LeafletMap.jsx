@@ -4,33 +4,7 @@ import {Icon} from "leaflet"
 const { BaseLayer, Overlay } = LayersControl
 import WaveDataTable from './WaveDataTable'
 import { convertSeconds } from '../helpers/timeFormat'
-
-const OPACITY = 1
-const PADDLEWEIGHT = 1.5
-const WAVEWEIGHT = 3
-const RADIUS = 1
-const WAVECOLOR = '#2c3e50'
-const PADDLECOLOR = '#252525'
-
-let startIcon = new Icon ({              // should be const?
-    iconUrl: "./icons/play.svg",
-    iconSize: [25, 25]
-})
-
-let finishIcon = new Icon ({                 // should be const?
-    iconUrl: "./icons/stop.svg",
-    iconSize: [20, 20]
-})
-
-const NULL_WAVE = {
-    "properties": {
-        "index": "",
-        "isWave": "",
-        "tStamp": "",
-        "duration": "",
-        "dist": ""
-    }
-}
+import mapStyles from '../helpers/mapStyles'
 
 class LeafletMap extends React.Component {
 
@@ -41,18 +15,18 @@ class LeafletMap extends React.Component {
         let colorArray = []
         let opacityArray = []
         let radiusArray = []
-        let sessionTrackPoints = this.props.sessionTrackPoints    //changeName to "segments"
+        let segments = this.props.segments
 
-        for (let j = 0; j < sessionTrackPoints.length; j++) {
-            opacityArray.push(OPACITY)
-            radiusArray.push(RADIUS)
-            if (sessionTrackPoints[j].properties.isWave) {
-                colorArray.push(WAVECOLOR)
-                weightArray.push(WAVEWEIGHT)
+        for (let j = 0; j < segments.length; j++) {
+            opacityArray.push(mapStyles.OPACITY)
+            radiusArray.push(mapStyles.RADIUS)
+            if (segments[j].properties.isWave) {
+                colorArray.push(mapStyles.WAVECOLOR)
+                weightArray.push(mapStyles.WAVEWEIGHT)
 
             } else {
-                colorArray.push(PADDLECOLOR)
-                weightArray.push(PADDLEWEIGHT)
+                colorArray.push(mapStyles.PADDLECOLOR)
+                weightArray.push(mapStyles.PADDLEWEIGHT)
             }
         }
 
@@ -61,14 +35,10 @@ class LeafletMap extends React.Component {
             color: colorArray,
             opacity: opacityArray,
             radius: radiusArray,
-            currentSegment: NULL_WAVE
+            currentSegment: ""
         }
     }
 
-
-    // defaults
-    // - OPACITY = 1        - PADDLEWEIGHT = 1.5        - WAVEWEIGHT = 3
-    // - RADIUS = 1         - WAVECOLOR = '#2c3e50'      - PADDLECOLOR = '#252525'
     onMouseOver = (i, segment) => {
         let weightArray = this.state.weight
         let opacityArray = this.state.opacity
@@ -96,8 +66,8 @@ class LeafletMap extends React.Component {
         let radiusArray = this.state.radius
 
         for (let j = 0; j < opacityArray.length; j++) {
-            opacityArray[j] = OPACITY;
-            radiusArray[j] = RADIUS
+            opacityArray[j] = mapStyles.OPACITY;
+            radiusArray[j] = mapStyles.RADIUS
         }
         weightArray[i] /= 2
         this.setState(
@@ -109,9 +79,20 @@ class LeafletMap extends React.Component {
         )
     }
     render() {
+
+        const startIcon = new Icon ({            
+            iconUrl: "./icons/play.svg",
+            iconSize: [25, 25]
+        })
+        
+        const finishIcon = new Icon ({                
+            iconUrl: "./icons/stop.svg",
+            iconSize: [20, 20]
+        })
+
         return (
             <>
-                <Map id="mapid" center={this.props.sessionTrackPoints[Math.floor(this.props.sessionTrackPoints.length / 2)].geometry.coordinates[Math.floor(this.props.sessionTrackPoints[Math.floor(this.props.sessionTrackPoints.length / 2)].geometry.coordinates.length / 2)]} zoom={16.5} zoomSnap={0.25}>
+                <Map id="mapid" center={this.props.segments[Math.floor(this.props.segments.length / 2)].geometry.coordinates[Math.floor(this.props.segments[Math.floor(this.props.segments.length / 2)].geometry.coordinates.length / 2)]} zoom={16.5} zoomSnap={0.25}>
                     <LayersControl position="topright">
                         <BaseLayer key={1} checked name="Satellite">
                             <TileLayer
@@ -131,7 +112,7 @@ class LeafletMap extends React.Component {
                         <ScaleControl updateWhenIdle={true} />
                         <Overlay name="Paddling">
                             <LayerGroup>
-                                {this.props.sessionTrackPoints.map((segment, i) => {
+                                {this.props.segments.map((segment, i) => {
                                     if (!segment.properties.isWave) {
                                         return (
                                             <Polyline
@@ -160,7 +141,7 @@ class LeafletMap extends React.Component {
                         </Overlay>
                         <Overlay checked name="Waves">
                             <LayerGroup>
-                                {this.props.sessionTrackPoints.map((segment, i) => {
+                                {this.props.segments.map((segment, i) => {
                                     if (segment.properties.isWave) {
                                         return (
                                             <div key={i}>
@@ -186,7 +167,7 @@ class LeafletMap extends React.Component {
                                                 opacity={this.state.opacity[i]}
                                                 fillOpacity={this.state.opacity[i]}
                                                 fillColor="white"
-                                                color={WAVECOLOR}
+                                                color={mapStyles.WAVECOLOR}
                                                 radius={this.state.radius[i]} 
                                                 onMouseOver={e => this.onMouseOver(i, segment)}
                                                 onMouseOut={e => this.onMouseOut(i)}/>
@@ -196,7 +177,7 @@ class LeafletMap extends React.Component {
                                                 opacity={this.state.opacity[i]}
                                                 fillOpacity={this.state.opacity[i]}
                                                 fillColor="White"
-                                                color={WAVECOLOR}
+                                                color={mapStyles.WAVECOLOR}
                                                 radius={this.state.radius[i]}
                                                 onMouseOver={e => this.onMouseOver(i, segment)}
                                                 onMouseOut={e => this.onMouseOut(i)} 
@@ -211,11 +192,11 @@ class LeafletMap extends React.Component {
                         <Overlay name="Start/Finish">
                             <LayerGroup>
                                 <Marker
-                                    position={this.props.sessionTrackPoints[0].geometry.coordinates[0]}
+                                    position={this.props.segments[0].geometry.coordinates[0]}
                                     icon={startIcon}
                                 />
                                 <Marker
-                                    position={this.props.sessionTrackPoints[this.props.sessionTrackPoints.length - 1].geometry.coordinates[this.props.sessionTrackPoints[this.props.sessionTrackPoints.length - 1].geometry.coordinates.length - 1]}
+                                    position={this.props.segments[this.props.segments.length - 1].geometry.coordinates[this.props.segments[this.props.segments.length - 1].geometry.coordinates.length - 1]}
                                     icon={finishIcon}
                                 />
                             </LayerGroup>

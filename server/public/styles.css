@@ -623,7 +623,7 @@ body {
   color: whitesmoke; }
 
 #map-container {
-  height: 100%; }
+  height: 100vh; }
 
 #mapid {
   width: 100%;
@@ -649,6 +649,12 @@ li:hover {
   padding-top: 2%;
   padding-bottom: 2%;
   text-align: center; }
+
+.loading-spinner {
+  margin: auto;
+  width: 50%;
+  text-align: center;
+  padding-top: 45vh; }
 
 .custom-popup .leaflet-popup-content-wrapper {
   background: #2c3e50;
