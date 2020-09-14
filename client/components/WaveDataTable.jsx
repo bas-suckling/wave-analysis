@@ -1,18 +1,12 @@
 import React from 'react'
 import {convertSeconds} from '../helpers/timeFormat'
 
-class WaveDataTable extends React.Component {
-
-    constructor(props) {
-        super(props)
-    }
-    render() {
-       
+const WaveDataTable = (props) => {      
         
-    let data = this.props.singleWaveData
+    let data = props.singleWaveData
         
         return (
-            <>
+            <>  {(data != []) ?
                 <div className={"container-fluid"}>
                 <table>
                     <thead>
@@ -39,11 +33,14 @@ class WaveDataTable extends React.Component {
                         </tr>
                     </tbody>
                 </table>
-                </div>
+                </div> 
+                :
+                <h1>temp</h1>
+            }
       
     </>
         )
-    }
+    
 }
 
 export default WaveDataTable
