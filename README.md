@@ -1,34 +1,32 @@
 # Wave Analysis - Analysing GPS (.gpx) data for surf sessions.
 
-todo...
-- database
-    - session select
-    - user meta data 
-- timeline
-    - redux / context provider
-
-- react hooks? (learn)
-
-- refactor segment
-
-
-
+TO DO LIST :
+- postgres database
+    - knex or sequelize
+    - postGIS
+- convert stateful class based components to functional with hooks
+- redux / context provider
+- timeline component
+- authentication with passport.js
+- optimise front end for mobile / tablet
+- test suite
+- file uploader
+- integration with Garmin or Strava
 
 ### Usage
 Clone repo to your local machine
-
-enter the `wave analysis` directory
+Navigate to the `wave analysis` directory
 At the command line type: `npm install` 
+Run the application using `npm run dev` and navigate to http://localhost:3000/
 
-    To create/update data files,,, 
-    -add a gpx file to the data directory "sever/data/rawData/[fileName.gpx]
-    - NB at current stage of devel...
-    - - Filename must be of from YYYY-MM-DD
-    - - only accepts 1 session perday 
-    -update input ref ( the directory refs in wave 'sever/dataFunctions/index.js' ????)
-    -At the command line (from the sever/data/dataFunctions dir) type: `node index.js`
-
-To check out the data displayed for an example session, run the server using `npm run dev` and navigate to http://localhost:3000/
+### Create/update data files
+- add a gpx file to the data directory "sever/data/rawData/[fileName.gpx]
+- Update input ref ( the directory refs in wave 'sever/dataFunctions/index.js' ????)
+- At the command line (from the sever/data/dataFunctions dir) type: `node index.js
+    
+ NB at current stage of development
+ - Filename must be in format YYYY-MM-DD.gpx
+ - only accepts 1 session perday 
 
 ### Data to output
 Session Data:
@@ -44,12 +42,6 @@ Specific Wave Data:
 - Distance surfed           [done]
 - Max speed                 [x]
 
-### Analysis Methods
-
-- Read gpx (xml) 
-- Process data - [geolib](https://www.npmjs.com/package/geolib) functions
-- Output data to json format 
-
 
 ### Thresholds for Activities based on Speed
 | Speed (km/h) | Activity |
@@ -60,11 +52,3 @@ Specific Wave Data:
 
 based on:
 http://fpt.co.nz/wp-content/uploads/2018/06/Physiological_Demands_of_Competitive_Surfing.20.pdf
-
-
-### Data Presentation
-
-Graphs / charts could be made using [chartist.js](https://www.npmjs.com/package/react-chartist)
-
-### Application Architecture
-https://miro.com/app/board/o9J_koaQuQQ=/
