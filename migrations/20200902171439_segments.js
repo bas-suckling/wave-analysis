@@ -1,18 +1,17 @@
 
 exports.up = function(knex) {
     return knex.schema.createTable('segments', table => {
-      
       table.increments('session_id')
-      table.int('user_id')
-      table.int('segment_id')
-      table.bool('is_wave')
-      table.int('timestamp')
-      table.int('duration')
-      table.int('distance')
-      table.linestring('geometry')
+      table.integer('user_id')
+      table.integer('segment_id')
+      table.boolean('is_wave')
+      table.integer('timestamp')
+      table.integer('duration')
+      table.integer('distance')
+      table.text('geometry')
     })
   };
   
   exports.down = function(knex) {
-    return knex.schema.dropTable('users')
+    return knex.schema.dropTable('segments')
   };
