@@ -60,17 +60,28 @@ li:hover {
 
 // Popup Customisation
 
-.custom-popup .leaflet-popup-content-wrapper {
+.custom-popup-paddle .leaflet-popup-content-wrapper {
     background: #252525;
     color:#fff;
     font-size:16px;
     line-height:24px;
 }
 
-.custom-popup .leaflet-popup-tip {
+.custom-popup-paddle .leaflet-popup-tip {
     background:#252525;
 }
-  
+
+.custom-popup-wave .leaflet-popup-content-wrapper {
+    background: #2c3e50;
+    color:#fff;
+    font-size:16px;
+    line-height:24px;
+}
+
+.custom-popup-wave .leaflet-popup-tip {
+    background: #2c3e50;
+}
+
 .session-link:hover {
     cursor: pointer;
     text-decoration: underline;

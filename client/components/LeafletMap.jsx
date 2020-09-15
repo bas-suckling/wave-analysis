@@ -73,7 +73,7 @@ const LeafletMap = (props) => {
                                             onMouseOver={() => onMouseOver(i, segment)}
                                             onMouseOut={() => onMouseOut()}
                                         >
-                                            <Popup className="custom-popup">
+                                            <Popup className="custom-popup-paddle">
                                                 {(segment.properties.isWave) ? "Wave" : "Paddle"} {segment.properties.index.toString()} <br />
                                                 Distance: {segment.properties.dist.toString()} meters<br />
                                                 Duration: {(segment.properties.duration / 1000).toString()} seconds<br />
@@ -101,7 +101,7 @@ const LeafletMap = (props) => {
                                                 onMouseOver={() => onMouseOver(i, segment)}
                                                 onMouseOut={() => onMouseOut()}
                                             >
-                                                <Popup className="custom-popup">
+                                                <Popup className="custom-popup-wave">
                                                     {(segment.properties.isWave) ? "Wave" : "Paddle"} {segment.properties.index.toString()} <br />
                                                     Distance: {segment.properties.dist.toString()} meters<br />
                                                     Duration: {(segment.properties.duration / 1000).toString()} seconds<br />
