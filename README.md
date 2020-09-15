@@ -1,15 +1,19 @@
 # Wave Analysis - Analysing GPS (.gpx) data for surf sessions.
 
 TO DO LIST :
+
+- redux / context provider
+- timeline component
+
 - postgres database
     - knex or sequelize
     - postGIS
-- convert stateful class based components to functional with hooks
-- redux / context provider
-- timeline component
 - authentication with passport.js
+
 - optimise front end for mobile / tablet
+
 - test suite
+
 - file uploader
 - integration with Garmin or Strava
 
