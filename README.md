@@ -2,6 +2,8 @@
 
 TO DO LIST :
 
+- Fix map issue related to total number of segments not updating with new data. 
+
 - redux / context provider
 - timeline component
 
