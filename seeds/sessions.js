@@ -6,7 +6,6 @@ exports.seed = function(knex) {
       // Inserts seed entries
       return knex('sessions').insert([
         {
-          session_id: 1, 
           user_id: 1,
           date: "10:59:25 01/08/2020",
           total_time: 5400,

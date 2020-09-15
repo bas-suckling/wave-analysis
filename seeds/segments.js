@@ -6,10 +6,8 @@ exports.seed = function(knex) {
       // Inserts seed entries
       return knex('segments').insert([
         {
-          segment_id: 1,
-          user_id: 1,
           session_id: 1, 
-          isWave: true,
+          is_wave: true,
           timestamp: "10:59:55 01/08/2020",
           duration: 5400,
           distance: 600,

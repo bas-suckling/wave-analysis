@@ -6,10 +6,10 @@ module.exports = {
       client: 'pg',
       connection: {
         host:'localhost',
-        database: 'wave_analysis',
+        database: 'wave-analysis',
         port:3001,
-        user: DB_USER,
-        password: DB_PASSWORD
+        user: 'postgres',
+        password: 'root'
       },
       migrations: {
         directory: './migrations'

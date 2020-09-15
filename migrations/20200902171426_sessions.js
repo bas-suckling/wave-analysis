@@ -1,8 +1,8 @@
 
 exports.up = function(knex) {
     return knex.schema.createTable('sessions', table => {
-      table.increments('session_id')
-      table.integer('user_id')
+      table.increments('session_id')    // table key
+      table.integer('user_id')          // foreign key
       table.string('date', 255)
       table.integer('total_time')
       table.integer('distance_surfed')

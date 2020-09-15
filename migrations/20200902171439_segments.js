@@ -1,11 +1,10 @@
 
 exports.up = function(knex) {
     return knex.schema.createTable('segments', table => {
-      table.increments('session_id')
-      table.integer('user_id')
-      table.integer('segment_id')
+      table.increments('segment_id')  // table key
+      table.integer('session_id')     // foreign key
       table.boolean('is_wave')
-      table.integer('timestamp')
+      table.string('timestamp')
       table.integer('duration')
       table.integer('distance')
       table.text('geometry')
