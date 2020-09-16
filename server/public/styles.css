@@ -632,7 +632,7 @@ body {
   height: 63vh; }
 
 .logo {
-  padding-top: 20px;
+  padding: 10px;
   width: 100%;
   -webkit-transition: -webkit-transform 2.5s ease-in-out;
   transition: transform 2.5s ease-in-out; }

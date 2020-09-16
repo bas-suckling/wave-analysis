@@ -31,7 +31,6 @@ const Timeline = (props) => {
 
     return (
         <>
-            <br/>
             {(visibility ? 
             <div className="container-fluid">
                 <div className="row">
