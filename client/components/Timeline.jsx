@@ -5,8 +5,8 @@ const Timeline = (props) => {
 
     let SEGMENT_WIDTH_ARRAY = createSegmentWidthArray(props.segments, props.sessionMeta.dur) 
     
-    let waveColor = "red"
-    let paddleColor = "white"
+    let waveColor = "#2c3e50"
+    let paddleColor = "#252525"
 
     return (
         <>
