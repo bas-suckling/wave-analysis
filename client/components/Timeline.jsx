@@ -14,7 +14,6 @@ const Timeline = (props) => {
     const onMouseOver = (i, segment) => {
         // setCurrentSegment(segment)
         setStyle({
-            radiusArray: updateArrayElement(currentStyle.radiusArray, i, 1.5),
             weightArray: updateArrayElement(currentStyle.weightArray, i, 2),
             colorArray: updateArrayElementColor(currentStyle.colorArray, i, segment.properties.isWave),
             ...currentStyle
@@ -32,14 +31,11 @@ const Timeline = (props) => {
     return (
         <>
             {(visibility ? 
-            <div className="container-fluid">
-                <div className="row">
+            <div className="">
                     {props.segments.map((segment, i) => {
                         return (
-                            <svg width={SEGMENT_WIDTH_ARRAY[i]} height="50">
-                                <rect 
-                                    key={segment[i]}
-                                    width='100%'
+                            <svg key={i} width={SEGMENT_WIDTH_ARRAY[i]} height="50">
+                                <rect   
                                     height="100%"
                                     fill={currentStyle.colorArray[i]}
                                     onMouseOver={() => onMouseOver(i, segment)}
@@ -49,8 +45,7 @@ const Timeline = (props) => {
                         )
                     }
                     )
-                }
-                </div>
+                }                
             </div> : 
             <br/>)}
             <p className="session-link" onClick={() => handleClick()}>Show/Hide Timeline</p>

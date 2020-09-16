@@ -658,6 +658,9 @@ li:hover {
   text-align: center;
   padding-top: 45vh; }
 
+.timeline {
+  overflow-x: scroll; }
+
 .custom-popup-paddle .leaflet-popup-content-wrapper {
   background: #252525;
   color: #fff;
