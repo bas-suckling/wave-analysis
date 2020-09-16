@@ -2,22 +2,25 @@
 
 TO DO LIST :
 
-- Fix map issue related to total number of segments not updating with new data. 
+- Fix map issue related to total number of segments not updating with new data. -> not started
 
-- redux / context provider
-- timeline component
+- redux / context provider https://blog.logrocket.com/use-hooks-and-context-not-react-and-redux/ -> not started
 
-- postgres database
+- timeline component -> partially done, needs styling
+
+- postgres database -> started postgres setup
     - knex or sequelize
     - postGIS
-- authentication with passport.js
+    
+- authentication with passport.js -> not started
 
-- optimise front end for mobile / tablet
+- optimise front end for mobile / tablet -> not started
 
-- test suite
+- test suite -> not started
 
-- file uploader
-- integration with Garmin or Strava
+- file uploader -> not started
+
+- integration with Garmin or Strava -> not started
 
 ### Usage
 Clone repo to your local machine
