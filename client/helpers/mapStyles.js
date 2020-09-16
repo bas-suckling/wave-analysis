@@ -10,6 +10,7 @@ const mapStyles = {
     "WAVECOLOR": '#2c3e50' ,
     "PADDLECOLOR": '#252525',
     "HIGHLIGHTWAVE": 'lightSkyBlue',
+    "HIGHLIGHTPADDLE": "black"
 }
 
 function createInitialArrays(dataArray) {
@@ -47,6 +48,8 @@ function updateArrayElementColor(array, index, isWave) {
     let newArray = array
     if (isWave == true) {
         newArray[index] = mapStyles.HIGHLIGHTWAVE
+    } else {
+        newArray[index] = mapStyles.HIGHLIGHTPADDLE
     }
     return newArray 
 }

@@ -61,8 +61,8 @@ const Dashboard = () => {
                     :
                     <div className={"container-fluid"}>
                         <div className="row">
-                            <div className={"col-2 dark-bg light-text"}>
-                                <div className={"container"}>
+                            <div className={"col-2 dark-bg sidebar light-text"}>
+                                <div className={"container sidebar-sticky"}>
                                     <img className="logo" src="./images/BFBSA_Logo_White.png" alt="logo" />
                                     <h1 className="heading">Sessions</h1>
                                     {sessions.map((session, i) => {
@@ -70,7 +70,7 @@ const Dashboard = () => {
                                     })}
                                 </div>
                             </div>
-                            <div className="col-8 " id='map-container'>
+                            <div className="col-10 " id='map-container'>
                                 <div>
                                     <SessionDataTable sessionTableData={currentSession.metaData} sessionTitle={sessionTitle} />
                                 </div>
