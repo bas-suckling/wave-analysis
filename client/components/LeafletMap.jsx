@@ -18,7 +18,7 @@ const LeafletMap = (props) => {
         setStyle({
             radiusArray: updateArrayElement(currentStyle.radiusArray, i, 1.5),
             weightArray: updateArrayElement(currentStyle.weightArray, i, 2),
-            colorArray: updateArrayElementColor(currentStyle.colorArray, i, mapStyles.HIGHLIGHT),
+            colorArray: updateArrayElementColor(currentStyle.colorArray, i, segment.properties.isWave),
             ...currentStyle
         })
     }

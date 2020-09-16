@@ -9,7 +9,7 @@ const mapStyles = {
     "RADIUS": 1,
     "WAVECOLOR": '#2c3e50' ,
     "PADDLECOLOR": '#252525',
-    "HIGHLIGHT": 'lightSkyBlue'
+    "HIGHLIGHTWAVE": 'lightSkyBlue',
 }
 
 function createInitialArrays(dataArray) {
@@ -43,10 +43,12 @@ function updateArrayElement(array, index, value) {
     return newArray  
 }
 
-function updateArrayElementColor(array, index, value) {
+function updateArrayElementColor(array, index, isWave) {
     let newArray = array
-    newArray[index] = value
-    return newArray  
+    if (isWave == true) {
+        newArray[index] = mapStyles.HIGHLIGHTWAVE
+    }
+    return newArray 
 }
 
 module.exports = {
