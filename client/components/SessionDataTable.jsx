@@ -5,33 +5,32 @@ function SessionDataTable (props) {
          return (
             <>
                 <div>
-                    <br></br>
-                    <h1>{props.sessionTitle}</h1>
-                    <br></br>
+                    <br/>
+                    <h2>{props.sessionTitle}</h2>
                     <div className="row">
                         <div className="col-sm">
-                            <h2>{props.sessionTableData.waveCount}</h2>
+                            <h3>{props.sessionTableData.waveCount}</h3>
                         </div>
                         <div className="col-sm">
-                            <h2>{props.sessionTableData.longestWaveDist.dist} m</h2>
+                            <h3>{props.sessionTableData.longestWaveDist.dist} m</h3>
                         </div>
                         <div className="col-sm">
-                            <h2>{props.sessionTableData.totalDist} km</h2>
+                            <h3>{props.sessionTableData.totalDist} km</h3>
                         </div>
                         <div className="col-sm">
-                            <h2>{props.sessionTableData.waveDist} km</h2>
+                            <h3>{props.sessionTableData.waveDist} km</h3>
                         </div>
                         <div className="col-sm">
-                            <h2>{props.sessionTableData.paddleDist} km</h2>
+                            <h3>{props.sessionTableData.paddleDist} km</h3>
                         </div>
                         <div className="col-sm">
-                            <h2>{props.sessionTableData.time}</h2>
+                            <h3>{props.sessionTableData.time}</h3>
                         </div>
                         <div className="col-sm">
-                            <h2>{convertSeconds(Math.floor(props.sessionTableData.dur)/1000)}</h2>
+                            <h3>{convertSeconds(Math.floor(props.sessionTableData.dur)/1000)}</h3>
                         </div>
                         <div className="col-sm">
-                            <h2>{props.sessionTableData.beachDirection} deg</h2>
+                            <h3>{props.sessionTableData.beachDirection} deg</h3>
                         </div> 
                         <div/>
                     </div>

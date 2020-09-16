@@ -9,6 +9,7 @@ const Timeline = (props) => {
     
     let initialArrays = createInitialArrays(props.segments)
     const [currentStyle, setStyle] = useState(initialArrays)
+    const [visibility, setVisibility] = useState(true)
 
     const onMouseOver = (i, segment) => {
         // setCurrentSegment(segment)
@@ -24,18 +25,23 @@ const Timeline = (props) => {
         setStyle(initialArrays)
     }
 
+    const handleClick = () => {
+        setVisibility(!visibility)
+    }
+
     return (
         <>
+            <br/>
+            {(visibility ? 
             <div className="container-fluid">
-                <br/>
                 <div className="row">
                     {props.segments.map((segment, i) => {
                         return (
-                            <svg width={SEGMENT_WIDTH_ARRAY[i]} height="100">
+                            <svg width={SEGMENT_WIDTH_ARRAY[i]} height="50">
                                 <rect 
                                     key={segment[i]}
                                     width='100%'
-                                    height="100"
+                                    height="100%"
                                     fill={currentStyle.colorArray[i]}
                                     onMouseOver={() => onMouseOver(i, segment)}
                                     onMouseOut={() => onMouseOut()} 
@@ -44,9 +50,11 @@ const Timeline = (props) => {
                         )
                     }
                     )
-                    }
+                }
                 </div>
-            </div>
+            </div> : 
+            <br/>)}
+            <p className="session-link" onClick={() => handleClick()}>Show/Hide Timeline</p>
         </>
     )
 }
