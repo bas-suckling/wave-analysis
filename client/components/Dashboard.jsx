@@ -74,9 +74,10 @@ const Dashboard = () => {
                                 <div>
                                     <SessionDataTable sessionTableData={currentSession.metaData} sessionTitle={sessionTitle} />
                                 </div>
-                                <div>
+                                <div className="light-bg">
                                     <LeafletMap segments={currentSession.sessionData} />
                                 </div>
+                                <br/>
                                 <div>
                                     <Timeline segments={currentSession.sessionData} sessionMeta={currentSession.metaData}/>
                                 </div>

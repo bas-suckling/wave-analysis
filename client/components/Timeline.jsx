@@ -31,10 +31,10 @@ const Timeline = (props) => {
     return (
         <>
             {(visibility ? 
-            <div className="">
+            <div className="light-bg">
                     {props.segments.map((segment, i) => {
                         return (
-                            <svg key={i} width={SEGMENT_WIDTH_ARRAY[i]} height="50">
+                            <svg key={i} width={SEGMENT_WIDTH_ARRAY[i]} height="75">
                                 <rect   
                                     height="100%"
                                     fill={currentStyle.colorArray[i]}

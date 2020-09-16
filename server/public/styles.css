@@ -619,6 +619,10 @@ body {
 .dark-bg {
   background-color: #252525; }
 
+.light-bg {
+  background-color: whitesmoke;
+  padding: 3px; }
+
 .light-text {
   color: whitesmoke; }
 

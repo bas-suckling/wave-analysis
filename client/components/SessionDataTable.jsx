@@ -29,10 +29,7 @@ function SessionDataTable (props) {
                         <div className="col-sm">
                             <h3>{convertSeconds(Math.floor(props.sessionTableData.dur)/1000)}</h3>
                         </div>
-                        <div className="col-sm">
-                            <h3>{props.sessionTableData.beachDirection} deg</h3>
-                        </div> 
-                        <div/>
+                    <div/>
                     </div>
                     <div className="row">
                         <div className="col-sm">
@@ -55,9 +52,6 @@ function SessionDataTable (props) {
                         </div>
                         <div className="col-sm">
                             <p>Duration</p>
-                        </div>
-                        <div className="col-sm">
-                            <p>Beach Direction</p>
                         </div>
                     </div>
                 </div> 
