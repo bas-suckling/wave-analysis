@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Map, TileLayer, Polyline, Popup, ScaleControl, LayerGroup, LayersControl, Circle, Marker } from 'react-leaflet'
 const { BaseLayer, Overlay } = LayersControl
 import { Icon } from "leaflet"
-import { mapStyles, createInitialArrays, makeTransparent, updateArrayElement } from '../helpers/mapStyles'
+import { mapStyles, createInitialArrays, updateArrayElement, updateArrayElementColor } from '../helpers/mapStyles'
 import {convertSeconds} from '../helpers/timeFormat'
 // import WaveDataTable from './WaveDataTable'
 
@@ -16,9 +16,9 @@ const LeafletMap = (props) => {
     const onMouseOver = (i, segment) => {
         // setCurrentSegment(segment)
         setStyle({
-            opacityArray: makeTransparent(currentStyle.opacityArray, i),
-            weightArray: updateArrayElement(currentStyle.weightArray, i, 2),
             radiusArray: updateArrayElement(currentStyle.radiusArray, i, 1.5),
+            weightArray: updateArrayElement(currentStyle.weightArray, i, 2),
+            colorArray: updateArrayElementColor(currentStyle.colorArray, i, mapStyles.HIGHLIGHT),
             ...currentStyle
         })
     }
@@ -40,7 +40,7 @@ const LeafletMap = (props) => {
     return (
         <>
             <Map id="mapid" center={props.segments[Math.floor(props.segments.length / 2)].geometry.coordinates[Math.floor(props.segments[Math.floor(props.segments.length / 2)].geometry.coordinates.length / 2)]} zoom={16.5} zoomSnap={0.25}>
-                <LayersControl position="topright">
+                <LayersControl position="topright" >
                     <BaseLayer key={1} checked name="Satellite">
                         <TileLayer
                             attribution='Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
@@ -69,7 +69,6 @@ const LeafletMap = (props) => {
                                             positions={segment.geometry.coordinates}
                                             color={currentStyle.colorArray[i]}
                                             weight={currentStyle.weightArray[i]}
-                                            opacity={currentStyle.opacityArray[i]}
                                             onMouseOver={() => onMouseOver(i, segment)}
                                             onMouseOut={() => onMouseOut()}
                                         >
@@ -93,11 +92,10 @@ const LeafletMap = (props) => {
                                     return (
                                         <div key={i}>
                                             <Polyline
-                                                zIndex={3}
+                                                zIndex={4}
                                                 positions={segment.geometry.coordinates}
                                                 color={currentStyle.colorArray[i]}
                                                 weight={currentStyle.weightArray[i]}
-                                                opacity={currentStyle.opacityArray[i]}
                                                 onMouseOver={() => onMouseOver(i, segment)}
                                                 onMouseOut={() => onMouseOut()}
                                             >
@@ -111,20 +109,18 @@ const LeafletMap = (props) => {
                                             <Circle
                                                 zIndex={4}
                                                 center={segment.geometry.coordinates[0]}
-                                                opacity={currentStyle.opacityArray[i]}
-                                                fillOpacity={currentStyle.opacityArray[i]}
+                                                fillOpacity={1}
                                                 fillColor="white"
-                                                color={mapStyles.WAVECOLOR}
+                                                color={currentStyle.colorArray[i]}
                                                 radius={currentStyle.radiusArray[i]}
                                                 onMouseOver={() => onMouseOver(i, segment)}
                                                 onMouseOut={() => onMouseOut()} />
                                             <Circle
                                                 zIndex={4}
                                                 center={segment.geometry.coordinates[segment.geometry.coordinates.length - 1]}
-                                                opacity={currentStyle.opacityArray[i]}
-                                                fillOpacity={currentStyle.opacityArray[i]}
+                                                fillOpacity={1}
                                                 fillColor="White"
-                                                color={mapStyles.WAVECOLOR}
+                                                color={currentStyle.colorArray[i]}
                                                 radius={currentStyle.radiusArray[i]}
                                                 onMouseOver={() => onMouseOver(i, segment)}
                                                 onMouseOut={() => onMouseOut()}
