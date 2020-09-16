@@ -1,6 +1,6 @@
 import React from 'react'
 
-function Footer(props) {
+const Footer = (props) => {
     return <p>Made by Bas Suckling and Will Naylor</p>
   }
 

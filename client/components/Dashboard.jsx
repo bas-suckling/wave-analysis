@@ -3,6 +3,7 @@ import SessionDataTable from './SessionDataTable'
 import LeafletMap from './LeafletMap'
 import Footer from './Footer'
 import { apiGetSessionsList, apiGetSessionData } from '../api/sessions'
+import Timeline from './Timeline'
 
 //remove?
 //import { isPointInLine } from 'geolib'
@@ -75,6 +76,9 @@ const Dashboard = () => {
                                 </div>
                                 <div>
                                     <LeafletMap segments={currentSession.sessionData} />
+                                </div>
+                                <div>
+                                    <Timeline segments={currentSession.sessionData} sessionMeta={currentSession.metaData}/>
                                 </div>
                                 <div>
                                     <Footer />
