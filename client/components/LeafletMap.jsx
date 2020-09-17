@@ -16,7 +16,6 @@ const LeafletMap = () => {
     const segments = globalState.state.currentSession.sessionData
     const metaData = globalState.state.currentSession.metaData
     const styleArrays = globalState.state.currentSession.styleArrays
-
     const initialArrays = createInitialArrays(segments)
 
 

@@ -46,7 +46,7 @@ const Dashboard = () => {
                 :
                 <div className={"container-fluid"}>
                     <div className="row">
-                        <div className={"col-2 dark-bg sidebar light-text"}>
+                        <div className={"col-2 dark-bg sidebar"}>
                             <Sidebar/>
                         </div>
                         <div className="col-10 " id='map-container'>

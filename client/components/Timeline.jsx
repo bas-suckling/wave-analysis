@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react'
 import { store } from '../../dataStore'
 import { createSegmentWidthArray } from '../helpers/timeline'
 import { createInitialArrays, updateArrayElementColor } from '../helpers/mapStyles'
-
+import WaveDataTable from './WaveDataTable'
 
 const Timeline = () => {
 
@@ -16,12 +16,14 @@ const Timeline = () => {
     let SEGMENT_WIDTH_ARRAY = createSegmentWidthArray(sessionData, metaData.dur)
 
     const [visibility, setVisibility] = useState(true)
+    const [currentSegment, setCurrentSegment] = useState("")
 
     const handleClick = () => {
         setVisibility(!visibility)
     }
 
     const onMouseOver = (i, segment) => {
+        setCurrentSegment(segment)
         dispatch({
             type: 'updateMapStyle',
             payload: {
@@ -29,8 +31,7 @@ const Timeline = () => {
                 weightArray: styleArrays.weightArray,
                 colorArray: updateArrayElementColor(styleArrays.colorArray, i, segment.properties.isWave)
             },
-        }
-        )
+        })
     }
 
     const onMouseOut = () => {
@@ -69,8 +70,9 @@ const Timeline = () => {
                         )
                         }
                     </div>
+                <WaveDataTable currentSegment={currentSegment}/>
                 </div> :
-                <br />)}
+                <div></div>)}
             <p className="session-link" onClick={() => handleClick()}>Show/Hide Timeline</p>
         </>
     )
