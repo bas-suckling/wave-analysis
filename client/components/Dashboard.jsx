@@ -24,7 +24,7 @@ const Dashboard = () => {
                     payload: res
                 })
             })
-            .then(apiGetSessionData(8)
+            .then(apiGetSessionData(1)
                     .then(res => {
                         dispatch({
                             type: 'setCurrentSession',

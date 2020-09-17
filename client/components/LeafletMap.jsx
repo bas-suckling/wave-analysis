@@ -19,7 +19,12 @@ const LeafletMap = () => {
     const initialArrays = createInitialArrays(segments)
 
 
-    const onMouseOver = (i, segment) => {
+    const bringToFront = (target) => {
+        target.bringToFront();
+      }
+
+    const onMouseOver = (i, segment, e) => {
+        bringToFront(e.target)
         dispatch({
             type:'updateMapStyle',
             payload: {
@@ -47,10 +52,10 @@ const LeafletMap = () => {
                 sessionData: segments
             }
         })
-        dispatch({
-            type:'setCurrentSegment',
-            payload: ""
-        })
+        // dispatch({
+        //     type:'setCurrentSegment',
+        //     payload: ""
+        // })
     }
 
     const startIcon = new Icon({
@@ -102,9 +107,8 @@ const LeafletMap = () => {
                                             positions={segment.geometry.coordinates}
                                             color={styleArrays.colorArray[i]}
                                             weight={styleArrays.weightArray[i]}
-                                            onMouseOver={() => onMouseOver(i, segment)}
+                                            onMouseOver={(e) => onMouseOver(i, segment, e)}
                                             onMouseOut={() => onMouseOut()}
-                                            
                                         >
                                             <Popup className="custom-popup-paddle">
                                                 {(segment.properties.isWave) ? "Wave" : "Paddle"} {segment.properties.index.toString()} <br />
@@ -130,7 +134,7 @@ const LeafletMap = () => {
                                                 positions={segment.geometry.coordinates}
                                                 color={styleArrays.colorArray[i]}
                                                 weight={styleArrays.weightArray[i]}
-                                                onMouseOver={() => onMouseOver(i, segment)}
+                                                onMouseOver={(e) => onMouseOver(i, segment, e)}
                                                 onMouseOut={() => onMouseOut()}
                                             >
                                                 <Popup className="custom-popup-wave">
@@ -140,14 +144,14 @@ const LeafletMap = () => {
                                                     Time Stamp: {convertSeconds(Math.floor(segment.properties.tStamp / 1000)).toString()}
                                                 </Popup>
                                             </Polyline>
-                                            <Circle
+                                            {/* <Circle
                                                 zIndex={4}
                                                 center={segment.geometry.coordinates[0]}
                                                 fillOpacity={1}
                                                 fillColor="white"
                                                 color={styleArrays.colorArray[i]}
                                                 radius={styleArrays.radiusArray[i]}
-                                                onMouseOver={() => onMouseOver(i, segment)}
+                                                onMouseOver={(e) => onMouseOver(i, segment, e)}
                                                 onMouseOut={() => onMouseOut()} />
                                             <Circle
                                                 zIndex={4}
@@ -156,9 +160,9 @@ const LeafletMap = () => {
                                                 fillColor="White"
                                                 color={styleArrays.colorArray[i]}
                                                 radius={styleArrays.radiusArray[i]}
-                                                onMouseOver={() => onMouseOver(i, segment)}
+                                                onMouseOver={(e) => onMouseOver(i, segment, e)}
                                                 onMouseOut={() => onMouseOut()}
-                                            />
+                                            /> */}
                                         </div>
                                     )
                                 }

@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react'
 import { store } from '../../dataStore'
 import { createSegmentWidthArray } from '../helpers/timeline'
-import { createInitialArrays, updateArrayElementColor } from '../helpers/mapStyles'
+import { createInitialArrays, updateArrayElementColor, updateArrayElement } from '../helpers/mapStyles'
 import WaveDataTable from './WaveDataTable'
 
 const Timeline = () => {
@@ -19,8 +19,8 @@ const Timeline = () => {
         dispatch({
             type: 'updateMapStyle',
             payload: {
-                radiusArray: styleArrays.radiusArray,
-                weightArray: styleArrays.weightArray,
+                radiusArray: updateArrayElement(styleArrays.radiusArray, i, 1.5),
+                weightArray: updateArrayElement(styleArrays.weightArray, i, 2),
                 colorArray: updateArrayElementColor(styleArrays.colorArray, i, segment.properties.isWave)
             },
         })
@@ -44,10 +44,10 @@ const Timeline = () => {
                 sessionData: sessionData
             }
         })
-        dispatch({
-            type: 'setCurrentSegment',
-            payload: ""
-        })
+        // dispatch({
+        //     type: 'setCurrentSegment',
+        //     payload: ""
+        // })
     }
 
     return (
