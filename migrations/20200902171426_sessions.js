@@ -1,15 +1,15 @@
 
 exports.up = function(knex) {
     return knex.schema.createTable('sessions', table => {
-      table.increments('session_id')    // table key
+      table.increments('session_id')    // table keykno
       table.integer('user_id')          // foreign key
-      table.string('date', 255)
-      table.integer('total_time')
-      table.integer('distance_surfed')
-      table.integer('distance_paddled')
-      table.integer('wave_count')
-      table.integer('beach_direction')
-      table.text('raw_file')
+      table.string('date',10 )          //      "12-45-78"
+      table.integer('duration')         //      in ms (10,000,000 = 3hr)
+      table.decimal('surf_dist',3,2)    //      3 sig fig
+      table.decimal('paddle_dist',3,2)  //      2 deci places
+      table.integer('wave_count')       //
+      table.integer('beach_direction')  //
+      table.text('raw_file')            //
     })
   };
   

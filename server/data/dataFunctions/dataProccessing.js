@@ -205,7 +205,12 @@ function getMetaData(rawJSONData, segments, beachDirection) {
 }
 
 function toKM(float){
-    return(parseFloat(float/1000).toPrecision(2))
+    if (float > 10000){
+        return((float/1000).toPrecision(3))
+    }else{
+        return((float/1000).toPrecision(2))
+    }
+    
 }
 // ------------------------------------------------------------------------------------------------------------
 
