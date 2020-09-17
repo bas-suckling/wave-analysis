@@ -1,30 +1,48 @@
-import React, { useState } from 'react'
+import React, { useContext } from 'react'
 import { Map, TileLayer, Polyline, Popup, ScaleControl, LayerGroup, LayersControl, Circle, Marker } from 'react-leaflet'
 const { BaseLayer, Overlay } = LayersControl
 import { Icon } from "leaflet"
-import { mapStyles, createInitialArrays, updateArrayElement, updateArrayElementColor } from '../helpers/mapStyles'
+import { createInitialArrays, updateArrayElement, updateArrayElementColor } from '../helpers/mapStyles'
 import {convertSeconds} from '../helpers/timeFormat'
 // import WaveDataTable from './WaveDataTable'
 
-const LeafletMap = (props) => {
+import { store } from '../../dataStore'
 
-    let initialArrays = createInitialArrays(props.segments)
+const LeafletMap = () => {
 
-    const [currentStyle, setStyle] = useState(initialArrays)
-    // const [currentSegment, setCurrentSegment] = useState([])
+    const globalState = useContext(store)
+    const { dispatch } = globalState
+
+    const segments = globalState.state.currentSession.sessionData
+    const metaData = globalState.state.currentSession.metaData
+    const styleArrays = globalState.state.currentSession.styleArrays
+    const initialArrays = createInitialArrays(segments)
+
 
     const onMouseOver = (i, segment) => {
-        // setCurrentSegment(segment)
-        setStyle({
-            radiusArray: updateArrayElement(currentStyle.radiusArray, i, 1.5),
-            weightArray: updateArrayElement(currentStyle.weightArray, i, 2),
-            colorArray: updateArrayElementColor(currentStyle.colorArray, i, segment.properties.isWave),
-            ...currentStyle
-        })
+        dispatch({
+            type:'updateMapStyle',
+            payload: {
+                    radiusArray: updateArrayElement(styleArrays.radiusArray, i, 1.5),
+                    weightArray: updateArrayElement(styleArrays.weightArray, i, 2),
+                    colorArray: updateArrayElementColor(styleArrays.colorArray, i, segment.properties.isWave)
+                },
+            }
+        )
     }
 
     const onMouseOut = () => {
-        setStyle(initialArrays)
+        dispatch({
+            type: 'setCurrentSession',
+            payload: {
+                styleArrays:{
+                radiusArray: initialArrays.radiusArray,
+                weightArray: initialArrays.weightArray,
+                colorArray: initialArrays.colorArray},
+                metaData: metaData,
+                sessionData: segments
+            }
+        })
     }
 
     const startIcon = new Icon({
@@ -39,7 +57,14 @@ const LeafletMap = (props) => {
 
     return (
         <>
-            <Map id="mapid" center={props.segments[Math.floor(props.segments.length / 2)].geometry.coordinates[Math.floor(props.segments[Math.floor(props.segments.length / 2)].geometry.coordinates.length / 2)]} zoom={16.5} zoomSnap={0.25}>
+         {(globalState.state.currentSession == undefined || styleArrays.colorArray.length < 2) ?
+                <div className="loading-spinner">
+                    <h4>Data loading...</h4>
+                    <div className="spinner-border text-light" style={{ width: "3rem", height: "3rem" }} role="status">
+                    </div>
+                </div>
+                :
+            <Map id="mapid" center={segments[Math.floor(segments.length / 2)].geometry.coordinates[Math.floor(segments[Math.floor(segments.length / 2)].geometry.coordinates.length / 2)]} zoom={17.5} zoomSnap={0.25}>
                 <LayersControl position="topright" >
                     <BaseLayer key={1} checked name="Satellite">
                         <TileLayer
@@ -59,7 +84,7 @@ const LeafletMap = (props) => {
                     <ScaleControl updateWhenIdle={true} />
                     <Overlay name="Paddling">
                         <LayerGroup>
-                            {props.segments.map((segment, i) => {
+                            {segments.map((segment, i) => {
                                 if (!segment.properties.isWave) {
                                     return (
                                         <Polyline
@@ -67,10 +92,11 @@ const LeafletMap = (props) => {
                                             key={i}
                                             dashArray={["10 5"]}
                                             positions={segment.geometry.coordinates}
-                                            color={currentStyle.colorArray[i]}
-                                            weight={currentStyle.weightArray[i]}
+                                            color={styleArrays.colorArray[i]}
+                                            weight={styleArrays.weightArray[i]}
                                             onMouseOver={() => onMouseOver(i, segment)}
                                             onMouseOut={() => onMouseOut()}
+                                            
                                         >
                                             <Popup className="custom-popup-paddle">
                                                 {(segment.properties.isWave) ? "Wave" : "Paddle"} {segment.properties.index.toString()} <br />
@@ -87,15 +113,15 @@ const LeafletMap = (props) => {
                     </Overlay>
                     <Overlay checked name="Waves">
                         <LayerGroup>
-                            {props.segments.map((segment, i) => {
+                            {segments.map((segment, i) => {
                                 if (segment.properties.isWave) {
                                     return (
                                         <div key={i}>
                                             <Polyline
                                                 zIndex={4}
                                                 positions={segment.geometry.coordinates}
-                                                color={currentStyle.colorArray[i]}
-                                                weight={currentStyle.weightArray[i]}
+                                                color={styleArrays.colorArray[i]}
+                                                weight={styleArrays.weightArray[i]}
                                                 onMouseOver={() => onMouseOver(i, segment)}
                                                 onMouseOut={() => onMouseOut()}
                                             >
@@ -111,8 +137,8 @@ const LeafletMap = (props) => {
                                                 center={segment.geometry.coordinates[0]}
                                                 fillOpacity={1}
                                                 fillColor="white"
-                                                color={currentStyle.colorArray[i]}
-                                                radius={currentStyle.radiusArray[i]}
+                                                color={styleArrays.colorArray[i]}
+                                                radius={styleArrays.radiusArray[i]}
                                                 onMouseOver={() => onMouseOver(i, segment)}
                                                 onMouseOut={() => onMouseOut()} />
                                             <Circle
@@ -120,8 +146,8 @@ const LeafletMap = (props) => {
                                                 center={segment.geometry.coordinates[segment.geometry.coordinates.length - 1]}
                                                 fillOpacity={1}
                                                 fillColor="White"
-                                                color={currentStyle.colorArray[i]}
-                                                radius={currentStyle.radiusArray[i]}
+                                                color={styleArrays.colorArray[i]}
+                                                radius={styleArrays.radiusArray[i]}
                                                 onMouseOver={() => onMouseOver(i, segment)}
                                                 onMouseOut={() => onMouseOut()}
                                             />
@@ -135,20 +161,22 @@ const LeafletMap = (props) => {
                     <Overlay name="Start/Finish">
                         <LayerGroup>
                             <Marker
-                                position={props.segments[0].geometry.coordinates[0]}
+                                position={segments[0].geometry.coordinates[0]}
                                 icon={startIcon}
                             />
                             <Marker
-                                position={props.segments[props.segments.length - 1].geometry.coordinates[props.segments[props.segments.length - 1].geometry.coordinates.length - 1]}
+                                position={segments[segments.length - 1].geometry.coordinates[segments[segments.length - 1].geometry.coordinates.length - 1]}
                                 icon={finishIcon}
                             />
                         </LayerGroup>
                     </Overlay>
                 </LayersControl>
             </Map>
+            }
             {/* <WaveDataTable singleWaveData={currentSegment} /> */}
             {/* <div>Icons made by <a href="https://www.flaticon.com/authors/roundicons" title="Roundicons">Roundicons</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div> */}
         </>
+        
     )
 }
 
