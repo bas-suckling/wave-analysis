@@ -5,6 +5,9 @@ import { createInitialArrays, updateArrayElement, updateArrayElementColor } from
 
 const Timeline = (props) => {
 
+    // const globalState = useContext(store)
+    // const { dispatch } = globalState
+
     let SEGMENT_WIDTH_ARRAY = createSegmentWidthArray(props.segments, props.sessionMeta.dur) 
     
     let initialArrays = createInitialArrays(props.segments)

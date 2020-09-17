@@ -3,7 +3,7 @@ const createSegmentWidthArray = (segments, totalDuration) => {
     let counter = 0
         for (let i = 0; i < segments.length; i++) {
             let newValue = (segments[i].properties.duration/totalDuration*100)
-            if (newValue < 1){
+            if (newValue < 2){
                 newValue += 0.25
             } else if (newValue > 2) {
                 newValue -= 0.25
@@ -12,8 +12,6 @@ const createSegmentWidthArray = (segments, totalDuration) => {
             counter += newValue
         }
     
-    console.log('newArray', newArray)
-    console.log('counter', counter)
     if (counter != 100) {
         let multiplier = 100 / counter
         for (let j = 0; j < newArray.length; j++) {
