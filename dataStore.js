@@ -25,6 +25,7 @@ const DataStore = ({children}) => {
             } 
 
             case 'updateMapStyle':
+                console.log('Payload:', action.payload)
                 return {
                     ...state,
                     currentSession: {

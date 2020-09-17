@@ -18,7 +18,7 @@ const LeafletMap = () => {
     const styleArrays = globalState.state.currentSession.styleArrays
     const initialArrays = createInitialArrays(segments)
 
-
+    // working as intended
     const onMouseOver = (i, segment) => {
         dispatch({
             type:'updateMapStyle',
@@ -31,9 +31,22 @@ const LeafletMap = () => {
         )
     }
 
+    // not working dispatch 
     const onMouseOut = () => {
         dispatch({
-            type: 'setCurrentSession',
+            type: 'updateMapStyle',
+            payload: {
+                radiusArray: initialArrays.radiusArray,
+                weightArray: initialArrays.weightArray,
+                colorArray: initialArrays.colorArray
+            }
+        })
+    }
+
+    // work around
+    const onMouseOut = () => {
+        dispatch({
+            type: 'updateMapStyle',
             payload: {
                 styleArrays:{
                 radiusArray: initialArrays.radiusArray,
