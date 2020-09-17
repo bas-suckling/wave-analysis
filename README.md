@@ -2,11 +2,11 @@
 
 TO DO LIST :
 
-- Fix map issue related to total number of segments not updating with new data. -> not started
+- Fix map issue related to total number of segments not updating with new data. -> DONE
 
-- redux / context provider https://blog.logrocket.com/use-hooks-and-context-not-react-and-redux/ -> not started
+- redux / context provider -> functional -> need to fix updateStyleArrays reducer to work properly
 
-- timeline component -> partially done, needs styling
+- timeline component -> functional -> needs additional styling
 
 - postgres database -> started postgres setup
     - knex or sequelize
@@ -23,10 +23,9 @@ TO DO LIST :
 - integration with Garmin or Strava -> not started
 
 ### Usage
-Clone repo to your local machine
-Navigate to the `wave analysis` directory
-At the command line type: `npm install` 
-Run the application using `npm run dev` and navigate to http://localhost:3000/
+- Clone repo to your local machine
+- At the command line type: `npm install` 
+- Run the application using `npm run dev` and navigate to http://localhost:3000/
 
 ### Create/update data files
 - add a gpx file to the data directory "sever/data/rawData/[fileName.gpx]
