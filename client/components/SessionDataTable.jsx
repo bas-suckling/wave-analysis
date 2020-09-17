@@ -12,10 +12,7 @@ function SessionDataTable (props) {
          return (
             <>
             {(sessionData == undefined) ?
-                <div className="loading-spinner">
-                    <h4>Data loading...</h4>
-                    <div className="spinner-border text-light" style={{ width: "3rem", height: "3rem" }} role="status">
-                    </div>
+                <div>
                 </div>
                 :
                 <div>

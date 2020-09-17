@@ -12,15 +12,21 @@ const LeafletMap = () => {
 
     const globalState = useContext(store)
     const { dispatch } = globalState
-    const initialArrays = createInitialArrays(globalState.state.currentSession.sessionData)
+
+    const segments = globalState.state.currentSession.sessionData
+    const metaData = globalState.state.currentSession.metaData
+    const styleArrays = globalState.state.currentSession.styleArrays
+
+    const initialArrays = createInitialArrays(segments)
+
 
     const onMouseOver = (i, segment) => {
         dispatch({
-            type:'updateMapStyles',
+            type:'updateMapStyle',
             payload: {
-                    radiusArray: updateArrayElement(globalState.state.currentSession.styleArrays.radiusArray, i, 1.5),
-                    weightArray: updateArrayElement(globalState.state.currentSession.styleArrays.weightArray, i, 2),
-                    colorArray: updateArrayElementColor(globalState.state.currentSession.styleArrays.colorArray, i, segment.properties.isWave)
+                    radiusArray: updateArrayElement(styleArrays.radiusArray, i, 1.5),
+                    weightArray: updateArrayElement(styleArrays.weightArray, i, 2),
+                    colorArray: updateArrayElementColor(styleArrays.colorArray, i, segment.properties.isWave)
                 },
             }
         )
@@ -34,8 +40,8 @@ const LeafletMap = () => {
                 radiusArray: initialArrays.radiusArray,
                 weightArray: initialArrays.weightArray,
                 colorArray: initialArrays.colorArray},
-                metaData: globalState.state.currentSession.metaData,
-                sessionData: globalState.state.currentSession.sessionData
+                metaData: metaData,
+                sessionData: segments
             }
         })
     }
@@ -52,14 +58,14 @@ const LeafletMap = () => {
 
     return (
         <>
-         {(globalState.state.currentSession == undefined || globalState.state.currentSession.styleArrays.colorArray.length < 2) ?
+         {(globalState.state.currentSession == undefined || styleArrays.colorArray.length < 2) ?
                 <div className="loading-spinner">
                     <h4>Data loading...</h4>
                     <div className="spinner-border text-light" style={{ width: "3rem", height: "3rem" }} role="status">
                     </div>
                 </div>
                 :
-            <Map id="mapid" center={globalState.state.currentSession.sessionData[Math.floor(globalState.state.currentSession.sessionData.length / 2)].geometry.coordinates[Math.floor(globalState.state.currentSession.sessionData[Math.floor(globalState.state.currentSession.sessionData.length / 2)].geometry.coordinates.length / 2)]} zoom={16.5} zoomSnap={0.25}>
+            <Map id="mapid" center={segments[Math.floor(segments.length / 2)].geometry.coordinates[Math.floor(segments[Math.floor(segments.length / 2)].geometry.coordinates.length / 2)]} zoom={17.5} zoomSnap={0.25}>
                 <LayersControl position="topright" >
                     <BaseLayer key={1} checked name="Satellite">
                         <TileLayer
@@ -79,7 +85,7 @@ const LeafletMap = () => {
                     <ScaleControl updateWhenIdle={true} />
                     <Overlay name="Paddling">
                         <LayerGroup>
-                            {globalState.state.currentSession.sessionData.map((segment, i) => {
+                            {segments.map((segment, i) => {
                                 if (!segment.properties.isWave) {
                                     return (
                                         <Polyline
@@ -87,10 +93,11 @@ const LeafletMap = () => {
                                             key={i}
                                             dashArray={["10 5"]}
                                             positions={segment.geometry.coordinates}
-                                            color={globalState.state.currentSession.styleArrays.colorArray[i]}
-                                            weight={globalState.state.currentSession.styleArrays.weightArray[i]}
+                                            color={styleArrays.colorArray[i]}
+                                            weight={styleArrays.weightArray[i]}
                                             onMouseOver={() => onMouseOver(i, segment)}
                                             onMouseOut={() => onMouseOut()}
+                                            
                                         >
                                             <Popup className="custom-popup-paddle">
                                                 {(segment.properties.isWave) ? "Wave" : "Paddle"} {segment.properties.index.toString()} <br />
@@ -107,15 +114,15 @@ const LeafletMap = () => {
                     </Overlay>
                     <Overlay checked name="Waves">
                         <LayerGroup>
-                            {globalState.state.currentSession.sessionData.map((segment, i) => {
+                            {segments.map((segment, i) => {
                                 if (segment.properties.isWave) {
                                     return (
                                         <div key={i}>
                                             <Polyline
                                                 zIndex={4}
                                                 positions={segment.geometry.coordinates}
-                                                color={globalState.state.currentSession.styleArrays.colorArray[i]}
-                                                weight={globalState.state.currentSession.styleArrays.weightArray[i]}
+                                                color={styleArrays.colorArray[i]}
+                                                weight={styleArrays.weightArray[i]}
                                                 onMouseOver={() => onMouseOver(i, segment)}
                                                 onMouseOut={() => onMouseOut()}
                                             >
@@ -131,8 +138,8 @@ const LeafletMap = () => {
                                                 center={segment.geometry.coordinates[0]}
                                                 fillOpacity={1}
                                                 fillColor="white"
-                                                color={globalState.state.currentSession.styleArrays.colorArray[i]}
-                                                radius={globalState.state.currentSession.styleArrays.radiusArray[i]}
+                                                color={styleArrays.colorArray[i]}
+                                                radius={styleArrays.radiusArray[i]}
                                                 onMouseOver={() => onMouseOver(i, segment)}
                                                 onMouseOut={() => onMouseOut()} />
                                             <Circle
@@ -140,8 +147,8 @@ const LeafletMap = () => {
                                                 center={segment.geometry.coordinates[segment.geometry.coordinates.length - 1]}
                                                 fillOpacity={1}
                                                 fillColor="White"
-                                                color={globalState.state.currentSession.styleArrays.colorArray[i]}
-                                                radius={globalState.state.currentSession.styleArrays.radiusArray[i]}
+                                                color={styleArrays.colorArray[i]}
+                                                radius={styleArrays.radiusArray[i]}
                                                 onMouseOver={() => onMouseOver(i, segment)}
                                                 onMouseOut={() => onMouseOut()}
                                             />
@@ -155,11 +162,11 @@ const LeafletMap = () => {
                     <Overlay name="Start/Finish">
                         <LayerGroup>
                             <Marker
-                                position={globalState.state.currentSession.sessionData[0].geometry.coordinates[0]}
+                                position={segments[0].geometry.coordinates[0]}
                                 icon={startIcon}
                             />
                             <Marker
-                                position={globalState.state.currentSession.sessionData[globalState.state.currentSession.sessionData.length - 1].geometry.coordinates[globalState.state.currentSession.sessionData[globalState.state.currentSession.sessionData.length - 1].geometry.coordinates.length - 1]}
+                                position={segments[segments.length - 1].geometry.coordinates[segments[segments.length - 1].geometry.coordinates.length - 1]}
                                 icon={finishIcon}
                             />
                         </LayerGroup>

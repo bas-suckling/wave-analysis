@@ -24,11 +24,7 @@ const DataStore = ({children}) => {
                     currentSession: action.payload
             } 
 
-            case 'updateMapStyles':
-
-                console.log('update style arrays has been called')
-                console.log('update payload', action.payload)
-
+            case 'updateMapStyle':
                 return {
                     ...state,
                     currentSession: {
@@ -37,24 +33,6 @@ const DataStore = ({children}) => {
                     }
                 }
 
-            case 'resetMapStyles':
-
-                console.log('reset style arrays has been called')
-                console.log('reset payload', action.payload)
-
-                return {
-                    ...state,
-                    currentSession: {
-                        styleArrays: action.payload,
-                        ...state.currentSession
-                    }
-                }
-
-            case 'setCurrentSegment':
-                return {
-                    ...state,
-                    currentSegment: action.payload
-                }
                 default:
             throw new Error('Invalid action')
         }
