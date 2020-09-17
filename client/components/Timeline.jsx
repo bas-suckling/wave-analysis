@@ -1,53 +1,78 @@
-import React, {useState} from 'react'
-import {createSegmentWidthArray} from '../helpers/timeline'
-import { createInitialArrays, updateArrayElement, updateArrayElementColor } from '../helpers/mapStyles'
+import React, { useContext, useState } from 'react'
+import { store } from '../../dataStore'
+import { createSegmentWidthArray } from '../helpers/timeline'
+import { createInitialArrays, updateArrayElementColor } from '../helpers/mapStyles'
+import WaveDataTable from './WaveDataTable'
 
+const Timeline = () => {
 
-const Timeline = (props) => {
+    const globalState = useContext(store)
+    const { dispatch } = globalState
+    const styleArrays = globalState.state.currentSession.styleArrays
+    const sessionData = globalState.state.currentSession.sessionData
+    const metaData = globalState.state.currentSession.metaData
 
-    let SEGMENT_WIDTH_ARRAY = createSegmentWidthArray(props.segments, props.sessionMeta.dur) 
-    
-    let initialArrays = createInitialArrays(props.segments)
-    const [currentStyle, setStyle] = useState(initialArrays)
+    const initialArrays = createInitialArrays(sessionData)
+    let SEGMENT_WIDTH_ARRAY = createSegmentWidthArray(sessionData, metaData.dur)
+
     const [visibility, setVisibility] = useState(true)
-
-    const onMouseOver = (i, segment) => {
-        // setCurrentSegment(segment)
-        setStyle({
-            weightArray: updateArrayElement(currentStyle.weightArray, i, 2),
-            colorArray: updateArrayElementColor(currentStyle.colorArray, i, segment.properties.isWave),
-            ...currentStyle
-        })
-    }
-
-    const onMouseOut = () => {
-        setStyle(initialArrays)
-    }
+    const [currentSegment, setCurrentSegment] = useState("")
 
     const handleClick = () => {
         setVisibility(!visibility)
     }
 
+    const onMouseOver = (i, segment) => {
+        setCurrentSegment(segment)
+        dispatch({
+            type: 'updateMapStyle',
+            payload: {
+                radiusArray: styleArrays.radiusArray,
+                weightArray: styleArrays.weightArray,
+                colorArray: updateArrayElementColor(styleArrays.colorArray, i, segment.properties.isWave)
+            },
+        })
+    }
+
+    const onMouseOut = () => {
+        dispatch({
+            type: 'setCurrentSession',
+            payload: {
+                styleArrays: {
+                    radiusArray: initialArrays.radiusArray,
+                    weightArray: initialArrays.weightArray,
+                    colorArray: initialArrays.colorArray
+                },
+                metaData: globalState.state.currentSession.metaData,
+                sessionData: sessionData
+            }
+        })
+    }
+
     return (
         <>
-            {(visibility ? 
-            <div className="light-bg">
-                    {props.segments.map((segment, i) => {
-                        return (
-                            <svg key={i} width={SEGMENT_WIDTH_ARRAY[i] + '%'} height="75">
-                                <rect   
-                                    height="100%"
-                                    fill={currentStyle.colorArray[i]}
-                                    onMouseOver={() => onMouseOver(i, segment)}
-                                    onMouseOut={() => onMouseOut()} 
-                                />
-                            </svg>
+            {(visibility ?
+                <div>
+                    <h4>Timeline</h4>
+                    <div className="light-bg">
+                        {sessionData.map((segment, i) => {
+                            return (
+                                <svg key={i} width={SEGMENT_WIDTH_ARRAY[i] + '%'} height="75">
+                                    <rect
+                                        height="100%"
+                                        fill={styleArrays.colorArray[i]}
+                                        onMouseOver={() => onMouseOver(i, segment)}
+                                        onMouseOut={() => onMouseOut()}
+                                    />
+                                </svg>
+                            )
+                        }
                         )
-                    }
-                    )
-                }                
-            </div> : 
-            <br/>)}
+                        }
+                    </div>
+                <WaveDataTable currentSegment={currentSegment}/>
+                </div> :
+                <div></div>)}
             <p className="session-link" onClick={() => handleClick()}>Show/Hide Timeline</p>
         </>
     )
