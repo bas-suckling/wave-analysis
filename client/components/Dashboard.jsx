@@ -35,6 +35,10 @@ const Dashboard = () => {
                             }
                         }
                         )
+                        dispatch({
+                            type: 'setCurrentSegment',
+                            payload: ""
+                        })
                     })
                 )
     }, [])

@@ -4,7 +4,7 @@
 // - RADIUS = 1         - WAVECOLOR = '#2c3e50'      - PADDLECOLOR = '#252525'
 
 const mapStyles = {
-    "PADDLEWEIGHT": 1.5 ,
+    "PADDLEWEIGHT": 2 ,
     "WAVEWEIGHT": 3,
     "RADIUS": 1,
     "WAVECOLOR": '#2c3e50' ,

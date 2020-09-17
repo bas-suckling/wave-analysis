@@ -29,6 +29,10 @@ const LeafletMap = () => {
                 },
             }
         )
+        dispatch({
+            type: 'setCurrentSegment',
+            payload: segment
+        })
     }
 
     const onMouseOut = () => {
@@ -42,6 +46,10 @@ const LeafletMap = () => {
                 metaData: metaData,
                 sessionData: segments
             }
+        })
+        dispatch({
+            type:'setCurrentSegment',
+            payload: ""
         })
     }
 

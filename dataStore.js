@@ -3,7 +3,7 @@ import React, {createContext, useReducer} from 'react'
 const initialState = {
     allSessions: [],
     currentSession: [],
-    currentSegment: [],
+    currentSegment: "",
 }
 
 const store = createContext(initialState)
@@ -32,8 +32,14 @@ const DataStore = ({children}) => {
                         ...state.currentSession
                     }
                 }
+            
+            case 'setCurrentSegment':
+                return {
+                    ...state,
+                    currentSegment: action.payload 
+                }
 
-                default:
+            default:
             throw new Error('Invalid action')
         }
     }, initialState)
