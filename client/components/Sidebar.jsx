@@ -24,7 +24,7 @@ const Sidebar = () => {
     }
 
     return (
-        <div className={"container sticky-top"}>
+        <div className={"container"}>
             <img className="logo" src="./images/BFBSA_Logo_White.png" alt="logo" />
             <h1 className="heading">Sessions</h1>
             {globalState.state.allSessions.map((session, i) => {

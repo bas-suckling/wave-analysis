@@ -50,10 +50,10 @@ const Dashboard = () => {
                 :
                 <div className={"container-fluid"}>
                     <div className="row">
-                        <div className={"col-2 dark-bg sidebar sticky-top"}>
+                        <div className={"col-2 dark-bg fixed-top sidebar"}>
                             <Sidebar/>
                         </div>
-                        <div className="col-10 " id='map-container'>
+                        <div className="col-10 offset-2" id='map-container'>
                             <div>
                                 <SessionDataTable />
                             </div>
