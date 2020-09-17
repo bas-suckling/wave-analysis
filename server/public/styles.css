@@ -614,7 +614,8 @@
 
 body {
   background-color: #2c3e50;
-  color: whitesmoke; }
+  color: whitesmoke;
+  height: 100%; }
 
 .dark-bg {
   background-color: #252525; }
@@ -661,9 +662,6 @@ li:hover {
   width: 50%;
   text-align: center;
   padding-top: 45vh; }
-
-.timeline {
-  overflow-x: scroll; }
 
 .custom-popup-paddle .leaflet-popup-content-wrapper {
   background: #252525;

@@ -3,7 +3,7 @@ import { store } from '../../dataStore'
 
 import {convertSeconds} from '../helpers/timeFormat'
 
-function SessionDataTable (props) {
+const SessionDataTable = () => {
 
     const globalState = useContext(store)
 
@@ -17,7 +17,7 @@ function SessionDataTable (props) {
                 :
                 <div>
                     <br/>
-                    <h2>{props.sessionTitle}</h2>
+                    <h2>Session Analysis</h2>
                     <div className="row">
                         <div className="col-sm">
                             <h3>{sessionData.waveCount}</h3>
