@@ -1,30 +1,44 @@
-import React, {useState} from 'react'
+import React, {useContext, useState} from 'react'
+import {store} from '../../dataStore'
 import {createSegmentWidthArray} from '../helpers/timeline'
 import { createInitialArrays, updateArrayElement, updateArrayElementColor } from '../helpers/mapStyles'
 
 
-const Timeline = (props) => {
+const Timeline = () => {
 
-    // const globalState = useContext(store)
-    // const { dispatch } = globalState
+    const globalState = useContext(store)
+    const { dispatch } = globalState
+    const initialArrays = createInitialArrays(globalState.state.currentSession.sessionData)
 
-    let SEGMENT_WIDTH_ARRAY = createSegmentWidthArray(props.segments, props.sessionMeta.dur) 
+    let SEGMENT_WIDTH_ARRAY = createSegmentWidthArray(globalState.state.currentSession.sessionData, globalState.state.currentSession.metaData.dur) 
     
-    let initialArrays = createInitialArrays(props.segments)
-    const [currentStyle, setStyle] = useState(initialArrays)
+    // const [currentStyle, setStyle] = useState(initialArrays)
     const [visibility, setVisibility] = useState(true)
 
     const onMouseOver = (i, segment) => {
-        // setCurrentSegment(segment)
-        setStyle({
-            weightArray: updateArrayElement(currentStyle.weightArray, i, 2),
-            colorArray: updateArrayElementColor(currentStyle.colorArray, i, segment.properties.isWave),
-            ...currentStyle
-        })
+        dispatch({
+            type:'updateMapStyles',
+            payload: {
+                    radiusArray: globalState.state.currentSession.styleArrays.radiusArray,
+                    weightArray: globalState.state.currentSession.styleArrays.weightArray,
+                    colorArray: updateArrayElementColor(globalState.state.currentSession.styleArrays.colorArray, i, segment.properties.isWave)
+                },
+            }
+        )
     }
 
     const onMouseOut = () => {
-        setStyle(initialArrays)
+        dispatch({
+            type: 'setCurrentSession',
+            payload: {
+                styleArrays:{
+                radiusArray: initialArrays.radiusArray,
+                weightArray: initialArrays.weightArray,
+                colorArray: initialArrays.colorArray},
+                metaData: globalState.state.currentSession.metaData,
+                sessionData: globalState.state.currentSession.sessionData
+            }
+        })
     }
 
     const handleClick = () => {
@@ -35,12 +49,12 @@ const Timeline = (props) => {
         <>
             {(visibility ? 
             <div className="light-bg">
-                    {props.segments.map((segment, i) => {
+                    {globalState.state.currentSession.sessionData.map((segment, i) => {
                         return (
                             <svg key={i} width={SEGMENT_WIDTH_ARRAY[i] + '%'} height="75">
                                 <rect   
                                     height="100%"
-                                    fill={currentStyle.colorArray[i]}
+                                    fill={globalState.state.currentSession.styleArrays.colorArray[i]}
                                     onMouseOver={() => onMouseOver(i, segment)}
                                     onMouseOut={() => onMouseOut()} 
                                 />

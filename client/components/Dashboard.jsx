@@ -87,7 +87,7 @@ const Dashboard = () => {
                             </div>
                             <br />
                             <div>
-                                <Timeline segments={globalState.state.currentSession.sessionData} sessionMeta={globalState.state.currentSession.metaData} />
+                                <Timeline />
                             </div>
                             <div>
                                 <Footer />

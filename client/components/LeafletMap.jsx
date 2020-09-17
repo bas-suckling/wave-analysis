@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import { Map, TileLayer, Polyline, Popup, ScaleControl, LayerGroup, LayersControl, Circle, Marker } from 'react-leaflet'
 const { BaseLayer, Overlay } = LayersControl
 import { Icon } from "leaflet"
-import { mapStyles, createInitialArrays, updateArrayElement, updateArrayElementColor } from '../helpers/mapStyles'
+import { createInitialArrays, updateArrayElement, updateArrayElementColor } from '../helpers/mapStyles'
 import {convertSeconds} from '../helpers/timeFormat'
 // import WaveDataTable from './WaveDataTable'
 
