@@ -122,7 +122,7 @@ function combSegs(segmentArray){    //removes small/error segments
     
 function addMeta(segmentArray){     // packs and returns segs in geojson w seg meta data
     let segmentArrayFull =[]
-    let i = 1 
+    let i = 0 
     let tZero = segmentArray[0][0].start.time
     
     segmentArray.forEach(seg=>{
