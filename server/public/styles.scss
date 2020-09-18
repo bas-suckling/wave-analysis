@@ -12,9 +12,10 @@ body {
     background-color: #252525;
 }
 
-.light-bg {
-    background-color: whitesmoke;
-    padding: 3px
+.white-border {
+    border-style:solid;
+    border-color: whitesmoke;
+    border-width: 3px;
 }
 
 .light-text {

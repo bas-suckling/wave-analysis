@@ -53,8 +53,7 @@ const Timeline = () => {
     return (
         <>
             <div>
-                <h4>Timeline</h4>
-                <div className="light-bg timeline">
+                <div className="timeline">
                     {sessionData.map((segment, i) => {
                         return (
                             <svg key={i} width={SEGMENT_WIDTH_ARRAY[i] + '%'} height="60">
@@ -70,7 +69,7 @@ const Timeline = () => {
                     )
                     }
                 </div>
-                <WaveDataTable />
+                
             </div>
         </>
     )

@@ -7,6 +7,7 @@ import Footer from './Footer'
 import { apiGetSessionsList, apiGetSessionData } from '../api/sessions'
 import Timeline from './Timeline'
 import LoadingSpinner from './LoadingSpinner'
+import WaveDataTable from './WaveDataTable'
 
 import {createInitialArrays} from '../helpers/mapStyles' 
 import Sidebar from './Sidebar'
@@ -48,21 +49,24 @@ const Dashboard = () => {
             {(globalState.state.currentSession.length < 2) ?
                 <LoadingSpinner/>
                 :
-                <div className={"container-fluid"}>
+                <div className="container-fluid">
                     <div className="row">
-                        <div className={"col-2 dark-bg fixed-top sidebar"}>
+                        <div className="col-2 dark-bg fixed-top sidebar">
                             <Sidebar/>
                         </div>
                         <div className="col-10 offset-2" id='map-container'>
                             <div className="sticky-top data-table">
                                 <SessionDataTable />
                             </div>
-                            <div className="light-bg">
+                            <div className="white-border">
                                 <LeafletMap />
                             </div>
                             <br />
-                            <div>
+                            <div className="white-border">
                                 <Timeline />
+                            </div>
+                            <div>
+                                <WaveDataTable />
                             </div>
                             <div>
                                 <Footer />
