@@ -41,6 +41,7 @@ body {
 }
 
 .logo {
+    
     padding: 10px;
     width:100%;
     -webkit-transition: -webkit-transform 2.5s ease-in-out;
@@ -48,6 +49,7 @@ body {
 }
 
 .logo:hover {
+    cursor: pointer;
     -webkit-transform: rotate(360deg);
             transform: rotate(360deg);
 }

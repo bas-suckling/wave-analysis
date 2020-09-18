@@ -649,6 +649,7 @@ body {
   transition: transform 2.5s ease-in-out; }
 
 .logo:hover {
+  cursor: pointer;
   -webkit-transform: rotate(360deg);
   transform: rotate(360deg); }
 
