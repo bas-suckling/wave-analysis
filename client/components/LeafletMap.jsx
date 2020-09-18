@@ -78,7 +78,7 @@ const LeafletMap = () => {
                 </div>
                 :
             <Map id="mapid" center={segments[Math.floor(segments.length / 2)].geometry.coordinates[Math.floor(segments[Math.floor(segments.length / 2)].geometry.coordinates.length / 2)]} zoom={17.5} zoomSnap={0.25}>
-                <LayersControl position="topright" >
+                <LayersControl position="bottomright" >
                     <BaseLayer key={1} checked name="Satellite">
                         <TileLayer
                             attribution='Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'

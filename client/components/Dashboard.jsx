@@ -54,7 +54,7 @@ const Dashboard = () => {
                             <Sidebar/>
                         </div>
                         <div className="col-10 offset-2" id='map-container'>
-                            <div>
+                            <div className="sticky-top data-table">
                                 <SessionDataTable />
                             </div>
                             <div className="light-bg">

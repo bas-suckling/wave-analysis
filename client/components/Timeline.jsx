@@ -57,7 +57,7 @@ const Timeline = () => {
                 <div className="light-bg timeline">
                     {sessionData.map((segment, i) => {
                         return (
-                            <svg key={i} width={SEGMENT_WIDTH_ARRAY[i] + '%'} height="75">
+                            <svg key={i} width={SEGMENT_WIDTH_ARRAY[i] + '%'} height="60">
                                 <rect
                                     height="100%"
                                     fill={styleArrays.colorArray[i]}
