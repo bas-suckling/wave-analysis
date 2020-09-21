@@ -1,5 +1,5 @@
 const geolib = require('geolib');
-const {convertUnixTime, parseTime, timeRead} = require('./timeConversions');
+const {convertUnixTime, parseTime, timeRead, getDate} = require('./timeConversions');
 const {findBeachDirection, setIsWave, endPoint, MIN_SURF_SPEED} = require ('./bearingFunctions');
 const {smoothArray} = require ('./speedFunctions');
 
@@ -24,7 +24,8 @@ function sessionData(rawJSONData){
     return({
         "meta": meta,
         "segments": segments,
-        "data": finalProcess
+        "data": finalProcess,
+        "raw": rawJSONData
     })
 }
 // ------------------------------------------------------------------------------------------------------------
@@ -82,14 +83,11 @@ function setMaxSpeed(speed) {
 
 // ---------------------------------------------------  S E G M E N T S  ---------------------------------------
 function createSegments (trackPoints) {
-    split = initSplit(trackPoints)
-    segs = combSegs(split)
-    output = addMeta(segs)
-    return output
+    return addMeta(correctSegments(initialSplit(trackPoints)))
 }
     
 
-function initSplit(trackPoints){ // splits array based on isWave val
+function initialSplit(trackPoints){ // splits array based on isWave val
     let segmentArray = []
     let segment = [trackPoints[0]]
     for (let i = 1; i < trackPoints.length; i++) {
@@ -103,14 +101,13 @@ function initSplit(trackPoints){ // splits array based on isWave val
     return(segmentArray)
 }
 
-function combSegs(segmentArray){    //removes small/error segments
+function correctSegments(segmentArray){    //removes small/error segments
     for (let segSize = 1; segSize < MIN_SEGMENT_LENGTH; segSize++){
         for (let i = 1; i < segmentArray.length-1; i++) {
             
             let segDur = (segmentArray[i][segmentArray[i].length-1].end.time-segmentArray[i][0].start.time)/1000
             if (segDur == segSize){  // combine with segs to either side
-                segmentArray[i-1]=segmentArray[i-1].concat(segmentArray[i])     // add short seg to prev
-                segmentArray[i-1]=segmentArray[i-1].concat(segmentArray[i+1])   // also combine with the folllowing seg (now of same type)
+                segmentArray[i-1].concat(segmentArray[i],segmentArray[i+1])     // combines short seg with either side
                 segmentArray.splice(i,2)                                        // remove 2 segs (now joined to i-1)
                 i--
             }
@@ -122,7 +119,7 @@ function combSegs(segmentArray){    //removes small/error segments
     
 function addMeta(segmentArray){     // packs and returns segs in geojson w seg meta data
     let segmentArrayFull =[]
-    let i = 0 
+    let i = 0 // wave/paddle index
     let tZero = segmentArray[0][0].start.time
     
     segmentArray.forEach(seg=>{
@@ -190,6 +187,7 @@ function getMetaData(rawJSONData, segments, beachDirection) {
     return{
         "session_name": rawJSONData.session_name,
         "time": timeRead(convertUnixTime(parseTime(rawJSONData[0].timestamp))),
+        "date": getDate(rawJSONData[0].timestamp), 
         "dur": totalDur,
         "waveCount": waveCount,
         "totalDist": toKM(waveDist+paddleDist),
@@ -199,7 +197,7 @@ function getMetaData(rawJSONData, segments, beachDirection) {
         "longestWaveDur": longestWaveDur,       // not used
         "longestPaddleDist": longestPaddleDist, // not used
         "longestPaddleDur": longestPaddleDur,     // not used
-        "beachDirection": parseFloat(beachDirection).toPrecision(3),       // not used
+        "beachDirection": beachDirection,       // not used
         "beachArrow": {"start":start, "end": endPoint(start, beachDirection)}
     }
 }

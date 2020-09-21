@@ -28,11 +28,15 @@ function convertUnixTime(gpxTimeStamp) {
 function timeRead(unix){
     return new Date(unix).toUTCString().slice(-12, -4)
 } 
-    
+   
+function getDate(dateTimeString){
+    return dateTimeString.slice(0, 10)  // 0123-56-89
+}
 
 
 module.exports = {
     convertUnixTime,
     parseTime,
-    timeRead
+    timeRead,
+    getDate
 }
