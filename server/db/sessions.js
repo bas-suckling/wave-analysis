@@ -25,6 +25,11 @@ function getSessionsByUser (user_id, db = database) {
 
 }
 
+function getSessionsByID (session_id, db = database) {
+    return db('sessions').where("session_id", session_id)
+
+}
+
 
 
 module.exports = {

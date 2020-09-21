@@ -1,4 +1,31 @@
 const router = require('express').Router()
+const user_id = 1
+// 
+//  router.get('/', (req, res) => { let allSessions = [
+//          we dont currently have locations
+//          session ids 
+//                  - are unique
+//                  - not "complete"        eg [34,35,78,890,1000, ...]
+
+// router.get('/:id', (req, res) =>{
+// switch not req? => 
+//      meta = getSessionsByID(session_id) {repack required}
+//      session = getSegmentsBySession(session_id) {repack required}
+
+// or 
+// sessions = []
+// i = 0
+// for getSessionsByUser{ sesh=>
+//      meta = getSessionsByID(session_id) {repack required}
+//      segs = getSegmentsBySession(session_id) {repack required}
+//      sessions.push({i,date,meta,segs})
+//      i++
+// 
+// router.get('/:id', (req, res) =>{ return sessions[id]? 
+// or send sessions forward as a big json and front can deal w it?
+
+
+
 
 const session_1 = require('../data/processedData/2020-08-30_segmented.json')
 const session_2 = require('../data/processedData/2020-08-29_segmented.json')
