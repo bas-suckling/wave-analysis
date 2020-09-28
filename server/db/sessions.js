@@ -1,7 +1,6 @@
 const database = require('./connection')
 
 function createSession (user_id, meta, rawString, db = database) {
-    meta.date = "2020-03-22"
     console.log('creating session ', meta.date, meta.time)
     date = meta.date
     duration = meta.dur
@@ -23,6 +22,11 @@ function removeSession (session_id, db = database) {
 
 function getSessionsByUser (user_id, db = database) {
     return db('sessions').where("user_id", user_id)
+
+}
+
+function getSessionsByID (session_id, db = database) {
+    return db('sessions').where("session_id", session_id)
 
 }
 

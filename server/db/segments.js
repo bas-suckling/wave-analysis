@@ -1,7 +1,7 @@
 const database = require('./connection')
 
 function createSegment (session_id, segment, db = database) {
-    console.log('creating segment wave:', segment.properties.isWave, "index:",segment.properties.index)
+    //console.log('creating segment wave:', segment.properties.isWave, "index:",segment.properties.index)
     is_wave     = segment.properties.isWave
     index       = segment.properties.index
     timestamp   = segment.properties.tStamp

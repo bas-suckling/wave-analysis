@@ -18,7 +18,7 @@ function findBeachDirection(bearingArray) {
     if (beachDirection < 0){
         beachDirection += 360
     }
-    return beachDirection
+    return Math.ceil(beachDirection)
 }
 
 function setIsWave(trackPoints, beachDirection) {
