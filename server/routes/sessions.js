@@ -8,6 +8,8 @@ const session_5 = require('../data/processedData/2020-07-07_segmented.json')
 const session_6 = require('../data/processedData/2020-05-25_segmented.json')
 const session_7 = require('../data/processedData/2020-05-15_segmented.json')
 const session_8 = require('../data/processedData/2020-03-22_segmented.json')
+const session_9 = require('../data/processedData/2020-09-20_segmented.json')
+
 
 const meta_1 = require('../data/processedData/2020-08-30_meta.json')
 const meta_2 = require('../data/processedData/2020-08-29_meta.json')
@@ -17,6 +19,8 @@ const meta_5 = require('../data/processedData/2020-07-07_meta.json')
 const meta_6 = require('../data/processedData/2020-05-25_meta.json')
 const meta_7 = require('../data/processedData/2020-05-15_meta.json')
 const meta_8 = require('../data/processedData/2020-03-22_meta.json')
+const meta_9 = require('../data/processedData/2020-09-20_meta.json')
+
 
 
 router.get('/', (req, res) => {
@@ -52,6 +56,10 @@ router.get('/', (req, res) => {
         {
             "date": "2020-03-22 - Karitane",
             "session_id": 8
+        },
+        {
+            "date": "2020-09-29 - Lyall Bay",
+            "session_id": 9
         },
     ]
     res.send(allSessions)
@@ -93,6 +101,12 @@ router.get('/:id', (req, res) =>{
             currentSession = session_8
             currentMeta = meta_8
             break
+        case "9" :
+            currentSession = session_9
+            currentMeta = meta_9
+        break
+
+
      }
     res.send(
         {
