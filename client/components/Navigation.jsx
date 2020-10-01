@@ -2,6 +2,7 @@ import React from 'react'
 
 function Navigation(props) {
     <div className={"container"}>
+        <h1>Wave Analysis</h1>
         <img className="logo" src="./images/BFBSA_Logo_White.png" alt="logo" />
         <h1 className="heading">Sessions</h1>
         {props.sessions.map((session, i) => {
