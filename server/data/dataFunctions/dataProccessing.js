@@ -100,6 +100,13 @@ function initialSplit(trackPoints){ // splits array based on isWave val
     }
     return(segmentArray)
 }
+function printA(array){
+    array.forEach(point =>{
+        console.log(point.start,point.end)
+    })
+
+}
+
 
 function correctSegments(segmentArray){    //removes small/error segments
     for (let segSize = 1; segSize < MIN_SEGMENT_LENGTH; segSize++){
@@ -107,8 +114,8 @@ function correctSegments(segmentArray){    //removes small/error segments
             
             let segDur = (segmentArray[i][segmentArray[i].length-1].end.time-segmentArray[i][0].start.time)/1000
             if (segDur == segSize){  // combine with segs to either side
-                segmentArray[i-1].concat(segmentArray[i],segmentArray[i+1])     // combines short seg with either side
-                segmentArray.splice(i,2)                                        // remove 2 segs (now joined to i-1)
+                segmentArray[i-1] = segmentArray[i-1].concat(segmentArray[i],segmentArray[i+1])
+                segmentArray.splice(i,2)                        // remove 2 segs (now joined to i-1)
                 i--
             }
         }    
