@@ -2,7 +2,6 @@ import React, { useContext, useState } from 'react'
 import { store } from '../../dataStore'
 import { createSegmentWidthArray } from '../helpers/timeline'
 import { createInitialArrays, updateArrayElementColor, updateArrayElement } from '../helpers/mapStyles'
-import WaveDataTable from './WaveDataTable'
 
 const Timeline = () => {
 
@@ -28,7 +27,6 @@ const Timeline = () => {
             type: 'setCurrentSegment',
             payload: segment
         })
-
     }
 
     const onMouseOut = () => {
@@ -59,6 +57,7 @@ const Timeline = () => {
                             <svg key={i} width={SEGMENT_WIDTH_ARRAY[i] + '%'} height="60">
                                 <rect
                                     height="100%"
+                                    width="100%"
                                     fill={styleArrays.colorArray[i]}
                                     onMouseOver={() => onMouseOver(i, segment)}
                                     onMouseOut={() => onMouseOut()}
@@ -68,8 +67,7 @@ const Timeline = () => {
                     }
                     )
                     }
-                </div>
-                
+                </div>    
             </div>
         </>
     )

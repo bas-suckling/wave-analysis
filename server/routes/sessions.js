@@ -84,10 +84,6 @@ router.get('/', (req, res) => {
             "date": "2020-03-22 - Karitane",
             "session_id": 8
         },
-        {
-            "date": "2020-09-29 - Lyall Bay",
-            "session_id": 9
-        },
     ]
     res.send(allSessions)
 })
@@ -128,11 +124,6 @@ router.get('/:id', (req, res) =>{
             currentSession = session_8
             currentMeta = meta_8
             break
-        case "9" :
-            currentSession = session_9
-            currentMeta = meta_9
-        break
-
 
      }
     res.send(
