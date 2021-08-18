@@ -1,6 +1,5 @@
 import React, { useEffect, useContext } from 'react'
 import { store } from '../../dataStore'
-
 import SessionDataTable from './SessionDataTable'
 import LeafletMap from './LeafletMap'
 import Footer from './Footer'
@@ -8,7 +7,6 @@ import { apiGetSessionsList, apiGetSessionData } from '../api/sessions'
 import Timeline from './Timeline'
 import LoadingSpinner from './LoadingSpinner'
 import WaveDataTable from './WaveDataTable'
-
 import {createInitialArrays} from '../helpers/mapStyles' 
 import Sidebar from './Sidebar'
 
