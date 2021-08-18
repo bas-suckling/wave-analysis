@@ -42,10 +42,6 @@ const Timeline = () => {
                 sessionData: sessionData
             }
         })
-        // dispatch({
-        //     type: 'setCurrentSegment',
-        //     payload: ""
-        // })
     }
 
     return (
