@@ -42,7 +42,7 @@
     "dotenv-webpack": "^2.0.0",
     "enzyme": "^3.9.0",
     "enzyme-adapter-react-16": "^1.12.1",
-    "express": "^4.16.4",
+    "express": "^4.17.3",
     "geolib": "^3.3.1",
     "jest": "^24.7.1",
     "knex": "^0.21.5",
